@@ -1,0 +1,20 @@
+schemaVersion: 1
+id: box.com/box
+name: Box
+description: Box remote MCP server at https://mcp.box.com. Files, folders,
+  search, Box AI. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/box
+capabilities:
+  - id: box
+    kind: mcp
+    spec:
+      serverName: box
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.box.com

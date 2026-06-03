@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: gocardless.com/gocardless
+name: GoCardless
+description: GoCardless remote MCP server at https://mcp.gocardless.com. Build
+  GoCardless payment API integrations. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/gocardless
+capabilities:
+  - id: gocardless
+    kind: mcp
+    spec:
+      serverName: gocardless
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.gocardless.com

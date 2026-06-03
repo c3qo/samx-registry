@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: facebook/buck2
+name: Buck2
+description: Fast multi-language build system.
+source:
+  type: git
+  url: https://github.com/facebook/buck2
+  revision: 237a56ce94ed99d802b96c53109d7f9cd79a9244
+capabilities:
+  - id: buck2-rule-basics
+    kind: skill
+    path: .claude/skills/buck2-rule-basics
+    description: Guide users through writing their first Buck2 rule to learn
+      fundamental concepts including rules, actions, targets, configurations,
+      analysis, and select(). Use this skill when users want to learn Buck2
+      basics hands-on or need help understanding rule writing.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

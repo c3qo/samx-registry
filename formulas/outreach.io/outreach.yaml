@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: outreach.io/outreach
+name: Outreach
+description: Outreach remote MCP server at https://api.outreach.io/mcp/. Unleash
+  your team&#x27;s best performance with Outreach AI. Setup guides for Claude
+  Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/outreach
+capabilities:
+  - id: outreach
+    kind: mcp
+    spec:
+      serverName: outreach
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.outreach.io/mcp/

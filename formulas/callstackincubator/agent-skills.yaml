@@ -1,0 +1,94 @@
+schemaVersion: 1
+id: callstackincubator/agent-skills
+name: Agent Skills
+description: Repo of agent-optimized skills for coding assistants; RN perf,
+  GitHub, testing, brownfield, upgrade, validation.
+source:
+  type: git
+  url: https://github.com/callstackincubator/agent-skills
+  revision: 0ba043ab797d0e623384a6495b3bb0dadbd3181a
+capabilities:
+  - id: validate-skills
+    kind: skill
+    path: .claude/skills/validate-skills
+    description: Validates skills in this repo against agentskills.io spec and
+      Claude Code best practices. Use via /validate-skills command.
+  - id: agent-device
+    kind: skill
+    path: plugins/vendored/.agents/skills/agent-device
+    description: Automates interactions for Apple-platform apps (iOS, tvOS, macOS)
+      and Android devices. Use when navigating apps, taking
+      snapshots/screenshots, tapping, typing, scrolling, or extracting UI info
+      across mobile, TV, and desktop targets.
+  - id: dogfood
+    kind: skill
+    path: plugins/vendored/.agents/skills/dogfood
+    description: 'Systematically explore and test a mobile app on iOS/Android with
+      agent-device to find bugs, UX issues, and other problems. Use when asked
+      to "dogfood", "QA", "exploratory test", "find issues", "bug hunt", or
+      "test this app" on mobile. Produces a structured report with reproducible
+      evidence: screenshots, optional repro videos, and detailed steps for every
+      issue.'
+  - id: react-native-testing
+    kind: skill
+    path: plugins/vendored/.agents/skills/react-native-testing
+    description: >
+      Write tests using React Native Testing Library (RNTL) v13 and v14
+      (`@testing-library/react-native`). Use when writing, reviewing, or fixing
+      React Native component tests. Covers: render, screen, queries
+      (getBy/getAllBy/queryBy/findBy), Jest matchers, userEvent, fireEvent,
+      waitFor, and async patterns. Supports v13 (React 18, sync render) and v14
+      (React 19+, async render). Triggers on: test files for React Native
+      components, RNTL imports, mentions of "testing library", "write tests",
+      "component tests", or "RNTL".
+  - id: vercel-react-native-skills
+    kind: skill
+    path: plugins/vendored/.agents/skills/vercel-react-native-skills
+    description: React Native and Expo best practices for building performant mobile
+      apps. Use when building React Native components, optimizing list
+      performance, implementing animations, or working with native modules.
+      Triggers on tasks involving React Native, Expo, mobile performance, or
+      native platform APIs.
+  - id: github-actions
+    kind: skill
+    path: skills/github-actions
+    description: GitHub Actions workflow patterns for React Native iOS simulator and
+      Android emulator cloud builds with downloadable artifacts. Use when
+      setting up CI build pipelines or downloading GitHub Actions artifacts via
+      gh CLI and GitHub API.
+  - id: github
+    kind: skill
+    path: skills/github
+    description: GitHub patterns using gh CLI for pull requests, stacked PRs, code
+      review, branching strategies, and repository automation. Use when working
+      with GitHub PRs, merging strategies, or repository management tasks.
+  - id: react-native-best-practices
+    kind: skill
+    path: skills/react-native-best-practices
+    description: Provides React Native performance optimization guidelines for FPS,
+      TTI, bundle size, memory leaks, re-renders, and animations. Applies to
+      tasks involving Hermes optimization, JS thread blocking, bridge overhead,
+      FlashList, native modules, or debugging jank and frame drops.
+  - id: react-native-brownfield-migration
+    kind: skill
+    path: skills/react-native-brownfield-migration
+    description: Provides an incremental adoption strategy to migrate native iOS or
+      Android apps to React Native or Expo using
+      @callstack/react-native-brownfield for initial setup. Use when planning
+      migration steps, packaging XCFramework/AAR artifacts, and integrating them
+      into host apps.
+  - id: upgrading-react-native
+    kind: skill
+    path: skills/upgrading-react-native
+    description: Upgrades React Native apps to newer versions by applying
+      rn-diff-purge template diffs, updating package.json dependencies,
+      migrating native iOS and Android configuration, resolving CocoaPods and
+      Gradle changes, and handling breaking API updates. Use when upgrading
+      React Native, bumping RN version, updating from RN 0.x to 0.y, or
+      migrating Expo SDK alongside a React Native upgrade.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

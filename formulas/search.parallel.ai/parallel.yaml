@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: search.parallel.ai/parallel
+name: Parallel Search
+description: Parallel Search remote MCP server at
+  https://search.parallel.ai/mcp. Real-time web search and content extraction.
+  Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/parallel
+capabilities:
+  - id: parallel
+    kind: mcp
+    spec:
+      serverName: parallel
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://search.parallel.ai/mcp

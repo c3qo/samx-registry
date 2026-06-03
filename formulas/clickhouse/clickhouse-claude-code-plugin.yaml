@@ -1,0 +1,31 @@
+schemaVersion: 1
+id: clickhouse/clickhouse-claude-code-plugin
+name: ClickHouse Claude Code Plugin
+description: Claude Code plugin for ClickHouse best-practice skills and MCP access.
+source:
+  type: git
+  url: https://github.com/clickhouse/clickhouse-claude-code-plugin
+  revision: ecbd47627d7e7b3de15b297b91e0abf3e6ebc746
+capabilities:
+  - id: clickhouse
+    kind: mcp
+    path: .mcp.json
+  - id: clickhouse-best-practices
+    kind: skill
+    path: skills/clickhouse-best-practices
+    description: MUST USE when reviewing ClickHouse schemas, queries, or
+      configurations. Contains 31 rules that MUST be checked before providing
+      recommendations. Always read relevant rule files and cite specific rules
+      in responses.
+  - id: setup
+    kind: skill
+    path: skills/setup
+    description: Guides users through setting up the ClickHouse MCP server
+      connection bundled with this plugin. Use when the user first installs the
+      plugin or has trouble connecting to ClickHouse.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

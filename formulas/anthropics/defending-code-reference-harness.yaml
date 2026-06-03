@@ -1,0 +1,88 @@
+schemaVersion: 1
+id: anthropics/defending-code-reference-harness
+name: Defending Code Reference Harness
+description: Autonomous vuln discovery/triage/patch ref impl; C/C++ + ASAN ref
+  pipeline + Claude Code skills.
+source:
+  type: git
+  url: https://github.com/anthropics/defending-code-reference-harness
+  revision: 9e0f6c6cd54fc3b8ce79708e8208d862634a2624
+capabilities:
+  - id: customize
+    kind: skill
+    path: .claude/skills/customize
+    description: Adapt this C/C++ ASAN vulnerability pipeline to a different
+      vulnerability class, target shape, language, or detection mechanism. Use
+      when the user wants to port, migrate, retarget, customize, or fork the
+      pipeline for something other than C/C++ memory-safety bugs — web apps,
+      smart contracts, deserialization, ML systems, or any other domain.
+  - id: patch
+    kind: skill
+    path: .claude/skills/patch
+    description: Generate candidate fixes for verified security findings. Consumes
+      TRIAGE.json (preferred), VULN-FINDINGS.json, or a vuln-pipeline results
+      directory. Pipeline input is delegated to the execution-verified
+      `vuln-pipeline patch` ladder; static-analysis input gets a per-finding
+      patch subagent + independent reviewer and is written as inert diffs for
+      human review. Writes PATCHES/bug_NN/{patch.diff,patch_result.json},
+      PATCHES.md, and PATCHES.json. Use when asked to "fix the findings", "patch
+      these vulns", "generate fixes", or "close the loop on triage".
+  - id: quickstart
+    kind: skill
+    path: .claude/skills/quickstart
+    description: "The front door for this repo. With no argument: a 30-second intro,
+      then an offer to walk you through your first run on the canary target.
+      With a question: answers it from this repo's own docs and source, cites
+      where it looked, and hands you the next command. Use for \"how do I…\",
+      \"why does…\", \"where is…\", \"can this…\", or just \"/quickstart\" to
+      get oriented."
+  - id: threat-model
+    kind: skill
+    path: .claude/skills/threat-model
+    description: 'Build a threat model for a target codebase. Three modes:
+      "interview" walks an application owner through the four-question framework
+      and produces a threat model from their answers; "bootstrap" derives a
+      threat model from the code plus past vulnerabilities (CVEs, git history,
+      pentest reports) when no owner is available; "bootstrap-then-interview"
+      chains the two when both owner and codebase are present. All write
+      THREAT_MODEL.md in a shared schema. Use when asked to "threat model",
+      "build a threat model", "map the attack surface", or "what should we be
+      worried about in this codebase".'
+  - id: triage
+    kind: skill
+    path: .claude/skills/triage
+    description: Triage a batch of raw security findings. Verify each is real,
+      collapse duplicates, re-rank by derived exploitability, and tag with an
+      owner. Takes a directory or file of scanner output and writes TRIAGE.json
+      + TRIAGE.md sorted by what actually needs engineering attention. Use when
+      asked to "triage findings", "validate scanner output", "prioritize vulns",
+      or "review the backlog". Runs interactively by default; pass --auto to
+      skip the interview.
+  - id: vuln-scan
+    kind: skill
+    path: .claude/skills/vuln-scan
+    description: Static source-code vulnerability scan. Reads a target directory
+      (and THREAT_MODEL.md if present), spawns parallel review subagents per
+      focus area, and writes VULN-FINDINGS.json + .md for /triage to consume.
+      Read-only — no building, running, or network. For execution-verified
+      crashes, use vuln-pipeline instead. Use when asked to "scan for vulns",
+      "review this code for security issues", "find bugs in <dir>", or as the
+      step between /threat-model and /triage.
+requirements:
+  env:
+    - ANTHROPIC_API_KEY
+    - CLAUDE_CODE_OAUTH_TOKEN
+    - VULN_PIPELINE_MODEL
+    - CLAUDE_CODE_SUBAGENT_MODEL
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Missing evidence for environment variable: VULN_PIPELINE_MODEL"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

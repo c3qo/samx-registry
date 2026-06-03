@@ -1,0 +1,20 @@
+schemaVersion: 1
+id: hex.tech/hex
+name: Hex
+description: Hex remote MCP server at https://app.hex.tech/mcp. Answer questions
+  with the Hex agent. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/hex
+capabilities:
+  - id: hex
+    kind: mcp
+    spec:
+      serverName: hex
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://app.hex.tech/mcp

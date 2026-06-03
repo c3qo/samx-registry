@@ -1,0 +1,179 @@
+schemaVersion: 1
+id: encoredev/skills
+name: Encore Skills
+description: Encore backend skill pack; TS/Go API, auth, db, pubsub, cron,
+  bucket, cache, secret, testing, frontend, migrate, review.
+source:
+  type: git
+  url: https://github.com/encoredev/skills
+  revision: cb69bb1f246274419aed69c84ee5815955c4c499
+capabilities:
+  - id: api
+    kind: skill
+    path: encore/api
+    description: Define typed API endpoints in Encore.ts using `api(...)` from
+      `encore.dev/api`. Covers typed request/response interfaces,
+      path/query/header/cookie params, request validation, and `APIError`. For
+      raw endpoints (`api.raw()`) and inbound webhooks, use `encore-webhook`
+      instead.
+  - id: go-api
+    kind: skill
+    path: encore/go-api
+    description: Define typed API endpoints in Encore Go using `//encore:api`
+      annotations. Covers typed request/response structs,
+      path/query/header/cookie params, and error returns. For raw endpoints
+      (`//encore:api raw`) and inbound webhooks, use `encore-go-webhook`
+      instead.
+  - id: webhook
+    kind: skill
+    path: encore/webhook
+    description: Receive inbound webhooks from external services (Stripe, GitHub,
+      Slack, Twilio, etc.) using `api.raw(...)` from `encore.dev/api`. The right
+      skill any time the user names a third-party provider that POSTs events to
+      a URL you own.
+  - id: auth
+    kind: skill
+    path: encore/auth
+    description: "Protect Encore.ts endpoints with authentication and authorize
+      callers. Covers `authHandler`, `Gateway`, `getAuthData`, and `auth:
+      true`."
+  - id: bucket
+    kind: skill
+    path: encore/bucket
+    description: Store unstructured files in Encore.ts using `Bucket` from
+      `encore.dev/storage/objects` — uploads, images, documents, blobs.
+  - id: cache
+    kind: skill
+    path: encore/cache
+    description: Cache data in Redis from Encore.ts using `CacheCluster` and typed
+      keyspaces from `encore.dev/storage/cache`. Type-safe key/value access with
+      TTLs, atomic increments, and per-keyspace data shapes.
+  - id: code-review
+    kind: skill
+    path: encore/code-review
+    description: Review existing Encore.ts code for best practices and common anti-patterns.
+  - id: cron
+    kind: skill
+    path: encore/cron
+    description: 'Schedule periodic / recurring work in Encore.ts using `CronJob`
+      from `encore.dev/cron`. Covers `every: "1h"` interval syntax and
+      `schedule: "0 9 * * 1"` cron expressions.'
+  - id: database
+    kind: skill
+    path: encore/database
+    description: Work with PostgreSQL in Encore.ts using `SQLDatabase` from
+      `encore.dev/storage/sqldb` — schema migrations and SQL queries.
+  - id: frontend
+    kind: skill
+    path: encore/frontend
+    description: Connect a frontend application (React, Next.js, Vue, Svelte, etc.)
+      to an Encore.ts backend.
+  - id: getting-started
+    kind: skill
+    path: encore/getting-started
+    description: Bootstrap a brand-new Encore.ts project from zero. Only for
+      first-time CLI install and `encore app create` — not for architecture or
+      feature questions.
+  - id: go-auth
+    kind: skill
+    path: encore/go-auth
+    description: Protect Encore Go endpoints with authentication and authorize
+      callers. Covers `auth.AuthHandler`, `auth.UserID`, the `Authorization`
+      header, and `//encore:api auth`.
+  - id: go-bucket
+    kind: skill
+    path: encore/go-bucket
+    description: Store unstructured files in Encore Go using `objects.NewBucket`
+      from `encore.dev/storage/objects` — uploads, images, documents, blobs.
+  - id: go-cache
+    kind: skill
+    path: encore/go-cache
+    description: Cache data in Redis from Encore Go using `cache.NewCluster` and
+      typed keyspaces from `encore.dev/storage/cache`. Type-safe key/value
+      access with TTLs, atomic increments, and per-keyspace data shapes.
+  - id: go-code-review
+    kind: skill
+    path: encore/go-code-review
+    description: Review existing Encore Go code for best practices and common anti-patterns.
+  - id: go-cron
+    kind: skill
+    path: encore/go-cron
+    description: 'Schedule periodic / recurring work in Encore Go using
+      `cron.NewJob` from `encore.dev/cron`. Covers `Every: "1h"` interval syntax
+      and `Schedule: "0 9 * * 1"` cron expressions.'
+  - id: go-database
+    kind: skill
+    path: encore/go-database
+    description: Work with PostgreSQL in Encore Go using `sqldb.NewDatabase` from
+      `encore.dev/storage/sqldb` — schema migrations and SQL queries.
+  - id: go-getting-started
+    kind: skill
+    path: encore/go-getting-started
+    description: Bootstrap a brand-new Encore Go project from zero. Only for
+      first-time CLI install and `encore app create` — not for architecture or
+      feature questions.
+  - id: go-pubsub
+    kind: skill
+    path: encore/go-pubsub
+    description: Asynchronous messaging in Encore Go via `pubsub.NewTopic` and
+      `pubsub.NewSubscription` from `encore.dev/pubsub` — broadcast events,
+      decouple producers from consumers, and run background handlers.
+  - id: go-secret
+    kind: skill
+    path: encore/go-secret
+    description: Manage API keys, credentials, and other secrets in Encore Go using
+      a package-level `secrets` struct.
+  - id: go-service
+    kind: skill
+    path: encore/go-service
+    description: Plan how to split an Encore Go application into services and lay
+      out its directory structure. Architecture and decomposition, not
+      first-time CLI install (that's `encore-go-getting-started`).
+  - id: go-testing
+    kind: skill
+    path: encore/go-testing
+    description: Write or run automated tests for Encore Go code with `encore test`
+      and the standard library `testing` package. Covers isolated per-test
+      databases, calling handlers directly, and `*testing.T` patterns.
+  - id: go-webhook
+    kind: skill
+    path: encore/go-webhook
+    description: Receive inbound webhooks from external services (Stripe, GitHub,
+      Slack, Twilio, etc.) in Encore Go using `//encore:api raw`. The right
+      skill any time the user names a third-party provider that POSTs events to
+      a URL you own.
+  - id: migrate
+    kind: skill
+    path: encore/migrate
+    description: Migrate an existing backend application to Encore. Supports any
+      source framework, targets Encore.ts or Encore Go. Drives a structured
+      DISCOVER → PLAN → MIGRATE workflow with `migration-plan.md` tracking.
+  - id: pubsub
+    kind: skill
+    path: encore/pubsub
+    description: Asynchronous messaging in Encore.ts via `Topic` and `Subscription`
+      from `encore.dev/pubsub` — broadcast events, decouple producers from
+      consumers, and run background handlers.
+  - id: secret
+    kind: skill
+    path: encore/secret
+    description: Manage API keys, credentials, and other secrets in Encore.ts using
+      `secret(...)` from `encore.dev/config`.
+  - id: service
+    kind: skill
+    path: encore/service
+    description: Plan how to split an Encore.ts application into services and lay
+      out its directory structure. Architecture and decomposition, not
+      first-time CLI install (that's `encore-getting-started`).
+  - id: testing
+    kind: skill
+    path: encore/testing
+    description: Write or run automated tests for Encore.ts code with `encore test`
+      and vitest/jest. Covers isolated per-test databases, calling handlers
+      directly, and `describe`/`it`/`expect`.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

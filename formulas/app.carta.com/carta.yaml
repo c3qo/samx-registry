@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: app.carta.com/carta
+name: Carta
+description: Carta remote MCP server at https://mcp.app.carta.com/mcp. The
+  connected ERP for private capital. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/carta
+capabilities:
+  - id: carta
+    kind: mcp
+    spec:
+      serverName: carta
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.app.carta.com/mcp

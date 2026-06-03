@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: ramp.com/ramp-data
+name: Ramp Data
+description: Ramp Data remote MCP server at
+  https://mcp.ramp.com/ramp-data/anthropic/mcp. Search and analyze Ramp spend
+  across 50,000+ businesses. Setup guides for Claude Code, Codex, Cursor, and VS
+  Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/ramp-data
+capabilities:
+  - id: ramp-data
+    kind: mcp
+    spec:
+      serverName: ramp-data
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.ramp.com/ramp-data/anthropic/mcp

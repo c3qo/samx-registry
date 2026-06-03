@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: open-ai-app.stubhub.net/stubhub
+name: StubHub
+description: StubHub remote MCP server at https://open-ai-app.stubhub.net/mcp.
+  Find tickets on the World&#x27;s Largest Ticket Marketplace. Setup guides for
+  Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/stubhub
+capabilities:
+  - id: stubhub
+    kind: mcp
+    spec:
+      serverName: stubhub
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://open-ai-app.stubhub.net/mcp
