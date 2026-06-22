@@ -1,0 +1,197 @@
+schemaVersion: 1
+id: microsoft/work-iq
+name: Work IQ
+description: M365/workplace MCP + productivity skills.
+source:
+  type: git
+  url: https://github.com/microsoft/work-iq
+  revision: b84634aab6739a69379f759f5f82f31ec22ad3bf
+capabilities:
+  - id: workiq
+    kind: mcp
+    path: plugins/workiq/.mcp.json
+  - id: workiq-preview
+    kind: mcp
+    path: plugins/workiq-preview/.mcp.json
+  - id: declarative-agent-developer
+    kind: skill
+    path: plugins/microsoft-365-agents-toolkit/skills/declarative-agent-developer
+    description: >
+      Create, build, deploy, and localize declarative agents for M365 Copilot
+      and Teams. USE THIS SKILL for ANY task involving a declarative agent —
+      including localization, scaffolding, editing manifests, adding
+      capabilities, and deploying. Localization requires tokenized manifests and
+      language files that only this skill knows how to produce. Triggers:
+      "create agent", "create a declarative agent", "new declarative agent",
+      "scaffold an agent", "new agent project", "add a capability", "add a
+      plugin", "configure my agent", "deploy my agent", "fix my agent manifest",
+      "edit my agent", "localize my agent", "add localization", "translate my
+      agent", "multi-language agent", "add an API plugin", "add an MCP plugin",
+      "add OAuth to my plugin", "review instructions", "improve instructions",
+      "fix my instructions"
+  - id: install-atk
+    kind: skill
+    path: plugins/microsoft-365-agents-toolkit/skills/install-atk
+    description: >
+      Install or update the M365 Agents Toolkit (ATK) CLI and VS Code extension.
+      Triggers: "install atk", "update atk", "install agents toolkit", "update
+      agents toolkit", "install the toolkit", "setup atk", "get atk", "install
+      atk cli", "install atk extension", "install atk vsix", "update the vs code
+      extension", "install latest atk", "upgrade atk"
+  - id: m365-agent-evaluator
+    kind: skill
+    path: plugins/microsoft-365-agents-toolkit/skills/m365-agent-evaluator
+    description: >
+      Use this skill when a user wants to create, run, or analyze evaluation
+      suites for Microsoft 365 Copilot declarative agents with the public
+      @microsoft/m365-copilot-eval CLI. Trigger on intents such as "evaluate my
+      agent", "test my agent", "run my evals", "create eval prompts", "add
+      multi-turn tests", "tune evaluator thresholds", "why is my agent failing",
+      or "set up eval environment variables".
+  - id: teams-app-developer
+    kind: skill
+    path: plugins/microsoft-365-agents-toolkit/skills/teams-app-developer
+    description: >
+      Build, test, and deploy code-based Teams apps using the M365 Agents
+      Toolkit CLI. USE FOR: Custom Engine Agents (CEA), Teams bots, tabs,
+      message extensions, Agents Playground local testing, Azure
+      provision/deploy, Slack-to-Teams migration, cross-platform bot
+      development, Block Kit to Adaptive Cards conversion, AI model integration
+      (OpenAI/Azure/Anthropic/Bedrock). DO NOT USE FOR: declarative agents — use
+      the `declarative-agent-developer` skill instead. Triggers: "build a teams
+      bot", "custom engine agent", "CEA", "teams agent", "tab app", "message
+      extension", "test with agents playground", "provision to azure", "deploy
+      to azure", "migrate slack bot", "slack to teams", "convert block kit",
+      "add azure openai to my bot"
+  - id: slack-to-teams
+    kind: skill
+    path: plugins/microsoft-365-agents-toolkit/skills/teams-app-developer/slack-to-teams
+    description: "Sub-skill of microsoft-365-agents-toolkit. Routed expert system
+      with 100+ micro-expert files for migrating Slack bots to Teams,
+      cross-platform bridging, and dual-platform bot development. USE FOR:
+      migrating Slack bot to Teams, adding Teams support to Slack bot, building
+      dual-platform bots, converting Block Kit to Adaptive Cards, identity/OAuth
+      bridging, deploying bots to Azure or AWS, configuring AI model providers.
+      DO NOT USE FOR: general web development, non-bot projects, standalone
+      Teams development without Slack (use parent skill instead)."
+  - id: ui-widget-developer
+    kind: skill
+    path: plugins/microsoft-365-agents-toolkit/skills/ui-widget-developer
+    description: >
+      Build MCP servers for Copilot Chat using the OpenAI Apps SDK or MCP Apps
+      SDK widget rendering support (any language). Use this skill when:
+
+      - Creating MCP servers that integrate with M365 Copilot declarative agents
+
+      - Building rich interactive widgets (React + Fluent UI) that render in
+      Copilot Chat
+
+      - Implementing tools that return structuredContent for widget rendering
+
+      - Adapting an existing MCP server to support Copilot widget rendering
+
+      - Setting up devtunnels for localhost MCP server exposure
+
+      - Configuring mcpPlugin.json manifests with RemoteMCPServer runtime
+
+      Do NOT use this skill for general agent development (scaffolding,
+      manifests, deployment) — use declarative-agent-developer instead. This
+      skill is ONLY for MCP server + widget development.
+
+      Triggers: "MCP server for Copilot", "OpenAI Apps SDK", "Copilot widget",
+      "structuredContent", "MCP plugin", "devtunnels MCP", "OAI app", "widget
+      rendering", "UI widget"
+  - id: workiq-preview-2
+    kind: skill
+    path: plugins/workiq-preview/skills/workiq-preview
+    description: WorkIQ - Microsoft 365 tool surface for agents. Use for any
+      workplace question or write action where data lives in M365. Supports
+      semantic `ask` plus structured tools (`fetch`, create/update/delete,
+      actions, functions, path/schema discovery) for mail, meetings/calendar,
+      documents/files, Teams chats/channels, OneDrive/SharePoint, and people.
+      Read triggers, "what did [person] say", priorities/top of mind, meeting
+      decisions/action items, summarize thread/chat, find emails/docs, list
+      meetings/messages/files/channels, project status/updates, "what changed
+      since". Write triggers, send/reply/forward email,
+      create/update/accept/decline meetings, mark read, delete drafts/items,
+      send/post/reply/react in Teams, set presence, upload/download via web URL.
+      Discovery triggers, available endpoints/paths, fields, required/updatable
+      properties, request body, operation parameters, schema/data model. When in
+      doubt about workplace context, try WorkIQ first. Prefer `ask` for
+      synthesis; use entity tools for exact reads/writes.
+  - id: action-item-extractor
+    kind: skill
+    path: plugins/workiq-productivity/skills/action-item-extractor
+    description: Extract action items with owners, deadlines, and priorities from
+      meeting content
+  - id: channel-audit
+    kind: skill
+    path: plugins/workiq-productivity/skills/channel-audit
+    description: Audit Teams channels across your teams — identify inactive
+      channels, low‑engagement conversations, channels with no recent posts, and
+      recommend cleanup actions.
+  - id: channel-digest
+    kind: skill
+    path: plugins/workiq-productivity/skills/channel-digest
+    description: Summarize activity across multiple Teams channels into a single
+      consolidated digest — key discussions, decisions, mentions, and action
+      items.
+  - id: daily-outlook-triage
+    kind: skill
+    path: plugins/workiq-productivity/skills/daily-outlook-triage
+    description: Get a quick summary of your day by pulling your inbox emails and
+      calendar meetings. Helps you triage and prioritize your workday.
+  - id: email-analytics
+    kind: skill
+    path: plugins/workiq-productivity/skills/email-analytics
+    description: Analyze your email patterns over a time period — volume trends, top
+      senders, response time estimates, busiest days, and unread backlog
+      statistics.
+  - id: meeting-cost-calculator
+    kind: skill
+    path: plugins/workiq-productivity/skills/meeting-cost-calculator
+    description: Calculate time spent in meetings per week or month — total hours,
+      percentage of work time, attendee‑hours, and identify your most expensive
+      recurring meetings.
+  - id: multi-plan-search
+    kind: skill
+    path: plugins/workiq-productivity/skills/multi-plan-search
+    description: Search for tasks across all your Planner plans by keyword,
+      assignee, status, or priority — unified cross‑plan task discovery in one
+      view.
+  - id: org-chart
+    kind: skill
+    path: plugins/workiq-productivity/skills/org-chart
+    description: Display a beautifully formatted ASCII org chart for any person in
+      the organization — showing their manager, peers, and direct reports in a
+      visual tree.
+  - id: site-explorer
+    kind: skill
+    path: plugins/workiq-productivity/skills/site-explorer
+    description: Browse and discover SharePoint sites, lists, document libraries,
+      and file contents — navigate your SharePoint world without leaving the
+      CLI.
+  - id: workiq-2
+    kind: skill
+    path: plugins/workiq/skills/workiq
+    description: WorkIQ - Microsoft 365 tool surface for agents. Use for any
+      workplace question or write action where data lives in M365. Supports
+      semantic `ask` plus structured tools (`fetch`, create/update/delete,
+      actions, functions, path/schema discovery) for mail, meetings/calendar,
+      documents/files, Teams chats/channels, OneDrive/SharePoint, and people.
+      Read triggers, "what did [person] say", priorities/top of mind, meeting
+      decisions/action items, summarize thread/chat, find emails/docs, list
+      meetings/messages/files/channels, project status/updates, "what changed
+      since". Write triggers, send/reply/forward email,
+      create/update/accept/decline meetings, mark read, delete drafts/items,
+      send/post/reply/react in Teams, set presence, upload/download via web URL.
+      Discovery triggers, available endpoints/paths, fields, required/updatable
+      properties, request body, operation parameters, schema/data model. When in
+      doubt about workplace context, try WorkIQ first. Prefer `ask` for
+      synthesis; use entity tools for exact reads/writes.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,81 @@
+schemaVersion: 1
+id: google-labs-code/stitch-sdk
+name: "@google/stitch-sdk"
+description: TS SDK → generate UI screens; extract HTML/images; MCP + AI SDK.
+source:
+  type: git
+  url: https://github.com/google-labs-code/stitch-sdk
+  revision: 575a9fb6319bd9d1ce8175e4a89e5958e024bbfd
+capabilities:
+  - id: repo-review
+    kind: skill
+    path: .agents/skills/repo-review
+    description: Generates a deeply contextual, progressive-disclosure briefing for
+      any GitHub repository.  It builds a mental model of the code before
+      analyzing issues and PRs to provide  actionable insights. Use when asked
+      for a "GitHub report," "repo status,"  "daily briefing," or to "catch up
+      on a codebase."
+  - id: stitch-sdk-bug-bash
+    kind: skill
+    path: .agents/skills/stitch-sdk-bug-bash
+    description: Find bugs in the Stitch SDK using a real API key. Covers standard
+      functional edges and tricky situations.
+  - id: stitch-sdk-development
+    kind: skill
+    path: .agents/skills/stitch-sdk-development
+    description: Develop the Stitch SDK. Covers the generation pipeline, dual
+      modality (agent vs SDK), error handling, and Traffic Light
+      (Red-Green-Yellow) implementation workflow. Use when adding features,
+      fixing bugs, or understanding the architecture.
+  - id: stitch-sdk-domain-design
+    kind: skill
+    path: .agents/skills/stitch-sdk-domain-design
+    description: Design the domain model for the Stitch SDK. Use when mapping MCP
+      tools to domain classes and bindings in domain-map.json. This is Stage 2
+      of the generation pipeline.
+  - id: stitch-sdk-pipeline
+    kind: skill
+    path: .agents/skills/stitch-sdk-pipeline
+    description: Run the full Stitch SDK generation pipeline. Use when a new tool is
+      added, or the SDK needs to be regenerated end-to-end.
+  - id: stitch-sdk-readme
+    kind: skill
+    path: .agents/skills/stitch-sdk-readme
+    description: Generate or update the README for the Stitch SDK. Use the Bookstore
+      Test structure and source the current API from the codebase. Use when the
+      README needs to be written or updated.
+  - id: stitch-sdk-usage
+    kind: skill
+    path: .agents/skills/stitch-sdk-usage
+    description: Use the Stitch SDK to generate, edit, and iterate on UI screens
+      from text prompts, manage projects, and retrieve screen HTML/images. Use
+      when the user wants to consume the SDK in their application.
+  - id: tdd
+    kind: skill
+    path: .agents/skills/tdd
+    description: >
+      Enforces a disciplined Red-Green-Refactor (TDD) workflow in
+      TypeScript/Node.js.  Use this whenever creating new features, fixing bugs,
+      or migrating logic to ensure  high-quality, verifiable implementations.
+  - id: skill
+    kind: skill
+    path: .agents/skills/typed-service-contract
+    entry: skill.md
+    description: Architecture standard for building robust, type-safe TypeScript
+      services using the "Spec and Handler" pattern. Use when building CLIs,
+      libraries, or complex business logic.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Capability kind does not match path:
+      .agents/skills/typed-service-contract"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

@@ -1,0 +1,33 @@
+schemaVersion: 1
+id: browser-use/video-use
+name: video-use
+description: Conversation-driven video editor skill for Claude Code.
+source:
+  type: git
+  url: https://github.com/browser-use/video-use
+  revision: cf12ac35143caa48db76efa35b1cb439582333bb
+capabilities:
+  - id: video-use
+    kind: skill
+    path: .
+    description: Edit any video by conversation. Transcribe, cut, color grade,
+      generate overlay animations, burn subtitles — for talking heads, montages,
+      tutorials, travel, interviews. No presets, no menus. Ask questions,
+      confirm the plan, execute, iterate, persist. Production-correctness rules
+      are hard; everything else is artistic freedom.
+  - id: manim-video
+    kind: skill
+    path: skills/manim-video
+    description: "Production pipeline for mathematical and technical animations
+      using Manim Community Edition. Creates 3Blue1Brown-style explainer videos,
+      algorithm visualizations, equation derivations, architecture diagrams, and
+      data stories. Use when users request: animated explanations, math
+      animations, concept visualizations, algorithm walkthroughs, technical
+      explainers, 3Blue1Brown style videos, or any programmatic animation with
+      geometric/mathematical content."
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

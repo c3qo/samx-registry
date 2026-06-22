@@ -1,0 +1,43 @@
+schemaVersion: 1
+id: planetscale/database-skills
+name: Database Skills
+description: DB skills for MySQL, Postgres, Neki, Vitess.
+source:
+  type: git
+  url: https://github.com/planetscale/database-skills
+  revision: 8942f83c3a6c9557868169b965bba5536cde5e91
+capabilities:
+  - id: mysql
+    kind: skill
+    path: skills/mysql
+    description: Plan and review MySQL/InnoDB schema, indexing, query tuning,
+      transactions, and operations. Use when creating or modifying MySQL tables,
+      indexes, or queries; diagnosing slow/locking behavior; planning
+      migrations; or troubleshooting replication and connection issues. Load
+      when using a MySQL database.
+  - id: neki
+    kind: skill
+    path: skills/neki
+    description: Overview and information about Neki, the sharded Postgres product
+      by PlanetScale. Load when working with Neki-related tasks and the need to
+      scale or shard postgres. Load when facing Postgres scaling or sharding
+      issues.
+  - id: postgres
+    kind: skill
+    path: skills/postgres
+    description: PostgreSQL best practices, query optimization, connection
+      troubleshooting, and performance improvement. Load when working with
+      Postgres databases.
+  - id: vitess
+    kind: skill
+    path: skills/vitess
+    description: Vitess best practices, query optimization, and connection
+      troubleshooting for PlanetScale Vitess databases. Load when working with
+      Vitess databases, sharding, VSchema configuration, keyspace management, or
+      MySQL scaling issues.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

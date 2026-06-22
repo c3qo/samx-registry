@@ -1,0 +1,28 @@
+schemaVersion: 1
+id: microsoft/data-formulator
+name: Data Formulator
+description: AI data-viz tool; agents + loaders + charts.
+source:
+  type: git
+  url: https://github.com/microsoft/data-formulator
+  revision: 00d0f5e1655e2a5bb02fda289f73960bbac62027
+capabilities:
+  - id: error-handling
+    kind: skill
+    path: .cursor/skills/error-handling
+    description: 统一错误处理系统。在添加 API 端点、修改错误处理、添加前端 API 调用、编写错误相关测试时使用。
+  - id: language-injection
+    kind: skill
+    path: .cursor/skills/language-injection
+    description: LLM Agent 多语言注入规范。在修改 Agent 提示词、添加新的 Agent 端点、处理用户可见的后端消息（message_code）时使用。
+  - id: path-safety
+    kind: skill
+    path: .cursor/skills/path-safety
+    description: 服务端路径安全与文件访问编码规范。在编写文件下载路由、Agent
+      工具（文件读取/目录列出）、数据连接器/Loader、Workspace 路径操作、沙箱配置时使用。
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

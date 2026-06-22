@@ -1,0 +1,30 @@
+schemaVersion: 1
+id: expo/expo
+name: Expo
+description: Monorepo for Expo SDK, Go, CLI, Router, docs, tools.
+source:
+  type: git
+  url: https://github.com/expo/expo
+  revision: d1546435793b97b511d528aebd5d1c02c404c037
+capabilities:
+  - id: deep-code-review
+    kind: skill
+    path: .claude/skills/deep-code-review
+    description: In-depth design-focused code review - understands codebase context
+      before evaluating PR changes, posts structured feedback to GitHub
+  - id: expo-api-docs
+    kind: skill
+    path: .claude/skills/expo-api-docs
+    description: Write TSDoc comments for Expo SDK APIs following official
+      conventions. MUST USE when introducing new user-facing TypeScript APIs in
+      expo-* packages - document APIs correctly from the start, not as an
+      afterthought. Also use when improving existing documentation. Covers
+      @platform, @example, @deprecated, @default annotations, third-person
+      declarative style, blockquote notes, and type export patterns for docs
+      generation.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

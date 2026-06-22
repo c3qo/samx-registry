@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: luminpdf.com/lumin
+name: Lumin
+description: Lumin remote MCP server at https://mcp.luminpdf.com/mcp. Manage
+  documents, send signature requests, and convert Markdown to PDF. Setup guides
+  for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/lumin
+capabilities:
+  - id: lumin
+    kind: mcp
+    spec:
+      serverName: lumin
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.luminpdf.com/mcp

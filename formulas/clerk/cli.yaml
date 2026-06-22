@@ -1,0 +1,31 @@
+schemaVersion: 1
+id: clerk/cli
+name: Clerk CLI
+description: Command-line interface for Clerk.
+source:
+  type: git
+  url: https://github.com/clerk/cli
+  revision: 4240dd5744b52a6d8bd9b47c644c0628190e1962
+capabilities:
+  - id: audit-clerk-skill
+    kind: skill
+    path: .claude/skills/audit-clerk-skill
+    description: Audits the Clerk CLI source tree and proposes updates to the
+      bundled `clerk-cli` skill so it stays in sync with the binary. Use when
+      the user says "audit the clerk-cli skill", "update the clerk-cli skill",
+      "check the skill against the code", "resync clerk-cli skill", or after
+      adding/renaming/removing CLI commands, flags, or agent-mode behavior.
+  - id: changesets
+    kind: skill
+    path: .claude/skills/changesets
+    description: Create or refresh a `.changeset/<slug>.md` for the current branch,
+      or report that none is required. Triggers on "/changesets create", "add a
+      changeset", "create a changeset", "update the changeset", "refresh the
+      changeset", "do I need a changeset", or any work that touches
+      `packages/**` source files on a feature branch.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,23 @@
+schemaVersion: 1
+id: resend/email-best-practices
+name: Email Best Practices
+description: Skill for deliverable, compliant email systems.
+source:
+  type: git
+  url: https://github.com/resend/email-best-practices
+  revision: ef764286d84d665634e14040a726d295c962120e
+capabilities:
+  - id: email-best-practices
+    kind: skill
+    path: .
+    description: Use when building email features, emails going to spam, high bounce
+      rates, setting up SPF/DKIM/DMARC authentication, implementing email
+      capture, ensuring compliance (CAN-SPAM, GDPR, CASL), handling webhooks,
+      retry logic, making emails accessible (alt text, headings, contrast,
+      screen readers), or deciding transactional vs marketing.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

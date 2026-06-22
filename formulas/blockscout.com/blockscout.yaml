@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: blockscout.com/blockscout
+name: Blockscout
+description: Blockscout remote MCP server at https://mcp.blockscout.com/mcp.
+  Access and analyze blockchain data. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/blockscout
+capabilities:
+  - id: blockscout
+    kind: mcp
+    spec:
+      serverName: blockscout
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.blockscout.com/mcp

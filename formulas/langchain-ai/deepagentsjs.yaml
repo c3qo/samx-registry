@@ -1,0 +1,67 @@
+schemaVersion: 1
+id: langchain-ai/deepagentsjs
+name: DeepAgents JS
+description: Monorepo for Deep Agents, evals, sandboxes, ACP, examples.
+source:
+  type: git
+  url: https://github.com/langchain-ai/deepagentsjs
+  revision: 750d69c02484661b8d390a1384fc315a8a584bf8
+capabilities:
+  - id: eval-creator
+    kind: skill
+    path: .agents/skills/eval-creator
+    description: "Create new eval suites for the deepagentsjs monorepo. Handles
+      dataset design, test case scaffolding, scoring logic, vitest
+      configuration, and LangSmith integration. Use when the user asks to: (1)
+      create an eval, (2) write an evaluation, (3) add a benchmark, (4) build an
+      eval suite, (5) evaluate agent behaviour, (6) add test cases for a
+      capability, or (7) implement an existing benchmark (e.g. oolong,
+      AgentBench, SWE-bench). Trigger on phrases like 'create eval', 'new eval',
+      'add eval', 'benchmark', 'evaluate', 'eval suite', 'write evals for'."
+  - id: langsmith-trace
+    kind: skill
+    path: .agents/skills/langsmith-trace
+    description: INVOKE THIS SKILL when working with LangSmith tracing OR querying
+      traces. Covers adding tracing to applications and querying/exporting trace
+      data. Uses the langsmith CLI tool.
+  - id: arxiv-search
+    kind: skill
+    path: examples/skills/arxiv-search
+    description: Search arXiv preprint repository for papers in physics,
+      mathematics, computer science, quantitative biology, and related fields
+  - id: file-organizer
+    kind: skill
+    path: examples/skills/file-organizer
+    description: Intelligently organizes your files and folders across your computer
+      by understanding context, finding duplicates, suggesting better
+      structures, and automating cleanup tasks. Reduces cognitive load and keeps
+      your digital workspace tidy without manual effort.
+  - id: langgraph-docs
+    kind: skill
+    path: examples/skills/langgraph-docs
+    description: Use this skill for requests related to LangGraph in order to fetch
+      relevant documentation to provide accurate, up-to-date guidance.
+  - id: skill-creator
+    kind: skill
+    path: examples/skills/skill-creator
+    description: "Guide for creating effective skills that extend agent capabilities
+      with specialized knowledge, workflows, or tool integrations. Use this
+      skill when the user asks to: create a skill, make a skill, build a skill,
+      set up a skill, initialize a skill, scaffold a skill, update or modify an
+      existing skill, validate a skill, learn about skill structure, understand
+      how skills work, or get guidance on skill design patterns."
+  - id: web-research
+    kind: skill
+    path: examples/skills/web-research
+    description: Use this skill for requests related to web research; it provides a
+      structured approach to conducting comprehensive web research
+requirements:
+  env:
+    - EVAL_RUNNER
+    - LANGSMITH_API_KEY
+    - ANTHROPIC_API_KEY
+    - OPENAI_API_KEY
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: lucid.app/lucid
+name: Lucid
+description: Lucid remote MCP server at https://mcp.lucid.app/mcp. Ideate,
+  diagram, and align teams. Setup guides for Claude Code, Codex, Cursor, and VS
+  Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/lucid
+capabilities:
+  - id: lucid
+    kind: mcp
+    spec:
+      serverName: lucid
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.lucid.app/mcp

@@ -1,0 +1,116 @@
+schemaVersion: 1
+id: automattic/wordpress-activitypub
+name: ActivityPub
+description: WordPress ActivityPub plugin; federated publishing, actors,
+  inbox/outbox, integrations, tests.
+source:
+  type: git
+  url: https://github.com/automattic/wordpress-activitypub
+  revision: 1d955087cddf38e1b3d63221f72aef295f0a9139
+capabilities:
+  - id: code-style
+    kind: skill
+    path: .agents/skills/code-style
+    description: PHP coding standards and WordPress patterns for ActivityPub plugin.
+      Use when writing PHP code, creating classes, implementing WordPress hooks,
+      or structuring plugin files.
+  - id: dev
+    kind: skill
+    path: .agents/skills/dev
+    description: Development workflows for WordPress ActivityPub plugin including
+      wp-env setup, testing commands, linting, and build processes. Use when
+      setting up development environment, running tests, checking code quality,
+      building assets, or working with wp-env.
+  - id: federation
+    kind: skill
+    path: .agents/skills/federation
+    description: ActivityPub protocol specification and federation concepts. Use
+      when working with ActivityPub activities, understanding federation
+      mechanics, implementing protocol features, or debugging federation issues.
+  - id: gitattributes
+    kind: skill
+    path: .agents/skills/gitattributes
+    description: Use when auditing or updating .gitattributes export-ignore coverage
+      so dev-only files (lint configs, CI, tests, docs, build tooling) don't
+      ship in the WordPress.org plugin zip. Run before a release, after adding a
+      new top-level file or config, or when a tool is renamed (e.g. .eslintrc.js
+      → eslint.config.cjs).
+  - id: integrations
+    kind: skill
+    path: .agents/skills/integrations
+    description: Third-party WordPress plugin integration patterns. Use when adding
+      new integrations, debugging compatibility with other plugins, or working
+      with existing integrations.
+  - id: pr
+    kind: skill
+    path: .agents/skills/pr
+    description: INVOKE THIS SKILL before creating any PR to ensure compliance with
+      branch naming, changelog requirements, and reviewer assignment.
+  - id: release
+    kind: skill
+    path: .agents/skills/release
+    description: Version management and release processes using Jetpack
+      Changelogger. Use when creating releases, managing changelogs, bumping
+      versions, or preparing patch releases.
+  - id: test
+    kind: skill
+    path: .agents/skills/test
+    description: Testing patterns for PHPUnit and Playwright E2E tests. Use when
+      writing tests, debugging test failures, setting up test coverage, or
+      implementing test patterns for ActivityPub features.
+  - id: code-style-2
+    kind: skill
+    path: .claude/skills/code-style
+    description: PHP coding standards and WordPress patterns for ActivityPub plugin.
+      Use when writing PHP code, creating classes, implementing WordPress hooks,
+      or structuring plugin files.
+  - id: dev-2
+    kind: skill
+    path: .claude/skills/dev
+    description: Development workflows for WordPress ActivityPub plugin including
+      wp-env setup, testing commands, linting, and build processes. Use when
+      setting up development environment, running tests, checking code quality,
+      building assets, or working with wp-env.
+  - id: federation-2
+    kind: skill
+    path: .claude/skills/federation
+    description: ActivityPub protocol specification and federation concepts. Use
+      when working with ActivityPub activities, understanding federation
+      mechanics, implementing protocol features, or debugging federation issues.
+  - id: gitattributes-2
+    kind: skill
+    path: .claude/skills/gitattributes
+    description: Use when auditing or updating .gitattributes export-ignore coverage
+      so dev-only files (lint configs, CI, tests, docs, build tooling) don't
+      ship in the WordPress.org plugin zip. Run before a release, after adding a
+      new top-level file or config, or when a tool is renamed (e.g. .eslintrc.js
+      → eslint.config.cjs).
+  - id: integrations-2
+    kind: skill
+    path: .claude/skills/integrations
+    description: Third-party WordPress plugin integration patterns. Use when adding
+      new integrations, debugging compatibility with other plugins, or working
+      with existing integrations.
+  - id: pr-2
+    kind: skill
+    path: .claude/skills/pr
+    description: INVOKE THIS SKILL before creating any PR to ensure compliance with
+      branch naming, changelog requirements, and reviewer assignment.
+  - id: release-2
+    kind: skill
+    path: .claude/skills/release
+    description: Version management and release processes using Jetpack
+      Changelogger. Use when creating releases, managing changelogs, bumping
+      versions, or preparing patch releases.
+  - id: test-2
+    kind: skill
+    path: .claude/skills/test
+    description: Testing patterns for PHPUnit and Playwright E2E tests. Use when
+      writing tests, debugging test failures, setting up test coverage, or
+      implementing test patterns for ActivityPub features.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

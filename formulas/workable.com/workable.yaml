@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: workable.com/workable
+name: Workable
+description: Workable remote MCP server at https://mcp.workable.com/mcp. Your AI
+  assistant for Hiring and HR — inside Workable. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/workable
+capabilities:
+  - id: workable
+    kind: mcp
+    spec:
+      serverName: workable
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.workable.com/mcp

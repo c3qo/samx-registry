@@ -1,0 +1,247 @@
+schemaVersion: 1
+id: getsentry/junior
+name: Junior
+description: Slack bot runtime; skills/plugins; Nitro app.
+source:
+  type: git
+  url: https://github.com/getsentry/junior
+  revision: 4670388bc8db4b895b0770bb313147a44577a355
+capabilities:
+  - id: junior
+    kind: skill
+    path: packages/junior/skills/junior
+    description: Build, review, or update Junior extension skills and plugins. Use
+      when users ask to create a Junior SKILL.md, app skill, plugin,
+      plugin.yaml, packaged plugin, MCP-backed plugin, OAuth or credentialed
+      plugin, or to validate Junior extension files. Do not use for ordinary
+      Junior usage, provider workflows, generic code editing, or non-Junior
+      agent-skill authoring.
+  - id: jr-rpc
+    kind: skill
+    path: packages/junior/skills/jr-rpc
+    description: Manage low-level config and plugin introspection flows via jr-rpc
+      bash commands. Use only when the user explicitly asks to read or update
+      provider defaults/config or list installed plugins. Do not use for PR,
+      branch, push, or auth-order questions; load the matching provider skill
+      instead.
+  - id: sentry
+    kind: mcp
+    path: .cursor/mcp.json
+  - id: example-local
+    kind: skill
+    path: apps/example/app/skills/example-local
+    description: Provide a compact local example response. Use when users invoke
+      /example-local.
+  - id: vercel
+    kind: skill
+    path: packages/junior-vercel/skills/vercel
+    description: Query Vercel deployments, build logs, runtime logs, and deployment
+      status through the Vercel CLI. Use when users ask to debug Vercel
+      deployments, inspect failed builds, fetch production or preview runtime
+      logs, find a deployment for a project or commit SHA, or investigate
+      Vercel-hosted app errors. Do not use it for deploying, rolling back,
+      changing project settings, domains, env vars, caches, storage, or any
+      other Vercel mutation.
+  - id: junior-qa
+    kind: skill
+    path: .agents/skills/junior-qa
+    description: QA Junior changes through the local chat CLI and apps/example
+      without Slack. Use when validating Junior agent behavior,
+      runtime/tool/prompt/plugin changes, local-vs-Slack regressions, or PR
+      readiness with real `junior chat -p` probes.
+  - id: nitro
+    kind: skill
+    path: .agents/skills/nitro
+    description: Build and deploy universal JavaScript servers with Nitro v3. Use
+      when working with nitro.config.ts, defineNitroConfig, defineHandler,
+      defineConfig, server.ts entry, filesystem routing, route rules,
+      useStorage, defineCachedHandler, useDatabase, definePlugin, runtime hooks,
+      Vercel/Cloudflare deployment, or migrating from Nitro v2/nitropack.
+  - id: pi-agent-integration
+    kind: skill
+    path: .agents/skills/pi-agent-integration
+    description: Integrate the latest `@earendil-works/pi-agent-core` APIs into an
+      app, library, runtime, or agent harness. Use for Pi `Agent`,
+      `AgentHarness`, streaming bridges, tool execution hooks,
+      `convertToLlm`/`transformContext`, queueing via `steer`/`followUp`,
+      `continue()` semantics, `streamFn`/`streamProxy`, timeout/abort, session,
+      skill, or compaction behavior.
+  - id: public-docs
+    kind: skill
+    path: .agents/skills/public-docs
+    description: Create and maintain public, user-facing product documentation for
+      this repo's `packages/docs` app. Use when asked to write, revise, or
+      review docs pages (tutorial/concept/reference/troubleshooting), improve
+      docs information architecture, fix docs frontmatter/linking issues, or
+      align docs quality with Vercel/Sentry-style standards.
+  - id: slack-development
+    kind: skill
+    path: .agents/skills/slack-development
+    description: Implement Slack bot behavior with correct Slack-documented message
+      formats, inbound mention/event routing, and long-running task UX. Use when
+      asked to "format Slack messages", "fix Slack markdown", "debug thread
+      mentions", "improve Slack bot UX", "add streaming in Slack", or "build
+      Slack Chat SDK behavior". Covers mrkdwn quirks, Events API payload
+      patterns, routing guardrails, and Chat SDK implementation patterns.
+  - id: slack-msw-tests
+    kind: skill
+    path: .agents/skills/slack-msw-tests
+    description: Author Slack HTTP integration tests using the repository MSW
+      harness and fixture factories. Use when asked to add a Slack integration
+      test, mock Slack API calls with MSW, test Slack action HTTP behavior, or
+      assert Slack request payloads in tests.
+  - id: vercel-queues
+    kind: skill
+    path: .agents/skills/vercel-queues
+    description: Build and operate Vercel Queues with @vercel/queue across push and
+      poll consumers. Use when users ask about "vercel queues", "@vercel/queue",
+      "queue/v2beta", "handleCallback", "PollingQueueClient", "receive", queue
+      retries, visibility timeouts, idempotency keys, or queue region routing.
+  - id: vercel-sandbox
+    kind: skill
+    path: .agents/skills/vercel-sandbox
+    description: Investigate Vercel Sandbox lifecycle, timeout, snapshot, and
+      persistence behavior. Use when users ask about Vercel Sandbox,
+      `@vercel/sandbox`, `Sandbox.create`, `Sandbox.get`, why files disappeared,
+      how snapshots differ from persistence, or whether Vercel's persistent
+      sandbox beta applies.
+  - id: sentry-2
+    kind: mcp
+    path: .mcp.json
+  - id: example-bundle-help
+    kind: skill
+    path: apps/example/app/plugins/example-bundle/skills/example-bundle-help
+    description: Explain plugin-bundled skills in this example app. Use when users
+      invoke /example-bundle-help.
+  - id: agent-browser
+    kind: skill
+    path: packages/junior-agent-browser/skills/agent-browser
+    description: Automate websites with the agent-browser CLI for navigation, form
+      flows, screenshots, extraction, and repeatable browser tasks. Use when
+      users ask to interact with web apps, gather evidence from pages, or run
+      browser-based QA steps.
+  - id: datadog
+    kind: skill
+    path: packages/junior-datadog/skills/datadog
+    description: Query live Datadog telemetry (logs, metrics, traces, spans,
+      monitors, incidents, dashboards, services, hosts) through Datadog's Pup
+      CLI. Use when users ask to investigate production behavior in Datadog,
+      including searching logs, checking monitor status, inspecting traces or
+      spans, looking up incidents, finding services, or correlating metrics. Do
+      not use it for Sentry issues, repository/source-code work, or ticketing.
+  - id: coding-workspace-fixture
+    kind: skill
+    path: packages/junior-evals/evals/fixtures/coding-skills/coding-workspace-fixture
+    description: Use for eval coding fixture tasks involving the small TypeScript
+      project under skills/coding-workspace-fixture/project.
+  - id: eval-auth
+    kind: skill
+    path: packages/junior-evals/evals/fixtures/plugins/eval-auth/skills/eval-auth
+    description: Use for `/eval-auth` requests in auth-resume evals. Always connect
+      through the disclosed MCP tool before answering, then continue the user's
+      actual request using prior thread context when needed.
+  - id: eval-mcp
+    kind: skill
+    path: packages/junior-evals/evals/fixtures/plugins/eval-mcp/skills/eval-mcp
+    description: Use for `/eval-mcp` requests that need the eval MCP handbook lookup.
+  - id: eval-oauth
+    kind: skill
+    path: packages/junior-evals/evals/fixtures/plugins/eval-oauth/skills/eval-oauth
+    description: Use for `/eval-oauth` requests and eval-oauth account connect,
+      reconnect, or auth-flow test requests. You must run the eval identity
+      check before answering anything else.
+  - id: candidate-brief
+    kind: skill
+    path: packages/junior-evals/evals/fixtures/skills/candidate-brief
+    description: Looks up candidate data via a Python script and formats it into a
+      brief. Use when users invoke /candidate-brief with a candidate name.
+  - id: list-working-directory
+    kind: skill
+    path: packages/junior-evals/evals/fixtures/skills/list-working-directory
+    description: Lists files in the sandbox working directory for eval verification.
+      Use when users ask to "list files in the working directory", "show files
+      here", or invoke /list-working-directory in eval scenarios.
+  - id: resilient-working-directory
+    kind: skill
+    path: packages/junior-evals/evals/fixtures/skills/resilient-working-directory
+    description: Use for /resilient-working-directory eval requests that verify
+      command interruption recovery.
+  - id: source-handbook
+    kind: skill
+    path: packages/junior-evals/evals/fixtures/skills/source-handbook
+    description: Check bundled source handbook files for capability, policy, or
+      implementation verification questions. Use when users ask to double-check
+      or verify what the internal/source handbook says.
+  - id: weather-lookup
+    kind: skill
+    path: packages/junior-evals/evals/fixtures/skills/weather-lookup
+    description: Look up current weather conditions for a city. Use when users ask
+      about weather, temperature, or forecast for a location.
+  - id: github-code
+    kind: skill
+    path: packages/junior-github/skills/github-code
+    description: Clone repositories, inspect source, edit code, and manage pull
+      requests with GitHub CLI. Use for repo implementation questions,
+      cloning/editing, PR inspection/mutation, and PR creation order questions.
+      For PR creation order, answer that the branch must be pushed before `gh pr
+      create`. Prefer this skill for repository and code tasks even when the
+      repo concerns Sentry products.
+  - id: github-issues
+    kind: skill
+    path: packages/junior-github/skills/github-issues
+    description: Create, update, comment on, label, and inspect GitHub issues via
+      GitHub CLI with concise, evidence-backed content. Use when users ask to
+      open, edit, view, close, reopen, or triage GitHub issues — including
+      tracking bugs, features, or tasks. Prefer this skill over generic
+      repository tools for issue operations; do not use for pull requests,
+      branches, pushes, or PR creation order questions.
+  - id: hex
+    kind: skill
+    path: packages/junior-hex/skills/hex
+    description: >
+      Internal data access primitive. Executes a Hex query and returns
+      structured results. Called by core skills — not intended for direct use.
+      Invoke when you need to run a Hex query on behalf of a core skill that has
+      provided a query and pattern.
+  - id: linear
+    kind: skill
+    path: packages/junior-linear/skills/linear
+    description: Manage Linear issues through Linear's hosted MCP server. Use when
+      users ask to create a Linear ticket, update a Linear issue, add a Linear
+      comment, move work between states, assign work, or look up Linear issue,
+      team, or project details from Slack context.
+  - id: self-update
+    kind: skill
+    path: packages/junior-maintenance/skills/self-update
+    description: Update this junior-prod app to the latest published Junior release.
+      Use when asked to self-update Junior, bump @sentry/junior and
+      @sentry/junior-* dependencies, run safety checks, and open a draft PR.
+  - id: notion
+    kind: skill
+    path: packages/junior-notion/skills/notion
+    description: Search Notion pages and data sources and summarize the best match.
+      Use when users ask to look up docs, specs, notes, meeting notes, project
+      context, roadmaps, trackers, or internal references stored in Notion.
+  - id: sentry-3
+    kind: skill
+    path: packages/junior-sentry/skills/sentry
+    description: Query live Sentry telemetry with the Sentry CLI and generate Sentry
+      deep links. Use when users ask to investigate Sentry issues, events, logs,
+      traces, organizations, projects, replays, or authenticated Sentry API
+      data. Do not use it for repository/source-code/PR tasks, even when the
+      topic concerns Sentry products.
+  - id: eval-auth-2
+    kind: skill
+    path: packages/junior/tests/fixtures/plugins/eval-auth/skills/eval-auth
+    description: Use for `/eval-auth` requests in MCP auth-resume integration tests.
+      Always connect through the disclosed MCP tool before answering, then
+      continue the user's actual request using prior thread context when needed.
+  - id: sentry-4
+    kind: mcp
+    path: .codex/config.toml
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

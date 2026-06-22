@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: fiscal.ai/fiscal.ai
+name: Fiscal Ai
+description: Fiscal.ai remote MCP server at https://api.fiscal.ai/mcp/sse. Clean
+  Public Equity Fundamental Data. Setup guides for Claude Code, Codex, Cursor,
+  and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/fiscal-ai
+capabilities:
+  - id: fiscal.ai
+    kind: mcp
+    spec:
+      serverName: fiscal.ai
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.fiscal.ai/mcp/sse

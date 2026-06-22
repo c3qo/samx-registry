@@ -1,0 +1,34 @@
+schemaVersion: 1
+id: vercel/flags
+name: Vercel Flags
+description: Monorepo for Flags SDK / Vercel Flags.
+source:
+  type: git
+  url: https://github.com/vercel/flags
+  revision: 0b40d46d2678a49715bfa2dad1320e1b3a789a80
+capabilities:
+  - id: flags-sdk
+    kind: skill
+    path: skills/flags-sdk
+    description: >
+      Guide for feature flags and A/B tests with the Flags SDK (`flags` npm
+      package) and Vercel Flags. Use when: declaring flags with `flag()`, using
+      `vercelAdapter()` or `vercel flags` CLI (add, list, enable, disable,
+      inspect, archive, rm, sdk-keys), setting up providers/adapters (Vercel,
+      Statsig, LaunchDarkly, PostHog, GrowthBook, Hypertune, Edge Config,
+      OpenFeature, Split, Flagsmith, Reflag, Optimizely, or custom adapters),
+      implementing precompute patterns for static pages, setting up
+      `identify`/`dedupe`, integrating Flags Explorer/Toolbar, working with
+      flags in Next.js (App Router, Pages Router, Middleware) or SvelteKit,
+      writing custom adapters, or encrypting/decrypting flag values. Triggers:
+      feature flags, A/B testing, experimentation, flags SDK, flag adapters,
+      precompute, Flags Explorer, feature gates, flag overrides, Vercel Flags,
+      vercel flags CLI, vercel flags add, vercel flags list, vercel flags
+      enable, vercel flags disable, `flags/next`, `flags/sveltekit`,
+      `flags/react`, `@flags-sdk/*`.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: cloudflare/workers-sdk
+name: Cloudflare Workers SDK
+description: Monorepo for Wrangler, Miniflare, Create Cloudflare, Vite plugin, tooling.
+source:
+  type: git
+  url: https://github.com/cloudflare/workers-sdk
+  revision: 6c1f76dbca45baa9e9095d47b564a7a75c78ee20
+capabilities:
+  - id: local-explorer
+    kind: skill
+    path: .opencode/skills/local-explorer
+    description: How to add products/resources to the local explorer or local API.
+      Use when implementing new local APIs, or UI routes under
+      packages/miniflare/src/workers/local-explorer or
+      packages/local-explorer-ui.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

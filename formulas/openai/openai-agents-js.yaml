@@ -1,0 +1,129 @@
+schemaVersion: 1
+id: openai/openai-agents-js
+name: OpenAI Agents JS
+description: Monorepo for OpenAI Agents SDK, extensions, examples, docs.
+source:
+  type: git
+  url: https://github.com/openai/openai-agents-js
+  revision: dd64ba6ad9ff694f7a0aa630f003811dde36f822
+capabilities:
+  - id: code-change-verification
+    kind: skill
+    path: .agents/skills/code-change-verification
+    description: Run the mandatory verification stack when changes affect runtime
+      code, tests, or build/test behavior in the OpenAI Agents JS monorepo.
+  - id: integration-tests
+    kind: skill
+    path: .agents/skills/integration-tests
+    description: Run the integration-tests pipeline that depends on a local npm
+      registry (Verdaccio). Use when asked to execute integration tests or local
+      publish workflows in this repo.
+  - id: openai-knowledge
+    kind: skill
+    path: .agents/skills/openai-knowledge
+    description: Use when working with the OpenAI API (Responses API) or OpenAI
+      platform features (tools, streaming, Realtime API, auth, models, rate
+      limits, MCP) and you need authoritative, up-to-date documentation
+      (schemas, examples, limits, edge cases). Prefer the OpenAI Developer
+      Documentation MCP server tools when available; otherwise guide the user to
+      enable `openaiDeveloperDocs`.
+  - id: examples-auto-run
+    kind: skill
+    path: .agents/skills/examples-auto-run
+    description: Run examples:start-all in auto mode with parallel execution,
+      per-script logs, and start/stop helpers.
+  - id: pr-draft-summary
+    kind: skill
+    path: .agents/skills/pr-draft-summary
+    description: Create the required PR-ready summary block, branch suggestion,
+      title, and draft description for openai-agents-js. Must be used before the
+      final response whenever the actual task diff includes runtime code, tests,
+      examples, build/test configuration, or docs with behavior impact,
+      regardless of perceived change size. Skip only when no eligible files
+      changed, every change is repo-meta or docs-only without behavior impact,
+      the task is conversation-only, or the user explicitly opts out.
+  - id: changeset-validation
+    kind: skill
+    path: .agents/skills/changeset-validation
+    description: Validate changesets in openai-agents-js using LLM judgment against
+      git diffs (including uncommitted local changes). Use when packages/ or
+      .changeset/ are modified, or when verifying PR changeset compliance and
+      bump level.
+  - id: docs-sync
+    kind: skill
+    path: .agents/skills/docs-sync
+    description: Analyze main branch implementation and configuration to find
+      missing, incorrect, or outdated documentation in docs/. Use when asked to
+      audit doc coverage, sync docs with code, or propose doc updates/structure
+      changes. Only update English docs (docs/src/content/docs/**) and never
+      touch translated docs under docs/src/content/docs/ja, ko, or zh. Provide a
+      report and ask for approval before editing docs.
+  - id: final-release-review
+    kind: skill
+    path: .agents/skills/final-release-review
+    description: Perform a release-readiness review by locating the previous release
+      tag from remote tags and auditing the diff (e.g., v1.2.3...<commit>) for
+      breaking changes, regressions, improvement opportunities, and risks before
+      releasing openai-agents-js.
+  - id: implementation-strategy
+    kind: skill
+    path: .agents/skills/implementation-strategy
+    description: Decide how to implement runtime and API changes in openai-agents-js
+      before editing code. Use when a task changes exported APIs, runtime
+      behavior, schemas, tests, or docs and you need to choose the compatibility
+      boundary, whether shims or migrations are warranted, and when unreleased
+      interfaces can be rewritten directly.
+  - id: pnpm-upgrade
+    kind: skill
+    path: .agents/skills/pnpm-upgrade
+    description: "Keep pnpm current: run pnpm self-update/corepack prepare, align
+      packageManager in package.json, and bump pnpm/action-setup + pinned pnpm
+      versions in .github/workflows to the latest release. Use this when
+      refreshing the pnpm toolchain manually or in automation."
+  - id: runtime-behavior-probe
+    kind: skill
+    path: .agents/skills/runtime-behavior-probe
+    description: Plan and execute runtime-behavior investigations with temporary
+      TypeScript probe scripts, validation matrices, state controls, and
+      findings-first reports. Use only when the user explicitly invokes this
+      skill to verify actual runtime behavior beyond normal code-level checks,
+      especially to uncover edge cases, undocumented behavior, or common failure
+      modes in local or live integrations. A baseline smoke check is fine as an
+      entry point, but do not stop at happy-path confirmation.
+  - id: test-coverage-improver
+    kind: skill
+    path: .agents/skills/test-coverage-improver
+    description: "Improve test coverage in the OpenAI Agents JS monorepo: run `pnpm
+      test:coverage`, inspect coverage artifacts, identify low-coverage files
+      and branches, propose high-impact tests, and confirm with the user before
+      writing tests."
+  - id: invoice-total-fixer
+    kind: skill
+    path: examples/docs/sandbox-agents/skills/invoice-total-fixer
+    description: Use when fixing invoice total calculations in the sandbox
+      quickstart repository.
+  - id: credit-note-fixer
+    kind: skill
+    path: examples/sandbox/data/coding-task/skills/credit-note-fixer
+    description: Fix the tiny credit-note formatting bug and rerun the exact
+      targeted test command.
+  - id: csv-workbench
+    kind: skill
+    path: examples/tools/skills/csv-workbench
+    description: Analyze CSV files in /mnt/data and return concise numeric summaries.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: unlinked-hook-files
+    severity: warning
+    category: hooks
+    message: Repository contains hook-related files that are not linked by this formula.
+    paths:
+      - .codex/hooks.json
+    reason: These files lack explicit appliesTo mappings, supported targets, or
+      supported file types.
+    effect: SAMX will not install, link, or execute these files.
+    action: Add explicit hook entries only after manual review.

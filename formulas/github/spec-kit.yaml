@@ -1,0 +1,24 @@
+schemaVersion: 1
+id: github/spec-kit
+name: Spec Kit
+description: SDD toolkit for specs, plans, tasks, extensions, presets,
+  workflows, integrations.
+source:
+  type: git
+  url: https://github.com/github/spec-kit
+  revision: 2dd1ca4fb6ce9b36ea5d912c48a73c763e506d33
+capabilities:
+  - id: add-community-extension
+    kind: skill
+    path: .github/skills/add-community-extension
+    description: "Add a community extension to the Spec Kit catalog from a GitHub
+      issue submission. USE FOR: processing extension submission issues,
+      validating catalog entries, updating catalog.community.json and
+      docs/community/extensions.md, creating PRs. DO NOT USE FOR: creating new
+      extensions from scratch, or first-party extension work."
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

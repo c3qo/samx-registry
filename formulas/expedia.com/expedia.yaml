@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: expedia.com/expedia
+name: Expedia
+description: Expedia remote MCP server at https://www.expedia.com/mcp. Plan
+  trips, flights and hotels. Setup guides for Claude Code, Codex, Cursor, and VS
+  Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/expedia
+capabilities:
+  - id: expedia
+    kind: mcp
+    spec:
+      serverName: expedia
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://www.expedia.com/mcp

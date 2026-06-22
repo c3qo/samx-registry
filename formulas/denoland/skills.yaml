@@ -1,0 +1,55 @@
+schemaVersion: 1
+id: denoland/skills
+name: Deno Development Skills
+description: "Deno AI skills pack: guidance, Fresh, Deploy, sandbox, templates, expert rev."
+source:
+  type: git
+  url: https://github.com/denoland/skills
+  revision: 1a4267f4fc60d75839d740ae39a7e0bb0170cf0b
+capabilities:
+  - id: deno-guidance
+    kind: skill
+    path: skills/deno-guidance
+    description: Use when starting any Deno project, choosing packages, configuring
+      deno.json, or running CLI commands. Provides foundational knowledge for
+      building modern Deno applications.
+  - id: deno-deploy
+    kind: skill
+    path: skills/deno-deploy
+    description: Use when deploying Deno apps to production, asking about Deno
+      Deploy, or working with `deno deploy` CLI commands. Covers deployment
+      workflows, environment variables, KV database access, custom domains, the
+      --tunnel flag for local development, and the `deno deploy` command
+      reference.
+  - id: deno-frontend
+    kind: skill
+    path: skills/deno-frontend
+    description: Use when working with Fresh framework, creating routes or handlers
+      in Fresh, building web UIs with Preact, or adding Tailwind CSS in Deno.
+      Covers Fresh 2.x project structure, route handlers, islands, createDefine,
+      PageProps, context patterns, and Fresh 1.x to 2.x migration. Essential for
+      any Fresh-related question.
+  - id: deno-sandbox
+    kind: skill
+    path: skills/deno-sandbox
+    description: Use when building features that execute untrusted user code,
+      AI-generated code, or need isolated code execution environments. Covers
+      the @deno/sandbox SDK.
+  - id: deno-project-templates
+    kind: skill
+    path: skills/deno-project-templates
+    description: Use when scaffolding new Deno projects. Provides templates for
+      Fresh web apps, CLI tools, libraries, and API servers with modern best
+      practices.
+  - id: deno-expert
+    kind: skill
+    path: skills/deno-expert
+    description: Expert-level Deno knowledge for code review, debugging, and best
+      practice enforcement. Use when reviewing Deno code or answering advanced
+      Deno questions.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

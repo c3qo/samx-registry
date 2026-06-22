@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: exp-app-mcp.prod.ep.viator.com/viator
+name: Viator
+description: Viator remote MCP server at
+  https://exp-app-mcp.prod.ep.viator.com/mcp. Book travel experiences around the
+  world. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/viator
+capabilities:
+  - id: viator
+    kind: mcp
+    spec:
+      serverName: viator
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://exp-app-mcp.prod.ep.viator.com/mcp

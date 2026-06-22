@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: columnapi.com/aiwyn-tax
+name: Aiwyn Tax
+description: Aiwyn Tax remote MCP server at https://mcp.columnapi.com/mcp.
+  Estimate your federal & state taxes with Aiwyn&#x27;s tax engine. Setup guides
+  for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/aiwyn-tax
+capabilities:
+  - id: aiwyn-tax
+    kind: mcp
+    spec:
+      serverName: aiwyn-tax
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.columnapi.com/mcp

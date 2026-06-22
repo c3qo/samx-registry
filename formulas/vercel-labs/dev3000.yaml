@@ -1,0 +1,31 @@
+schemaVersion: 1
+id: vercel-labs/dev3000
+name: d3k (dev3000)
+description: AI dev tool w/ browser logs, screenshots, CDP timeline.
+source:
+  type: git
+  url: https://github.com/vercel-labs/dev3000
+  revision: 89ddd9c192fb64532359f339ca123b3ac6ea2283
+capabilities:
+  - id: analyze-bundle
+    kind: skill
+    path: .agents/skills/analyze-bundle
+    description: Convert Next.js bundle analyzer data to NDJSON and explore it
+  - id: deepsec
+    kind: skill
+    path: .agents/skills/deepsec
+    description: Run DeepSec against a Vercel project checkout from dev3000. Use for
+      one-click DeepSec setup, project context bootstrapping, bounded first-pass
+      processing, and report generation.
+  - id: d3k
+    kind: skill
+    path: skills/d3k
+    description: "Bootstrap d3k in standalone AI apps (Codex, Cursor, Claude Code):
+      detect/install dev3000, start d3k as the runtime, and use unified logs
+      plus CDP browser control instead of running npm/bun dev directly."
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

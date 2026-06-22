@@ -1,0 +1,23 @@
+schemaVersion: 1
+id: callstackincubator/cordierite
+name: Cordierite
+description: CLI + React Native host for pinned `wss://` app-tool control.
+source:
+  type: git
+  url: https://github.com/callstackincubator/cordierite
+  revision: d379c54e49354811153b49c442c47241a78a56f7
+capabilities:
+  - id: cordierite
+    kind: skill
+    path: skills/cordierite
+    description: Connect a Cordierite-enabled React Native app to your machine and
+      drive it from the terminal using tools the app registers — useful for
+      agents, scripts, and dev automation. Reach for this when the user mentions
+      Cordierite, host/session pairing with the app, or invoking app-defined
+      capabilities from the CLI.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

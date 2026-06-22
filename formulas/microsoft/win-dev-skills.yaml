@@ -1,0 +1,96 @@
+schemaVersion: 1
+id: microsoft/win-dev-skills
+name: WinUI agents and skills for Windows app development
+description: WinUI 3 / Windows App SDK Copilot plugin with skills, agent, and in-repo tools.
+source:
+  type: git
+  url: https://github.com/microsoft/win-dev-skills
+  revision: c98bc78c427910838e97c70bdcd7678a0331fad3
+capabilities:
+  - id: pr-review
+    kind: skill
+    path: .github/skills/pr-review
+    description: Multi-dimensional review of a PR or feature branch in
+      microsoft/win-dev-skills. Activate on "review my PR / changes / branch",
+      "vet before pushing", "PR review", "is this ready to merge". Fans out
+      parallel sub-agents over skill content, the skill-vs-tool boundary
+      (solution hierarchy), tool correctness, payload/provenance/tests, docs &
+      manifest sync, plus a multi-model cross-check. Reports findings to stdout.
+      Does NOT apply fixes.
+  - id: winui-code-review
+    kind: skill
+    path: plugins/winui/skills/winui-code-review
+    description: Code quality review for WinUI 3 apps — MVVM compliance, x:Bind
+      correctness, accessibility, theming, security, and performance. Use before
+      committing to catch issues that the compiler and UI tests won't find.
+  - id: winui-design
+    kind: skill
+    path: plugins/winui/skills/winui-design
+    description: WinUI 3 UI design and XAML correctness — layout planning, control
+      selection, Fluent Design, theming (Light/Dark/HighContrast), typography
+      styles, spacing, brushes, accessibility, data binding review. Use when
+      designing new pages, converting from WPF/Electron/web, reviewing XAML,
+      fixing theme issues, or applying Fluent Design.
+  - id: winui-dev-workflow
+    kind: skill
+    path: plugins/winui/skills/winui-dev-workflow
+    description: Build and run workflow for WinUI 3 apps — project creation,
+      BuildAndRun.ps1 script, winapp run, error diagnosis, and prerequisites.
+      Use when building, running, or fixing build errors in a WinUI 3 project.
+  - id: winui-packaging
+    kind: skill
+    path: plugins/winui/skills/winui-packaging
+    description: MSIX packaging, code signing, and distribution for WinUI 3 apps —
+      build for release, certificate generation (winapp cert generate),
+      certificate trust, code signing (winapp sign), self-contained deployment,
+      CI/CD with GitHub Actions, and Microsoft Store submission. Use when
+      preparing for release, creating MSIX installers, managing certificates,
+      setting up CI/CD packaging, or publishing to the Microsoft Store.
+  - id: winui-session-report
+    kind: skill
+    path: plugins/winui/skills/winui-session-report
+    description: Analyze the current or a recent agent session (GitHub Copilot CLI
+      or Claude Code) and generate a diagnostic report. Use when asking for
+      session feedback, debugging agent behavior, or reviewing what happened
+      during a build session.
+  - id: winui-setup
+    kind: skill
+    path: plugins/winui/skills/winui-setup
+    description: Install and verify the prerequisites the win-dev-skills WinUI 3
+      toolchain depends on — .NET SDK 10, the WinApp CLI, the WinUI 3 .NET
+      templates, and Developer Mode. Use when setting up a new machine, after a
+      Windows reset, or when another winui skill reports a missing prerequisite
+      (e.g., `winapp` not found, `dotnet` not found, the WinUI 3 templates are
+      missing, or Developer Mode is off).
+  - id: winui-ui-testing
+    kind: skill
+    path: plugins/winui/skills/winui-ui-testing
+    description: Automated UI testing for WinUI 3 apps — generate a batch test
+      script, run all tests in one pass, read results. Covers element
+      assertions, interactions, value checking (TextBox, ComboBox,
+      ToggleSwitch), file pickers, flyouts, dialogs, persistence, and
+      accessibility audits.
+  - id: winui-wpf-migration
+    kind: skill
+    path: plugins/winui/skills/winui-wpf-migration
+    description: Migrate WPF applications to WinUI 3 — namespace replacement
+      (System.Windows → Microsoft.UI.Xaml), control mapping (DataGrid→ListView,
+      WrapPanel→ItemsRepeater, TabControl→TabView), threading
+      (Dispatcher→DispatcherQueue), imaging (System.Drawing→BitmapImage), MVVM
+      conversion to CommunityToolkit.Mvvm, and DynamicResource→ThemeResource.
+      Use when converting WPF code, replacing WPF namespaces, or fixing
+      migration build errors.
+requirements:
+  env:
+    - GitHub Copilot
+    - Claude Code
+    - OpenAI Codex
+    - Git
+    - .NET SDK >= 8.0
+    - WinApp CLI >= 0.3
+    - WinUI 3 templates
+    - Developer Mode
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,101 @@
+schemaVersion: 1
+id: rivet-dev/rivet
+name: Rivet
+description: Rivet Actors; stateful workloads, workflows, queues, scheduling, SDKs.
+source:
+  type: git
+  url: https://github.com/rivet-dev/rivet
+  revision: cf5905bfceca3726b841ee8ba7269b2258626198
+capabilities:
+  - id: driver-test-runner
+    kind: skill
+    path: .claude/skills/driver-test-runner
+    description: Methodically run the RivetKit driver test suite file by file across
+      the native (NAPI) and wasm runtimes, tracking progress in
+      ~/.agents/notes/driver-test-progress.md. Use when you need to validate the
+      driver test suite after changes, bring up a new driver, or debug test
+      failures systematically.
+  - id: sanity-check
+    kind: skill
+    path: .claude/skills/sanity-check
+    description: Run an E2E smoke test that installs rivetkit packages from npm in
+      an isolated temp project, starts the hello-world counter actor, then
+      verifies both HTTP actions and WebSocket actions + events work end-to-end.
+      Use when the user asks to sanity check, smoke test, or verify a rivetkit
+      release/preview-publish works.
+  - id: stack-merge
+    kind: skill
+    path: .claude/skills/stack-merge
+    description: Bulk-merge a Graphite stack into main via admin-bypass fast-forward
+      push. Replaces the Graphite merge queue for rivet-dev/rivet. Invoke when
+      the user says "merge the stack at <branch>", "ship everything through
+      <branch>", "bulk-merge up to <branch>", "fast-forward main to <branch>",
+      or any request to land multiple stacked PRs at once in one shot. Requires
+      repo admin permissions (bypasses branch protection), Graphite (gt) CLI,
+      and GitHub (gh) CLI. After the FF push, closes all in-scope PRs explicitly
+      with `gh pr close` in parallel — GitHub does not auto-mark them as MERGED
+      because their bases point at sibling stack branches, not main.
+  - id: openspec-explore
+    kind: skill
+    path: .opencode/skills/openspec-explore
+    description: Enter explore mode - a thinking partner for exploring ideas,
+      investigating problems, and clarifying requirements. Use when the user
+      wants to think through something before or during a change.
+  - id: openspec-apply-change
+    kind: skill
+    path: .opencode/skills/openspec-apply-change
+    description: Implement tasks from an OpenSpec change. Use when the user wants to
+      start implementing, continue implementation, or work through tasks.
+  - id: openspec-verify-change
+    kind: skill
+    path: .opencode/skills/openspec-verify-change
+    description: Verify implementation matches change artifacts. Use when the user
+      wants to validate that implementation is complete, correct, and coherent
+      before archiving.
+  - id: openspec-archive-change
+    kind: skill
+    path: .opencode/skills/openspec-archive-change
+    description: Archive a completed change in the experimental workflow. Use when
+      the user wants to finalize and archive a change after implementation is
+      complete.
+  - id: openspec-bulk-archive-change
+    kind: skill
+    path: .opencode/skills/openspec-bulk-archive-change
+    description: Archive multiple completed changes at once. Use when archiving
+      several parallel changes.
+  - id: openspec-continue-change
+    kind: skill
+    path: .opencode/skills/openspec-continue-change
+    description: Continue working on an OpenSpec change by creating the next
+      artifact. Use when the user wants to progress their change, create the
+      next artifact, or continue their workflow.
+  - id: openspec-ff-change
+    kind: skill
+    path: .opencode/skills/openspec-ff-change
+    description: Fast-forward through OpenSpec artifact creation. Use when the user
+      wants to quickly create all artifacts needed for implementation without
+      stepping through each one individually.
+  - id: openspec-new-change
+    kind: skill
+    path: .opencode/skills/openspec-new-change
+    description: Start a new OpenSpec change using the experimental artifact
+      workflow. Use when the user wants to create a new feature, fix, or
+      modification with a structured step-by-step approach.
+  - id: openspec-onboard
+    kind: skill
+    path: .opencode/skills/openspec-onboard
+    description: Guided onboarding for OpenSpec - walk through a complete workflow
+      cycle with narration and real codebase work.
+  - id: openspec-sync-specs
+    kind: skill
+    path: .opencode/skills/openspec-sync-specs
+    description: Sync delta specs from a change to main specs. Use when the user
+      wants to update main specs with changes from a delta spec, without
+      archiving the change.
+requirements:
+  env:
+    - ANTHROPIC_API_KEY
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

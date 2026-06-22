@@ -1,0 +1,102 @@
+schemaVersion: 1
+id: runwayml/skills
+name: Runway API Skills
+description: Runway API skills for generation, integration, uploads, avatars,
+  docs, refs, setup.
+source:
+  type: git
+  url: https://github.com/runwayml/skills
+  revision: c5674fd2bfcf34c006fb8d9cadf912f21027e310
+capabilities:
+  - id: rw-api-reference
+    kind: skill
+    path: skills/rw-api-reference
+    description: "Complete reference for Runway's public API: models, endpoints,
+      costs, limits, and types"
+  - id: rw-check-compatibility
+    kind: skill
+    path: skills/rw-check-compatibility
+    description: Analyze a user's codebase to verify it can use Runway's public API
+      (server-side requirement)
+  - id: rw-check-org-details
+    kind: skill
+    path: skills/rw-check-org-details
+    description: "Query the Runway API for organization details: rate limits, credit
+      balance, usage tier, and daily generation counts"
+  - id: rw-fetch-api-reference
+    kind: skill
+    path: skills/rw-fetch-api-reference
+    description: Retrieve the latest Runway API reference from docs.dev.runwayml.com
+      and use it as the authoritative source before any integration work
+  - id: rw-generate-audio
+    kind: skill
+    path: skills/rw-generate-audio
+    description: Generate audio using the Runway API via runnable scripts. Supports
+      TTS, sound effects, voice isolation, dubbing, and voice conversion.
+  - id: rw-generate-image
+    kind: skill
+    path: skills/rw-generate-image
+    description: Generate images directly using the Runway API via runnable scripts.
+      Supports text-to-image with optional reference images.
+  - id: rw-generate-video
+    kind: skill
+    path: skills/rw-generate-video
+    description: Generate videos directly using the Runway API via runnable scripts.
+      Supports text-to-video, image-to-video, and video-to-video with seedance2,
+      gen4.5, veo3, and more.
+  - id: rw-integrate-audio
+    kind: skill
+    path: skills/rw-integrate-audio
+    description: Help users integrate Runway audio APIs (TTS, sound effects, voice
+      isolation, dubbing)
+  - id: rw-integrate-character-embed
+    kind: skill
+    path: skills/rw-integrate-character-embed
+    description: Help users embed Runway Character avatar calls in React apps using
+      the @runwayml/avatars-react SDK
+  - id: rw-integrate-characters
+    kind: skill
+    path: skills/rw-integrate-characters
+    description: Help users create Runway Characters (GWM-1 avatars) and integrate
+      real-time conversational sessions into their apps
+  - id: rw-integrate-documents
+    kind: skill
+    path: skills/rw-integrate-documents
+    description: Help users add knowledge base documents to Runway Characters for
+      domain-specific conversations
+  - id: rw-integrate-image
+    kind: skill
+    path: skills/rw-integrate-image
+    description: Help users integrate Runway image generation APIs (text-to-image
+      with reference images)
+  - id: rw-integrate-uploads
+    kind: skill
+    path: skills/rw-integrate-uploads
+    description: Help users upload local files to Runway for use as inputs to
+      generation models
+  - id: rw-integrate-video
+    kind: skill
+    path: skills/rw-integrate-video
+    description: Help users integrate Runway video generation APIs (text-to-video,
+      image-to-video, video-to-video)
+  - id: rw-recipe-full-setup
+    kind: skill
+    path: skills/rw-recipe-full-setup
+    description: "Complete Runway API setup: check compatibility, configure API key,
+      and integrate generation endpoints"
+  - id: rw-setup-api-key
+    kind: skill
+    path: skills/rw-setup-api-key
+    description: Guide users through obtaining and configuring a Runway API key
+  - id: use-runway-api
+    kind: skill
+    path: skills/use-runway-api
+    description: Directly use the Runway API from the agent to generate media,
+      manage resources, and inspect account state
+requirements:
+  env:
+    - RUNWAYML_API_SECRET
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,57 @@
+schemaVersion: 1
+id: vercel-labs/sitecore-skills
+name: Sitecore Skills
+description: Claude Code skills for Sitecore Marketplace apps.
+source:
+  type: git
+  url: https://github.com/vercel-labs/sitecore-skills
+  revision: 8d91731a5d7b6cc5caad620aba86ebba4b9668a6
+capabilities:
+  - id: marketplace-add-ai
+    kind: skill
+    path: .claude/skills/marketplace-add-ai
+    description: Adds AI Skills integration (Brand Review API) to a Sitecore
+      Marketplace app. Use when the user wants to add AI-powered content
+      analysis, brand review, or brand compliance checking.
+  - id: marketplace-add-extension
+    kind: skill
+    path: .claude/skills/marketplace-add-extension
+    description: Adds a new extension point route to a Sitecore Marketplace app. Use
+      when the user wants to add a custom field, dashboard widget, context
+      panel, fullscreen page, or standalone route.
+  - id: marketplace-add-xmc
+    kind: skill
+    path: .claude/skills/marketplace-add-xmc
+    description: Adds XM Cloud API integration to a Sitecore Marketplace app. Use
+      when the user wants to access Sites, Pages, Authoring, Content Transfer,
+      Search, or Agent APIs from XM Cloud.
+  - id: marketplace-build-component
+    kind: skill
+    path: .claude/skills/marketplace-build-component
+    description: Builds UI components using the Blok design system for Sitecore
+      Marketplace apps. Use when the user wants to create UI, add components,
+      build a page layout, or work with Blok/shadcn components in a marketplace
+      app.
+  - id: marketplace-deploy
+    kind: skill
+    path: .claude/skills/marketplace-deploy
+    description: Deploys a Sitecore Marketplace app to Vercel with correct CSP
+      headers and configuration.
+  - id: marketplace-scaffold
+    kind: skill
+    path: .claude/skills/marketplace-scaffold
+    description: Scaffolds a new Sitecore Marketplace app using the official SDK.
+      Use when the user wants to create a new marketplace app, start a new
+      Sitecore project, or initialize a marketplace integration.
+  - id: marketplace-sdk-reference
+    kind: skill
+    path: .claude/skills/marketplace-sdk-reference
+    description: Sitecore Marketplace SDK API reference. Use when the user asks
+      about SDK methods, types, queries, mutations, subscriptions, or how to use
+      any Sitecore Marketplace SDK API.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

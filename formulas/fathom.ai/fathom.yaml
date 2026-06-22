@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: fathom.ai/fathom
+name: Fathom
+description: Fathom remote MCP server at https://api.fathom.ai/mcp. Your
+  meetings, now part of every Claude conversation. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/fathom
+capabilities:
+  - id: fathom
+    kind: mcp
+    spec:
+      serverName: fathom
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.fathom.ai/mcp

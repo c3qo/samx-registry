@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: huggingface.co/hugging-face
+name: Hugging Face
+description: Hugging Face remote MCP server at https://huggingface.co/mcp.
+  Access the HF Hub and thousands of Gradio Apps. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/hugging-face
+capabilities:
+  - id: hugging-face
+    kind: mcp
+    spec:
+      serverName: hugging-face
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://huggingface.co/mcp

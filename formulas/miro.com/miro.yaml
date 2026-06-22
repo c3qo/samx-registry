@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: miro.com/miro
+name: Miro
+description: Miro remote MCP server at https://mcp.miro.com/. Access and create
+  new content on Miro boards. Setup guides for Claude Code, Codex, Cursor, and
+  VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/miro
+capabilities:
+  - id: miro
+    kind: mcp
+    spec:
+      serverName: miro
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.miro.com/

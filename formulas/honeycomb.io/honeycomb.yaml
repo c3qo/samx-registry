@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: honeycomb.io/honeycomb
+name: Honeycomb
+description: Honeycomb remote MCP server at https://mcp.honeycomb.io/mcp. Query
+  and explore observability data and SLOs. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/honeycomb
+capabilities:
+  - id: honeycomb
+    kind: mcp
+    spec:
+      serverName: honeycomb
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.honeycomb.io/mcp

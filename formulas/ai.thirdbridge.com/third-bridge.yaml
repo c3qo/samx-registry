@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: ai.thirdbridge.com/third-bridge
+name: Third Bridge
+description: Third Bridge remote MCP server at
+  https://ai.thirdbridge.com/mcp/sse. Expert-led enhanced insights. Setup guides
+  for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/third-bridge
+capabilities:
+  - id: third-bridge
+    kind: mcp
+    spec:
+      serverName: third-bridge
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://ai.thirdbridge.com/mcp/sse

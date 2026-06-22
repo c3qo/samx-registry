@@ -1,0 +1,28 @@
+schemaVersion: 1
+id: microsoft/synapseml
+name: SynapseML
+description: Scalable Spark ML lib; Python/Scala + docs site.
+source:
+  type: git
+  url: https://github.com/microsoft/synapseml
+  revision: b0fa222cfdde5d0a2cbb2bc6a35630bbb61bc0e3
+capabilities:
+  - id: code-review
+    kind: skill
+    path: .github/skills/code-review
+    description: Review SynapseML Python and Scala code changes. Use before
+      finalizing PR reviews or implementation changes to check security,
+      compatibility, style, generated code, and targeted tests.
+  - id: synapseml-local-setup
+    kind: skill
+    path: .github/skills/synapseml-local-setup
+    description: Set up and validate SynapseML locally in WSL or Linux. Use when an
+      agent needs SynapseML working locally, runs sbt compile/test, sees Java
+      21, Scala 2.12 compiler-bridge, bad constant pool index, Spark, or local
+      validation failures.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

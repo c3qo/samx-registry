@@ -1,0 +1,92 @@
+schemaVersion: 1
+id: deepgram/deepgram-java-sdk
+name: Deepgram Java SDK
+description: Java SDK → Deepgram ASR/TTS/Read/Manage/Agent APIs.
+source:
+  type: git
+  url: https://github.com/deepgram/deepgram-java-sdk
+  revision: b0fc6949c5d6a4f86aa150d13c5d8405d2c9226f
+capabilities:
+  - id: deepgram-java-audio-intelligence
+    kind: skill
+    path: .agents/skills/deepgram-java-audio-intelligence
+    description: Use when writing or reviewing Java code in this repo that enables
+      Deepgram intelligence overlays on `/v1/listen` audio transcription -
+      diarization, entity detection, sentiment, summarize, topics, intents,
+      language detection, and redaction. Same endpoint as plain STT, but with
+      extra request fields on `ListenV1RequestUrl` or
+      `MediaTranscribeRequestOctetStream`. Use `deepgram-java-speech-to-text`
+      for plain transcripts and `deepgram-java-text-intelligence` for analysis
+      on existing text. Triggers include "audio intelligence", "diarize",
+      "summarize audio", "sentiment from audio", "topic detection", and
+      "redact".
+  - id: deepgram-java-conversational-stt
+    kind: skill
+    path: .agents/skills/deepgram-java-conversational-stt
+    description: Use when writing or reviewing Java code in this repo that calls
+      Deepgram Conversational STT v2 / Flux over `/v2/listen`. Covers
+      `client.listen().v2().v2WebSocket()`, `V2ConnectOptions`, `onTurnInfo`,
+      and turn-aware close handling. Use `deepgram-java-speech-to-text` for
+      standard v1 transcription and `deepgram-java-voice-agent` for fully
+      interactive assistants. Triggers include "flux", "conversational stt",
+      "listen v2", "turn detection", "end of turn", and "eot".
+  - id: deepgram-java-management-api
+    kind: skill
+    path: .agents/skills/deepgram-java-management-api
+    description: Use when writing or reviewing Java code in this repo that calls
+      Deepgram Management APIs for projects, project models, API keys, members,
+      invites, usage, and billing. Covers `client.manage().v1().*` plus related
+      think-model discovery under
+      `client.agent().v1().settings().think().models()`. Use
+      `deepgram-java-voice-agent` for live agent conversations instead of admin
+      APIs. Triggers include "management api", "list projects", "api keys",
+      "members", "invites", "usage", "billing", and "models".
+  - id: deepgram-java-speech-to-text
+    kind: skill
+    path: .agents/skills/deepgram-java-speech-to-text
+    description: Use when writing or reviewing Java code in this repo that calls
+      Deepgram Speech-to-Text v1 (`/v1/listen`) for prerecorded or live
+      transcription. Covers `client.listen().v1().media().transcribeUrl` /
+      `transcribeFile` (REST) and `client.listen().v1().v1WebSocket()`
+      (WebSocket). Use `deepgram-java-audio-intelligence` for analytics
+      overlays, `deepgram-java-conversational-stt` for Flux `/v2/listen`, and
+      `deepgram-java-voice-agent` for full-duplex assistants. Triggers include
+      "transcribe", "speech to text", "STT", "listen v1", "nova-3", "live
+      transcription", and "websocket transcription".
+  - id: deepgram-java-text-intelligence
+    kind: skill
+    path: .agents/skills/deepgram-java-text-intelligence
+    description: Use when writing or reviewing Java code in this repo that calls
+      Deepgram Text Intelligence / Read (`/v1/read`) for text analysis. Covers
+      `client.read().v1().text().analyze(...)` with `ReadV1Request` or
+      `TextAnalyzeRequest`. Use `deepgram-java-audio-intelligence` when the
+      source is audio instead of text. Triggers include "read api", "text
+      intelligence", "analyze text", "sentiment", "topics", "intents", and
+      "summarize text".
+  - id: deepgram-java-text-to-speech
+    kind: skill
+    path: .agents/skills/deepgram-java-text-to-speech
+    description: Use when writing or reviewing Java code in this repo that calls
+      Deepgram Text-to-Speech v1 (`/v1/speak`) for audio synthesis. Covers
+      one-shot REST via `client.speak().v1().audio().generate(...)` and
+      streaming synthesis via `client.speak().v1().v1WebSocket()`. Use
+      `deepgram-java-voice-agent` for full-duplex assistants instead of one-way
+      synthesis. Triggers include "tts", "text to speech", "speak", "aura",
+      "streaming tts", and "speak websocket".
+  - id: deepgram-java-voice-agent
+    kind: skill
+    path: .agents/skills/deepgram-java-voice-agent
+    description: Use when writing or reviewing Java code in this repo that builds an
+      interactive voice agent over `agent.deepgram.com/v1/agent/converse`.
+      Covers `client.agent().v1().v1WebSocket()`, `AgentV1Settings`,
+      `sendSettings`, `sendMedia`, event handlers, provider configuration, and
+      message injection. Use `deepgram-java-text-to-speech` for one-way
+      synthesis or the STT skills for transcription-only flows. Triggers include
+      "voice agent", "agent converse", "full duplex", "barge in", "function
+      call", and "agent websocket".
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

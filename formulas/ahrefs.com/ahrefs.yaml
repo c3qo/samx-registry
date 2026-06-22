@@ -1,0 +1,20 @@
+schemaVersion: 1
+id: ahrefs.com/ahrefs
+name: Ahrefs
+description: Ahrefs remote MCP server at https://api.ahrefs.com/mcp/mcp. SEO &
+  AI search analytics. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/ahrefs
+capabilities:
+  - id: ahrefs
+    kind: mcp
+    spec:
+      serverName: ahrefs
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.ahrefs.com/mcp/mcp

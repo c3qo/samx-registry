@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: metaview.ai/metaview
+name: Metaview
+description: Metaview remote MCP server at https://mcp.metaview.ai/mcp. The AI
+  platform for recruiting.. Setup guides for Claude Code, Codex, Cursor, and VS
+  Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/metaview
+capabilities:
+  - id: metaview
+    kind: mcp
+    spec:
+      serverName: metaview
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.metaview.ai/mcp

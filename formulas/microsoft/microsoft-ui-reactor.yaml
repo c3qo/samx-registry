@@ -1,0 +1,159 @@
+schemaVersion: 1
+id: microsoft/microsoft-ui-reactor
+name: Microsoft.UI.Reactor
+description: Declarative WinUI 3 UI fwk in pure C#; no XAML, no DB, no VMs.
+source:
+  type: git
+  url: https://github.com/microsoft/microsoft-ui-reactor
+  revision: 4fceda854549e9bca4639e90758a938912ba953f
+capabilities:
+  - id: reactor-getting-started
+    kind: skill
+    path: plugins/reactor/skills/reactor-getting-started
+    description: Reactor essentials in one place — React-to-Reactor mental model,
+      minimal app shape, hooks, the most-used factories, the critical gotchas,
+      and project setup. This is the only skill you need loaded for typical
+      Reactor work; load topical skills (`reactor-async`, `reactor-design`,
+      etc.) only when the task explicitly calls for them.
+  - id: reactor-design
+    kind: skill
+    path: plugins/reactor/skills/reactor-design
+    description: Windows 11 design rules for Reactor — theme tokens, High Contrast,
+      typography (`Heading`/`SubHeading`/`Caption`), 4px grid, acrylic surfaces,
+      accessibility, animation, and a code-review checklist. Use when authoring,
+      reviewing, or fixing visual styling.
+  - id: reactor-build-and-check
+    kind: skill
+    path: plugins/reactor/skills/reactor-build-and-check
+    description: Building Reactor apps and reading diagnostics — `mur check <path>`
+      is the build (same exit code as `dotnet build`, never re-run to confirm)
+      with one-line diagnostics, skill pointers, and `→ try:` did-you-mean
+      suggestions to use verbatim. Covers iteration vs `--final` workflow, the
+      common-build-errors cheat table mapping `REACTOR_HOOKS_*` /
+      `REACTOR_DSL_*` / `REACTOR_THEME_*` / `REACTOR_A11Y_*` / `CS*` IDs to
+      fixes, when single-file vs `.csproj` matters for analyzer coverage, build
+      prerequisites. Use when a build fails, you see an analyzer warning, or you
+      want a structured diagnostic stream instead of raw MSBuild output.
+  - id: reactor-devtools
+    kind: skill
+    path: plugins/reactor/skills/reactor-devtools
+    description: Driving a running Reactor app via `mur devtools` — screenshot,
+      inspect visual tree, click/type/scroll, read hook state. Use when
+      diagnosing visible bugs (layout, contrast) or verifying a UI change
+      landed.
+  - id: reactor-docking
+    kind: skill
+    path: plugins/reactor/skills/reactor-docking
+    description: "Reactor docking windows — `DockManager`,
+      `DockSplit`/`DockTabGroup`/`Document`/`ToolWindow`, drag-to-float/redock,
+      roles (`DocumentArea`/`ToolWindowStrip`), persistence. Use when building
+      IDE-/Office-shaped layouts with dockable, tear-out tool windows and
+      document wells. READ THIS BEFORE wiring `DockManager` — the
+      content-vs-shape ownership model is the #1 thing people get wrong."
+  - id: reactor-advanced
+    kind: skill
+    path: plugins/reactor/skills/reactor-advanced
+    description: Reactor.Advanced Win2D canvases — choosing Win2DCanvas,
+      Win2DAnimatedCanvas, or Win2DVirtualCanvas; using UseDrawState,
+      UseCanvasResources, UseDrawCommand; and following threading/device-loss
+      rules.
+  - id: reactor-async
+    kind: skill
+    path: plugins/reactor/skills/reactor-async
+    description: Async data in Reactor — `UseResource` (single fetch), `UseMutation`
+      (writes + optimistic updates), `UseInfiniteResource` (cursor pagination),
+      and `Pending` (bubble-up fallback). Use when fetching, caching,
+      paginating, or mutating server data.
+  - id: reactor-charts
+    kind: skill
+    path: plugins/reactor/skills/reactor-charts
+    description: Reactor charts and data visualization — choosing a chart type
+      (line, bar, area, donut, `TreeChart`, `ForceGraph`), the chart DSL,
+      `LabelView` / `XTickLabelView` / `YTickLabelView` for icon-plus-text and
+      rich labels, and the visualization-best-practices rules. Use when adding
+      charts or designing visualizations.
+  - id: reactor-commanding
+    kind: skill
+    path: plugins/reactor/skills/reactor-commanding
+    description: Reactor commanding — actions that appear in multiple surfaces (menu
+      + toolbar), need keyboard shortcuts, or need `CanExecute`. `Command`,
+      `StandardCommand`, `UseCommand`, `CommandHost`. Use when wiring shared
+      actions or shortcuts.
+  - id: reactor-dsl
+    kind: skill
+    path: plugins/reactor/skills/reactor-dsl
+    description: Pointer to the full Reactor API signatures index
+      (`references/reactor.api.txt`). The 90% of DSL content — hooks,
+      components, common factories, modifiers, theme tokens, gotchas,
+      React-to-Reactor mapping — already lives in `reactor-getting-started`.
+      Load this skill only when you need to verify a less-common signature
+      against the alphabetized full index.
+  - id: reactor-forms
+    kind: skill
+    path: plugins/reactor/skills/reactor-forms
+    description: Reactor forms and validation — `UseValidationContext`, built-in
+      validators (`Validate.Required`, `Validate.Email`, `Validate.MinLength`,
+      etc.), `FormField` helper, masked input via `MaskEngine`,
+      `InputFormatter`. Use when building data-entry screens, validation flows,
+      or controlled-input forms.
+  - id: reactor-input
+    kind: skill
+    path: plugins/reactor/skills/reactor-input
+    description: Reactor input — gestures (`OnPan`, `OnPinch`, `OnRotate`), pointer
+      events, drag-and-drop (`OnDragStarting`), focus management
+      (`UseElementFocus`, `UseFocus`, `UseFocusTrap`). Use when implementing
+      direct manipulation or custom focus behavior.
+  - id: reactor-navigation
+    kind: skill
+    path: plugins/reactor/skills/reactor-navigation
+    description: Reactor navigation — `UseNavigation` hook, `NavigationHost`
+      renderer, `NavigationView` sidebar, `TabView` tabs, route params, stack
+      operations, page lifecycle, deep linking, transitions, caching. Use when
+      building multi-page apps or wiring sidebar/tab navigation.
+  - id: reactor-recipes
+    kind: skill
+    path: plugins/reactor/skills/reactor-recipes
+    description: "Paste-ready single-file Reactor recipes indexed by intent — list
+      with add/delete/toggle, sidebar navigation between pages, form with
+      validation + submit gating, async fetch with loading/error/data states,
+      themed Win11 card surface. Use a recipe instead of synthesizing from
+      prose: copy, adjust, ship."
+  - id: reactor-windowing
+    kind: skill
+    path: plugins/reactor/skills/reactor-windowing
+    description: "Reactor top-level windowing cookbook: WindowSpec, OpenWindow,
+      draggable windows, borderless/tool windows, placement persistence, taskbar
+      visibility, z-order, aspect ratio, SizeToContent, displays, taskbar
+      integration, and picker HWND wiring."
+  - id: reactor-app
+    kind: skill
+    path: .
+    description: >
+      Create WinUI 3 desktop applications using the Reactor framework — a
+      React-inspired declarative C# projection over WinUI 3. No XAML, no data
+      binding, no templates. This file is the legacy single-file skill — prefer
+      the `reactor` plugin under `plugins/reactor/` (or
+      `agentkit/plugins/reactor/` in the NuGet) for a more efficient
+      skill-loading experience.
+  - id: skill
+    kind: skill
+    path: src/Reactor/Charting
+    entry: skill.md
+    description: "ReactorCharting is a C# port of D3.js that renders charts as
+      Reactor Element trees on WinUI3 Canvas. Charts are pure functions: `data
+      => Element`. The goal is a single `return D3Canvas(...)` expression per
+      chart with no imperative mutation."
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Capability kind does not match path: src/Reactor/Charting"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

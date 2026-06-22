@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: upstash/qstash-js
+name: Upstash QStash SDK
+description: TS/JS client for QStash messaging, scheduling, verification, workflows.
+source:
+  type: git
+  url: https://github.com/upstash/qstash-js
+  revision: f669cbb154f05f3bfd12cd115b2a8c68c31c1df1
+capabilities:
+  - id: skills
+    kind: skill
+    path: skills
+    description: Work with the QStash JavaScript/TypeScript SDK for serverless
+      messaging, scheduling. Use when publishing messages to HTTP endpoints,
+      creating schedules, managing queues, verifying incoming messages in
+      serverless environments.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

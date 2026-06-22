@@ -1,0 +1,25 @@
+schemaVersion: 1
+id: vercel-labs/autoship
+name: autoship
+description: CLI for AI-assisted changeset releases.
+source:
+  type: git
+  url: https://github.com/vercel-labs/autoship
+  revision: 6a2735fece141855e979cb29503303f54bae28c5
+capabilities:
+  - id: autoship
+    kind: skill
+    path: skills/autoship
+    description: CLI tool for automated changeset-based releases with AI-generated
+      descriptions. Use when the user needs to release a package, create
+      changesets, bump versions, or automate npm publishing workflows. Triggers
+      include requests to "release a package", "create a changeset", "publish to
+      npm", "bump the version", "automate releases", or any task involving
+      version management and package publishing for repositories using the
+      changesets workflow.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

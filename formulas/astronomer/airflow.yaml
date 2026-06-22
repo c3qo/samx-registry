@@ -1,0 +1,62 @@
+schemaVersion: 1
+id: astronomer/airflow
+name: Apache Airflow
+description: Workflow scheduler/API/UI platform.
+source:
+  type: git
+  url: https://github.com/astronomer/airflow
+  revision: b6bf6a83b519881d7805e269cac0895409132232
+capabilities:
+  - id: aip-user-stories
+    kind: skill
+    path: .agents/skills/aip-user-stories
+    description: Generate verified recipe playbooks from AIPs with PR
+      implementations (post mode), or speculative user stories from AIPs without
+      implementations (pre mode). Use when the user provides an AIP URL or AIP
+      content, optionally with PR URLs and file paths.
+  - id: airflow-translations
+    kind: skill
+    path: .agents/skills/airflow-translations
+    description: >
+      Add or update translations for the Apache Airflow UI. Guides through
+      setting up locales, scaffolding translation files, translating with
+      locale-specific guidelines, and validating results. Use when working with
+      i18n tasks in airflow-core/src/airflow/ui/public/i18n/locales/.
+  - id: magpie-setup
+    kind: skill
+    path: .agents/skills/magpie-setup
+    description: >
+      Adopt and maintain the apache-steward framework in a project
+
+      repo via the snapshot-based adoption mechanism. The only
+
+      framework skill committed in an adopter's repo; every other
+
+      skill is a symlink the adopt sub-action wires up.
+
+      Sub-actions:
+        `/magpie-setup` - first-time adoption (default; main-checkout only)
+        `/magpie-setup upgrade` - refresh the gitignored snapshot per the committed lock (main-checkout only)
+        `/magpie-setup worktree-init` - symlink a worktree's snapshot to the main's
+        `/magpie-setup verify` - health check + drift detection
+        `/magpie-setup override <skill>` - open or scaffold an agentic override in `.apache-magpie-overrides/`
+        `/magpie-setup unadopt` - reverse the adoption (snapshot, locks, symlinks, hook, doc sections); preserves `.apache-magpie-overrides/` by default (main-checkout only)
+  - id: prepare-providers-documentation
+    kind: skill
+    path: .agents/skills/prepare-providers-documentation
+    description: >
+      Replace the manual commit-by-commit classification step in `breeze
+      release-management prepare-provider-documentation` with AI-driven
+      classification. For each provider with pending changes, analyze every PR
+      (batched into one sub-agent per provider, not one per PR), pay special
+      attention to potentially breaking changes by inspecting the actual diff,
+      scope multi-provider PRs to the current provider's slice, ask the release
+      manager when uncertain, and apply version bumps + changelog entries. Use
+      during the regular provider release cycle as an alternative to the
+      interactive breeze prompts.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

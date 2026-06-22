@@ -1,0 +1,138 @@
+schemaVersion: 1
+id: mapbox/mapbox-agent-skills
+name: Mapbox Agent Skills
+description: Mapbox skills repo for web/iOS/Android Mapbox app guidance + MCP devkit.
+source:
+  type: git
+  url: https://github.com/mapbox/mapbox-agent-skills
+  revision: 75ac667cae24c7ad7bdbbac55ac0a64d2df1543e
+capabilities:
+  - id: mapbox-android-patterns
+    kind: skill
+    path: skills/mapbox-android-patterns
+    description: Official integration patterns for Mapbox Maps SDK on Android.
+      Covers installation, adding markers, user location, custom data, styles,
+      camera control, and featureset interactions. Based on official Mapbox
+      documentation.
+  - id: mapbox-cartography
+    kind: skill
+    path: skills/mapbox-cartography
+    description: Expert guidance on map design principles, color theory, visual
+      hierarchy, typography, and cartographic best practices for creating
+      effective and beautiful maps with Mapbox. Use when designing map styles,
+      choosing colors, or making cartographic decisions.
+  - id: mapbox-data-visualization-patterns
+    kind: skill
+    path: skills/mapbox-data-visualization-patterns
+    description: Patterns for visualizing data on maps including choropleth maps,
+      heat maps, 3D visualizations, data-driven styling, and animated data.
+      Covers layer types, color scales, and performance optimization.
+  - id: mapbox-flutter-patterns
+    kind: skill
+    path: skills/mapbox-flutter-patterns
+    description: Official integration patterns for the Mapbox Maps Flutter SDK.
+      Covers installation, iOS/Android platform setup, access token
+      configuration, MapWidget initialization, camera control, annotations with
+      tap handling, user location, and loading GeoJSON. Based on official Mapbox
+      documentation.
+  - id: mapbox-geospatial-operations
+    kind: skill
+    path: skills/mapbox-geospatial-operations
+    description: Expert guidance on choosing the right geospatial tool based on
+      problem type, accuracy requirements, and performance needs
+  - id: mapbox-google-maps-migration
+    kind: skill
+    path: skills/mapbox-google-maps-migration
+    description: Migration guide for developers moving from Google Maps Platform to
+      Mapbox GL JS, covering API equivalents, pattern translations, and key
+      differences
+  - id: mapbox-ios-patterns
+    kind: skill
+    path: skills/mapbox-ios-patterns
+    description: Official integration patterns for Mapbox Maps SDK on iOS. Covers
+      installation, adding markers, user location, custom data, styles, camera
+      control, and featureset interactions. Based on official Mapbox
+      documentation.
+  - id: mapbox-location-grounding
+    kind: skill
+    path: skills/mapbox-location-grounding
+    description: Compose Mapbox MCP tools to produce grounded, cited location-aware
+      responses from live data instead of training data
+  - id: mapbox-maplibre-migration
+    kind: skill
+    path: skills/mapbox-maplibre-migration
+    description: Guide for migrating from MapLibre GL JS to Mapbox GL JS, covering
+      API compatibility, token setup, style configuration, and the benefits of
+      Mapbox's official support and ecosystem
+  - id: mapbox-mcp-devkit-patterns
+    kind: skill
+    path: skills/mapbox-mcp-devkit-patterns
+    description: Integration patterns for Mapbox MCP DevKit Server in AI coding
+      assistants. Covers setup, style management, token management, validation
+      workflows, and documentation access through MCP. Use when building Mapbox
+      applications with AI coding assistance.
+  - id: mapbox-mcp-runtime-patterns
+    kind: skill
+    path: skills/mapbox-mcp-runtime-patterns
+    description: Integration patterns for Mapbox MCP Server in AI applications and
+      agent frameworks. Covers runtime integration with pydantic-ai, mastra,
+      LangChain, and custom agents. Use when building AI-powered applications
+      that need geospatial capabilities.
+  - id: mapbox-search-integration
+    kind: skill
+    path: skills/mapbox-search-integration
+    description: Complete workflow for implementing Mapbox search in applications -
+      from discovery questions to production-ready integration with best
+      practices
+  - id: mapbox-search-patterns
+    kind: skill
+    path: skills/mapbox-search-patterns
+    description: Expert guidance on choosing the right Mapbox search tool and
+      parameters for geocoding, POI search, and location discovery
+  - id: mapbox-store-locator-patterns
+    kind: skill
+    path: skills/mapbox-store-locator-patterns
+    description: Common patterns for building store locators, restaurant finders,
+      and location-based search applications with Mapbox. Covers marker display,
+      filtering, distance calculation, and interactive lists.
+  - id: mapbox-style-patterns
+    kind: skill
+    path: skills/mapbox-style-patterns
+    description: Common style patterns, layer configurations, and recipes for
+      typical mapping scenarios including restaurant finders, real estate, data
+      visualization, navigation, delivery/logistics, and more. Use when
+      implementing specific map use cases or looking for proven style patterns.
+  - id: mapbox-style-quality
+    kind: skill
+    path: skills/mapbox-style-quality
+    description: Expert guidance on validating, optimizing, and ensuring quality of
+      Mapbox styles through validation, accessibility checks, and optimization.
+      Use when preparing styles for production, debugging issues, or ensuring
+      map quality standards.
+  - id: mapbox-token-security
+    kind: skill
+    path: skills/mapbox-token-security
+    description: Security best practices for Mapbox access tokens, including scope
+      management, URL restrictions, rotation strategies, and protecting
+      sensitive data. Use when creating, managing, or advising on Mapbox token
+      security.
+  - id: mapbox-web-integration-patterns
+    kind: skill
+    path: skills/mapbox-web-integration-patterns
+    description: Official integration patterns for Mapbox GL JS across popular web
+      frameworks (React, Vue, Svelte, Angular). Covers setup, lifecycle
+      management, token handling, search integration, and common pitfalls. Based
+      on Mapbox's create-web-app scaffolding tool.
+  - id: mapbox-web-performance-patterns
+    kind: skill
+    path: skills/mapbox-web-performance-patterns
+    description: Performance optimization patterns for Mapbox GL JS web
+      applications. Covers initialization waterfalls, bundle size, rendering
+      performance, memory management, and web optimization. Prioritized by
+      impact on user experience.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

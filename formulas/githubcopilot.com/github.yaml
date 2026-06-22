@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: githubcopilot.com/github
+name: GitHub
+description: GitHub remote MCP server at https://api.githubcopilot.com/mcp/.
+  GitHub&#x27;s official MCP Server. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/github
+capabilities:
+  - id: github
+    kind: mcp
+    spec:
+      serverName: github
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.githubcopilot.com/mcp/

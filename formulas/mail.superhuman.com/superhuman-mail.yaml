@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: mail.superhuman.com/superhuman-mail
+name: Superhuman Mail
+description: Superhuman Mail remote MCP server at
+  https://mcp.mail.superhuman.com/mcp. Drive your email and calendar, right from
+  Claude. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/superhuman-mail
+capabilities:
+  - id: superhuman-mail
+    kind: mcp
+    spec:
+      serverName: superhuman-mail
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.mail.superhuman.com/mcp

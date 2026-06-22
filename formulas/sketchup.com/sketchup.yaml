@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: sketchup.com/sketchup
+name: Trimble SketchUp
+description: Trimble SketchUp remote MCP server at
+  https://api.sketchup.com/mcp/v1/sketchup/mcp. Create and iterate 3D models for
+  use in SketchUp. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/sketchup
+capabilities:
+  - id: sketchup
+    kind: mcp
+    spec:
+      serverName: sketchup
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.sketchup.com/mcp/v1/sketchup/mcp

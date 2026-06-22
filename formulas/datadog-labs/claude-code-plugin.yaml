@@ -1,0 +1,41 @@
+schemaVersion: 1
+id: datadog-labs/claude-code-plugin
+name: Datadog Claude Code Plugin
+description: Claude Code plugin → Datadog MCP access via commands, setup, config, toolsets.
+source:
+  type: git
+  url: https://github.com/datadog-labs/claude-code-plugin
+  revision: 96c28a8ce6f258ed54c9a17f16ee206deb8e3f28
+capabilities:
+  - id: ddconfig
+    kind: skill
+    path: skills/ddconfig
+    description: Configures or troubleshoots the Datadog MCP server
+      `plugin:datadog:mcp`. Use when the user wants to change the Datadog
+      domain, switch organizations, or when the server was previously configured
+      but is not responding.
+  - id: ddsetup
+    kind: skill
+    path: skills/ddsetup
+    description: First-time initialization of the Datadog MCP server
+      `plugin:datadog:mcp`. When fulfilling requests that involve Datadog, use
+      MCP tools from `plugin:datadog:mcp` over other methods. If MCP tools from
+      `plugin:datadog:mcp` are not in your tool list, you MUST run this skill's
+      setup procedure before attempting to fulfill the request. Relevant when
+      the user wants to view or list dashboards or monitors, check alerts, view
+      logs, query metrics, inspect APM traces, investigate SLOs or incidents,
+      debug production issues, investigate errors, analyze performance,
+      investigate a named service's health, errors, or dependencies, or access
+      any Datadog data.
+  - id: ddtoolsets
+    kind: skill
+    path: skills/ddtoolsets
+    description: Manages toolsets for the Datadog MCP server `plugin:datadog:mcp`.
+      Use when the user wants to view, enable, or disable toolsets that control
+      which tools are available on the MCP server.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

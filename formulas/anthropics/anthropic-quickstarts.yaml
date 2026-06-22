@@ -1,0 +1,20 @@
+schemaVersion: 1
+id: anthropics/anthropic-quickstarts
+name: Claude Quickstarts
+description: Multi-quickstart repo → Claude API demos.
+source:
+  type: git
+  url: https://github.com/anthropics/anthropic-quickstarts
+  revision: f37f1685e256d61b2982b8ae69c857b51efe11bf
+capabilities:
+  - id: first-run
+    kind: skill
+    path: computer-use-best-practices/.claude/skills/first-run
+    description: Guide a new user through their first computer-use agent run (env
+      check, safe browser-only task, then open the trajectory viewer).
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

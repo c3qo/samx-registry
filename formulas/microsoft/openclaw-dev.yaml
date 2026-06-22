@@ -1,0 +1,38 @@
+schemaVersion: 1
+id: microsoft/openclaw-dev
+name: openclaw-dev
+description: Azure OpenClaw cloud template; deploy/ops via `devclaw`/`azd`.
+source:
+  type: git
+  url: https://github.com/microsoft/openclaw-dev
+  revision: b5cc2a65065d09742c3f2ec29713c46cf98e629e
+capabilities:
+  - id: openclaw-on-azure
+    kind: skill
+    path: skills/openclaw-on-azure
+    description: "Deploy, operate, and troubleshoot a secure, hosted OpenClaw AI
+      assistant on Azure (Azure Container Apps + Azure OpenAI in Foundry Models,
+      passwordless via Managed Identity, Entra ID Easy Auth, optional Microsoft
+      Teams channel) using the repo's `devclaw` wrapper around the Azure
+      Developer CLI (azd). USE FOR: deploy OpenClaw to Azure, \"devclaw up\" /
+      \"azd up\" failing, set the model or region, connect OpenClaw to Microsoft
+      Teams / use it from a phone, stop to save cost, start/restart, stream
+      logs, verify the deployment, configure Entra ID sign-in, restrict access
+      to specific users, tear everything down (nuke & pave). DO NOT USE FOR:
+      editing OpenClaw's own source on npm, general Azure resource creation
+      unrelated to this template, non-Azure hosting."
+requirements:
+  env:
+    - AZURE_LOCATION
+    - AZURE_OPENAI_LOCATION
+    - ENABLE_TEAMS
+    - SKIP_STORAGE
+    - SERVICE_MANAGEMENT_REFERENCE
+    - BOT_APP_ID
+    - BOT_APP_SECRET
+    - BOT_TENANT_ID
+    - AOAI_DEFAULT_API_VERSION
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: paypal.com/paypal
+name: PayPal
+description: PayPal remote MCP server at https://mcp.paypal.com/mcp. Access
+  PayPal payments platform. Setup guides for Claude Code, Codex, Cursor, and VS
+  Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/paypal
+capabilities:
+  - id: paypal
+    kind: mcp
+    spec:
+      serverName: paypal
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.paypal.com/mcp

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: tigerdata.com/pg-aiguide
+name: Pg
+description: pg-aiguide remote MCP server at https://mcp.tigerdata.com/docs.
+  Search pg and Tiger docs, learn database skills. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/pg-aiguide
+capabilities:
+  - id: pg-aiguide
+    kind: mcp
+    spec:
+      serverName: pg-aiguide
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.tigerdata.com/docs

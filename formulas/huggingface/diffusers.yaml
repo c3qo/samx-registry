@@ -1,0 +1,32 @@
+schemaVersion: 1
+id: huggingface/diffusers
+name: Diffusers
+description: Diffusion toolkit; models/pipelines/train/examples/docs.
+source:
+  type: git
+  url: https://github.com/huggingface/diffusers
+  revision: 236e5dd9f38e21ae40c002539368b9be9a5e0fc8
+capabilities:
+  - id: model-integration
+    kind: skill
+    path: .ai/skills/model-integration
+    description: >
+      Use when adding a new model or pipeline to diffusers, setting up file
+      structure for a new model, converting a pipeline to modular format, or
+      converting weights for a new version of an already-supported model.
+  - id: self-review
+    kind: skill
+    path: .ai/skills/self-review
+    description: >
+      Use before opening a PR, or whenever asked to self-review a diffusers
+      contribution. Applies the same rubric as the `@claude` CI (checks the diff
+      against .ai/review-rules.md, traces call paths for dead code). Reports
+      findings grouped by severity, flagging what to fix before submitting
+      (blocking issues + dead code) vs what to leave for the actual review.
+      Report-only — does not edit files.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

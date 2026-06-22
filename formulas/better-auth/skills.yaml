@@ -1,0 +1,72 @@
+schemaVersion: 1
+id: better-auth/skills
+name: Better Auth Skills
+description: Better Auth setup/auth/security skill pack.
+source:
+  type: git
+  url: https://github.com/better-auth/skills
+  revision: 6a1636950a1d7fc53602639ce7505a4a5d39c797
+capabilities:
+  - id: best-practices
+    kind: skill
+    path: better-auth/best-practices
+    description: Configure Better Auth server and client, set up database adapters,
+      manage sessions, add plugins, and handle environment variables. Use when
+      users mention Better Auth, betterauth, auth.ts, or need to set up
+      TypeScript authentication with email/password, OAuth, or plugin
+      configuration.
+  - id: create-auth
+    kind: skill
+    path: better-auth/create-auth
+    description: Scaffold and implement authentication in TypeScript/JavaScript apps
+      using Better Auth. Detect frameworks, configure database adapters, set up
+      route handlers, add OAuth providers, and create auth UI pages. Use when
+      users want to add login, sign-up, or authentication to a new or existing
+      project with Better Auth.
+  - id: emailandpassword
+    kind: skill
+    path: better-auth/emailAndPassword
+    description: Configure email verification, implement password reset flows, set
+      password policies, and customise hashing algorithms for Better Auth
+      email/password authentication. Use when users need to set up login,
+      sign-in, sign-up, credential authentication, or password security with
+      Better Auth.
+  - id: organization
+    kind: skill
+    path: better-auth/organization
+    description: Configure multi-tenant organizations, manage members and
+      invitations, define custom roles and permissions, set up teams, and
+      implement RBAC using Better Auth's organization plugin. Use when users
+      need org setup, team management, member roles, access control, or the
+      Better Auth organization plugin.
+  - id: twofactor
+    kind: skill
+    path: better-auth/twoFactor
+    description: Configure TOTP authenticator apps, send OTP codes via email/SMS,
+      manage backup codes, handle trusted devices, and implement 2FA sign-in
+      flows using Better Auth's twoFactor plugin. Use when users need MFA,
+      multi-factor authentication, authenticator setup, or login security with
+      Better Auth.
+  - id: skill
+    kind: skill
+    path: security
+    entry: SKILL.MD
+    description: Configure rate limiting, manage auth secrets, set up CSRF
+      protection, define trusted origins, secure sessions and cookies, encrypt
+      OAuth tokens, track IP addresses, and implement audit logging for Better
+      Auth. Use when users need to secure their auth setup, prevent brute force
+      attacks, or harden a Better Auth deployment.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Capability kind does not match path: security"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

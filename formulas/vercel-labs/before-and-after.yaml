@@ -1,0 +1,26 @@
+schemaVersion: 1
+id: vercel-labs/before-and-after
+name: Before and After
+description: CLI skill/tool for before/after screenshot comparison.
+source:
+  type: git
+  url: https://github.com/vercel-labs/before-and-after
+  revision: 178594233450657b198b965635b3bba443bf9129
+capabilities:
+  - id: agentation
+    kind: mcp
+    path: .mcp.json
+  - id: skill
+    kind: skill
+    path: skill
+    description: Captures before/after screenshots of web pages or elements for
+      visual comparison. Use when user says "take before and after", "screenshot
+      comparison", "visual diff", "PR screenshots", "compare old and new", or
+      needs to document UI changes. Accepts two URLs (file://, http://,
+      https://) or two image paths.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

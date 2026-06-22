@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: coindesk.com/coindesk
+name: CoinDesk
+description: CoinDesk remote MCP server at https://mcp.coindesk.com/mcp. Access
+  Live & Historical Crypto Data, Indices. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/coindesk
+capabilities:
+  - id: coindesk
+    kind: mcp
+    spec:
+      serverName: coindesk
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.coindesk.com/mcp

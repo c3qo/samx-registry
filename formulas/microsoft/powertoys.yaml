@@ -1,0 +1,50 @@
+schemaVersion: 1
+id: microsoft/powertoys
+name: Microsoft PowerToys
+description: Windows utility suite.
+source:
+  type: git
+  url: https://github.com/microsoft/powertoys
+  revision: d9216f0fc7f110d8137f6cb24739d3f95eed7401
+capabilities:
+  - id: release-note-generation
+    kind: skill
+    path: .github/skills/release-note-generation
+    description: Toolkit for generating PowerToys release notes from GitHub
+      milestone PRs or commit ranges. Use when asked to create release notes,
+      summarize milestone PRs, generate changelog, prepare release
+      documentation, generate PR review summaries locally for release notes,
+      update README for a new release, manage PR milestones, collect PRs between
+      commits/tags, or prepare release assets (download installers and compute
+      installer hashes).
+  - id: winmd-api-search
+    kind: skill
+    path: .github/skills/winmd-api-search
+    description: Find and explore Windows desktop APIs. Use when building features
+      that need platform capabilities — camera, file access, notifications, UI
+      controls, AI/ML, sensors, networking, etc. Discovers the right API for a
+      task and retrieves full type details (methods, properties, events,
+      enumeration values).
+  - id: wpf-to-winui3-migration
+    kind: skill
+    path: .github/skills/wpf-to-winui3-migration
+    description: "Guide for migrating PowerToys modules from WPF to WinUI 3 (Windows
+      App SDK). Use when asked to migrate WPF code, convert WPF XAML to WinUI,
+      replace System.Windows namespaces with Microsoft.UI.Xaml, update
+      Dispatcher to DispatcherQueue, replace DynamicResource with ThemeResource,
+      migrate imaging APIs from System.Windows.Media.Imaging to
+      Windows.Graphics.Imaging, convert WPF Window to WinUI Window, migrate
+      .resx to .resw resources, migrate custom Observable/RelayCommand to
+      CommunityToolkit.Mvvm source generators, handle WPF-UI (Lepo) to WinUI
+      native control migration, or fix installer/build pipeline issues after
+      migration. Keywords: WPF, WinUI, WinUI3, migration, porting, convert,
+      namespace, XAML, Dispatcher, DispatcherQueue, imaging, BitmapImage,
+      Window, ContentDialog, ThemeResource, DynamicResource, ResourceLoader,
+      resw, resx, CommunityToolkit, ObservableProperty, WPF-UI, SizeToContent,
+      AppWindow, SoftwareBitmap."
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

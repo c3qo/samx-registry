@@ -1,0 +1,91 @@
+schemaVersion: 1
+id: nvidia/megatron-lm
+name: Megatron-LM and Megatron Core
+description: GPU-opt transformer train/infer lib + examples.
+source:
+  type: git
+  url: https://github.com/nvidia/megatron-lm
+  revision: ad5a93bcbe82bac0dbf9a7b35c1f419b32cfe81d
+capabilities:
+  - id: mcore-build-and-dependency
+    kind: skill
+    path: skills/mcore-build-and-dependency
+    description: Container-based dev environment setup and dependency management for
+      Megatron-LM. Covers acquiring and launching the CI container, uv package
+      management, and updating uv.lock.
+  - id: mcore-testing
+    kind: skill
+    path: skills/mcore-testing
+    description: Test system for Megatron-LM. Covers test layout, recipe YAML
+      structure, adding and running unit and functional tests, golden values,
+      marker filters, and CI parity.
+  - id: mcore-cicd
+    kind: skill
+    path: skills/mcore-cicd
+    description: CI/CD reference for Megatron-LM. Covers CI pipeline structure, PR
+      scope labels, triggering internal GitLab CI (which force-pushes the
+      current branch to a pull-request/BRANCH ref — always dry-run and verify
+      the destination first; never run against shared or protected branches),
+      and CI failure investigation.
+  - id: mcore-bump-base-image
+    kind: skill
+    path: skills/mcore-bump-base-image
+    description: Bump the NVIDIA PyTorch base image
+      (`nvcr.io/nvidia/pytorch:YY.MM-py3`) used by Megatron-LM CI. Covers the
+      two pin sites (GitHub CI in `docker/.ngc_version.dev` and GitLab CI in
+      `.gitlab/stages/01.build.yml`), the post-bump CI loop (re-run functional
+      tests, refresh golden values, mark broken tests), and the gotchas that bit
+      PRs
+  - id: mcore-create-issue
+    kind: skill
+    path: skills/mcore-create-issue
+    description: Investigate a failing GitHub Actions run or job and create a GitHub
+      issue for the failure.
+  - id: mcore-linting-and-formatting
+    kind: skill
+    path: skills/mcore-linting-and-formatting
+    description: Linting and formatting for Megatron-LM. Covers running
+      autoformat.sh, tools (ruff, black, isort, pylint, mypy), and code style
+      rules.
+  - id: mcore-onboard-gb200-1node-tests
+    kind: skill
+    path: skills/mcore-onboard-gb200-1node-tests
+    description: Onboard 1-node GitHub MR functional tests for GB200 from existing
+      mr-scoped 2-node tests.
+  - id: mcore-run-on-slurm
+    kind: skill
+    path: skills/mcore-run-on-slurm
+    description: How to launch distributed Megatron-LM training jobs on a SLURM
+      cluster. Covers a minimal sbatch skeleton, environment-variable setup for
+      torch.distributed.run, CUDA_DEVICE_MAX_CONNECTIONS rules across hardware
+      and parallelism modes, container conventions, monitoring, and per-rank
+      failure diagnosis.
+  - id: mcore-split-pr
+    kind: skill
+    path: skills/mcore-split-pr
+    description: Split a PR into multiple PRs to reduce the number of required
+      CODEOWNERS reviewer groups.
+  - id: nightly-sync
+    kind: skill
+    path: skills/nightly-sync
+    description: Domain knowledge for the nightly main-to-dev sync workflow. Covers
+      merge strategy, CI architecture, failure investigation, and known issues.
+  - id: respond-to-issue
+    kind: skill
+    path: skills/respond-to-issue
+    description: Research and draft a response to a GitHub issue or question from an
+      external contributor.
+  - id: update-golden-values
+    kind: skill
+    path: skills/update-golden-values
+    description: Refresh golden values from a GitHub Actions workflow run
+      (failing-only or all jobs), score the change with average normalized
+      relative differences, and produce a PR-ready summary. Use when the user
+      asks to update goldens for a CI run, refresh golden values from a workflow
+      ID, or generate a golden-value diff summary for a PR description.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

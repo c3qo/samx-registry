@@ -1,0 +1,48 @@
+schemaVersion: 1
+id: getsentry/sentry-docs
+name: Sentry Documentation
+description: Sentry docs site; contributor docs + writing skills.
+source:
+  type: git
+  url: https://github.com/getsentry/sentry-docs
+  revision: f27a82a84b4b9b3bfa610c2d64866f0c23fd379c
+capabilities:
+  - id: commit
+    kind: skill
+    path: .agents/skills/commit
+    description: ALWAYS use this skill when committing code changes — never commit
+      directly without it. Creates commits following Sentry conventions with
+      proper conventional commit format and issue references. Trigger on any
+      commit, git commit, save changes, or commit message task.
+  - id: create-branch
+    kind: skill
+    path: .agents/skills/create-branch
+    description: Create a git branch following Sentry naming conventions. Use when
+      asked to "create a branch", "new branch", "start a branch", "make a
+      branch", "switch to a new branch", or when starting new work on the
+      default branch.
+  - id: docs-review
+    kind: skill
+    path: .claude/skills/docs-review
+    description: Review documentation for Sentry style and voice. Use when reviewing
+      or writing user-facing documentation to ensure it follows the Sentry
+      documentation style guide.
+  - id: technical-docs
+    kind: skill
+    path: .claude/skills/technical-docs
+    description: Write and review technical documentation for Sentry SDK docs. Use
+      when creating, editing, or reviewing documentation pages, especially MDX
+      files in docs/platforms/.
+  - id: sentry-docs
+    kind: skill
+    path: .
+    description: Sentry documentation site (docs.sentry.io). Use for contributing to
+      docs or understanding docs architecture. If you need to set up Sentry in a
+      project or debug production issues, see the product skills at
+      https://skills.sentry.dev.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

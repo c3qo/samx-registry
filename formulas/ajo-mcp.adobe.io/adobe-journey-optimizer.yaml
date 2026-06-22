@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: ajo-mcp.adobe.io/adobe-journey-optimizer
+name: Adobe Journey Optimizer
+description: Adobe Journey Optimizer remote MCP server at
+  https://ajo-mcp.adobe.io/mcp. Understand and troubleshoot your Journeys and
+  Campaigns. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/adobe-journey-optimizer
+capabilities:
+  - id: adobe-journey-optimizer
+    kind: mcp
+    spec:
+      serverName: adobe-journey-optimizer
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://ajo-mcp.adobe.io/mcp

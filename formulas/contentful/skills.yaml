@@ -1,0 +1,135 @@
+schemaVersion: 1
+id: contentful/skills
+name: Contentful Skills
+description: Contentful skill pack → guide/API/migration/Next.js/apps/personalization + MCP.
+source:
+  type: git
+  url: https://github.com/contentful/skills
+  revision: e61be82460ddb7fcf61299e3fb3d29564dc3e30e
+capabilities:
+  - id: contentful-guide
+    kind: skill
+    path: skills/contentful-guide
+    description: Explain core Contentful concepts and route users to the right
+      implementation skill or documentation. Use when users ask conceptual
+      questions, need terminology clarified, want help choosing between APIs
+      (CDA/CMA/CPA/GraphQL), or need guidance on the Contentful MCP server. Also
+      triggers on "Contentful 101", "which Contentful API", "how do I get
+      started", "which skill should I use", "what does X mean in Contentful",
+      "Contentful glossary", "CDA vs CPA", "CDA vs GraphQL", "how does
+      Contentful work", "Contentful architecture", "explain environments", "what
+      are aliases", "content model design", "headless CMS", "Contentful MCP",
+      "MCP server", "set up MCP", "Remix Contentful", "Astro Contentful",
+      "Gatsby Contentful", "SvelteKit Contentful", "Nuxt Contentful". Not for
+      framework-specific implementation (contentful-nextjs), migrations
+      (contentful-migration), personalization (contentful-personalization), or
+      hands-on REST/GraphQL request examples (contentful-api).
+  - id: contentful-api
+    kind: skill
+    path: skills/contentful-api
+    description: Comprehensive Contentful REST API guide. Covers Content Management
+      API (CMA) for creating/updating content, Content Delivery API (CDA) for
+      fetching published content, Preview API, Images API, and GraphQL API. All
+      examples use curl/HTTP — language-agnostic.
+  - id: contentful-nextjs
+    kind: skill
+    path: skills/contentful-nextjs
+    description: Add and configure Contentful in an existing Next.js project. Covers
+      installing the JavaScript SDK, configuring environment variables, creating
+      production and preview-aware clients, fetching content in App Router or
+      Pages Router, and wiring Draft Mode preview flows. Use when users ask to
+      integrate Contentful with Next.js, fetch entries, set up preview or draft
+      content, or configure the Contentful client. Also triggers on "Contentful
+      SDK Next.js", "contentful.js", "fetch Contentful entries", "get content
+      from Contentful", "Contentful preview", "preview mode", "Contentful
+      environment variables", "Contentful client setup", "create Contentful
+      client", "Pages Router Contentful", "getStaticProps Contentful", "Server
+      Components Contentful", "revalidate Contentful", "ISR Contentful". Not for
+      personalization or Experiences SDK setup (contentful-personalization). Not
+      for non-Next.js frameworks (contentful-guide can route to platform docs).
+  - id: contentful-migration
+    kind: skill
+    path: skills/contentful-migration
+    description: Write and run Contentful content model migration scripts using the
+      contentful-migration library and the Contentful CLI. Covers creating,
+      editing, and deleting content types and fields, validations, editor
+      interface configuration, editor layouts, sidebar widgets, entry
+      transformations, tags, annotations, and the migration context object. Use
+      when asked to write a migration, create or add a content type, add,
+      rename, or delete fields, change or update a content model, transform
+      entries, derive linked entries, configure editor controls, or run a
+      migration script. Also triggers on "migration script",
+      "contentful-migration", "schema migration", "content model migration",
+      "field validation", "editor interface", "editor layout", "sidebar widget",
+      "moveField", "changeFieldId", "rich text field", "reference field", "link
+      field". Not for SDK client setup or Next.js integration
+      (contentful-nextjs). Not for Contentful terminology or API routing
+      (contentful-guide).
+  - id: contentful-custom-app-from-scratch
+    kind: skill
+    path: skills/contentful-apps/contentful-custom-app-from-scratch
+    description: Design, scaffold, build, and validate a new Contentful App
+      Framework custom app for a customer's own repository or workspace. Use
+      when users want to create a custom app from an idea, choose App Framework
+      locations, build a sidebar app, field editor app, page app, dialog,
+      configuration screen, App Action, or Function-backed app, scaffold with
+      create-contentful-app, or make a locally testable app for an
+      organization-specific Contentful workflow. Also triggers on "build a
+      Contentful app", "custom app from scratch", "App Framework app", "sidebar
+      app", "field editor app", "page app", "app action", and "app function".
+      Not for generic Contentful API examples (contentful-api), content model
+      migrations (contentful-migration), or website integration
+      (contentful-nextjs).
+  - id: contentful-custom-app-enhancement
+    kind: skill
+    path: skills/contentful-apps/contentful-custom-app-enhancement
+    description: Improve, debug, and extend an existing Contentful App Framework
+      custom app in a customer's own repository. Use when users provide a bug
+      report, feature request, support note, customer feedback, or direct change
+      request for an existing custom app, including app configuration, sidebar,
+      field editor, dialog, page, home, App Action, Function, installation
+      parameters, local validation, or PR preparation. Also triggers on "fix my
+      Contentful app", "improve a custom app", "enhance App Framework app",
+      "debug custom app", "update sidebar app", and "custom app feature
+      request". Not for creating a brand new app from scratch
+      (contentful-custom-app-from-scratch), generic API examples
+      (contentful-api), migrations (contentful-migration), or website
+      integration (contentful-nextjs).
+  - id: contentful-personalization
+    kind: skill
+    path: skills/contentful-personalization
+    description: "Set up, debug, and build with Contentful personalization and
+      optimization. Covers readiness, SDK install guidance, static diagnostics,
+      live browser debugging, development help, and reference patterns. Use for
+      personalization, optimization, ninetailed, A/B testing, experiments,
+      audience targeting, Contentful Experiences, Experiences SDK, Studio
+      Experiences, and the experience API. Trigger keywords: personalization,
+      optimization, ninetailed, A/B test, experiment, multivariate test,
+      targeting, audience targeting, segments, variants, content variants, set
+      up personalization, personalization not working, personalization broken,
+      personalize this component, am I ready for personalization, experience
+      API, Contentful Experiences, Experiences SDK, Studio Experiences,
+      personalization in Next.js, @contentful/optimization,
+      @ninetailed/experience.js, run an experiment, check this URL, debug this
+      live page, inspect network requests, check console errors,
+      experience.ninetailed.co"
+  - id: skill-authoring
+    kind: skill
+    path: local-skills/skills/skill-authoring
+    description: Create, modify, review, and fix Agent Skills in the
+      contentful/skills repository. Use when creating a new skill from scratch,
+      editing an existing SKILL.md or package.json, reviewing skill structure
+      for correctness, fixing skill formatting or naming issues, or looking up
+      skill conventions. Also triggers on "create a skill", "add a skill",
+      "skill template", "review this skill", "fix skill structure", "SKILL.md
+      format", "naming convention", "how do I make a skill", "how do skills
+      work", "what is an Agent Skill", "skill description", "write a
+      description", "improve description", "skill frontmatter", "skill-kit",
+      "build a skill", "validate skill", "check my skill". Not for general
+      development or non-skill work.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

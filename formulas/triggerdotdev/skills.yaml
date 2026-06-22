@@ -1,0 +1,53 @@
+schemaVersion: 1
+id: triggerdotdev/skills
+name: Trigger.dev agent skills
+description: Trigger.dev skills for agents, workflows, tasks, realtime, config, setup, cost.
+source:
+  type: git
+  url: https://github.com/triggerdotdev/skills
+  revision: 793fc43cb14329c1d71d156698945fa20728ce13
+capabilities:
+  - id: trigger-agents
+    kind: skill
+    path: trigger-agents
+    description: AI agent patterns with Trigger.dev - orchestration,
+      parallelization, routing, evaluator-optimizer, and human-in-the-loop. Use
+      when building LLM-powered tasks that need parallel workers, approval
+      gates, tool calling, or multi-step agent workflows.
+  - id: trigger-config
+    kind: skill
+    path: trigger-config
+    description: Configure Trigger.dev projects with trigger.config.ts. Use when
+      setting up build extensions for Prisma, Playwright, FFmpeg, Python, or
+      customizing deployment settings.
+  - id: trigger-cost-savings
+    kind: skill
+    path: trigger-cost-savings
+    description: Analyze Trigger.dev tasks, schedules, and runs for cost
+      optimization opportunities. Use when asked to reduce spend, optimize
+      costs, audit usage, right-size machines, or review task efficiency.
+      Requires Trigger.dev MCP tools for run analysis.
+  - id: trigger-realtime
+    kind: skill
+    path: trigger-realtime
+    description: Subscribe to Trigger.dev task runs in real-time from frontend and
+      backend. Use when building progress indicators, live dashboards, streaming
+      AI/LLM responses, or React components that display task status.
+  - id: trigger-setup
+    kind: skill
+    path: trigger-setup
+    description: Set up Trigger.dev in your project. Use when adding Trigger.dev for
+      the first time, creating trigger.config.ts, or initializing the trigger
+      directory.
+  - id: trigger-tasks
+    kind: skill
+    path: trigger-tasks
+    description: Build AI agents, workflows and durable background tasks with
+      Trigger.dev. Use when creating tasks, triggering jobs, handling retries,
+      scheduling cron jobs, or implementing queues and concurrency control.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

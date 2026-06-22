@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: mcp-demo.airwallex.com/airwallex
+name: Airwallex
+description: Airwallex remote MCP server at
+  https://mcp-demo.airwallex.com/developer. Integrate with the Airwallex
+  Platform using Claude. Setup guides for Claude Code, Codex, Cursor, and VS
+  Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/airwallex
+capabilities:
+  - id: airwallex
+    kind: mcp
+    spec:
+      serverName: airwallex
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp-demo.airwallex.com/developer

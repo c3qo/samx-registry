@@ -1,0 +1,151 @@
+schemaVersion: 1
+id: pulumi/agent-skills
+name: Pulumi Agent Skills
+description: Agent skills for Pulumi IaC, migration, ESC, provider maintenance, Neo handoff.
+source:
+  type: git
+  url: https://github.com/pulumi/agent-skills
+  revision: 478096e94bee50903fba4b0869d1c617956ae3a4
+capabilities:
+  - id: pulumi-overview
+    kind: skill
+    path: pulumi/skills/pulumi-overview
+    description: Use this skill for any task that creates, modifies, inspects, or
+      destroys cloud infrastructure or SaaS configuration, from one-off CLI
+      operations to full multi-resource projects, across providers in the Pulumi
+      ecosystem. A typical project spans many providers (AWS or Azure or GCP,
+      Kubernetes, Cloudflare, Auth0, Datadog, Vercel, and others), and Pulumi
+      drives them through one CLI, one state model, and one credential layer.
+      Trigger even when the user does not name Pulumi; phrasings like "deploy
+      this app," "provision a database," "stand up a VPC," "configure Auth0,"
+      "set up Datadog monitoring," or "tear down staging" qualify. Also trigger
+      for tasks that migrate, port, or convert existing infrastructure code
+      (Terraform, CloudFormation, CDK, Bicep, ARM) to Pulumi. Do not trigger for
+      application runtime code that reads or writes data via cloud SDKs; that is
+      application code, not infrastructure.
+  - id: pulumi-best-practices
+    kind: skill
+    path: pulumi/skills/pulumi-best-practices
+    description: Load when the user is writing, reviewing, or debugging Pulumi
+      TypeScript/Python programs; asks about Output<T> or apply() usage; wants
+      to create ComponentResource classes; needs to refactor resources without
+      destroying them (aliases); is setting up secrets or config; or is
+      configuring a pulumi preview/up CI workflow. Also load for questions about
+      resource dependency order, parent/child resource relationships, or
+      pulumi.interpolate.
+  - id: pulumi-esc
+    kind: skill
+    path: pulumi/skills/pulumi-esc
+    description: Guidance for working with Pulumi ESC (Environments, Secrets, and
+      Configuration). Use when users ask about managing secrets, configuration,
+      environments, short-term credentials, configuring OIDC for AWS, Azure,
+      GCP, integrating with secret stores (AWS Secrets Manager, Azure Key Vault,
+      HashiCorp Vault, 1Password), or using ESC with Pulumi stacks.
+  - id: provider-upgrade
+    kind: skill
+    path: pulumi/skills/provider-upgrade
+    description: >
+      Upgrade any Pulumi provider to a newer version and reconcile the resulting
+      diff. Use when users want to upgrade or update a provider (including
+      editing package.json, requirements.txt, pyproject.toml, go.mod, or
+      Pulumi.yaml to bump a provider SDK), check for breaking changes before or
+      during an upgrade, fix resources that broke after a provider upgrade, or
+      resolve unexpected replacements, creates, or deletes in a post-upgrade
+      preview. Applies to all providers (aws, azure-native, gcp, kubernetes,
+      aws-native, cloudflare, datadog, etc.) — not just Tier 1. Do NOT use for
+      querying which stacks use what package versions; use skill `package-usage`
+      for cross-stack audits. Do NOT use for general infrastructure tasks.
+  - id: pulumi-automation-api
+    kind: skill
+    path: pulumi/skills/pulumi-automation-api
+    description: Load this skill when a user asks how to run Pulumi
+      programmatically, embed Pulumi in an application, orchestrate multiple
+      stacks in code, build a self-service infrastructure portal, replace pulumi
+      CLI shell scripts with code, or use the Pulumi Automation API
+      (LocalWorkspace, createOrSelectStack, inline programs). Also load for
+      questions about multi-stack sequencing, parallel deployments, or passing
+      outputs between stacks via code.
+  - id: pulumi-component
+    kind: skill
+    path: pulumi/skills/pulumi-component
+    description: Guide for authoring Pulumi ComponentResource classes. Use when
+      creating reusable infrastructure components, designing component
+      interfaces, setting up multi-language support, or distributing component
+      packages.
+  - id: package-usage
+    kind: skill
+    path: pulumi/skills/package-usage
+    description: Track which stacks across a Pulumi organization use a specific
+      package and at what versions. Use for cross-stack audits, identifying
+      outdated or unmaintained package versions across many stacks, finding
+      affected stacks before publishing breaking changes to a component package,
+      or planning coordinated upgrade rollouts. Do NOT use for upgrading a cloud
+      provider package (pulumi-aws, pulumi-azure-native, pulumi-gcp,
+      pulumi-kubernetes, etc.) in a single project — use skill
+      `provider-upgrade` instead. Do NOT use for general infrastructure
+      creation, resource provisioning, or how-to questions about a package.
+  - id: pulumi-neo-handoff
+    kind: skill
+    path: delegation/skills/pulumi-neo-handoff
+    description: Hand off the current thread to a new Pulumi Neo task as a one-way
+      transfer. Use when the user explicitly asks to hand off, send, transfer,
+      or continue current work in Pulumi Neo (e.g. "hand this to Neo", "continue
+      in Neo", "/neo-handoff"). Do not load when the user only mentions Neo,
+      asks what Neo can do, asks for an AI-written PR or preview explanation, or
+      hands off to a different agent.
+  - id: cloudformation-to-pulumi
+    kind: skill
+    path: migration/skills/cloudformation-to-pulumi
+    description: Convert, migrate, or import AWS CloudFormation stacks or templates
+      into Pulumi programs. Load this skill whenever a user wants to move from
+      CloudFormation to Pulumi, convert a CFN template, import existing
+      CloudFormation-managed resources into Pulumi, or asks about
+      CloudFormation-to-Pulumi migration in any form. Also load when the user
+      mentions cdk-importer in a migration context.
+  - id: pulumi-arm-to-pulumi
+    kind: skill
+    path: migration/skills/pulumi-arm-to-pulumi
+    description: Convert or migrate Azure ARM (Azure Resource Manager) templates,
+      Bicep templates, or code to Pulumi, including importing existing Azure
+      resources. This skill MUST be loaded whenever a user requests migration,
+      conversion, or import of ARM templates, Bicep templates, ARM code, Bicep
+      code, or Azure resources to Pulumi.
+  - id: pulumi-cdk-to-pulumi
+    kind: skill
+    path: migration/skills/pulumi-cdk-to-pulumi
+    description: Load this skill when a user wants to migrate, convert, port,
+      translate, or move an AWS CDK application (including CDK stacks,
+      constructs, or CloudFormation-synthesized templates) to Pulumi. Phrases
+      such as "convert CDK to Pulumi", "migrate CDK app", "port CDK stacks",
+      "replace CDK with Pulumi", "stop using CDK". Do NOT load for general CDK
+      questions, CDK-only help, or CDK vs Pulumi comparisons where no migration
+      is requested.
+  - id: pulumi-terraform-to-pulumi
+    kind: skill
+    path: migration/skills/pulumi-terraform-to-pulumi
+    description: Migrate Terraform/OpenTofu projects to Pulumi, including
+      translating HCL source code and/or importing Terraform state into a Pulumi
+      stack. Use when a user wants to convert Terraform to Pulumi, migrate from
+      HCL, or import tfstate into Pulumi. Do NOT trigger for general
+      Terraform-vs-Pulumi comparisons or questions about using both tools
+      side-by-side.
+  - id: pulumi-upgrade-provider
+    kind: skill
+    path: package-maintenance/skills/pulumi-upgrade-provider
+    description: Automate Pulumi provider repo upgrades with the `upgrade-provider`
+      tool. Use when upgrading a pulumi provider repository to a new upstream
+      version, running `upgrade-provider`, and addressing its common failure
+      modes like patch conflicts or missing module mappings.
+  - id: upstream-patches
+    kind: skill
+    path: package-maintenance/skills/upstream-patches
+    description: Create, amend, remove, and rebase patches for Terraform provider
+      submodules using `./scripts/upstream.sh`. Use when `upgrade-provider` or
+      manual patch work needs owning-patch lookup, patch conflict fixes,
+      patch/hunk removal, or upstream rebase.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

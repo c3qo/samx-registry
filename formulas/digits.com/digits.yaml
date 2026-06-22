@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: digits.com/digits
+name: Digits
+description: Digits remote MCP server at https://api.digits.com/mcp. Track and
+  analyze your finances with Digits. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/digits
+capabilities:
+  - id: digits
+    kind: mcp
+    spec:
+      serverName: digits
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.digits.com/mcp

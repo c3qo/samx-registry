@@ -1,0 +1,75 @@
+schemaVersion: 1
+id: axiomhq/skills
+name: Axiom Skills
+description: Axiom agent skills pack.
+source:
+  type: git
+  url: https://github.com/axiomhq/skills
+  revision: 25aa0783b3414d23c35065fc83da8204d06b901e
+capabilities:
+  - id: axiom-alerting
+    kind: skill
+    path: skills/axiom-alerting
+    description: Create and manage Axiom monitors and notifiers via the v2 public
+      API. Use when building alerting, routing notifications, validating monitor
+      behavior, and maintaining alert configurations end-to-end.
+  - id: building-dashboards
+    kind: skill
+    path: skills/building-dashboards
+    description: Designs and builds Axiom dashboards via API. Covers chart types,
+      APL and metrics/MPL query patterns, SmartFilters, layout, and
+      configuration options. Use when creating dashboards, migrating from
+      Splunk, or configuring chart options.
+  - id: controlling-costs
+    kind: skill
+    path: skills/controlling-costs
+    description: Analyzes Axiom query patterns to find unused data, then builds
+      dashboards and monitors for cost optimization. Use when asked to reduce
+      Axiom costs, find unused columns or field values, identify data waste, or
+      track ingest spend.
+  - id: query-metrics
+    kind: skill
+    path: skills/query-metrics
+    description: Runs metrics queries against Axiom MetricsDB via scripts. Discovers
+      available metrics, tags, and tag values. Use when asked to query metrics,
+      explore metric datasets, check metric values, or investigate OTel metrics
+      data.
+  - id: spl-to-apl
+    kind: skill
+    path: skills/spl-to-apl
+    description: Translates Splunk SPL queries to Axiom APL. Provides command
+      mappings, function equivalents, and syntax transformations. Use when
+      migrating from Splunk, converting SPL queries, or learning APL equivalents
+      of SPL patterns.
+  - id: sre
+    kind: skill
+    path: skills/sre
+    description: Expert SRE investigator for incidents and debugging. Uses
+      hypothesis-driven methodology and systematic triage. Can query Axiom
+      observability when available. Use for incident response, root cause
+      analysis, production debugging, or log investigation.
+  - id: writing-evals
+    kind: skill
+    path: skills/writing-evals
+    description: Scaffolds evaluation suites for the Axiom AI SDK. Generates eval
+      files, scorers, flag schemas, and config from natural-language
+      descriptions. Use when creating evals, writing scorers, setting up flag
+      schemas, or configuring axiom.config.ts.
+requirements:
+  env:
+    - AXIOM_URL
+    - AXIOM_TOKEN
+    - AXIOM_DATASET
+    - AXIOM_ORG_ID
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Missing evidence for environment variable: AXIOM_ORG_ID"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

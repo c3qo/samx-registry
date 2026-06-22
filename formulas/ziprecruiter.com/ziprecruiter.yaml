@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: ziprecruiter.com/ziprecruiter
+name: ZipRecruiter
+description: ZipRecruiter remote MCP server at https://api.ziprecruiter.com/mcp.
+  Job search made easy. Setup guides for Claude Code, Codex, Cursor, and VS
+  Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/ziprecruiter
+capabilities:
+  - id: ziprecruiter
+    kind: mcp
+    spec:
+      serverName: ziprecruiter
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.ziprecruiter.com/mcp

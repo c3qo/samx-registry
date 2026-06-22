@@ -1,0 +1,25 @@
+schemaVersion: 1
+id: resend/react-email
+name: React Email
+description: Monorepo for React-based HTML email comps, CLI, render/editor/UI
+  pkgs, examples.
+source:
+  type: git
+  url: https://github.com/resend/react-email
+  revision: 0f39a5e27fe56c37e72eadd8d3ce43fcce9b29cb
+capabilities:
+  - id: react-email
+    kind: skill
+    path: skills/react-email
+    description: Use when building HTML email templates with React components,
+      adding a visual email editor to an application using the React Email
+      visual editor, rendering emails to HTML, or sending emails with Resend.
+      Covers welcome emails, password resets, notifications, order
+      confirmations, newsletters, transactional emails, and the embeddable email
+      editor component.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

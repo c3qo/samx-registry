@@ -1,0 +1,140 @@
+schemaVersion: 1
+id: getsentry/webvitals.com
+name: WebVitals.com
+description: AI web perf analysis → CrUX, Claude, tech detect, metric pages.
+source:
+  type: git
+  url: https://github.com/getsentry/webvitals.com
+  revision: 54b7b61aace59b57499679259c743436789b48e9
+capabilities:
+  - id: agents-md
+    kind: skill
+    path: .agents/skills/agents-md
+    description: This skill should be used when the user asks to "create AGENTS.md",
+      "update AGENTS.md", "maintain agent docs", "set up CLAUDE.md", or needs to
+      keep agent instructions concise. Guides discovery of local skills and
+      enforces minimal documentation style.
+  - id: ai-sdk
+    kind: skill
+    path: .agents/skills/ai-sdk
+    description: 'Answer questions about the AI SDK and help build AI-powered
+      features. Use when developers: (1) Ask about AI SDK functions like
+      generateText, streamText, ToolLoopAgent, embed, or tools, (2) Want to
+      build AI agents, chatbots, RAG systems, or text generation features, (3)
+      Have questions about AI providers (OpenAI, Anthropic, Google, etc.),
+      streaming, tool calling, structured output, or embeddings, (4) Use React
+      hooks like useChat or useCompletion. Triggers on: "AI SDK", "Vercel AI
+      SDK", "generateText", "streamText", "add AI to my app", "build an agent",
+      "tool calling", "structured output", "useChat".'
+  - id: frontend-design
+    kind: skill
+    path: .agents/skills/frontend-design
+    description: Create distinctive, production-grade frontend interfaces with high
+      design quality. Use this skill when the user asks to build web components,
+      pages, artifacts, posters, or applications (examples include websites,
+      landing pages, dashboards, React components, HTML/CSS layouts, or when
+      styling/beautifying any web UI). Generates creative, polished code and UI
+      design that avoids generic AI aesthetics.
+  - id: next-best-practices
+    kind: skill
+    path: .agents/skills/next-best-practices
+    description: Next.js best practices - file conventions, RSC boundaries, data
+      patterns, async APIs, metadata, error handling, route handlers, image/font
+      optimization, bundling
+  - id: sentry-fix-issues
+    kind: skill
+    path: .agents/skills/sentry-fix-issues
+    description: Find and fix issues from Sentry using MCP. Use when asked to fix
+      Sentry errors, debug production issues, investigate exceptions, or resolve
+      bugs reported in Sentry. Methodically analyzes stack traces, breadcrumbs,
+      traces, and context to identify root causes.
+  - id: web-design-guidelines
+    kind: skill
+    path: .agents/skills/web-design-guidelines
+    description: Review UI code for Web Interface Guidelines compliance. Use when
+      asked to "review my UI", "check accessibility", "audit design", "review
+      UX", or "check my site against best practices".
+  - id: code-simplifier
+    kind: skill
+    path: .agents/skills/code-simplifier
+    description: Simplifies and refines code for clarity, consistency, and
+      maintainability while preserving all functionality. Use when asked to
+      "simplify code", "clean up code", "refactor for clarity", "improve
+      readability", or review recently modified code for elegance. Focuses on
+      project-specific best practices.
+  - id: commit
+    kind: skill
+    path: .agents/skills/commit
+    description: Create commit messages following Sentry conventions. Use when
+      committing code changes, writing commit messages, or formatting git
+      history. Follows conventional commits with Sentry-specific issue
+      references.
+  - id: create-pr
+    kind: skill
+    path: .agents/skills/create-pr
+    description: Create pull requests following Sentry conventions. Use when opening
+      PRs, writing PR descriptions, or preparing changes for review. Follows
+      Sentry's code review guidelines.
+  - id: marketing-psychology
+    kind: skill
+    path: .agents/skills/marketing-psychology
+    description: When the user wants to apply psychological principles, mental
+      models, or behavioral science to marketing. Also use when the user
+      mentions 'psychology,' 'mental models,' 'cognitive bias,' 'persuasion,'
+      'behavioral science,' 'why people buy,' 'decision-making,' or 'consumer
+      behavior.' This skill provides 70+ mental models organized for marketing
+      application.
+  - id: programmatic-seo
+    kind: skill
+    path: .agents/skills/programmatic-seo
+    description: When the user wants to create SEO-driven pages at scale using
+      templates and data. Also use when the user mentions "programmatic SEO,"
+      "template pages," "pages at scale," "directory pages," "location pages,"
+      "[keyword] + [city] pages," "comparison pages," "integration pages," or
+      "building many pages for SEO." For auditing existing SEO issues, see
+      seo-audit.
+  - id: skill-creator
+    kind: skill
+    path: .agents/skills/skill-creator
+    description: Create new agent skills following the Agent Skills specification.
+      Use when asked to "create a skill", "add a new skill", "write a skill",
+      "make a skill", "build a skill", or scaffold a new skill with SKILL.md.
+      Guides through requirements, writing, registration, and verification.
+  - id: vercel-composition-patterns
+    kind: skill
+    path: .agents/skills/vercel-composition-patterns
+    description: React composition patterns that scale. Use when refactoring
+      components with boolean prop proliferation, building flexible component
+      libraries, or designing reusable APIs. Triggers on tasks involving
+      compound components, render props, context providers, or component
+      architecture. Includes React 19 API changes.
+  - id: vercel-react-best-practices
+    kind: skill
+    path: .agents/skills/vercel-react-best-practices
+    description: React and Next.js performance optimization guidelines from Vercel
+      Engineering. This skill should be used when writing, reviewing, or
+      refactoring React/Next.js code to ensure optimal performance patterns.
+      Triggers on tasks involving React components, Next.js pages, data
+      fetching, bundle optimization, or performance improvements.
+requirements:
+  env:
+    - ANTHROPIC_API_KEY
+    - GOOGLE_API_KEY
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: unlinked-hook-files
+    severity: warning
+    category: hooks
+    message: Repository contains hook-related files that are not linked by this formula.
+    paths:
+      - hooks/use-mobile.ts
+      - hooks/use-reduced-motion.ts
+      - hooks/useLoadState.tsx
+      - hooks/useScrollFade.ts
+      - hooks/useVitalsStore.ts
+    reason: These files lack explicit appliesTo mappings, supported targets, or
+      supported file types.
+    effect: SAMX will not install, link, or execute these files.
+    action: Add explicit hook entries only after manual review.

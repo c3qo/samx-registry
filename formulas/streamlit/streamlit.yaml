@@ -1,0 +1,126 @@
+schemaVersion: 1
+id: streamlit/streamlit
+name: Streamlit
+description: Streamlit web app framework; agent/skill toolkit.
+source:
+  type: git
+  url: https://github.com/streamlit/streamlit
+  revision: d65a3aae5e9a5b611e41148b72742b193d7a9e71
+capabilities:
+  - id: addressing-pr-review-comments
+    kind: skill
+    path: .claude/skills/addressing-pr-review-comments
+    description: Address all valid review comments on a PR for the current branch in
+      the streamlit/streamlit repo. Covers both inline review comments and
+      general PR (issue) comments. Use when a PR has reviewer feedback to
+      address, including code changes, style fixes, and documentation updates.
+  - id: assessing-external-test-risk
+    kind: skill
+    path: .claude/skills/assessing-external-test-risk
+    description: Assesses whether branch or PR changes are high-risk for externally
+      hosted or embedded Streamlit usage and recommends whether external e2e
+      coverage with `@pytest.mark.external_test` is needed. Use during code
+      review, PR triage, or test planning when changes touch routing, auth,
+      websocket/session behavior, embedding, assets, cross-origin behavior,
+      SiS/Snowflake runtime, storage, or security headers.
+  - id: checking-changes
+    kind: skill
+    path: .claude/skills/checking-changes
+    description: Validates all code changes before committing by running format,
+      lint, type, and unit test checks. Use after making backend (Python) or
+      frontend (TypeScript) changes, before committing or finishing a work
+      session.
+  - id: creating-pull-requests
+    kind: skill
+    path: .claude/skills/creating-pull-requests
+    description: Creates a draft pull request on GitHub with proper labels, branch
+      naming, and description formatting. Use when changes are ready to be
+      submitted as a PR to the streamlit/streamlit repository.
+  - id: debugging-streamlit
+    kind: skill
+    path: .claude/skills/debugging-streamlit
+    description: Debug Streamlit frontend and backend changes using make debug with
+      hot-reload. Use when testing code changes, investigating bugs, checking UI
+      behavior, or needing screenshots of the running app.
+  - id: discovering-make-commands
+    kind: skill
+    path: .claude/skills/discovering-make-commands
+    description: Lists available make commands for Streamlit development. Use for
+      build, test, lint, or format tasks.
+  - id: finalizing-pr
+    kind: skill
+    path: .claude/skills/finalizing-pr
+    description: Finalizes branch changes for merging by simplifying code, running
+      checks, reviewing changes, and creating a PR if needed. Use when ready to
+      merge changes into the target branch.
+  - id: fixing-flaky-e2e-tests
+    kind: skill
+    path: .claude/skills/fixing-flaky-e2e-tests
+    description: Diagnose and fix flaky Playwright e2e tests. Use when tests fail
+      intermittently, show timeout errors, have snapshot mismatches, or exhibit
+      browser-specific failures.
+  - id: fixing-streamlit-ci
+    kind: skill
+    path: .claude/skills/fixing-streamlit-ci
+    description: Analyze and fix failed GitHub Actions CI jobs for the current
+      branch/PR. Use when CI checks fail, PR checks show failures, or you need
+      to diagnose lint/type/test errors and verify fixes locally.
+  - id: generating-changelog
+    kind: skill
+    path: .claude/skills/generating-changelog
+    description: Generates polished website release notes between two git tags for
+      docs.streamlit.io. Use when preparing a new Streamlit release or reviewing
+      changes between versions.
+  - id: implementing-feature
+    kind: skill
+    path: .claude/skills/implementing-feature
+    description: Implement a feature from a product/tech spec, URL, or GitHub issue.
+      Reads the spec, implements the feature following Streamlit patterns, and
+      creates a merge-ready PR. Use when given a spec folder path, document URL,
+      or issue link to implement.
+  - id: improving-frontend-coverage
+    kind: skill
+    path: .claude/skills/improving-frontend-coverage
+    description: Runs frontend unit tests with coverage, analyzes coverage reports,
+      and implements meaningful tests to increase coverage by ~0.2%. Use when
+      you want to systematically improve frontend test coverage with high-value
+      test cases.
+  - id: improving-python-coverage
+    kind: skill
+    path: .claude/skills/improving-python-coverage
+    description: Runs Python unit tests with coverage, analyzes coverage reports,
+      and implements meaningful tests to increase coverage by ~0.2%. Use when
+      you want to systematically improve Python test coverage with high-value
+      test cases.
+  - id: sharing-pr-agent-artifacts
+    kind: skill
+    path: .claude/skills/sharing-pr-agent-artifacts
+    description: Uploads agent-generated artifacts (specs, plans, learnings) to the
+      streamlit.wiki for sharing via PR comments. Use when you have agent
+      artifacts to share with reviewers.
+  - id: understanding-streamlit-architecture
+    kind: skill
+    path: .claude/skills/understanding-streamlit-architecture
+    description: Explains Streamlit's internal architecture including backend
+      runtime, frontend rendering, and WebSocket communication. Use when
+      debugging cross-layer issues, understanding how features work end-to-end,
+      planning architectural changes, or onboarding to the codebase. Covers
+      ForwardMsg/BackMsg protocol, script rerun model, element tree, widget
+      state management, and more.
+  - id: updating-internal-docs
+    kind: skill
+    path: .claude/skills/updating-internal-docs
+    description: Review internal documentation (*.md files) against the current
+      codebase state and propose updates for outdated or incorrect information.
+  - id: writing-spec
+    kind: skill
+    path: .claude/skills/writing-spec
+    description: Writes product and tech specs for new Streamlit features. Use when
+      designing new API commands, widgets, or significant changes that need team
+      review before implementation.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

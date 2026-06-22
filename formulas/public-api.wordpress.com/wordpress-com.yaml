@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: public-api.wordpress.com/wordpress-com
+name: WordPress Com
+description: WordPress.com remote MCP server at
+  https://public-api.wordpress.com/wpcom/v2/mcp/v1. Secure AI access to manage
+  your WordPress.com sites. Setup guides for Claude Code, Codex, Cursor, and VS
+  Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/wordpress-com
+capabilities:
+  - id: wordpress-com
+    kind: mcp
+    spec:
+      serverName: wordpress-com
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://public-api.wordpress.com/wpcom/v2/mcp/v1

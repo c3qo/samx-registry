@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: wisdom-api.enterpret.com/enterpret
+name: Enterpret
+description: Enterpret remote MCP server at
+  https://wisdom-api.enterpret.com/server/mcp. Get answers from unified feedback
+  of your customers.. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/enterpret
+capabilities:
+  - id: enterpret
+    kind: mcp
+    spec:
+      serverName: enterpret
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://wisdom-api.enterpret.com/server/mcp

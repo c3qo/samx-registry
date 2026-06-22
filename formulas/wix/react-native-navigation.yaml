@@ -1,0 +1,56 @@
+schemaVersion: 1
+id: wix/react-native-navigation
+name: React Native Navigation
+description: Native nav for iOS/Android.
+source:
+  type: git
+  url: https://github.com/wix/react-native-navigation
+  revision: 34ca8b5ae2b97aa3cbd683b7329c7cde822aebb1
+capabilities:
+  - id: rnn-codebase
+    kind: skill
+    path: .claude/skills/rnn-codebase
+    description: Navigate and work with the react-native-navigation (RNN) codebase.
+      Use when fixing bugs, adding features, tracing command flows,
+      understanding options resolution, or working across JS/iOS/Android layers
+      in this repo.
+  - id: engine-e2e
+    kind: skill
+    path: .cursor/skills/engine-e2e
+    description: Run Wix Engine (mobile-apps-engine) iOS E2E tests locally to
+      validate RNN changes. Use when you need to test RNN fixes against the
+      Engine's Detox test suite.
+  - id: ios26-navigation
+    kind: skill
+    path: .cursor/skills/ios26-navigation
+    description: Reference for iOS 26 navigation bar, tab bar, toolbar, and Liquid
+      Glass building blocks (UITab, scroll-edge effects, search placement,
+      shared-background platter, UIButton glass configurations, UIGlassEffect /
+      UIGlassContainerEffect, UINavigationItem.style navigator/browser/editor,
+      UICornerConfiguration / concentric corners, UISheetPresentationController,
+      SF Symbols 7) plus the internal view hierarchy of UIBarButtonItem and
+      UIToolbar, and how react-native-navigation maps to all of it. Use when
+      adding or fixing iOS 26 behavior in RNN's top bar, bottom tabs, bar
+      buttons, toolbar, modals, or any glass-styled custom chrome; when
+      investigating iOS 26-only regressions; or when deciding how to expose a
+      new iOS 26 capability through RNN options.
+  - id: rnn-codebase-2
+    kind: skill
+    path: .cursor/skills/rnn-codebase
+    description: Navigate and work with the react-native-navigation (RNN) codebase.
+      Use when fixing bugs, adding features, tracing command flows,
+      understanding options resolution, or working across JS/iOS/Android layers
+      in this repo.
+  - id: rnn-codebase-3
+    kind: skill
+    path: .github/skills/rnn-codebase
+    description: Navigate and work with the react-native-navigation (RNN) codebase.
+      Use when fixing bugs, adding features, tracing command flows,
+      understanding options resolution, or working across JS/iOS/Android layers
+      in this repo.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

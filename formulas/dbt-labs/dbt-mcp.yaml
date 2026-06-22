@@ -1,0 +1,19 @@
+schemaVersion: 1
+id: dbt-labs/dbt-mcp
+name: dbt MCP Server
+description: A MCP server for interacting with dbt resources.
+source:
+  type: git
+  url: https://github.com/dbt-labs/dbt-mcp
+  revision: 2a7af75c1d5c79aaefed232bf4e6a0f2151076a4
+capabilities:
+  - id: release-dbt-mcp
+    kind: skill
+    path: .claude/skills/release-dbt-mcp
+    description: Release a new version of dbt-mcp to PyPi
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

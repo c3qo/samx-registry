@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: clarity-sfdr20-mcp.pro.clarity.ai/clarity-ai
+name: Clarity AI
+description: Clarity AI remote MCP server at
+  https://clarity-sfdr20-mcp.pro.clarity.ai/mcp. Simulate fund classifications
+  under proposed SFDR 2.0. Setup guides for Claude Code, Codex, Cursor, and VS
+  Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/clarity-ai
+capabilities:
+  - id: clarity-ai
+    kind: mcp
+    spec:
+      serverName: clarity-ai
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://clarity-sfdr20-mcp.pro.clarity.ai/mcp

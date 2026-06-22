@@ -1,0 +1,37 @@
+schemaVersion: 1
+id: langchain-ai/langsmith-skills
+name: LangSmith Skills
+description: Agent skills for LangSmith tracing, datasets, evals.
+source:
+  type: git
+  url: https://github.com/langchain-ai/langsmith-skills
+  revision: 68c8bb6b4b7cb5b20870b7b6afb340f6c958b0e6
+capabilities:
+  - id: langsmith-dataset
+    kind: skill
+    path: config/skills/langsmith-dataset
+    description: INVOKE THIS SKILL when creating evaluation datasets, uploading
+      datasets to LangSmith, or managing existing datasets. Covers dataset types
+      (final_response, single_step, trajectory, RAG), CLI management commands,
+      SDK-based creation, and example management. Uses the langsmith CLI tool.
+  - id: langsmith-evaluator
+    kind: skill
+    path: config/skills/langsmith-evaluator
+    description: "INVOKE THIS SKILL when building evaluation pipelines for
+      LangSmith. Covers three core components: (1) Creating Evaluators -
+      LLM-as-Judge, custom code; (2) Defining Run Functions - how to capture
+      outputs and trajectories from your agent; (3) Running Evaluations -
+      locally with evaluate() or auto-run via LangSmith. Uses the langsmith CLI
+      tool."
+  - id: langsmith-trace
+    kind: skill
+    path: config/skills/langsmith-trace
+    description: INVOKE THIS SKILL when working with LangSmith tracing OR querying
+      traces. Covers adding tracing to applications and querying/exporting trace
+      data. Uses the langsmith CLI tool.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: day.ai/day-ai
+name: Day AI
+description: Day AI remote MCP server at https://day.ai/api/mcp. Know everything
+  about your prospects & customers with CRMx. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/day-ai
+capabilities:
+  - id: day-ai
+    kind: mcp
+    spec:
+      serverName: day-ai
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://day.ai/api/mcp

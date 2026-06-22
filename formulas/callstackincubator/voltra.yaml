@@ -1,0 +1,25 @@
+schemaVersion: 1
+id: callstackincubator/voltra
+name: Voltra
+description: Monorepo for React Native JSX/widgets, Live Activities, server
+  renderers, Expo plugins, CLI.
+source:
+  type: git
+  url: https://github.com/callstackincubator/voltra
+  revision: c749782887a80ad4c9e78dd06466115fad8f2590
+capabilities:
+  - id: voltra
+    kind: skill
+    path: skills/voltra
+    description: Build, review, refactor, configure, or debug Voltra code using
+      Voltra JSX, Voltra JS APIs, the Expo config plugin, and the Voltra CLI.
+      Use when the user asks about charts, Live Activities, Dynamic Island UI,
+      iOS widgets, scheduled widgets, Android widgets, ongoing notifications,
+      image handling, app.json plugin config, React Native CLI setup, or Voltra
+      push update flows.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

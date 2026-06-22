@@ -1,0 +1,72 @@
+schemaVersion: 1
+id: flutter/flutter
+name: Flutter
+description: Flutter SDK repo with agent skills for review, flake analysis,
+  release lookup, tool rebuild, SDK/browser updates.
+source:
+  type: git
+  url: https://github.com/flutter/flutter
+  revision: 2d594b0b5c7093d7b17a4407e47a96fd6aa2e2b0
+capabilities:
+  - id: code-review
+    kind: skill
+    path: .agents/agents/reidbaker-agent/skills/code-review
+    description: Performs a comprehensive, multi-step code review of pull requests
+      or local code changes, using iterative refinement (generation, critique,
+      synthesis) to ensure high-quality, actionable feedback. Use when you need
+      to review code changes thoroughly.
+  - id: natural-writing
+    kind: skill
+    path: .agents/agents/reidbaker-agent/skills/natural-writing
+    description: Contains well-defined rules for creating natural, accurate, and
+      readable writing. Use whenever authoring longer text, like analysis
+      documents, PR or CL descriptions, or documentation.
+  - id: analyze-github-flake
+    kind: skill
+    path: .agents/skills/analyze-github-flake
+    description: Expertise in analyzing flake github issues in the flutter/flutter
+      repository. Use when a user wants to analyze the flakiness of a specific
+      link to a flutter github issue.
+  - id: dart-log-failure-parser
+    kind: skill
+    path: .agents/skills/dart-log-failure-parser
+    description: Parse failures from Dart and Flutter test logs.
+  - id: find-release
+    kind: skill
+    path: .agents/skills/find-release
+    description: A skill to find the lowest Dart and Flutter release containing a
+      given commit. Use this skill whenever users ask about when a commit landed
+      in Flutter or Dart releases, inquire about release versions for specific
+      SHAs, or want to know if a commit is included in stable, beta, or dev
+      channels for Flutter/Dart projects.
+  - id: flutter-pr-checks-finder
+    kind: skill
+    path: .agents/skills/flutter-pr-checks-finder
+    description: Find failing checks on a Flutter PR and locate the corresponding
+      LUCI log URLs.
+  - id: rebuilding-flutter-tool
+    kind: skill
+    path: .agents/skills/rebuilding-flutter-tool
+    description: Rebuilds the Flutter tool and CLI. Use when a user asks to compile,
+      update, regenerate, or rebuild the Flutter tool or CLI.
+  - id: updating-android-sdk
+    kind: skill
+    path: .agents/skills/updating-android-sdk
+    description: Upgrades Flutter's Android SDK dependency to a new Android API
+      version (or preview/canary release) in packages.txt, verifies CIPD tag
+      uniqueness, and packages/uploads the binaries using
+      create_cipd_packages.sh across macOS, Linux, and Windows. Use whenever a
+      user wants to pick up a new version of Android or upload Android SDK
+      packages to CIPD.
+  - id: upgrade-browser
+    kind: skill
+    path: .agents/skills/upgrade-browser
+    description: Upgrade browser versions (Chrome or Firefox) in the Flutter Web
+      Engine and/or Framework tests. Use when asked to roll or upgrade Chrome or
+      Firefox to a newer version.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

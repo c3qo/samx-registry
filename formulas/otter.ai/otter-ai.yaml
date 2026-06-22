@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: otter.ai/otter-ai
+name: Otter Ai
+description: Otter.ai remote MCP server at https://mcp.otter.ai/mcp. Unlock your
+  meeting intelligence. Setup guides for Claude Code, Codex, Cursor, and VS
+  Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/otter-ai
+capabilities:
+  - id: otter-ai
+    kind: mcp
+    spec:
+      serverName: otter-ai
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.otter.ai/mcp

@@ -1,0 +1,259 @@
+schemaVersion: 1
+id: anthropics/claude-plugins-official
+name: Claude Plugins Official
+description: Plugin pack → Claude Code skills, agents, MCP chans.
+source:
+  type: git
+  url: https://github.com/anthropics/claude-plugins-official
+  revision: 518259c1c3449a4f396505d4840c2163420bfb6c
+capabilities:
+  - id: discord
+    kind: mcp
+    path: external_plugins/discord/.mcp.json
+  - id: imessage
+    kind: mcp
+    path: external_plugins/imessage/.mcp.json
+  - id: telegram
+    kind: mcp
+    path: external_plugins/telegram/.mcp.json
+  - id: fakechat
+    kind: mcp
+    path: external_plugins/fakechat/.mcp.json
+  - id: access
+    kind: skill
+    path: external_plugins/discord/skills/access
+    description: Manage Discord channel access — approve pairings, edit allowlists,
+      set DM/group policy. Use when the user asks to pair, approve someone,
+      check who's allowed, or change policy for the Discord channel.
+  - id: configure
+    kind: skill
+    path: external_plugins/discord/skills/configure
+    description: Set up the Discord channel — save the bot token and review access
+      policy. Use when the user pastes a Discord bot token, asks to configure
+      Discord, asks "how do I set this up" or "who can reach me," or wants to
+      check channel status.
+  - id: claude-automation-recommender
+    kind: skill
+    path: plugins/claude-code-setup/skills/claude-automation-recommender
+    description: Analyze a codebase and recommend Claude Code automations (hooks,
+      subagents, skills, plugins, MCP servers). Use when user asks for
+      automation recommendations, wants to optimize their Claude Code setup,
+      mentions improving Claude Code workflows, asks how to first set up Claude
+      Code for a project, or wants to know what Claude Code features they should
+      use.
+  - id: claude-md-improver
+    kind: skill
+    path: plugins/claude-md-management/skills/claude-md-improver
+    description: Audit and improve CLAUDE.md files in repositories. Use when user
+      asks to check, audit, update, improve, or fix CLAUDE.md files. Scans for
+      all CLAUDE.md files, evaluates quality against templates, outputs quality
+      report, then makes targeted updates. Also use when the user mentions
+      "CLAUDE.md maintenance" or "project memory optimization".
+  - id: build-mcp-server
+    kind: skill
+    path: plugins/mcp-server-dev/skills/build-mcp-server
+    description: This skill should be used when the user asks to "build an MCP
+      server", "create an MCP", "make an MCP integration", "wrap an API for
+      Claude", "expose tools to Claude", "make an MCP app", or discusses
+      building something with the Model Context Protocol. It is the entry point
+      for MCP server development — it interrogates the user about their use
+      case, determines the right deployment model (remote HTTP, MCPB, local
+      stdio), picks a tool-design pattern, and hands off to specialized skills.
+  - id: frontend-design
+    kind: skill
+    path: plugins/frontend-design/skills/frontend-design
+    description: Guidance for distinctive, intentional visual design when building
+      new UI or reshaping an existing one. Helps with aesthetic direction,
+      typography, and making choices that don't read as templated defaults.
+  - id: access-2
+    kind: skill
+    path: external_plugins/imessage/skills/access
+    description: Manage iMessage channel access — approve pairings, edit allowlists,
+      set DM/group policy. Use when the user asks to pair, approve someone,
+      check who's allowed, or change policy for the iMessage channel.
+  - id: configure-2
+    kind: skill
+    path: external_plugins/imessage/skills/configure
+    description: Check iMessage channel setup and review access policy. Use when the
+      user asks to configure iMessage, asks "how do I set this up" or "who can
+      reach me," or wants to know why texts aren't reaching the assistant.
+  - id: access-3
+    kind: skill
+    path: external_plugins/telegram/skills/access
+    description: Manage Telegram channel access — approve pairings, edit allowlists,
+      set DM/group policy. Use when the user asks to pair, approve someone,
+      check who's allowed, or change policy for the Telegram channel.
+  - id: configure-3
+    kind: skill
+    path: external_plugins/telegram/skills/configure
+    description: Set up the Telegram channel — save the bot token and review access
+      policy. Use when the user pastes a Telegram bot token, asks to configure
+      Telegram, asks "how do I set this up" or "who can reach me," or wants to
+      check channel status.
+  - id: cardputer-buddy
+    kind: skill
+    path: plugins/cwc-makers/skills/cardputer-buddy
+    description: Iterate on the Cardputer-Adv MicroPython app bundle (Claude Buddy,
+      Snake, Hello) after the device is already provisioned via m5-onboard. Use
+      when the user wants to add a new app, push a single changed .py without
+      re-flashing, watch device serial logs, or run a one-shot REPL command.
+      Trigger on "add an app", "push to the cardputer", "tail the device", "run
+      on the device", or follow-up work after /maker-setup.
+  - id: m5-onboard
+    kind: skill
+    path: plugins/cwc-makers/skills/m5-onboard
+    description: End-to-end onboarding for a freshly-plugged-in M5Stack ESP32 device
+      (Cardputer, Cardputer-Adv, Core, CoreS3, Stick) — detect on USB, flash
+      UIFlow 2.0 firmware, and install the Claude Buddy MicroPython app bundle.
+      Use whenever the user plugs in or wants to flash/provision/reset an
+      M5Stack or ESP32 board, or says "m5-onboard go".
+  - id: example-command
+    kind: skill
+    path: plugins/example-plugin/skills/example-command
+    description: An example user-invoked skill that demonstrates frontmatter options
+      and the skills/<name>/SKILL.md layout
+  - id: example-skill
+    kind: skill
+    path: plugins/example-plugin/skills/example-skill
+    description: This skill should be used when the user asks to "demonstrate
+      skills", "show skill format", "create a skill template", or discusses
+      skill development patterns. Provides a reference template for creating
+      Claude Code plugin skills.
+  - id: writing-rules
+    kind: skill
+    path: plugins/hookify/skills/writing-rules
+    description: This skill should be used when the user asks to "create a hookify
+      rule", "write a hook rule", "configure hookify", "add a hookify rule", or
+      needs guidance on hookify rule syntax and patterns.
+  - id: math-olympiad
+    kind: skill
+    path: plugins/math-olympiad/skills/math-olympiad
+    description: Solve competition math problems (IMO, Putnam, USAMO, AIME) with
+      adversarial verification that catches the errors self-verification misses.
+      Activates when asked to 'solve this IMO problem', 'prove this olympiad
+      inequality', 'verify this competition proof', 'find a counterexample', 'is
+      this proof correct', or for any problem with 'IMO', 'Putnam', 'USAMO',
+      'olympiad', or 'competition math' in it. Uses pure reasoning (no tools) —
+      then a fresh-context adversarial verifier attacks the proof using specific
+      failure patterns, not generic 'check logic'. Outputs calibrated confidence
+      — will say 'no confident solution' rather than bluff. If LaTeX is
+      available, produces a clean PDF after verification passes.
+  - id: build-mcp-app
+    kind: skill
+    path: plugins/mcp-server-dev/skills/build-mcp-app
+    description: This skill should be used when the user wants to build an "MCP
+      app", add "interactive UI" or "widgets" to an MCP server, "render
+      components in chat", build "MCP UI resources", make a tool that shows a
+      "form", "picker", "dashboard" or "confirmation dialog" inline in the
+      conversation, or mentions "apps SDK" in the context of MCP. Use AFTER the
+      build-mcp-server skill has settled the deployment model, or when the user
+      already knows they want UI widgets.
+  - id: build-mcpb
+    kind: skill
+    path: plugins/mcp-server-dev/skills/build-mcpb
+    description: This skill should be used when the user wants to "package an MCP
+      server", "bundle an MCP", "make an MCPB", "ship a local MCP server",
+      "distribute a local MCP", discusses ".mcpb files", mentions bundling a
+      Node or Python runtime with their MCP server, or needs an MCP server that
+      interacts with the local filesystem, desktop apps, or OS and must be
+      installable without the user having Node/Python set up.
+  - id: playground
+    kind: skill
+    path: plugins/playground/skills/playground
+    description: Creates interactive HTML playgrounds — self-contained single-file
+      explorers that let users configure something visually through controls,
+      see a live preview, and copy out a prompt. Use when the user asks to make
+      a playground, explorer, or interactive tool for a topic.
+  - id: agent-development
+    kind: skill
+    path: plugins/plugin-dev/skills/agent-development
+    description: This skill should be used when the user asks to "create an agent",
+      "add an agent", "write a subagent", "agent frontmatter", "when to use
+      description", "agent examples", "agent tools", "agent colors", "autonomous
+      agent", or needs guidance on agent structure, system prompts, triggering
+      conditions, or agent development best practices for Claude Code plugins.
+  - id: command-development
+    kind: skill
+    path: plugins/plugin-dev/skills/command-development
+    description: This skill should be used when the user asks to "create a slash
+      command", "add a command", "write a custom command", "define command
+      arguments", "use command frontmatter", "organize commands", "create
+      command with file references", "interactive command", "use AskUserQuestion
+      in command", or needs guidance on slash command structure, YAML
+      frontmatter fields, dynamic arguments, bash execution in commands, user
+      interaction patterns, or command development best practices for Claude
+      Code.
+  - id: hook-development
+    kind: skill
+    path: plugins/plugin-dev/skills/hook-development
+    description: This skill should be used when the user asks to "create a hook",
+      "add a PreToolUse/PostToolUse/Stop hook", "validate tool use", "implement
+      prompt-based hooks", "use ${CLAUDE_PLUGIN_ROOT}", "set up event-driven
+      automation", "block dangerous commands", or mentions hook events
+      (PreToolUse, PostToolUse, Stop, SubagentStop, SessionStart, SessionEnd,
+      UserPromptSubmit, PreCompact, Notification). Provides comprehensive
+      guidance for creating and implementing Claude Code plugin hooks with focus
+      on advanced prompt-based hooks API.
+  - id: mcp-integration
+    kind: skill
+    path: plugins/plugin-dev/skills/mcp-integration
+    description: This skill should be used when the user asks to "add MCP server",
+      "integrate MCP", "configure MCP in plugin", "use .mcp.json", "set up Model
+      Context Protocol", "connect external service", mentions
+      "${CLAUDE_PLUGIN_ROOT} with MCP", or discusses MCP server types (SSE,
+      stdio, HTTP, WebSocket). Provides comprehensive guidance for integrating
+      Model Context Protocol servers into Claude Code plugins for external tool
+      and service integration.
+  - id: plugin-settings
+    kind: skill
+    path: plugins/plugin-dev/skills/plugin-settings
+    description: This skill should be used when the user asks about "plugin
+      settings", "store plugin configuration", "user-configurable plugin",
+      ".local.md files", "plugin state files", "read YAML frontmatter",
+      "per-project plugin settings", or wants to make plugin behavior
+      configurable. Documents the .claude/plugin-name.local.md pattern for
+      storing plugin-specific configuration with YAML frontmatter and markdown
+      content.
+  - id: plugin-structure
+    kind: skill
+    path: plugins/plugin-dev/skills/plugin-structure
+    description: This skill should be used when the user asks to "create a plugin",
+      "scaffold a plugin", "understand plugin structure", "organize plugin
+      components", "set up plugin.json", "use ${CLAUDE_PLUGIN_ROOT}", "add
+      commands/agents/skills/hooks", "configure auto-discovery", or needs
+      guidance on plugin directory layout, manifest configuration, component
+      organization, file naming conventions, or Claude Code plugin architecture
+      best practices.
+  - id: skill-development
+    kind: skill
+    path: plugins/plugin-dev/skills/skill-development
+    description: This skill should be used when the user wants to "create a skill",
+      "add a skill to plugin", "write a new skill", "improve skill description",
+      "organize skill content", or needs guidance on skill structure,
+      progressive disclosure, or skill development best practices for Claude
+      Code plugins.
+  - id: session-report
+    kind: skill
+    path: plugins/session-report/skills/session-report
+    description: Generate an explorable HTML report of Claude Code session usage
+      (tokens, cache, subagents, skills, expensive prompts) from
+      ~/.claude/projects transcripts.
+  - id: skill-creator
+    kind: skill
+    path: plugins/skill-creator/skills/skill-creator
+    description: Create new skills, modify and improve existing skills, and measure
+      skill performance. Use when users want to create a skill from scratch,
+      edit, or optimize an existing skill, run evals to test a skill, benchmark
+      skill performance with variance analysis, or optimize a skill's
+      description for better triggering accuracy.
+requirements:
+  env:
+    - DISCORD_BOT_TOKEN
+    - TELEGRAM_BOT_TOKEN
+    - GITHUB_PERSONAL_ACCESS_TOKEN
+    - GREPTILE_API_KEY
+    - TFE_TOKEN
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: ifttt.com/ifttt
+name: IFTTT
+description: IFTTT remote MCP server at https://ifttt.com/mcp. Connect, control,
+  and automate 1,000+ apps with IFTTT. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/ifttt
+capabilities:
+  - id: ifttt
+    kind: mcp
+    spec:
+      serverName: ifttt
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://ifttt.com/mcp

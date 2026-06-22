@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: ibisworld.com/ibisworld
+name: IBISWorld
+description: IBISWorld remote MCP server at https://mcp.ibisworld.com.
+  Financials, risk data and analysis on 50,000 industries. Setup guides for
+  Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/ibisworld
+capabilities:
+  - id: ibisworld
+    kind: mcp
+    spec:
+      serverName: ibisworld
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.ibisworld.com

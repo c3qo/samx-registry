@@ -1,0 +1,19 @@
+schemaVersion: 1
+id: huggingface/upskill
+name: UPskill
+description: Generate/eval agent skills from traces.
+source:
+  type: git
+  url: https://github.com/huggingface/upskill
+  revision: 20c0a13417a2616fab27dedda1d72284219fe422
+capabilities:
+  - id: example-skill
+    kind: skill
+    path: tests/fixtures/ci_action_repo/skills/example-skill
+    description: Example fixture skill for action smoke tests
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,127 @@
+schemaVersion: 1
+id: openai/openai-agents-python
+name: OpenAI Agents SDK
+description: Provider-agnostic Python SDK for multi-agent workflows, sandbox
+  agents, tools, guardrails, sessions, tracing, realtime.
+source:
+  type: git
+  url: https://github.com/openai/openai-agents-python
+  revision: 7fc489eb0d2d09b38f81d852c22f9193a89044c0
+capabilities:
+  - id: code-change-verification
+    kind: skill
+    path: .agents/skills/code-change-verification
+    description: Run the mandatory verification stack when changes affect runtime
+      code, tests, or build/test behavior in the OpenAI Agents Python
+      repository.
+  - id: docs-sync
+    kind: skill
+    path: .agents/skills/docs-sync
+    description: Analyze main branch implementation and configuration to find
+      missing, incorrect, or outdated documentation in docs/. Use when asked to
+      audit doc coverage, sync docs with code, or propose doc updates/structure
+      changes. Only update English docs under docs/** and never touch translated
+      docs under docs/ja, docs/ko, or docs/zh. Provide a report and ask for
+      approval before editing docs.
+  - id: examples-auto-run
+    kind: skill
+    path: .agents/skills/examples-auto-run
+    description: Run python examples in auto mode with logging, rerun helpers, and
+      background control.
+  - id: final-release-review
+    kind: skill
+    path: .agents/skills/final-release-review
+    description: Perform a release-readiness review by locating the previous release
+      tag from remote tags and auditing the diff (e.g., v1.2.3...<commit>) for
+      breaking changes, regressions, improvement opportunities, and risks before
+      releasing openai-agents-python.
+  - id: implementation-strategy
+    kind: skill
+    path: .agents/skills/implementation-strategy
+    description: Decide how to implement runtime and API changes in
+      openai-agents-python before editing code. Use when a task changes exported
+      APIs, runtime behavior, serialized state, tests, or docs and you need to
+      choose the compatibility boundary, whether shims or migrations are
+      warranted, and when unreleased interfaces can be rewritten directly.
+  - id: openai-knowledge
+    kind: skill
+    path: .agents/skills/openai-knowledge
+    description: Use when working with the OpenAI API (Responses API) or OpenAI
+      platform features (tools, streaming, Realtime API, auth, models, rate
+      limits, MCP) and you need authoritative, up-to-date documentation
+      (schemas, examples, limits, edge cases). Prefer the OpenAI Developer
+      Documentation MCP server tools when available; otherwise guide the user to
+      enable `openaiDeveloperDocs`.
+  - id: pr-draft-summary
+    kind: skill
+    path: .agents/skills/pr-draft-summary
+    description: Create the required PR-ready summary block, branch suggestion,
+      title, and draft description for openai-agents-python. Use before the
+      final response whenever the current task changed runtime code, tests,
+      examples, build/test configuration, or docs with behavior impact,
+      regardless of perceived change size and including local-only or
+      uncommitted work. Skip only for trivial or conversation-only tasks,
+      repo-meta/doc-only tasks without behavior impact, or when the user
+      explicitly says not to include the PR draft block.
+  - id: runtime-behavior-probe
+    kind: skill
+    path: .agents/skills/runtime-behavior-probe
+    description: Plan and execute runtime-behavior investigations with temporary
+      probe scripts, validation matrices, state controls, and findings-first
+      reports. Use only when the user explicitly invokes this skill to verify
+      actual runtime behavior beyond normal code-level checks, especially to
+      uncover edge cases, undocumented behavior, or common failure modes in
+      local or live integrations. A baseline smoke check is fine as an entry
+      point, but do not stop at happy-path confirmation.
+  - id: test-coverage-improver
+    kind: skill
+    path: .agents/skills/test-coverage-improver
+    description: "Improve test coverage in the OpenAI Agents Python repository: run
+      `make coverage`, inspect coverage artifacts, identify low-coverage files,
+      propose high-impact tests, and confirm with the user before writing
+      tests."
+  - id: ref
+    kind: agent
+    path: docs/ref
+    entry: agent.md
+    description: "::: agents.agent"
+  - id: realtime
+    kind: agent
+    path: docs/ref/realtime
+    entry: agent.md
+    description: "::: agents.realtime.agent.RealtimeAgent"
+  - id: credit-note-fixer
+    kind: skill
+    path: examples/sandbox/docs/skills/credit-note-fixer
+    description: Fix the tiny credit-note formatting bug and rerun the exact
+      targeted test command.
+  - id: prior-auth-packet-builder
+    kind: skill
+    path: examples/sandbox/healthcare_support/skills/prior-auth-packet-builder
+    description: Build a concise prior authorization packet from local case files
+      and payer policy docs.
+  - id: playwright
+    kind: skill
+    path: examples/sandbox/tutorials/vision_website_clone/skills/playwright
+    description: Use when the task requires capturing or automating a real browser
+      from the terminal.
+  - id: csv-workbench
+    kind: skill
+    path: examples/tools/skills/csv-workbench
+    description: Analyze CSV files in /mnt/data and return concise numeric summaries.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: unlinked-hook-files
+    severity: warning
+    category: hooks
+    message: Repository contains hook-related files that are not linked by this formula.
+    paths:
+      - .codex/hooks.json
+    reason: These files lack explicit appliesTo mappings, supported targets, or
+      supported file types.
+    effect: SAMX will not install, link, or execute these files.
+    action: Add explicit hook entries only after manual review.

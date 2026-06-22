@@ -1,0 +1,48 @@
+schemaVersion: 1
+id: prisma/prisma-cli
+name: Prisma CLI
+description: Beta CLI for Prisma app deploy + compute; skill cluster included.
+source:
+  type: git
+  url: https://github.com/prisma/prisma-cli
+  revision: e67907af320bb0a89823400c249ddcbf06bf113d
+capabilities:
+  - id: prisma-cli-deploy-nextjs
+    kind: skill
+    path: skills/prisma-cli-deploy-nextjs
+    description: >
+      Help an agent deploy a Next.js app with Prisma CLI and Prisma Compute. Use
+      for "deploy this Next.js app", "deploy my Next app to Prisma", "prisma-cli
+      app deploy nextjs", "Prisma Compute Next.js deploy", "set up project
+      branch app for a Next.js app", "Next.js standalone deploy", and first-time
+      app deploy prompts after auth. Covers CLI install checks, auth, Next.js
+      standalone output, project/branch/app resolution, deploy verification,
+      logs, and routing deploy gaps to prisma-cli-feedback.
+  - id: prisma-cli-feedback
+    kind: skill
+    path: skills/prisma-cli-feedback
+    description: >
+      Hand a Prisma CLI, Prisma Compute, or app deploy question or report off to
+      the team. Use for bug, bug report, file an issue, report a bug, feature
+      request, missing feature, deploy failed unexpectedly, project branch app
+      resolution bug, Prisma Compute feedback, app deploy feedback, platform
+      bug, surprising behavior, file this, send feedback, ask the Prisma team,
+      talk to Prisma, Discord, and "is this intended?" prompts.
+  - id: prisma-cli
+    kind: skill
+    path: skills/prisma-cli
+    description: >
+      Route a vague Prisma CLI, Prisma Compute, or app deployment prompt to the
+      right specific skill. Use for "deploy my app to Prisma", "deploy this
+      app", "set up Prisma Compute", "use prisma-cli app deploy", "help me with
+      Prisma CLI", "project branch app setup", "what project should this deploy
+      to", "Prisma Compute feedback", "file a Compute bug", and broad app deploy
+      questions. Do not use when the prompt clearly matches Next.js deployment
+      or feedback; load prisma-cli-deploy-nextjs or prisma-cli-feedback
+      directly.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

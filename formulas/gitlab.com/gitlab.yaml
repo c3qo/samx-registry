@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: gitlab.com/gitlab
+name: GitLab
+description: GitLab remote MCP server at https://gitlab.com/api/v4/mcp. Connect
+  AI tools securely to your GitLab data. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/gitlab
+capabilities:
+  - id: gitlab
+    kind: mcp
+    spec:
+      serverName: gitlab
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://gitlab.com/api/v4/mcp

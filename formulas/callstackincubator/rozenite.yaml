@@ -1,0 +1,31 @@
+schemaVersion: 1
+id: callstackincubator/rozenite
+name: Rozenite
+description: React Native DevTools plugin framework.
+source:
+  type: git
+  url: https://github.com/callstackincubator/rozenite
+  revision: 7b41dad5d54fcb342693059c48af3976213a9a2d
+capabilities:
+  - id: rozenite-agent-sdk
+    kind: skill
+    path: packages/cli/skills/rozenite-agent-sdk
+    description: Use Rozenite for Agents through `@rozenite/agent-sdk` in Node.js or
+      TypeScript code. Trigger this skill when Codex needs to write or run
+      scripts, wrappers, automations, benchmarks, or agent runtimes that call
+      Rozenite programmatically instead of driving the `rozenite agent` CLI
+      directly.
+  - id: rozenite-agent
+    kind: skill
+    path: packages/cli/skills/rozenite-agent
+    description: Use Rozenite for Agents through CLI-driven `rozenite agent`
+      commands to inspect React Native DevTools data and Rozenite plugins on a
+      live app target. Trigger this skill for shell-based debugging and live
+      session work. For Node.js or TypeScript scripts, wrappers, automations, or
+      other programmatic SDK usage, use `rozenite-agent-sdk` instead.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

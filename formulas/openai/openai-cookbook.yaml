@@ -1,0 +1,23 @@
+schemaVersion: 1
+id: openai/openai-cookbook
+name: OpenAI Cookbook
+description: Example code + guides for OpenAI API tasks.
+source:
+  type: git
+  url: https://github.com/openai/openai-cookbook
+  revision: cb221ea4890d16621fbc512c4fc4ca1aa9fdaf2b
+capabilities:
+  - id: bootstrap-realtime-eval
+    kind: skill
+    path: examples/evals/realtime_evals/skills/bootstrap-realtime-eval
+    description: Bootstrap a new realtime eval folder inside this cookbook repo by
+      choosing the right harness from examples/evals/realtime_evals, scaffolding
+      prompt/tools/data files, generating a useful README, and validating it
+      with smoke, full eval, and test runs. Use when a user wants to start a new
+      crawl, walk, or run realtime eval in this repository.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,24 @@
+schemaVersion: 1
+id: microsoft/githubcopilot_customized
+name: githubcopilot_customized
+description: OctoCAT Supply demo repo; React/TS/Vite frontend + Express API.
+source:
+  type: git
+  url: https://github.com/microsoft/githubcopilot_customized
+  revision: 64ec44566f1d41e47caa2a88422613b4d8798d04
+capabilities:
+  - id: web-design-reviewer
+    kind: skill
+    path: .github/skills/web-design-reviewer
+    description: This skill enables visual inspection of websites running locally or
+      remotely to identify and fix design issues. Triggers on requests like
+      "review website design", "check the UI", "fix the layout", "find design
+      problems". Detects issues with responsive design, accessibility, visual
+      consistency, and layout breakage, then performs fixes at the source code
+      level.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

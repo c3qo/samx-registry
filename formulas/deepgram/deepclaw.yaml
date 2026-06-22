@@ -1,0 +1,19 @@
+schemaVersion: 1
+id: deepgram/deepclaw
+name: deepclaw
+description: Phone-call bridge to OpenClaw via Deepgram Voice Agent API.
+source:
+  type: git
+  url: https://github.com/deepgram/deepclaw
+  revision: 3a26a64531d4d076e2133559479737bd80494120
+capabilities:
+  - id: deepclaw-voice
+    kind: skill
+    path: skills/deepclaw-voice
+    description: Set up phone calling to OpenClaw using Deepgram Voice Agent API
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

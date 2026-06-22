@@ -1,0 +1,106 @@
+schemaVersion: 1
+id: google-gemini/gemini-cli
+name: Gemini CLI
+description: Terminal AI agent; MCP/extensible; reviews, evals, CI, TUI.
+source:
+  type: git
+  url: https://github.com/google-gemini/gemini-cli
+  revision: 4d3dcdce1f03f6048bc65383b795ab4701da950b
+capabilities:
+  - id: docs-writer
+    kind: skill
+    path: .gemini/skills/docs-writer
+    description: Always use this skill when the task involves writing, reviewing, or
+      editing files in the `/docs` directory or any `.md` files in the
+      repository.
+  - id: tui-tester
+    kind: skill
+    path: .gemini/skills/tui-tester
+    description: Expert guidance for testing Gemini CLI behavior and visual output
+      using terminal automation.
+  - id: code-reviewer
+    kind: skill
+    path: .gemini/skills/code-reviewer
+    description: Use this skill to review code. It supports both local changes
+      (staged or working tree) and remote Pull Requests (by ID or URL). It
+      focuses on correctness, maintainability, and adherence to project
+      standards.
+  - id: ci
+    kind: skill
+    path: .gemini/skills/ci
+    description: A specialized skill for Gemini CLI that provides high-performance,
+      fail-fast monitoring of GitHub Actions workflows and automated local
+      verification of CI failures. It handles run discovery automatically—simply
+      provide the branch name.
+  - id: agent-tui
+    kind: skill
+    path: .gemini/skills/agent-tui
+    description: >
+      Main Agents: Do NOT use this skill directly. If you need to test the TUI,
+      invoke the `tui_tester` subagent. Drive terminal UI (TUI) applications
+      programmatically for testing, automation, and inspection. Use when:
+      automating CLI/TUI interactions, regression testing terminal apps, or
+      verifying interactive behavior. Also use when: user asks "what is
+      agent-tui", "what does agent-tui do", "demo agent-tui", "show me
+      agent-tui", "how does agent-tui work", or wants to see it in action.
+  - id: async-pr-review
+    kind: skill
+    path: .gemini/skills/async-pr-review
+    description: Trigger this skill when the user wants to start an asynchronous PR
+      review, run background checks on a PR, or check the status of a previously
+      started async PR review.
+  - id: behavioral-evals
+    kind: skill
+    path: .gemini/skills/behavioral-evals
+    description: Guidance for creating, running, fixing, and promoting behavioral
+      evaluations. Use when verifying agent decision logic, debugging failures,
+      debugging prompt steering, or adding workspace regression tests.
+  - id: docs-changelog
+    kind: skill
+    path: .gemini/skills/docs-changelog
+    description: Generates and formats changelog files for a new release based on
+      provided version and raw changelog data.
+  - id: github-issue-creator
+    kind: skill
+    path: .gemini/skills/github-issue-creator
+    description: Use this skill when asked to create a GitHub issue. It handles
+      different issue types (bug, feature, etc.) using repository templates and
+      ensures proper labeling.
+  - id: pr-address-comments
+    kind: skill
+    path: .gemini/skills/pr-address-comments
+    description: Use this skill if the user asks you to help them address GitHub PR
+      comments for their current branch of the Gemini CLI. Requires `gh` CLI
+      tool.
+  - id: pr-creator
+    kind: skill
+    path: .gemini/skills/pr-creator
+    description: Use this skill when asked to create a pull request (PR). It ensures
+      all PRs follow the repository's established templates and standards.
+  - id: review-duplication
+    kind: skill
+    path: .gemini/skills/review-duplication
+    description: Use this skill during code reviews to proactively investigate the
+      codebase for duplicated functionality, reinvented wheels, or failure to
+      reuse existing project best practices and shared utilities.
+  - id: string-reviewer
+    kind: skill
+    path: .gemini/skills/string-reviewer
+    description: >
+      Use this skill when asked to review text and user-facing strings within
+      the codebase. It ensures that these strings follow rules on clarity,
+      usefulness, brevity and style.
+  - id: greeter
+    kind: skill
+    path: packages/cli/src/commands/extensions/examples/skills/skills/greeter
+    description: A friendly greeter skill
+requirements:
+  env:
+    - GEMINI_API_KEY
+    - GOOGLE_API_KEY
+    - GOOGLE_GENAI_USE_VERTEXAI
+    - GOOGLE_CLOUD_PROJECT
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

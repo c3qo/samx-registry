@@ -1,0 +1,23 @@
+schemaVersion: 1
+id: nvidia/cudnn-frontend
+name: cuDNN Frontend
+description: "NVIDIA cuDNN FE: Python/C++ Graph API + SDPA, MoE fusions, norms,
+  OSS kernels."
+source:
+  type: git
+  url: https://github.com/nvidia/cudnn-frontend
+  revision: 9782b855ddecefe1646b00bb0cfd9870c381e391
+capabilities:
+  - id: cutedsl-kernel-integration
+    kind: skill
+    path: skills/cutedsl-kernel-integration
+    description: Use when integrating a CuTeDSL/CUTE DSL kernel into cuDNN Frontend
+      as a frontend-only Python API, including APIBase wrappers, lazy cudnn
+      exports, optional cutedsl dependencies, FE OSS documentation, and pytest
+      coverage.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

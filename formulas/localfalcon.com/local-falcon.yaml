@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: localfalcon.com/local-falcon
+name: Local Falcon
+description: Local Falcon remote MCP server at https://mcp.localfalcon.com. AI
+  visibility and local search intelligence platform. Setup guides for Claude
+  Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/local-falcon
+capabilities:
+  - id: local-falcon
+    kind: mcp
+    spec:
+      serverName: local-falcon
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.localfalcon.com

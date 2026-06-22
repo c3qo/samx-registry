@@ -1,0 +1,41 @@
+schemaVersion: 1
+id: expo/agent-templates
+name: expo/agent-templates
+description: Expo starter templates for agent builds.
+source:
+  type: git
+  url: https://github.com/expo/agent-templates
+  revision: 12e6ec12425bc5597943cf690dd7dc5281916b00
+capabilities:
+  - id: android-jetpack-compose
+    kind: skill
+    path: jetpack-compose-prebuild-empty/.agents/skills/android-jetpack-compose
+    description: Use when building Android UIs with Jetpack Compose, managing state
+      with remember/mutableStateOf, or implementing declarative UI patterns.
+  - id: swiftui-expert-skill
+    kind: skill
+    path: jetpack-compose-prebuild-empty/.agents/skills/swiftui-expert-skill
+    description: Write, review, or improve SwiftUI code following best practices for
+      state management, view composition, performance, macOS-specific APIs, and
+      iOS 26+ Liquid Glass adoption. Use when building new SwiftUI features,
+      refactoring existing views, reviewing code quality, or adopting modern
+      SwiftUI patterns.
+  - id: android-jetpack-compose-2
+    kind: skill
+    path: swiftui-prebuild-empty/.agents/skills/android-jetpack-compose
+    description: Use when building Android UIs with Jetpack Compose, managing state
+      with remember/mutableStateOf, or implementing declarative UI patterns.
+  - id: swiftui-expert-skill-2
+    kind: skill
+    path: swiftui-prebuild-empty/.agents/skills/swiftui-expert-skill
+    description: Write, review, or improve SwiftUI code following best practices for
+      state management, view composition, performance, macOS-specific APIs, and
+      iOS 26+ Liquid Glass adoption. Use when building new SwiftUI features,
+      refactoring existing views, reviewing code quality, or adopting modern
+      SwiftUI patterns.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

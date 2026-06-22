@@ -1,0 +1,33 @@
+schemaVersion: 1
+id: cloudflare/moltworker
+name: Moltworker
+description: OpenClaw/Moltbot on Cloudflare Workers/Sandbox.
+source:
+  type: git
+  url: https://github.com/cloudflare/moltworker
+  revision: 7b00c1d7292190f2327e93bdcc7a0eabb0a26123
+capabilities:
+  - id: cloudflare-browser
+    kind: skill
+    path: skills/cloudflare-browser
+    description: Control headless Chrome via Cloudflare Browser Rendering CDP
+      WebSocket. Use for screenshots, page navigation, scraping, and video
+      capture when browser automation is needed in a Cloudflare Workers
+      environment. Requires CDP_SECRET env var and cdpUrl configured in
+      browser.profiles.
+requirements:
+  env:
+    - ANTHROPIC_API_KEY
+    - MOLTBOT_GATEWAY_TOKEN
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Missing evidence for environment variable: MOLTBOT_GATEWAY_TOKEN"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

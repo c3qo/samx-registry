@@ -1,0 +1,83 @@
+schemaVersion: 1
+id: prisma/skills
+name: Prisma Skills
+description: Prisma ORM agent skills pack.
+source:
+  type: git
+  url: https://github.com/prisma/skills
+  revision: 6a6d97fb26d192d36e6449f1dd6c8908fc0168a1
+capabilities:
+  - id: prisma-cli
+    kind: skill
+    path: prisma-cli
+    description: Prisma ORM CLI commands reference covering init, generate, migrate,
+      db, dev, studio, validate, format, debug, and mcp. Use for ORM/database
+      CLI workflows, not Prisma Compute app deployment. For Prisma Compute,
+      `@prisma/cli app deploy`, `compute:deploy`, `create-prisma --deploy`,
+      apps, deployments, logs, or domains, use the `prisma-compute` skill
+      instead. Triggers on "prisma init", "prisma generate", "prisma migrate",
+      "prisma db", "prisma studio", "prisma mcp".
+  - id: prisma-client-api
+    kind: skill
+    path: prisma-client-api
+    description: Prisma Client API reference covering model queries, filters,
+      operators, and client methods. Use when writing database queries, using
+      CRUD operations, filtering data, or configuring Prisma Client. Triggers on
+      "prisma query", "findMany", "create", "update", "delete", "$transaction".
+  - id: prisma-compute
+    kind: skill
+    path: prisma-compute
+    description: Prisma Compute deployment and hosting guide. Use whenever the user
+      mentions Prisma Compute, `prisma.compute.ts`, `defineComputeConfig`,
+      deploying or hosting a Prisma app, `@prisma/cli app deploy`,
+      `compute:deploy`, `create-prisma --deploy`, `PRISMA_SERVICE_TOKEN`,
+      Compute apps/deployments/logs/domains, localhost vs `0.0.0.0`, deploy port
+      binding, or framework deploy readiness for Hono, Elysia, Next.js, TanStack
+      Start, Astro, Nuxt, Svelte, Nest, or Turborepo.
+  - id: prisma-database-setup
+    kind: skill
+    path: prisma-database-setup
+    description: Guides for configuring Prisma with different database providers
+      (PostgreSQL, MySQL, SQLite, MongoDB, etc.). Use when setting up a new
+      project, changing databases, or troubleshooting connection issues.
+      Triggers on "configure postgres", "connect to mysql", "setup mongodb",
+      "sqlite setup".
+  - id: prisma-driver-adapter-implementation
+    kind: skill
+    path: prisma-driver-adapter-implementation
+    description: Required reference for Prisma v7 driver adapter work. Use when
+      implementing or modifying adapters, adding database drivers, or touching
+      SqlDriverAdapter/Transaction interfaces. Contains critical contract
+      details not inferable from code examples — including the transaction
+      lifecycle protocol, error mapping requirements, and verification
+      checklist. Existing implementations do not replace this skill.
+  - id: prisma-postgres-setup
+    kind: skill
+    path: prisma-postgres-setup
+    description: Set up a new Prisma Postgres database and connect it to a local
+      project using the Management API. Use when asked to "set up a database",
+      "create a Prisma Postgres project", "get a connection string", "connect my
+      app to Prisma Postgres", or "provision a database".
+  - id: prisma-postgres
+    kind: skill
+    path: prisma-postgres
+    description: Prisma Postgres setup and operations guidance across Console,
+      create-db CLI, Management API, and Management API SDK. Use when creating
+      Prisma Postgres databases, working in Prisma Console, provisioning with
+      create-db/create-pg/create-postgres, or integrating programmatic
+      provisioning with service tokens or OAuth.
+  - id: prisma-upgrade-v7
+    kind: skill
+    path: prisma-upgrade-v7
+    description: Complete migration guide from Prisma ORM v6 to v7 covering all
+      breaking changes. Use when upgrading Prisma versions, encountering v7
+      errors, or migrating existing projects. Triggers on "upgrade to prisma 7",
+      "prisma 7 migration", "prisma-client generator", "driver adapter
+      required".
+requirements:
+  env:
+    - PRISMA_SERVICE_TOKEN
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

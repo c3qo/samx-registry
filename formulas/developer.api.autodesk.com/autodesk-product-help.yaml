@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: developer.api.autodesk.com/autodesk-product-help
+name: Autodesk Product Help
+description: Autodesk Product Help remote MCP server at
+  https://developer.api.autodesk.com/knowledge/public/v1/mcp. Securely access
+  Autodesk&#x27;s help documentation. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/autodesk-product-help
+capabilities:
+  - id: autodesk-product-help
+    kind: mcp
+    spec:
+      serverName: autodesk-product-help
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://developer.api.autodesk.com/knowledge/public/v1/mcp

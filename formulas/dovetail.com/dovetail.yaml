@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: dovetail.com/dovetail
+name: Dovetail
+description: Dovetail remote MCP server at https://dovetail.com/api/mcp. Turn
+  feedback into decisions. Setup guides for Claude Code, Codex, Cursor, and VS
+  Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/dovetail
+capabilities:
+  - id: dovetail
+    kind: mcp
+    spec:
+      serverName: dovetail
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://dovetail.com/api/mcp

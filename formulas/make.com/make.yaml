@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: make.com/make
+name: Make
+description: Make remote MCP server at https://mcp.make.com. Run Make scenarios
+  and manage your Make account. Setup guides for Claude Code, Codex, Cursor, and
+  VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/make
+capabilities:
+  - id: make
+    kind: mcp
+    spec:
+      serverName: make
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.make.com

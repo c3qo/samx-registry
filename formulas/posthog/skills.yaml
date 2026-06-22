@@ -1,0 +1,1805 @@
+schemaVersion: 1
+id: posthog/skills
+name: PostHog skills collection
+description: Claude Code skill marketplace; PostHog workflow skills.
+source:
+  type: git
+  url: https://github.com/posthog/skills
+  revision: b8f87940caafa07815e8ab9650545ce89d610703
+capabilities:
+  - id: analyzing-experiment-session-replays
+    kind: skill
+    path: skills/omnibus/analyzing-experiment-session-replays
+    description: Analyze session replay patterns across experiment variants to
+      understand user behavior differences. Use when the user wants to see how
+      users interact with different experiment variants, identify usability
+      issues, compare behavior patterns between control and test groups, or get
+      qualitative insights to complement quantitative experiment results.
+  - id: assessing-heatmaps
+    kind: skill
+    path: skills/omnibus/assessing-heatmaps
+    description: >-
+      Assesses what a page's heatmap is telling you and recommends concrete
+      changes. Pulls click / rageclick / scroll-depth data for a URL, names the
+      hot elements by cross-referencing autocapture events on the same page, and
+      can create a saved heatmap the user opens in PostHog, then summarizes the
+      behavior and proposes improvements.
+
+      TRIGGER when: user asks what a heatmap shows, why people aren't clicking
+      something, where users rage-click, how far they scroll, what to change on
+      a page based on heatmap/click data, or to 'analyze/assess/review the
+      heatmap' for a URL.
+
+      DO NOT TRIGGER when: the user only wants to create a saved heatmap
+      screenshot with no analysis (use heatmaps-saved-create directly), or is
+      asking about session replay in general (use investigating-replay).
+  - id: auditing-endpoints
+    kind: skill
+    path: skills/omnibus/auditing-endpoints
+    description: >
+      Audit every endpoint in a PostHog project for staleness, failed
+      materialisations, and unused materialised versions. Use when the user asks
+      "what endpoints can I clean up?", "are any of my endpoints broken?",
+      "which materialised versions are still being called?", or wants a one-shot
+      cleanup pass over the Endpoints product. Produces a prioritised report
+      grouped by issue type, with recommended actions but does not modify
+      anything without explicit confirmation.
+  - id: auditing-experiments-flags
+    kind: skill
+    path: skills/omnibus/auditing-experiments-flags
+    description: Audit PostHog experiments and feature flags for configuration
+      issues, staleness, and best-practice violations. Read when the user asks
+      to audit, health-check, or review experiments or feature flags, check flag
+      hygiene, or verify experiment setup.
+  - id: auditing-warehouse-data-health
+    kind: skill
+    path: skills/omnibus/auditing-warehouse-data-health
+    description: >
+      Audit the health of a PostHog project's data warehouse — find every broken
+      or degraded pipeline item across sources, sync schemas, materialized
+      views, batch exports, and transformations. Use when the user asks "what's
+      broken in my warehouse?", "give me a health check", "audit my data
+      pipeline", "why are some dashboards stale?", or wants a one-shot triage
+      summary before deciding where to spend time. Produces a prioritized report
+      of issues grouped by severity and type, with recommended next steps.
+  - id: authoring-log-alerts
+    kind: skill
+    path: skills/omnibus/authoring-log-alerts
+    description: >
+      Author useful, low-noise log alerts on services in a PostHog project. Use
+      when the user asks to set up alerts for their logs, suggest alerts they
+      should add, or evaluate whether a service is worth monitoring. Covers
+      service triage, baseline characterisation, threshold drafting,
+      back-testing via simulate, and shipping with a notification destination.
+  - id: authoring-signals-scouts
+    kind: skill
+    path: skills/omnibus/authoring-signals-scouts
+    description: >
+      How to author, edit, and adapt PostHog Signals scouts — the scheduled
+      agents that scan a project and emit findings into the Signals inbox. Use
+      when a user wants to customize a canonical scout for their own setup
+      (narrow its scope, retune its thresholds, add disqualifiers), tweak a
+      scout's schedule or dry-run posture, or write a brand-new scout from
+      scratch for a specific use case (a custom event, a product surface no
+      canonical scout covers). Covers the scout SKILL.md anatomy, the emit
+      contract, the dedupe + scratchpad-memory conventions, the per-team
+      skills-store path vs the canonical in-repo path, and the emit-and-inspect
+      test loop (with dry-run as an optional safety net). Trigger on
+      "write/edit/customize a signals scout", "new scout for X", "tune my scout
+      schedule", "make a scout that watches <event>".
+  - id: cleaning-up-stale-feature-flags
+    kind: skill
+    path: skills/omnibus/cleaning-up-stale-feature-flags
+    description: Identify and clean up stale feature flags in a PostHog project. Use
+      when the user wants to find unused, fully rolled out, or abandoned feature
+      flags, review them for safety, and then disable or delete them. Covers
+      staleness detection, dependency checking, and safe removal workflows.
+  - id: configuring-experiment-analytics
+    kind: skill
+    path: skills/omnibus/configuring-experiment-analytics
+    description: Configures the analytics side of a PostHog experiment — exposure
+      criteria (default `$feature_flag_called` vs custom exposure events),
+      primary and secondary metrics, the supported metric types (count, sum,
+      ratio with `math` and `math_property`, retention with
+      `retention_window_start` and `start_handling`), multivariate user handling
+      ("Exclude" vs "First seen variant"), and how to read results once the
+      experiment is live. Use when the user adds or edits a primary or secondary
+      metric (e.g. "add a secondary metric tracking 'downloaded_file' per
+      user"), sets up a ratio metric (e.g. "revenue from purchase_completed /
+      pageviews"), sets up a retention metric (e.g. "$pageview → uploaded_file,
+      7-day window"), configures custom exposure (e.g. "only count users who hit
+      /checkout"), changes multivariate handling, or asks "who is in the
+      analysis?", "how do I measure impact?", "is this winning?", "what's the
+      confidence level?", or "should I ship?".
+  - id: configuring-experiment-rollout
+    kind: skill
+    path: skills/omnibus/configuring-experiment-rollout
+    description: Configures the rollout shape of a PostHog experiment — the variant
+      split (50/50, 80/20, A/B/C ratios), the overall rollout percentage that
+      gates how many users enter the experiment, and the disambiguation when a
+      percentage like "roll out to 25%" could mean either. Use when the user
+      mentions a rollout percentage, variant split, or traffic distribution;
+      gives a ratio like 60/40, 70/30, or 80/20; asks "who sees the test
+      variant?"; wants to increase, decrease, or change the rollout or split on
+      a draft or running experiment; weighs equal vs uneven splits; or proposes
+      a mid-experiment split change (often an anti-pattern that needs reset or
+      end-and-restart).
+  - id: consuming-endpoints-from-client-code
+    kind: skill
+    path: skills/omnibus/consuming-endpoints-from-client-code
+    description: >
+      Wire a PostHog endpoint into a client app or SDK. Covers fetching the
+      OpenAPI spec, generating a typed client with openapi-generator or
+      @hey-api/openapi-ts, sending the right auth header, shaping the variables
+      payload (HogQL code_name vs insight breakdown property), handling
+      rate-limit and materialised-endpoint error responses. Use when the user
+      says "how do I call my endpoint", "generate a client for this", or "what
+      auth header do I use".
+  - id: copying-flags-across-projects
+    kind: skill
+    path: skills/omnibus/copying-flags-across-projects
+    description: Copy a feature flag from one PostHog project to one or more target
+      projects in the same organization. Use when the user wants to duplicate a
+      flag, promote a flag from staging to production, sync flags across
+      projects, or replicate a flag configuration in a different workspace.
+      Covers cohort remapping, scheduled-change handling, encrypted payloads,
+      and the safe defaults (disabled in target, no scheduled changes).
+  - id: creating-ai-subscription
+    kind: skill
+    path: skills/omnibus/creating-ai-subscription
+    description: >
+      Create a recurring AI-generated PostHog report — schedule a free-text
+      prompt to run on a cron, with the LLM-synthesized markdown delivered to
+      email or Slack on each tick. Use when the user wants a recurring AI
+      summary of X on any cadence (daily, weekly, monthly, yearly) rather than a
+      one-off report. (To attach an AI summary to an existing insight/dashboard
+      subscription instead of a free-text prompt, see `managing-subscriptions`
+      and its `summary_enabled` option.)
+  - id: creating-an-endpoint
+    kind: skill
+    path: skills/omnibus/creating-an-endpoint
+    description: >
+      Create a PostHog endpoint with the right shape on the first try — covers
+      query kind choice, name conventions, what to expose as variables (HogQL
+      code_name vs insight breakdown), data_freshness_seconds, and whether to
+      materialise on day one. Use when the user says "create an endpoint",
+      "expose this query as an API", "turn this insight into an endpoint", or
+      asks for help structuring a new endpoint. Steers away from common
+      mistakes: materialising a query with cohort breakdowns or compare mode,
+      inline-only variables on a materialised endpoint, unbounded date ranges,
+      ambiguous names.
+  - id: creating-experiments
+    kind: skill
+    path: skills/omnibus/creating-experiments
+    description: >-
+      Guides agents through the 3-step experiment creation flow: defining the
+      hypothesis, configuring rollout, and setting up analytics. Delegates
+      rollout decisions to configuring-experiment-rollout and metric setup to
+      configuring-experiment-analytics.
+
+      TRIGGER when: user asks to create a new experiment or A/B test, OR when
+      you are about to call experiment-create.
+
+      DO NOT TRIGGER when: user is updating an existing experiment, managing
+      lifecycle, or only browsing experiments.
+  - id: creating-replay-vision-scanners
+    kind: skill
+    path: skills/omnibus/creating-replay-vision-scanners
+    description: >-
+      Guides agents through creating and safely sizing a Replay Vision scanner:
+      choosing the scanner type (monitor/classifier/scorer/summarizer), shaping
+      the RecordingsQuery that selects sessions, and — crucially — estimating
+      observation volume and checking the org's monthly quota before creating,
+      so a broad scanner doesn't exhaust the budget on its first scheduled
+      sweep.
+
+      TRIGGER when: user asks to create, set up, or configure a Replay Vision
+      scanner, OR when you are about to call vision-scanners-create, OR when
+      widening an existing scanner's query or sampling_rate via
+      vision-scanners-update.
+
+      DO NOT TRIGGER when: only reading scanners or observations, deleting a
+      scanner, or running an existing scanner against a single session on demand
+      (vision-scanners-scan-session).
+  - id: debugging-local-replay
+    kind: skill
+    path: skills/omnibus/debugging-local-replay
+    description: >
+      Debugs why session recordings aren't appearing in the local dev
+      environment. Use when a developer reports that local replay ingestion
+      isn't working, recordings aren't showing up despite /s calls, or the
+      replay pipeline seems broken after hogli start. Covers the full local
+      pipeline: SDK capture, Caddy proxy, capture-replay (Rust), Kafka,
+      ingestion-sessionreplay (Node), recording-api (Node), SeaweedFS, and
+      common failure modes like orphaned processes, stuck phrocs workers, and
+      trigger misconfiguration.
+  - id: debugging-signals-pipeline
+    kind: skill
+    path: skills/omnibus/debugging-signals-pipeline
+    description: >
+      Debug the signals pipeline locally end-to-end. Covers emitting test
+      signals from fixtures, monitoring Temporal workflows via the REST API,
+      reading sandbox agent logs from object storage, inspecting Docker sandbox
+      containers, and diagnosing common failures (stale ClickHouse embeddings,
+      agentsh network denials, inactivity timeouts). Use when a signal isn't
+      reaching the inbox, a signal-report-summary workflow fails, or a sandbox
+      task run times out.
+  - id: designing-email-templates
+    kind: skill
+    path: skills/omnibus/designing-email-templates
+    description: Author, save, and edit email templates in the PostHog workflows
+      library — compose email design JSON with Liquid personalization and create
+      and round-trip-edit templates over MCP. Use when asked to design, build,
+      update, or fix an email template for workflows, broadcasts, or campaigns.
+  - id: diagnosing-ci-and-merge-bottlenecks
+    kind: skill
+    path: skills/omnibus/diagnosing-ci-and-merge-bottlenecks
+    description: >
+      Diagnoses CI and pull-request pipeline health for a GitHub repo using the
+      engineering analytics MCP tools — pull-requests (PR list with CI status),
+      workflow-health (per-workflow CI trends), and pr-lifecycle (a single PR's
+      timeline). Use when asked whether CI is getting faster or slower, which
+      GitHub Actions workflow is the slow or flaky long-pole, how long PRs take
+      from open to merge, how an author's merge time compares to the cohort,
+      which open PRs have failing or pending CI, or where a specific pull
+      request is stuck. Triggers on "engineering analytics", "is CI getting
+      slower", "slow workflow", "flaky CI", "time to merge", "cycle time", "PR
+      throughput", "failing checks", "where is PR <n> stuck", "CI long pole",
+      "what's holding up this PR".
+  - id: diagnosing-endpoint-performance
+    kind: skill
+    path: skills/omnibus/diagnosing-endpoint-performance
+    description: >
+      Diagnose why a PostHog endpoint is slow or expensive and propose a
+      concrete fix — bump the cache TTL, enable materialisation, restructure
+      variables, or rewrite the query. Use when the user says "this endpoint is
+      slow", "my endpoint times out", "we're hitting the cost cap on this one",
+      or asks "should I materialise this?". Focuses on a single named endpoint,
+      not a project-wide audit.
+  - id: diagnosing-experiment-results
+    kind: skill
+    path: skills/omnibus/diagnosing-experiment-results
+    description: >-
+      Diagnoses bias, anomalies, and strange-looking results on a specific
+      PostHog experiment. Covers empty / 0-exposure experiments, sample ratio
+      mismatch, identity fragmentation, multi-variant exposure, uneven-split
+      exclusion bias, significance traps (peeking, A/A, Bayesian vs
+      Frequentist), PostHog-vs-SQL discrepancies, and surprises after mid-run
+      edits. Symptom-driven dispatch to the right diagnostic.
+
+      TRIGGER when: user asks 'is my experiment biased?' or 'why 0 exposures?',
+      references the bias banner, says a variant looks strange / wrong / off,
+      sees significance flipping, notices PostHog numbers disagreeing with their
+      SQL, sees an A/A test showing significance, or reports surprises after
+      mid-run edits.
+
+      DO NOT TRIGGER when: creating a new experiment (use creating-experiments),
+      only configuring rollout (use configuring-experiment-rollout) or metrics
+      (use configuring-experiment-analytics), or only asking lifecycle questions
+      (use managing-experiment-lifecycle).
+  - id: diagnosing-failed-warehouse-syncs
+    kind: skill
+    path: skills/omnibus/diagnosing-failed-warehouse-syncs
+    description: >
+      Diagnose why a data warehouse sync is failing and recommend the right
+      recovery action. Use when the user asks "why isn't my
+      Stripe/Postgres/Hubspot sync working?", "this table has been stuck for
+      hours", "the data in the warehouse looks wrong", or wants to troubleshoot
+      a specific source or schema. Covers source-level vs schema-level failures,
+      stuck Running states, credential and schema-drift errors,
+      incremental-field misconfig, CDC prerequisite failures, and the cancel /
+      reload / resync / delete-data recovery actions.
+  - id: diagnosing-missing-recordings
+    kind: skill
+    path: skills/omnibus/diagnosing-missing-recordings
+    description: >
+      Diagnoses why a session recording is missing or was not captured. Use when
+      a user asks why a session has no replay, why recordings aren't appearing,
+      or wants to troubleshoot session replay capture issues for a specific
+      session ID or across their project. Covers SDK diagnostic signals, project
+      settings, sampling, triggers, ad blockers, and quota/billing scenarios.
+  - id: diagnosing-sdk-health
+    kind: skill
+    path: skills/omnibus/diagnosing-sdk-health
+    description: >
+      Diagnoses the health of a project's PostHog SDK integrations — which SDKs
+      are out of date and how to fix them. Use when a user asks about PostHog
+      SDK versions, outdated SDKs, upgrade recommendations, "SDK health", "SDK
+      doctor" (the former name), or when events or features seem off and it
+      might be due to an old SDK.
+  - id: diagnosing-stacktrace-symbolication
+    kind: skill
+    path: skills/omnibus/diagnosing-stacktrace-symbolication
+    description: >
+      Help users debug PostHog Error Tracking stack-trace symbolication for any
+      supported platform — JavaScript/TypeScript web, React Native (Hermes),
+      Android (Proguard / R8), or iOS / macOS (dSYM). The PostHog symbol-set
+      lookup flow is universal across platforms; build-tool and artifact details
+      live in per-platform references (JavaScript is fleshed out, others come as
+      we encounter them). Use when stack frames stay minified or obfuscated
+      after symbols are uploaded, PostHog symbol sets show last_used but frames
+      are not readable, chunk IDs or dSYM UUIDs do not match, "Token not found"
+      appears, uploaded source maps / dSYMs / Proguard mappings look empty, or
+      bundler / symbol-upload configuration needs troubleshooting.
+  - id: downloading-batch-export-files
+    kind: skill
+    path: skills/omnibus/downloading-batch-export-files
+    description: >
+      Export PostHog events, persons, or sessions on demand and download the
+      resulting files. Use when the user asks to download/export raw PostHog
+      data, create a one-off file export, fetch a Parquet or JSONLines export,
+      or use the file_download_batch_exports API. Covers starting the export
+      with MCP, polling completion, and downloading via the existing REST
+      redirect endpoint.
+  - id: exploring-apm-traces
+    kind: skill
+    path: skills/omnibus/exploring-apm-traces
+    description: >
+      Investigates distributed application performance using PostHog APM
+      (OpenTelemetry span) data via MCP. Use when the user asks about service
+      traces, slow HTTP/database spans, error spans, trace IDs, or span
+      attributes — not AI observability traces or product logs. Uses
+      posthog:query-apm-spans, posthog:apm-trace-get, posthog:apm-services-list,
+      posthog:apm-attributes-list, and posthog:apm-attribute-values-list.
+  - id: exploring-autocapture-events
+    kind: skill
+    path: skills/omnibus/exploring-autocapture-events
+    description: >
+      Guides exploration of $autocapture events captured by posthog-js to
+      understand user interactions, find CSS selectors (especially data-attr
+      attributes), evaluate selector uniqueness, query matching clicks ad-hoc,
+      and create actions. Use when the user asks about autocapture data, wants
+      to find what users are clicking, needs to build actions from click events,
+      asks about elements_chain, wants to build a trend or funnel filtered by
+      clicks or other autocapture interactions, asks which properties
+      autocapture sends, or asks how to filter $autocapture events. Only applies
+      to projects using posthog-js autocapture.
+  - id: exploring-endpoint-execution-logs
+    kind: skill
+    path: skills/omnibus/exploring-endpoint-execution-logs
+    description: >
+      Explore and diagnose a PostHog endpoint's execution logs — error messages,
+      failed runs, cache misses, slow runs, or unexpected row counts during
+      endpoint invocations. Use when the user says "my endpoint is failing",
+      "show me the logs for endpoint X", "what error did endpoint Y produce",
+      "why did endpoint Z return no rows", "is this endpoint hitting cache", or
+      "check the last N runs". Focused on a single named endpoint's runtime log
+      entries, not project-wide auditing or query performance profiling.
+  - id: exploring-live-traffic
+    kind: skill
+    path: skills/omnibus/exploring-live-traffic
+    description: Inspects PostHog Web analytics Live tab data — current users
+      online, last-30-minutes pageviews, top pages, referrers, devices,
+      browsers, countries, bot traffic, and the per-minute bot/users charts. Use
+      when the user asks "who is on my site right now?", "what is happening
+      live?", "what bots are crawling me?", asks about the "live tab" / "live
+      dashboard", wants live numbers (last 30 min), or wants help filtering or
+      drilling into the live view. Also covers building product-analytics
+      insights that mirror what the tiles show.
+  - id: exploring-llm-clusters
+    kind: skill
+    path: skills/omnibus/exploring-llm-clusters
+    description: Investigate AI observability clusters — understand usage patterns
+      in AI/LLM traffic, compare cluster behavior, compute cost/latency metrics,
+      and drill into individual traces within clusters.
+  - id: exploring-llm-costs
+    kind: skill
+    path: skills/omnibus/exploring-llm-costs
+    description: >
+      Investigate LLM spend in PostHog — total cost over time, cost by model,
+      provider, user, trace, or custom dimension, token and cache-hit economics,
+      and cost regressions. Use when the user asks "how much are we spending on
+      LLMs?", "which model / user / feature is most expensive?", "why did cost
+      spike?", wants to build a cost dashboard or alert, or pastes a trace URL
+      and asks about its cost.
+  - id: exploring-llm-evaluations
+    kind: skill
+    path: skills/omnibus/exploring-llm-evaluations
+    description: >
+      Investigate AI observability evaluations of both types — `hog`
+      (deterministic code-based) and `llm_judge` (LLM-prompt-based). Find
+      existing evaluations, inspect their configuration, run them against
+      specific generations, query individual pass/fail results, and generate
+      AI-powered summaries of patterns across many runs. Use when the user asks
+      to debug why an evaluation is failing, surface common failure modes,
+      compare results across filters, dry-run a Hog evaluator, prototype a new
+      LLM-judge prompt, or manage the evaluation lifecycle (create, update,
+      enable/disable, delete).
+  - id: exploring-llm-traces
+    kind: skill
+    path: skills/omnibus/exploring-llm-traces
+    description: >
+      ABSOLUTE MUST to debug and inspect LLM/AI agent traces using PostHog's MCP
+      tools. Use when the user pastes a trace or session URL (e.g.
+      /ai-observability/traces/<id> or /ai-observability/sessions/<id>), asks to
+      debug a trace, figure out what went wrong, check if an agent used a tool
+      correctly, verify context/files were surfaced, inspect subagent behavior,
+      investigate LLM decisions, or analyze token usage and costs. Also use when
+      raw SQL/HogQL against `events.properties.$ai_input` / `$ai_output_choices`
+      returns empty — message content lives only on the dedicated
+      `posthog.ai_events` table.
+  - id: exploring-signals-scouts
+    kind: skill
+    path: skills/omnibus/exploring-signals-scouts
+    description: >
+      How to explore and make sense of PostHog Signals scouts — the scheduled
+      agents that scan a project and emit findings into the Signals inbox. Use
+      when a user wants to understand what scouts they have, how each one is
+      behaving, and whether the fleet is actually working. Covers surveying the
+      fleet and its schedules, reading recent scout runs and drilling into a
+      single run's reasoning, inspecting the durable scratchpad memory the fleet
+      has built up, tracing a run to the findings it emitted, and assessing a
+      scout's health and performance over time (cadence, success rate, emit
+      rate, signal-to-noise). Read-only and exploratory — to write or tune a
+      scout, use `authoring-signals-scouts` instead. Trigger on "what are my
+      scouts doing", "how is my <x> scout performing", "show me recent scout
+      runs", "why did this scout find/emit nothing", "what has the fleet
+      learned", "explore scout run <id>", "is my scout working".
+  - id: feature-usage-feed
+    kind: skill
+    path: skills/omnibus/feature-usage-feed
+    description: >
+      Set up an LLM-judge evaluation that extracts canonical use cases for a
+      PostHog feature at scale and streams the results to a Slack channel as a
+      live feed. Use when someone wants to understand how users are actually
+      using a specific AI/LLM-powered feature in production — what they're
+      investigating, what questions they're trying to answer, and what patterns
+      surface — without manually reading hundreds of traces. Assumes the feature
+      emits `$ai_generation` and `$ai_evaluation` events with `$session_id`
+      linkage to the trigger user's recording (the standard setup post the
+      session-summary linkage PRs).
+  - id: finding-deleted-feature-flags
+    kind: skill
+    path: skills/omnibus/finding-deleted-feature-flags
+    description: Find feature flags that were soft-deleted in the active project
+      within a recent time window. Use when the user asks "what flags were
+      deleted in the last N days", "show me recently deleted feature flags",
+      "who deleted flag X", "audit recent flag deletions", or anything similar.
+      Handles the non-obvious gotcha that system.feature_flags exposes the
+      deleted boolean but does not expose a deletion timestamp — the actual
+      deleted-at time lives in the per-flag activity log and must be
+      cross-referenced.
+  - id: finding-experiments
+    kind: skill
+    path: skills/omnibus/finding-experiments
+    description: Resolves a PostHog experiment reference from natural language to a
+      concrete experiment ID by browsing `experiment-list` (not feature-flag
+      tools), with disambiguation when multiple experiments match. Use when the
+      user names or quotes an experiment ("split test demo", "the File
+      engagement boost experiment", "onboarding retention test", "landing page
+      hero experiment", "pricing experiment"), describes it loosely ("the signup
+      experiment", "my pricing test", "the one with the new checkout"), uses a
+      relative reference ("latest", "most recent", "the one I created
+      yesterday"), filters by status (running, draft, stopped, archived), or
+      otherwise refers to an experiment by anything other than its concrete ID.
+  - id: finding-replay-for-issue
+    kind: skill
+    path: skills/omnibus/finding-replay-for-issue
+    description: >
+      Finds the most informative session recording linked to an error tracking
+      issue. Use when a user has an error tracking issue ID and wants to watch a
+      replay showing what the user was doing when the error occurred. Ranks
+      linked sessions by recency, activity score, and journey completeness, then
+      summarizes the pre-error context. Replaces blind session picking from
+      potentially hundreds of linked recordings.
+  - id: finding-sessions-to-watch
+    kind: skill
+    path: skills/omnibus/finding-sessions-to-watch
+    description: >
+      Guides a user from "I want to watch recordings but don't know which ones"
+      to a short, high-signal list of sessions worth watching. Use when the user
+      asks which sessions or replays to watch, wants help finding interesting /
+      useful recordings, says they don't know where to start in session replay,
+      or wants to watch sessions about a goal (signup, pricing, onboarding,
+      checkout, a feature, rageclicks, errors, mobile, a specific person)
+      without naming exact filters. Turns a vague intent into a focused
+      RecordingsQuery via `query-session-recordings-list`, then deep-links the
+      best few and hands off to `investigating-replay`. Do NOT use when the user
+      already has a recording/session ID (use investigating-replay) or wants the
+      replay for a known error issue (use finding-replay-for-issue).
+  - id: formatting-insight-axes
+    kind: skill
+    path: skills/omnibus/formatting-insight-axes
+    description: >
+      Pick the right y-axis unit when creating or updating a TrendsQuery insight
+      via `posthog:insight-create` or `posthog:insight-update`. Use when the
+      agent is about to add a `formula` purely to convert units (e.g. dividing
+      seconds by 60 to display minutes), when a `math_property` is a duration,
+      currency, ratio, or large count, or whenever the user mentions "format the
+      y-axis", "duration", "seconds", "minutes", "hours", "milliseconds", "ms",
+      "percentage", "currency", "decimals", "axis label", or "axis unit" in the
+      context of a graph insight.
+  - id: grouping-noisy-errors
+    kind: skill
+    path: skills/omnibus/grouping-noisy-errors
+    description: >
+      Consolidate PostHog error tracking issues that are the same actual error
+      reported under different fingerprints. Use when the user asks "why do I
+      have so many TypeError issues that look the same?", "merge these
+      duplicates", "stop splitting this error into new issues", or wants to
+      clean up fingerprint sprawl. Decides between a one-shot merge of existing
+      issues and a durable grouping rule that keeps future events from creating
+      new fingerprints. Does NOT group conceptually similar bugs across
+      different runtimes, SDKs, or call sites.
+  - id: inbox-exploration
+    kind: skill
+    path: skills/omnibus/inbox-exploration
+    description: >
+      Explore PostHog's Inbox — the surface where signal reports surface as
+      actionable issues and trends. Use when the user asks "what's in my
+      inbox?", "what should I look at?", "which reports are actionable?",
+      "what's PostHog flagged recently?", asks about a specific report by ID or
+      title, or wants to see which signal sources are configured. Covers
+      listing, filtering, and drilling into reports, plus pointers to the deeper
+      `signals` skill when raw signals or semantic search are needed.
+  - id: instrument-error-tracking
+    kind: skill
+    path: skills/omnibus/instrument-error-tracking
+    description: Add PostHog error tracking to capture and monitor exceptions. Use
+      after implementing features or reviewing PRs to ensure errors are tracked
+      with stack traces and source maps. Also handles initial PostHog SDK setup
+      if not yet installed.
+  - id: instrument-feature-flags
+    kind: skill
+    path: skills/omnibus/instrument-feature-flags
+    description: Add PostHog feature flags to gate new functionality. Use after
+      implementing features or reviewing PRs to ensure safe rollouts with
+      feature flag controls. Also handles initial PostHog SDK setup if not yet
+      installed.
+  - id: instrument-integration
+    kind: skill
+    path: skills/omnibus/instrument-integration
+    description: Add PostHog SDK integration to your application. Use when setting
+      up PostHog for the first time or reviewing PRs that need PostHog
+      initialization. Covers SDK installation, provider setup, and basic
+      configuration for any framework.
+  - id: instrument-llm-analytics
+    kind: skill
+    path: skills/omnibus/instrument-llm-analytics
+    description: Add PostHog LLM analytics to trace AI model usage. Use after
+      implementing LLM features or reviewing PRs to ensure all generations are
+      captured with token counts, latency, and costs. Also handles initial
+      PostHog SDK setup if not yet installed.
+  - id: instrument-logs
+    kind: skill
+    path: skills/omnibus/instrument-logs
+    description: Add PostHog log capture to track application logs. Use after
+      implementing features or reviewing PRs to ensure meaningful log events are
+      captured with structured properties. Also handles initial OTLP exporter
+      setup if not yet configured.
+  - id: instrument-product-analytics
+    kind: skill
+    path: skills/omnibus/instrument-product-analytics
+    description: Add PostHog product analytics events to track user behavior. Use
+      after implementing new features or reviewing PRs to ensure meaningful user
+      actions are captured. Also handles initial PostHog SDK setup if not yet
+      installed.
+  - id: investigate-metric
+    kind: skill
+    path: skills/omnibus/investigate-metric
+    description: >
+      Diagnose why a product metric changed (dropped, spiked, or plateaued) by
+      orchestrating breakdowns, actors, paths, lifecycle, retention, and
+      annotations queries. Use when the user reports an anomaly, asks "why did X
+      change?", or needs root-cause analysis for a trend, funnel, retention,
+      stickiness, or lifecycle metric.
+  - id: investigating-error-issue
+    kind: skill
+    path: skills/omnibus/investigating-error-issue
+    description: >
+      Investigates a single PostHog error tracking issue end-to-end. Use when
+      the user provides an issue ID or pastes an issue URL
+      (`/error_tracking/<id>`) and wants to understand the error — who it
+      affects, what triggers it, when it started, whether it correlates with a
+      release, browser, OS, or feature flag, and what the next step should be.
+      Pulls aggregated metrics, sample exception events, segment breakdowns,
+      linked replays, and synthesizes a hypothesis-grade summary in one pass.
+  - id: investigating-replay
+    kind: skill
+    path: skills/omnibus/investigating-replay
+    description: >
+      Investigates a session recording by gathering metadata, person profile,
+      same-session events, and linked error tracking issues in one pass. Use
+      when a user provides a recording or session ID and wants to understand
+      what happened — who the user was, what they did, what errors occurred, and
+      whether there are related error tracking issues. Replaces the manual chain
+      of session-recording-get, persons-retrieve, execute-sql, and
+      query-error-tracking-issues-list.
+  - id: managing-endpoint-versions
+    kind: skill
+    path: skills/omnibus/managing-endpoint-versions
+    description: >
+      Work safely with endpoint versions — preview a draft in the playground,
+      roll back to an older version, update settings on one version without
+      bumping query history, deactivate a specific version. Use when the user
+      asks "how do I roll back my endpoint", "preview my changes before
+      publishing", "I want to fix v5 without bumping the version", or anything
+      involving the version history. Calls out today's limitations honestly:
+      there is no pointer flip; "rollback" means forking the old query into a
+      new top version.
+  - id: managing-experiment-lifecycle
+    kind: skill
+    path: skills/omnibus/managing-experiment-lifecycle
+    description: >-
+      Guides experiment state transitions: launching, pausing, resuming, ending,
+      shipping variants, archiving, resetting, duplicating, and copying to
+      another project. Covers preconditions, implications for variant assignment
+      and analysis, and the decision framework for when to use each action.
+
+      TRIGGER when: user asks to launch, pause, resume, end, ship, archive,
+      reset, duplicate, or copy an experiment to another project.
+
+      DO NOT TRIGGER when: user is creating an experiment (use
+      creating-experiments), configuring rollout (use
+      configuring-experiment-rollout), or setting up metrics (use
+      configuring-experiment-analytics).
+  - id: managing-path-cleaning-rules
+    kind: skill
+    path: skills/omnibus/managing-path-cleaning-rules
+    description: Inspects URL paths and proposes, tests, orders, and applies
+      project-level path cleaning rules so dynamic segments (numeric IDs, UUIDs,
+      slugs, dates) collapse into readable aliases. Use when the user says
+      "clean the paths", "normalize URLs", "group similar pages", "too many
+      distinct paths", "/users/123 and /users/456 are the same page", "set up
+      path cleaning", or asks why a Web analytics or Paths breakdown is
+      fragmented across thousands of nearly-identical URLs. Covers regex syntax
+      (re2), alias placeholder convention, rule ordering, the test workflow, and
+      applying rules via the project-settings-update MCP tool.
+  - id: managing-subscriptions
+    kind: skill
+    path: skills/omnibus/managing-subscriptions
+    description: Manage PostHog subscriptions — scheduled email, Slack, or webhook
+      deliveries of insight or dashboard snapshots, optionally with an
+      AI-written summary attached to each delivery. Use when the user wants to
+      subscribe to an insight or dashboard, get an AI summary attached to those
+      deliveries, check existing subscriptions, change delivery frequency, add
+      or remove recipients, or stop receiving updates.
+  - id: planning-user-interviews
+    kind: skill
+    path: skills/omnibus/planning-user-interviews
+    description: Plan a user interview topic in PostHog — pick who to target
+      (cohort, emails, or PostHog distinct IDs), draft what to ask about, and
+      prepare the voice-agent context plus a question list. Use when the user
+      asks to "talk to users", "check how users feel about X", "interview some
+      customers", "set up a user interview", "run a user-research call", "find
+      users to ask about Y", or otherwise wants qualitative feedback through a
+      conversation. Walks the user through targeting (cohorts-list,
+      persons-list, or accepting emails / distinct IDs directly), captures the
+      topic, and prompts for agent context and questions before calling
+      user-interview-topics-create. Cohort targeting is resolved to explicit
+      emails/distinct_ids at create time — topics snapshot their audience and do
+      not re-evaluate cohort membership later. Do NOT trigger when the user is
+      uploading a recorded interview audio file (that's the separate
+      UserInterview/transcript flow) or only browsing existing topics with
+      user-interview-topics-list.
+  - id: querying-posthog-data
+    kind: skill
+    path: skills/omnibus/querying-posthog-data
+    description: Required reading before writing any HogQL/SQL or calling
+      execute-sql against PostHog. Use whenever the user wants to search, find,
+      or do complex aggregations PostHog entities (insights, dashboards,
+      cohorts, feature flags, experiments, surveys, hog flows, data warehouse,
+      persons, etc.) and query analytics data (trends, funnels, retention,
+      lifecycle, paths, stickiness, web analytics, error tracking, logs,
+      sessions, LLM traces). Covers HogQL syntax differences from ClickHouse
+      SQL, system table schemas (system.*), available functions, query examples,
+      and the schema-discovery workflow.
+  - id: setting-up-a-data-warehouse-source
+    kind: skill
+    path: skills/omnibus/setting-up-a-data-warehouse-source
+    description: >
+      Guide the user through connecting a new data warehouse source — Postgres,
+      MySQL, Stripe, Hubspot, MongoDB, Salesforce, BigQuery, Snowflake, and so
+      on. Use when the user wants to "connect Stripe", "import data from
+      Postgres", "add a new data source", "sync my warehouse tables", or wants
+      to pick sync methods for each table. Walks through source-type discovery,
+      credential validation, table discovery, per-table sync_type selection, and
+      the final create call. Also covers picking a good prefix and what to do
+      right after creation.
+  - id: signals-scout-ai-observability
+    kind: skill
+    path: skills/omnibus/signals-scout-ai-observability
+    description: >
+      Focused Signals scout for PostHog projects using AI observability. Rotates
+      through a set of lenses — cost, latency, errors, volume, eval performance,
+      eval/enrichment config, clusters, and tool usage — watching each for
+      trends and spikes sliced by the dimensions it discovers over time. Leans
+      on the sandbox's bundled `exploring-llm-*` deep-dive skills for the actual
+      queries. Emits findings only when they clear the confidence bar; otherwise
+      writes durable memory and closes out empty. Self-contained peer in the
+      signals-scout-* fleet — no dependencies on other scouts.
+  - id: signals-scout-anomaly-detection
+    kind: skill
+    path: skills/omnibus/signals-scout-anomaly-detection
+    description: >
+      Signals scout that watches a PostHog project's most-viewed dashboards and
+      insights for recent anomalies — sudden bursts, drops, flat-lines, and
+      trend breaks at the daily or hourly level. It discovers what the team
+      actually looks at (view counts, dashboard access), curates a durable
+      watchlist in the scratchpad, and balances re-checking known high-value
+      insights (exploit) against discovering new ones (explore) across runs,
+      since no single run can cover a busy project. Anomalies are scored by
+      robust deviation from each insight's own seasonality-matched baseline; it
+      emits a finding only when a move clears the confidence bar, otherwise it
+      updates the baseline memory and closes out empty. Self-contained peer in
+      the signals-scout-* fleet.
+  - id: signals-scout-csp-violations
+    kind: skill
+    path: skills/omnibus/signals-scout-csp-violations
+    description: >
+      Focused Signals scout for PostHog projects collecting Content Security
+      Policy (CSP) violation reports. Watches `$csp_violation` events for fresh
+      blocked-URL clusters, per-directive bursts, page-scoped regressions after
+      deploys, and suspicious third-party domains that may indicate a
+      compromised script. Emits aggregated findings only when a cluster clears
+      the confidence bar; otherwise writes durable memory and closes out empty.
+      Self-contained peer in the signals-scout-* fleet — no dependencies on
+      other skills.
+  - id: signals-scout-data-pipelines
+    kind: skill
+    path: skills/omnibus/signals-scout-data-pipelines
+    description: >
+      Focused Signals scout for PostHog projects moving data through pipelines.
+      Watches the three delivery surfaces — CDP destinations and transformations
+      (hog functions), batch exports, and hog flows (workflows/messaging) — for
+      contradictions between configured state and actual delivery: functions the
+      watcher quietly degraded or disabled, failure rates stepping above a
+      pipeline's own baseline, batch export runs failing or stalling (a growing
+      data gap), and active flows failing for the people they trigger on. Emits
+      findings only when they clear the confidence bar; otherwise writes durable
+      memory and closes out empty. Self-contained peer in the signals-scout-*
+      fleet — no dependencies on other skills.
+  - id: signals-scout-error-tracking
+    kind: skill
+    path: skills/omnibus/signals-scout-error-tracking
+    description: >
+      Focused Signals scout for PostHog projects using error tracking. Watches
+      `$exception` bursts, stuck loops, multi-fingerprint clusters, status
+      regressions, and stack-trace activity-name patterns. Emits findings only
+      when they clear the confidence bar; otherwise writes durable memory and
+      closes out empty. Self-contained peer in the signals-scout-* fleet — no
+      dependencies on other skills.
+  - id: signals-scout-experiments
+    kind: skill
+    path: skills/omnibus/signals-scout-experiments
+    description: >
+      Focused Signals scout for PostHog projects running A/B experiments.
+      Watches running experiments for validity threats (sample ratio mismatch,
+      multi-variant contamination, exposure stalls, mid-run flag mutations) and
+      lifecycle drift (zombie experiments running long past their useful life,
+      decided-but-still-running experiments, ended experiments whose flags still
+      serve multiple variants). Emits findings only when they clear the
+      confidence bar; otherwise writes durable memory and closes out empty.
+      Self-contained peer in the signals-scout-* fleet — no dependencies on
+      other skills.
+  - id: signals-scout-feature-flags
+    kind: skill
+    path: skills/omnibus/signals-scout-feature-flags
+    description: >
+      Focused Signals scout for PostHog projects using feature flags. Watches
+      the flag roster and the `$feature_flag_called` evaluation stream for
+      contradictions between a flag's configured state and its real traffic:
+      evaluation cliffs on healthy flags, ghost flags (code calling keys that no
+      longer exist), response-distribution shifts with no corresponding flag
+      edit, and flag debt (stale, fully-rolled-out, or dead flags still burning
+      evaluations). Emits findings only when they clear the confidence bar;
+      otherwise writes durable memory and closes out empty. Self-contained peer
+      in the signals-scout-* fleet — no dependencies on other skills.
+  - id: signals-scout-general
+    kind: skill
+    path: skills/omnibus/signals-scout-general
+    description: >
+      General Signals scout for PostHog projects. Cross-product explorer that
+      scans a team's project and emits findings into the Signals inbox. Sibling
+      signals-scout-* specialists each watch a single product surface in depth;
+      this scout looks for cross-product correlations and explores the surfaces
+      no specialist covers. Each scout runs on its own schedule (default
+      hourly), so general fires independently of the specialists over time.
+  - id: signals-scout-health-checks
+    kind: skill
+    path: skills/omnibus/signals-scout-health-checks
+    description: >
+      Focused Signals scout for PostHog setup health. Reads the project's active
+      health issues — the deterministic findings of PostHog's own health checks
+      (no live events, outdated SDKs, missing reverse proxy, absent web vitals,
+      ingestion warnings, failing data-warehouse models, and more) — and decides
+      which are genuinely worth surfacing. Unlike a one-signal-per-issue push,
+      it bundles kind-clusters into a single finding, weights by real blast
+      radius (cross-referencing actual event volume and reach), and prioritizes
+      issues an agent can resolve via the MCP. Emits only above the confidence
+      bar; otherwise writes durable memory and closes out empty. Self-contained
+      peer in the signals-scout-* fleet — no dependencies on other skills.
+  - id: signals-scout-inbox-validation
+    kind: skill
+    path: skills/omnibus/signals-scout-inbox-validation
+    description: >
+      Follow-up scout for the Signals inbox itself. Watches reports that
+      recently transitioned to resolved (an implementation PR merged) and, after
+      a deployment soak window, re-measures the underlying problem to check the
+      fix actually held — plus a strictly-gated escalation check on recently
+      dismissed reports. Emits findings only when a shipped fix demonstrably
+      didn't hold; confirmations and unverifiable verdicts become durable memory
+      and an empty close-out. Self-contained peer in the signals-scout-* fleet —
+      no dependencies on other skills.
+  - id: signals-scout-logs
+    kind: skill
+    path: skills/omnibus/signals-scout-logs
+    description: >
+      Focused Signals scout for PostHog projects using logs. Watches for volume
+      bursts, severity-distribution shifts, service silence, fresh message
+      patterns, and trace-correlated bursts via the logs ingestion pipeline.
+      Emits findings only when they clear the confidence bar; otherwise writes
+      durable memory and closes out empty. Self-contained peer in the
+      signals-scout-* fleet — no dependencies on other skills.
+  - id: signals-scout-observability-gaps
+    kind: skill
+    path: skills/omnibus/signals-scout-observability-gaps
+    description: >
+      Focused Signals scout for finding observability gaps in PostHog itself —
+      significant event volumes the team isn't tracking, custom events with no
+      insight or dashboard coverage, insights pointing at events that have
+      stopped firing, dashboards missing related context, critical events with
+      no alerts. Watches the event-stream-vs-saved- inventory delta as the
+      team's product evolves and emits findings recommending new insights,
+      dashboard additions, or alerts when gaps clear the confidence bar.
+      Self-contained peer in the signals-scout-* fleet — no dependencies on
+      other skills.
+  - id: signals-scout-replay-vision
+    kind: skill
+    path: skills/omnibus/signals-scout-replay-vision
+    description: >
+      Focused Signals scout for PostHog projects running Replay Vision scanners
+      — the standing LLM probes that watch session recordings and write
+      `$recording_observed` events. Watches two promises: that enabled scanners
+      are actually observing (throughput / success-rate cliffs, exhausted quota
+      — a silent watch gap), and that what the scanners see in aggregate gets
+      surfaced (a monitor's `yes`-rate or a scorer's score stepping away from
+      its own baseline, a classifier tag or a recurring summarizer theme
+      concentrating across many sessions). It is the agentic pull complement to
+      the per-session push path: scanners with `emits_signals` already emit one
+      signal per session into this same inbox, so this scout never repeats them
+      — it adds the cross-session shape the per-session probe can't see. Emits
+      findings only when they clear the confidence bar; otherwise writes durable
+      memory and closes out empty. Self-contained peer in the signals-scout-*
+      fleet.
+  - id: signals-scout-revenue-analytics
+    kind: skill
+    path: skills/omnibus/signals-scout-revenue-analytics
+    description: >
+      Focused Signals scout for PostHog projects using revenue analytics.
+      Watches the derived revenue product for upstream failures (Stripe sync
+      stalls, capture regressions), config drift (missing subscription property,
+      currency mix surprises, broken Stripe↔person joins, deferred-revenue
+      gaps), and goal-miss escalations. Emits findings only when they clear the
+      confidence bar; otherwise writes durable memory and closes out empty.
+      Self-contained peer in the signals-scout-* fleet — no dependencies on
+      other skills.
+  - id: signals-scout-session-replay
+    kind: skill
+    path: skills/omnibus/signals-scout-session-replay
+    description: >
+      Focused Signals scout for PostHog projects using session replay. Watches
+      two promises the replay product makes: that sessions are actually being
+      recorded (capture integrity — recording volume vanishing while site
+      traffic doesn't), and that the friction evidence inside recordings gets
+      seen (rage-click / dead-click clusters concentrating on a page or element,
+      error-after-interaction cohorts, recurring replay vision themes nobody
+      aggregates). Emits findings only when they clear the confidence bar;
+      otherwise writes durable memory and closes out empty. Self-contained peer
+      in the signals-scout-* fleet.
+  - id: signals-scout-surveys
+    kind: skill
+    path: skills/omnibus/signals-scout-surveys
+    description: >
+      Focused Signals scout for PostHog projects running surveys. Watches active
+      surveys for score regressions (NPS / CSAT / rating drops), response-volume
+      drops, abandonment spikes, and targeting drift, AND aggregates open-text
+      responses into recurring themes the team should know about (clusters of
+      complaints, praise, feature requests). Emits findings only when a theme or
+      anomaly clears the confidence bar; otherwise writes durable memory and
+      closes out empty. Self-contained peer in the signals-scout-* fleet — no
+      dependencies on other skills.
+  - id: signals-scout-web-analytics
+    kind: skill
+    path: skills/omnibus/signals-scout-web-analytics
+    description: >
+      Focused Signals scout for PostHog projects with web traffic. Watches the
+      acquisition and site-health layer the web analytics product reports on:
+      per-channel session volume diverging from the site's own rhythm (an
+      acquisition source silently collapsing or surging), attribution breakage
+      (paid/campaign traffic reclassifying into Direct or Unknown when tagging
+      breaks), landing pages that break (bounce-rate steps, 404 spikes,
+      entry-path cliffs), and page-performance regressions (web vitals p75
+      steps). Emits findings only when they clear the confidence bar; otherwise
+      writes durable memory and closes out empty. Self-contained peer in the
+      signals-scout-* fleet.
+  - id: signals
+    kind: skill
+    path: skills/omnibus/signals
+    description: >
+      How to query the document_embeddings table for raw signal data using
+      HogQL. Use when you need to perform semantic search over signals, fetch
+      every signal that contributed to a specific report, or list signal types.
+      For browsing the curated report layer (the Inbox) — listing reports,
+      filtering by status/source, drilling into a single report by ID — use the
+      `inbox-exploration` skill first; drop into this skill afterwards if the
+      user wants the underlying observations.
+  - id: skills-store
+    kind: skill
+    path: skills/omnibus/skills-store
+    description: Discover and use shared team skills stored in PostHog. Use when the
+      user asks to list, browse, load, or manage "shared skills", "team skills",
+      or references the "skills store" / "skill store".
+  - id: suggesting-data-imports
+    kind: skill
+    path: skills/omnibus/suggesting-data-imports
+    description: Use when the user asks about revenue, payments, subscriptions,
+      billing, CRM deals, support tickets, production database tables, or other
+      data that PostHog does not collect natively. Also use when a query fails
+      because a table does not exist or returns no results for expected external
+      data. The data warehouse can import from SaaS tools (Stripe, Hubspot,
+      etc.), production databases (Postgres, MySQL, BigQuery, Snowflake), and
+      other arbitrary data sources. Covers checking existing sources,
+      identifying the right source type, and guiding the setup.
+  - id: suppressing-noisy-errors
+    kind: skill
+    path: skills/omnibus/suppressing-noisy-errors
+    description: >
+      Create PostHog error tracking suppression rules to drop high-volume,
+      low-value errors at ingestion. Use when the user asks "stop capturing this
+      error", "drop browser extension errors", "ignore ResizeObserver loops",
+      "suppress bot-driven errors", or wants to reduce ingestion cost from noisy
+      unactionable errors. Identifies suppression candidates, scopes the filter
+      tightly, decides between full suppression and sampling, and confirms the
+      rule before creating it. Suppressed errors are dropped permanently — this
+      skill defaults to caution.
+  - id: triaging-error-issues
+    kind: skill
+    path: skills/omnibus/triaging-error-issues
+    description: >
+      Triage PostHog error tracking issues during a daily or on-call review. Use
+      when the user asks "what's broken?", "what new errors do we have?", "show
+      me top errors today", "what should I look at this morning", or wants a
+      prioritized list of active issues to work on. Surfaces new and high-impact
+      issues, ranks by users affected and recency, points at linked replays, and
+      proposes next actions (investigate, assign, suppress, merge).
+  - id: triaging-visual-review-runs
+    kind: skill
+    path: skills/omnibus/triaging-visual-review-runs
+    description: >
+      Inspects PostHog Visual Review (VR) runs that gate PR merges with
+      screenshot regression checks. Use when the user mentions "visual review",
+      "VR", "snapshot diff", "screenshot test", "storybook regression",
+      "playwright snapshot", asks why a PR is blocked or what changed visually,
+      wants to triage the VR backlog, decide whether a snapshot diff is real vs
+      flaky, or check whether a story has been changing across runs. Also invoke
+      when a PR has a failing `visual-review` status check, when a PR comment
+      mentions "Visual review", or when the user is on a branch with an open VR
+      run.
+  - id: tuning-incremental-sync-config
+    kind: skill
+    path: skills/omnibus/tuning-incremental-sync-config
+    description: >
+      Change the sync configuration of an existing data warehouse schema —
+      switch sync_type, pick a different incremental_field, set
+      primary_key_columns, choose cdc_table_mode, or change sync_frequency. Use
+      when the user asks "switch my orders table from full refresh to
+      incremental", "this table is syncing too slowly / too frequently", "I need
+      to pick a different incremental column", "set up CDC for this Postgres
+      table", or when diagnosis of a failing sync pointed to an
+      incremental-field or PK misconfiguration.
+  - id: working-with-skills
+    kind: skill
+    path: skills/omnibus/working-with-skills
+    description: Best practices for agents managing PostHog skills via the MCP
+      `llma-skill-*` tools — how to discover, read, create, update, and refactor
+      skills efficiently, especially large skills with many bundled files. Use
+      whenever you are about to call any `llma-skill-*` tool, asked to author or
+      edit a shared skill, or troubleshoot why a skill write was rejected. Pairs
+      with `skills-store` (which covers the raw tool surface) by adding the
+      decision-tree, efficiency, and pitfall guidance.
+  - id: error-tracking-android
+    kind: skill
+    path: skills/posthog/all/skills/error-tracking-android
+    description: PostHog error tracking for Android
+  - id: error-tracking-angular
+    kind: skill
+    path: skills/posthog/all/skills/error-tracking-angular
+    description: PostHog error tracking for Angular
+  - id: error-tracking-flutter
+    kind: skill
+    path: skills/posthog/all/skills/error-tracking-flutter
+    description: PostHog error tracking for Flutter
+  - id: error-tracking-go
+    kind: skill
+    path: skills/posthog/all/skills/error-tracking-go
+    description: PostHog error tracking for Go
+  - id: error-tracking-hono
+    kind: skill
+    path: skills/posthog/all/skills/error-tracking-hono
+    description: PostHog error tracking for Hono
+  - id: error-tracking-nextjs
+    kind: skill
+    path: skills/posthog/all/skills/error-tracking-nextjs
+    description: PostHog error tracking for Next.js
+  - id: error-tracking-node
+    kind: skill
+    path: skills/posthog/all/skills/error-tracking-node
+    description: PostHog error tracking for Node.js
+  - id: error-tracking-nuxt
+    kind: skill
+    path: skills/posthog/all/skills/error-tracking-nuxt
+    description: PostHog error tracking for Nuxt
+  - id: error-tracking-python
+    kind: skill
+    path: skills/posthog/all/skills/error-tracking-python
+    description: PostHog error tracking for Python
+  - id: error-tracking-react-native
+    kind: skill
+    path: skills/posthog/all/skills/error-tracking-react-native
+    description: PostHog error tracking for React Native
+  - id: error-tracking-react
+    kind: skill
+    path: skills/posthog/all/skills/error-tracking-react
+    description: PostHog error tracking for React
+  - id: error-tracking-ruby-on-rails
+    kind: skill
+    path: skills/posthog/all/skills/error-tracking-ruby-on-rails
+    description: PostHog error tracking for Ruby on Rails
+  - id: error-tracking-ruby
+    kind: skill
+    path: skills/posthog/all/skills/error-tracking-ruby
+    description: PostHog error tracking for Ruby
+  - id: error-tracking-svelte
+    kind: skill
+    path: skills/posthog/all/skills/error-tracking-svelte
+    description: PostHog error tracking for Svelte
+  - id: error-tracking-web
+    kind: skill
+    path: skills/posthog/all/skills/error-tracking-web
+    description: PostHog error tracking for Web (JavaScript)
+  - id: feature-flags-android
+    kind: skill
+    path: skills/posthog/all/skills/feature-flags-android
+    description: PostHog feature flags for Android applications
+  - id: feature-flags-api
+    kind: skill
+    path: skills/posthog/all/skills/feature-flags-api
+    description: PostHog feature flags for API applications
+  - id: feature-flags-dotnet
+    kind: skill
+    path: skills/posthog/all/skills/feature-flags-dotnet
+    description: PostHog feature flags for .NET applications
+  - id: feature-flags-elixir
+    kind: skill
+    path: skills/posthog/all/skills/feature-flags-elixir
+    description: PostHog feature flags for Elixir applications
+  - id: feature-flags-flutter
+    kind: skill
+    path: skills/posthog/all/skills/feature-flags-flutter
+    description: PostHog feature flags for Flutter applications
+  - id: feature-flags-go
+    kind: skill
+    path: skills/posthog/all/skills/feature-flags-go
+    description: PostHog feature flags for Go applications
+  - id: feature-flags-ios
+    kind: skill
+    path: skills/posthog/all/skills/feature-flags-ios
+    description: PostHog feature flags for iOS applications
+  - id: feature-flags-java
+    kind: skill
+    path: skills/posthog/all/skills/feature-flags-java
+    description: PostHog feature flags for Java applications
+  - id: feature-flags-nextjs
+    kind: skill
+    path: skills/posthog/all/skills/feature-flags-nextjs
+    description: PostHog feature flags for Next.js applications
+  - id: feature-flags-nodejs
+    kind: skill
+    path: skills/posthog/all/skills/feature-flags-nodejs
+    description: PostHog feature flags for Node.js applications
+  - id: feature-flags-php
+    kind: skill
+    path: skills/posthog/all/skills/feature-flags-php
+    description: PostHog feature flags for PHP applications
+  - id: feature-flags-python
+    kind: skill
+    path: skills/posthog/all/skills/feature-flags-python
+    description: PostHog feature flags for Python applications
+  - id: feature-flags-react-native
+    kind: skill
+    path: skills/posthog/all/skills/feature-flags-react-native
+    description: PostHog feature flags for React Native applications
+  - id: feature-flags-react
+    kind: skill
+    path: skills/posthog/all/skills/feature-flags-react
+    description: PostHog feature flags for React applications
+  - id: feature-flags-ruby
+    kind: skill
+    path: skills/posthog/all/skills/feature-flags-ruby
+    description: PostHog feature flags for Ruby applications
+  - id: feature-flags-rust
+    kind: skill
+    path: skills/posthog/all/skills/feature-flags-rust
+    description: PostHog feature flags for Rust applications
+  - id: feature-flags-web
+    kind: skill
+    path: skills/posthog/all/skills/feature-flags-web
+    description: PostHog feature flags for Web (JavaScript) applications
+  - id: integration-android
+    kind: skill
+    path: skills/posthog/all/skills/integration-android
+    description: PostHog integration for Android applications
+  - id: integration-angular
+    kind: skill
+    path: skills/posthog/all/skills/integration-angular
+    description: PostHog integration for Angular applications
+  - id: integration-astro-hybrid
+    kind: skill
+    path: skills/posthog/all/skills/integration-astro-hybrid
+    description: PostHog integration for Astro hybrid rendering with both static and
+      server-rendered pages
+  - id: integration-astro-ssr
+    kind: skill
+    path: skills/posthog/all/skills/integration-astro-ssr
+    description: PostHog integration for server-rendered Astro applications with API routes
+  - id: integration-astro-static
+    kind: skill
+    path: skills/posthog/all/skills/integration-astro-static
+    description: PostHog integration for static Astro sites using SSG
+  - id: integration-astro-view-transitions
+    kind: skill
+    path: skills/posthog/all/skills/integration-astro-view-transitions
+    description: PostHog integration for Astro with ClientRouter view transitions
+  - id: integration-django
+    kind: skill
+    path: skills/posthog/all/skills/integration-django
+    description: PostHog integration for Django applications
+  - id: integration-expo
+    kind: skill
+    path: skills/posthog/all/skills/integration-expo
+    description: PostHog integration for Expo applications
+  - id: integration-fastapi
+    kind: skill
+    path: skills/posthog/all/skills/integration-fastapi
+    description: PostHog integration for FastAPI applications
+  - id: integration-flask
+    kind: skill
+    path: skills/posthog/all/skills/integration-flask
+    description: PostHog integration for Flask applications
+  - id: integration-javascript_node
+    kind: skill
+    path: skills/posthog/all/skills/integration-javascript_node
+    description: PostHog integration for server-side Node.js applications using posthog-node
+  - id: integration-javascript_web
+    kind: skill
+    path: skills/posthog/all/skills/integration-javascript_web
+    description: PostHog integration for client-side web JavaScript applications
+      using posthog-js
+  - id: integration-laravel
+    kind: skill
+    path: skills/posthog/all/skills/integration-laravel
+    description: PostHog integration for Laravel applications
+  - id: integration-nextjs-app-router
+    kind: skill
+    path: skills/posthog/all/skills/integration-nextjs-app-router
+    description: PostHog integration for Next.js App Router applications
+  - id: integration-nextjs-pages-router
+    kind: skill
+    path: skills/posthog/all/skills/integration-nextjs-pages-router
+    description: PostHog integration for Next.js Pages Router applications
+  - id: integration-nuxt-3.6
+    kind: skill
+    path: skills/posthog/all/skills/integration-nuxt-3.6
+    description: PostHog integration for Nuxt versions 3.0 to 3.6
+  - id: integration-nuxt-4
+    kind: skill
+    path: skills/posthog/all/skills/integration-nuxt-4
+    description: PostHog integration for Nuxt 4 applications
+  - id: integration-python
+    kind: skill
+    path: skills/posthog/all/skills/integration-python
+    description: PostHog integration for any Python application using the Python SDK
+  - id: integration-react-native
+    kind: skill
+    path: skills/posthog/all/skills/integration-react-native
+    description: PostHog integration for React Native applications
+  - id: integration-react-react-router-6
+    kind: skill
+    path: skills/posthog/all/skills/integration-react-react-router-6
+    description: PostHog integration for React Router v6 applications
+  - id: integration-react-react-router-7-data
+    kind: skill
+    path: skills/posthog/all/skills/integration-react-react-router-7-data
+    description: PostHog integration for React Router v7 - Data mode applications
+  - id: integration-react-react-router-7-declarative
+    kind: skill
+    path: skills/posthog/all/skills/integration-react-react-router-7-declarative
+    description: PostHog integration for React Router v7 - Declarative mode applications
+  - id: integration-react-react-router-7-framework
+    kind: skill
+    path: skills/posthog/all/skills/integration-react-react-router-7-framework
+    description: PostHog integration for React Router v7 - Framework mode applications
+  - id: integration-react-tanstack-router-code-based
+    kind: skill
+    path: skills/posthog/all/skills/integration-react-tanstack-router-code-based
+    description: PostHog integration for React applications using TanStack Router
+      with code-based routing
+  - id: integration-react-tanstack-router-file-based
+    kind: skill
+    path: skills/posthog/all/skills/integration-react-tanstack-router-file-based
+    description: PostHog integration for React applications using TanStack Router
+      with file-based routing
+  - id: integration-react-vite
+    kind: skill
+    path: skills/posthog/all/skills/integration-react-vite
+    description: PostHog integration for React applications built with Vite (no router)
+  - id: integration-ruby-on-rails
+    kind: skill
+    path: skills/posthog/all/skills/integration-ruby-on-rails
+    description: PostHog integration for Ruby on Rails applications
+  - id: integration-ruby
+    kind: skill
+    path: skills/posthog/all/skills/integration-ruby
+    description: PostHog integration for any Ruby application using the Ruby SDK
+  - id: integration-sveltekit
+    kind: skill
+    path: skills/posthog/all/skills/integration-sveltekit
+    description: PostHog integration for SvelteKit applications
+  - id: integration-swift
+    kind: skill
+    path: skills/posthog/all/skills/integration-swift
+    description: PostHog integration for Swift iOS and macOS applications
+  - id: integration-tanstack-start
+    kind: skill
+    path: skills/posthog/all/skills/integration-tanstack-start
+    description: PostHog integration for TanStack Start full-stack applications
+  - id: integration-vue-3
+    kind: skill
+    path: skills/posthog/all/skills/integration-vue-3
+    description: PostHog integration for Vue 3 applications
+  - id: llm-analytics-setup
+    kind: skill
+    path: skills/posthog/all/skills/llm-analytics-setup
+    description: PostHog LLM analytics for all supported providers
+  - id: logs-datadog
+    kind: skill
+    path: skills/posthog/all/skills/logs-datadog
+    description: PostHog logs for Datadog
+  - id: logs-go
+    kind: skill
+    path: skills/posthog/all/skills/logs-go
+    description: PostHog logs for Go
+  - id: logs-java
+    kind: skill
+    path: skills/posthog/all/skills/logs-java
+    description: PostHog logs for Java
+  - id: logs-nextjs
+    kind: skill
+    path: skills/posthog/all/skills/logs-nextjs
+    description: PostHog logs for Next.js
+  - id: logs-nodejs
+    kind: skill
+    path: skills/posthog/all/skills/logs-nodejs
+    description: PostHog logs for Node.js
+  - id: logs-other
+    kind: skill
+    path: skills/posthog/all/skills/logs-other
+    description: PostHog logs for Other Languages
+  - id: logs-python
+    kind: skill
+    path: skills/posthog/all/skills/logs-python
+    description: PostHog logs for Python
+  - id: omnibus-instrument-error-tracking
+    kind: skill
+    path: skills/posthog/all/skills/omnibus-instrument-error-tracking
+    description: Add PostHog error tracking to capture and monitor exceptions. Use
+      after implementing features or reviewing PRs to ensure errors are tracked
+      with stack traces and source maps. Also handles initial PostHog SDK setup
+      if not yet installed.
+  - id: omnibus-instrument-feature-flags
+    kind: skill
+    path: skills/posthog/all/skills/omnibus-instrument-feature-flags
+    description: Add PostHog feature flags to gate new functionality. Use after
+      implementing features or reviewing PRs to ensure safe rollouts with
+      feature flag controls. Also handles initial PostHog SDK setup if not yet
+      installed.
+  - id: omnibus-instrument-integration
+    kind: skill
+    path: skills/posthog/all/skills/omnibus-instrument-integration
+    description: Add PostHog SDK integration to your application. Use when setting
+      up PostHog for the first time or reviewing PRs that need PostHog
+      initialization. Covers SDK installation, provider setup, and basic
+      configuration for any framework.
+  - id: omnibus-instrument-llm-analytics
+    kind: skill
+    path: skills/posthog/all/skills/omnibus-instrument-llm-analytics
+    description: Add PostHog LLM analytics to trace AI model usage. Use after
+      implementing LLM features or reviewing PRs to ensure all generations are
+      captured with token counts, latency, and costs. Also handles initial
+      PostHog SDK setup if not yet installed.
+  - id: omnibus-instrument-logs
+    kind: skill
+    path: skills/posthog/all/skills/omnibus-instrument-logs
+    description: Add PostHog log capture to track application logs. Use after
+      implementing features or reviewing PRs to ensure meaningful log events are
+      captured with structured properties. Also handles initial OTLP exporter
+      setup if not yet configured.
+  - id: omnibus-instrument-product-analytics
+    kind: skill
+    path: skills/posthog/all/skills/omnibus-instrument-product-analytics
+    description: Add PostHog product analytics events to track user behavior. Use
+      after implementing new features or reviewing PRs to ensure meaningful user
+      actions are captured. Also handles initial PostHog SDK setup if not yet
+      installed.
+  - id: tools-and-features-hogql
+    kind: skill
+    path: skills/posthog/all/skills/tools-and-features-hogql
+    description: HogQL queries for PostHog analytics
+  - id: all
+    kind: skill
+    path: skills/posthog/error-tracking/skills/all
+    description: Add PostHog error tracking to capture and monitor exceptions. Use
+      after implementing features or reviewing PRs to ensure errors are tracked
+      with stack traces and source maps. Also handles initial PostHog SDK setup
+      if not yet installed.
+  - id: android
+    kind: skill
+    path: skills/posthog/error-tracking/skills/android
+    description: PostHog error tracking for Android
+  - id: angular
+    kind: skill
+    path: skills/posthog/error-tracking/skills/angular
+    description: PostHog error tracking for Angular
+  - id: flutter
+    kind: skill
+    path: skills/posthog/error-tracking/skills/flutter
+    description: PostHog error tracking for Flutter
+  - id: go
+    kind: skill
+    path: skills/posthog/error-tracking/skills/go
+    description: PostHog error tracking for Go
+  - id: hono
+    kind: skill
+    path: skills/posthog/error-tracking/skills/hono
+    description: PostHog error tracking for Hono
+  - id: nextjs
+    kind: skill
+    path: skills/posthog/error-tracking/skills/nextjs
+    description: PostHog error tracking for Next.js
+  - id: node
+    kind: skill
+    path: skills/posthog/error-tracking/skills/node
+    description: PostHog error tracking for Node.js
+  - id: nuxt
+    kind: skill
+    path: skills/posthog/error-tracking/skills/nuxt
+    description: PostHog error tracking for Nuxt
+  - id: python
+    kind: skill
+    path: skills/posthog/error-tracking/skills/python
+    description: PostHog error tracking for Python
+  - id: react-native
+    kind: skill
+    path: skills/posthog/error-tracking/skills/react-native
+    description: PostHog error tracking for React Native
+  - id: react
+    kind: skill
+    path: skills/posthog/error-tracking/skills/react
+    description: PostHog error tracking for React
+  - id: ruby-on-rails
+    kind: skill
+    path: skills/posthog/error-tracking/skills/ruby-on-rails
+    description: PostHog error tracking for Ruby on Rails
+  - id: ruby
+    kind: skill
+    path: skills/posthog/error-tracking/skills/ruby
+    description: PostHog error tracking for Ruby
+  - id: svelte
+    kind: skill
+    path: skills/posthog/error-tracking/skills/svelte
+    description: PostHog error tracking for Svelte
+  - id: web
+    kind: skill
+    path: skills/posthog/error-tracking/skills/web
+    description: PostHog error tracking for Web (JavaScript)
+  - id: all-2
+    kind: skill
+    path: skills/posthog/feature-flags/skills/all
+    description: Add PostHog feature flags to gate new functionality. Use after
+      implementing features or reviewing PRs to ensure safe rollouts with
+      feature flag controls. Also handles initial PostHog SDK setup if not yet
+      installed.
+  - id: android-2
+    kind: skill
+    path: skills/posthog/feature-flags/skills/android
+    description: PostHog feature flags for Android applications
+  - id: api
+    kind: skill
+    path: skills/posthog/feature-flags/skills/api
+    description: PostHog feature flags for API applications
+  - id: dotnet
+    kind: skill
+    path: skills/posthog/feature-flags/skills/dotnet
+    description: PostHog feature flags for .NET applications
+  - id: elixir
+    kind: skill
+    path: skills/posthog/feature-flags/skills/elixir
+    description: PostHog feature flags for Elixir applications
+  - id: flutter-2
+    kind: skill
+    path: skills/posthog/feature-flags/skills/flutter
+    description: PostHog feature flags for Flutter applications
+  - id: go-2
+    kind: skill
+    path: skills/posthog/feature-flags/skills/go
+    description: PostHog feature flags for Go applications
+  - id: ios
+    kind: skill
+    path: skills/posthog/feature-flags/skills/ios
+    description: PostHog feature flags for iOS applications
+  - id: java
+    kind: skill
+    path: skills/posthog/feature-flags/skills/java
+    description: PostHog feature flags for Java applications
+  - id: nextjs-2
+    kind: skill
+    path: skills/posthog/feature-flags/skills/nextjs
+    description: PostHog feature flags for Next.js applications
+  - id: nodejs
+    kind: skill
+    path: skills/posthog/feature-flags/skills/nodejs
+    description: PostHog feature flags for Node.js applications
+  - id: php
+    kind: skill
+    path: skills/posthog/feature-flags/skills/php
+    description: PostHog feature flags for PHP applications
+  - id: python-2
+    kind: skill
+    path: skills/posthog/feature-flags/skills/python
+    description: PostHog feature flags for Python applications
+  - id: react-native-2
+    kind: skill
+    path: skills/posthog/feature-flags/skills/react-native
+    description: PostHog feature flags for React Native applications
+  - id: react-2
+    kind: skill
+    path: skills/posthog/feature-flags/skills/react
+    description: PostHog feature flags for React applications
+  - id: ruby-2
+    kind: skill
+    path: skills/posthog/feature-flags/skills/ruby
+    description: PostHog feature flags for Ruby applications
+  - id: rust
+    kind: skill
+    path: skills/posthog/feature-flags/skills/rust
+    description: PostHog feature flags for Rust applications
+  - id: web-2
+    kind: skill
+    path: skills/posthog/feature-flags/skills/web
+    description: PostHog feature flags for Web (JavaScript) applications
+  - id: all-3
+    kind: skill
+    path: skills/posthog/integration/skills/all
+    description: Add PostHog product analytics events to track user behavior. Use
+      after implementing new features or reviewing PRs to ensure meaningful user
+      actions are captured. Also handles initial PostHog SDK setup if not yet
+      installed.
+  - id: android-3
+    kind: skill
+    path: skills/posthog/integration/skills/android
+    description: PostHog integration for Android applications
+  - id: angular-2
+    kind: skill
+    path: skills/posthog/integration/skills/angular
+    description: PostHog integration for Angular applications
+  - id: astro-hybrid
+    kind: skill
+    path: skills/posthog/integration/skills/astro-hybrid
+    description: PostHog integration for Astro hybrid rendering with both static and
+      server-rendered pages
+  - id: astro-ssr
+    kind: skill
+    path: skills/posthog/integration/skills/astro-ssr
+    description: PostHog integration for server-rendered Astro applications with API routes
+  - id: astro-static
+    kind: skill
+    path: skills/posthog/integration/skills/astro-static
+    description: PostHog integration for static Astro sites using SSG
+  - id: astro-view-transitions
+    kind: skill
+    path: skills/posthog/integration/skills/astro-view-transitions
+    description: PostHog integration for Astro with ClientRouter view transitions
+  - id: django
+    kind: skill
+    path: skills/posthog/integration/skills/django
+    description: PostHog integration for Django applications
+  - id: expo
+    kind: skill
+    path: skills/posthog/integration/skills/expo
+    description: PostHog integration for Expo applications
+  - id: fastapi
+    kind: skill
+    path: skills/posthog/integration/skills/fastapi
+    description: PostHog integration for FastAPI applications
+  - id: flask
+    kind: skill
+    path: skills/posthog/integration/skills/flask
+    description: PostHog integration for Flask applications
+  - id: javascript_node
+    kind: skill
+    path: skills/posthog/integration/skills/javascript_node
+    description: PostHog integration for server-side Node.js applications using posthog-node
+  - id: javascript_web
+    kind: skill
+    path: skills/posthog/integration/skills/javascript_web
+    description: PostHog integration for client-side web JavaScript applications
+      using posthog-js
+  - id: laravel
+    kind: skill
+    path: skills/posthog/integration/skills/laravel
+    description: PostHog integration for Laravel applications
+  - id: nextjs-app-router
+    kind: skill
+    path: skills/posthog/integration/skills/nextjs-app-router
+    description: PostHog integration for Next.js App Router applications
+  - id: nextjs-pages-router
+    kind: skill
+    path: skills/posthog/integration/skills/nextjs-pages-router
+    description: PostHog integration for Next.js Pages Router applications
+  - id: nuxt-3.6
+    kind: skill
+    path: skills/posthog/integration/skills/nuxt-3.6
+    description: PostHog integration for Nuxt versions 3.0 to 3.6
+  - id: nuxt-4
+    kind: skill
+    path: skills/posthog/integration/skills/nuxt-4
+    description: PostHog integration for Nuxt 4 applications
+  - id: python-3
+    kind: skill
+    path: skills/posthog/integration/skills/python
+    description: PostHog integration for any Python application using the Python SDK
+  - id: react-native-3
+    kind: skill
+    path: skills/posthog/integration/skills/react-native
+    description: PostHog integration for React Native applications
+  - id: react-react-router-6
+    kind: skill
+    path: skills/posthog/integration/skills/react-react-router-6
+    description: PostHog integration for React Router v6 applications
+  - id: react-react-router-7-data
+    kind: skill
+    path: skills/posthog/integration/skills/react-react-router-7-data
+    description: PostHog integration for React Router v7 - Data mode applications
+  - id: react-react-router-7-declarative
+    kind: skill
+    path: skills/posthog/integration/skills/react-react-router-7-declarative
+    description: PostHog integration for React Router v7 - Declarative mode applications
+  - id: react-react-router-7-framework
+    kind: skill
+    path: skills/posthog/integration/skills/react-react-router-7-framework
+    description: PostHog integration for React Router v7 - Framework mode applications
+  - id: react-tanstack-router-code-based
+    kind: skill
+    path: skills/posthog/integration/skills/react-tanstack-router-code-based
+    description: PostHog integration for React applications using TanStack Router
+      with code-based routing
+  - id: react-tanstack-router-file-based
+    kind: skill
+    path: skills/posthog/integration/skills/react-tanstack-router-file-based
+    description: PostHog integration for React applications using TanStack Router
+      with file-based routing
+  - id: react-vite
+    kind: skill
+    path: skills/posthog/integration/skills/react-vite
+    description: PostHog integration for React applications built with Vite (no router)
+  - id: ruby-on-rails-2
+    kind: skill
+    path: skills/posthog/integration/skills/ruby-on-rails
+    description: PostHog integration for Ruby on Rails applications
+  - id: ruby-3
+    kind: skill
+    path: skills/posthog/integration/skills/ruby
+    description: PostHog integration for any Ruby application using the Ruby SDK
+  - id: sveltekit
+    kind: skill
+    path: skills/posthog/integration/skills/sveltekit
+    description: PostHog integration for SvelteKit applications
+  - id: swift
+    kind: skill
+    path: skills/posthog/integration/skills/swift
+    description: PostHog integration for Swift iOS and macOS applications
+  - id: tanstack-start
+    kind: skill
+    path: skills/posthog/integration/skills/tanstack-start
+    description: PostHog integration for TanStack Start full-stack applications
+  - id: vue-3
+    kind: skill
+    path: skills/posthog/integration/skills/vue-3
+    description: PostHog integration for Vue 3 applications
+  - id: all-4
+    kind: skill
+    path: skills/posthog/llm-analytics/skills/all
+    description: Add PostHog LLM analytics to trace AI model usage. Use after
+      implementing LLM features or reviewing PRs to ensure all generations are
+      captured with token counts, latency, and costs. Also handles initial
+      PostHog SDK setup if not yet installed.
+  - id: setup
+    kind: skill
+    path: skills/posthog/llm-analytics/skills/setup
+    description: PostHog LLM analytics for all supported providers
+  - id: all-5
+    kind: skill
+    path: skills/posthog/logs/skills/all
+    description: Add PostHog log capture to track application logs. Use after
+      implementing features or reviewing PRs to ensure meaningful log events are
+      captured with structured properties. Also handles initial OTLP exporter
+      setup if not yet configured.
+  - id: datadog
+    kind: skill
+    path: skills/posthog/logs/skills/datadog
+    description: PostHog logs for Datadog
+  - id: go-3
+    kind: skill
+    path: skills/posthog/logs/skills/go
+    description: PostHog logs for Go
+  - id: java-2
+    kind: skill
+    path: skills/posthog/logs/skills/java
+    description: PostHog logs for Java
+  - id: nextjs-3
+    kind: skill
+    path: skills/posthog/logs/skills/nextjs
+    description: PostHog logs for Next.js
+  - id: nodejs-2
+    kind: skill
+    path: skills/posthog/logs/skills/nodejs
+    description: PostHog logs for Node.js
+  - id: other
+    kind: skill
+    path: skills/posthog/logs/skills/other
+    description: PostHog logs for Other Languages
+  - id: python-4
+    kind: skill
+    path: skills/posthog/logs/skills/python
+    description: PostHog logs for Python
+  - id: hogql
+    kind: skill
+    path: skills/posthog/tools-and-features/skills/hogql
+    description: HogQL queries for PostHog analytics
+  - id: impersonation-toolkit
+    kind: skill
+    path: skills/team/customer-success/impersonation-toolkit
+    description: Audit a PostHog A/B experiment for a customer — verify config,
+      exposure, attribution, and metrics. Trigger phrases include "audit
+      [customer]'s experiment", "audit the [name] experiment", "check experiment
+      setup for [customer]", "validate this A/B test", or any request to review
+      whether an experiment is correctly wired up. Assumes you already have MCP
+      access to the customer's project (typically via the impersonation flow set
+      up by the `impersonate-audit` wrapper that ships with this plugin).
+  - id: monthly-to-annual
+    kind: skill
+    path: skills/team/customer-success/monthly-to-annual
+    description: Build the case for converting a PostHog monthly/PAYG customer to an
+      annual prepaid credit plan. Pulls 12-24 months of invoice history from the
+      data warehouse, runs the handbook eligibility check, projects forward
+      growth, applies the handbook discount tiers, scans recent customer
+      touchpoints (Slack, Gmail, Granola) for confounding variables, fetches
+      customer momentum signals via Exa, emulates the rep's own writing voice,
+      and emits a succinct briefing plus a plain-text Slack draft. Trigger on
+      "annual conversion math for [account]", "monthly to annual for [account]",
+      "draft annual nudge for [account]", or "credit-discount math for
+      [account]".
+  - id: posthog-debugger
+    kind: skill
+    path: skills/team/customer-success/posthog-debugger
+    description: Debug and inspect PostHog implementations on any website. Use this
+      skill when a user wants to understand how PostHog is implemented on a
+      page, troubleshoot tracking issues, verify configuration, check what
+      events are being sent, or audit a PostHog setup. Works with Chrome
+      DevTools MCP and Playwright MCP to inspect live websites.
+  - id: posthog-onboarding
+    kind: skill
+    path: skills/team/customer-success/posthog-onboarding
+    description: Help existing PostHog customers improve their PostHog instance.
+      Triggers on "help [customer] improve their PostHog setup", "audit
+      [company]'s PostHog instance", "create tracking plan for [company]",
+      "design data schema for [customer]", or requests to improve analytics
+      coverage, fix instrumentation gaps, expand PostHog usage, or build better
+      insights for customers already using PostHog. Use when working with a
+      customer who already has PostHog installed.
+  - id: posthog-survey-creator
+    kind: skill
+    path: skills/team/customer-success/posthog-survey-creator
+    description: Create and configure surveys in PostHog through guided
+      conversation. Use this skill when a user wants to create a survey, collect
+      user feedback, run NPS/CSAT/CES/PMF surveys, gather product feedback, or
+      understand user sentiment. The skill guides Product Managers through
+      survey design by matching their goals to proven templates (or creating
+      custom surveys), then configuring targeting and scheduling before creating
+      via PostHog MCP tools.
+  - id: user-deep-dive
+    kind: skill
+    path: skills/team/customer-success/user-deep-dive
+    description: Deep dive on a PostHog user by email address. Analyze what they do,
+      where they spend time, and what products they use.
+  - id: workload-analysis
+    kind: skill
+    path: skills/team/customer-success/workload-analysis
+    description: Generate comprehensive workload analysis visualizations for PostHog
+      customer accounts. Use when user requests account analysis, workload
+      breakdown, SDK analysis, spend allocation, or expansion opportunity
+      assessment. Triggers include "analyze [account]", "workload analysis for
+      [account]", "SDK breakdown for [account]", "show me how [account] uses
+      PostHog", or any request to understand customer usage patterns across
+      products and platforms.
+  - id: big-fish-lead
+    kind: skill
+    path: skills/team/new-business-sales/big-fish-lead
+    description: Research, qualify, and suggest outreach for PostHog big fish
+      product-led leads — large companies (500+ or 1000+ employees) using
+      PostHog on free tier without a payment method. Use this skill when a TAE
+      needs to work a big fish alert from Salesforce. Triggers on 'work this big
+      fish lead', 'research this product-led lead', 'big fish alert', '500+
+      employees no payment method', '1000+ employees no payment method', or any
+      request involving a large-company product-led lead that needs research,
+      qualification, and an outreach recommendation. Also trigger when a TAE
+      pastes Salesforce lead details with matching criteria like 'Big fish
+      alert' or '500+ employees, no payment method'.
+  - id: inbound-lead
+    kind: skill
+    path: skills/team/new-business-sales/inbound-lead
+    description: Evaluate and respond to inbound PostHog sales leads from
+      Salesforce. Use this skill when any PostHog TAE needs to triage an inbound
+      lead — deciding whether to qualify for a call, route to self-serve, or
+      disqualify — and then draft an appropriate response email. Checks Vitally
+      for existing account context before qualifying. Triggers on "respond to
+      this lead", "triage this inbound", "write a response to this lead",
+      "disposition this lead", "evaluate this Salesforce lead", or any request
+      involving an inbound sales inquiry that needs qualification and a reply.
+      Also trigger when a TAE pastes or describes lead details and asks what to
+      do with them.
+  - id: onboarding-lead
+    kind: skill
+    path: skills/team/new-business-sales/onboarding-lead
+    description: Research and qualify onboarding team referral leads for PostHog.
+      Use this skill when a TAE receives a lead from the onboarding team and
+      needs a full research brief before deciding how to engage. Triggers on
+      'research this onboarding lead', 'onboarding team referred [company]',
+      'look into [company] from onboarding', 'qualify this onboarding referral',
+      'what do we know about [company] from onboarding', or any request to
+      research a company that came through the onboarding pipeline. Also trigger
+      when a TAE pastes a company name and mentions it's from the onboarding
+      team, or says something like 'onboarding sent me [company]', 'got a
+      handoff for [company]', or '[name] from onboarding sent me [company]'.
+      This skill does deep research and qualification, then drafts outreach when
+      the recommendation is to engage.
+  - id: transition-leads
+    kind: skill
+    path: skills/team/new-business-sales/transition-leads
+    description: Qualify and draft outreach for PostHog product-led leads who are
+      hitting a billing transition — either startup program customers rolling
+      off free credits, or users whose first invoice will be >= $2K. Use this
+      skill when a TAE needs to work a startup rolloff lead, a high
+      first-invoice alert, or any lead where the matching criteria mentions
+      'startup rolloff', 'credit spend', 'first invoice', 'credits expiring', or
+      'high usage transition'. Also trigger when a TAE pastes Salesforce lead
+      details with matching criteria like 'Startup rolloff + high credit spend'
+      or 'First invoice >= $2K'.
+  - id: account-handover
+    kind: skill
+    path: skills/team/product-led-sales/account-handover
+    description: Draft structured handover notes for transitioning a PostHog account
+      from one TAM or CSM to another. Use this skill when a TAM needs to hand
+      over an account, prepare a transition briefing, write handover notes,
+      create an account summary for a new owner, or any request involving
+      account transitions between TAMs or CSMs. Triggers on "hand over this
+      account", "transition account to", "draft handover notes", "account
+      briefing for new TAM", "prepare account transition", or when a TAM names
+      an account and says they're leaving or reassigning it.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

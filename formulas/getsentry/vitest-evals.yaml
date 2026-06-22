@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: getsentry/vitest-evals
+name: vitest-evals
+description: Harness-backed AI testing on top of Vitest; adapters, judges, replay, reports.
+source:
+  type: git
+  url: https://github.com/getsentry/vitest-evals
+  revision: 1c7ca64ba7ac013fbac3ba63e105bf8d9d19655c
+capabilities:
+  - id: vitest-evals
+    kind: skill
+    path: skills/vitest-evals
+    description: Use when authoring, reviewing, or debugging harness-backed
+      vitest-evals suites, custom Harness adapters, first-party ai-sdk or pi-ai
+      harness integrations, judges, replay, reporter-facing normalized run data,
+      or examples and docs for these APIs.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

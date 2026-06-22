@@ -1,0 +1,23 @@
+schemaVersion: 1
+id: vercel-labs/skills
+name: skills
+description: CLI for open agent skills.
+source:
+  type: git
+  url: https://github.com/vercel-labs/skills
+  revision: be0dd25b4a8665894a56f45ef582cc02ca802c39
+capabilities:
+  - id: find-skills
+    kind: skill
+    path: skills/find-skills
+    description: Helps users discover and install agent skills when they ask
+      questions like "how do I do X", "find a skill for X", "is there a skill
+      that can...", or express interest in extending capabilities. This skill
+      should be used when the user is looking for functionality that might exist
+      as an installable skill.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

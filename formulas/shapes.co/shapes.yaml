@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: shapes.co/shapes
+name: Shapes
+description: Shapes remote MCP server at https://mcp.shapes.co/. Analyse your
+  live people data, right in Claude. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/shapes
+capabilities:
+  - id: shapes
+    kind: mcp
+    spec:
+      serverName: shapes
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.shapes.co/

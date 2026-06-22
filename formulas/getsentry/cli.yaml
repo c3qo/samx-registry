@@ -1,0 +1,33 @@
+schemaVersion: 1
+id: getsentry/cli
+name: Sentry CLI
+description: Sentry CLI for Sentry issue/event/release/api mgmt + AI-agent ops.
+source:
+  type: git
+  url: https://github.com/getsentry/cli
+  revision: a1674824a25e7e6a066f932c2f3746bb0ff70c3b
+capabilities:
+  - id: sentry-cli
+    kind: skill
+    path: plugins/sentry-cli/skills/sentry-cli
+    description: Guide for using the Sentry CLI to interact with Sentry from the
+      command line. Use when the user asks about viewing issues, events,
+      projects, organizations, making API calls, or authenticating with Sentry
+      via CLI.
+requirements:
+  env:
+    - Node.js >=22.15
+    - pnpm >=10.11
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Missing evidence for environment variable: Node.js >=22.15; Missing
+      evidence for environment variable: pnpm >=10.11"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

@@ -1,0 +1,133 @@
+schemaVersion: 1
+id: mastra-ai/mastra
+name: Mastra
+description: "Monorepo: agents, auth, browser, playground, docs, CLI."
+source:
+  type: git
+  url: https://github.com/mastra-ai/mastra
+  revision: 8b4e030b7bdba60a2b76008b928b16df3002524c
+capabilities:
+  - id: testing-core-processors
+    kind: skill
+    path: .agents/skills/testing-core-processors
+    description: How to write integration tests for error processors in
+      `packages/core/src/processors/`.
+  - id: builder-smoke-test
+    kind: skill
+    path: .claude/skills/builder-smoke-test
+    description: Smoke test the Agent Builder feature branch end-to-end against a
+      hermetic project scaffolded by the skill (linked to the current worktree).
+      Covers workspace reconciliation, stored agents/skills CRUD, ownership,
+      visibility, stars, registry/library Copy flow, picker allowlists, model
+      policy, RBAC role gating, role impersonation UI, builder defaults,
+      infrastructure diagnostics, channels, and Studio + Agent Builder UI.
+      Trigger when validating the agent-builder feature branch, PRs that touch
+      packages/server, packages/playground, packages/playground-ui agent-builder
+      routes, or builder EE code paths.
+  - id: debugging-difficult-bugs
+    kind: skill
+    path: .claude/skills/debugging-difficult-bugs
+    description: Use early when debugging a medium or hard bug, especially when
+      tests alone may not reveal the real runtime failure. Trigger this before
+      extended TDD iteration when a bug involves runtime state, ordering,
+      persistence, streaming, concurrency, UI/manual reproduction, external
+      services, or when a red or newly passing test may not model the real
+      issue. Skip only when the root cause is already directly proven by a stack
+      trace or deterministic test that exercises the real runtime path.
+  - id: e2e-tests-studio
+    kind: skill
+    path: .claude/skills/e2e-tests-studio
+    description: >
+      REQUIRED when modifying any file in packages/playground-ui or
+      packages/playground. Triggers on: React component
+      creation/modification/refactoring, UI changes, new playground features,
+      bug fixes affecting studio UI. Generates Playwright E2E tests that
+      validate PRODUCT BEHAVIOR, not just UI states.
+  - id: mastra-docs
+    kind: skill
+    path: .claude/skills/mastra-docs
+    description: Documentation guidelines for Mastra. This skill should be used when
+      writing or editing documentation for Mastra. Triggers on tasks involving
+      documentation creation or updates.
+  - id: mastra-smoke-test
+    kind: skill
+    path: .claude/skills/mastra-smoke-test
+    description: Smoke test Mastra projects locally or deploy to staging/production.
+      Tests Studio UI, agents, tools, workflows, traces, memory, and more.
+      Supports both local development and cloud deployments.
+  - id: playground-msw-tests
+    kind: skill
+    path: .claude/skills/playground-msw-tests
+    description: >
+      REQUIRED and PRIMARY testing approach for packages/playground and
+      packages/playground-ui. Triggers on: adding or modifying hooks, pages,
+      route components, data-fetching code, React Query interactions, or any
+      test work in these packages. Generates Vitest tests that drive the real
+      @mastra/client-js + React Query stack through MSW handlers and typed
+      fixtures derived from @mastra/client-js response types. This is the #1 way
+      to test the playground packages — ABOVE Playwright E2E. Use Playwright
+      only for cross-page user journeys that MSW cannot model.
+  - id: pr-explainer
+    kind: skill
+    path: .claude/skills/pr-explainer
+    description: Use when creating an approachable, self-contained HTML review aid
+      for a pull request; explaining what changed, why it matters, how it works,
+      and how it fits into the broader system; turning PR diffs, commits, tests,
+      and architecture context into a local `.pr-review/` HTML page for
+      reviewers; or helping reviewers understand complex code changes without
+      dumping the full diff.
+  - id: pr-splitter
+    kind: skill
+    path: .claude/skills/pr-splitter
+    description: Use when breaking a large, complex, messy, or hard-to-review pull
+      request into multiple smaller PRs; planning stacked PRs; extracting
+      independent changes from a branch; splitting mixed refactor and behavior
+      changes; managing drift after review feedback; rebasing follow-up PRs as
+      earlier PRs change; or preserving original branch intent while shipping
+      incrementally.
+  - id: react-best-practices
+    kind: skill
+    path: .claude/skills/react-best-practices
+    description: React performance optimization guidelines from Mastra Engineering.
+      This skill should be used when writing, reviewing, or refactoring React
+      code to ensure optimal performance patterns. Triggers on tasks involving
+      React components, data fetching, bundle optimization, or performance
+      improvements.
+  - id: smoke-test
+    kind: skill
+    path: .claude/skills/smoke-test
+    description: Create a Mastra project using create-mastra and smoke test the
+      studio in Chrome using Chrome MCP server
+  - id: tailwind-best-practices
+    kind: skill
+    path: .claude/skills/tailwind-best-practices
+    description: Tailwind CSS styling guidelines for Mastra Playground UI. This
+      skill should be used when writing, reviewing, or refactoring styling code
+      in packages/playground-ui and packages/playground to ensure design system
+      consistency. Triggers on tasks involving Tailwind classes, component
+      styling, or design tokens.
+  - id: testing-mastracode-tui
+    kind: skill
+    path: .claude/skills/testing-mastracode-tui
+    description: Testing mastracode TUI features interactively in Konsole. Covers
+      model configuration, thread lifecycle, task state isolation, and common
+      blockers.
+  - id: mastra
+    kind: mcp
+    path: .cursor/mcp.json
+  - id: ralph-plan
+    kind: skill
+    path: .claude/skills/ralph-plan
+    description: Interactive planning assistant that helps create focused,
+      well-structured ralph-loop commands through collaborative conversation
+  - id: testing-core-processors-2
+    kind: skill
+    path: .claude/skills/testing-core-processors
+    description: How to write integration tests for error processors in
+      `packages/core/src/processors/`.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

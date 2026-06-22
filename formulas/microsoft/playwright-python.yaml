@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: microsoft/playwright-python
+name: Playwright Python
+description: High-level browser automation API for Python.
+source:
+  type: git
+  url: https://github.com/microsoft/playwright-python
+  revision: f75d727269506724c9765f6bebd404e91062890e
+capabilities:
+  - id: playwright-roll
+    kind: skill
+    path: .claude/skills/playwright-roll
+    description: Roll Playwright Python to a new driver version. Walks the upstream
+      `docs/src/api/` commit range, ports each public-API change, suppresses the
+      rest in `expected_api_mismatch.txt`, regenerates the typed surface, and
+      adds tests.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

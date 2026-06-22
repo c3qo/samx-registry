@@ -1,0 +1,87 @@
+schemaVersion: 1
+id: nvidia/dgx-spark-playbooks
+name: DGX Spark Playbooks
+description: NVIDIA DGX Spark setup/playbook pack.
+source:
+  type: git
+  url: https://github.com/nvidia/dgx-spark-playbooks
+  revision: 6a749bdcb0399d6c78a27f193bb902a28ea73006
+capabilities:
+  - id: dgx-diagnose
+    kind: skill
+    path: nvidia/station-ai-skills/assets/skills/dgx-diagnose
+    description: Diagnose common DGX Station GB300 issues — CUDA crashes, wrong-GPU
+      targeting, vLLM/SGLang container bugs, MIG state problems, NVLink/Fabric
+      Manager errors, X/Vulkan failures, HuggingFace auth, and port conflicts.
+      Use when the user reports a GPU error, inference server crash, MIG
+      problem, or any unexplained DGX Station failure.
+  - id: mig-configure
+    kind: skill
+    path: nvidia/station-ai-skills/assets/skills/mig-configure
+    description: Configure NVIDIA MIG (Multi-Instance GPU) partitions on the DGX
+      Station GB300, including enabling MIG mode, choosing a profile layout,
+      creating instances, and retrieving MIG UUIDs. Use when the user asks to
+      partition the GB300, set up MIG, run multiple models in isolation on one
+      GPU, or reconfigure existing MIG instances.
+  - id: sglang-setup
+    kind: skill
+    path: nvidia/station-ai-skills/assets/skills/sglang-setup
+    description: Deploy an SGLang inference server on an NVIDIA DGX Station GB300
+      with the cu130 container, RadixAttention prefix caching, and structured
+      JSON output support. Use when the user asks to serve a model with SGLang,
+      start an SGLang endpoint, or needs structured-output inference on DGX
+      Station.
+  - id: vllm-setup
+    kind: skill
+    path: nvidia/station-ai-skills/assets/skills/vllm-setup
+    description: Deploy a vLLM inference server on an NVIDIA DGX Station GB300 with
+      validated container, GPU targeting, and tuning parameters. Use when the
+      user asks to serve a model with vLLM, start a vLLM endpoint, or set up
+      OpenAI-compatible inference on DGX Station.
+  - id: analysis-methods
+    kind: skill
+    path: nvidia/station-healthcare-agent/assets/skills/analysis-methods
+    description: Teaches the analyst agent how to write correct, robust Python
+      analysis code for FHIR clinical data using pandas, matplotlib, and scipy.
+  - id: case-summary
+    kind: skill
+    path: nvidia/station-healthcare-agent/assets/skills/case-summary
+    description: Prepare a complete clinical case summary for a patient from FHIR
+      endpoints. Use when asked to summarize a patient, compile a case, or
+      prepare for tumor board.
+  - id: clinical-delegation
+    kind: skill
+    path: nvidia/station-healthcare-agent/assets/skills/clinical-delegation
+    description: How to delegate clinical tasks to specialist agents. Always use
+      sub-agent runtime with explicit agentId — never ACP. Never call FHIR via
+      web_fetch.
+  - id: clinical-knowledge
+    kind: skill
+    path: nvidia/station-healthcare-agent/assets/skills/clinical-knowledge
+    description: Teaches agents clinical reference ranges, condition codes, quality
+      measure definitions, drug classifications, and regulatory context so they
+      can flag abnormal values and identify care gaps.
+  - id: cohort-compare
+    kind: skill
+    path: nvidia/station-healthcare-agent/assets/skills/cohort-compare
+    description: Analyze a cohort of patients from FHIR endpoints to find care gaps
+      and patterns. Use when asked to compare patients, find quality gaps, or
+      analyze a population.
+  - id: fhir-basics
+    kind: skill
+    path: nvidia/station-healthcare-agent/assets/skills/fhir-basics
+    description: Teaches agents how FHIR R4 APIs work, what resources are available,
+      how to query them with search parameters, and how to correctly parse all
+      response formats including component Observations.
+  - id: molecular-viz
+    kind: skill
+    path: nvidia/station-healthcare-agent/assets/skills/molecular-viz
+    description: Visualize drug-protein complexes using build_viewer.py, PubChem,
+      and OpenFold3 NIM. Use when asked to show a molecular structure, drug
+      target, or protein visualization.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

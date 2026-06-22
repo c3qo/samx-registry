@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: uber.com/uber
+name: Uber
+description: Uber remote MCP server at https://mcp.uber.com/claude/rides-3p/mcp.
+  Get Uber price & time estimates for any ride option. Setup guides for Claude
+  Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/uber
+capabilities:
+  - id: uber
+    kind: mcp
+    spec:
+      serverName: uber
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.uber.com/claude/rides-3p/mcp

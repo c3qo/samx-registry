@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: taskrabbit.com/taskrabbit
+name: Taskrabbit Booking Assistance
+description: Taskrabbit Booking Assistance remote MCP server at
+  https://mcp.taskrabbit.com/mcp. Find & book local Taskrabbit services near
+  you. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/taskrabbit
+capabilities:
+  - id: taskrabbit
+    kind: mcp
+    spec:
+      serverName: taskrabbit
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.taskrabbit.com/mcp

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: monday.com/monday
+name: Monday
+description: Monday remote MCP server at https://mcp.monday.com/mcp. Manage
+  projects, boards, and workflows in monday.com. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/monday
+capabilities:
+  - id: monday
+    kind: mcp
+    spec:
+      serverName: monday
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.monday.com/mcp

@@ -1,0 +1,39 @@
+schemaVersion: 1
+id: microsoft/powerplatform-dataverseclient-python
+name: PowerPlatform Dataverse Client for Python
+description: Dataverse SDK; CRUD/query/tables/files/batch; Claude skills bundled.
+source:
+  type: git
+  url: https://github.com/microsoft/powerplatform-dataverseclient-python
+  revision: 5601657cf56e96387f53092e3209871a5e303f10
+capabilities:
+  - id: dataverse-sdk-dev
+    kind: skill
+    path: .claude/skills/dataverse-sdk-dev
+    description: Development guidance for contributing to the PowerPlatform
+      Dataverse Client Python SDK repository. Use when working on SDK
+      development tasks like adding features, fixing bugs, or writing tests.
+  - id: dataverse-sdk-use
+    kind: skill
+    path: .claude/skills/dataverse-sdk-use
+    description: Guidance for using the PowerPlatform Dataverse Client Python SDK.
+      Use when calling the SDK like creating CRUD operations, SQL queries, table
+      metadata management, relationships, and upload files.
+  - id: dataverse-sdk-dev-2
+    kind: skill
+    path: src/PowerPlatform/Dataverse/claude_skill/dataverse-sdk-dev
+    description: Development guidance for contributing to the PowerPlatform
+      Dataverse Client Python SDK repository. Use when working on SDK
+      development tasks like adding features, fixing bugs, or writing tests.
+  - id: dataverse-sdk-use-2
+    kind: skill
+    path: src/PowerPlatform/Dataverse/claude_skill/dataverse-sdk-use
+    description: Guidance for using the PowerPlatform Dataverse Client Python SDK.
+      Use when calling the SDK like creating CRUD operations, SQL queries, table
+      metadata management, relationships, and upload files.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

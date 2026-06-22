@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: atlassian.com/atlassian
+name: Atlassian
+description: Atlassian remote MCP server at
+  https://mcp.atlassian.com/v1/mcp/authv2. Jira, Confluence, Compass. Setup
+  guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/atlassian
+capabilities:
+  - id: atlassian
+    kind: mcp
+    spec:
+      serverName: atlassian
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.atlassian.com/v1/mcp/authv2

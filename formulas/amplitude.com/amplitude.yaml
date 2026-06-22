@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: amplitude.com/amplitude
+name: Amplitude
+description: Amplitude remote MCP server at https://mcp.amplitude.com/mcp. Give
+  your teams powerful behavioral insights. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/amplitude
+capabilities:
+  - id: amplitude
+    kind: mcp
+    spec:
+      serverName: amplitude
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.amplitude.com/mcp

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: cloudflare/chanfana
+name: Chanfana
+description: OpenAPI 3/3.1 schema gen/val for Hono, itty-router, Workers.
+source:
+  type: git
+  url: https://github.com/cloudflare/chanfana
+  revision: d85b9730a8cdaa4e8bd198165d4ea5ee88ccfa18
+capabilities:
+  - id: write-endpoints
+    kind: skill
+    path: skills/write-endpoints
+    description: Comprehensive guide for building OpenAPI endpoints with chanfana -
+      schema definition, request validation, CRUD operations, D1 database
+      integration, and exception handling
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,55 @@
+schemaVersion: 1
+id: microsoft/skillopt
+name: SkillOpt
+description: Skill training via bounded text edits + held-out gates; agent sleep add-on.
+source:
+  type: git
+  url: https://github.com/microsoft/skillopt
+  revision: 6940e46f4e0e537a1d7ca8432f24248d0d3550f5
+capabilities:
+  - id: skillopt-sleep
+    kind: skill
+    path: plugins/claude-code/skills/skillopt-sleep
+    description: "Use when the user wants their Claude agent to self-improve from
+      past usage, asks about a nightly/offline 'sleep' or 'dream' cycle,
+      memory/skill consolidation, or says things like 'make my agent better the
+      more I use it', 'review my past sessions', 'learn my preferences',
+      'consolidate what you learned', 'run the sleep cycle', or wants to
+      schedule offline self-optimization. Drives the skillopt_sleep engine:
+      harvest past sessions -> mine recurring tasks -> replay offline ->
+      consolidate validated CLAUDE.md/SKILL.md behind a held-out gate."
+  - id: skillopt-sleep-2
+    kind: skill
+    path: plugins/codex/skills/skillopt-sleep
+    description: "Use when the user wants Codex to self-improve from past usage,
+      asks about a nightly/offline 'sleep' or 'dream' cycle, wants Codex to
+      review past sessions, learn preferences, consolidate memory/skills, run
+      dry-run/run/adopt/status for SkillOpt-Sleep, or schedule offline
+      self-optimization. Drives the skillopt_sleep engine: harvest past sessions
+      -> mine recurring tasks -> replay offline -> consolidate validated memory
+      + skills behind a held-out gate."
+  - id: openclaw
+    kind: skill
+    path: plugins/openclaw
+    description: Validate and refine agent skills through nightly sleep cycles with
+      held-out gates. Wraps Microsoft's SkillOpt-Sleep engine for the
+      OpenClaw/DeepSeek stack.
+requirements:
+  env:
+    - Python >= 3.10
+    - SKILLOPT_SLEEP_REPO
+    - ALFWORLD_DATA
+    - DEEPSEEK_API_KEY
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Missing evidence for environment variable: Python >= 3.10; Missing
+      evidence for environment variable: ALFWORLD_DATA"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

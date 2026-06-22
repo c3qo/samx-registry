@@ -1,0 +1,104 @@
+schemaVersion: 1
+id: deepgram/deepgram-python-sdk
+name: Deepgram Python SDK
+description: "Python SDK for Deepgram speech AI: STT, TTS, read, manage, voice
+  agent, WS/REST."
+source:
+  type: git
+  url: https://github.com/deepgram/deepgram-python-sdk
+  revision: 88b0da08da9cef596423af1784065f62e74acd81
+capabilities:
+  - id: deepgram-python-audio-intelligence
+    kind: skill
+    path: .agents/skills/deepgram-python-audio-intelligence
+    description: Use when writing or reviewing Python code in this repo that calls
+      Deepgram audio analytics overlays on `/v1/listen` - summarize, topics,
+      intents, sentiment, diarize, redact, detect_language, entity detection.
+      Same endpoint as plain STT but with analytics params. Covers both REST
+      (`client.listen.v1.media.transcribe_url`/`transcribe_file`) and the
+      WSS-supported subset (`client.listen.v1.connect`). Use
+      `deepgram-python-speech-to-text` for plain transcription,
+      `deepgram-python-text-intelligence` for analytics on already-transcribed
+      text. Triggers include "diarize", "summarize audio", "sentiment from
+      audio", "redact PII", "topic detection audio", "audio intelligence",
+      "detect language audio".
+  - id: deepgram-python-conversational-stt
+    kind: skill
+    path: .agents/skills/deepgram-python-conversational-stt
+    description: Use when writing or reviewing Python code in this repo that calls
+      Deepgram Conversational STT v2 / Flux (`/v2/listen`) for turn-aware
+      streaming transcription. Covers `client.listen.v2.connect(...)`, Flux
+      models, end-of-turn detection. Use `deepgram-python-speech-to-text` for
+      standard v1 ASR, `deepgram-python-voice-agent` for full-duplex interactive
+      assistants. Triggers include "flux", "v2 listen", "conversational STT",
+      "turn detection", "end of turn", "EOT", "listen.v2", "flux-general-en",
+      "flux-general-multi".
+  - id: deepgram-python-management-api
+    kind: skill
+    path: .agents/skills/deepgram-python-management-api
+    description: Use when writing or reviewing Python code in this repo that calls
+      Deepgram Management APIs - projects, API keys, members, invites, usage,
+      billing, models, and reusable Voice Agent configurations. Covers
+      `client.manage.v1.projects`, project-scoped resources under
+      `client.manage.v1.projects.*` (keys, members, members.invites, usage,
+      billing, models, requests), global `client.manage.v1.models`, think-model
+      discovery at `client.agent.v1.settings.think.models`, and
+      `client.voice_agent.configurations.*`. Use `deepgram-python-voice-agent`
+      when you want to run an agent interactively, this skill to PERSIST/LIST
+      agent configs. Triggers include "management API", "list projects", "API
+      keys", "members", "usage stats", "billing", "list models", "agent
+      configurations", "manage.v1".
+  - id: deepgram-python-speech-to-text
+    kind: skill
+    path: .agents/skills/deepgram-python-speech-to-text
+    description: Use when writing or reviewing Python code in this repo that calls
+      Deepgram Speech-to-Text v1 (`/v1/listen`) for prerecorded or live audio
+      transcription. Covers `client.listen.v1.media.transcribe_url` /
+      `transcribe_file` (REST) and `client.listen.v1.connect` (WebSocket). Use
+      this skill for basic ASR; use `deepgram-python-audio-intelligence` for
+      summarize/sentiment/topics/diarize overlays,
+      `deepgram-python-conversational-stt` for turn-taking v2/Flux, and
+      `deepgram-python-voice-agent` for full-duplex assistants. Triggers include
+      "transcribe", "live transcription", "speech to text", "STT", "listen
+      endpoint", "nova-3", "listen.v1".
+  - id: deepgram-python-text-intelligence
+    kind: skill
+    path: .agents/skills/deepgram-python-text-intelligence
+    description: Use when writing or reviewing Python code in this repo that calls
+      Deepgram Text Intelligence / Read (`/v1/read`) for sentiment,
+      summarization, topic detection, and intent recognition on text input.
+      Covers `client.read.v1.text.analyze(...)` with body `text` or `url`. Use
+      `deepgram-python-audio-intelligence` when the source is audio instead of
+      text. Triggers include "read API", "text intelligence", "analyze text",
+      "sentiment", "summarize text", "topics", "intents", "read.v1".
+  - id: deepgram-python-text-to-speech
+    kind: skill
+    path: .agents/skills/deepgram-python-text-to-speech
+    description: Use when writing or reviewing Python code in this repo that calls
+      Deepgram Text-to-Speech v1 (`/v1/speak`) for audio synthesis. Covers
+      one-shot REST (`client.speak.v1.audio.generate`) and streaming WebSocket
+      (`client.speak.v1.connect`). Also covers the in-repo
+      `deepgram.helpers.TextBuilder` for incremental text assembly before
+      synthesis. Use `deepgram-python-voice-agent` when you need full-duplex STT
+      + LLM + TTS with barge-in. Triggers include "TTS", "speak", "synthesize
+      voice", "aura", "text to speech", "speak.v1", "TextBuilder".
+  - id: deepgram-python-voice-agent
+    kind: skill
+    path: .agents/skills/deepgram-python-voice-agent
+    description: Use when writing or reviewing Python code in this repo that builds
+      an interactive voice agent via `agent.deepgram.com/v1/agent/converse`.
+      Covers `client.agent.v1.connect()`, `AgentV1Settings`, `send_settings`,
+      `send_media`, event handling, and function/tool calling. Full-duplex STT +
+      LLM + TTS with barge-in. Use `deepgram-python-text-to-speech` for one-way
+      synthesis, `deepgram-python-speech-to-text` /
+      `deepgram-python-conversational-stt` for transcription only. Triggers
+      include "voice agent", "agent converse", "full duplex", "interactive
+      assistant", "barge-in", "agent.v1", "function calling", "AgentV1Settings".
+requirements:
+  env:
+    - DEEPGRAM_API_KEY
+    - DEEPGRAM_TOKEN
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

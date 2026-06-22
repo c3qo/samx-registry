@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: cloudflare.com/cloudflare
+name: Cloudflare
+description: Cloudflare remote MCP server at https://mcp.cloudflare.com/mcp.
+  Workers, D1, R2, DNS, account APIs. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/cloudflare
+capabilities:
+  - id: cloudflare
+    kind: mcp
+    spec:
+      serverName: cloudflare
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.cloudflare.com/mcp

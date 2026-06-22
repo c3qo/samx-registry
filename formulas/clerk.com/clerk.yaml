@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: clerk.com/clerk
+name: Clerk
+description: Clerk remote MCP server at https://mcp.clerk.com/mcp. Add
+  authentication, organizations, and billing. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/clerk
+capabilities:
+  - id: clerk
+    kind: mcp
+    spec:
+      serverName: clerk
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.clerk.com/mcp

@@ -1,0 +1,1511 @@
+schemaVersion: 1
+id: vercel-labs/vercel-plugin
+name: vercel-plugin
+description: Vercel AI/plugin skill pack; context, skills, hooks, MCP.
+source:
+  type: git
+  url: https://github.com/vercel-labs/vercel-plugin
+  revision: b2f2bc09dd05b15db9cb2e696f57872e85944aad
+capabilities:
+  - id: ai-sdk
+    kind: skill
+    path: skills/ai-sdk
+    description: Vercel AI SDK expert guidance. Use when building AI-powered
+      features — chat interfaces, text generation, structured output, tool
+      calling, agents, MCP integration, streaming, embeddings, reranking, image
+      generation, or working with any LLM provider.
+  - id: auth
+    kind: skill
+    path: skills/auth
+    description: Authentication integration guidance — Clerk (native Vercel
+      Marketplace), Descope, and Auth0 setup for Next.js applications. Covers
+      middleware auth patterns, sign-in/sign-up flows, and Marketplace
+      provisioning. Use when implementing user authentication.
+  - id: bootstrap
+    kind: skill
+    path: skills/bootstrap
+    description: Project bootstrapping orchestrator for repos that depend on
+      Vercel-linked resources (databases, auth, and managed integrations). Use
+      when setting up or repairing a repository so linking, environment
+      provisioning, env pulls, and first-run db/dev commands happen in the
+      correct safe order.
+  - id: deployments-cicd
+    kind: skill
+    path: skills/deployments-cicd
+    description: Vercel deployment and CI/CD expert guidance. Use when deploying,
+      promoting, rolling back, inspecting deployments, building with --prebuilt,
+      or configuring CI workflow files for Vercel.
+  - id: env-vars
+    kind: skill
+    path: skills/env-vars
+    description: Vercel environment variable expert guidance. Use when working with
+      .env files, vercel env commands, OIDC tokens, or managing
+      environment-specific configuration.
+  - id: marketplace
+    kind: skill
+    path: skills/marketplace
+    description: Vercel Marketplace expert guidance — discovering, installing, and
+      managing integrations via the `vercel integration` CLI, with
+      auto-provisioned environment variables and unified billing. Use when
+      consuming third-party services on Vercel.
+  - id: nextjs
+    kind: skill
+    path: skills/nextjs
+    description: Next.js App Router expert guidance. Use when building, debugging,
+      or architecting Next.js applications — routing, Server Components, Server
+      Actions, Cache Components, layouts, middleware/proxy, data fetching,
+      rendering strategies, and deployment on Vercel.
+  - id: vercel-cli
+    kind: skill
+    path: skills/vercel-cli
+    description: Vercel CLI expert guidance. Use when deploying, managing
+      environment variables, linking projects, viewing logs, querying metrics,
+      managing domains, or interacting with the Vercel platform from the command
+      line.
+  - id: workflow
+    kind: skill
+    path: skills/workflow
+    description: Vercel Workflow DevKit (WDK) expert guidance. Use when building
+      durable workflows, long-running tasks, API routes or agents that need
+      pause/resume, retries, step-based execution, or crash-safe orchestration
+      with Vercel Workflow.
+  - id: vercel
+    kind: mcp
+    path: .mcp.json
+  - id: benchmark-agents
+    kind: skill
+    path: .claude/skills/benchmark-agents
+    description: Advanced AI agent benchmark scenarios that push Vercel's
+      cutting-edge platform features — Workflow DevKit, AI Gateway, MCP, Chat
+      SDK, Queues, Flags, Sandbox, and multi-agent orchestration. Designed to
+      stress-test skill injection for complex, multi-system builds.
+  - id: benchmark-e2e
+    kind: skill
+    path: .claude/skills/benchmark-e2e
+    description: End-to-end benchmark suite for vercel-plugin. Runs realistic
+      projects through skill injection, launches dev servers, verifies
+      everything works, analyzes conversation logs, and produces an improvement
+      report for overnight self-improvement loops.
+  - id: benchmark-sandbox
+    kind: skill
+    path: .claude/skills/benchmark-sandbox
+    description: Run vercel-plugin eval scenarios in Vercel Sandboxes instead of
+      local WezTerm panels. Provisions ephemeral microVMs with Claude Code +
+      plugin pre-installed, runs benchmark prompts, extracts hook artifacts, and
+      produces coverage reports.
+  - id: benchmark-testing
+    kind: skill
+    path: .claude/skills/benchmark-testing
+    description: Create and launch benchmark test projects to exercise vercel-plugin
+      skill injection across realistic scenarios. Sets up isolated directories,
+      installs the plugin, and spawns WezTerm panes running Claude Code with
+      crafted prompts.
+  - id: plugin-audit
+    kind: skill
+    path: .claude/skills/plugin-audit
+    description: Audit vercel-plugin performance on real-world projects. Extracts
+      tool calls from Claude Code conversation logs, tests hook matching against
+      actual inputs, identifies pattern coverage gaps, and checks plugin cache
+      staleness. Use when asked to audit, test, or investigate plugin skill
+      injection on a real project.
+  - id: release
+    kind: skill
+    path: .claude/skills/release
+    description: Release vercel-plugin — run gates, bump version, generate
+      artifacts, commit, and push. Use when asked to "release", "ship", "bump
+      and push", or "cut a release".
+  - id: vercel-plugin-eval
+    kind: skill
+    path: .claude/skills/vercel-plugin-eval
+    description: Run live eval sessions against the vercel-plugin to verify hook
+      behavior, skill injection, dedup correctness, and coverage. Launches real
+      Claude Code sessions via WezTerm, monitors debug logs, and produces a
+      structured coverage report.
+  - id: ai-gateway
+    kind: skill
+    path: skills/ai-gateway
+    description: Vercel AI Gateway expert guidance. Use when configuring model
+      routing, provider failover, cost tracking, or managing multiple AI
+      providers through a unified API.
+  - id: upstream
+    kind: skill
+    path: skills/ai-sdk/upstream
+    description: 'Answer questions about the AI SDK and help build AI-powered
+      features. Use when developers: (1) Ask about AI SDK functions like
+      generateText, streamText, ToolLoopAgent, embed, or tools, (2) Want to
+      build AI agents, chatbots, RAG systems, or text generation features, (3)
+      Have questions about AI providers (OpenAI, Anthropic, Google, etc.),
+      streaming, tool calling, structured output, or embeddings, (4) Use React
+      hooks like useChat or useCompletion. Triggers on: "AI SDK", "Vercel AI
+      SDK", "generateText", "streamText", "add AI to my app", "build an agent",
+      "tool calling", "structured output", "useChat".'
+  - id: chat-sdk
+    kind: skill
+    path: skills/chat-sdk
+    description: Vercel Chat SDK expert guidance. Use when building multi-platform
+      chat bots — Slack, Telegram, Microsoft Teams, Discord, Google Chat,
+      GitHub, Linear — with a single codebase. Covers the Chat class, adapters,
+      threads, messages, cards, modals, streaming, state management, and webhook
+      setup.
+  - id: upstream-2
+    kind: skill
+    path: skills/chat-sdk/upstream
+    description: >
+      Build multi-platform chat bots with Chat SDK (`chat` npm package). Use
+      when developers want to (1) Build a Slack, Teams, Google Chat, Discord,
+      Telegram, GitHub, Linear, or WhatsApp bot, (2) Use Chat SDK to handle
+      mentions, direct messages, subscribed threads, reactions, slash commands,
+      cards, modals, files, or AI streaming, (3) Set up webhook routes or
+      multi-adapter bots, (4) Send rich cards or streamed AI responses to chat
+      platforms, (5) Build or maintain a custom adapter or state adapter.
+      Triggers on "chat sdk", "chat bot", "slack bot", "teams bot", "google chat
+      bot", "discord bot", "telegram bot", "whatsapp bot", "@chat-adapter",
+      "@chat-adapter/state-", "custom adapter", "state adapter", "build
+      adapter", and building bots that work across multiple chat platforms.
+  - id: knowledge-update
+    kind: skill
+    path: skills/knowledge-update
+    description: Corrects outdated LLM knowledge about the Vercel platform and
+      introduces new products. Injected at session start.
+  - id: microfrontends
+    kind: skill
+    path: skills/microfrontends
+    description: Guide for building, configuring, and deploying microfrontends on
+      Vercel. Use this skill when the user mentions microfrontends, multi-zones,
+      splitting an app across teams, independent deployments, cross-app routing,
+      incremental migration, composing multiple frontends under one domain,
+      microfrontends.json, @vercel/microfrontends, the microfrontends local
+      proxy, or path-based routing between Vercel projects. Also use when the
+      user asks about shared layouts across projects, navigation between
+      microfrontends, fallback environments, asset prefixes, or feature flag
+      controlled routing.
+  - id: next-cache-components
+    kind: skill
+    path: skills/next-cache-components
+    description: Next.js 16 Cache Components guidance — PPR, use cache directive,
+      cacheLife, cacheTag, updateTag, and migration from unstable_cache. Use
+      when implementing partial prerendering, caching strategies, or migrating
+      from older Next.js cache patterns.
+  - id: upstream-3
+    kind: skill
+    path: skills/next-cache-components/upstream
+    description: Next.js 16 Cache Components - PPR, use cache directive, cacheLife,
+      cacheTag, updateTag
+  - id: next-forge
+    kind: skill
+    path: skills/next-forge
+    description: next-forge expert guidance — production-grade Turborepo monorepo
+      SaaS starter by Vercel. Use when working in a next-forge project,
+      scaffolding with `npx next-forge init`, or editing @repo/* workspace
+      packages.
+  - id: upstream-4
+    kind: skill
+    path: skills/next-forge/upstream
+    description: Expert assistance for next-forge — a production-grade Turborepo
+      template for Next.js SaaS apps. Triggers on questions about next-forge
+      installation, setup, architecture, packages, customization, deployment,
+      and development workflows.
+  - id: next-upgrade
+    kind: skill
+    path: skills/next-upgrade
+    description: Upgrade Next.js to the latest version following official migration
+      guides and codemods. Use when upgrading Next.js versions, running
+      codemods, or migrating between major releases.
+  - id: upstream-5
+    kind: skill
+    path: skills/next-upgrade/upstream
+    description: Upgrade Next.js to the latest version following official migration
+      guides and codemods
+  - id: upstream-6
+    kind: skill
+    path: skills/nextjs/upstream
+    description: Next.js best practices - file conventions, RSC boundaries, data
+      patterns, async APIs, metadata, error handling, route handlers, image/font
+      optimization, bundling
+  - id: react-best-practices
+    kind: skill
+    path: skills/react-best-practices
+    description: React best-practices reviewer for TSX files. Triggers after editing
+      multiple TSX components to run a condensed quality checklist covering
+      component structure, hooks usage, accessibility, performance, and
+      TypeScript patterns.
+  - id: upstream-7
+    kind: skill
+    path: skills/react-best-practices/upstream
+    description: React and Next.js performance optimization guidelines from Vercel
+      Engineering. This skill should be used when writing, reviewing, or
+      refactoring React/Next.js code to ensure optimal performance patterns.
+      Triggers on tasks involving React components, Next.js pages, data
+      fetching, bundle optimization, or performance improvements.
+  - id: routing-middleware
+    kind: skill
+    path: skills/routing-middleware
+    description: Vercel Routing Middleware guidance — request interception before
+      cache, rewrites, redirects, personalization. Works with any framework.
+      Supports Edge, Node.js, and Bun runtimes. Use when intercepting requests
+      at the platform level.
+  - id: runtime-cache
+    kind: skill
+    path: skills/runtime-cache
+    description: Vercel Runtime Cache API guidance — ephemeral per-region key-value
+      cache with tag-based invalidation. Shared across Functions, Routing
+      Middleware, and Builds. Use when implementing caching strategies beyond
+      framework-level caching.
+  - id: shadcn
+    kind: skill
+    path: skills/shadcn
+    description: shadcn/ui expert guidance — CLI, component installation,
+      composition patterns, custom registries, theming, Tailwind CSS
+      integration, and high-quality interface design. Use when initializing
+      shadcn, adding components, composing product UI, building custom
+      registries, configuring themes, or troubleshooting component issues.
+  - id: turbopack
+    kind: skill
+    path: skills/turbopack
+    description: Turbopack expert guidance. Use when configuring the Next.js
+      bundler, optimizing HMR, debugging build issues, or understanding the
+      Turbopack vs Webpack differences.
+  - id: vercel-agent
+    kind: skill
+    path: skills/vercel-agent
+    description: Vercel Agent guidance — AI-powered code review, incident
+      investigation, and SDK installation. Automates PR analysis and anomaly
+      debugging. Use when configuring or understanding Vercel's AI development
+      tools.
+  - id: upstream-8
+    kind: skill
+    path: skills/vercel-cli/upstream
+    description: Deploy, manage, and develop projects on Vercel from the command line
+  - id: vercel-connect
+    kind: skill
+    path: skills/vercel-connect
+    description: Vercel Connect expert guidance — securely obtain scoped OAuth
+      tokens for third-party services (Slack, GitHub, MCP servers, OAuth,
+      Snowflake) on behalf of apps or users via Vercel OIDC. Use when wiring up
+      third-party API access, connecting to MCP servers, sending Slack messages,
+      accessing GitHub APIs, receiving webhook events from Slack/Linear/GitHub
+      and forwarding them to your agents and apps, or building Eve agent
+      connections.
+  - id: vercel-firewall
+    kind: skill
+    path: skills/vercel-firewall
+    description: Vercel Firewall expert guidance — automatic DDoS mitigation, the
+      Vercel WAF (custom rules, IP blocking, managed rulesets, rate limiting),
+      Attack Mode, system bypass, bot management, and the `vercel firewall` CLI.
+      Use when configuring platform-level security, responding to attacks, or
+      staging firewall rules.
+  - id: vercel-functions
+    kind: skill
+    path: skills/vercel-functions
+    description: Vercel Functions expert guidance — Serverless Functions, Edge
+      Functions, Fluid Compute, streaming, Cron Jobs, and runtime configuration.
+      Use when configuring, debugging, or optimizing server-side code running on
+      Vercel.
+  - id: vercel-sandbox
+    kind: skill
+    path: skills/vercel-sandbox
+    description: Vercel Sandbox guidance — ephemeral Firecracker microVMs for
+      running untrusted code safely. Supports AI agents, code generation, and
+      experimentation. Use when executing user-generated or AI-generated code in
+      isolation.
+  - id: upstream-9
+    kind: skill
+    path: skills/vercel-sandbox/upstream
+    description: Run agent-browser + Chrome inside Vercel Sandbox microVMs for
+      browser automation from any Vercel-deployed app. Use when the user needs
+      browser automation in a Vercel app (Next.js, SvelteKit, Nuxt, Remix,
+      Astro, etc.), wants to run headless Chrome without binary size limits,
+      needs persistent browser sessions across commands, or wants ephemeral
+      isolated browser environments. Triggers include "Vercel Sandbox browser",
+      "microVM Chrome", "agent-browser in sandbox", "browser automation on
+      Vercel", or any task requiring Chrome in a Vercel Sandbox.
+  - id: vercel-storage
+    kind: skill
+    path: skills/vercel-storage
+    description: Vercel storage expert guidance — Blob, Edge Config, and Marketplace
+      storage (Neon Postgres, Upstash Redis). Use when choosing, configuring, or
+      using data storage with Vercel applications.
+  - id: verification
+    kind: skill
+    path: skills/verification
+    description: "Full-story verification — infers what the user is building, then
+      verifies the complete flow end-to-end: browser → API → data → response.
+      Triggers on dev server start and 'why isn't this working' signals."
+  - id: upstream-10
+    kind: skill
+    path: skills/workflow/upstream
+    description: Creates durable, resumable workflows using Vercel's Workflow
+      DevKit. Use when building workflows that need to survive restarts, pause
+      for external events, retry on failure, or coordinate multi-step operations
+      over time. Triggers on mentions of "workflow", "durable functions",
+      "resumable", "workflow devkit", "queue", "event", "push", "subscribe", or
+      step-based orchestration.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries:
+    - id: compat
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/compat.mjs
+      required: false
+    - id: hook-env
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/hook-env.mjs
+      required: false
+    - id: inject-claude-md
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/inject-claude-md.mjs
+      required: false
+    - id: lexical-index
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/lexical-index.mjs
+      required: false
+    - id: logger
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/logger.mjs
+      required: false
+    - id: patterns
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/patterns.mjs
+      required: false
+    - id: pretooluse-skill-inject
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/pretooluse-skill-inject.mjs
+      required: false
+    - id: prompt-analysis
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/prompt-analysis.mjs
+      required: false
+    - id: prompt-patterns
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/prompt-patterns.mjs
+      required: false
+    - id: session-end-cleanup
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/session-end-cleanup.mjs
+      required: false
+    - id: session-start-activation
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/session-start-activation.mjs
+      required: false
+    - id: session-start-profiler
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/session-start-profiler.mjs
+      required: false
+    - id: session-start-seen-skills
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/session-start-seen-skills.mjs
+      required: false
+    - id: setup-telemetry
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/setup-telemetry.mjs
+      required: false
+    - id: shared-contractions
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/shared-contractions.mjs
+      required: false
+    - id: skill-map-frontmatter
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/skill-map-frontmatter.mjs
+      required: false
+    - id: stemmer
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/stemmer.mjs
+      required: false
+    - id: telemetry
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/telemetry.mjs
+      required: false
+    - id: unified-ranker
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/unified-ranker.mjs
+      required: false
+    - id: user-prompt-submit-skill-inject
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/user-prompt-submit-skill-inject.mjs
+      required: false
+    - id: vercel-config
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/vercel-config.mjs
+      required: false
+    - id: vercel-context
+      appliesTo:
+        - skill:benchmark-agents
+        - skill:benchmark-e2e
+        - skill:benchmark-sandbox
+        - skill:benchmark-testing
+        - skill:plugin-audit
+        - skill:release
+        - skill:vercel-plugin-eval
+        - skill:ai-gateway
+        - skill:ai-sdk
+        - skill:upstream
+        - skill:auth
+        - skill:bootstrap
+        - skill:chat-sdk
+        - skill:upstream-2
+        - skill:deployments-cicd
+        - skill:env-vars
+        - skill:knowledge-update
+        - skill:marketplace
+        - skill:microfrontends
+        - skill:next-cache-components
+        - skill:upstream-3
+        - skill:next-forge
+        - skill:upstream-4
+        - skill:next-upgrade
+        - skill:upstream-5
+        - skill:nextjs
+        - skill:upstream-6
+        - skill:react-best-practices
+        - skill:upstream-7
+        - skill:routing-middleware
+        - skill:runtime-cache
+        - skill:shadcn
+        - skill:turbopack
+        - skill:vercel-agent
+        - skill:vercel-cli
+        - skill:upstream-8
+        - skill:vercel-connect
+        - skill:vercel-firewall
+        - skill:vercel-functions
+        - skill:vercel-sandbox
+        - skill:upstream-9
+        - skill:vercel-storage
+        - skill:verification
+        - skill:workflow
+        - skill:upstream-10
+      files:
+        - target: opencode
+          path: hooks/vercel-context.mjs
+      required: false
+advisories:
+  - id: unlinked-hook-files
+    severity: warning
+    category: hooks
+    message: Repository contains hook-related files that are not linked by this formula.
+    paths:
+      - hooks/compat.test.ts
+      - hooks/hooks.json
+      - hooks/lexical-index.test.ts
+      - hooks/platform-hook-compat.test.ts
+      - hooks/session-hooks-platform-compat.test.ts
+      - hooks/session-start-profiler-platform.test.ts
+      - hooks/skill-map-frontmatter.test.ts
+      - hooks/src/compat.mts
+      - hooks/src/hook-env.mts
+      - hooks/src/inject-claude-md.mts
+      - hooks/src/lexical-index.mts
+      - hooks/src/logger.mts
+      - hooks/src/patterns.mts
+      - hooks/src/pretooluse-skill-inject.mts
+      - hooks/src/prompt-analysis.mts
+      - hooks/src/prompt-patterns.mts
+      - hooks/src/session-end-cleanup.mts
+      - hooks/src/session-start-activation.mts
+      - hooks/src/session-start-profiler.mts
+      - hooks/src/session-start-seen-skills.mts
+      - hooks/src/setup-telemetry.mts
+      - hooks/src/shared-contractions.mts
+      - hooks/src/skill-map-frontmatter.mts
+      - hooks/src/stemmer.mts
+      - hooks/src/telemetry.mts
+      - hooks/src/unified-ranker.mts
+      - hooks/src/user-prompt-submit-skill-inject.mts
+      - hooks/src/vercel-config.mts
+      - hooks/src/vercel-context.mts
+      - hooks/tsconfig.json
+      - hooks/tsup.config.ts
+      - hooks/user-prompt-submit-skill-inject.test.ts
+    reason: These files lack explicit appliesTo mappings, supported targets, or
+      supported file types.
+    effect: SAMX will not install, link, or execute these files.
+    action: Add explicit hook entries only after manual review.

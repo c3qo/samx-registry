@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: ubereats.com/uber-eats
+name: Uber Eats
+description: Uber Eats remote MCP server at
+  https://mcp.ubereats.com/eats-claude/mcp. Explore restaurants and dishes.
+  Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/uber-eats
+capabilities:
+  - id: uber-eats
+    kind: mcp
+    spec:
+      serverName: uber-eats
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.ubereats.com/eats-claude/mcp

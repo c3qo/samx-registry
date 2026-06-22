@@ -1,0 +1,23 @@
+schemaVersion: 1
+id: mastra-ai/skills
+name: Mastra Agent Skills
+description: Official Mastra skills for agents w/ framework docs + discovery.
+source:
+  type: git
+  url: https://github.com/mastra-ai/skills
+  revision: 7210bdbd0ea9a083244ec591c867a77ef564cc66
+capabilities:
+  - id: mastra
+    kind: skill
+    path: skills/mastra
+    description: "Comprehensive Mastra framework guide for building agents,
+      workflows, tools, memory, workspaces, and storage with current APIs. Use
+      for documentation lookup, API verification, TypeScript setup, common
+      errors, migrations, and `mastra api` CLI tasks: inspect or call resources
+      on local, Mastra platform, or remote servers."
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

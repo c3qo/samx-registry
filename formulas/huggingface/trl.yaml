@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: huggingface/trl
+name: TRL
+description: Transformers RL library for post-training LMs.
+source:
+  type: git
+  url: https://github.com/huggingface/trl
+  revision: 8027c6e23edf9c762042ae52c99f63905e49f29c
+capabilities:
+  - id: trl-training
+    kind: skill
+    path: trl/skills/trl-training
+    description: Train and fine-tune transformer language models using TRL
+      (Transformers Reinforcement Learning). Supports SFT, DPO, GRPO, KTO, RLOO
+      and Reward Model training via CLI commands.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

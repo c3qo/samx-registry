@@ -1,0 +1,43 @@
+schemaVersion: 1
+id: vercel-labs/zero-native
+name: zero-native
+description: Zig desktop shell w/ WebView UI + CLI/skills.
+source:
+  type: git
+  url: https://github.com/vercel-labs/zero-native
+  revision: b48c171774b6bef4ca2453c32e9ccb5a6db50530
+capabilities:
+  - id: automation
+    kind: skill
+    path: skill-data/automation
+    description: Automation and verification guide for running zero-native WebView
+      shell apps. Use when the user asks to test an app, inspect runtime state,
+      list windows, wait for readiness, reload a WebView, send bridge commands,
+      debug why automation is not connected, create smoke tests, or verify a
+      zero-native example in a GUI-capable session.
+  - id: core
+    kind: skill
+    path: skill-data/core
+    description: Core zero-native guide for AI agents. Read this before explaining
+      zero-native or changing a zero-native app. Covers the mental model,
+      project structure, app.zon, App and Runtime patterns, frontend
+      integration, web engines, JavaScript bridge commands, permissions,
+      windows, WebViews, dialogs, packaging, debugging, testing, and when to
+      load deeper references. Use when the user asks what zero-native is, how to
+      build or modify an app, how to package or debug it, or how to add native
+      capabilities.
+  - id: zero-native
+    kind: skill
+    path: skills/zero-native
+    description: Discovery skill for zero-native, a Zig desktop app shell for
+      building native apps with web UIs. Use when the user asks what zero-native
+      is, how to build a zero-native app, scaffold a frontend app, configure
+      app.zon, choose a WebView engine, add bridge commands, package an app,
+      test a running app, or automate a zero-native WebView shell.
+requirements:
+  env:
+    - ZERO_NATIVE_FRONTEND_URL
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,168 @@
+schemaVersion: 1
+id: coinbase/cds
+name: Coinbase Design System
+description: CDS monorepo for web, mobile, docs, codegen, migrator, design-system tooling.
+source:
+  type: git
+  url: https://github.com/coinbase/cds
+  revision: 2ef29d735d76221e6714c980e94a9b92dbc9e205
+capabilities:
+  - id: skill-creator
+    kind: skill
+    path: .agents/skills/skill-creator
+    description: Create new skills, modify and improve existing skills, and measure
+      skill performance. Use when users want to create a skill from scratch,
+      edit, or optimize an existing skill, run evals to test a skill, benchmark
+      skill performance with variance analysis, or optimize a skill's
+      description for better triggering accuracy.
+  - id: components.best-practices
+    kind: skill
+    path: .claude/skills/components.best-practices
+    description: Use this skill whenever working on CDS React components in any package.
+  - id: components.styles
+    kind: skill
+    path: .claude/skills/components.styles
+    description: Guidelines writing styles API (styles, classNames, and static
+      classNames) for a CDS component. Use this skill when adding customization
+      options to a React component via `styles` or `classNames` props or when
+      needing to update the docsite with component styles documentation.
+  - id: components.write-docs
+    kind: skill
+    path: .claude/skills/components.write-docs
+    description: Guidelines for creating or updating documentation for a CDS
+      component on the docsite (apps/docs/). Use this skill after creating or
+      making updates to a CDS React component to write high quality
+      documentaiton in the CDS docsite.
+  - id: deprecate-cds-api
+    kind: skill
+    path: .claude/skills/deprecate-cds-api
+    description: >
+      Deprecates a CDS component, hook, or other exported symbol with consistent
+      JSDoc, version tags,
+
+      and docsite metadata across every public export path (web, mobile, common,
+      visualization), not only
+
+      the original package. Use whenever the user asks to deprecate a CDS
+      component or API, mark something
+
+      as deprecated, add @deprecated / @deprecationExpectedRemoval, or update
+      deprecation warnings in
+
+      apps/docs metadata under components or hooks (webMetadata.json /
+      mobileMetadata.json / metadata.json).
+
+      Also use when replacing a component or hook and sunsetting the old one.
+      Always finish by running
+
+      `yarn nx run <project>:lint` on modified packages so
+      `internal/deprecated-jsdoc-has-removal-version` passes.
+  - id: dev.cds-mobile
+    kind: skill
+    path: .claude/skills/dev.cds-mobile
+    description: USE THIS when asked to work on a new or existing (MOBILE) CDS React
+      component in packages/mobile
+  - id: dev.cds-web
+    kind: skill
+    path: .claude/skills/dev.cds-web
+    description: USE THIS when asked to work on a new or existing (WEB) CDS React
+      component in packages/web
+  - id: figma.enumerate-component-urls
+    kind: skill
+    path: .claude/skills/figma.enumerate-component-urls
+    description: >
+      Enumerates every public component set in a CDS Figma file and produces a
+      list of [Component Name]: [Figma URL] entries grouped by page section. Use
+      this skill whenever asked to list, generate, or audit Figma component
+      URLs, produce a component inventory from a Figma file, or when doing a
+      Code Connect refresh/audit that requires knowing which Figma node each
+      component maps to. Also trigger when someone asks "what are the Figma URLs
+      for CDS components" or wants to find the node-id for a specific component.
+  - id: git.backport
+    kind: skill
+    path: .claude/skills/git.backport
+    description: Back-port a specific commit from master to a release branch via
+      cherry-pick. Creates a dedicated backport branch, attempts the
+      cherry-pick, pushes it, and opens a PR by default. Returns to the original
+      branch when done (success or failure). If there are merge conflicts,
+      diagnoses the root cause without attempting an autonomous resolution. Use
+      when asked to "backport", "cherry-pick to release", or "port a fix to a
+      release branch".
+  - id: git.detect-breaking-changes
+    kind: skill
+    path: .claude/skills/git.detect-breaking-changes
+    description: Analyzes the previous N commits for breaking changes across the CDS
+      public API surface. Use this skill when you need to check if any recent
+      changes will cause breaking changes in the CDS public API surface.
+  - id: git.repo-manager
+    kind: skill
+    path: .claude/skills/git.repo-manager
+    description: Instructions to manage a local cache of GitHub repositories. This
+      would typically done in cases where the user want to perform
+      research/analysis on a repository. Invoke whenever you need to clone a
+      repo that isn't present locally, bring an existing clone up to date, or
+      remove a repo from the cache. This skill handles only the mechanical
+      filesystem/git operations — not research, analysis, or anything about the
+      repo's contents.
+  - id: ktlo
+    kind: skill
+    path: .claude/skills/ktlo
+    description: Instructions to fetch assigned Linear issues in the current cycle
+      and potentially kick off a development session.
+  - id: research.component-libs
+    kind: skill
+    path: .claude/skills/research.component-libs
+    description: Orchestrates a comprehensive research effort across multiple design
+      systems/component libraries
+  - id: research.deprecation-usage
+    kind: skill
+    path: .claude/skills/research.deprecation-usage
+    description: >
+      Audits how often deprecated CDS exports are actively used in customer
+      codebases using Sourcegraph MCP search tools.
+
+      Use this skill whenever asked to assess removal readiness for deprecated
+      CDS APIs, investigate the
+
+      blast radius of removing a deprecated component or hook, check Sourcegraph
+      for customer usage of
+
+      deprecated exports, or help the team decide which deprecated APIs are safe
+      to remove in the next
+
+      major version. Always invoke when asked to "audit deprecated APIs", "check
+      Sourcegraph for deprecated
+
+      usage", "find usages of deprecated exports", "analyze deprecation impact",
+      or any similar request
+
+      involving CDS deprecations and customer adoption.
+  - id: cds-migrator-transform
+    kind: skill
+    path: .claude/skills/cds-migrator-transform
+    description: >
+      Use when a CDS change in **cds-web**, **cds-common**, **cds-mobile**,
+      **web-visualization**, or
+
+      **mobile-visualization** needs a **jscodeshift** migration in
+      `packages/migrator` to update callers or
+
+      mitigate breaking API or import moves (add or change a transform, tests,
+      or preset entry).
+  - id: eslint-plugin-custom-rule
+    kind: skill
+    path: .claude/skills/eslint-plugin-custom-rule
+    description: USE THIS when asked to create a new eslint plugin rule for the
+      eslint-plugin-cds package
+  - id: feature-planner
+    kind: skill
+    path: .claude/skills/feature-planner
+    description: A guided workflow for non-technical contributors (designers, PMs)
+      to describe a feature idea and produce a detailed technical implementation
+      plan for an engineer. Invoke manually with /feature-planner.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

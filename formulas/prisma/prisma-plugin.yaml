@@ -1,0 +1,70 @@
+schemaVersion: 1
+id: prisma/prisma-plugin
+name: Prisma Plugin
+description: Prisma agent-tools pack; ORM, Client, Postgres, Compute,
+  migrations, upgrades, MCP.
+source:
+  type: git
+  url: https://github.com/prisma/prisma-plugin
+  revision: f66bc6a4c626e1eaeded9ff467741d044466ebed
+capabilities:
+  - id: prisma
+    kind: mcp
+    path: .mcp.json
+  - id: prisma-cli
+    kind: skill
+    path: skills/prisma-cli
+    description: Prisma ORM CLI commands reference covering init, generate, migrate,
+      db, dev, studio, validate, format, debug, bootstrap, postgres link, and
+      mcp. Use for ORM/database CLI workflows, not Prisma Compute app
+      deployment. For Prisma Compute, `@prisma/cli app deploy`,
+      `compute:deploy`, `create-prisma --deploy`, apps, deployments, logs, or
+      domains, use the `prisma-compute` skill instead. Triggers on "prisma
+      init", "prisma generate", "prisma migrate", "prisma db", "prisma studio",
+      "prisma mcp", "prisma bootstrap", "prisma postgres link".
+  - id: prisma-client-api
+    kind: skill
+    path: skills/prisma-client-api
+    description: Prisma Client API reference covering model queries, filters,
+      operators, and client methods. Use when writing database queries, using
+      CRUD operations, filtering data, or configuring Prisma Client. Triggers on
+      "prisma query", "findMany", "create", "update", "delete", "$transaction".
+  - id: prisma-compute
+    kind: skill
+    path: skills/prisma-compute
+    description: Prisma Compute deployment and hosting guide. Use whenever the user
+      mentions Prisma Compute, deploying or hosting a Prisma app, `@prisma/cli
+      app deploy`, `compute:deploy`, `create-prisma --deploy`,
+      `PRISMA_SERVICE_TOKEN`, Compute apps/deployments/logs/domains, localhost
+      vs `0.0.0.0`, deploy port binding, or framework deploy readiness for Hono,
+      Elysia, Next.js, TanStack Start, Astro, Nuxt, Svelte, Nest, or Turborepo.
+  - id: prisma-database-setup
+    kind: skill
+    path: skills/prisma-database-setup
+    description: Guides for configuring Prisma with different database providers
+      (PostgreSQL, MySQL, SQLite, MongoDB, etc.). Use when setting up a new
+      project, changing databases, or troubleshooting connection issues.
+      Triggers on "configure postgres", "connect to mysql", "setup mongodb",
+      "sqlite setup".
+  - id: prisma-postgres
+    kind: skill
+    path: skills/prisma-postgres
+    description: Prisma Postgres setup and operations guidance across Console,
+      create-db CLI, Management API, and Management API SDK. Use when creating
+      Prisma Postgres databases, working in Prisma Console, provisioning with
+      create-db/create-pg/create-postgres, or integrating programmatic
+      provisioning with service tokens or OAuth.
+  - id: prisma-upgrade-v7
+    kind: skill
+    path: skills/prisma-upgrade-v7
+    description: Complete migration guide from Prisma ORM v6 to v7 covering all
+      breaking changes. Use when upgrading Prisma versions, encountering v7
+      errors, or migrating existing projects. Triggers on "upgrade to prisma 7",
+      "prisma 7 migration", "prisma-client generator", "driver adapter
+      required".
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

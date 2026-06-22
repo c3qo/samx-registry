@@ -1,0 +1,67 @@
+schemaVersion: 1
+id: anthropics/claude-cookbooks
+name: Claude Cookbooks
+description: Cookbook repo → Claude apps, agents, evals, skills, hosting.
+source:
+  type: git
+  url: https://github.com/anthropics/claude-cookbooks
+  revision: 34022c55c1fde7056280e01b84f562cb92575cb5
+capabilities:
+  - id: cookbook-audit
+    kind: skill
+    path: .claude/skills/cookbook-audit
+    description: Audit an Anthropic Cookbook notebook based on a rubric. Use
+      whenever a notebook review or audit is requested.
+  - id: skill
+    kind: skill
+    path: managed_agents/cma-mcp
+    entry: skill.md
+    description: Things that aren't obvious from the docs and tend to cost debugging time.
+  - id: skill-2
+    kind: skill
+    path: managed_agents/linear
+    entry: skill.md
+    description: Things that aren't obvious from the docs and tend to cost debugging time.
+  - id: skill-3
+    kind: skill
+    path: managed_agents/sentry
+    entry: skill.md
+    description: Things that aren't obvious from the docs and tend to cost debugging time.
+  - id: skill-4
+    kind: skill
+    path: managed_agents/slack
+    entry: skill.md
+    description: Things that aren't obvious from the docs and tend to cost debugging time.
+  - id: analyzing-financial-statements
+    kind: skill
+    path: skills/custom_skills/analyzing-financial-statements
+    description: This skill calculates key financial ratios and metrics from
+      financial statement data for investment analysis
+  - id: applying-brand-guidelines
+    kind: skill
+    path: skills/custom_skills/applying-brand-guidelines
+    description: This skill applies consistent corporate branding and styling to all
+      generated documents including colors, fonts, layouts, and messaging
+  - id: creating-financial-models
+    kind: skill
+    path: skills/custom_skills/creating-financial-models
+    description: This skill provides an advanced financial modeling suite with DCF
+      analysis, sensitivity testing, Monte Carlo simulations, and scenario
+      planning for investment decisions
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Capability kind does not match path: managed_agents/cma-mcp; Capability
+      kind does not match path: managed_agents/linear; Capability kind does not
+      match path: managed_agents/sentry; Capability kind does not match path:
+      managed_agents/slack"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

@@ -1,0 +1,50 @@
+schemaVersion: 1
+id: microsoft/debugpy
+name: debugpy
+description: Python dbg adapter; CLI + attach; pytest-heavy.
+source:
+  type: git
+  url: https://github.com/microsoft/debugpy
+  revision: 51f0f8022da1a837603af9d24ddfd42fe55db9e7
+capabilities:
+  - id: pytest
+    kind: skill
+    path: .claude/skills/pytest
+    description: Best practices for writing and organizing tests with pytest
+      including fixtures, parametrize, and plugins.
+  - id: requests
+    kind: skill
+    path: .claude/skills/requests
+    description: Best practices for HTTP client usage with Requests including
+      sessions, error handling, and timeouts.
+  - id: click
+    kind: skill
+    path: .claude/skills/click
+    description: Best practices for building CLI applications with Click including
+      commands, groups, options, and testing.
+  - id: django
+    kind: skill
+    path: .claude/skills/django
+    description: Best practices for Django web development including models, views,
+      templates, and testing.
+  - id: flask
+    kind: skill
+    path: .claude/skills/flask
+    description: Best practices for Flask web development including routing,
+      blueprints, and testing.
+  - id: jinja2
+    kind: skill
+    path: .claude/skills/jinja2
+    description: Best practices for template rendering with Jinja2 including
+      environments, filters, autoescaping, and security.
+  - id: numpy
+    kind: skill
+    path: .claude/skills/numpy
+    description: Best practices for numerical computing with NumPy including arrays,
+      broadcasting, and vectorization.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

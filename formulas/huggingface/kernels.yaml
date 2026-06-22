@@ -1,0 +1,52 @@
+schemaVersion: 1
+id: huggingface/kernels
+name: kernels
+description: Download compute kernels.
+source:
+  type: git
+  url: https://github.com/huggingface/kernels
+  revision: 19a568f64aa291880427d4ab56ee48bfeb26234b
+capabilities:
+  - id: cpu-kernels
+    kind: skill
+    path: kernel-builder/skills/cpu-kernels
+    description: "Provides guidance for writing, optimizing, and benchmarking C++
+      CPU kernels with SIMD intrinsics (AVX2/AVX512) for the Hugging Face
+      kernels ecosystem. Includes a two-phase workflow: Phase 1 correctness
+      (generic → AVX2) and Phase 2 performance exploration (AVX512 with
+      branching trial loop), runtime CPU dispatch, OpenMP threading, and brgemm
+      integration for GEMM-heavy kernels."
+  - id: cuda-kernels
+    kind: skill
+    path: kernel-builder/skills/cuda-kernels
+    description: "Provides guidance for writing and benchmarking optimized CUDA
+      kernels for NVIDIA GPUs (H100, A100, T4) targeting HuggingFace diffusers
+      and transformers libraries. Kernels must be kernel-builder/ABI3-compliant:
+      no pybind11, no setup.py, TORCH_LIBRARY_EXPAND bindings only. Supports
+      models like LTX-Video, Stable Diffusion, LLaMA, Mistral, and Qwen.
+      Includes integration with HuggingFace Kernels Hub (get_kernel) for loading
+      pre-compiled kernels. Includes benchmarking scripts to compare kernel
+      performance against baseline implementations."
+  - id: rocm-kernels
+    kind: skill
+    path: kernel-builder/skills/rocm-kernels
+    description: "Provides guidance for writing and benchmarking optimized Triton
+      kernels for AMD GPUs (MI355X, R9700) on ROCm, targeting HuggingFace
+      diffusers (LTX-Video, SD3, FLUX) and transformers. Core kernels: RMSNorm,
+      RoPE 3D, GEGLU, AdaLN. Includes XCD swizzle, autotune, diffusers
+      integration patterns, and LTX-Video pipeline injection."
+  - id: xpu-kernels
+    kind: skill
+    path: kernel-builder/skills/xpu-kernels
+    description: Provides guidance for writing, optimizing, and benchmarking Triton
+      kernels for Intel XPU GPUs (Battlemage/Arc Pro B50) using the Xe-Forge
+      optimization framework. Includes an LLM-driven trial-loop workflow
+      (analyze, validate, benchmark, profile, finalize), XPU-specific patterns
+      (tensor descriptors, GRF mode, tile swizzling), KernelBench fused kernels,
+      and Flash Attention.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

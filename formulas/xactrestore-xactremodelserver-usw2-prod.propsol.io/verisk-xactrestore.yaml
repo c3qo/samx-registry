@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: xactrestore-xactremodelserver-usw2-prod.propsol.io/verisk-xactrestore
+name: Verisk XactRestore
+description: Verisk XactRestore remote MCP server at
+  https://xactrestore-xactremodelserver-usw2-prod.propsol.io/mcp.
+  Natural-language estimating for XactRestore. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/verisk-xactrestore
+capabilities:
+  - id: verisk-xactrestore
+    kind: mcp
+    spec:
+      serverName: verisk-xactrestore
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://xactrestore-xactremodelserver-usw2-prod.propsol.io/mcp

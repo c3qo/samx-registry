@@ -1,0 +1,150 @@
+schemaVersion: 1
+id: firecrawl/firecrawl-workflows
+name: Firecrawl Workflows
+description: Outcome-focused Firecrawl skills for repeatable web research, QA,
+  SEO, lead, and design workflows.
+source:
+  type: git
+  url: https://github.com/firecrawl/firecrawl-workflows
+  revision: 2642a7cf33d62fff44c32903a4bb72e3142ced35
+capabilities:
+  - id: firecrawl-company-directories
+    kind: skill
+    path: skills/firecrawl-company-directories
+    description: Extract structured company lists from directories with Firecrawl.
+      Use for scraping YC, Crunchbase, Product Hunt, G2, startup directories,
+      category directories, or custom company databases into JSON, CSV,
+      CRM-ready lists, or research tables.
+  - id: firecrawl-competitive-intel
+    kind: skill
+    path: skills/firecrawl-competitive-intel
+    description: Monitor competitor pricing, features, changelogs, dashboards, and
+      product changes with Firecrawl. Use for recurring competitive
+      intelligence, pricing tier extraction, feature change tracking, or
+      structured competitor alerts.
+  - id: firecrawl-dashboard-reporting
+    kind: skill
+    path: skills/firecrawl-dashboard-reporting
+    description: Pull metrics from analytics dashboards and internal web tools with
+      Firecrawl browser. Use when the user needs dashboard reporting,
+      cross-platform metric summaries, authenticated analytics extraction,
+      date-range reports, or structured metrics from web dashboards.
+  - id: firecrawl-deep-research
+    kind: skill
+    path: skills/firecrawl-deep-research
+    description: >
+      Produce an intensive, cited analytical report: executive summary,
+      multi-angle
+
+      findings, contrarian views, open questions, and full sources. Use only
+      when the
+
+      user needs rigorous synthesis of a complex topic (scientific, technical,
+      policy,
+
+      or market-analytical) that cannot be answered with a short search, and
+      wants
+
+      a formal written report, not a recommendation list.
+
+
+      Do not use for product picks, top-N lists, quick lookups, or routine "find
+      out
+
+      about X" tasks. If the request does not clearly need this kind of report,
+      do
+
+      not use this skill.
+  - id: firecrawl-demo-walkthrough
+    kind: skill
+    path: skills/firecrawl-demo-walkthrough
+    description: Walk through a product's key flows with Firecrawl browser and
+      produce a structured UX/product walkthrough. Use for signup, onboarding,
+      pricing, docs, dashboard, product demo prep, UX teardown, and first-run
+      experience analysis.
+  - id: firecrawl-knowledge-base
+    kind: skill
+    path: skills/firecrawl-knowledge-base
+    description: Build a knowledge base from web content with Firecrawl. Use for
+      local reference docs, RAG-ready chunks, fine-tuning datasets,
+      documentation mirrors, topic corpora, or LLM-ready markdown organized from
+      web sources.
+  - id: firecrawl-knowledge-ingest
+    kind: skill
+    path: skills/firecrawl-knowledge-ingest
+    description: Ingest public or authenticated knowledge bases and docs portals
+      with Firecrawl browser. Use for JS-heavy docs, login-gated portals,
+      paginated help centers, support knowledge bases, or structured
+      JSON/markdown extraction from documentation sites.
+  - id: firecrawl-lead-gen
+    kind: skill
+    path: skills/firecrawl-lead-gen
+    description: Generate structured lead lists from prospect databases and web
+      directories with Firecrawl browser. Use for finding prospects by role,
+      company type, industry, stage, location, technologies, or other criteria
+      and exporting CRM-ready JSON or CSV.
+  - id: firecrawl-lead-research
+    kind: skill
+    path: skills/firecrawl-lead-research
+    description: Produce pre-meeting lead intelligence briefs with Firecrawl. Use
+      when the user needs company research, person research, recent news,
+      talking points, pain points, or outreach preparation before a sales call,
+      partnership meeting, investor conversation, or customer interview.
+  - id: firecrawl-market-research
+    kind: skill
+    path: skills/firecrawl-market-research
+    description: Extract market, financial, earnings, industry, and company metrics
+      with Firecrawl. Use when the user asks for market research, industry
+      trends, public company data, financial comparisons, earnings research, or
+      structured market reports.
+  - id: firecrawl-qa
+    kind: skill
+    path: skills/firecrawl-qa
+    description: QA test a live website with Firecrawl browser and scrape evidence.
+      Use when the user wants exploratory QA, form testing, navigation/link
+      checks, responsive checks, performance observations, bug reports, or a
+      pre-launch quality review.
+  - id: firecrawl-research-papers
+    kind: skill
+    path: skills/firecrawl-research-papers
+    description: Find and synthesize research papers, whitepapers, PDFs, technical
+      reports, and academic sources with Firecrawl. Use when the user wants a
+      literature review, paper summary, research landscape, or sourced synthesis
+      from PDFs and scholarly/industry publications.
+  - id: firecrawl-seo-audit
+    kind: skill
+    path: skills/firecrawl-seo-audit
+    description: Audit a website's SEO with Firecrawl. Use when the user asks for an
+      SEO audit, metadata and heading review, sitemap/site-structure analysis,
+      keyword opportunities, competitor SERP comparison, or prioritized search
+      optimization recommendations.
+  - id: firecrawl-shop
+    kind: skill
+    path: skills/firecrawl-shop
+    description: Research products across the web with Firecrawl and produce a
+      shopping recommendation or cart-ready summary. Use when the user wants to
+      compare products, find the best option, evaluate reviews, respect
+      budget/preferences, or shop with a saved browser session.
+  - id: firecrawl-website-design-clone
+    kind: skill
+    path: skills/firecrawl-website-design-clone
+    description: Extract any website's design system into an agent-ready DESIGN.md
+      using Firecrawl scrape evidence. Use when the user wants colors, fonts,
+      spacing, components, layout patterns, or brand/UI guidance from a website
+      so AI agents can create new websites, clone a look, or build pages
+      inspired by that design.
+  - id: firecrawl-workflows
+    kind: skill
+    path: skills/firecrawl-workflows
+    description: Run outcome-focused Firecrawl workflows that produce deliverables
+      such as research reports, SEO audits, QA reports, lead lists, knowledge
+      bases, website design systems, and other structured web-data artifacts.
+      Use when the user wants Firecrawl to complete a business, marketing,
+      product, or creative workflow rather than merely scrape a page or
+      integrate API calls into code.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

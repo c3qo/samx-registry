@@ -1,0 +1,35 @@
+schemaVersion: 1
+id: triggerdotdev/trigger.dev
+name: Trigger.dev
+description: Open-source platform for AI workflows; durable tasks, queues,
+  observability, self-hosting.
+source:
+  type: git
+  url: https://github.com/triggerdotdev/trigger.dev
+  revision: ae08c9cb600b00256440bccb336745f01acdf60b
+capabilities:
+  - id: span-timeline-events
+    kind: skill
+    path: .claude/skills/span-timeline-events
+    description: Use when adding, modifying, or debugging OTel span timeline events
+      in the trace view. Covers event structure, ClickHouse storage constraints,
+      rendering in SpanTimeline component, admin visibility, and the
+      step-by-step process for adding new events.
+  - id: trigger-dev-tasks
+    kind: skill
+    path: .claude/skills/trigger-dev-tasks
+    description: Use this skill when writing, designing, or optimizing Trigger.dev
+      background tasks and workflows. This includes creating reliable async
+      tasks, implementing AI workflows, setting up scheduled jobs, structuring
+      complex task hierarchies with subtasks, configuring build extensions for
+      tools like ffmpeg or Puppeteer/Playwright, and handling task schemas with
+      Zod validation.
+  - id: linear
+    kind: mcp
+    path: .cursor/mcp.json
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

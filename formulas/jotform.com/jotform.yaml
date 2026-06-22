@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: jotform.com/jotform
+name: Jotform
+description: Jotform remote MCP server at https://mcp.jotform.com/mcp-app.
+  Create forms & analyze submissions inside Claude. Setup guides for Claude
+  Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/jotform
+capabilities:
+  - id: jotform
+    kind: mcp
+    spec:
+      serverName: jotform
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.jotform.com/mcp-app

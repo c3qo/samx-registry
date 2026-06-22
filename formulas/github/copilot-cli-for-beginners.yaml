@@ -1,0 +1,53 @@
+schemaVersion: 1
+id: github/copilot-cli-for-beginners
+name: GitHub Copilot CLI for Beginners
+description: "Course: AI terminal workflows, context, agents, skills, MCP."
+source:
+  type: git
+  url: https://github.com/github/copilot-cli-for-beginners
+  revision: 53326395c92a281f0075c3412d59e37a292df427
+capabilities:
+  - id: code-checklist
+    kind: skill
+    path: .github/skills/code-checklist
+    description: Team code quality checklist - use for checking Python code quality,
+      bugs, security issues, and best practices
+  - id: commit-message
+    kind: skill
+    path: .github/skills/commit-message
+    description: Generate conventional commit messages - use when creating commits,
+      writing commit messages, or asking for git commit help
+  - id: pytest-gen
+    kind: skill
+    path: .github/skills/pytest-gen
+    description: Generate comprehensive pytest tests - use when generating tests,
+      creating test suites, or testing Python code
+  - id: hello-world
+    kind: skill
+    path: .github/skills/hello-world
+    description: A minimal skill example - use when learning the skill format
+  - id: code-checklist-2
+    kind: skill
+    path: samples/skills/code-checklist
+    description: Team code quality checklist - use for checking Python code quality,
+      bugs, security issues, and best practices
+  - id: commit-message-2
+    kind: skill
+    path: samples/skills/commit-message
+    description: Generate conventional commit messages - use when creating commits,
+      writing commit messages, or asking for git commit help
+  - id: hello-world-2
+    kind: skill
+    path: samples/skills/hello-world
+    description: A minimal skill example - use when learning the skill format
+  - id: pytest-gen-2
+    kind: skill
+    path: samples/skills/pytest-gen
+    description: Generate comprehensive pytest tests - use when generating tests,
+      creating test suites, or testing Python code
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

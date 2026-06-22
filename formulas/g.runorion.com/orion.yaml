@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: g.runorion.com/orion
+name: Orion By Gravity
+description: Orion by Gravity remote MCP server at https://g.runorion.com/mcp.
+  Get insights from your autonomous AI analyst. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/orion
+capabilities:
+  - id: orion
+    kind: mcp
+    spec:
+      serverName: orion
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://g.runorion.com/mcp

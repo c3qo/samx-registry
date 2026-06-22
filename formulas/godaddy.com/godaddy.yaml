@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: godaddy.com/godaddy
+name: GoDaddy
+description: GoDaddy remote MCP server at
+  https://api.godaddy.com/v1/domains/mcp. Search domains and check availability.
+  Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/godaddy
+capabilities:
+  - id: godaddy
+    kind: mcp
+    spec:
+      serverName: godaddy
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.godaddy.com/v1/domains/mcp

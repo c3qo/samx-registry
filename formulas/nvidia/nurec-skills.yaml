@@ -1,0 +1,86 @@
+schemaVersion: 1
+id: nvidia/nurec-skills
+name: NuRec Skills
+description: Agent skills for NVIDIA NuRec/NRE + NCore + AH + Fixer + dataset routing.
+source:
+  type: git
+  url: https://github.com/nvidia/nurec-skills
+  revision: 1fba8e7a240df0a3b09907932342d6237f01a849
+capabilities:
+  - id: nurec-index
+    kind: skill
+    path: skills/nurec-index
+    description: Router for NVIDIA NuRec / NRE / 3DGUT / USDZ / NCore V4 / asset
+      harvest / frame cleanup tasks — picks the right sibling (nre, ncore,
+      asset-harvester, nurec-fixer, physical-ai-datasets). Use when the
+      sub-skill is unclear or a multi-stage pipeline is needed; do NOT use for
+      non-NuRec tasks or to run any pipeline itself.
+  - id: ncore
+    kind: skill
+    path: skills/ncore
+    description: 'Use when converting any sensor dataset into NVIDIA NCore V4 format
+      (and feeding it to NuRec or a robotics-to-sim "r2s" pipeline). Covers
+      ingesting raw cameras, LiDARs, radars, IMUs, depth or stereo into V4
+      sequences; authoring a new converter from the template; adapting PAI /
+      Waymo / PandaSet / NuScenes to V4; handling non-AV rigs (mono+depth,
+      mono+lidar, stereo, multi-stereo, RGB-D, COLMAP / SfM, ROS2 bag); and
+      diagnosing a broken converter against `validate.py`. Do NOT use to train
+      reconstructions (use `nre`) or to extract per-object 3D assets (use
+      `asset-harvester`). Trigger keywords: ncore, ncore v4, convert, ingest,
+      zarr, itar, nurec, waymo, pandaset, nuscenes, pai, hyperion, colmap,
+      scannetpp, stereo, multi-stereo, mono+depth, mono+lidar, kitti, sfm,
+      camera, lidar, radar, imu, cuboid, poses, intrinsics, ego mask, ros2,
+      rosbag, mcap, realsense, zed, rgb-d, r2s, robotics, sam2.'
+  - id: nre
+    kind: skill
+    path: skills/nre
+    description: Use to drive NVIDIA Omniverse NuRec / Neural Reconstruction Engine
+      (NRE) via the public NGC containers nvcr.io/nvidia/nre/nre and
+      nvcr.io/nvidia/nre/nre-tools (NGC_API_KEY required) — train 3DGUT Gaussian
+      reconstructions from NCore clips, generate aux data, render frames or
+      LiDAR sweeps (local or warm `serve-grpc`), export PLY/depth/mesh/USDZ,
+      edit actors, and evaluate metrics. Do NOT use for per-object asset capture
+      (use `asset-harvester`) or sensor-to-NCore conversion (use `ncore`).
+  - id: asset-harvester
+    kind: skill
+    path: skills/asset-harvester
+    description: Use to install and run NVIDIA Asset Harvester (Apache-2.0) to
+      extract per-object 3D Gaussian Splat assets (`gaussians.ply`) from AV
+      NCore V4 clips or masked single images via SparseViewDiT + TokenGS,
+      optionally producing `metadata.yaml` for NuRec object insertion. Do NOT
+      use for full-scene reconstruction (use `nre`) or for inputs without
+      per-object masks.
+  - id: nurec-fixer
+    kind: skill
+    path: skills/nurec-fixer
+    description: Use to run NVIDIA DiffusionHarmonizer (public successor to the
+      older Fixer recipes) to enhance, harmonize, evaluate, or fine-tune
+      novel-view frames from NRE / NuRec / 3DGS / NeRF reconstructions. Do NOT
+      use for training the 3D reconstruction itself (use `nre`) or for
+      sensor-to-NCore conversion (use `ncore`).
+  - id: physical-ai-datasets
+    kind: skill
+    path: skills/physical-ai-datasets
+    description: "Use when the user wants to find, download, or pick a NVIDIA
+      Physical AI dataset on Hugging Face for autonomous-vehicle, robotics,
+      spatial intelligence, manipulation, or neural-reconstruction workflows.
+      Catalog of every dataset under huggingface.co/nvidia with the
+      `PhysicalAI-` prefix, organised by domain (AV, Robotics-Manipulation,
+      Robotics-GR00T, Robotics-mindmap, Robotics-NuRec, Spatial Intelligence,
+      Grasping, Healthcare, Sim-Ready, Material properties), with per-dataset
+      size, format, gating, license, and the downstream sibling skill (`ncore`,
+      `nre`, `asset-harvester`, `nurec-fixer`) or upstream tool (Isaac Sim,
+      CARLA, Isaac-GR00T, Cosmos-*) that consumes it. Do NOT use as a runtime —
+      it routes you elsewhere. Trigger keywords: nvidia physical ai dataset,
+      PhysicalAI- dataset, hf nvidia dataset, NCore dataset, NuRec dataset,
+      GR00T dataset, GraspGen, SimReady, Cosmos-Drive-Dreams, Lyra SDG,
+      Open-H-Embodiment, huggingface-cli download, physical_ai_av, dataset
+      gated, RDS-HQ."
+requirements:
+  env:
+    - NGC_API_KEY
+    - HF_TOKEN
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

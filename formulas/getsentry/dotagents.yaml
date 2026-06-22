@@ -1,0 +1,51 @@
+schemaVersion: 1
+id: getsentry/dotagents
+name: dotagents
+description: Shared tooling for coding agents; installs skills, MCP, hooks, subagents.
+source:
+  type: git
+  url: https://github.com/getsentry/dotagents
+  revision: 3fefc9680a2413abe4801a6e073c1c9be63c1e04
+capabilities:
+  - id: dex
+    kind: skill
+    path: .agents/skills/dex
+    description: Manage tasks via dex CLI. Use when breaking down complex work,
+      tracking implementation items, or persisting context across sessions.
+  - id: warden-skill
+    kind: skill
+    path: .agents/skills/warden-skill
+    description: Guide for using Warden CLI locally to analyze code changes. Use
+      when running warden commands, configuring warden.toml, creating custom
+      skills, understanding triggers, or troubleshooting analysis issues.
+      Triggers on "run warden", "warden config", "warden.toml", "create warden
+      skill", "add trigger", or any Warden-related local development task.
+  - id: dotagents-qa
+    kind: skill
+    path: skills/dotagents-qa
+    description: QA dotagents behavior changes in a Docker sandbox. Use when changes
+      may affect dotagents install, sync, list, doctor, skill placement, agent
+      symlinks, MCP or hook config generation, user scope, subagent runtime
+      files, or package/runtime behavior.
+  - id: dotagents
+    kind: skill
+    path: skills/dotagents
+    description: Manage agent skill dependencies with dotagents. Use when asked to
+      "add a skill", "install skills", "remove a skill", "dotagents init",
+      "agents.toml", "agents.lock", "sync skills", "list skills", "set up
+      dotagents", "configure trust", "add MCP server", "add hook", "wildcard
+      skills", "user scope", "dotagents doctor", or any dotagents-related task.
+  - id: commit
+    kind: skill
+    path: examples/full/local-skills/commit
+    description: Fixture commit skill.
+  - id: review
+    kind: skill
+    path: examples/full/local-skills/review
+    description: Fixture review skill.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

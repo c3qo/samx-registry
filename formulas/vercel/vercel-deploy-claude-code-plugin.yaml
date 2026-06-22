@@ -1,0 +1,30 @@
+schemaVersion: 1
+id: vercel/vercel-deploy-claude-code-plugin
+name: Vercel Deploy Plugin for Claude Code
+description: Claude Code plugin for Vercel deploy, logs, setup.
+source:
+  type: git
+  url: https://github.com/vercel/vercel-deploy-claude-code-plugin
+  revision: ae067751b4f42c97d13054211657275029ca8b6d
+capabilities:
+  - id: deploy
+    kind: skill
+    path: skills/deploy
+    description: Deploy applications to Vercel. Use when the user says "deploy",
+      "deploy to Vercel", "push to production", "deploy my app", or "go live".
+  - id: logs
+    kind: skill
+    path: skills/logs
+    description: View Vercel deployment logs. Use when the user says "show logs",
+      "check logs", "vercel logs", or "what went wrong with the deployment".
+  - id: setup
+    kind: skill
+    path: skills/setup
+    description: Set up Vercel CLI and project configuration. Use when the user says
+      "set up Vercel", "configure Vercel", "link to Vercel", or "vercel init".
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

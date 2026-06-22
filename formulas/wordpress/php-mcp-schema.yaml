@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: wordpress/php-mcp-schema
+name: PHP MCP Schema
+description: PHP DTOs/enums/unions for MCP schema; gen pkg in `generator/`.
+source:
+  type: git
+  url: https://github.com/wordpress/php-mcp-schema
+  revision: 95df8a50a3bd54f6b7c4869c6e2185db380d4d63
+capabilities:
+  - id: skill
+    kind: skill
+    path: skill
+    description: Navigate and understand the MCP PHP schema. Use when implementing
+      MCP clients/servers, understanding protocol types, or finding the right
+      DTO for a task.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

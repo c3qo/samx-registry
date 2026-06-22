@@ -1,0 +1,139 @@
+schemaVersion: 1
+id: brave/brave-core
+name: Brave Core
+description: Brave browser build/customization repo.
+source:
+  type: git
+  url: https://github.com/brave/brave-core
+  revision: 7c95e8630e6b81dafefb2a6c8054d8c1a07b5e93
+capabilities:
+  - id: add-best-practice
+    kind: skill
+    path: .claude/skills/add-best-practice
+    description: "Add a new best practice to the appropriate doc. Checks for
+      duplicates, assigns stable IDs, creates new category docs if needed.
+      Triggers on: add best practice, new best practice, add bp, new bp."
+  - id: skill
+    kind: skill
+    path: .claude/skills/check-milestones
+    entry: skill.md
+    description: "Check and fix milestones on PRs and their associated issues. Sets
+      PR milestones based on the branch they merged into, and issue milestones
+      based on the smallest version with a merged uplift. Triggers on: check
+      milestones, fix milestones, /check-milestones."
+  - id: check-upstream-flake
+    kind: skill
+    path: .claude/skills/check-upstream-flake
+    description: "Check if a failing test is a known upstream flake in Chromium's
+      LUCI Analysis database. Provides flakiness statistics, verdict, and
+      recommendation for filter file decisions. Triggers on: check upstream
+      flake, is this test flaky upstream, check luci flakiness, upstream flake
+      check."
+  - id: clean-branches
+    kind: skill
+    path: .claude/skills/clean-branches
+    description: "Delete local branches whose PRs have been merged upstream. Checks
+      GitHub PR status for each branch. Triggers on: clean branches, delete
+      merged branches, prune branches, branch cleanup."
+  - id: create-contributor-prs
+    kind: skill
+    path: .claude/skills/create-contributor-prs
+    description: For an external contributor's open PRs to brave/brave-core, ensure
+      the `sync-and-rebase-pr-from-fork.yml` workflow has been dispatched for
+      each PR's latest commit SHA — so a `contributor-*` draft PR exists inside
+      brave/brave-core and CI can run. Invoke when the user says something like
+      "create contributor PRs for <user>", "sync contributor PRs <list>", "run
+      the rebase-from-fork workflow for these PRs", or passes a GitHub username
+      / list of PR URLs/numbers.
+  - id: fix-bp-docs
+    kind: skill
+    path: .claude/skills/fix-bp-docs
+    description: "Audit and fix best practices docs for stale references,
+      duplicates, obsolete content, and formatting issues. Triggers on: fix bp
+      docs, fix best practice docs, audit bp docs."
+  - id: force-push-downstream
+    kind: skill
+    path: .claude/skills/force-push-downstream
+    description: "Force-push a branch and all its downstream branches to origin.
+      Auto-detects the downstream tree and skips branches already up-to-date.
+      Triggers on: force push downstream, push chain, push all branches."
+  - id: impl-review
+    kind: skill
+    path: .claude/skills/impl-review
+    description: "Implement review feedback on a PR. Checks out the branch, applies
+      reviewer-requested changes, runs preflight, commits, and pushes. Triggers
+      on: impl-review, implement review, implement review feedback, address
+      review comments."
+  - id: make-ci-green
+    kind: skill
+    path: .claude/skills/make-ci-green
+    description: "Re-run failed CI jobs for a brave/brave-core PR. Detects failure
+      stage and uses WIPE_WORKSPACE for build/infra failures. Triggers on: make
+      ci green, retry ci, rerun ci, fix ci, re-run failed jobs, retrigger ci."
+  - id: pr
+    kind: skill
+    path: .claude/skills/pr
+    description: Create a pull request for the current branch using `gh`.
+  - id: preflight
+    kind: skill
+    path: .claude/skills/preflight
+    description: Run all preflight checks (format, gn_check, presubmit, build,
+      tests) to make sure the current work is ready for review.
+  - id: prs-reviewed
+    kind: skill
+    path: .claude/skills/prs-reviewed
+    description: "Get PRs a user reviewed on brave/brave-core. Shows PR number,
+      title, author, state, and links. Triggers on: prs reviewed, reviewed prs,
+      review activity, what did I review, review history."
+  - id: rebase-downstream
+    kind: skill
+    path: .claude/skills/rebase-downstream
+    description: "Rebase a tree of dependent branches (including siblings) after
+      upstream changes. Auto-detects downstream branches and rebases each in
+      order. Triggers on: rebase downstream, rebase chain, propagate changes
+      downstream."
+  - id: review-prs
+    kind: skill
+    path: .claude/skills/review-prs
+    description: "Review PRs in the configured PR repository for best practices
+      violations. Supports single PR (#12345), state filter (open/closed/all),
+      and auto mode for cron. Triggers on: review prs, review recent prs,
+      /review-prs, check prs for best practices."
+  - id: review
+    kind: skill
+    path: .claude/skills/review
+    description: "Review code for quality, root cause analysis, and fix confidence.
+      Supports PR review and local review of uncommitted/branch changes. Default
+      mode is local (reviews current branch changes). Triggers on: review pr,
+      review this pr, /review <pr_url>, /review local, /review, check bot pr
+      quality."
+  - id: top-crashers
+    kind: skill
+    path: .claude/skills/top-crashers
+    description: "Get top crashers from Brave's Backtrace crash reporting. Shows
+      crash signatures, stacks, platforms, versions, channel breakdown, code
+      origin, and regression detection. Triggers on: top crashers, crash report,
+      what's crashing, top crashes, crash analysis, regression crashers, new
+      crashes."
+  - id: uplift
+    kind: skill
+    path: .claude/skills/uplift
+    description: "Create an uplift PR that cherry-picks merged PRs from a
+      contributor into a target branch (beta or release). Defaults to broad
+      eligibility; the scope can be narrowed via a free-form description (e.g.
+      'only automated test and crash fixes'). Triggers on: /uplift, create
+      uplift, uplift PRs."
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Capability kind does not match path: .claude/skills/check-milestones"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

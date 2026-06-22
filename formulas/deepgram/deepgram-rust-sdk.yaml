@@ -1,0 +1,58 @@
+schemaVersion: 1
+id: deepgram/deepgram-rust-sdk
+name: Deepgram Rust SDK
+description: "Deepgram API Rust SDK: STT, TTS, manage, Flux, voice-agent fallback."
+source:
+  type: git
+  url: https://github.com/deepgram/deepgram-rust-sdk
+  revision: 52711b72ab8618ed54f3adcab206a138f015aadc
+capabilities:
+  - id: deepgram-rust-audio-intelligence
+    kind: skill
+    path: .agents/skills/deepgram-rust-audio-intelligence
+    description: Use when implementing Deepgram audio intelligence from the Rust
+      SDK, especially when intelligence features are attached to STT Options and
+      batch responses instead of a separate audio-intelligence module.
+  - id: deepgram-rust-conversational-stt
+    kind: skill
+    path: .agents/skills/deepgram-rust-conversational-stt
+    description: Use when implementing Deepgram Flux conversational STT from the
+      Rust SDK, including flux_request APIs, turn events, FluxResponse handling,
+      and turn-detection tuning for voice-agent-style pipelines.
+  - id: deepgram-rust-management-api
+    kind: skill
+    path: .agents/skills/deepgram-rust-management-api
+    description: Use when implementing Deepgram project, key, member, scope,
+      billing, invitation, or usage operations from the Rust SDK, including
+      manage feature flags and the real
+      Deepgram::projects/keys/members/scopes/billing/usage APIs.
+  - id: deepgram-rust-speech-to-text
+    kind: skill
+    path: .agents/skills/deepgram-rust-speech-to-text
+    description: Use when implementing Deepgram speech-to-text in the Rust SDK,
+      including prerecorded REST transcription, live WebSocket streaming, listen
+      feature flags, Options builder usage, and response handling.
+  - id: deepgram-rust-text-intelligence
+    kind: skill
+    path: .agents/skills/deepgram-rust-text-intelligence
+    description: Use when a user asks for Deepgram text intelligence from Rust.
+      Route to raw HTTP guidance because this crate does not currently expose a
+      dedicated /v1/read client or typed text-intelligence module.
+  - id: deepgram-rust-text-to-speech
+    kind: skill
+    path: .agents/skills/deepgram-rust-text-to-speech
+    description: Use when implementing Deepgram text-to-speech in the Rust SDK,
+      including Aura model selection, speak feature flags, output file or
+      byte-stream handling, and real crate APIs under speak::options and Speak.
+  - id: deepgram-rust-voice-agent
+    kind: skill
+    path: .agents/skills/deepgram-rust-voice-agent
+    description: "Use when a user asks for Deepgram Voice Agent support from Rust.
+      Route honestly: this crate does not currently expose the Agent WebSocket
+      API, reusable agent configurations, or typed voice-agent events."
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

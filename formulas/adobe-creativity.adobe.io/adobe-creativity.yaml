@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: adobe-creativity.adobe.io/adobe-creativity
+name: Adobe For Creativity
+description: Adobe for creativity remote MCP server at
+  https://adobe-creativity.adobe.io/mcp. Ideate, create, and deliver with Adobe
+  pro tools. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/adobe-creativity
+capabilities:
+  - id: adobe-creativity
+    kind: mcp
+    spec:
+      serverName: adobe-creativity
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://adobe-creativity.adobe.io/mcp

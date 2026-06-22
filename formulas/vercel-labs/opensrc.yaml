@@ -1,0 +1,26 @@
+schemaVersion: 1
+id: vercel-labs/opensrc
+name: opensrc
+description: CLI to fetch/cache package source for agent context.
+source:
+  type: git
+  url: https://github.com/vercel-labs/opensrc
+  revision: 2efd74e8f1755f15ed8f5a3445e1f5c80b6362c4
+capabilities:
+  - id: opensrc
+    kind: skill
+    path: skills/opensrc
+    description: Fetch dependency source code to give AI agents deeper
+      implementation context. Use when the agent needs to understand how a
+      library works internally, read source code for a package, fetch
+      implementation details for a dependency, or explore how an
+      npm/PyPI/crates.io package is built. Triggers include "fetch source for",
+      "read the source of", "how does X work internally", "get the
+      implementation of", "opensrc path", or any task requiring access to
+      dependency source code beyond types and docs.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

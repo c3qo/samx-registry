@@ -1,0 +1,42 @@
+schemaVersion: 1
+id: astronomer/astronomer
+name: Astronomer
+description: APC Helm charts/dev env.
+source:
+  type: git
+  url: https://github.com/astronomer/astronomer
+  revision: 3e7bdbfcbc927d782f53aa7dc857fcc360575441
+capabilities:
+  - id: chart-tests
+    kind: skill
+    path: .agents/skills/chart-tests
+    description: Use when writing, editing, reviewing, or running Helm chart tests
+      for the Astronomer APC repository. Covers pytest patterns, render_chart()
+      usage, sub-chart value nesting, parametrized tests, uv run commands,
+      schema validation, and test organization.
+  - id: circleci
+    kind: skill
+    path: .agents/skills/circleci
+    description: Use when writing, editing, or reviewing CircleCI configuration for
+      the Astronomer APC repository. Covers script organization, inline vs
+      external scripts, and config conventions.
+  - id: functional-tests
+    kind: skill
+    path: .agents/skills/functional-tests
+    description: Use when writing, editing, reviewing, or running functional
+      (end-to-end) tests for the Astronomer APC repository. Covers scenario
+      setup, testinfra patterns, kubeconfig helpers, fixture usage, flaky test
+      handling, and test organization across unified/control/data installation
+      scenarios.
+  - id: helm-chart
+    kind: skill
+    path: .agents/skills/helm-chart
+    description: Use for Helm chart work - creating charts, modifying existing
+      charts, values design, testing. For the Astronomer APC repository, see
+      docs/architecture.md for the platform overview.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

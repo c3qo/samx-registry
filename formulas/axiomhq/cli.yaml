@@ -1,0 +1,51 @@
+schemaVersion: 1
+id: axiomhq/cli
+name: Axiom CLI
+description: Axiom observability CLI + Claude Code skills for APL, dataset
+  exploration, traces, anomalies.
+source:
+  type: git
+  url: https://github.com/axiomhq/cli
+  revision: 536fe73b647a8df1e6355c09bd2e2ed8600b22b1
+capabilities:
+  - id: axiom-apl
+    kind: skill
+    path: skills/axiom-apl
+    description: APL query language reference for Axiom. Provides operators,
+      functions, patterns, and CLI usage. Auto-invoked by specialized Axiom
+      skills when writing or debugging APL queries.
+  - id: detect-anomalies
+    kind: skill
+    path: skills/detect-anomalies
+    description: Detect anomalies in Axiom datasets using statistical analysis. Use
+      when looking for unusual patterns, volume spikes, outliers, or new error
+      types in observability data.
+  - id: explore-dataset
+    kind: skill
+    path: skills/explore-dataset
+    description: Explore an Axiom dataset to understand its schema, fields, volume,
+      and patterns. Use when discovering a new dataset, investigating data
+      structure, or understanding what data is available.
+  - id: find-traces
+    kind: skill
+    path: skills/find-traces
+    description: Analyze OpenTelemetry distributed traces from Axiom. Use when
+      investigating a trace ID, finding traces by criteria (errors, latency,
+      service), or debugging distributed system issues.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: unlinked-hook-files
+    severity: warning
+    category: hooks
+    message: Repository contains hook-related files that are not linked by this formula.
+    paths:
+      - hooks/hooks.json
+      - hooks/nudge-skill.sh
+    reason: These files lack explicit appliesTo mappings, supported targets, or
+      supported file types.
+    effect: SAMX will not install, link, or execute these files.
+    action: Add explicit hook entries only after manual review.

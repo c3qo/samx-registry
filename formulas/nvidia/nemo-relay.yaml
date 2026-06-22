@@ -1,0 +1,224 @@
+schemaVersion: 1
+id: nvidia/nemo-relay
+name: NeMo Relay
+description: Agent runtime + bindings + plugins + docs.
+source:
+  type: git
+  url: https://github.com/nvidia/nemo-relay
+  revision: d5c240736ea63f980dcd8fb5ee073e3d83fb0c8b
+capabilities:
+  - id: contribute-api
+    kind: skill
+    path: .agents/skills/contribute-api
+    description: Contribute a new NeMo Relay public API surface safely, with binding
+      parity and docs in mind
+  - id: add-integration
+    kind: skill
+    path: .agents/skills/add-integration
+    description: Add a new third-party framework integration maintained as a NeMo
+      Relay patch set
+  - id: maintain-observability
+    kind: skill
+    path: .agents/skills/maintain-observability
+    description: Maintain or extend NeMo Relay observability surfaces across ATIF,
+      OpenTelemetry, and OpenInference
+  - id: add-binding-feature
+    kind: skill
+    path: .agents/skills/add-binding-feature
+    description: Add or change a public NeMo Relay API surface across the core
+      runtime and every affected binding
+  - id: add-middleware
+    kind: skill
+    path: .agents/skills/add-middleware
+    description: Add a new guardrail or intercept type to the NeMo Relay middleware pipeline
+  - id: contribute-docs
+    kind: skill
+    path: .agents/skills/contribute-docs
+    description: Contribute documentation or example changes that stay aligned with
+      NeMo Relay public behavior
+  - id: contribute-integration
+    kind: skill
+    path: .agents/skills/contribute-integration
+    description: Contribute a new or updated third-party framework integration for
+      NeMo Relay
+  - id: karpathy-guidelines
+    kind: skill
+    path: .agents/skills/karpathy-guidelines
+    description: Behavioral guidelines to reduce common LLM coding mistakes. Use
+      when writing, reviewing, or refactoring code to avoid overcomplication,
+      make surgical changes, surface assumptions, and define verifiable success
+      criteria.
+  - id: maintain-ci
+    kind: skill
+    path: .agents/skills/maintain-ci
+    description: Maintain and review NeMo Relay GitHub Actions workflows with
+      explicit per-job permissions, pinned action SHAs, deterministic caching,
+      reusable workflow permission boundaries, and local validation
+  - id: maintain-integration-patches
+    kind: skill
+    path: .agents/skills/maintain-integration-patches
+    description: Refresh, rebase, regenerate, and validate existing NeMo Relay
+      third-party integration patches
+  - id: maintain-optimizer
+    kind: skill
+    path: .agents/skills/maintain-optimizer
+    description: Maintain or extend the NeMo Relay adaptive surface across config,
+      plugins, docs, and bindings; use this when users still say optimizer
+  - id: maintain-packaging
+    kind: skill
+    path: .agents/skills/maintain-packaging
+    description: Maintain NeMo Relay package metadata, module paths, generated
+      artifacts, and release-facing build surfaces
+  - id: prepare-code-freeze
+    kind: skill
+    path: .agents/skills/prepare-code-freeze
+    description: Prepare a NeMo Relay code freeze by creating the release branch,
+      updating nightly alpha branch config, bumping main to the next version,
+      and opening the required PR
+  - id: prepare-pr
+    kind: skill
+    path: .agents/skills/prepare-pr
+    description: Prepare, open, create, publish, update, or edit a NeMo Relay pull
+      request or PR body with the right tests, docs, contributor hygiene, and
+      repository pull request template
+  - id: rename-surfaces
+    kind: skill
+    path: .agents/skills/rename-surfaces
+    description: Perform a coordinated repository, package, crate, module, or symbol
+      rename across NeMo Relay
+  - id: review-doc-style
+    kind: skill
+    path: .agents/skills/review-doc-style
+    description: Review documentation, examples, and docs-heavy changes for NVIDIA
+      technical writing style, terminology, and repo accuracy
+  - id: small-fix
+    kind: skill
+    path: .agents/skills/small-fix
+    description: Make a small, reviewable NeMo Relay bug fix without widening scope
+      unnecessarily
+  - id: test-ffi-surface
+    kind: skill
+    path: .agents/skills/test-ffi-surface
+    description: Build and test the NeMo Relay FFI surface; use this for crates/ffi
+      changes, header generation, or ABI-facing validation
+  - id: test-go-binding
+    kind: skill
+    path: .agents/skills/test-go-binding
+    description: Build and test the NeMo Relay Go binding; use this for
+      go/nemo_relay changes or Go-facing integration checks
+  - id: test-node-binding
+    kind: skill
+    path: .agents/skills/test-node-binding
+    description: Build and test the NeMo Relay Node.js binding; use this for
+      crates/node changes or Node-facing integration checks
+  - id: test-python-binding
+    kind: skill
+    path: .agents/skills/test-python-binding
+    description: Build and test the NeMo Relay Python binding; use this for
+      python/nemo_relay or crates/python changes
+  - id: test-rust-core
+    kind: skill
+    path: .agents/skills/test-rust-core
+    description: Build and test the NeMo Relay Rust core and adaptive crates; use
+      this for crates/core, crates/adaptive, or shared runtime semantics changes
+  - id: test-wasm-binding
+    kind: skill
+    path: .agents/skills/test-wasm-binding
+    description: Build and test the NeMo Relay WebAssembly binding; use this for
+      crates/wasm changes or WebAssembly-facing integration checks
+  - id: update-project-version
+    kind: skill
+    path: .agents/skills/update-project-version
+    description: Update the NeMo Relay project version across Cargo, Node, generated
+      WebAssembly package metadata, and lockfiles without leaving release
+      surfaces out of sync
+  - id: validate-change
+    kind: skill
+    path: .agents/skills/validate-change
+    description: Choose and run the right NeMo Relay validation matrix for a change
+      instead of using one fixed test list
+  - id: nemo-relay-build-plugin
+    kind: skill
+    path: skills/nemo-relay-build-plugin
+    description: Build and package reusable NeMo Relay runtime behavior as a
+      config-activated plugin with validation and rollback-safe registration
+  - id: nemo-relay-debug-runtime-integration
+    kind: skill
+    path: skills/nemo-relay-debug-runtime-integration
+    description: Debug application-side NeMo Relay integration issues such as load
+      failures, inactive scopes, missing events, or adaptive/plugin wiring
+      problems
+  - id: nemo-relay-export-atif-trajectories
+    kind: skill
+    path: skills/nemo-relay-export-atif-trajectories
+    description: Export NeMo Relay activity as ATIF trajectories for replay,
+      analysis, or interchange
+  - id: nemo-relay-export-openinference
+    kind: skill
+    path: skills/nemo-relay-export-openinference
+    description: Configure and use NeMo Relay OpenInference export for OTLP backends
+      that understand OpenInference semantics
+  - id: nemo-relay-export-otel
+    kind: skill
+    path: skills/nemo-relay-export-otel
+    description: Configure and use NeMo Relay OpenTelemetry export for
+      OTLP-compatible tracing backends
+  - id: nemo-relay-instrument-calls
+    kind: skill
+    path: skills/nemo-relay-instrument-calls
+    description: Wrap application tool calls and LLM/provider calls with NeMo Relay
+      scopes and managed execution APIs
+  - id: nemo-relay-migrate-from-flow
+    kind: skill
+    path: skills/nemo-relay-migrate-from-flow
+    description: Migrate applications, examples, integrations, documentation,
+      package manifests, and repository code from NeMo Flow naming and packages
+      to NeMo Relay across Python, Rust, Node.js, Go, WebAssembly, C FFI, CLI,
+      config, and observability surfaces; use when a user asks to rename
+      nemo_flow/nemo-flow/NeMo Flow APIs, automate a migration, update imports
+      or dependencies, or validate a Flow-to-Relay conversion
+  - id: nemo-relay-setup-observability
+    kind: skill
+    path: skills/nemo-relay-setup-observability
+    description: Choose and set up the right NeMo Relay observability path for an
+      application
+  - id: nemo-relay-start
+    kind: skill
+    path: skills/nemo-relay-start
+    description: Help application developers pick a NeMo Relay binding and get to a
+      first working scope, tool call, and LLM call
+  - id: nemo-relay-tune-adaptive-config
+    kind: skill
+    path: skills/nemo-relay-tune-adaptive-config
+    description: Configure the NeMo Relay adaptive plugin component through the
+      shared plugin system; use this skill for state, telemetry, adaptive_hints,
+      tool_parallelism, ACG, or policy settings with validation and measured
+      rollout
+  - id: nemo-relay-tune-adaptive-hints
+    kind: skill
+    path: skills/nemo-relay-tune-adaptive-hints
+    description: Consume NeMo Relay adaptive hints, predictions, latency
+      sensitivity, ACG diagnostics, or tool-parallelism guidance safely in
+      application logic after the adaptive plugin is already configured
+  - id: nemo-relay-tune-performance
+    kind: skill
+    path: skills/nemo-relay-tune-performance
+    description: Plan a measured NeMo Relay adaptive tuning rollout after baseline
+      scopes, tool calls, LLM calls, and observability are working; use this
+      skill to improve latency, tool parallelism, prompt-cache behavior, or
+      model-request behavior from runtime signals
+  - id: nemo-relay-typed-wrappers-codecs
+    kind: skill
+    path: skills/nemo-relay-typed-wrappers-codecs
+    description: Use NeMo Relay typed wrappers and codecs without losing middleware behavior
+  - id: nemo-relay-use-context-isolation
+    kind: skill
+    path: skills/nemo-relay-use-context-isolation
+    description: Set up and reason about NeMo Relay scope-stack isolation for
+      concurrent application work
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

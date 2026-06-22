@@ -1,0 +1,204 @@
+schemaVersion: 1
+id: microsoft/fluidframework
+name: Fluid Framework
+description: Monorepo for Fluid Framework client, build, release, docs, and OCE tooling.
+source:
+  type: git
+  url: https://github.com/microsoft/fluidframework
+  revision: e121ff71f3ebed80c656315486933fe2d6859b32
+capabilities:
+  - id: ff-oce-dashboard
+    kind: skill
+    path: .agency/plugins/ff-oce/skills/ff-oce-dashboard
+    description: "Generate the OCE shift status dashboard. Triggers on: 'generate
+      shift dashboard', 'show dashboard', 'shift status', 'status dashboard',
+      'what's going on', or any request for a NON-SPECIFIC overview of current
+      OCE status (incidents, pipelines, errors)."
+  - id: ff-oce-kusto
+    kind: skill
+    path: .agency/plugins/ff-oce/skills/ff-oce-kusto
+    description: "Use this skill for any Kusto query or telemetry investigation
+      specifically related to Fluid Framework or its partners. Triggers include:
+      writing or running a Kusto query against the Office Fluid database,
+      investigating Fluid Framework telemetry or error rates, querying
+      Office_Fluid_FluidRuntime_* tables, looking up a Fluid session by
+      Session_Id or docId, investigating a Fluid-related error in Loop or
+      Whiteboard telemetry, monitoring an FF bump or partner ring deployment,
+      checking Fluid render reliability or Scriptor errors, or when the user
+      mentions Fluid-specific tables (Office_Fluid_FluidRuntime_*, OwhLoads,
+      HostTracker, Scriptor) or Fluid-specific error types (dataCorruptionError,
+      dataProcessingError, DeltaConnectionFailureToConnect, ICE, ACE). Do NOT
+      trigger for general Kusto questions that are not related to Fluid
+      Framework."
+  - id: building-ui-ux
+    kind: skill
+    path: .agency/plugins/nori/skills/building-ui-ux
+    description: Use when implementing user interfaces or user experiences - guides
+      through exploration of design variations, frontend setup, iteration, and
+      proper integration
+  - id: webapp-testing
+    kind: skill
+    path: .agency/plugins/nori/skills/webapp-testing
+    description: Use this skill to build features or debug anything that uses a
+      webapp frontend.
+  - id: writing-plans
+    kind: skill
+    path: .agency/plugins/nori/skills/writing-plans
+    description: Use when design is complete and you need detailed implementation
+      tasks for engineers with zero codebase context - creates comprehensive
+      implementation plans with exact file paths, complete code examples, and
+      verification steps assuming engineer has minimal domain knowledge
+  - id: ci-readiness-check
+    kind: skill
+    path: .claude/skills/ci-readiness-check
+    description: Use when the user explicitly asks for a CI check or to push their
+      branch — e.g. "ci readiness", "check ci", "pre-push check", "ready for
+      CI", "ci check", "ready to push", "push my changes", "push the branch",
+      "let's push". Catches common CI failures before pushing — formatting,
+      stale API reports, missing changesets, policy violations.
+  - id: fluid-pr
+    kind: skill
+    path: .claude/skills/fluid-pr
+    description: Use when creating a pull request in the Fluid Framework repo.
+      Composes a PR title and body following Fluid Framework conventions,
+      proposes them to the user, then pushes the branch and creates the PR on
+      GitHub. Triggers on "create a PR", "make a PR", "open a PR", "submit a
+      PR", or "push and create a PR".
+  - id: fluid-release
+    kind: skill
+    path: .claude/skills/fluid-release
+    description: Fluid Framework client release group — minor releases, patch
+      releases, and post-release type test updates. Covers release prep,
+      branching, version bumps, changelogs, release notes, and type test
+      baselines. In autonomous mode, auto-detects state from the schedule and
+      repo, attempts to execute, and falls back to a GitHub issue on failure.
+      Triggers on "release", "do the release", "release status", version bump,
+      release notes, changelog, release branch, or release engineering.
+  - id: brainstorming
+    kind: skill
+    path: .agency/plugins/nori/skills/brainstorming
+    description: IMMEDIATELY USE THIS SKILL when creating or develop anything and
+      before writing code or implementation plans - refines rough ideas into
+      fully-formed designs through structured Socratic questioning, alternative
+      exploration, and incremental validation
+  - id: creating-debug-tests-and-iterating
+    kind: skill
+    path: .agency/plugins/nori/skills/creating-debug-tests-and-iterating
+    description: Use this skill when faced with a difficult debugging task where you
+      need to replicate some bug or behavior in order to see what is going
+      wrong.
+  - id: creating-skills
+    kind: skill
+    path: .agency/plugins/nori/skills/creating-skills
+    description: Use when you need to create a new custom skill for a profile -
+      guides through gathering requirements, creating directory structure,
+      writing SKILL.md, and optionally adding bundled scripts
+  - id: finishing-a-development-branch
+    kind: skill
+    path: .agency/plugins/nori/skills/finishing-a-development-branch
+    description: Use this when you have completed some feature implementation and
+      have written passing tests, and you are ready to create a PR.
+  - id: handle-large-tasks
+    kind: skill
+    path: .agency/plugins/nori/skills/handle-large-tasks
+    description: Use this skill to split large plans into smaller chunks. This skill
+      manages your context window for large tasks. Use it when a task will take
+      a long time and cause context issues.
+  - id: receiving-code-review
+    kind: skill
+    path: .agency/plugins/nori/skills/receiving-code-review
+    description: Use when receiving code review feedback, before implementing
+      suggestions, especially if feedback seems unclear or technically
+      questionable - requires technical rigor and verification, not performative
+      agreement or blind implementation
+  - id: root-cause-tracing
+    kind: skill
+    path: .agency/plugins/nori/skills/root-cause-tracing
+    description: Use when errors occur deep in execution and you need to trace back
+      to find the original trigger - systematically traces bugs backward through
+      call stack, adding instrumentation when needed, to identify source of
+      invalid data or incorrect behavior
+  - id: starting-nori
+    kind: skill
+    path: .agency/plugins/nori/skills/starting-nori
+    description: ALWAYS load this skill if it is not already loaded, for ANY user
+      query or conversation - establishes the Nori workflow, protected-branch
+      check, operating mode, tone, and coding guidelines before any other work
+  - id: systematic-debugging
+    kind: skill
+    path: .agency/plugins/nori/skills/systematic-debugging
+    description: Use when encountering any bug, test failure, or unexpected
+      behavior, before proposing fixes - four-phase framework (root cause
+      investigation, pattern analysis, hypothesis testing, implementation) that
+      ensures understanding before attempting solutions
+  - id: test-driven-development
+    kind: skill
+    path: .agency/plugins/nori/skills/test-driven-development
+    description: Use when implementing any feature or bugfix, before writing
+      implementation code - write the test first, watch it fail, write minimal
+      code to pass; ensures tests actually verify behavior by requiring failure
+      first
+  - id: testing-anti-patterns
+    kind: skill
+    path: .agency/plugins/nori/skills/testing-anti-patterns
+    description: Use when writing or changing tests, adding mocks, or tempted to add
+      test-only methods to production code - prevents testing mock behavior,
+      production pollution with test-only methods, and mocking without
+      understanding dependencies
+  - id: updating-noridocs
+    kind: skill
+    path: .agency/plugins/nori/skills/updating-noridocs
+    description: Use this when you have finished making code changes and you are
+      ready to update the documentation based on those changes.
+  - id: using-git-worktrees
+    kind: skill
+    path: .agency/plugins/nori/skills/using-git-worktrees
+    description: Use this whenever you need to create an isolated workspace.
+  - id: using-screenshots
+    kind: skill
+    path: .agency/plugins/nori/skills/using-screenshots
+    description: Use this to capture screen context.
+  - id: using-skills
+    kind: skill
+    path: .agency/plugins/nori/skills/using-skills
+    description: Describes how to use abilities. Read before any conversation.
+  - id: api-changes
+    kind: skill
+    path: .claude/skills/api-changes
+    description: Use when customer-facing API changes were made — i.e., API report
+      .md files differ from main. Guides through release tag assignment, API
+      Council review requirements, breaking change classification, deprecation
+      process, and changeset guidance. Triggered automatically by
+      ci-readiness-check when api-report diffs are detected.
+  - id: fluid-pr-guide
+    kind: skill
+    path: .claude/skills/fluid-pr-guide
+    description: Use when composing, writing, drafting, or reviewing a PR title, PR
+      description, or PR body in Fluid Framework — provides title style, body
+      template, and section guidance.
+  - id: policy-check
+    kind: skill
+    path: .claude/skills/policy-check
+    description: This skill should be used when the user asks to "run policy check",
+      "check policy", "policy-check", or needs to validate package compliance.
+      Provides guidance on running policy checks for specific packages or the
+      entire repository.
+  - id: review
+    kind: skill
+    path: .claude/skills/review
+    description: Use when asked to review code, review a branch, or do a code
+      review. Spawns Breaker (correctness) and API Analyst
+      (compatibility/conventions) sub-agents while the orchestrator reviews
+      architecture, tests, performance, and security.
+  - id: trigger-pipelines-for-copilot-pr
+    kind: skill
+    path: .claude/skills/trigger-pipelines-for-copilot-pr
+    description: Trigger ADO pipelines for a Copilot-created PR by posting /azp run
+      comments. Use when the user asks to trigger CI pipelines for a specific
+      PR.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

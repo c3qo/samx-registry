@@ -1,0 +1,291 @@
+schemaVersion: 1
+id: factory-ai/factory-plugins
+name: Factory Plugins
+description: Droid skill pack for PR, debug, browser, desktop, video, security,
+  TS, and research workflows.
+source:
+  type: git
+  url: https://github.com/factory-ai/factory-plugins
+  revision: 0c10b397a80cac8abc5f2f40af693b1aa79fedc3
+capabilities:
+  - id: autoresearch
+    kind: skill
+    path: plugins/autoresearch/skills/autoresearch
+    description: >
+      Autonomous experiment loop for optimization research. Use when the user
+      wants to:
+
+      - Optimize a metric through systematic experimentation (ML training loss,
+      test speed, bundle size, build time, etc.)
+
+      - Run an automated research loop: try an idea, measure it, keep
+      improvements, revert regressions, repeat
+
+      - Set up autoresearch for any codebase with a measurable optimization
+      target
+
+      Implements the autoresearch pattern with MAD-based confidence scoring, git
+      branch isolation,
+
+      and structured experiment logging.
+  - id: create-pr
+    kind: skill
+    path: plugins/code-review/skills/create-pr
+    description: Create a pull request with Conventional Commits formatting, a
+      templated body, and local verification. Use when the user asks to create a
+      PR, open a PR, submit changes for review, or put code up for review.
+  - id: follow-up-on-pr
+    kind: skill
+    path: plugins/code-review/skills/follow-up-on-pr
+    description: Follow up on an existing PR by rebasing on the base branch,
+      addressing reviewer comments, fixing CI issues, and pushing updates. Use
+      when the user provides a PR URL or number and wants to get it ready for
+      merge.
+  - id: review
+    kind: skill
+    path: plugins/core/skills/review
+    description: >
+      Review code changes and identify high-confidence, actionable bugs. Use
+      when the user wants to:
+
+      - Review a pull request or branch diff
+
+      - Find bugs, security issues, or correctness problems in code changes
+
+      - Get a structured summary of review findings
+  - id: http-toolkit-intercept
+    kind: skill
+    path: plugins/debugging/skills/http-toolkit-intercept
+    description: Intercept and debug HTTP traffic from any CLI, service, or script
+      using HTTP Toolkit. Use when you need to inspect LLM API calls, backend
+      requests, auth flows, or debug network-level issues across any language or
+      runtime.
+  - id: droid-control
+    kind: skill
+    path: plugins/droid-control/skills/droid-control
+    description: Control terminal TUIs and web/Electron apps for testing, demos, QA,
+      and computer-use tasks. Use when you need to automate a CLI, drive a
+      browser, record a demo, or capture proof artifacts.
+  - id: frontend-design
+    kind: skill
+    path: plugins/droid-evolved/skills/frontend-design
+    description: |
+      Build good-looking web interfaces. Use when:
+      - User asks you to build a web app, website, landing page, or HTML page
+      - User asks for a one-off tool, utility, or demo app
+      - User is starting a new frontend project
+      - User wants to improve how something looks
+      - User mentions UI, design, styling, or making something look better
+      This applies to ANY frontend work, not just "design" tasks. Even simple
+      apps benefit from basic design principles.
+  - id: security-review
+    kind: skill
+    path: plugins/security-engineer/skills/security-review
+    description: Scan code changes for security vulnerabilities using STRIDE threat
+      modeling, validate findings for exploitability, and output structured
+      results for downstream patch generation. Supports PR review, scheduled
+      scans, and full repository audits.
+  - id: ban-type-assertions
+    kind: skill
+    path: plugins/typescript/skills/ban-type-assertions
+    description: Ban `as` type assertions in a package via the
+      `@typescript-eslint/consistent-type-assertions` lint rule, replacing them
+      with compiler-verified type-safe alternatives. Use when enabling the
+      assertion ban in a new package or fixing violations in an existing one.
+  - id: no-use-effect
+    kind: skill
+    path: plugins/typescript/skills/no-use-effect
+    description: Enforce the no-useEffect rule when writing or reviewing React code.
+      ACTIVATE when writing React components, refactoring existing useEffect
+      calls, reviewing PRs with useEffect, or when an agent adds useEffect "just
+      in case." Provides the five replacement patterns and the useMountEffect
+      escape hatch.
+  - id: init
+    kind: skill
+    path: plugins/core/skills/init
+    description: Initialize a new repository with AGENTS.md
+  - id: session-navigation
+    kind: skill
+    path: plugins/core/skills/session-navigation
+    description: |
+      Navigate, search, and manage Droid sessions. Use when the user wants to:
+      - List recent sessions
+      - Search session history for specific topics or patterns
+      - Resume a previous session
+      - Get details about what was accomplished in a session
+      - Find sessions by project, date, or content
+  - id: simplify
+    kind: skill
+    path: plugins/core/skills/simplify
+    description: Review changed code for reuse, quality, and efficiency, then fix
+      any issues found.
+  - id: agent-browser
+    kind: skill
+    path: plugins/droid-control/skills/agent-browser
+    description: Background knowledge for droid-control workflows -- not invoked
+      directly. Agent-browser driver mechanics for web page and Electron desktop
+      app automation.
+  - id: capture
+    kind: skill
+    path: plugins/droid-control/skills/capture
+    description: Background knowledge for droid-control workflows -- not invoked
+      directly. Recording lifecycle for terminal and browser sessions.
+  - id: compose
+    kind: skill
+    path: plugins/droid-control/skills/compose
+    description: Background knowledge for droid-control workflows -- not invoked
+      directly. Video assembly via Remotion — title cards, layout, transitions,
+      effects, and showcase polish.
+  - id: desktop-control
+    kind: skill
+    path: plugins/droid-control/skills/desktop-control
+    description: Background knowledge for droid-control workflows -- not invoked
+      directly. Desktop-control driver mechanics for native GUI app automation
+      via trycua cua-driver.
+  - id: droid-cli
+    kind: skill
+    path: plugins/droid-control/skills/droid-cli
+    description: Background knowledge for droid-control workflows -- not invoked
+      directly. Droid CLI target patterns, shortcuts, modes, and launch helpers.
+  - id: pty-capture
+    kind: skill
+    path: plugins/droid-control/skills/pty-capture
+    description: Background knowledge for droid-control workflows -- not invoked
+      directly. Capture ground-truth byte sequences from real terminal
+      emulators.
+  - id: showcase
+    kind: skill
+    path: plugins/droid-control/skills/showcase
+    description: Background knowledge for droid-control workflows -- not invoked
+      directly. Visual polish for videos via Remotion-powered window chrome,
+      animations, and branded backgrounds.
+  - id: true-input
+    kind: skill
+    path: plugins/droid-control/skills/true-input
+    description: Background knowledge for droid-control workflows -- not invoked
+      directly. True-input driver mechanics for real terminal emulator
+      automation via headless Wayland compositor.
+  - id: tuistory
+    kind: skill
+    path: plugins/droid-control/skills/tuistory
+    description: Background knowledge for droid-control workflows -- not invoked
+      directly. Tuistory driver mechanics for terminal TUI automation via
+      virtual PTY.
+  - id: verify
+    kind: skill
+    path: plugins/droid-control/skills/verify
+    description: Background knowledge for droid-control workflows -- not invoked
+      directly. Deliverable verification against commitments.
+  - id: browser-navigation
+    kind: skill
+    path: plugins/droid-evolved/skills/browser-navigation
+    description: >
+      Automate browser interactions for web testing, form filling, screenshots,
+      and data extraction.
+
+      Use when the user needs to:
+
+      - Navigate websites and interact with web pages
+
+      - Fill forms and click buttons
+
+      - Take screenshots of web content
+
+      - Test web applications
+
+      - Extract information from web pages
+
+      - Debug frontend issues in the browser
+
+      - Monitor console logs and network requests
+
+      - Record browser sessions as video
+
+      This skill uses agent-browser for comprehensive browser automation.
+
+      RECOMMENDATION: Disable Chrome DevTools or Playwright MCP when using this
+      skill to save context.
+  - id: human-writing
+    kind: skill
+    path: plugins/droid-evolved/skills/human-writing
+    description: >
+      Remove signs of AI-generated writing from text to make it sound more
+      natural and human-written.
+
+      Use when editing or reviewing any form of document including: markdown,
+      technical docs, emails,
+
+      blog posts, PRDs, or any dedicated writing content. Based on Wikipedia's
+      comprehensive
+
+      "Signs of AI writing" guide. Detects and fixes patterns including:
+      inflated symbolism,
+
+      promotional language, superficial -ing analyses, vague attributions, em
+      dash overuse,
+
+      rule of three, AI vocabulary words, negative parallelisms, and excessive
+      conjunctive phrases.
+  - id: skill-creation
+    kind: skill
+    path: plugins/droid-evolved/skills/skill-creation
+    description: |
+      Create, improve, and manage Droid skills. Use when the user wants to:
+      - Create new skills from scratch or from session learnings
+      - Improve existing skills based on user preferences
+      - Analyze sessions to identify patterns worth codifying
+      - Understand best practices for agentic skill design
+      This is a meta-skill for self-improvement and continuous learning.
+  - id: visual-design
+    kind: skill
+    path: plugins/droid-evolved/skills/visual-design
+    description: |
+      Image generation and presentations. Use when:
+      - User asks for images: logos, icons, app assets, diagrams, flowcharts,
+        architecture diagrams, patterns, textures, photo edits, restorations
+      - User needs a presentation or slide deck
+      Covers nanobanana CLI for image generation and Slidev for presentations.
+  - id: wiki
+    kind: skill
+    path: plugins/droid-evolved/skills/wiki
+    description: |
+      Generate comprehensive codebase documentation for a repository.
+      Uploads the wiki to view in the Factory app.
+  - id: commit-security-scan
+    kind: skill
+    path: plugins/security-engineer/skills/commit-security-scan
+    description: Analyze code changes for security vulnerabilities using LLM
+      reasoning and threat model patterns. Use for PR reviews, pre-commit
+      checks, or branch comparisons.
+  - id: threat-model-generation
+    kind: skill
+    path: plugins/security-engineer/skills/threat-model-generation
+    description: Generate a STRIDE-based security threat model for a repository. Use
+      when setting up security monitoring, after architecture changes, or for
+      security audits.
+  - id: vulnerability-validation
+    kind: skill
+    path: plugins/security-engineer/skills/vulnerability-validation
+    description: Validate security findings from commit-security-scan by assessing
+      exploitability, filtering false positives, and generating proof-of-concept
+      exploits. Use after running commit-security-scan to confirm
+      vulnerabilities.
+  - id: fix-knip-unused-exports
+    kind: skill
+    path: plugins/typescript/skills/fix-knip-unused-exports
+    description: >
+      Fix knip "Unused exports" violations. Handles all violation categories:
+      test-only exports
+
+      (extract to new file), dead barrel re-exports (remove from index.ts), and
+      internally-only-used
+
+      exports (un-export).
+
+      Use when `npm run knip` reports unused exports.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

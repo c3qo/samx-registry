@@ -1,0 +1,89 @@
+schemaVersion: 1
+id: microsoft/semantic-link-labs
+name: Semantic Link Labs
+description: Fabric notebook helper lib; API wrappers, TOM, Direct Lake,
+  report/lakehouse tools.
+source:
+  type: git
+  url: https://github.com/microsoft/semantic-link-labs
+  revision: 9aa079585f7277518f587edc11c19be897ada8b5
+capabilities:
+  - id: add-function
+    kind: skill
+    path: .claude/skills/add-function
+    description: Guide for adding new functions to the library. Use this when
+      implementing new API wrappers or utility functions.
+  - id: rest-api-patterns
+    kind: skill
+    path: .claude/skills/rest-api-patterns
+    description: Guide for implementing REST API wrapper functions. Use this when
+      adding new API wrappers or troubleshooting API calls.
+  - id: direct-lake-operations
+    kind: skill
+    path: .claude/skills/direct-lake-operations
+    description: Guide for working with Direct Lake semantic models. Use this when
+      implementing Direct Lake-related features or troubleshooting.
+  - id: tom-operations
+    kind: skill
+    path: .claude/skills/tom-operations
+    description: Guide for working with the TOM (Tabular Object Model) wrapper. Use
+      this when modifying semantic models programmatically.
+  - id: ui-styling
+    kind: skill
+    path: .claude/skills/ui-styling
+    description: Guide for the visual style, structure, and shared building blocks
+      used by Semantic Link Labs interactive UI tools (HTML widgets and
+      anywidget-based widgets). Use this when adding a new interactive UI,
+      modifying an existing one, or adding shared visual components.
+  - id: build-docs
+    kind: skill
+    path: .claude/skills/build-docs
+    description: Guide for building documentation and validating docstrings. Use
+      this when asked to build docs, check docstrings, or validate
+      documentation.
+  - id: code-style
+    kind: skill
+    path: .claude/skills/code-style
+    description: Guide for running code style linters and formatters. Use this when
+      asked to check code style, run linters, or fix formatting issues.
+  - id: github-repo-explore
+    kind: skill
+    path: .claude/skills/github-repo-explore
+    description: Guide for searching and exploring external GitHub repositories
+      using the gh CLI. Use this when you need reference implementations,
+      patterns, or code examples from open-source projects to help complete your
+      task.
+  - id: planning-with-files
+    kind: skill
+    path: .claude/skills/planning-with-files
+    description: "**USE THIS FOR COMPLEX TASKS.** Implements Manus-style file-based
+      planning for multi-step tasks. Creates task_plan.md, findings.md, and
+      progress.md in .agent_cache/<task-name>/. Use when: implementing multiple
+      APIs, refactoring modules, research tasks, or ANY task requiring >5 tool
+      calls."
+  - id: pr-review-comments
+    kind: skill
+    path: .claude/skills/pr-review-comments
+    description: Guide for submitting/posting inline PR review comments to GitHub.
+      Use this when you need to post code review comments on specific lines of a
+      Pull Request.
+  - id: run-tests
+    kind: skill
+    path: .claude/skills/run-tests
+    description: Guide for running pytest tests locally. Use this when running tests
+      to verify code changes.
+  - id: sql_to_dax
+    kind: skill
+    path: .claude/skills/sql_to_dax
+    description: Guide for translating SQL aggregation expressions into DAX measures.
+  - id: write-tests
+    kind: skill
+    path: .claude/skills/write-tests
+    description: Guide for writing unit tests. Use this when creating tests to
+      verify Python logic.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

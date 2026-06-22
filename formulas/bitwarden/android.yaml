@@ -1,0 +1,86 @@
+schemaVersion: 1
+id: bitwarden/android
+name: Bitwarden Android
+description: Android app; Bitwarden auth/vault SDK client.
+source:
+  type: git
+  url: https://github.com/bitwarden/android
+  revision: 5b8dd94b07c5672f0569383cfc244686de14c2b8
+capabilities:
+  - id: build-test-verify
+    kind: skill
+    path: .claude/skills/build-test-verify
+    description: Build, test, lint, and deploy commands for the Bitwarden Android
+      project. Use when running tests, building APKs/AABs, running lint/detekt,
+      deploying, using fastlane, or discovering codebase structure. Triggered by
+      "run tests", "build", "gradle", "lint", "detekt", "deploy", "fastlane",
+      "assemble", "verify", "coverage".
+  - id: implementing-android-code
+    kind: skill
+    path: .claude/skills/implementing-android-code
+    description: This skill should be used when implementing Android code in
+      Bitwarden. Covers critical patterns, gotchas, and anti-patterns unique to
+      this codebase. Triggered by "How do I implement a ViewModel?", "Create a
+      new screen", "Add navigation", "Write a repository", "BaseViewModel
+      pattern", "State-Action-Event", "type-safe navigation", "@Serializable
+      route", "SavedStateHandle persistence", "process death recovery",
+      "handleAction", "sendAction", "Hilt module", "Repository pattern",
+      "implementing a screen", "adding a data source", "handling navigation",
+      "encrypted storage", "security patterns", "Clock injection", "DataState",
+      or any questions about implementing features, screens, ViewModels, data
+      sources, or navigation in the Bitwarden Android app.
+  - id: interacting-with-android-device
+    kind: skill
+    path: .claude/skills/interacting-with-android-device
+    description: Instructions for capturing UI state, comparing with mocks, and
+      interacting with an Android device using MCP tools backed by ADB.
+  - id: planning-android-implementation
+    kind: skill
+    path: .claude/skills/planning-android-implementation
+    description: Architecture design and phased implementation planning for
+      Bitwarden Android. Use when planning implementation, designing
+      architecture, creating file inventories, or breaking features into phases.
+      Triggered by "plan implementation", "architecture design", "implementation
+      plan", "break this into phases", "what files do I need", "design the
+      architecture".
+  - id: refining-android-requirements
+    kind: skill
+    path: .claude/skills/refining-android-requirements
+    description: Requirements gap analysis and structured specification for
+      Bitwarden Android. Use when refining requirements, analyzing specs,
+      identifying gaps, or producing structured specifications from tickets or
+      descriptions. Triggered by "refine requirements", "gap analysis", "spec
+      review", "requirements analysis", "what's missing from this spec",
+      "analyze this ticket".
+  - id: reviewing-changes
+    kind: skill
+    path: .claude/skills/reviewing-changes
+    description: Android-specific code review checklist and MVVM/Compose pattern
+      validation for Bitwarden Android — use this for any review task, even if
+      the user doesn't explicitly ask for a "checklist". Detects change type
+      automatically and loads the right review strategy (feature additions, bug
+      fixes, UI refinements, refactoring, dependency updates, infrastructure).
+      Triggered by "review PR", "review changes", "review this code", "check
+      this code", "Android review", code review requests on
+      Kotlin/ViewModel/Composable/Repository/Gradle files, or any time someone
+      asks to look at a diff, PR, or code changes in bitwarden/android.
+  - id: testing-android-code
+    kind: skill
+    path: .claude/skills/testing-android-code
+    description: This skill should be used when writing or reviewing tests for
+      Android code in Bitwarden. Triggered by "BaseViewModelTest",
+      "BitwardenComposeTest", "BaseServiceTest", "stateEventFlow",
+      "bufferedMutableSharedFlow", "FakeDispatcherManager", "expectNoEvents",
+      "assertCoroutineThrows", "createMockCipher", "createMockSend",
+      "asSuccess", "Why is my Bitwarden test failing?", or testing questions
+      about ViewModels, repositories, Compose screens, or data sources in
+      Bitwarden.
+  - id: android-device
+    kind: mcp
+    path: .mcp.json
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

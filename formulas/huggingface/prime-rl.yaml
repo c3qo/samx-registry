@@ -1,0 +1,32 @@
+schemaVersion: 1
+id: huggingface/prime-rl
+name: PRIME-RL
+description: Async RL training at scale.
+source:
+  type: git
+  url: https://github.com/huggingface/prime-rl
+  revision: cab621fc5d3f65cb7ffa0fb15dc6a1402a6f83a1
+capabilities:
+  - id: inference-server
+    kind: skill
+    path: skills/inference-server
+    description: Start and test the prime-rl inference server. Use when asked to run
+      inference, start vLLM, test a model, or launch the inference server.
+  - id: installation
+    kind: skill
+    path: skills/installation
+    description: How to install prime-rl and its optional dependencies. Use when
+      setting up the project, installing extras like deep-gemm for FP8 models,
+      or troubleshooting dependency issues.
+  - id: toml-config
+    kind: skill
+    path: skills/toml-config
+    description: How to write and use TOML configs in prime-rl. Use when creating
+      config files, running commands with configs, or overriding config values
+      via CLI.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

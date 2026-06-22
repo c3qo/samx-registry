@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: nuxt/ui
+name: Nuxt UI
+description: Vue UI lib w/ Tailwind; Nuxt/Vue/Vite; accessible comps.
+source:
+  type: git
+  url: https://github.com/nuxt/ui
+  revision: ed4712c62ca347ab6fc9287648ec3a01c8a88dd0
+capabilities:
+  - id: nuxt-ui
+    kind: skill
+    path: skills/nuxt-ui
+    description: Build UIs with @nuxt/ui v4 — 125+ accessible Vue components with
+      Tailwind CSS theming. Use when creating interfaces, customizing themes to
+      match a brand, building forms, or composing layouts like dashboards, docs
+      sites, and chat interfaces.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

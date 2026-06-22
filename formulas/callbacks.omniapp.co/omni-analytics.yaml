@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: callbacks.omniapp.co/omni-analytics
+name: Omni Analytics
+description: Omni Analytics remote MCP server at
+  https://callbacks.omniapp.co/callback/mcp. Query your data using natural
+  language through Omni&#x27;s semantic model. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/omni-analytics
+capabilities:
+  - id: omni-analytics
+    kind: mcp
+    spec:
+      serverName: omni-analytics
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://callbacks.omniapp.co/callback/mcp

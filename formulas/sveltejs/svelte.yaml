@@ -1,0 +1,19 @@
+schemaVersion: 1
+id: sveltejs/svelte
+name: Svelte
+description: Compiler/runtime for efficient web apps.
+source:
+  type: git
+  url: https://github.com/sveltejs/svelte
+  revision: c4daa490bbbf483ebba117c1afb6f71b4b19e63c
+capabilities:
+  - id: performance-investigation
+    kind: skill
+    path: .agents/skills/performance-investigation
+    description: Investigate performance regressions and find opportunities for optimization
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

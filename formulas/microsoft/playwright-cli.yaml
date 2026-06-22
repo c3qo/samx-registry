@@ -1,0 +1,26 @@
+schemaVersion: 1
+id: microsoft/playwright-cli
+name: playwright-cli
+description: Playwright CLI for browser automation + Playwright testing.
+source:
+  type: git
+  url: https://github.com/microsoft/playwright-cli
+  revision: 9b118a1a737662fa118d591b5687340b86005d5c
+capabilities:
+  - id: dev
+    kind: skill
+    path: .claude/skills/dev
+    description: Development workflows for the playwright-cli repository. Use when
+      the user asks about rolling dependencies, releasing, or other repo
+      maintenance tasks.
+  - id: playwright-cli
+    kind: skill
+    path: skills/playwright-cli
+    description: Automate browser interactions, test web pages and work with
+      Playwright tests.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

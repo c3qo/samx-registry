@@ -1,0 +1,105 @@
+schemaVersion: 1
+id: redis/agent-skills
+name: Redis Agent Skills
+description: Skill pack for Redis-focused AI coding agents.
+source:
+  type: git
+  url: https://github.com/redis/agent-skills
+  revision: 5ca2e1a2d82a768221e8f71a02e3ca095a37d38e
+capabilities:
+  - id: iris-development
+    kind: skill
+    path: skills/iris-development
+    description: Iris is Redis's umbrella for AI-focused products. Use this skill
+      when integrating with the Iris Redis Agent Memory (RAM) data plane on
+      Redis Cloud — recording session events for an AI agent, creating or
+      searching long-term memories, configuring a memory store, or tuning
+      background memory promotion. Code examples use the official
+      `redis-agent-memory` (Python) and `@redis-iris/agent-memory` (TypeScript)
+      SDKs.
+  - id: redis-clustering
+    kind: skill
+    path: skills/redis-clustering
+    description: Redis Cluster and replication guidance covering hash tags for
+      multi-key operations, avoiding CROSSSLOT errors, and reading from replicas
+      to scale read-heavy workloads. Use when designing keys for a sharded Redis
+      Cluster, debugging CROSSSLOT errors on MGET / SDIFF / pipelines,
+      configuring a multi-key transaction in a cluster, or routing reads to
+      replicas for caches, analytics, or dashboards.
+  - id: redis-connections
+    kind: skill
+    path: skills/redis-connections
+    description: Redis client and connection guidance covering connection pooling,
+      multiplexing, pipelining, client-side caching with RESP3, avoiding slow
+      commands (KEYS, SMEMBERS, HGETALL), and tuning socket timeouts. Use when
+      configuring a Redis client (redis-py, Jedis, Lettuce, NRedisStack),
+      batching commands for throughput, eliminating per-request connection
+      creation, iterating large keyspaces with SCAN, enabling client-side
+      caching for read-heavy workloads, or setting connect and read timeouts.
+  - id: redis-core
+    kind: skill
+    path: skills/redis-core
+    description: Core Redis modeling guidance — choose the right data structure
+      (String, Hash, List, Set, Sorted Set, JSON, Stream, Vector Set) and use
+      consistent colon-separated key names. Use when designing a Redis data
+      model, caching objects, deciding between Hash and JSON, building counters,
+      leaderboards, membership sets, or session stores, or when
+      reviewing/cleaning up Redis key naming.
+  - id: redis-observability
+    kind: skill
+    path: skills/redis-observability
+    description: Redis observability guidance — which metrics to monitor (memory,
+      connections, hit ratio, ops/sec, rejected connections), which built-in
+      commands to reach for during incident triage (SLOWLOG, INFO, MEMORY
+      DOCTOR, CLIENT LIST, FT.PROFILE), and when to use the Redis Insight GUI.
+      Use when setting up monitoring or alerts for a Redis instance, diagnosing
+      a performance regression, profiling a slow FT.SEARCH query, or wiring
+      Redis metrics into Prometheus, Datadog, or similar.
+  - id: redis-query-engine
+    kind: skill
+    path: skills/redis-query-engine
+    description: Redis Query Engine (RQE) guidance covering FT.CREATE schema design,
+      field type selection (TEXT, TAG, NUMERIC, GEO, GEOSHAPE, VECTOR), DIALECT
+      2 query syntax, efficient FT.SEARCH and FT.AGGREGATE queries,
+      zero-downtime index updates via aliases, and the SKIPINITIALSCAN option.
+      Use when defining a search index on Hash or JSON documents, picking
+      between TEXT and TAG for filtering, writing FT.SEARCH queries with filters
+      and SORTBY, managing or swapping indexes in production, or troubleshooting
+      slow searches with FT.PROFILE.
+  - id: redis-security
+    kind: skill
+    path: skills/redis-security
+    description: Redis security guidance covering authentication (requirepass and
+      ACL users), TLS, ACL-based least-privilege access control, restricting
+      network exposure via bind and protected-mode, firewall rules, and
+      disabling dangerous commands. Use when deploying Redis to production,
+      defining ACL users for an application, configuring TLS connections,
+      locking down a Redis instance behind a firewall, or auditing a Redis
+      deployment for security hardening.
+  - id: redis-semantic-cache
+    kind: skill
+    path: skills/redis-semantic-cache
+    description: Redis LangCache guidance for semantic caching of LLM responses on
+      Redis Cloud — calling search/set via the SDK or REST API, tuning the
+      similarity threshold, separating caches per task type, and filtering with
+      custom attributes. Use when caching LLM completions or RAG answers to cut
+      API cost and latency, building a cache-aside layer in front of OpenAI /
+      Anthropic / etc., tuning hit rate vs precision, or splitting one app's LLM
+      workloads into multiple LangCache caches.
+  - id: redis-vector-search
+    kind: skill
+    path: skills/redis-vector-search
+    description: Redis vector search guidance covering HNSW vs FLAT algorithm
+      choice, vector index configuration (dims, distance metric, datatype),
+      filtered hybrid search combining vector similarity with TAG or NUMERIC
+      filters, and the RAG retrieval pattern with RedisVL. Use when defining a
+      VECTOR field in FT.CREATE, integrating embeddings (OpenAI, Cohere,
+      sentence-transformers), tuning HNSW parameters (M, EF_CONSTRUCTION,
+      EF_RUNTIME), building a retrieval-augmented generation pipeline, or
+      filtering vector results by attribute.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

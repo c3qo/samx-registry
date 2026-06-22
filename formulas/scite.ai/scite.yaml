@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: scite.ai/scite
+name: Scite
+description: Scite remote MCP server at https://api.scite.ai/mcp. Evidence-based
+  answers grounded in research. Setup guides for Claude Code, Codex, Cursor, and
+  VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/scite
+capabilities:
+  - id: scite
+    kind: mcp
+    spec:
+      serverName: scite
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.scite.ai/mcp

@@ -1,0 +1,71 @@
+schemaVersion: 1
+id: microsoft/eval-guide
+name: eval-guide
+description: "Copilot Studio eval toolkit: plan, generate, run, interpret, triage."
+source:
+  type: git
+  url: https://github.com/microsoft/eval-guide
+  revision: c1a7af7f487fa27e47d86309c1f463bbf42d7299
+capabilities:
+  - id: eval-faq
+    kind: skill
+    path: skills/eval-faq
+    description: Answers AI agent evaluation methodology questions with practical,
+      opinionated guidance grounded primarily in Microsoft's agent evaluation
+      ecosystem (MS Learn, Eval Scenario Library, Triage & Improvement Playbook,
+      Eval Guidance Kit) supplemented by select industry sources.
+  - id: eval-generator
+    kind: skill
+    path: skills/eval-generator
+    description: "Stage 2 standalone — turns an eval plan (output of
+      `/eval-suite-planner`) into concrete test cases grouped by quality signal.
+      Methods live at the signal level (one or many per signal); each criterion
+      shares the signal's method set. Outputs one CSV per signal (2 columns:
+      Question + Expected response, one row per case) plus a customer-ready
+      `.docx` test-case report and an `eval-setup-guide.docx` that walks the
+      customer through assigning testing methods per row manually in Copilot
+      Studio's Evaluate tab. Use after planning, before running."
+  - id: eval-guide
+    kind: skill
+    path: skills/eval-guide
+    description: 'Eval enablement accelerator — help customers think through "what
+      does good look like" for their AI agent, then generate a structured eval
+      plan and test cases they can use immediately. No built agent required — an
+      idea or description is enough. Promotes eval-first development: write
+      evals before building. Use when anyone mentions agent evaluation, eval
+      planning, "what should we test", "how do we know if the agent is good",
+      test case generation, or interpreting eval results.'
+  - id: eval-result-interpreter
+    kind: skill
+    path: skills/eval-result-interpreter
+    description: Analyzes Copilot Studio evaluation CSV results using Microsoft's
+      Triage & Improvement Playbook. Returns a SHIP / ITERATE / BLOCK verdict
+      with root cause classification, diagnostic triage, prioritized
+      remediation, and pattern analysis.
+  - id: eval-suite-planner
+    kind: skill
+    path: skills/eval-suite-planner
+    description: 'Stage 1 standalone — turns an Agent Vision (or plain-English
+      description) into a structured eval plan: 10–15 acceptance criteria
+      phrased "The agent should…", each placed on a Value × Risk matrix (High
+      Value · High Risk / High Value · Low Risk / Low Value · High Risk / Low
+      Value · Low Risk), each with explicit pass/fail conditions and a test
+      method. Output is a customer-ready `.docx` eval plan. Use before
+      generating test cases or running any evals.'
+  - id: eval-triage-and-improvement
+    kind: skill
+    path: skills/eval-triage-and-improvement
+    description: "Use this skill when the user's Copilot Studio agent evaluations
+      have come back and they need to interpret scores, diagnose root causes of
+      underperforming test cases, find remediation steps, or analyze patterns to
+      improve their agent. Always use this skill when the user mentions: \"eval
+      failed\", \"why did this fail\", \"triage\", \"diagnose failure\", \"low
+      pass rate\", \"fix evaluation results\", \"not passing\", \"failing test
+      cases\", \"evaluation results\", \"improve my eval scores\", or any
+      situation where eval scores need interpretation and action."
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

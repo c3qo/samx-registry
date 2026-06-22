@@ -1,0 +1,147 @@
+schemaVersion: 1
+id: flutter/skills
+name: Flutter Agent Skills
+description: Flutter agent skill set; app dev workflows, reviews, docs, lint.
+source:
+  type: git
+  url: https://github.com/flutter/skills
+  revision: 12de4eb624124c72964aadeb5c53514ad0e9dc1b
+capabilities:
+  - id: code-review
+    kind: skill
+    path: .agents/agents/reidbaker-agent/skills/code-review
+    description: Performs a comprehensive, multi-step code review of pull requests
+      or local code changes, using iterative refinement (generation, critique,
+      synthesis) to ensure high-quality, actionable feedback. Use when you need
+      to review code changes thoroughly.
+  - id: flutter-build-responsive-layout
+    kind: skill
+    path: skills/flutter-build-responsive-layout
+    description: Use `LayoutBuilder`, `MediaQuery`, or `Expanded/Flexible` to create
+      a layout that adapts to different screen sizes. Use when you need the UI
+      to look good on both mobile and tablet/desktop form factors.
+  - id: flutter-fix-layout-issues
+    kind: skill
+    path: skills/flutter-fix-layout-issues
+    description: Fixes Flutter layout errors (overflows, unbounded constraints)
+      using Dart and Flutter MCP tools. Use when addressing "RenderFlex
+      overflowed", "Vertical viewport was given unbounded height", or similar
+      layout issues.
+  - id: flutter-setup-declarative-routing
+    kind: skill
+    path: skills/flutter-setup-declarative-routing
+    description: Configure `MaterialApp.router` using a package like `go_router` for
+      advanced URL-based navigation. Use when developing web applications or
+      mobile apps that require specific deep linking and browser history
+      support.
+  - id: flutter-use-http-package
+    kind: skill
+    path: skills/flutter-use-http-package
+    description: Use the `http` package to execute GET, POST, PUT, or DELETE
+      requests. Use when you need to fetch from or send data to a REST API.
+  - id: grill-with-docs
+    kind: skill
+    path: .agents/agents/reidbaker-agent/skills/grill-with-docs
+    description: Grilling session that challenges your plan against the existing
+      domain model, sharpens terminology, and updates documentation (CONTEXT.md,
+      ADRs) inline as decisions crystallise. Use when user wants to stress-test
+      a plan against their project's language and documented decisions.
+  - id: natural-writing
+    kind: skill
+    path: .agents/agents/reidbaker-agent/skills/natural-writing
+    description: Contains well-defined rules for creating natural, accurate, and
+      readable writing. Use whenever authoring longer text, like analysis
+      documents, PR or CL descriptions, or documentation.
+  - id: flutter-add-integration-test
+    kind: skill
+    path: skills/flutter-add-integration-test
+    description: Configures Flutter Driver for app interaction and converts MCP
+      actions into permanent integration tests. Use when adding integration
+      testing to a project, exploring UI components via MCP, or automating user
+      flows with the integration_test package.
+  - id: flutter-add-widget-preview
+    kind: skill
+    path: skills/flutter-add-widget-preview
+    description: Adds interactive widget previews to the project using the
+      previews.dart system. Use when creating new UI components or updating
+      existing screens to ensure consistent design and interactive testing.
+  - id: flutter-add-widget-test
+    kind: skill
+    path: skills/flutter-add-widget-test
+    description: Implement a component-level test using `WidgetTester` to verify UI
+      rendering and user interactions (tapping, scrolling, entering text). Use
+      when validating that a specific widget displays correct data and responds
+      to events as expected.
+  - id: flutter-apply-architecture-best-practices
+    kind: skill
+    path: skills/flutter-apply-architecture-best-practices
+    description: Architects a Flutter application using the recommended layered
+      approach (UI, Logic, Data). Use when structuring a new project or
+      refactoring for scalability.
+  - id: flutter-implement-json-serialization
+    kind: skill
+    path: skills/flutter-implement-json-serialization
+    description: Create model classes with `fromJson` and `toJson` methods using
+      `dart:convert`. Use when manually mapping JSON keys to class properties
+      for simple data structures.
+  - id: flutter-setup-localization
+    kind: skill
+    path: skills/flutter-setup-localization
+    description: Add `flutter_localizations` and `intl` dependencies, enable
+      "generate true" in `pubspec.yaml`, and create an `l10n.yaml` configuration
+      file. Use when initializing localization support for a new Flutter
+      project.
+  - id: add-dart-lint-validation-rule
+    kind: skill
+    path: tool/dart_skills_lint/.agents/skills/add-dart-lint-validation-rule
+    description: >
+      Instructions for adding a new validation rule and CLI flag to
+      dart_skills_lint. Use this skill when asked to create a new rule that
+      validates aspects of skills (like frontmatter metadata).
+  - id: dart-skills-lint-integration
+    kind: skill
+    path: tool/dart_skills_lint/.agents/skills/dart-skills-lint-integration
+    description: >
+      How to integrate, update, and configure the dart_skills_lint validation
+      tool within a repository. Make sure to use this skill whenever the user
+      asks to update dart_skills_lint, configure skills validation tests, fix
+      skills linter dependency drifts, verify repository state before editing,
+      optimize lint rules execution, or draft pull request submission commands.
+  - id: definition-of-done
+    kind: skill
+    path: tool/dart_skills_lint/.agents/skills/definition-of-done
+    description: Mandatory checks to run before completing any task that touches md
+      files or dart code in this repository.
+  - id: invalid
+    kind: skill
+    path: tool/dart_skills_lint/example/invalid
+    description: A deliberately broken fixture used by example/README.md to show
+      what each rule's error output looks like.
+  - id: valid
+    kind: skill
+    path: tool/dart_skills_lint/example/valid
+    description: "Reference fixture for dart_skills_lint. Demonstrates a SKILL.md
+      that passes every default rule: hyphen-lowercase name matching the parent
+      directory, a properly sized description, and no other frontmatter fields
+      that would trigger the disallowed-field check."
+  - id: dart-skills-lint-setup
+    kind: skill
+    path: tool/dart_skills_lint/skills/dart-skills-lint-setup
+    description: >-
+      Use this skill when you need to set up validation for AI agent skills in a
+      Dart project for the first time.
+
+      Adds the linter as a dev_dependency, creates a configuration file, and
+      generates a baseline for legacy repos.
+  - id: dart-skills-lint-validation
+    kind: skill
+    path: tool/dart_skills_lint/skills/dart-skills-lint-validation
+    description: Use this skill when you need to validate AI agent skills with
+      dart_skills_lint — running the linter, interpreting failures, fixing
+      violations, and authoring custom rules.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

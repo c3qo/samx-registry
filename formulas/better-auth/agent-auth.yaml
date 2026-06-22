@@ -1,0 +1,31 @@
+schemaVersion: 1
+id: better-auth/agent-auth
+name: Agent Auth
+description: "Open-source Agent Auth Protocol impls: auth, cap auth, discovery,
+  CLI/MCP, SDKs, examples."
+source:
+  type: git
+  url: https://github.com/better-auth/agent-auth
+  revision: a6736a4414e6cd3febffc86d00d9924694883364
+capabilities:
+  - id: agent-auth-cli
+    kind: skill
+    path: skills/agent-auth-cli
+    description: Use the Agent Auth CLI (auth-agent) to discover providers, connect
+      agents, manage capabilities, and execute operations. Use when the user
+      wants to interact with an Agent Auth provider from the terminal,
+      authenticate an agent, execute capabilities, or manage agent connections.
+  - id: agent-auth-mcp
+    kind: skill
+    path: skills/agent-auth-mcp
+    description: Use the Agent Auth MCP tools to discover providers, connect agents,
+      manage capabilities, and execute operations through the MCP protocol. Use
+      when working inside an MCP-enabled environment (Cursor, Claude Code, etc.)
+      and need to authenticate agents, execute capabilities, or interact with
+      Agent Auth providers.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

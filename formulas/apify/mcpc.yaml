@@ -1,0 +1,25 @@
+schemaVersion: 1
+id: apify/mcpc
+name: mcpc
+description: Universal MCP CLI client.
+source:
+  type: git
+  url: https://github.com/apify/mcpc
+  revision: c9711f73d918a43a69b9d5227ef58706d35130ae
+capabilities:
+  - id: claude-skill
+    kind: skill
+    path: docs/claude-skill
+    description: Use the mcpc CLI to work with MCP (Model Context Protocol) servers
+      from the shell - connect to a server as a persistent session, then list
+      and call tools, read resources, get prompts, and run async tasks. Use
+      --json for scripting and code mode. Reach for this whenever interacting
+      with MCP servers, calling MCP tools, or accessing MCP resources
+      programmatically.
+requirements:
+  env:
+    - APIFY_TOKEN
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,141 @@
+schemaVersion: 1
+id: remotion-dev/remotion
+name: Remotion
+description: Video-creation monorepo; docs, CLI, effects, packages.
+source:
+  type: git
+  url: https://github.com/remotion-dev/remotion
+  revision: c74c343e77276146a5385211490266272df91c3c
+capabilities:
+  - id: add-cli-option
+    kind: skill
+    path: .agents/skills/add-cli-option
+    description: Add a new Remotion CLI or config option by creating an
+      AnyRemotionOption, registering CLI parsing, wiring config setters, and
+      updating documentation. Use when adding or converting command-line flags
+      or Remotion options.
+  - id: add-effect
+    kind: skill
+    path: .agents/skills/add-effect
+    description: Add a new effect to @remotion/effects, including implementation,
+      package exports, docs, demos, preview images, Remotion skill updates,
+      tests, formatting, and builds.
+  - id: docs-demo
+    kind: skill
+    path: .agents/skills/docs-demo
+    description: Add an interactive demo to the Remotion documentation. Use when
+      creating a new <Demo> component for docs pages.
+  - id: writing-docs
+    kind: skill
+    path: .agents/skills/writing-docs
+    description: Guides for writing and editing Remotion documentation. Use when
+      adding docs pages, editing MDX files in packages/docs, or writing
+      documentation content.
+  - id: remotion-documentation-own
+    kind: mcp
+    path: .cursor/mcp.json
+  - id: add-expert
+    kind: skill
+    path: .agents/skills/add-expert
+    description: Add a new expert to the Remotion experts page
+  - id: add-new-package
+    kind: skill
+    path: .agents/skills/add-new-package
+    description: Add a new package to the Remotion monorepo, including package
+      scaffolding, monorepo registration, documentation, build scripts, tests,
+      and release checklist updates. Use when creating a new @remotion package.
+  - id: add-sfx
+    kind: skill
+    path: .agents/skills/add-sfx
+    description: Add a new sound effect to @remotion/sfx
+  - id: add-webcodecs-bug
+    kind: skill
+    path: .agents/skills/add-webcodecs-bug
+    description: Add a browser WebCodecs bug to the Remotion Mediabunny WebCodecs
+      bugs docs page. Use when given a Chromium, WebKit, or Firefox issue URL
+      that should be tracked in
+      packages/docs/docs/mediabunny/webcodecs-bugs.mdx, especially when needing
+      to look up the issue title, filing date, reporter, and resolution state
+      before editing the MDX table.
+  - id: fix-dependabot
+    kind: skill
+    path: .agents/skills/fix-dependabot
+    description: Fix a Dependabot PR by updating all monorepo instances of the
+      dependency, running bun install, and pushing
+  - id: flake
+    kind: skill
+    path: .agents/skills/flake
+    description: Track Remotion CI flakes in issue
+  - id: issue-management
+    kind: skill
+    path: .agents/skills/issue-management
+    description: "Manage GitHub Issues 2.0 relationships with gh CLI: parent issues,
+      sub-issues, blocked-by, and blocking links."
+  - id: issue
+    kind: skill
+    path: .agents/skills/issue
+    description: Create or update GitHub issues with correct Remotion naming and
+      safe multiline Markdown handling
+  - id: merge
+    kind: skill
+    path: .agents/skills/merge
+    description: Wait for a Remotion pull request to become mergeable, handle merge
+      conflicts, distinguish genuine CI failures from flakes, rerun flaky checks
+      through the flake skill, and merge the PR. Use when asked to run /merge,
+      merge a current PR after checks pass, or shepherd a Remotion PR through CI
+      to merge.
+  - id: nullable-new-params
+    kind: skill
+    path: .agents/skills/nullable-new-params
+    description: "Fix newly added optional parameters, optional React props, and
+      optional type/interface members in Remotion monorepo diffs by converting
+      internal APIs to required nullable values and updating call sites. Use
+      when a PR, review, or user asks to forbid new `foo?: T` / `param?: T`
+      additions except for exported or documented public APIs where requiring
+      the value would be breaking."
+  - id: pr-name
+    kind: skill
+    path: .agents/skills/pr-name
+    description: Correct naming for a PR
+  - id: pr-ready
+    kind: skill
+    path: .agents/skills/pr-ready
+    description: Resolve CI failures, merge conflicts, or local branch changes to
+      get a PR ready
+  - id: pr
+    kind: skill
+    path: .agents/skills/pr
+    description: Open a pull request for the current feature
+  - id: release
+    kind: skill
+    path: .agents/skills/release
+    description: Release a new Remotion version
+  - id: update-version
+    kind: skill
+    path: .agents/skills/update-version
+    description: Update `AvailableFrom` in a PR to the next Remotion patch version
+      (`main` + `0.0.1`).
+  - id: version
+    kind: skill
+    path: .agents/skills/version
+    description: The version of Remotion we are working on.
+  - id: video-report
+    kind: skill
+    path: .agents/skills/video-report
+    description: Generate a report about a video
+  - id: visual-mode
+    kind: skill
+    path: .agents/skills/visual-mode
+    description: Guidance for working on Remotion Studio Visual Mode, sequence
+      identity, node paths, symbolicated stacks, override IDs, and hot reload
+      behavior. Use when implementing or debugging visual editing of Sequences.
+  - id: web-renderer-test
+    kind: skill
+    path: .agents/skills/web-renderer-test
+    description: Add a test case to the web renderer
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,26 @@
+schemaVersion: 1
+id: vercel/examples
+name: Vercel Examples
+description: Next.js/Vercel example set; app dir, CDN, Build Output API, AI app.
+source:
+  type: git
+  url: https://github.com/vercel/examples
+  revision: 8b692fd44b2d09e13acf9dda5d108c9311409404
+capabilities:
+  - id: web-design-guidelines
+    kind: skill
+    path: .agents/skills/web-design-guidelines
+    description: Review UI code for Web Interface Guidelines compliance. Use when
+      asked to "review my UI", "check accessibility", "audit design", "review
+      UX", or "check my site against best practices".
+requirements:
+  env:
+    - CONTENTFUL_SPACE_ID
+    - CONTENTFUL_ACCESS_TOKEN
+    - VERCEL_TEAM_ID
+    - VERCEL_PROJECT_ID
+    - VERCEL_BEARER_TOKEN
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

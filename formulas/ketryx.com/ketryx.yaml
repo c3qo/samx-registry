@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: ketryx.com/ketryx
+name: Ketryx
+description: Ketryx remote MCP server at https://app.ketryx.com/api/mcp. Search
+  and explore regulated software lifecycle data. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/ketryx
+capabilities:
+  - id: ketryx
+    kind: mcp
+    spec:
+      serverName: ketryx
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://app.ketryx.com/api/mcp

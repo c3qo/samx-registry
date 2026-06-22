@@ -1,0 +1,29 @@
+schemaVersion: 1
+id: temporalio/cursor-temporal-plugin
+name: Temporal Plugin for Cursor
+description: Cursor plugin for Temporal dev, CLI, server, Cloud.
+source:
+  type: git
+  url: https://github.com/temporalio/cursor-temporal-plugin
+  revision: ffb3c0e96febe35fafb6dc7d6206a524edda418b
+capabilities:
+  - id: temporal-developer
+    kind: skill
+    path: skills/temporal-developer
+    description: Develop, debug, and manage Temporal applications across Python,
+      TypeScript, Go, Java, .NET and Ruby. Use when the user is building
+      workflows, activities, or workers with a Temporal SDK, debugging issues
+      like non-determinism errors, stuck workflows, or activity retries, using
+      Temporal CLI, Temporal Server, or Temporal Cloud, or working with durable
+      execution concepts like signals, queries, heartbeats, versioning,
+      continue-as-new, child workflows, or saga patterns. Also use when the user
+      mentions "run a Temporal workflow from the CLI", "start a dev server",
+      "run temporal server start-dev", "temporal workflow start", "temporal
+      workflow execute", "temporal workflow signal", "temporal workflow query",
+      "temporal workflow update".
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

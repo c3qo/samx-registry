@@ -1,0 +1,71 @@
+schemaVersion: 1
+id: deepgram/deepgram-go-sdk
+name: Deepgram Go SDK
+description: Go SDK for Deepgram STT/TTS/Read/Voice/Manage.
+source:
+  type: git
+  url: https://github.com/deepgram/deepgram-go-sdk
+  revision: 25a0ac327b7f075db1a0cab277d8940cb35160d9
+capabilities:
+  - id: deepgram-go-audio-intelligence
+    kind: skill
+    path: .agents/skills/deepgram-go-audio-intelligence
+    description: Use when writing or reviewing Go code in this repo that applies
+      summaries, topics, intents, sentiment, language detection, diarization,
+      redaction, or entity extraction to audio inputs through Listen v1 REST.
+      Route plain transcription to deepgram-go-speech-to-text and plain-text
+      Read requests to deepgram-go-text-intelligence.
+  - id: deepgram-go-conversational-stt
+    kind: skill
+    path: .agents/skills/deepgram-go-conversational-stt
+    description: Use when planning or reviewing Go SDK work for Deepgram
+      conversational STT / Flux v2. This repo does not currently ship a
+      first-class v2 listen client, so route supported v1 transcription to
+      deepgram-go-speech-to-text and document raw WebSocket fallback honestly
+      when v2 is requested.
+  - id: deepgram-go-management-api
+    kind: skill
+    path: .agents/skills/deepgram-go-management-api
+    description: Use when writing or reviewing Go code in this repo that works with
+      Deepgram management endpoints for projects, keys, members, scopes,
+      invitations, usage, balances, or models. Route live voice runtime to
+      deepgram-go-voice-agent and repo workflow questions to
+      deepgram-go-maintaining-sdk.
+  - id: deepgram-go-speech-to-text
+    kind: skill
+    path: .agents/skills/deepgram-go-speech-to-text
+    description: Use when writing or reviewing Go code in this repo that transcribes
+      prerecorded audio with Listen v1 REST or streams live audio with Listen v1
+      WebSockets. Route text generation to deepgram-go-text-to-speech, text
+      analysis to deepgram-go-text-intelligence, audio analytics overlays to
+      deepgram-go-audio-intelligence, and Flux or other v2 conversational work
+      to deepgram-go-conversational-stt.
+  - id: deepgram-go-text-intelligence
+    kind: skill
+    path: .agents/skills/deepgram-go-text-intelligence
+    description: Use when writing or reviewing Go code in this repo that sends text
+      to Deepgram Read via the analyze client. Route speech/audio inputs to
+      deepgram-go-speech-to-text or deepgram-go-audio-intelligence, and
+      management/admin work to deepgram-go-management-api.
+  - id: deepgram-go-text-to-speech
+    kind: skill
+    path: .agents/skills/deepgram-go-text-to-speech
+    description: Use when writing or reviewing Go code in this repo that synthesizes
+      audio with Speak v1 REST or Speak WebSockets. Route transcription work to
+      deepgram-go-speech-to-text, voice conversation runtime work to
+      deepgram-go-voice-agent, and repository maintenance work to
+      deepgram-go-maintaining-sdk.
+  - id: deepgram-go-voice-agent
+    kind: skill
+    path: .agents/skills/deepgram-go-voice-agent
+    description: Use when writing or reviewing Go code in this repo that runs a
+      Deepgram Voice Agent session over WebSockets, including runtime settings,
+      prompt updates, speak updates, injected messages, and event handling.
+      Route standalone STT/TTS work to deepgram-go-speech-to-text or
+      deepgram-go-text-to-speech.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

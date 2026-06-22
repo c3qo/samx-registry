@@ -1,0 +1,64 @@
+schemaVersion: 1
+id: neondatabase/ai-rules
+name: Neon AI Development Toolkit
+description: Claude Code plugin + Neon AI rules/skills + MCP.
+source:
+  type: git
+  url: https://github.com/neondatabase/ai-rules
+  revision: 1ceaf89a4e0acfbaf152ac2e85d45afd55f49c0f
+capabilities:
+  - id: neon
+    kind: mcp
+    path: neon-plugin/.mcp.json
+  - id: add-neon-docs
+    kind: skill
+    path: neon-plugin/skills/add-neon-docs
+    description: Use this skill when the user asks to add documentation, add docs,
+      add references, or install documentation about Neon. Adds Neon best
+      practices reference links to project AI documentation (CLAUDE.md,
+      AGENTS.md, or Cursor rules). Does not install packages or modify code.
+  - id: neon-auth
+    kind: skill
+    path: neon-plugin/skills/neon-auth
+    description: Sets up Neon Auth for your application. Configures authentication,
+      creates auth routes, and generates UI components. Use when adding
+      authentication to Next.js, React SPA, or Node.js projects.
+  - id: neon-drizzle
+    kind: skill
+    path: neon-plugin/skills/neon-drizzle
+    description: Creates a fully functional Drizzle ORM setup with a provisioned
+      Neon database. Installs dependencies, provisions database credentials,
+      configures connections, generates schemas, and runs migrations. Results in
+      working code that can immediately connect to and query the database. Use
+      when creating new projects with Drizzle, adding ORM to existing
+      applications, or modifying database schemas.
+  - id: neon-js
+    kind: skill
+    path: neon-plugin/skills/neon-js
+    description: Sets up the full Neon JS SDK with unified auth and PostgREST-style
+      database queries. Configures auth client, data client, and type
+      generation. Use when building apps that need both authentication and
+      database access in one SDK.
+  - id: neon-serverless
+    kind: skill
+    path: neon-plugin/skills/neon-serverless
+    description: Configures Neon Serverless Driver for Next.js, Vercel Edge
+      Functions, AWS Lambda, and other serverless environments. Installs
+      @neondatabase/serverless, sets up environment variables, and creates
+      working API route examples with TypeScript types. Use when users need to
+      connect their application to Neon, fetch or query data from a Neon
+      database, integrate Neon with Next.js or serverless frameworks, or set up
+      database access in edge/serverless environments where traditional
+      PostgreSQL clients don't work.
+  - id: neon-toolkit
+    kind: skill
+    path: neon-plugin/skills/neon-toolkit
+    description: Creates and manages ephemeral Neon databases for testing, CI/CD
+      pipelines, and isolated development environments. Use when building
+      temporary databases for automated tests or rapid prototyping.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

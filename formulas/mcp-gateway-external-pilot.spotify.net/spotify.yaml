@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: mcp-gateway-external-pilot.spotify.net/spotify
+name: Spotify
+description: Spotify remote MCP server at
+  https://mcp-gateway-external-pilot.spotify.net/mcp. Music and podcast
+  recommendations, just for you.. Setup guides for Claude Code, Codex, Cursor,
+  and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/spotify
+capabilities:
+  - id: spotify
+    kind: mcp
+    spec:
+      serverName: spotify
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp-gateway-external-pilot.spotify.net/mcp

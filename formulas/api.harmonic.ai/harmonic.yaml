@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: api.harmonic.ai/harmonic
+name: Harmonic
+description: Harmonic remote MCP server at https://mcp.api.harmonic.ai.
+  Discover, research, and enrich companies and people. Setup guides for Claude
+  Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/harmonic
+capabilities:
+  - id: harmonic
+    kind: mcp
+    spec:
+      serverName: harmonic
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.api.harmonic.ai

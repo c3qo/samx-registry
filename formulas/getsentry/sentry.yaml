@@ -1,0 +1,189 @@
+schemaVersion: 1
+id: getsentry/sentry
+name: Sentry
+description: Sentry monorepo; app/backend/frontend w/ hybrid-cloud, forms,
+  analytics, notifications.
+source:
+  type: git
+  url: https://github.com/getsentry/sentry
+  revision: 7c8f4604739ab911cb2407a2a3fe6c23ed6b9226
+capabilities:
+  - id: analytics
+    kind: skill
+    path: .agents/skills/analytics
+    description: Instrument and discover analytics events in Sentry's frontend UI.
+      Use when adding tracking to buttons, pages, modals, or custom
+      interactions, when defining new analytics events, when searching for
+      existing events, when auditing analytics coverage for a feature, or when
+      answering questions about how users interact with a feature. Trigger on
+      "add analytics", "track event", "instrument analytics", "analytics event",
+      "track click", "track page view", "add tracking", "what events exist for",
+      "audit analytics", "how many people", "how many users", "are people
+      using", "is anyone clicking", "usage of", "who is using".
+  - id: cell-architecture
+    kind: skill
+    path: .agents/skills/cell-architecture
+    description: "Reference and active migration guide for Sentry's cell
+      architecture. Explains what cells and localities are and why they're
+      different, how requests reach cells via Synapse API routing, ingestion
+      routing, and the control silo gateway, and how to safely query cross-cell
+      data without silently missing results. The migration section covers how to
+      do migration work: draining the URL_NAME_TO_ACTION registry in
+      test_urls.py to zero (with a recipe for each action type), rolling deploy
+      safety and the two-phase pattern required by independent sentry/getsentry
+      deploys, and the region -> cell rename including what not to rename (DB
+      columns, AWS refs, uptime regions, billing address). Also documents known
+      issues with proposed fixes: integration TeamLinkageView routing, Jira
+      cross-cell fan-out, and relocation endpoint routing."
+  - id: django-models
+    kind: skill
+    path: .agents/skills/django-models
+    description: Design Django ORM models for Sentry following architectural
+      conventions for silos, replication, relocation, and foreign keys. Use when
+      adding a new Django model, designing a model for a feature, deciding where
+      data should live, picking a foreign key type, or refactoring an existing
+      model's silo placement. Trigger on "add a Django model", "create a model",
+      "design a model for X", "new database table", "store this data in the DB",
+      "I need to track Y", "model for [feature]". Not for Pydantic models,
+      dataclasses, ML models, or Protobuf — this is specifically for Django ORM
+      models in the Sentry codebase.
+  - id: generate-frontend-forms
+    kind: skill
+    path: .agents/skills/generate-frontend-forms
+    description: Guide for creating forms using Sentry's new form system. Use when
+      implementing forms, form fields, validation, or auto-save functionality.
+  - id: hybrid-cloud-rpc
+    kind: skill
+    path: .agents/skills/hybrid-cloud-rpc
+    description: Guide for creating, updating, and deprecating hybrid cloud RPC
+      services in Sentry. Use when asked to "add RPC method", "create RPC
+      service", "hybrid cloud service", "new RPC model", "deprecate RPC method",
+      "remove RPC endpoint", "cross-silo service", "cell RPC", or "control silo
+      service". Covers service scaffolding, method signatures, RPC models, cell
+      resolvers, testing, and safe deprecation workflows.
+  - id: notification-platform
+    kind: skill
+    path: .agents/skills/notification-platform
+    description: Guide for adding notifications, custom renderers, or new providers
+      to Sentry's NotificationPlatform. Use when asked to "add notification",
+      "new notification", "notification platform", "send notification",
+      "notification template", "notification renderer", "notification provider",
+      "NotificationPlatform", "notify user", "send email notification", "send
+      slack notification".
+  - id: cmdk-actions
+    kind: skill
+    path: .agents/skills/cmdk-actions
+    description: Guide for adding new actions to Sentry's Command+K palette. Use
+      when implementing new cmdk actions, registering page-level or global
+      actions, building async resource pickers, or adding contextual actions to
+      a view.
+  - id: design-system
+    kind: skill
+    path: .agents/skills/design-system
+    description: Guide for using Sentry's layout and text primitives. Use when
+      implementing UI components, layouts, or typography. Enforces use of core
+      components over styled components.
+  - id: generate-migration
+    kind: skill
+    path: .agents/skills/generate-migration
+    description: Generate Django database migrations for Sentry. Use when creating
+      migrations, adding/removing columns or tables, adding indexes, or
+      resolving migration conflicts.
+  - id: generate-snapshot-tests
+    kind: skill
+    path: .agents/skills/generate-snapshot-tests
+    description: Generate snapshot test files for Sentry frontend React components.
+      Use when asked to "generate snapshot tests", "add snapshot tests", "create
+      visual snapshots", "write snapshot tests", "add visual regression tests",
+      or "snapshot this component". Accepts an optional component path or name
+      via $ARGUMENTS.
+  - id: hybrid-cloud-outboxes
+    kind: skill
+    path: .agents/skills/hybrid-cloud-outboxes
+    description: Guide for creating and maintaining outbox-based eventually
+      consistent operations in Sentry. Most commonly used for cross-silo data
+      replication, but applicable anywhere eventual consistency is needed —
+      including single-silo deferred side effects, audit logging, and event
+      fanout. Use when asked to "add outbox", "add outbox replication",
+      "replicate model to control silo", "replicate model to cell", "add outbox
+      category", "write outbox signal receiver", "debug stuck outboxes", "outbox
+      not processing", "data not replicating", "test outbox", "migrate model to
+      use outboxes", "backfill outbox data", "outbox coalescing",
+      "ReplicatedCellModel", "ReplicatedControlModel", "OutboxCategory",
+      "OutboxScope", or "outbox_runner". Covers model mixins, category
+      registration, signal receivers, testing, backfill, and debugging
+      workflows.
+  - id: hybrid-cloud-test-gen
+    kind: skill
+    path: .agents/skills/hybrid-cloud-test-gen
+    description: Generate hybrid cloud tests for the Sentry codebase. Use when asked
+      to "generate HC test", "create hybrid cloud test", "write HC test", "add
+      HC test", "write RPC test", "test RPC service", "silo test", "cross-silo
+      test", "outbox test", "API gateway test", or "endpoint silo test". Covers
+      RPC service tests, API gateway tests, outbox pattern tests, and API
+      endpoint tests with silo decorators.
+  - id: lint-fix
+    kind: skill
+    path: .agents/skills/lint-fix
+    description: Fix violations of an eslintPluginScraps rule across the codebase.
+      Use when asked to "fix lint violations", "apply a lint rule", "fix scraps
+      rule errors", "roll out a lint rule", "enforce a rule codebase-wide", or
+      "fix design system lint". Covers manual fixes, autofix, batching, and
+      codemod strategies for large-scale rollouts.
+  - id: lint-new
+    kind: skill
+    path: .agents/skills/lint-new
+    description: Create a new ESLint rule with tests for eslintPluginScraps. Use
+      when asked to "create a lint rule", "add an eslint rule", "scaffold a
+      rule", "write a new scraps rule", or "new design system lint rule". Covers
+      rule creation, test authoring, registration, and autofix implementation.
+  - id: migrate-frontend-forms
+    kind: skill
+    path: .agents/skills/migrate-frontend-forms
+    description: Guide for migrating forms from the legacy JsonForm/FormModel system
+      to the new TanStack-based form system.
+  - id: react-component-documentation
+    kind: skill
+    path: .agents/skills/react-component-documentation
+    description: Create or update component documentation in Sentry's MDX stories
+      format. Use when asked to "document a component", "add stories", "write
+      component docs", "create an mdx file", "add a stories.mdx", or document a
+      design system component. Generates structured MDX with live demos,
+      accessibility guidance, and auto-generated API docs from TypeScript types.
+  - id: sentry-backend-bugs
+    kind: skill
+    path: .agents/skills/sentry-backend-bugs
+    description: Review Sentry Python and Django changes for bug patterns drawn from
+      real production issues. Use when reviewing a backend diff or PR, checking
+      Warden findings, auditing the current branch, reviewing production-error
+      patterns, or looking for common regressions in `src/` and `tests/`.
+  - id: sentry-javascript-bugs
+    kind: skill
+    path: .agents/skills/sentry-javascript-bugs
+    description: Review Sentry React and TypeScript changes for bug patterns drawn
+      from real production issues. Use when reviewing a frontend diff or PR,
+      checking Warden findings, auditing the current branch, reviewing
+      production-error patterns, or looking for common regressions in `static/`.
+  - id: sentry-security
+    kind: skill
+    path: .agents/skills/sentry-security
+    description: 'Sentry-specific security review based on real vulnerability
+      history. Use when reviewing Sentry endpoints, serializers, or views for
+      security issues. Trigger keywords: "sentry security review", "check for
+      IDOR", "access control review", "org scoping", "cross-org", "security
+      audit endpoint".'
+  - id: setup-dev
+    kind: skill
+    path: .agents/skills/setup-dev
+    description: Set up and manage the Sentry development environment using devenv.
+      Handles fresh setup, updating existing environments, starting dev
+      services, and troubleshooting. Use when asked to "set up sentry", "setup
+      dev environment", "get sentry running", "start dev server", "devenv
+      setup", "devservices not working", "sentry won't start", or any
+      development environment issue.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

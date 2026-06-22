@@ -1,0 +1,310 @@
+schemaVersion: 1
+id: contentstack/contentstack-agent-skills
+name: Contentstack Skills
+description: Bundle of Contentstack agent skills for CMS, Brand Kit, DX,
+  Developer Hub, Launch, migration.
+source:
+  type: git
+  url: https://github.com/contentstack/contentstack-agent-skills
+  revision: 0a146237ac739bd9df65e6a2d7f0d97312d25049
+capabilities:
+  - id: brand-kit-assistant
+    kind: skill
+    path: codex/brand-kit-assistant
+    description: Advise users on Contentstack Brand Kit concepts, setup, governance,
+      and on-brand AI generation. Route API-specific tasks to the right Brand
+      Kit capability or reference skill, and enforce brand and safety rules
+      before presenting anything as ready.
+  - id: cms-assets
+    kind: skill
+    path: codex/cms-assets
+    description: Advise developers on organizing, delivering, and transforming
+      assets in Contentstack. Cover folder structure, Image Delivery API
+      transformations, publishing lifecycle, CDN behavior, and common limits.
+  - id: dx-delivery-sdk
+    kind: skill
+    path: codex/dx-delivery-sdk
+    description: Help agents write correct, production-ready TypeScript using
+      `@contentstack/delivery-sdk` for Contentstack entries, assets, references,
+      filtering, sorting, pagination, locale, Live Preview, and Visual Builder
+      support. Verify SDK behavior against the Delivery SDK Spec when method
+      names, options, or chain order matter.
+  - id: launch-trigger-and-monitor-launch-deployments
+    kind: skill
+    path: codex/launch-trigger-and-monitor-launch-deployments
+    description: Trigger a Launch deployment for a specific environment, then poll
+      its status until completion. If the deployment fails or is cancelled,
+      fetch the deployment log and diagnose likely causes with next-step
+      recommendations.
+  - id: cms-branches-aliases
+    kind: skill
+    path: codex/cms-branches-aliases
+    description: Advise developers on using Contentstack branches for isolated
+      content development and aliases for zero-downtime content deployments.
+      Cover branch strategy, branch-specific vs global modules, CI/CD
+      integration, merge behavior, and rollback patterns.
+  - id: cms-data-modeling-best-practices
+    kind: skill
+    path: codex/cms-data-modeling-best-practices
+    description: Guide developers to model content in Contentstack using the
+      simplest reusable structure. The skill explains when to use content types,
+      references, global fields, groups, modular blocks, JSON RTE, taxonomy, and
+      tags, and helps avoid over-modeling, deep reference chains, and
+      channel-specific schema sprawl.
+  - id: cms-entries
+    kind: skill
+    path: codex/cms-entries
+    description: Advise developers on querying, localizing, versioning, publishing,
+      and structuring Contentstack entries for efficient delivery. Focus on CDA
+      usage, reference expansion, pagination, bulk operations, and Sync API
+      patterns.
+  - id: cms-environments-publishing
+    kind: skill
+    path: codex/cms-environments-publishing
+    description: Advise developers on configuring environments, publishing content,
+      using delivery and preview tokens, leveraging the Sync API, and
+      understanding CDN and publish queue behavior in Contentstack.
+  - id: cms-live-preview-visual-builder-support-assistant
+    kind: skill
+    path: codex/cms-live-preview-visual-builder-support-assistant
+    description: Diagnose and guide Contentstack Live Preview and Visual Builder
+      implementations. Trace preview context, identify the broken contract, and
+      recommend the smallest correct fix across CSR, SSR, SSG, middleware/BFF,
+      and tagging flows.
+  - id: cms-localization
+    kind: skill
+    path: codex/cms-localization
+    description: "Advise developers on Contentstack localization: language setup,
+      fallback chains, localized vs unlocalized entries, non-localizable fields,
+      and multi-locale publishing."
+  - id: cms-releases
+    kind: skill
+    path: codex/cms-releases
+    description: Advise developers on using Contentstack Releases for coordinated,
+      atomic content deployment. Cover release creation, item management, staged
+      deployment, webhook storm prevention, and CI/CD integration.
+  - id: cms-roles-permissions
+    kind: skill
+    path: codex/cms-roles-permissions
+    description: Advise developers on designing roles, permissions, teams, and token
+      access in Contentstack. Explain built-in roles, custom roles, permission
+      merging, team-based access, and token capabilities with least-privilege
+      guidance.
+  - id: cms-taxonomy
+    kind: skill
+    path: codex/cms-taxonomy
+    description: Advise developers on using Contentstack Taxonomy for structured,
+      hierarchical content classification and delivery-side filtering. Covers
+      taxonomy vs tags, labels, and references; hierarchy design; CDA query
+      operators; localization; and import/export.
+  - id: cms-tokens-authentication
+    kind: skill
+    path: codex/cms-tokens-authentication
+    description: Advise developers on choosing the right Contentstack authentication
+      method and token type for frontend, backend, automation, and third-party
+      app use cases. Include security guidance, rate-limit awareness, and SSO
+      considerations.
+  - id: cms-variants-personalization
+    kind: skill
+    path: codex/cms-variants-personalization
+    description: Advise developers on using Contentstack Variants and Personalize
+      for audience-targeted content. Explain when to use variants versus
+      separate entries, how variant groups work, and how to integrate
+      Personalize with the CMS.
+  - id: cms-webhooks
+    kind: skill
+    path: codex/cms-webhooks
+    description: Advise developers on configuring and consuming Contentstack
+      webhooks for real-time event notifications. Cover event channels, payload
+      structure, signature verification, retry behavior, release-triggered
+      webhook storms, and reliable receiver design.
+  - id: cms-workflows
+    kind: skill
+    path: codex/cms-workflows
+    description: Advise developers on designing and configuring Contentstack
+      workflows and publish rules for content governance. Cover stage design,
+      transition restrictions, approval flows, publish governance, automation
+      hooks, and common pitfalls.
+  - id: developer-hub-app-architect
+    kind: skill
+    path: codex/developer-hub-app-architect
+    description: Turn Contentstack Developer Hub and Marketplace app ideas into
+      concrete implementations. Choose the right UI location, map the
+      architecture, generate boilerplate-aligned React/TypeScript code, and
+      troubleshoot setup, SDK, manifest, proxy, and publishing issues.
+  - id: dx-migrate-js-to-ts-sdk
+    kind: skill
+    path: codex/dx-migrate-js-to-ts-sdk
+    description: Migrate Contentstack Delivery SDK code from JavaScript to
+      TypeScript. Rewrite setup, initialization, Stack, Entries, Assets, Query,
+      pagination, cache, utils, taxonomy, and image transform usage while
+      preserving behavior and calling out TypeScript-specific differences.
+  - id: launch-sync-environment-variables-from-env-example
+    kind: skill
+    path: codex/launch-sync-environment-variables-from-env-example
+    description: Fetch environment variables from a Contentstack Launch project,
+      compare them with a local `.env.example` file, and patch the target
+      environment to add any missing keys.
+  - id: migration-companion
+    kind: skill
+    path: codex/migration-companion
+    description: Guide a user through migrating a project from **Contentful** to
+      **Contentstack** —
+  - id: brand-kit-assistant-2
+    kind: skill
+    path: skills/brand-kit-assistant
+    description: Advise users on Contentstack Brand Kit concepts, setup, governance,
+      and on-brand AI generation. Route API-specific tasks to the right Brand
+      Kit capability or reference skill, and enforce brand and safety rules
+      before presenting anything as ready.
+  - id: cms-assets-2
+    kind: skill
+    path: skills/cms-assets
+    description: Advise developers on organizing, delivering, and transforming
+      assets in Contentstack. Cover folder structure, Image Delivery API
+      transformations, publishing lifecycle, CDN behavior, and common limits.
+  - id: cms-branches-aliases-2
+    kind: skill
+    path: skills/cms-branches-aliases
+    description: Advise developers on using Contentstack branches for isolated
+      content development and aliases for zero-downtime content deployments.
+      Cover branch strategy, branch-specific vs global modules, CI/CD
+      integration, merge behavior, and rollback patterns.
+  - id: cms-data-modeling-best-practices-2
+    kind: skill
+    path: skills/cms-data-modeling-best-practices
+    description: Guide developers to model content in Contentstack using the
+      simplest reusable structure. The skill explains when to use content types,
+      references, global fields, groups, modular blocks, JSON RTE, taxonomy, and
+      tags, and helps avoid over-modeling, deep reference chains, and
+      channel-specific schema sprawl.
+  - id: cms-entries-2
+    kind: skill
+    path: skills/cms-entries
+    description: Advise developers on querying, localizing, versioning, publishing,
+      and structuring Contentstack entries for efficient delivery. Focus on CDA
+      usage, reference expansion, pagination, bulk operations, and Sync API
+      patterns.
+  - id: cms-environments-publishing-2
+    kind: skill
+    path: skills/cms-environments-publishing
+    description: Advise developers on configuring environments, publishing content,
+      using delivery and preview tokens, leveraging the Sync API, and
+      understanding CDN and publish queue behavior in Contentstack.
+  - id: cms-live-preview-visual-builder-support-assistant-2
+    kind: skill
+    path: skills/cms-live-preview-visual-builder-support-assistant
+    description: Diagnose and guide Contentstack Live Preview and Visual Builder
+      implementations. Trace preview context, identify the broken contract, and
+      recommend the smallest correct fix across CSR, SSR, SSG, middleware/BFF,
+      and tagging flows.
+  - id: cms-localization-2
+    kind: skill
+    path: skills/cms-localization
+    description: "Advise developers on Contentstack localization: language setup,
+      fallback chains, localized vs unlocalized entries, non-localizable fields,
+      and multi-locale publishing."
+  - id: cms-releases-2
+    kind: skill
+    path: skills/cms-releases
+    description: Advise developers on using Contentstack Releases for coordinated,
+      atomic content deployment. Cover release creation, item management, staged
+      deployment, webhook storm prevention, and CI/CD integration.
+  - id: cms-roles-permissions-2
+    kind: skill
+    path: skills/cms-roles-permissions
+    description: Advise developers on designing roles, permissions, teams, and token
+      access in Contentstack. Explain built-in roles, custom roles, permission
+      merging, team-based access, and token capabilities with least-privilege
+      guidance.
+  - id: cms-taxonomy-2
+    kind: skill
+    path: skills/cms-taxonomy
+    description: Advise developers on using Contentstack Taxonomy for structured,
+      hierarchical content classification and delivery-side filtering. Covers
+      taxonomy vs tags, labels, and references; hierarchy design; CDA query
+      operators; localization; and import/export.
+  - id: cms-tokens-authentication-2
+    kind: skill
+    path: skills/cms-tokens-authentication
+    description: Advise developers on choosing the right Contentstack authentication
+      method and token type for frontend, backend, automation, and third-party
+      app use cases. Include security guidance, rate-limit awareness, and SSO
+      considerations.
+  - id: cms-variants-personalization-2
+    kind: skill
+    path: skills/cms-variants-personalization
+    description: Advise developers on using Contentstack Variants and Personalize
+      for audience-targeted content. Explain when to use variants versus
+      separate entries, how variant groups work, and how to integrate
+      Personalize with the CMS.
+  - id: cms-webhooks-2
+    kind: skill
+    path: skills/cms-webhooks
+    description: Advise developers on configuring and consuming Contentstack
+      webhooks for real-time event notifications. Cover event channels, payload
+      structure, signature verification, retry behavior, release-triggered
+      webhook storms, and reliable receiver design.
+  - id: cms-workflows-2
+    kind: skill
+    path: skills/cms-workflows
+    description: Advise developers on designing and configuring Contentstack
+      workflows and publish rules for content governance. Cover stage design,
+      transition restrictions, approval flows, publish governance, automation
+      hooks, and common pitfalls.
+  - id: developer-hub-app-architect-2
+    kind: skill
+    path: skills/developer-hub-app-architect
+    description: Turn Contentstack Developer Hub and Marketplace app ideas into
+      concrete implementations. Choose the right UI location, map the
+      architecture, generate boilerplate-aligned React/TypeScript code, and
+      troubleshoot setup, SDK, manifest, proxy, and publishing issues.
+  - id: dx-delivery-sdk-2
+    kind: skill
+    path: skills/dx-delivery-sdk
+    description: Help agents write correct, production-ready TypeScript using
+      `@contentstack/delivery-sdk` for Contentstack entries, assets, references,
+      filtering, sorting, pagination, locale, Live Preview, and Visual Builder
+      support. Verify SDK behavior against the Delivery SDK Spec when method
+      names, options, or chain order matter.
+  - id: dx-migrate-js-to-ts-sdk-2
+    kind: skill
+    path: skills/dx-migrate-js-to-ts-sdk
+    description: Migrate Contentstack Delivery SDK code from JavaScript to
+      TypeScript. Rewrite setup, initialization, Stack, Entries, Assets, Query,
+      pagination, cache, utils, taxonomy, and image transform usage while
+      preserving behavior and calling out TypeScript-specific differences.
+  - id: launch-sync-environment-variables-from-env-example-2
+    kind: skill
+    path: skills/launch-sync-environment-variables-from-env-example
+    description: Fetch environment variables from a Contentstack Launch project,
+      compare them with a local `.env.example` file, and patch the target
+      environment to add any missing keys.
+  - id: launch-trigger-and-monitor-launch-deployments-2
+    kind: skill
+    path: skills/launch-trigger-and-monitor-launch-deployments
+    description: Trigger a Launch deployment for a specific environment, then poll
+      its status until completion. If the deployment fails or is cancelled,
+      fetch the deployment log and diagnose likely causes with next-step
+      recommendations.
+  - id: migration-companion-2
+    kind: skill
+    path: skills/migration-companion
+    description: Migration companion for moving to Contentstack from another CMS.
+      Guides content and application migration through a structured,
+      step-by-step workflow. Currently supports migrations from Contentful, with
+      additional source platforms planned. Use when users want to migrate, move,
+      switch, port, or re-platform to Contentstack, including content models,
+      content, assets, locales, application integrations, or website code.
+      Trigger on requests such as "migrate to Contentstack", "move to
+      Contentstack", "switch to Contentstack", "migrate from Contentful", "move
+      my Contentful space", "port my CMS", or similar migration-related
+      requests. The skill validates prerequisites, guides the migration process,
+      provides progress checkpoints, and delivers a completion summary. Prefer
+      this skill whenever a Contentstack migration is requested.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

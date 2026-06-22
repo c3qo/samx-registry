@@ -1,0 +1,50 @@
+schemaVersion: 1
+id: semgrep/skills
+name: Semgrep Skills
+description: "Agent skills pack: code sec, LLM sec, Semgrep scanning."
+source:
+  type: git
+  url: https://github.com/semgrep/skills
+  revision: 90cc990a535098a84950b18d8cf770e097da1c77
+capabilities:
+  - id: code-security
+    kind: skill
+    path: skills/code-security
+    description: "Security guidelines for writing secure code. Use when writing
+      code, reviewing code for vulnerabilities, or asking about secure coding
+      practices like 'check for SQL injection' or 'review security'. IMPORTANT:
+      Always consult this skill when writing or reviewing any code that handles
+      user input, authentication, file operations, database queries, network
+      requests, cryptography, or infrastructure configuration (Terraform,
+      Kubernetes, Docker, GitHub Actions) — even if the user doesn't explicitly
+      mention security. Also use when users ask to 'review my code', 'check this
+      for bugs', or 'is this safe'."
+  - id: llm-security
+    kind: skill
+    path: skills/llm-security
+    description: "Security guidelines for LLM applications based on OWASP Top 10 for
+      LLM 2025. Use when building LLM apps, reviewing AI security, implementing
+      RAG systems, or asking about LLM vulnerabilities like 'prompt injection'
+      or 'check LLM security'. IMPORTANT: Always consult this skill when
+      building chatbots, AI agents, RAG pipelines, tool-using LLMs, agentic
+      systems, or any application that calls an LLM API (OpenAI, Anthropic,
+      Gemini, etc.) — even if the user doesn't explicitly mention security. Also
+      use when users import 'openai', 'anthropic', 'langchain', 'llamaindex', or
+      similar LLM libraries."
+  - id: semgrep
+    kind: skill
+    path: skills/semgrep
+    description: "Run Semgrep static analysis scans and create custom detection
+      rules. Use when asked to scan code with Semgrep, find security
+      vulnerabilities, write custom YAML rules, or detect specific bug patterns.
+      IMPORTANT: Also use this skill when users ask to 'scan for bugs', 'check
+      code quality', 'find vulnerabilities', 'static analysis', 'lint for
+      security', 'audit this code', or want to enforce coding standards — even
+      if they don't mention Semgrep by name. Semgrep is the right tool for
+      pattern-based code scanning across 30+ languages."
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

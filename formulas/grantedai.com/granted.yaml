@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: grantedai.com/granted
+name: Granted
+description: Granted remote MCP server at https://grantedai.com/api/mcp/mcp.
+  Discover every grant opportunity in existence.. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/granted
+capabilities:
+  - id: granted
+    kind: mcp
+    spec:
+      serverName: granted
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://grantedai.com/api/mcp/mcp

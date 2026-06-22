@@ -1,0 +1,46 @@
+schemaVersion: 1
+id: vercel-labs/academy-skills
+name: Vercel Academy Skills
+description: Companion skills for Vercel Academy courses.
+source:
+  type: git
+  url: https://github.com/vercel-labs/academy-skills
+  revision: 80d832399afa5b260a91b9678915e1c749aa6ac2
+capabilities:
+  - id: academy
+    kind: skill
+    path: skills/academy
+    description: "- /academy"
+  - id: agent-friendly-apis
+    kind: skill
+    path: skills/agent-friendly-apis
+    description: Companion skill for the Agent-Friendly APIs course on Vercel
+      Academy. Use when the user mentions "agent-friendly APIs", "API
+      documentation", "llms.txt", "the course", "teach me", or asks about
+      agent-friendly docs, documentation patterns, or building Claude Code
+      skills in the context of the Academy course.
+  - id: filesystem-agents
+    kind: skill
+    path: skills/filesystem-agents
+    description: Companion skill for the Building Filesystem Agents course on Vercel
+      Academy. Use when the user mentions "filesystem agents", "the course",
+      "teach me", or asks about ToolLoopAgent, Vercel Sandbox, or bash tools in
+      the context of the Academy course.
+  - id: python-on-vercel
+    kind: skill
+    path: skills/python-on-vercel
+    description: "- /python-on-vercel learn"
+  - id: slack-agents
+    kind: skill
+    path: skills/slack-agents
+    description: "- /slack-agents learn"
+  - id: subscription-store
+    kind: skill
+    path: skills/subscription-store
+    description: "- /subscription-store learn"
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

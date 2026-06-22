@@ -1,0 +1,20 @@
+schemaVersion: 1
+id: stripe/purl
+name: purl
+description: Curl-esque CLI for paid HTTP requests.
+source:
+  type: git
+  url: https://github.com/stripe/purl
+  revision: a96d1d23d9b6de9e6ea1dff817b28def75536855
+capabilities:
+  - id: pay-for-http-request
+    kind: skill
+    path: skills/pay-for-http-request
+    description: Make HTTP requests with automatic x402 payment support using the
+      purl command line interface.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

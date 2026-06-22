@@ -1,0 +1,58 @@
+schemaVersion: 1
+id: facebook/hermes
+name: Hermes JS Engine
+description: JS engine; AOT opt + compact bytecode.
+source:
+  type: git
+  url: https://github.com/facebook/hermes
+  revision: 158706d0401d03726d6f425351110ca9793d5261
+capabilities:
+  - id: add-ir-instruction
+    kind: skill
+    path: .claude/skills/add-ir-instruction
+    description: >
+      Guide for adding a new IR instruction to the Hermes compiler. Use when the
+      user asks to add, create, or define a new IR instruction
+      (Inst/Instruction) in the Hermes intermediate representation. Covers all
+      required files and the patterns for each.
+  - id: binary-size-analysis
+    kind: skill
+    path: .claude/skills/binary-size-analysis
+    description: >
+      This skill should be used when the user wants to analyze hermesvm binary
+      size changes across a range of commits. Use when the user mentions "binary
+      size", "size analysis", "size regression", "size increase", or asks to
+      measure how commits affect the hermesvm library size.
+  - id: gc-safe-coding
+    kind: skill
+    path: .claude/skills/gc-safe-coding
+    description: >
+      Rules for writing and reviewing GC-safe C++ code in the Hermes VM runtime.
+      Use when writing, modifying, or reviewing C++ runtime VM code that uses
+      internal Hermes VM APIs (as opposed to code using JSI). This includes
+      working with GC-managed types (HermesValue, Handle, PinnedValue, JSObject,
+      StringPrimitive, etc.), Locals, GCScope, PseudoHandle, CallResult, or any
+      function with _RJS suffix. Typically in lib/VM/, include/hermes/VM/,
+      API/hermes/, or API/napi/.
+  - id: modify-jsi-features
+    kind: skill
+    path: .claude/skills/modify-jsi-features
+    description: >
+      Guide for adding new JSI functionality to the JavaScript Interface (JSI)
+      layer. Use when the user asks to add, create, or implement new methods or
+      features in the JSI Runtime interface. Covers all required files across
+      JSI core, Hermes implementation, and SynthTrace replay support.
+  - id: non-interactive-git-rebase
+    kind: skill
+    path: .claude/skills/non-interactive-git-rebase
+    description: Use when needing to reorder, split, drop, or amend git commits that
+      are not the top commit, without interactive editor access. Covers
+      programmatic rebase via GIT_SEQUENCE_EDITOR, commit splitting with
+      automated hunk selection, and metadata changes (author, message, dates) on
+      any commit in a range.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

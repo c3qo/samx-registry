@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: na1.ironcladapp.com/ironclad-contracts
+name: Ironclad Contracts
+description: Ironclad Contracts remote MCP server at
+  https://mcp.na1.ironcladapp.com/mcp. Plain language search for faster contract
+  answers. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/ironclad-contracts
+capabilities:
+  - id: ironclad-contracts
+    kind: mcp
+    spec:
+      serverName: ironclad-contracts
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.na1.ironcladapp.com/mcp

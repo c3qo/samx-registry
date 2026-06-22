@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: asana.com/asana
+name: Asana
+description: Asana remote MCP server at https://mcp.asana.com/v2/mcp. Tasks,
+  projects, workspaces. Setup guides for Claude Code, Codex, Cursor, and VS
+  Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/asana
+capabilities:
+  - id: asana
+    kind: mcp
+    spec:
+      serverName: asana
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.asana.com/v2/mcp

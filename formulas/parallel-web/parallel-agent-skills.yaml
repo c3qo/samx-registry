@@ -1,0 +1,77 @@
+schemaVersion: 1
+id: parallel-web/parallel-agent-skills
+name: Parallel Agent Skills
+description: Agent skills for Parallel CLI web search, extract, research, enrich, monitor.
+source:
+  type: git
+  url: https://github.com/parallel-web/parallel-agent-skills
+  revision: 3c83fd20510ba0bb9ee85a9b503086aa915bc39a
+capabilities:
+  - id: parallel-cli-setup
+    kind: skill
+    path: skills/parallel-cli-setup
+    description: Set up and maintain the Parallel CLI (install, auth, balance,
+      skills install)
+  - id: parallel-data-enrichment
+    kind: skill
+    path: skills/parallel-data-enrichment
+    description: "Bulk data enrichment. Adds web-sourced fields (CEO names, funding,
+      contact info) to lists of companies, people, or products. Use for
+      enriching CSV files or inline data. Supports multi-turn: pass
+      --previous-interaction-id from a prior research task to carry context
+      forward."
+  - id: parallel-deep-research
+    kind: skill
+    path: skills/parallel-deep-research
+    description: "ONLY use when user explicitly says 'deep research', 'exhaustive',
+      'comprehensive report', or 'thorough investigation'. Slower and more
+      expensive than parallel-web-search. For normal research/lookup requests,
+      use parallel-web-search instead. Supports multi-turn: pass
+      --previous-interaction-id from a prior research or enrichment to continue
+      with context."
+  - id: parallel-findall
+    kind: skill
+    path: skills/parallel-findall
+    description: Discover entities (companies, people, products, etc.) matching a
+      natural-language description. Use when the user asks to 'find all X' or
+      'list every Y that…' — e.g., 'Find AI startups that raised Series A in
+      2026', 'List roofing companies in Charlotte NC', 'Show me YC W24 dev tools
+      companies'. Different from web-search (which returns webpages) and
+      deep-research (which returns a narrative report). Use this when the user
+      wants a structured list of entities.
+  - id: parallel-monitor
+    kind: skill
+    path: skills/parallel-monitor
+    description: Continuously track the web for changes on a recurring cadence. Use
+      when the user asks to 'monitor', 'track changes to', 'watch', or 'alert me
+      when' something on the web changes — e.g., 'Track price changes for iPhone
+      16', 'Alert me when Tesla files a new 8-K', 'Monitor competitor pricing
+      pages weekly'. Also use to list, inspect, update, or delete existing
+      monitors.
+  - id: parallel-web-extract
+    kind: skill
+    path: skills/parallel-web-extract
+    description: "URL content extraction. Use for fetching any URL - webpages,
+      articles, PDFs, JavaScript-heavy sites. Token-efficient: runs in forked
+      context. Prefer over built-in WebFetch."
+  - id: parallel-web-search
+    kind: skill
+    path: skills/parallel-web-search
+    description: DEFAULT for all research and web queries. Use for any lookup,
+      research, investigation, or question needing current info. Fast and
+      cost-effective. Only use parallel-deep-research if user explicitly
+      requests 'deep' or 'exhaustive' research.
+  - id: result
+    kind: skill
+    path: skills/result
+    description: Get completed research task result by run ID
+  - id: status
+    kind: skill
+    path: skills/status
+    description: Check running research task status by run ID
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

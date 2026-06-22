@@ -1,0 +1,137 @@
+schemaVersion: 1
+id: getsentry/sentry-javascript
+name: Sentry JavaScript SDK
+description: Monorepo for Sentry JS SDKs; skills for AI integrations, E2E, deps,
+  releases, Linear, vendoring, tests.
+source:
+  type: git
+  url: https://github.com/getsentry/sentry-javascript
+  revision: ccf5571c78c1116ba15fa7186234c86dcf57db5a
+capabilities:
+  - id: add-ai-integration
+    kind: skill
+    path: .agents/skills/add-ai-integration
+    description: Add a new AI provider integration to the Sentry JavaScript SDK. Use
+      when contributing a new AI instrumentation (OpenAI, Anthropic, Vercel AI,
+      LangChain, etc.) or modifying an existing one.
+  - id: add-cdn-bundle
+    kind: skill
+    path: .agents/skills/add-cdn-bundle
+    description: Create a new CDN bundle for the browser package with specified features
+  - id: bump-size-limit
+    kind: skill
+    path: .agents/skills/bump-size-limit
+    description: Bump size limits in .size-limit.js when the size-limit CI check is
+      failing. Use when the user mentions size limit failures, bundle size
+      checks failing, CI size check errors, or needs to update size-limit
+      thresholds. Also use when the user says "bumpSizeLimit", "fix size limit",
+      "size check failing", or "update bundle size limits".
+  - id: dotagents
+    kind: skill
+    path: .agents/skills/dotagents
+    description: Manage agent skill dependencies with dotagents. Use when asked to
+      "add a skill", "install skills", "remove a skill", "update skills",
+      "dotagents init", "agents.toml", "agents.lock", "sync skills", "list
+      skills", "set up dotagents", "configure trust", "add MCP server", "add
+      hook", "wildcard skills", "user scope", or any dotagents-related task.
+  - id: e2e
+    kind: skill
+    path: .agents/skills/e2e
+    description: Run E2E tests for Sentry JavaScript SDK test applications
+  - id: fix-issue
+    kind: skill
+    path: .agents/skills/fix-issue
+    description: Attempt a small, verified fix for a GitHub issue in
+      `getsentry/sentry-javascript`, then open a PR. Bail out and comment on the
+      issue if the fix is non-trivial.
+  - id: fix-security-vulnerability
+    kind: skill
+    path: .agents/skills/fix-security-vulnerability
+    description: Analyze and propose fixes for Dependabot security alerts
+  - id: linear-project-status
+    kind: skill
+    path: .agents/skills/linear-project-status
+    description: Analyze a Linear project's health and produce a status summary for
+      a project lead or manager. Inspects status-update cadence, lead/owner
+      presence, target-date realism and stability, issue staleness, milestone
+      health, and scope creep. Use whenever the user wants a status report,
+      project review, health check, weekly review, or audit of a Linear project
+      — including phrases like "how is project X going", "give me a status on
+      this Linear project", "audit this project", "is this project on track",
+      "check project health", or when they paste a Linear project URL and ask
+      for a summary. Use it even when the user doesn't explicitly say "audit" or
+      "status" — if the request is fundamentally "tell me how this Linear
+      project is doing", trigger this skill.
+  - id: linear-project-update
+    kind: skill
+    path: .agents/skills/linear-project-update
+    description: Help the user draft and (with their explicit approval) post a
+      status update to a Linear project they lead. Use whenever the user wants
+      to "post a project update", "write a status update", "update my Linear
+      project", "send a project update", or asks for help with weekly/biweekly
+      project updates. Also trigger when the user pastes a Linear project URL
+      and asks for an update, mentions wanting to write an update for their
+      project, or wants help drafting a status message for stakeholders. Even
+      when the user doesn't explicitly say "post" or "status update" — if the
+      underlying request is "help me write an update for my Linear project",
+      trigger this skill. The user always keeps final control of the words; this
+      skill drafts a proposal and never posts without explicit confirmation in
+      the same turn.
+  - id: release
+    kind: skill
+    path: .agents/skills/release
+    description: Publish a new Sentry JavaScript SDK release. Use when preparing a
+      release, updating the changelog, or creating a release branch.
+  - id: skill-creator
+    kind: skill
+    path: .agents/skills/skill-creator
+    description: Create new skills, modify and improve existing skills, and measure
+      skill performance. Use when users want to create a skill from scratch,
+      edit, or optimize an existing skill, run evals to test a skill, benchmark
+      skill performance with variance analysis, or optimize a skill's
+      description for better triggering accuracy.
+  - id: skill-scanner
+    kind: skill
+    path: .agents/skills/skill-scanner
+    description: Scan agent skills for security issues. Use when asked to "scan a
+      skill", "audit a skill", "review skill security", "check skill for
+      injection", "validate SKILL.md", or assess whether an agent skill is safe
+      to install. Checks for prompt injection, malicious scripts, excessive
+      permissions, secret exposure, and supply chain risks.
+  - id: triage-issue
+    kind: skill
+    path: .agents/skills/triage-issue
+    description: Triage GitHub issues with codebase research and actionable recommendations
+  - id: upgrade-dep
+    kind: skill
+    path: .agents/skills/upgrade-dep
+    description: Upgrade a dependency in the Sentry JavaScript SDK. Use when
+      upgrading packages, bumping versions, or fixing security vulnerabilities
+      via dependency updates.
+  - id: vendor-otel
+    kind: skill
+    path: .agents/skills/vendor-otel
+    description: Vendor an OpenTelemetry instrumentation package into the Sentry
+      JavaScript SDK. Use when vendoring, inlining, or copying an
+      @opentelemetry/instrumentation-* package (or similar like
+      @prisma/instrumentation, @fastify/otel) into the SDK source. Also use when
+      the user says "vendor", "inline instrumentation", or references the Vendor
+      OpenTelemetry Instrumentation project.
+  - id: write-tests
+    kind: skill
+    path: .agents/skills/write-tests
+    description: >
+      Write high-quality unit tests (Vitest) and E2E tests (Playwright)
+      following senior test-engineering practices. Use this skill whenever asked
+      to write tests, add test coverage, create test cases, fix failing tests,
+      add missing assertions, test a new feature, write specs, or cover edge
+      cases. Also trigger when the user says "write tests for", "add tests",
+      "test this", "cover this", "needs tests", "add E2E test", "add unit test",
+      "test coverage", or when reviewing code and noticing missing test
+      coverage.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

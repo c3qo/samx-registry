@@ -1,0 +1,46 @@
+schemaVersion: 1
+id: openshift/agentic-skills
+name: Agentic OpenShift Skills
+description: OpenShift/K8s docs + update skills repo.
+source:
+  type: git
+  url: https://github.com/openshift/agentic-skills
+  revision: 2c3baaa305fae64b50718335b60f6524e56ace9e
+capabilities:
+  - id: product-lifecycle
+    kind: skill
+    path: cluster-update/product-lifecycle
+    description: Query Red Hat Product Life Cycle data for support phases,
+      end-of-life dates, and OpenShift version compatibility. Use when
+      evaluating whether installed operators or layered products are supported
+      on a given OCP version, approaching end of life, or need upgrading before
+      a cluster upgrade. Also use when the user asks about product support
+      status, EOL dates, or lifecycle phases for any Red Hat product.
+  - id: update-advisor
+    kind: skill
+    path: cluster-update/update-advisor
+    description: Assess OpenShift cluster update (upgrade) readiness and risk. Use
+      when evaluating whether a cluster is safe to update, when an update is
+      available, or when the user asks about update risks, prerequisites,
+      blockers, or best practices.
+  - id: kubernetes-docs
+    kind: skill
+    path: documentation/kubernetes-docs
+    description: Search and read Kubernetes documentation in markdown format. Use
+      when the user asks about Kubernetes concepts, tasks, API reference,
+      kubectl, or any upstream k8s topic — including pods, deployments,
+      services, RBAC, networking, storage, or scheduling.
+  - id: openshift-docs
+    kind: skill
+    path: documentation/openshift-docs
+    description: Search and read OpenShift Container Platform documentation in
+      markdown format. Use when the user asks about OpenShift features,
+      configuration, installation, troubleshooting, or any OCP-specific topic —
+      including operators, routes, services, oc, RBAC, networking, storage, or
+      cluster administration.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

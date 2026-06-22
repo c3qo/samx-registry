@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: mem.ai/mem
+name: Mem
+description: Mem remote MCP server at https://mcp.mem.ai/mcp. The AI notebook
+  for everything on your mind. Setup guides for Claude Code, Codex, Cursor, and
+  VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/mem
+capabilities:
+  - id: mem
+    kind: mcp
+    spec:
+      serverName: mem
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.mem.ai/mcp

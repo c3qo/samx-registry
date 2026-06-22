@@ -1,0 +1,40 @@
+schemaVersion: 1
+id: google-labs-code/design.md
+name: design.md
+description: DESIGN.md CLI/spec repo; lint, diff, export, spec.
+source:
+  type: git
+  url: https://github.com/google-labs-code/design.md
+  revision: 2a19f5dd97ab887971b417ebdf1e7e8fda0c7f79
+capabilities:
+  - id: agent-dx-cli-scale
+    kind: skill
+    path: .agents/skills/agent-dx-cli-scale
+    description: A scoring scale for evaluating how well a CLI is designed for AI
+      agents, based on the "Rewrite Your CLI for AI Agents" principles.
+  - id: ink
+    kind: skill
+    path: .agents/skills/ink
+    description: Ink terminal renderer for json-render that turns JSON specs into
+      interactive terminal UIs. Use when working with @json-render/ink, building
+      terminal UIs from JSON, creating terminal component catalogs, or rendering
+      AI-generated specs in the terminal.
+  - id: tdd
+    kind: skill
+    path: .agents/skills/tdd
+    description: >
+      Enforces a disciplined Red-Green-Refactor (TDD) workflow in
+      TypeScript/Node.js.  Use this whenever creating new features, fixing bugs,
+      or migrating logic to ensure  high-quality, verifiable implementations.
+  - id: typed-service-contracts
+    kind: skill
+    path: .agents/skills/typed-service-contracts
+    description: Architecture standard for building robust, type-safe TypeScript
+      services using the "Spec and Handler" pattern. Use when building CLIs,
+      libraries, or complex business logic.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,163 @@
+schemaVersion: 1
+id: microsoft/aspire
+name: Aspire
+description: Aspire repo skill pack.
+source:
+  type: git
+  url: https://github.com/microsoft/aspire
+  revision: e9e1cfcd5f7c6969276c66ece61439db8a8f3130
+capabilities:
+  - id: api-review
+    kind: skill
+    path: .agents/skills/api-review
+    description: Reviews .NET API surface area PRs for design guideline violations.
+      Analyzes api/*.cs file diffs, applies review rules from .NET Framework
+      Design Guidelines and Aspire conventions, and attributes findings to the
+      developer who introduced each API (via git blame). Use this when asked to
+      review API surface area changes.
+  - id: azdo-internal
+    kind: skill
+    path: .agents/skills/azdo-internal
+    description: Expert knowledge for triggering, monitoring, and validating changes
+      to the Aspire internal Azure DevOps pipeline (microsoft-aspire, definition
+      1602) on dnceng/internal. Use when asked to trigger an internal/AzDO
+      build, check pipeline/build status, push to the internal mirror, or
+      validate eng/ pipeline (eng/pipelines/azure-pipelines.yml / release
+      pipeline) changes for the microsoft/aspire repository.
+  - id: backport-pr
+    kind: skill
+    path: .agents/skills/backport-pr
+    description: "Backports a merged PR to a release branch by triggering the
+      /backport bot, waiting for the bot-created PR, and filling in the shiproom
+      template (Customer Impact, Testing, Risk, Regression?). Use when asked to:
+      backport a PR, port a fix to a release branch, fill in a backport
+      template, prepare a backport for shiproom review."
+  - id: ci-test-failures
+    kind: skill
+    path: .agents/skills/ci-test-failures
+    description: Guide for diagnosing GitHub Actions test failures, extracting
+      failed tests from runs, and creating or updating failing-test issues. Use
+      this when asked to investigate GitHub Actions test failures, download
+      failure logs, create failing-test issues, or debug CI issues.
+  - id: cli-channel-debugging
+    kind: skill
+    path: .agents/skills/cli-channel-debugging
+    description: Emulates any Aspire CLI build identity (channel, version, commit,
+      package source) from a locally built CLI using ASPIRE_CLI_* environment
+      variables and the install sidecar, so a reported bug can be reproduced and
+      fixed locally without going through the install/PR loop. Use this when
+      asked to reproduce channel/version/quality-specific CLI behavior, simulate
+      a daily/staging/stable/PR build locally, or decide which override knobs to
+      set for a given scenario.
+  - id: cli-e2e-testing
+    kind: skill
+    path: .agents/skills/cli-e2e-testing
+    description: Use when creating, modifying, debugging, or reviewing Aspire CLI
+      end-to-end tests that use Hex1b terminal automation under
+      tests/Aspire.Cli.EndToEnd.Tests/.
+  - id: code-review
+    kind: skill
+    path: .agents/skills/code-review
+    description: Review a GitHub pull request for problems. Use when asked to review
+      a PR, do a code review, check a PR for issues, or review pull request
+      changes. Focuses only on identifying problems — not style nits or praise.
+  - id: connection-properties
+    kind: skill
+    path: .agents/skills/connection-properties
+    description: Specialized agent for creating and improving Connection Properties
+      in Aspire resource and README files
+  - id: create-pr
+    kind: skill
+    path: .agents/skills/create-pr
+    description: "Create a pull request using the repository PR template. Use when
+      asked to: create PR, open PR, push and create PR, submit PR, open pull
+      request, send changes for review."
+  - id: dashboard-testing
+    kind: skill
+    path: .agents/skills/dashboard-testing
+    description: Guide for writing tests for the Aspire Dashboard. Use this when
+      asked to create, modify, or debug dashboard unit tests or Blazor component
+      tests.
+  - id: dependency-update
+    kind: skill
+    path: .agents/skills/dependency-update
+    description: Guides dependency version updates by checking nuget.org for latest
+      versions, triggering the dotnet-migrate-package Azure DevOps pipeline, and
+      monitoring runs. Use this when asked to update external NuGet
+      dependencies.
+  - id: deployment-e2e-testing
+    kind: skill
+    path: .agents/skills/deployment-e2e-testing
+    description: Guide for writing Aspire deployment end-to-end tests. Use this when
+      asked to create, modify, or debug deployment E2E tests that deploy to
+      Azure.
+  - id: fix-flaky-test
+    kind: skill
+    path: .agents/skills/fix-flaky-test
+    description: Reproduces and fixes flaky or quarantined tests. Tries local
+      reproduction first (fast), then falls back to CI reproduce workflow
+      (reproduce-flaky-tests.yml). Use this when asked to investigate,
+      reproduce, debug, or fix a flaky test, a quarantined test, or an
+      intermittently failing test.
+  - id: hex1b
+    kind: skill
+    path: .agents/skills/hex1b
+    description: CLI tool for automating any terminal application — TUI apps,
+      shells, CLI tools, REPLs, and more. Use when you need to launch a process
+      in a virtual terminal, capture its screen output, inject keystrokes or
+      mouse input, take screenshots, record sessions, or assert on what's
+      visible.
+  - id: issue-investigation
+    kind: skill
+    path: .agents/skills/issue-investigation
+    description: Investigates GitHub issues in microsoft/aspire by gathering issue
+      context, routing to specialized skills, preparing the right reproduction
+      environment, reproducing behavior, and drafting evidence-backed findings
+      or insufficient-info comments for user approval. Use when asked to
+      investigate, reproduce, validate, debug, triage, or root-cause an Aspire
+      issue.
+  - id: pr-testing
+    kind: skill
+    path: .agents/skills/pr-testing
+    description: Use when asked to test a microsoft/aspire pull request, including
+      CLI, hosting, dashboard, component, template, and VS Code extension
+      changes. Also covers testing PRs that change CI infrastructure — GitHub
+      Actions (workflows, actions, gh-aw agentic workflows, CI scripts under
+      .github/ and eng/) and Azure DevOps pipelines (eng/pipelines, eng/common).
+  - id: reviewing-aspire-architecture
+    kind: skill
+    path: .agents/skills/reviewing-aspire-architecture
+    description: Triggers deep architectural review across 15 Aspire-specific
+      dimensions. Activated by requests for deep review, architectural review,
+      pattern review, or PRs touching hosting core, Azure integrations,
+      dashboard, CLI, or components.
+  - id: startup-perf
+    kind: skill
+    path: .agents/skills/startup-perf
+    description: Measures Aspire startup profiling with CLI self-profile capture and
+      dashboard export traces.
+  - id: test-management
+    kind: skill
+    path: .agents/skills/test-management
+    description: Quarantines or disables flaky/problematic tests using the
+      QuarantineTools utility
+  - id: update-container-images
+    kind: skill
+    path: .agents/skills/update-container-images
+    description: Updates Docker container image tags used by Aspire hosting
+      integrations. Queries registries for newer tags, uses LLM to determine
+      version-compatible updates, and applies changes. Use this when asked to
+      update container image versions.
+  - id: vscode-extension
+    kind: skill
+    path: .agents/skills/vscode-extension
+    description: Use when investigating, developing, debugging, testing, or
+      reviewing Aspire VS Code extension behavior under extension/, including
+      extension UI, command, debugger, RPC, DCP, MCP, and CLI-integration issues
+      or features.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

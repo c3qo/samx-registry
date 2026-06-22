@@ -1,0 +1,23 @@
+schemaVersion: 1
+id: posthog/context-mill
+name: Context Mill
+description: Docs-only skill kit → stepwise disclosure.
+source:
+  type: git
+  url: https://github.com/posthog/context-mill
+  revision: 9b158e99619bb479c785abad8dae41c84c3b4e47
+capabilities:
+  - id: author-stepwise-skill
+    kind: skill
+    path: .claude/skills/author-stepwise-skill
+    description: Scaffold a new context-mill skill that walks an agent through an
+      ordered series of narrowly-scoped reference files. Works for any number of
+      steps. Use when the user wants to add a docs-only skill where the agent
+      must read each step in strict order, one at a time, with each step
+      isolated, with clear endpoints, and no prefetching.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,23 @@
+schemaVersion: 1
+id: microsoft/agent-governance-toolkit
+name: Agent Governance Toolkit
+description: Multi-CLI governance/toolkit pkg; policy, hooks, MCP, attestation, scan.
+source:
+  type: git
+  url: https://github.com/microsoft/agent-governance-toolkit
+  revision: 0d674bedf753eb4e368638b6321cc4ffdb8d5668
+capabilities:
+  - id: agt_governance
+    kind: mcp
+    path: agent-governance-claude-code/.mcp.json
+requirements:
+  env:
+    - ANTIGRAVITY_CLI_HOME
+    - AGT_CLAUDE_POLICY_PATH
+    - AGT_CLAUDE_AUDIT_PATH
+    - AGT_OPENCODE_POLICY_PATH
+    - AGT_OPENCODE_AUDIT_PATH
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

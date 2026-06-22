@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: google-gemini/gemini-api-cli
+name: Gemini API CLI
+description: "CLI for Gemini API: prompts, agents, media."
+source:
+  type: git
+  url: https://github.com/google-gemini/gemini-api-cli
+  revision: cb63496ea2205636a8f8dac8d312880ba19b131a
+capabilities:
+  - id: gemini-api-cli
+    kind: skill
+    path: skills/gemini-api-cli
+    description: Guide for using the Gemini API CLI tool. Use when you need to
+      interact with the Gemini API via the command line, manage agents, or
+      generate media (images, audio).
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

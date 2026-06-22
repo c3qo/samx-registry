@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: upstash/search-js
+name: Upstash AI Search
+description: HTTP/REST AI search client + TS SDK; docs/examples.
+source:
+  type: git
+  url: https://github.com/upstash/search-js
+  revision: 27f0c045cb7c776091c1c27571d937710ee0a6d6
+capabilities:
+  - id: skills
+    kind: skill
+    path: skills
+    description: Entry point for documentation skills covering Upstash Search quick
+      starts, core concepts, and TypeScript SDK usage. Use when a user asks how
+      to get started, how indexing works, or how to use the TS client.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: courtroom5.com/courtroom5
+name: Courtroom5
+description: Courtroom5 remote MCP server at https://mcp.courtroom5.com/v1.
+  Civil legal guidance for self-represented litigants. Setup guides for Claude
+  Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/courtroom5
+capabilities:
+  - id: courtroom5
+    kind: mcp
+    spec:
+      serverName: courtroom5
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.courtroom5.com/v1

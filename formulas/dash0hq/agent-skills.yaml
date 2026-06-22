@@ -1,0 +1,51 @@
+schemaVersion: 1
+id: dash0hq/agent-skills
+name: Agent Skills
+description: OpenTelemetry skill pack for AI coding agents.
+source:
+  type: git
+  url: https://github.com/dash0hq/agent-skills
+  revision: cb7cf0d67f5b35fcb89fcbc3df9206a400f79e80
+capabilities:
+  - id: otel-collector
+    kind: skill
+    path: skills/otel-collector
+    description: Expert guidance for configuring and deploying the OpenTelemetry
+      Collector. Use when setting up a Collector pipeline, configuring
+      receivers, exporters, or processors, deploying a Collector to Kubernetes
+      or Docker, or forwarding telemetry to Dash0. Triggers on requests
+      involving collector, pipeline, OTLP receiver, exporter, or Dash0 collector
+      setup.
+  - id: otel-instrumentation
+    kind: skill
+    path: skills/otel-instrumentation
+    description: Configures trace spans, defines custom metrics, sets up log
+      exporters, and optimizes sampling strategies for OpenTelemetry
+      instrumentation. Use when instrumenting applications with traces, metrics,
+      or logs. Triggers on requests for observability, telemetry, tracing,
+      metrics collection, logging integration, or OTel setup.
+  - id: otel-ottl
+    kind: skill
+    path: skills/otel-ottl
+    description: OpenTelemetry Transformation Language (OTTL) expert. Use when
+      writing or debugging OTTL expressions for any OpenTelemetry Collector
+      component that supports OTTL (processors, connectors, receivers,
+      exporters). Triggers on tasks involving telemetry transformation,
+      filtering, attribute manipulation, data redaction, sampling policies,
+      routing, or Collector configuration. Covers syntax, contexts, functions,
+      error handling, and performance.
+  - id: otel-semantic-conventions
+    kind: skill
+    path: skills/otel-semantic-conventions
+    description: OpenTelemetry Semantic Conventions expert. Use when selecting,
+      applying, or reviewing telemetry attributes. Triggers on tasks involving
+      attribute selection, semantic convention compliance, attribute migration,
+      or custom attribute decisions. Covers the attribute registry, naming
+      patterns, attribute placement, and versioning. For span names, span kinds,
+      and span status codes, see the otel-instrumentation skill.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

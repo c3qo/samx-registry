@@ -1,0 +1,26 @@
+schemaVersion: 1
+id: coderabbitai/claude-plugin
+name: CodeRabbit Plugin for Claude Code
+description: Claude Code plugin for CodeRabbit review/autofix workflows.
+source:
+  type: git
+  url: https://github.com/coderabbitai/claude-plugin
+  revision: 2d194b823b8466714992186e7d182acbbc6735f0
+capabilities:
+  - id: autofix
+    kind: skill
+    path: skills/autofix
+    description: Auto-fix CodeRabbit review comments - get CodeRabbit review
+      comments from GitHub and fix them interactively or in batch
+  - id: code-review
+    kind: skill
+    path: skills/code-review
+    description: Reviews code changes using CodeRabbit AI. Use when user asks for
+      code review, PR feedback, code quality checks, security issues, or wants
+      autonomous fix-review cycles.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

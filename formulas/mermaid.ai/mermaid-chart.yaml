@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: mermaid.ai/mermaid-chart
+name: Mermaid Chart
+description: Mermaid Chart remote MCP server at https://mcp.mermaid.ai/mcp.
+  Validates Mermaid syntax, renders diagrams as high-quality SVG, and displays
+  them instantly in an interactive UI where users can preview, zoom, and iterate
+  in real time.. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/mermaid-chart
+capabilities:
+  - id: mermaid-chart
+    kind: mcp
+    spec:
+      serverName: mermaid-chart
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.mermaid.ai/mcp

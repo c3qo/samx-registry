@@ -1,0 +1,51 @@
+schemaVersion: 1
+id: makenotion/notion-cookbook
+name: Notion cookbook
+description: Guides, exs, skills, docs for Notion dev platform.
+source:
+  type: git
+  url: https://github.com/makenotion/notion-cookbook
+  revision: f0402150808af3c6ef7172561d14337f1193ab53
+capabilities:
+  - id: knowledge-capture
+    kind: skill
+    path: skills/claude/knowledge-capture
+    description: Transforms conversations and discussions into structured
+      documentation pages in Notion. Captures insights, decisions, and knowledge
+      from chat context, formats appropriately, and saves to wikis or databases
+      with proper organization and linking for easy discovery.
+  - id: meeting-intelligence
+    kind: skill
+    path: skills/claude/meeting-intelligence
+    description: Prepares meeting materials by gathering context from Notion,
+      enriching with Claude research, and creating both an internal pre-read and
+      external agenda saved to Notion. Helps you arrive prepared with
+      comprehensive background and structured meeting docs.
+  - id: research-documentation
+    kind: skill
+    path: skills/claude/research-documentation
+    description: Searches across your Notion workspace, synthesizes findings from
+      multiple pages, and creates comprehensive research documentation saved as
+      new Notion pages. Turns scattered information into structured reports with
+      proper citations and actionable insights.
+  - id: spec-to-implementation
+    kind: skill
+    path: skills/claude/spec-to-implementation
+    description: Turns product or tech specs into concrete Notion tasks that Claude
+      code can implement. Breaks down spec pages into detailed implementation
+      plans with clear tasks, acceptance criteria, and progress tracking to
+      guide development from requirements to completion.
+requirements:
+  env:
+    - NOTION_KEY
+    - NOTION_API_KEY
+    - NOTION_PAGE_ID
+    - NOTION_DATABASE_ID
+    - SENDGRID_KEY
+    - GITHUB_KEY
+    - GITHUB_REPO_OWNER
+    - GITHUB_REPO_NAME
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: automattic/radical-pipelines
+name: Radical Pipelines
+description: Agent orchestrator for six-phase software pipelines.
+source:
+  type: git
+  url: https://github.com/automattic/radical-pipelines
+  revision: 1601199cec0c93ff6d7ac0c317e533bca85f5901
+capabilities:
+  - id: radical-pipelines
+    kind: skill
+    path: skills/radical-pipelines
+    description: Run an autonomous software engineering pipeline that takes an issue
+      through six sequential phases (Intent → Spec → Design doc → Plan → Code →
+      Docs), each producing inspectable artifacts. Use when the user wants to
+      work on an issue or run a pipeline.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

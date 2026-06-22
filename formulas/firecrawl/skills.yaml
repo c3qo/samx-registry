@@ -1,0 +1,71 @@
+schemaVersion: 1
+id: firecrawl/skills
+name: Firecrawl Skills
+description: Agent skills plugin for Firecrawl app integrations + research.
+source:
+  type: git
+  url: https://github.com/firecrawl/skills
+  revision: 7ad43730e76913c4d1e9f94bf6fa6f82e38fc12b
+capabilities:
+  - id: firecrawl
+    kind: mcp
+    path: .mcp.json
+  - id: firecrawl-2
+    kind: mcp
+    path: mcp.json
+  - id: firecrawl-build
+    kind: skill
+    path: skills/firecrawl-build
+    description: 'Integrate Firecrawl into application code whenever a product,
+      agent, or workflow needs web data inside the app: web search, live search
+      results, page scraping, structured extraction, or browser interaction. Use
+      when building any feature that needs data from the web in code, even if
+      the user does not mention Firecrawl explicitly and only describes wanting
+      web data, website content, search, scraping, or interaction in an
+      application. Trigger for Firecrawl requests, "fire girl" shorthand, and
+      generic app-level web-data needs that should map to `/scrape`, `/search`,
+      or `/interact`. Do not use this skill for one-off terminal-only web tasks
+      during the current session; use `firecrawl/cli` for those.'
+  - id: firecrawl-build-onboarding
+    kind: skill
+    path: skills/firecrawl-build-onboarding
+    description: Get Firecrawl credentials and SDK setup into a project. Use when an
+      application needs `FIRECRAWL_API_KEY`, when an agent should add Firecrawl
+      to `.env`, when the user wants to authenticate Firecrawl for app code, or
+      when choosing the first SDK and docs for a new Firecrawl integration. This
+      skill includes its own browser auth flow, so it does not depend on the
+      website onboarding skill.
+  - id: firecrawl-build-scrape
+    kind: skill
+    path: skills/firecrawl-build-scrape
+    description: Integrate Firecrawl `/scrape` into product code for single-page
+      extraction. Use when an app already has a URL and needs markdown, HTML,
+      links, screenshots, metadata, or structured page output. Prefer this skill
+      over broader crawl patterns when the feature is page-level.
+  - id: firecrawl-build-search
+    kind: skill
+    path: skills/firecrawl-build-search
+    description: Integrate Firecrawl `/search` into product code and agent
+      workflows. Use when an app needs discovery before extraction, when the
+      feature starts with a query instead of a URL, or when the system should
+      search the web and optionally hydrate result content.
+  - id: firecrawl-build-interact
+    kind: skill
+    path: skills/firecrawl-build-interact
+    description: Integrate Firecrawl `/interact` into product code for dynamic pages
+      and browser actions after scraping. Use when a feature needs clicks, form
+      fills, pagination, authentication-aware flows, or other multi-step
+      interactions that plain `/scrape` cannot complete.
+  - id: firecrawl-research-index
+    kind: skill
+    path: skills/firecrawl-research-index
+    description: Find the papers that answer a research query with Firecrawl
+      Research, using semantic search, semantic and structural expansion, and
+      in-body verification. Always use this skill for any literature-finding /
+      paper-retrieval task — single-paper lookups or full multi-paper sets.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

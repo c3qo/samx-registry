@@ -1,0 +1,99 @@
+schemaVersion: 1
+id: sanity-io/plugins
+name: Sanity Plugins Monorepo
+description: Monorepo for Sanity plugins + tooling.
+source:
+  type: git
+  url: https://github.com/sanity-io/plugins
+  revision: 7ff23832ad5647dfdc63b3b6ef18d4ce887e7969
+capabilities:
+  - id: find-skills
+    kind: skill
+    path: .agents/skills/find-skills
+    description: Helps users discover and install agent skills when they ask
+      questions like "how do I do X", "find a skill for X", "is there a skill
+      that can...", or express interest in extending capabilities. This skill
+      should be used when the user is looking for functionality that might exist
+      as an installable skill.
+  - id: plugin-transfer
+    kind: skill
+    path: .agents/skills/plugin-transfer
+    description: Guides agents through migrating an existing plugin into this
+      monorepo with the copy-plugin generator workflow.
+  - id: pnpm
+    kind: skill
+    path: .agents/skills/pnpm
+    description: Node.js package manager with strict dependency resolution. Use when
+      running pnpm specific commands, configuring workspaces, or managing
+      dependencies with catalogs, patches, or overrides.
+  - id: sanity-plugin-best-practices
+    kind: skill
+    path: .agents/skills/sanity-plugin-best-practices
+    description: Anti-patterns and best practices for building Sanity Studio plugins
+      in this monorepo. Use when writing, reviewing, or refactoring plugin code
+      under plugins/ — especially for styling/CSS, component performance, and
+      runtime cost. Triggers on raw <style> tags, styled-components, theming,
+      inline styles, or questions about how plugins should be structured here.
+  - id: test-studio-script-runner
+    kind: skill
+    path: .agents/skills/test-studio-script-runner
+    description: Explains the dev/test-studio Script Runner tool. Use when adding,
+      editing, running, or documenting scripts in
+      dev/test-studio/src/script-runner, or when the user mentions the Scripts
+      tool, Studio runner scripts, script variables, or browser-side Sanity
+      Studio scripts.
+  - id: turborepo
+    kind: skill
+    path: .agents/skills/turborepo
+    description: >
+      Turborepo monorepo build system guidance. Triggers on: turbo.json, task
+      pipelines,
+
+      dependsOn, caching, remote cache, the "turbo" CLI, --filter, --affected,
+      CI optimization, environment
+
+      variables, internal packages, monorepo structure/best practices, and
+      boundaries.
+
+
+      Use when user: configures tasks/workflows/pipelines, creates packages,
+      sets up
+
+      monorepo, shares code between apps, runs changed/affected packages, debugs
+      cache,
+
+      or has apps/packages directories.
+  - id: vercel-react-best-practices
+    kind: skill
+    path: .agents/skills/vercel-react-best-practices
+    description: React and Next.js performance optimization guidelines from Vercel
+      Engineering. This skill should be used when writing, reviewing, or
+      refactoring React/Next.js code to ensure optimal performance patterns.
+      Triggers on tasks involving React components, Next.js pages, data
+      fetching, bundle optimization, or performance improvements.
+  - id: vite
+    kind: skill
+    path: .agents/skills/vite
+    description: Vite build tool configuration, plugin API, SSR, and Vite 8 Rolldown
+      migration. Use when working with Vite projects, vite.config.ts, Vite
+      plugins, or building libraries/SSR apps with Vite.
+  - id: vitest
+    kind: skill
+    path: .agents/skills/vitest
+    description: Vitest fast unit testing framework powered by Vite with
+      Jest-compatible API. Use when writing tests, mocking, configuring
+      coverage, or working with test filtering and fixtures.
+  - id: i18n-array-groq-query-migration
+    kind: skill
+    path: plugins/sanity-plugin-internationalized-array/skills/i18n-array-groq-query-migration
+    description: Detect and update legacy GROQ patterns where language is read from
+      _key for sanity-plugin-internationalized-array when users mention v4 to v5
+      migration, or @sanity/document-internationalization from v5 to v6. GROQ
+      query updates, localized arrays, or patterns like `_key == "en"` and `_key
+      == $language`.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

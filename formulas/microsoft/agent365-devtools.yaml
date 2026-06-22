@@ -1,0 +1,27 @@
+schemaVersion: 1
+id: microsoft/agent365-devtools
+name: Microsoft Agent 365 DevTools CLI
+description: Agent365 CLI; PR/staged review skills.
+source:
+  type: git
+  url: https://github.com/microsoft/agent365-devtools
+  revision: 90c444832fd3f01cda17fb0b1c39536cf05e85f2
+capabilities:
+  - id: review-pr
+    kind: skill
+    path: .claude/skills/review-pr
+    description: Generate structured PR review comments using Claude Code agents and
+      post them to GitHub. No API key required - uses Claude Code's existing
+      authentication.
+  - id: review-staged
+    kind: skill
+    path: .claude/skills/review-staged
+    description: Generate structured code review for staged files AND all branch
+      commits since main, using Claude Code agents. Provides full PR-equivalent
+      coverage before pushing.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

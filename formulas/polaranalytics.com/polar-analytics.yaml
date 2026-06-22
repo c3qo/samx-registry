@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: polaranalytics.com/polar-analytics
+name: Polar Analytics
+description: Polar Analytics remote MCP server at
+  https://api.polaranalytics.com/mcp. Bring all your data in one place & connect
+  it to Claude. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/polar-analytics
+capabilities:
+  - id: polar-analytics
+    kind: mcp
+    spec:
+      serverName: polar-analytics
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.polaranalytics.com/mcp

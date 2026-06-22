@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: cbinsights.com/cb-insights
+name: CB Insights
+description: CB Insights remote MCP server at https://mcp.cbinsights.com.
+  Predictive intelligence on private companies. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/cb-insights
+capabilities:
+  - id: cb-insights
+    kind: mcp
+    spec:
+      serverName: cb-insights
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.cbinsights.com

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: xero.com/xero
+name: Xero
+description: Xero remote MCP server at https://mcp.xero.com/mcp. Access your
+  Xero financials from any conversation. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/xero
+capabilities:
+  - id: xero
+    kind: mcp
+    spec:
+      serverName: xero
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.xero.com/mcp

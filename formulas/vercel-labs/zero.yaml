@@ -1,0 +1,25 @@
+schemaVersion: 1
+id: vercel-labs/zero
+name: Zero Lang Workspace
+description: Workspace for Zero docs, compiler, examples, editor tooling.
+source:
+  type: git
+  url: https://github.com/vercel-labs/zero
+  revision: fef945e4b848f625e052e275d63a9d9e9d29d486
+capabilities:
+  - id: skill-data
+    kind: agent
+    path: skill-data
+    entry: agent.md
+    description: Graph-first agent workflow for making focused Zero changes with CLI
+      feedback.
+  - id: zero
+    kind: skill
+    path: skills/zero
+    description: Install Zero and load version-matched workflows with zero skills.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

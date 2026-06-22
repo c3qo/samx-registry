@@ -1,0 +1,82 @@
+schemaVersion: 1
+id: pytorch/executorch
+name: ExecuTorch
+description: On-device AI inference pkg/backends for PyTorch.
+source:
+  type: git
+  url: https://github.com/pytorch/executorch
+  revision: 574bfca56ab5bcfc5194771570da96a721eb9c9f
+capabilities:
+  - id: building
+    kind: skill
+    path: .claude/skills/building
+    description: Build ExecuTorch from source — Python package, C++ runtime,
+      runners, cross-compilation, and backend-specific builds. Use when
+      compiling anything in the ExecuTorch repo, diagnosing build failures, or
+      setting up platform-specific builds.
+  - id: export
+    kind: skill
+    path: .claude/skills/export
+    description: Export a PyTorch model to .pte format for ExecuTorch. Use when
+      converting models, lowering to edge, or generating .pte files.
+  - id: profile
+    kind: skill
+    path: .claude/skills/profile
+    description: Profile ExecuTorch model execution. Use when measuring performance,
+      analyzing operator timing, or debugging slow models.
+  - id: binary-size
+    kind: skill
+    path: .claude/skills/binary-size
+    description: Analyze and reduce ExecuTorch binary size. Use when investigating
+      binary size, running size tests, or optimizing the runtime for
+      size-constrained deployments.
+  - id: cortex-m
+    kind: skill
+    path: .claude/skills/cortex-m
+    description: Build, test, or develop the Cortex-M (CMSIS-NN) backend. Use when
+      working on backends/cortex_m/, running Cortex-M tests, or exporting models
+      for Cortex-M targets.
+  - id: executorch-kb
+    kind: skill
+    path: .claude/skills/executorch-kb
+    description: Search the ExecuTorch tribal knowledge base covering QNN, XNNPACK,
+      Vulkan, CoreML, Arm, and Cadence backends, quantization recipes, export
+      pitfalls, runtime errors, and SoC compatibility. Use when debugging
+      ExecuTorch errors, choosing quantization configs, checking backend op
+      support, or answering questions about Qualcomm HTP / Snapdragon / Apple
+      Neural Engine behavior.
+  - id: qualcomm
+    kind: skill
+    path: .claude/skills/qualcomm
+    description: Build, test, or develop the QNN (Qualcomm AI Engine Direct)
+      backend. Use when working on backends/qualcomm/, building QNN (use
+      backends/qualcomm/scripts/build.sh), adding new ops or passes, running QNN
+      delegate tests, or exporting models for Qualcomm HTP/GPU targets. Also
+      exposes a Buck-vs-CMake parity workflow — invoke as `/qualcomm buck-fix`,
+      `/qualcomm buck-cmake fix`, `/qualcomm buck-parity`, or any user request
+      to fix `test-qnn-buck-build-linux` CI failures or check buck/cmake drift
+      in backends/qualcomm/. Also covers QNN intermediate-output / per-layer
+      accuracy debugging — trigger on phrases like "QNN accuracy issue", "QNN
+      output doesn't match CPU", "debug per-layer for QNN", "find which QNN
+      layer is wrong".
+  - id: setup
+    kind: skill
+    path: .claude/skills/setup
+    description: Set up ExecuTorch development environment. Use when installing
+      dependencies, setting up conda environments, or preparing to develop with
+      ExecuTorch.
+  - id: zephyr
+    kind: skill
+    path: .claude/skills/zephyr
+    description: Build and configure ExecuTorch as a Zephyr RTOS module for embedded
+      boards. Use when setting up a Zephyr workspace with ET, adding board
+      support (overlays, confs, memory layout), building with west, or debugging
+      linker memory overflow.
+requirements:
+  env:
+    - ANDROID_NDK_ROOT
+    - QNN_SDK_ROOT
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,62 @@
+schemaVersion: 1
+id: projectopensea/opensea-skill
+name: OpenSea Skills
+description: "Agent skills for OpenSea: read data, trade NFTs, swap tokens,
+  configure wallets, build tools."
+source:
+  type: git
+  url: https://github.com/projectopensea/opensea-skill
+  revision: da7b1a2d912baf1ad751dadca7f393a0a6671b0e
+capabilities:
+  - id: opensea-api
+    kind: skill
+    path: opensea-api
+    description: Query OpenSea marketplace data via the official CLI, MCP server, or
+      shell scripts. Get floor prices, collection stats, NFT details, token
+      data, trending collections, drops, events, and search across Ethereum,
+      Base, Arbitrum, Polygon, and more. Read-only operations; for trading use
+      opensea-marketplace, for token swaps use opensea-swaps.
+  - id: opensea-marketplace
+    kind: skill
+    path: opensea-marketplace
+    description: Buy and sell NFTs on OpenSea's Seaport marketplace. Fulfill
+      listings, accept offers, create new orders, cross-chain purchases, and
+      sweep multiple listings. Requires wallet signing; for read-only queries
+      use opensea-api instead.
+  - id: opensea-swaps
+    kind: skill
+    path: opensea-swaps
+    description: Swap ERC20 tokens across supported chains via OpenSea's cross-chain
+      DEX aggregator. Get quotes with optimal routing, check token balances, and
+      execute swaps. For NFT trading use opensea-marketplace, for querying token
+      data use opensea-api.
+  - id: opensea-tool-sdk
+    kind: skill
+    path: opensea-tool-sdk
+    description: Build, register, and gate AI-callable tool endpoints using the
+      OpenSea Tool Registry (ERC-8257) on Base. Scaffold HTTPS tools with JSON
+      Schema interfaces, register them onchain, gate access via NFT ownership,
+      subscriptions, trait gating, or x402 pay-per-call (USDC), and call gated
+      tools. For querying OpenSea marketplace data use opensea-api instead.
+  - id: opensea-wallet
+    kind: skill
+    path: opensea-wallet
+    description: Set up and configure wallet signing providers for OpenSea
+      transactions. Supports Privy, Turnkey, Fireblocks, Bankr, and local
+      private keys. Required for executing trades (opensea-marketplace) and
+      token swaps (opensea-swaps).
+  - id: opensea
+    kind: skill
+    path: .
+    description: Query NFT and token data, trade NFTs on Seaport, swap ERC20 tokens
+      via DEX aggregator, configure wallet signing providers, and
+      build/register/gate AI agent tools on Base. Covers the full OpenSea
+      developer surface across CLI, MCP server, shell scripts, and SDK. Pick the
+      right sub-skill using the routing table below, then read that sub-skill's
+      SKILL.md for operational detail.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

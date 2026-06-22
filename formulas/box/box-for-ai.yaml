@@ -1,0 +1,77 @@
+schemaVersion: 1
+id: box/box-for-ai
+name: Box Agent Skills
+description: Agent skills for Box workflows, MCP, and legal use cases.
+source:
+  type: git
+  url: https://github.com/box/box-for-ai
+  revision: 16f1a0427710b0812519ea634cd5ce6830bde8fc
+capabilities:
+  - id: box-legal-workflows-contract
+    kind: skill
+    path: skills/box-legal-workflows-contract
+    description: Automate contract review and monitoring with Box MCP — identify new
+      contracts added since last review period using metadata or keyword search,
+      compare contracts against standard firm templates to flag material
+      variances (indemnification, liability caps, termination rights, governing
+      law, IP ownership), extract and write structured metadata (parties, dates,
+      contract value, key clauses, risk ratings, expiration dates) to Box for
+      searchability, create variance analysis reports with citations,
+      proactively monitor for expiring contracts to trigger renegotiation
+      reminders with calculated notice deadlines, and batch process multiple
+      contracts with rate-limit-aware pacing. Use this skill when the user
+      mentions contract review, contract monitoring, NDA review, MSA comparison,
+      contract expiration, contract metadata, variance analysis, or needs
+      recurring contract analysis workflows.
+  - id: box-legal-workflows-intake
+    kind: skill
+    path: skills/box-legal-workflows-intake
+    description: Automate legal client intake and onboarding with Box MCP — review
+      uploaded intake documents for completeness against firm requirements,
+      assess risk levels based on client profile and document content (PEP
+      status, conflicts, sanctions, litigation history), route incomplete or
+      high-risk submissions to appropriate attorneys with context and risk
+      summaries, extract structured metadata (client name, matter type,
+      jurisdiction, value), and generate engagement letters from Box DocGen
+      templates for approved low-risk clients. Use this skill when the user
+      mentions client intake, client onboarding, new client review, intake
+      documents, engagement letters, or needs to process prospective client
+      submissions stored in Box.
+  - id: box-legal-workflows-ma
+    kind: skill
+    path: skills/box-legal-workflows-ma
+    description: Build and manage M&A Virtual Data Rooms with Box MCP — create
+      secure folder structures with numbered prefixes for due diligence, assign
+      role-based access to internal teams and external parties (counsel,
+      auditors, buyers), validate permissions before sharing sensitive deal
+      information, use Box AI for cross-document due diligence questions, and
+      organize uploaded files by category. Use this skill when the user mentions
+      M&A, deal rooms, data rooms, due diligence, VDR, mergers and acquisitions,
+      or needs to set up a secure repository for deal documents with controlled
+      external access.
+  - id: box-legal-workflows
+    kind: skill
+    path: skills/box-legal-workflows
+    description: Legal concepts for Box-based legal workflows — risk rating
+      frameworks, human-in-the-loop requirements, confidentiality principles,
+      Box AI governance, collaboration roles, metadata strategy, and common
+      workflow patterns. Referenced by box-legal-workflows-ma,
+      box-legal-workflows-intake, and box-legal-workflows-contract skills.
+  - id: box
+    kind: skill
+    path: skills/box
+    description: Build and troubleshoot Box integrations for uploads, folders,
+      folder listings, downloads and previews, shared links, collaborations,
+      search, metadata, event-driven automations, and Box AI retrieval flows.
+      Also covers working with Box content via the Box MCP server — search,
+      read, upload, organize files, run Box AI queries, and extract structured
+      metadata. Use when the agent needs to add Box APIs or SDKs to an app, wire
+      Box-backed document workflows, organize or share content, react to new
+      files, fetch Box content for search, summarization, extraction, or
+      question-answering, or operate on Box content through MCP tools.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

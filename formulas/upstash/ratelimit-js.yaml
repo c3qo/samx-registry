@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: upstash/ratelimit-js
+name: Upstash Rate Limit
+description: Redis-backed TS rate limiting SDK + examples.
+source:
+  type: git
+  url: https://github.com/upstash/ratelimit-js
+  revision: 5b5448a5f0bae809cd624a7c639771a8b2e227cb
+capabilities:
+  - id: skills
+    kind: skill
+    path: skills
+    description: Lightweight guidance for using the Redis Rate Limit TypeScript SDK,
+      including setup steps, basic usage, and pointers to advanced algorithm,
+      features, pricing, and traffic‑protection docs.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

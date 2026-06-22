@@ -1,0 +1,33 @@
+schemaVersion: 1
+id: neondatabase/neon-js
+name: Neon JavaScript SDK
+description: Auth + DB SDK monorepo for Neon.
+source:
+  type: git
+  url: https://github.com/neondatabase/neon-js
+  revision: 186ac6b3d2840bfbfb936e290c7e90fa4a121321
+capabilities:
+  - id: neon-auth-nextjs
+    kind: skill
+    path: skills/neon-auth-nextjs
+    description: Sets up Neon Auth in Next.js App Router applications. Configures
+      API routes, middleware, server components, and UI. Use when adding
+      auth-only to Next.js apps (no database needed).
+  - id: neon-auth-react
+    kind: skill
+    path: skills/neon-auth-react
+    description: Sets up Neon Auth in React applications (Vite, CRA). Configures
+      authentication adapters, creates auth client, and sets up UI components.
+      Use when adding auth-only to React apps (no database needed).
+  - id: neon-js-react
+    kind: skill
+    path: skills/neon-js-react
+    description: Sets up the full Neon SDK with authentication AND database queries
+      in React apps (Vite, CRA). Creates typed client, generates database types,
+      and configures auth UI. Use for auth + database integration.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

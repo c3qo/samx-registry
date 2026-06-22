@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: slack.com/slack
+name: Slack
+description: Slack remote MCP server at https://mcp.slack.com/mcp. Messages,
+  channels, users, canvases. Setup guides for Claude Code, Codex, Cursor, and VS
+  Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/slack
+capabilities:
+  - id: slack
+    kind: mcp
+    spec:
+      serverName: slack
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.slack.com/mcp

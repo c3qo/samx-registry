@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: kindora-mcp.azurewebsites.net/kindora-funder-discovery
+name: Kindora Funder Discovery
+description: Kindora Funder Discovery remote MCP server at
+  https://kindora-mcp.azurewebsites.net/mcp/. Find funders who support causes
+  like yours. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/kindora-funder-discovery
+capabilities:
+  - id: kindora-funder-discovery
+    kind: mcp
+    spec:
+      serverName: kindora-funder-discovery
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://kindora-mcp.azurewebsites.net/mcp/

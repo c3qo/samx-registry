@@ -1,0 +1,1784 @@
+schemaVersion: 1
+id: openai/plugins
+name: OpenAI Plugins
+description: Codex plugin packs for many app, cloud, data, and dev workflows.
+source:
+  type: git
+  url: https://github.com/openai/plugins
+  revision: 015c0dff7475b7ee3cddc6cb06789ef302cfa4d6
+capabilities:
+  - id: plugin-creator
+    kind: skill
+    path: .agents/skills/plugin-creator
+    description: Create and scaffold plugin directories for Codex with a required
+      `.codex-plugin/plugin.json`, optional plugin folders/files, and baseline
+      placeholders you can edit before publishing or testing. Use when Codex
+      needs to create a new personal plugin, add optional plugin structure, or
+      generate or update personal or repo-root
+      `.agents/plugins/marketplace.json` entries for plugin ordering and
+      availability metadata.
+  - id: xcodebuildmcp
+    kind: mcp
+    path: plugins/build-ios-apps/.mcp.json
+  - id: cloudflare-api
+    kind: mcp
+    path: plugins/cloudflare/.mcp.json
+  - id: base44-cli
+    kind: skill
+    path: plugins/base44/skills/base44-cli
+    description: "The base44 CLI is used for EVERYTHING related to base44 projects:
+      resource configuration (entities, backend functions, ai agents),
+      initialization and actions (resource creation, deployment). This skill is
+      the place for learning about how to configure resources. When you plan or
+      implement a feature, you must learn this skill"
+  - id: frontend-app-builder
+    kind: skill
+    path: plugins/build-web-apps/skills/frontend-app-builder
+    description: Use for new frontend applications, dashboards, games, creative
+      websites, hero sections, and visually driven UI from scratch, or when the
+      user explicitly asks for a redesign/restyle/modernization. Builds from
+      clean, airy, high-taste, readable image-generated concept design with
+      section-specific references, faithful implementation, and browser testing.
+  - id: airtable-cli
+    kind: skill
+    path: plugins/airtable/skills/airtable-cli
+    description: Lists bases, reads and writes records, manages tables and fields,
+      filters and searches data in Airtable via the `airtable-mcp` CLI. Use when
+      the task involves Airtable data or the user mentions airtable-mcp, bases,
+      tables, records, or fields.
+  - id: airtable-filters
+    kind: skill
+    path: plugins/airtable/skills/airtable-filters
+    description: Use this skill when the user wants to find, filter, or narrow down
+      Airtable records by field values, even when they don't explicitly say
+      "filter."
+  - id: airtable-overview
+    kind: skill
+    path: plugins/airtable/skills/airtable-overview
+    description: Explains what Airtable is and how data is structured — bases,
+      tables, fields, records, views, automations, and interfaces. Use when you
+      need context about the Airtable data model.
+  - id: capture-tasks-from-meeting-notes
+    kind: skill
+    path: plugins/atlassian-rovo/skills/capture-tasks-from-meeting-notes
+    description: "Analyze meeting notes to find action items and create Jira tasks
+      for assigned work. When an agent needs to: (1) Create Jira tasks or
+      tickets from meeting notes, (2) Extract or find action items from notes or
+      Confluence pages, (3) Parse meeting notes for assigned tasks, or (4)
+      Analyze notes and generate tasks for team members. Identifies assignees,
+      looks up account IDs, and creates tasks with proper context."
+  - id: generate-status-report
+    kind: skill
+    path: plugins/atlassian-rovo/skills/generate-status-report
+    description: "Generate project status reports from Jira issues and publish to
+      Confluence. When an agent needs to: (1) Create a status report for a
+      project, (2) Summarize project progress or updates, (3) Generate
+      weekly/daily reports from Jira, (4) Publish status summaries to
+      Confluence, or (5) Analyze project blockers and completion. Queries Jira
+      issues, categorizes by status/priority, and creates formatted reports for
+      delivery managers and executives."
+  - id: search-company-knowledge
+    kind: skill
+    path: plugins/atlassian-rovo/skills/search-company-knowledge
+    description: "Search across company knowledge bases (Confluence, Jira, internal
+      docs) to find and explain internal concepts, processes, and technical
+      details. When an agent needs to: (1) Find or search for information about
+      systems, terminology, processes, deployment, authentication,
+      infrastructure, architecture, or technical concepts, (2) Search internal
+      documentation, knowledge base, company docs, or our docs, (3) Explain what
+      something is, how it works, or look up information, or (4) Synthesize
+      information from multiple sources. Searches in parallel and provides cited
+      answers."
+  - id: spec-to-backlog
+    kind: skill
+    path: plugins/atlassian-rovo/skills/spec-to-backlog
+    description: "Automatically convert Confluence specification documents into
+      structured Jira backlogs with Epics and implementation tickets. When an
+      agent needs to: (1) Create Jira tickets from a Confluence page, (2)
+      Generate a backlog from a specification, (3) Break down a spec into
+      implementation tasks, or (4) Convert requirements into Jira issues.
+      Handles reading Confluence pages, analyzing specifications, creating Epics
+      with proper structure, and generating detailed implementation tickets
+      linked to the Epic."
+  - id: triage-issue
+    kind: skill
+    path: plugins/atlassian-rovo/skills/triage-issue
+    description: "Intelligently triage bug reports and error messages by searching
+      for duplicates in Jira and offering to create new issues or add comments
+      to existing ones. When an agent needs to: (1) Triage a bug report or error
+      message, (2) Check if an issue is a duplicate, (3) Find similar past
+      issues, (4) Create a new bug ticket with proper context, or (5) Add
+      information to an existing ticket. Searches Jira for similar issues,
+      identifies duplicates, checks fix history, and helps create
+      well-structured bug reports."
+  - id: base44-sdk
+    kind: skill
+    path: plugins/base44/skills/base44-sdk
+    description: The base44 SDK is the library to communicate with base44 services.
+      In projects, you use it to communicate with remote resources (entities,
+      backend functions, ai agents) and to write backend functions. This skill
+      is the place for learning about available modules and types. When you plan
+      or implement a feature, you must learn this skill
+  - id: base44-troubleshooter
+    kind: skill
+    path: plugins/base44/skills/base44-troubleshooter
+    description: Troubleshoot production issues using backend function logs. Use
+      when investigating app errors, debugging function calls, or diagnosing
+      production problems in Base44 apps.
+  - id: box
+    kind: skill
+    path: plugins/box/skills/box
+    description: Build and troubleshoot Box integrations for uploads, folders,
+      folder listings, downloads and previews, shared links, collaborations,
+      search, metadata, event-driven automations, and Box AI retrieval flows.
+      Use when Codex needs to add Box APIs or SDKs to an app, wire Box-backed
+      document workflows, organize or share content, react to new files, or
+      fetch Box content for search, summarization, extraction, or
+      question-answering.
+  - id: brighthire
+    kind: skill
+    path: plugins/brighthire/skills/brighthire
+    description: Use BrightHire tools when a user asks about BrightHire interview
+      intelligence, calls, candidates, roles, scorecards, transcripts, hiring
+      decisions, or organization-level interview data.
+  - id: ios-app-intents
+    kind: skill
+    path: plugins/build-ios-apps/skills/ios-app-intents
+    description: Design App Intents, app entities, and App Shortcuts for iOS system
+      surfaces. Use when exposing app actions or content to Shortcuts, Siri,
+      Spotlight, widgets, or controls.
+  - id: ios-debugger-agent
+    kind: skill
+    path: plugins/build-ios-apps/skills/ios-debugger-agent
+    description: Build, run, and debug iOS apps on Simulator with XcodeBuildMCP. Use
+      when launching an app, inspecting simulator UI or logs, or diagnosing
+      runtime behavior.
+  - id: ios-ettrace-performance
+    kind: skill
+    path: plugins/build-ios-apps/skills/ios-ettrace-performance
+    description: Capture and interpret iOS Simulator ETTrace profiles. Use when
+      profiling launch or runtime latency, comparing traces, or finding
+      CPU-heavy stacks.
+  - id: ios-memgraph-leaks
+    kind: skill
+    path: plugins/build-ios-apps/skills/ios-memgraph-leaks
+    description: Capture and inspect iOS leaks and memgraphs. Use when debugging
+      leaked objects, retain cycles, memory growth, or before/after leak
+      evidence.
+  - id: ios-simulator-browser
+    kind: skill
+    path: plugins/build-ios-apps/skills/ios-simulator-browser
+    description: Mirror an iOS Simulator into the Codex in-app browser and render
+      SwiftUI previews from importable Swift packages in that simulator with hot
+      reload. Use when a user wants to watch or interact with an iOS app in the
+      browser, see a SwiftUI preview outside Xcode Canvas, iterate live on a
+      preview, or capture browser-visible simulator proof.
+  - id: swiftui-liquid-glass
+    kind: skill
+    path: plugins/build-ios-apps/skills/swiftui-liquid-glass
+    description: Implement and review iOS 26+ SwiftUI Liquid Glass UI. Use when
+      adopting Liquid Glass or checking its correctness, performance, and design
+      fit.
+  - id: swiftui-performance-audit
+    kind: skill
+    path: plugins/build-ios-apps/skills/swiftui-performance-audit
+    description: Audit SwiftUI runtime performance from code first. Use when
+      diagnosing slow rendering, janky scrolling, expensive updates, or
+      profiling needs.
+  - id: swiftui-ui-patterns
+    kind: skill
+    path: plugins/build-ios-apps/skills/swiftui-ui-patterns
+    description: Build and refactor SwiftUI UI with component patterns and examples.
+      Use when shaping navigation, state, layouts, controls, or screen
+      composition.
+  - id: swiftui-view-refactor
+    kind: skill
+    path: plugins/build-ios-apps/skills/swiftui-view-refactor
+    description: Refactor SwiftUI view files into stable, testable structure. Use
+      when splitting large views, tightening data flow, or cleaning Observation
+      ownership.
+  - id: appkit-interop
+    kind: skill
+    path: plugins/build-macos-apps/skills/appkit-interop
+    description: Bridge macOS SwiftUI into AppKit narrowly. Use when implementing
+      representables, reaching NSWindow or panels, handling menus, or using the
+      responder chain.
+  - id: build-run-debug
+    kind: skill
+    path: plugins/build-macos-apps/skills/build-run-debug
+    description: Build, run, and debug macOS apps with shell-first Xcode and Swift
+      workflows. Use when launching apps or diagnosing build, startup, or
+      runtime failures.
+  - id: liquid-glass
+    kind: skill
+    path: plugins/build-macos-apps/skills/liquid-glass
+    description: Implement and review macOS SwiftUI Liquid Glass UI. Use when
+      adopting system glass, removing conflicting custom chrome, or building
+      glass surfaces.
+  - id: packaging-notarization
+    kind: skill
+    path: plugins/build-macos-apps/skills/packaging-notarization
+    description: Prepare macOS packaging and notarization workflows. Use when
+      archiving apps, validating bundles, or explaining distribution-only
+      failures.
+  - id: signing-entitlements
+    kind: skill
+    path: plugins/build-macos-apps/skills/signing-entitlements
+    description: Inspect macOS signing, entitlements, and Gatekeeper issues. Use
+      when diagnosing code signing, sandbox, hardened runtime, or trust
+      failures.
+  - id: swiftpm-macos
+    kind: skill
+    path: plugins/build-macos-apps/skills/swiftpm-macos
+    description: Build, run, and test SwiftPM macOS packages and executables. Use
+      when the repo is package-first or has no Xcode project.
+  - id: swiftui-patterns
+    kind: skill
+    path: plugins/build-macos-apps/skills/swiftui-patterns
+    description: Build macOS SwiftUI scenes and components with desktop patterns.
+      Use when shaping windows, commands, toolbars, settings, split views, or
+      inspectors.
+  - id: telemetry
+    kind: skill
+    path: plugins/build-macos-apps/skills/telemetry
+    description: Add and verify lightweight macOS runtime telemetry. Use when wiring
+      Logger events or inspecting logs for windows, sidebars, menus, and
+      actions.
+  - id: test-triage
+    kind: skill
+    path: plugins/build-macos-apps/skills/test-triage
+    description: Triage macOS tests across Xcode and SwiftPM. Use when narrowing
+      failures, explaining assertions or crashes, or separating setup from
+      regressions.
+  - id: view-refactor
+    kind: skill
+    path: plugins/build-macos-apps/skills/view-refactor
+    description: Refactor macOS SwiftUI views and scenes into stable structure. Use
+      when splitting large views, tightening scene state, or narrowing AppKit
+      escapes.
+  - id: window-management
+    kind: skill
+    path: plugins/build-macos-apps/skills/window-management
+    description: Customize macOS SwiftUI windows and scene behavior. Use when tuning
+      window chrome, drag regions, placement, restoration, launch behavior, or
+      borderless windows.
+  - id: frontend-testing-debugging
+    kind: skill
+    path: plugins/build-web-apps/skills/frontend-testing-debugging
+    description: "Use when testing, debugging, or making targeted improvements to
+      rendered frontend apps through the Build Web Apps or web dev plugin: local
+      dev servers, UI regressions, interaction bugs, console errors, responsive
+      layout, and visual QA. Check whether the Browser plugin is available and
+      use it first when it is; otherwise use regular Playwright with the
+      recorded reason."
+  - id: react-best-practices
+    kind: skill
+    path: plugins/build-web-apps/skills/react-best-practices
+    description: React and Next.js performance optimization guidelines from Vercel
+      Engineering. This skill should be used when writing, reviewing, or
+      refactoring React/Next.js code to ensure optimal performance patterns.
+      Triggers on tasks involving React components, Next.js pages, data
+      fetching, bundle optimization, or performance improvements.
+  - id: shadcn-best-practices
+    kind: skill
+    path: plugins/build-web-apps/skills/shadcn-best-practices
+    description: Manages shadcn components and projects — adding, searching, fixing,
+      debugging, styling, and composing UI. Provides project context, component
+      docs, and usage examples. Applies when working with shadcn/ui, component
+      registries, presets, --preset codes, or any project with a components.json
+      file. Also triggers for "shadcn init", "create an app with --preset", or
+      "switch to --preset".
+  - id: stripe-best-practices
+    kind: skill
+    path: plugins/build-web-apps/skills/stripe-best-practices
+    description: Guides Stripe integration decisions — API selection (Checkout
+      Sessions vs PaymentIntents), Connect platform setup (Accounts v2,
+      controller properties), billing/subscriptions, Treasury financial
+      accounts, integration surfaces (Checkout, Payment Element), and migrating
+      from deprecated Stripe APIs. Use when building, modifying, or reviewing
+      any Stripe integration — including accepting payments, building
+      marketplaces, integrating Stripe, processing payments, setting up
+      subscriptions, or creating connected accounts.
+  - id: supabase-best-practices
+    kind: skill
+    path: plugins/build-web-apps/skills/supabase-best-practices
+    description: Postgres performance optimization and best practices from Supabase.
+      Use this skill when writing, reviewing, or optimizing Postgres queries,
+      schema designs, or database configurations.
+  - id: accessibility-and-inclusive-visualization
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/accessibility-and-inclusive-visualization
+    description: Make data visualizations accessible and inclusive. Use when the
+      user needs chart or diagram accessibility guidance, text alternatives for
+      complex visuals, color and contrast review, keyboard support,
+      reduced-motion behavior for animation or parallax, or an accessibility QA
+      workflow for exported figures, UML-like diagrams, and dashboards.
+  - id: canvas2d-data-visualization
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/canvas2d-data-visualization
+    description: Render data visualizations with Canvas2D. Use when the
+      visualization needs high mark counts, fast redraws, immediate-mode
+      rendering, custom hit testing, or a hybrid Canvas plus SVG or HTML
+      architecture.
+  - id: d3-data-visualization
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/d3-data-visualization
+    description: Build custom data visualizations with D3. Use when the user needs
+      SVG or DOM-based charts, rich annotation, domain-native contextual
+      backgrounds, data joins, custom scales or interactions, scroll-driven SVG
+      scene states, or precise control over browser visualization behavior.
+  - id: dashboards-and-real-time-visualization
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/dashboards-and-real-time-visualization
+    description: Design dashboards and live visualization systems. Use when the user
+      needs monitoring views, streaming charts, coordinated interactions,
+      downsampling, or performance-aware operational visualization.
+  - id: data-visualization
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/data-visualization
+    description: Route web data visualization work. Use when the user needs chart
+      choice, visual critique, dashboards, maps or geospatial views, Gantt
+      timelines, UML/software diagrams, scrollytelling, reports or exports,
+      testing, accessibility, browser implementation, or concept-first visual
+      design.
+  - id: gantt-chart-visualization
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/gantt-chart-visualization
+    description: Design, critique, route, and implement Gantt charts and schedule
+      visualizations. Use when the user mentions Gantt charts, project
+      schedules, roadmaps with task spans, milestones, dependencies,
+      predecessors, critical path, baselines, WBS, resource plans, capacity
+      timelines, MS Project, Primavera P6, Jira Advanced Roadmaps, GitHub
+      Projects, Smartsheet, monday.com, Asana, ClickUp, Azure DevOps iterations,
+      or importing/exporting project-management data for a timeline chart.
+  - id: geospatial-and-cartographic-visualization
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/geospatial-and-cartographic-visualization
+    description: Design geospatial and cartographic visualizations. Use when the
+      user needs help deciding whether to use a map, choosing projections or
+      basemaps, building choropleths or symbol maps, or implementing thematic
+      maps, slippy maps, or geospatial interactions with D3 geo, Leaflet,
+      MapLibre, Mapbox GL JS, Google Maps, OpenLayers, deck.gl, ArcGIS Maps SDK,
+      Azure Maps, HERE Maps, CesiumJS, or related tools.
+  - id: grammar-of-graphics-and-declarative-visualization
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/grammar-of-graphics-and-declarative-visualization
+    description: Build data visualizations with declarative grammars. Use when the
+      user needs Vega-Lite, Vega, Observable Plot, or grammar-of-graphics
+      reasoning, especially for tabular charts that do not require bespoke
+      rendering.
+  - id: node-link-and-diagram-layout
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/node-link-and-diagram-layout
+    description: Choose and apply automatic layout strategies for node-link diagrams
+      and connected-node visuals. Use when the user asks how to auto-arrange
+      nodes, reduce line crossings, route edges, avoid overlaps, stabilize
+      layout, or choose graph-layout algorithms for network diagrams, dependency
+      graphs, database schema diagrams, ERDs, state machines, decision trees,
+      flow diagrams, box-and-line editors, or other line-connected nodes.
+  - id: react-and-nextjs-data-visualization
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/react-and-nextjs-data-visualization
+    description: Integrate data visualizations into React and Next.js applications.
+      Use when the user needs chart components, UML-like or architecture diagram
+      components, React integration patterns, Next.js client or server
+      boundaries, hydration-safe rendering, lazy loading, framework-aware
+      performance, scroll-driven visual stories, or export guidance.
+  - id: reports-pdfs-and-slide-automation
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/reports-pdfs-and-slide-automation
+    description: Lay out and export data-rich reports and documents. Use when the
+      user needs report structure, figure packaging, PDFs, PowerPoint or Google
+      Slides automation, or programmatic insertion of visualizations, UML-like
+      diagrams, or architecture diagrams into documents.
+  - id: scrollytelling-and-parallax-data-visualization
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/scrollytelling-and-parallax-data-visualization
+    description: Design and implement parallax scrolling and scrollytelling data
+      visualizations. Use when the user asks for parallax scrolling,
+      scrollytelling, scroll-driven timelines, sticky graphics, Scrollama,
+      ScrollTrigger, ScrollTimeline, view timelines, rich-media timelines,
+      moviescrollers, scroll-scrubbed charts, staged narrative reveals, or
+      interactive visual stories where scrolling changes a data visualization or
+      media scene.
+  - id: statistical-and-uncertainty-visualization
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/statistical-and-uncertainty-visualization
+    description: Design statistically honest and uncertainty-aware visualizations.
+      Use when the user needs help showing distributions, intervals, confidence,
+      missingness, sampling effects, or analytical rigor in charts and
+      dashboards.
+  - id: testing-data-visualizations
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/testing-data-visualizations
+    description: Test data visualizations and dashboards. Use when the user needs
+      chart or diagram test strategy, screenshot or image diff testing, visual
+      regression, mocked or synthetic chart data, component or unit tests, E2E
+      dashboard QA, interactive UML-like diagram verification, scroll-driven
+      story verification, export verification, or guidance on avoiding brittle
+      over-testing.
+  - id: threejs-data-visualization
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/threejs-data-visualization
+    description: Render WebGL-accelerated data visualizations with Three.js, raw
+      WebGL, deck.gl, luma.gl, PixiJS, Sigma.js, Plotly WebGL traces, ECharts
+      GL, CesiumJS, Babylon.js, or related GPU libraries. Use when the
+      visualization needs true spatial structure, dense 2D or 3D GPU rendering,
+      particle or flow animation, volumetric views, or interactive exploration
+      that adds real analytical value.
+  - id: typescript-data-visualization-engineering
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/typescript-data-visualization-engineering
+    description: Build typed data visualizations in TypeScript. Use when the user
+      wants TypeScript visualization code, typed data models, browser
+      visualization components, UML-like diagram models, interactive graph or
+      architecture diagram contracts, scroll-driven scene contracts, library
+      selection guidance, or a maintainable visualization architecture beyond
+      React- or Next-specific concerns.
+  - id: uml-and-software-architecture-visualization
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/uml-and-software-architecture-visualization
+    description: Design, critique, read, write, render, and implement UML and
+      UML-like software diagrams. Use when the user mentions UML, sequence
+      diagrams, class diagrams, activity diagrams, state machines, use case
+      diagrams, component diagrams, deployment diagrams, object diagrams,
+      package diagrams, profile diagrams, timing diagrams, communication
+      diagrams, interaction overview diagrams, composite structure diagrams,
+      ERDs, database schema diagrams, C4, BPMN, swimlanes, flowcharts, network
+      diagrams, application architecture diagrams, software architecture
+      diagrams, diagram-as-code, model-as-code, XMI, UMLDI, PlantUML, Mermaid,
+      Graphviz DOT, D2, Structurizr, DBML, diagrams.net/draw.io, Kroki, or
+      interactive diagram editors and explorers.
+  - id: visualization-strategy-and-critique
+    kind: skill
+    path: plugins/build-web-data-visualization/skills/visualization-strategy-and-critique
+    description: Choose, lay out, critique, and explain data visualizations. Use
+      when the user asks what visualization fits a dataset or goal, how a chart,
+      dashboard, operational workspace, UML-like diagram, or software
+      architecture diagram should be composed or interacted with, asks for
+      visual page design, a layout mockup, generated large-screen and mobile
+      concept images, or to be shown what a visualization could look like, when
+      domain-native contextual surfaces or graphical backgrounds may help, when
+      scrollytelling or parallax might be appropriate, wants a critique of an
+      existing visualization, or needs guidance grounded in trusted
+      visualization theory and practice. For advanced visual design or
+      page-layout prompts where composition affects understanding, Codex must
+      generate and show both large-screen and mobile portrait image concepts
+      before implementation or text-only design handoff, plus mobile landscape
+      when needed.
+  - id: canva-branded-presentation
+    kind: skill
+    path: plugins/canva/skills/canva-branded-presentation
+    description: Create on-brand Canva presentations from a brief, outline, existing
+      Canva doc, or design link. Use when the user wants a branded slide deck,
+      wants to turn notes into a presentation, or needs a presentation generated
+      in Canva with the right brand kit and a clear slide plan.
+  - id: canva-resize-for-all-social-media
+    kind: skill
+    path: plugins/canva/skills/canva-resize-for-all-social-media
+    description: Resize a Canva design into standard social media formats and
+      prepare export-ready results. Use when the user wants one Canva design
+      adapted across multiple social platforms such as Facebook, Instagram, and
+      LinkedIn, especially when they want all variants produced in one pass.
+  - id: canva-translate-design
+    kind: skill
+    path: plugins/canva/skills/canva-translate-design
+    description: Translate the text in a Canva design into another language while
+      preserving the original layout as much as possible. Use when the user
+      wants a localized or translated version of an existing Canva design and
+      expects the original file to remain unchanged.
+  - id: catalyst-by-zoho
+    kind: skill
+    path: plugins/catalyst-by-zoho/skills/catalyst-by-zoho
+    description: >
+      Expert coding assistant for Catalyst by Zoho — full-stack serverless cloud
+      platform. Trigger on any mention of Catalyst, zcatalyst, AppSail, Data
+      Store, ZCQL, Cache, Stratus, Circuits, SmartBrowz, ConvoKraft, Slate,
+      Signals, Pipelines, QuickML, NoSQL, Job Scheduling, Zia Services, CodeLib,
+      API Gateway, Connections, Zoho MCP, CatalystbyZoho, catalyst
+      init/deploy/serve, zcatalyst-sdk-node, or catalyst-config.json. Covers all
+      7 function types, full service catalog, architectural guidance, and Zoho
+      MCP tool-based resource management. Also trigger on migration/comparison
+      with AWS Lambda, S3, DynamoDB, Vercel, Netlify, Supabase, Firebase,
+      Heroku, Cloud Run, Cloudflare R2, Railway. Trigger on Catalyst pricing,
+      cost estimation, or "create tables for me", "set up the database", "deploy
+      to Catalyst", "build on Zoho's platform", or "is Catalyst like Firebase".
+      Do NOT use for generic Zoho CRM questions unless Catalyst is the target.
+  - id: chronograph-portfolio-company-one-pager
+    kind: skill
+    path: plugins/chronograph-gp/skills/chronograph-portfolio-company-one-pager
+    description: >
+      GP platform one-pager and investor report generator for private equity
+      portfolio companies. Use this skill whenever a user asks to generate a
+      company tearsheet, one-pager, investor report, portfolio overview, or
+      company deep-dive — especially when they name a company or ask to "build a
+      report", "create a one-pager", or "show me a tearsheet". Also trigger when
+      the user asks to include commentary, quarterly updates, investment
+      narratives, or any Investment Overview in the report output. This skill
+      handles live data fetching via a connected MCP data source OR from an
+      uploaded Excel model, metric formatting, AI-generated or model-sourced
+      commentary, and rendering a fully styled HTML one-pager. Also trigger for
+      LP quarterly updates, valuation summaries, and portco performance pages —
+      any output that combines financials, valuation, and return data for a
+      single portfolio company.
+  - id: chronograph-cashflow-forecast
+    kind: skill
+    path: plugins/chronograph-lp/skills/chronograph-cashflow-forecast
+    description: Forecast private capital cashflows for existing portfolios using
+      Chronograph MCP data and a Takahashi-Alexander style model. Use when Codex
+      needs to analyze or forecast LP-level contributions, distributions, NAV,
+      unfunded exposure, net cashflows, or Excel-style cashflow forecast outputs
+      from existing Chronograph funds, commitments, groups, or portfolios.
+  - id: chronograph-gp-meeting-prep
+    kind: skill
+    path: plugins/chronograph-lp/skills/chronograph-gp-meeting-prep
+    description: >
+      Prepare an LP to meet with their fund manager (GP): review the fund's
+      latest reporting, surface what changed since last period, and draft the
+      questions worth raising. Use when someone is getting ready for a manager
+      call, quarterly check-in, annual meeting, LPAC meeting, or a re-up
+      decision — for example "I have my quarterly call with this manager next
+      week, help me prep," "what changed in this fund this quarter," "what
+      should I ask them about these marks," or "what are the red flags in this
+      reporting package." Draws on Chronograph fund and portfolio data when
+      connected — captured reporting such as fund performance, schedules of
+      investments, and portfolio company KPI profiles — and asks the LP to
+      provide anything else it needs, such as a capital account statement,
+      investor letter, or AGM or board deck.
+  - id: chronograph-portfolio-company-one-pager-2
+    kind: skill
+    path: plugins/chronograph-lp/skills/chronograph-portfolio-company-one-pager
+    description: >
+      GP platform one-pager and investor report generator for private equity
+      portfolio companies. Use this skill whenever a user asks to generate a
+      company tearsheet, one-pager, investor report, portfolio overview, or
+      company deep-dive — especially when they name a company or ask to "build a
+      report", "create a one-pager", or "show me a tearsheet". Also trigger when
+      the user asks to include commentary, quarterly updates, investment
+      narratives, or any Investment Overview in the report output. This skill
+      handles live data fetching via a connected MCP data source OR from an
+      uploaded Excel model, metric formatting, AI-generated or model-sourced
+      commentary, and rendering a fully styled HTML one-pager. Also trigger for
+      LP quarterly updates, valuation summaries, and portco performance pages —
+      any output that combines financials, valuation, and return data for a
+      single portfolio company.
+  - id: builds
+    kind: skill
+    path: plugins/circleci/skills/builds
+    description: Diagnose and fix failing CircleCI builds quickly and safely. Use
+      when users ask to investigate failed CircleCI jobs, triage flaky
+      pipelines, identify root causes from logs, and implement minimal fixes in
+      configuration, test setup, or build-related code paths.
+  - id: chunk
+    kind: skill
+    path: plugins/circleci/skills/chunk
+    description: Use CircleCI Chunk for AI-assisted CI/CD work through either the
+      Chunk web UI or the chunk-cli. Trigger this skill when users ask to set up
+      Chunk, troubleshoot or fix failing builds with Chunk, configure Chunk
+      environments, schedule/proactively run Chunk tasks, or use chunk-cli
+      commands such as init, validate, build-prompt, auth, sandbox, task, and
+      skill install.
+  - id: cli
+    kind: skill
+    path: plugins/circleci/skills/cli
+    description: Operate and troubleshoot CircleCI using the CircleCI CLI. Use when
+      users ask to authenticate CLI access, inspect pipeline/workflow/job
+      status, validate configuration locally, rerun pipelines/jobs, trigger
+      pipelines, or gather actionable diagnostics from CLI outputs.
+  - id: config
+    kind: skill
+    path: plugins/circleci/skills/config
+    description: Optimize CircleCI configuration for speed, reliability, and
+      maintainability. Use when users ask to improve `.circleci/config.yml`,
+      reduce CI runtime, tune caching/workspaces/parallelism, remove pipeline
+      waste, or fix flaky pipeline behavior caused by configuration choices.
+  - id: agents-sdk
+    kind: skill
+    path: plugins/cloudflare/skills/agents-sdk
+    description: Build AI agents on Cloudflare Workers using the Agents SDK. Load
+      when creating stateful agents, durable workflows, real-time WebSocket
+      apps, scheduled tasks, MCP servers, or chat applications. Covers Agent
+      class, state management, callable RPC, Workflows integration, and React
+      hooks. Biases towards retrieval from Cloudflare docs over pre-trained
+      knowledge.
+  - id: building-ai-agent-on-cloudflare
+    kind: skill
+    path: plugins/cloudflare/skills/building-ai-agent-on-cloudflare
+    description: >
+      Builds AI agents on Cloudflare using the Agents SDK with state management,
+
+      real-time WebSockets, scheduled tasks, tool integration, and chat
+      capabilities.
+
+      Generates production-ready agent code deployed to Workers.
+
+
+      Use when: user wants to "build an agent", "AI agent", "chat agent",
+      "stateful
+
+      agent", mentions "Agents SDK", needs "real-time AI", "WebSocket AI", or
+      asks
+
+      about agent "state management", "scheduled tasks", or "tool calling".
+
+      Biases towards retrieval from Cloudflare docs over pre-trained knowledge.
+  - id: building-mcp-server-on-cloudflare
+    kind: skill
+    path: plugins/cloudflare/skills/building-mcp-server-on-cloudflare
+    description: |
+      Builds remote MCP (Model Context Protocol) servers on Cloudflare Workers
+      with tools, OAuth authentication, and production deployment. Generates
+      server code, configures auth providers, and deploys to Workers.
+
+      Use when: user wants to "build MCP server", "create MCP tools", "remote
+      MCP", "deploy MCP", add "OAuth to MCP", or mentions Model Context Protocol
+      on Cloudflare. Also triggers on "MCP authentication" or "MCP deployment".
+      Biases towards retrieval from Cloudflare docs over pre-trained knowledge.
+  - id: cloudflare
+    kind: skill
+    path: plugins/cloudflare/skills/cloudflare
+    description: Comprehensive Cloudflare platform skill covering Workers, Pages,
+      storage (KV, D1, R2), AI (Workers AI, Vectorize, Agents SDK), networking
+      (Tunnel, Spectrum), security (WAF, DDoS), and infrastructure-as-code
+      (Terraform, Pulumi). Use for any Cloudflare development task. Biases
+      towards retrieval from Cloudflare docs over pre-trained knowledge.
+  - id: durable-objects
+    kind: skill
+    path: plugins/cloudflare/skills/durable-objects
+    description: Create and review Cloudflare Durable Objects. Use when building
+      stateful coordination (chat rooms, multiplayer games, booking systems),
+      implementing RPC methods, SQLite storage, alarms, WebSockets, or reviewing
+      DO code for best practices. Covers Workers integration, wrangler config,
+      and testing with Vitest. Biases towards retrieval from Cloudflare docs
+      over pre-trained knowledge.
+  - id: sandbox-sdk
+    kind: skill
+    path: plugins/cloudflare/skills/sandbox-sdk
+    description: Build sandboxed applications for secure code execution. Load when
+      building AI code execution, code interpreters, CI/CD systems, interactive
+      dev environments, or executing untrusted code. Covers Sandbox SDK
+      lifecycle, commands, files, code interpreter, and preview URLs. Biases
+      towards retrieval from Cloudflare docs over pre-trained knowledge.
+  - id: web-perf
+    kind: skill
+    path: plugins/cloudflare/skills/web-perf
+    description: Analyzes web performance using Chrome DevTools MCP. Measures Core
+      Web Vitals (FCP, LCP, TBT, CLS, Speed Index), identifies render-blocking
+      resources, network dependency chains, layout shifts, caching issues, and
+      accessibility gaps. Use when asked to audit, profile, debug, or optimize
+      page load performance, Lighthouse scores, or site speed. Biases towards
+      retrieval from current documentation over pre-trained knowledge.
+  - id: workers-best-practices
+    kind: skill
+    path: plugins/cloudflare/skills/workers-best-practices
+    description: Reviews and authors Cloudflare Workers code against production best
+      practices. Load when writing new Workers, reviewing Worker code,
+      configuring wrangler.jsonc, or checking for common Workers anti-patterns
+      (streaming, floating promises, global state, secrets, bindings,
+      observability). Biases towards retrieval from Cloudflare docs over
+      pre-trained knowledge.
+  - id: wrangler
+    kind: skill
+    path: plugins/cloudflare/skills/wrangler
+    description: Cloudflare Workers CLI for deploying, developing, and managing
+      Workers, KV, R2, D1, Vectorize, Hyperdrive, Workers AI, Containers,
+      Queues, Workflows, Pipelines, and Secrets Store. Load before running
+      wrangler commands to ensure correct syntax and best practices. Biases
+      towards retrieval from Cloudflare docs over pre-trained knowledge.
+  - id: coderabbit-review
+    kind: skill
+    path: plugins/coderabbit/skills/coderabbit-review
+    description: Reviews code changes using CodeRabbit AI. Use when user asks for
+      code review, PR feedback, code quality checks, security issues, or
+      requests fix-review cycles.
+  - id: attack-path-analysis
+    kind: skill
+    path: plugins/codex-security/skills/attack-path-analysis
+    description: Use when Codex is already in the attack-path-analysis phase of a
+      security scan or the user explicitly asks to trace a security finding from
+      source to sink and calibrate severity. Do not use as the primary trigger
+      for full PR, commit, branch, patch, or repository scans.
+  - id: deep-security-scan
+    kind: skill
+    path: plugins/codex-security/skills/deep-security-scan
+    description: Use when the user asks for a deep, exhaustive, multi-pass, or
+      variance-reducing repository-wide Codex Security scan. Run repeated
+      independent repository-wide discovery passes with worker-specific threat
+      models, semantically merge candidates, synthesize one canonical validation
+      threat model, then run validation, attack-path analysis, and final
+      reporting once. Repository-wide targets only; do not use for PRs, commits,
+      branch diffs, working-tree diffs, or scoped paths.
+  - id: finding-discovery
+    kind: skill
+    path: plugins/codex-security/skills/finding-discovery
+    description: Use when Codex is already in the finding-discovery phase of a
+      security scan or the user explicitly asks to discover candidate security
+      findings in a repository or code change. Do not use as the primary trigger
+      for full PR, commit, branch, patch, or repository scans.
+  - id: fix-finding
+    kind: skill
+    path: plugins/codex-security/skills/fix-finding
+    description: Use when the user explicitly asks to fix and verify a validated or
+      plausible security finding. Do not use as the primary trigger for full PR,
+      commit, branch, patch, or repository scans.
+  - id: security-diff-scan
+    kind: skill
+    path: plugins/codex-security/skills/security-diff-scan
+    description: Use when the user asks for a security review of a pull request,
+      commit, branch diff, working-tree patch, or other Git-backed change set.
+  - id: security-scan
+    kind: skill
+    path: plugins/codex-security/skills/security-scan
+    description: Use when the user asks for a repository-wide or scoped-path security scan.
+  - id: threat-model
+    kind: skill
+    path: plugins/codex-security/skills/threat-model
+    description: Use when Codex is already in the threat-modeling phase of a
+      security scan, the user explicitly invokes $threat-model, or the user
+      explicitly asks to create, update, or persist a repository threat model.
+      Do not use as the primary trigger for full PR, commit, branch, patch, or
+      repository scans.
+  - id: validation
+    kind: skill
+    path: plugins/codex-security/skills/validation
+    description: Use when Codex is already in the validation phase of a security
+      scan or the user explicitly asks to determine whether one or more
+      candidate security findings are valid. Do not use as the primary trigger
+      for full PR, commit, branch, patch, or repository scans.
+  - id: build-model
+    kind: skill
+    path: plugins/daloopa/skills/build-model
+    description: Build a multi-tab Excel financial model
+  - id: bull-bear
+    kind: skill
+    path: plugins/daloopa/skills/bull-bear
+    description: Bull/bear/base case scenario framework for a given company
+  - id: capital-allocation
+    kind: skill
+    path: plugins/daloopa/skills/capital-allocation
+    description: Deep dive into capital deployment, buybacks, dividends, and
+      shareholder yield
+  - id: comp-sheet
+    kind: skill
+    path: plugins/daloopa/skills/comp-sheet
+    description: Build an industry comp sheet Excel model with deep operational KPIs
+  - id: comps
+    kind: skill
+    path: plugins/daloopa/skills/comps
+    description: Trading comparables analysis with peer multiples and implied valuation
+  - id: dcf
+    kind: skill
+    path: plugins/daloopa/skills/dcf
+    description: Discounted cash flow valuation with sensitivity analysis
+  - id: earnings-flash
+    kind: skill
+    path: plugins/daloopa/skills/earnings-flash
+    description: Rapid first-read earnings flash for a given company
+  - id: earnings-prep
+    kind: skill
+    path: plugins/daloopa/skills/earnings-prep
+    description: Pre-earnings preparation report for the night before a company reports
+  - id: earnings-review
+    kind: skill
+    path: plugins/daloopa/skills/earnings-review
+    description: Full earnings analysis with guidance tracking for a given company
+  - id: guidance-tracker
+    kind: skill
+    path: plugins/daloopa/skills/guidance-tracker
+    description: Track management guidance accuracy over time for a given company
+  - id: ib-deck
+    kind: skill
+    path: plugins/daloopa/skills/ib-deck
+    description: Generate an institutional-grade investment banking pitch deck (HTML)
+  - id: industry
+    kind: skill
+    path: plugins/daloopa/skills/industry
+    description: Cross-company industry comparison across multiple tickers
+  - id: inflection
+    kind: skill
+    path: plugins/daloopa/skills/inflection
+    description: Auto-detect biggest acceleration/deceleration inflections across
+      all metrics
+  - id: initiate
+    kind: skill
+    path: plugins/daloopa/skills/initiate
+    description: Initiate coverage — generate both research note (HTML) and Excel
+      model (.xlsx)
+  - id: precedent-transactions
+    kind: skill
+    path: plugins/daloopa/skills/precedent-transactions
+    description: Precedent M&A transactions analysis with deal multiples and
+      acquisition history
+  - id: research-note
+    kind: skill
+    path: plugins/daloopa/skills/research-note
+    description: Generate a professional Word document research note
+  - id: setup
+    kind: skill
+    path: plugins/daloopa/skills/setup
+    description: Verify Daloopa MCP connection and show available skills
+  - id: supply-chain
+    kind: skill
+    path: plugins/daloopa/skills/supply-chain
+    description: Interactive supply chain dashboard mapping suppliers, customers,
+      and financial interdependencies
+  - id: tearsheet
+    kind: skill
+    path: plugins/daloopa/skills/tearsheet
+    description: Quick one-page company overview and snapshot
+  - id: unit-economics
+    kind: skill
+    path: plugins/daloopa/skills/unit-economics
+    description: Bottoms-up unit economics decomposition for any public company
+  - id: working-capital
+    kind: skill
+    path: plugins/daloopa/skills/working-capital
+    description: Cash conversion cycle, earnings quality, and working capital deep-dive
+  - id: deepnote-data-execution
+    kind: skill
+    path: plugins/deepnote/skills/deepnote-data-execution
+    description: Use when running Deepnote notebooks, inspecting notebook inputs,
+      reviewing integration references and cached table structure, listing run
+      history, or interpreting run status and snapshot outputs through the
+      Deepnote app tools.
+  - id: deepnote-links
+    kind: skill
+    path: plugins/deepnote/skills/deepnote-links
+    description: Use when a task asks for Deepnote URLs, links, project links,
+      notebook links, workspace links, share links, UTM/campaign links, or when
+      a Deepnote response should include clickable links built from Deepnote app
+      project, notebook, or workspace data.
+  - id: deepnote-notebook-editing
+    kind: skill
+    path: plugins/deepnote/skills/deepnote-notebook-editing
+    description: Use when creating Deepnote projects or notebooks, adding or
+      updating blocks or cells, moving existing blocks, scaffolding notebook
+      content, inserting SQL/code/markdown/input blocks, or otherwise editing
+      notebook structure through the Deepnote app tools.
+  - id: deepnote-notebooks
+    kind: skill
+    path: plugins/deepnote/skills/deepnote-notebooks
+    description: Use when reading, reviewing, inspecting, or reasoning about hosted
+      Deepnote notebooks, blocks, inputs, SQL, Python, or notebook outputs
+      through the Deepnote app tools.
+  - id: deepnote
+    kind: skill
+    path: plugins/deepnote/skills/deepnote
+    description: Use when a task mentions Deepnote, the connected Deepnote app,
+      Deepnote OAuth connection, Deepnote docs, projects, workspaces, notebooks,
+      blocks, integrations, or notebook runs.
+  - id: fa-jobs-to-be-done
+    kind: skill
+    path: plugins/dnb-finance-analytics/skills/fa-jobs-to-be-done
+    description: Use when the user asks for D&B Finance Analytics workflows such as
+      customer onboarding, credit decisioning, credit limit validation,
+      portfolio risk management, company reports, ownership trees, folder
+      management, or alerts. Use only the D&B Finance Analytics MCP tools for
+      these workflows.
+  - id: building-native-ui
+    kind: skill
+    path: plugins/expo/skills/building-native-ui
+    description: Complete guide for building beautiful apps with Expo Router. Covers
+      fundamentals, styling, components, navigation, animations, patterns, and
+      native tabs.
+  - id: codex-expo-run-actions
+    kind: skill
+    path: plugins/expo/skills/codex-expo-run-actions
+    description: Wire Expo projects into the Codex app with project-local run
+      scripts and .codex/environments/environment.toml actions. Use when the
+      user wants the Codex app Run button, build/run actions, action buttons, or
+      a stable Expo start/run workflow from Codex.
+  - id: expo-api-routes
+    kind: skill
+    path: plugins/expo/skills/expo-api-routes
+    description: Guidelines for creating API routes in Expo Router with EAS Hosting
+  - id: expo-cicd-workflows
+    kind: skill
+    path: plugins/expo/skills/expo-cicd-workflows
+    description: Helps understand and write EAS workflow YAML files for Expo
+      projects. Use this skill when the user asks about CI/CD or workflows in an
+      Expo or EAS context, mentions .eas/workflows/, or wants help with EAS
+      build pipelines or deployment automation.
+  - id: expo-deployment
+    kind: skill
+    path: plugins/expo/skills/expo-deployment
+    description: Deploying Expo apps to iOS App Store, Android Play Store, web
+      hosting, and API routes
+  - id: expo-dev-client
+    kind: skill
+    path: plugins/expo/skills/expo-dev-client
+    description: Build and distribute Expo development clients locally or via TestFlight
+  - id: expo-module
+    kind: skill
+    path: plugins/expo/skills/expo-module
+    description: Guide for writing Expo native modules and views using the Expo
+      Modules API (Swift, Kotlin, TypeScript). Covers module definition DSL,
+      native views, shared objects, config plugins, lifecycle hooks,
+      autolinking, and type system. Use when building or modifying native
+      modules for Expo.
+  - id: expo-tailwind-setup
+    kind: skill
+    path: plugins/expo/skills/expo-tailwind-setup
+    description: Set up Tailwind CSS v4 in Expo with react-native-css and NativeWind
+      v5 for universal styling
+  - id: expo-ui-jetpack-compose
+    kind: skill
+    path: plugins/expo/skills/expo-ui-jetpack-compose
+    description: "`@expo/ui/jetpack-compose` package lets you use Jetpack Compose
+      Views and modifiers in your app."
+  - id: expo-ui-swift-ui
+    kind: skill
+    path: plugins/expo/skills/expo-ui-swift-ui
+    description: "`@expo/ui/swift-ui` package lets you use SwiftUI Views and
+      modifiers in your app."
+  - id: native-data-fetching
+    kind: skill
+    path: plugins/expo/skills/native-data-fetching
+    description: Use when implementing or debugging ANY network request, API call,
+      or data fetching. Covers fetch API, React Query, SWR, error handling,
+      caching, offline support, and Expo Router data loaders (`useLoaderData`).
+  - id: upgrading-expo
+    kind: skill
+    path: plugins/expo/skills/upgrading-expo
+    description: Guidelines for upgrading Expo SDK versions and fixing dependency issues
+  - id: use-dom
+    kind: skill
+    path: plugins/expo/skills/use-dom
+    description: Use Expo DOM components to run web code in a webview on native and
+      as-is on web. Migrate web code to native incrementally.
+  - id: figma-code-connect
+    kind: skill
+    path: plugins/figma/skills/figma-code-connect
+    description: Creates and maintains Figma Code Connect template files that map
+      Figma components to code snippets. Use when the user mentions Code
+      Connect, Figma component mapping, design-to-code translation, or asks to
+      create/update .figma.ts or .figma.js files.
+  - id: figma-create-new-file
+    kind: skill
+    path: plugins/figma/skills/figma-create-new-file
+    description: "**MANDATORY prerequisite** — you MUST invoke this skill BEFORE
+      every `create_new_file` tool call. NEVER call `create_new_file` directly
+      without loading this skill first. Trigger whenever the user wants a new
+      blank Figma file — a new design, FigJam, or Slides file — or when you need
+      a fresh file before calling `use_figma`. Usage — /figma-create-new-file
+      [editorType] [fileName] (e.g. /figma-create-new-file figjam My Whiteboard,
+      /figma-create-new-file slides Q3 Review)"
+  - id: figma-generate-design
+    kind: skill
+    path: plugins/figma/skills/figma-generate-design
+    description: "Use this skill alongside figma-use when the task involves
+      translating an application page, view, or multi-section layout into Figma.
+      Triggers: 'write to Figma', 'create in Figma from code', 'push page to
+      Figma', 'take this app/page and build it in Figma', 'create a screen',
+      'build a landing page in Figma', 'update the Figma screen to match code',
+      'convert this modal/dialog/drawer/panel to Figma'. This is the preferred
+      workflow skill whenever the user wants to build or update a full page,
+      modal, dialog, drawer, sidebar, panel, or any composed multi-section view
+      in Figma from code or a description. Discovers design system components,
+      variables, and styles from Code Connect files, existing screens, and
+      library search, then imports them and assembles views incrementally
+      section-by-section using design system tokens instead of hardcoded
+      values."
+  - id: figma-generate-diagram
+    kind: skill
+    path: plugins/figma/skills/figma-generate-diagram
+    description: MANDATORY prerequisite — load this skill BEFORE every
+      `generate_diagram` tool call. NEVER call `generate_diagram` directly
+      without loading this skill first. Trigger whenever the user asks to
+      create, generate, draw, render, sketch, or build a diagram — flowchart,
+      architecture diagram, sequence diagram, ERD or entity-relationship
+      diagram, state diagram or state machine, gantt chart, or timeline. Also
+      trigger when the user mentions Mermaid syntax or wants a system
+      architecture, decision tree, dependency graph, API call flow, auth
+      handshake, schema, or pipeline visualized in FigJam. Routes to
+      type-specific guidance, sets universal Mermaid constraints, and tells you
+      when to use a different diagram type or skip the tool entirely (mindmaps,
+      pie charts, class diagrams, etc.).
+  - id: figma-generate-library
+    kind: skill
+    path: plugins/figma/skills/figma-generate-library
+    description: Build or update a professional-grade design system in Figma from a
+      codebase. Use when the user wants to create variables/tokens, build
+      component libraries, create individual components with proper variant sets
+      and variable bindings, set up theming (light/dark modes), document
+      foundations, or reconcile gaps between code and Figma. Also use when the
+      user asks to create or generate any component in Figma — even a single one
+      — since components require proper variable foundations, variant states,
+      and design token bindings to be production-quality. This skill teaches
+      WHAT to build and in WHAT ORDER — it complements the `figma-use` skill
+      which teaches HOW to call the Plugin API. Both skills should be loaded
+      together.
+  - id: figma-use-figjam
+    kind: skill
+    path: plugins/figma/skills/figma-use-figjam
+    description: This skill helps agents use Figma's use_figma MCP tool in the
+      FigJam context. Can be used alongside figma-use which has foundational
+      context for using the use_figma tool.
+  - id: figma-use-slides
+    kind: skill
+    path: plugins/figma/skills/figma-use-slides
+    description: This skill helps agents use Figma's use_figma MCP tool in the
+      Slides context. Can be used alongside figma-use which has foundational
+      context for using the use_figma tool.
+  - id: figma-use
+    kind: skill
+    path: plugins/figma/skills/figma-use
+    description: "**MANDATORY prerequisite** — you MUST invoke this skill BEFORE
+      every `use_figma` tool call. NEVER call `use_figma` directly without
+      loading this skill first. Skipping it causes common, hard-to-debug
+      failures. Trigger whenever the user wants to perform a write action or a
+      unique read action that requires JavaScript execution in the Figma file
+      context — e.g. create/edit/delete nodes, set up variables or tokens, build
+      components and variants, modify auto-layout or fills, bind variables to
+      properties, or inspect file structure programmatically."
+  - id: game-playtest
+    kind: skill
+    path: plugins/game-studio/skills/game-playtest
+    description: Run browser-game playtests and frontend QA. Use when the user asks
+      for smoke tests, screenshot-based verification, browser automation, HUD or
+      overlay review, or structured issue-finding in a browser game.
+  - id: game-studio
+    kind: skill
+    path: plugins/game-studio/skills/game-studio
+    description: Route early browser-game work. Use when the user needs stack
+      selection and workflow planning across design, implementation, assets, and
+      playtesting before moving to a specialist skill.
+  - id: game-ui-frontend
+    kind: skill
+    path: plugins/game-studio/skills/game-ui-frontend
+    description: Design UI surfaces for browser games. Use when the user asks for
+      HUDs, menus, overlays, responsive layouts, or visual direction that must
+      protect the playfield.
+  - id: phaser-2d-game
+    kind: skill
+    path: plugins/game-studio/skills/phaser-2d-game
+    description: Implement 2D browser games with Phaser. Use when the user wants a
+      Phaser, TypeScript, and Vite stack for scenes, gameplay systems, cameras,
+      sprite animation, and DOM-overlay HUD patterns.
+  - id: react-three-fiber-game
+    kind: skill
+    path: plugins/game-studio/skills/react-three-fiber-game
+    description: Build React-hosted 3D browser games with React Three Fiber. Use
+      when the user wants pmndrs-based scene composition, shared React state,
+      and 3D HUD integration inside a React app.
+  - id: sprite-pipeline
+    kind: skill
+    path: plugins/game-studio/skills/sprite-pipeline
+    description: Generate and normalize 2D sprite animations. Use when the user asks
+      for full-strip generation from approved source frames, consistent anchor
+      and scale normalization, or preview assets for browser-game animation.
+  - id: three-webgl-game
+    kind: skill
+    path: plugins/game-studio/skills/three-webgl-game
+    description: Implement browser-game runtimes with plain Three.js. Use when the
+      user wants imperative scene control in TypeScript or Vite with GLB assets,
+      loaders, physics, and low-level WebGL debugging.
+  - id: web-3d-asset-pipeline
+    kind: skill
+    path: plugins/game-studio/skills/web-3d-asset-pipeline
+    description: Prepare and optimize browser-game 3D assets. Use when the user asks
+      for GLB or glTF shipping work, including Blender cleanup and export,
+      collision or LOD setup, compression, texture packaging, and runtime
+      validation.
+  - id: web-game-foundations
+    kind: skill
+    path: plugins/game-studio/skills/web-game-foundations
+    description: Set browser-game architecture before implementation. Use when the
+      user needs engine choice, simulation and render boundaries, input model,
+      asset organization, or save/debug/performance strategy.
+  - id: gh-address-comments
+    kind: skill
+    path: plugins/github/skills/gh-address-comments
+    description: Address actionable GitHub pull request review feedback. Use when
+      the user wants to inspect unresolved review threads, requested changes, or
+      inline review comments on a PR, then implement selected fixes. Use the
+      GitHub app for PR metadata and flat comment reads, and use the bundled
+      GraphQL script via `gh` whenever thread-level state, resolution status, or
+      inline review context matters.
+  - id: gh-fix-ci
+    kind: skill
+    path: plugins/github/skills/gh-fix-ci
+    description: Use when a user asks to debug or fix failing GitHub PR checks that
+      run in GitHub Actions. Use the GitHub app from this plugin for PR metadata
+      and patch context, and use `gh` for Actions check and log inspection
+      before implementing any approved fix.
+  - id: github
+    kind: skill
+    path: plugins/github/skills/github
+    description: Triage and orient GitHub repository, pull request, and issue work
+      through the connected GitHub app. Use when the user asks for general
+      GitHub help, wants PR or issue summaries, or needs repository context
+      before choosing a more specific GitHub workflow.
+  - id: yeet
+    kind: skill
+    path: plugins/github/skills/yeet
+    description: Publish local changes to GitHub by confirming scope, committing
+      intentionally, pushing the branch, and opening a draft PR through the
+      GitHub app from this plugin, with `gh` used only as a fallback where
+      connector coverage is insufficient.
+  - id: gmail-inbox-triage
+    kind: skill
+    path: plugins/gmail/skills/gmail-inbox-triage
+    description: Triage a Gmail inbox into actionable buckets such as urgent, needs
+      reply soon, waiting, and FYI using connected Gmail data. Use when the user
+      asks to triage the inbox, rank what needs attention, find what still needs
+      a reply, or separate important mail from noise.
+  - id: gmail
+    kind: skill
+    path: plugins/gmail/skills/gmail
+    description: Manage Gmail inbox triage, mailbox search, thread summaries, action
+      extraction, reply drafting, and email forwarding through connected Gmail
+      data. Use when the user wants to inspect a mailbox or thread, search email
+      with Gmail query syntax, summarize messages, extract decisions and
+      follow-ups, prepare replies or forwarded messages, or organize messages
+      with explicit confirmation before send, archive, delete, or label actions.
+  - id: google-calendar-daily-brief
+    kind: skill
+    path: plugins/google-calendar/skills/google-calendar-daily-brief
+    description: Build polished one-day Google Calendar briefs. Use when the user
+      asks for today, tomorrow, or a specific date summary with an agenda,
+      conflict flags, free windows, remaining-meeting readouts, or a calendar
+      brief, and the Google Calendar connector is available.
+  - id: google-calendar-free-up-time
+    kind: skill
+    path: plugins/google-calendar/skills/google-calendar-free-up-time
+    description: Find ways to open up meaningful free time in a connected Google
+      Calendar. Use when the user wants to clear up their day, make room for
+      focus time, create a longer uninterrupted block, or see the smallest set
+      of calendar changes that would give time back.
+  - id: google-calendar-group-scheduler
+    kind: skill
+    path: plugins/google-calendar/skills/google-calendar-group-scheduler
+    description: Find and rank good meeting times for multiple people using
+      connected Google Calendar data. Use when the user wants to schedule a
+      group meeting, compare candidate slots across several attendees, find the
+      best compromise time, or add a room check after narrowing the
+      attendee-compatible options.
+  - id: google-calendar-meeting-prep
+    kind: skill
+    path: plugins/google-calendar/skills/google-calendar-meeting-prep
+    description: Build a practical meeting prep brief from a connected Google
+      Calendar event and its nearby context. Use when the user wants to prepare
+      for an upcoming meeting, understand what to read beforehand, pull in
+      linked notes or docs, or get a concise brief on what the meeting appears
+      to require.
+  - id: google-calendar
+    kind: skill
+    path: plugins/google-calendar/skills/google-calendar
+    description: Manage scheduling and conflicts in connected Google Calendar data.
+      Use when the user wants to inspect calendars, compare availability, review
+      conflicts, find a meeting room, review event notes or attachments, add or
+      adjust reminders, place temporary holds, or draft exact create, update,
+      reschedule, or cancel changes with timezone-aware details.
+  - id: google-docs
+    kind: skill
+    path: plugins/google-drive/skills/google-docs
+    description: Connector-first Google Docs creation and editing in local Codex
+      plugin sessions, with direct native create and batchUpdate workflows for
+      simple docs, DOCX-first import for polished deliverables, target-document
+      checks, smart chip and building-block reconstruction, connector-readback
+      verification, and reference routing for formatting, citations, tables, and
+      write-safety.
+  - id: google-drive-comments
+    kind: skill
+    path: plugins/google-drive/skills/google-drive-comments
+    description: Write, reply to, and resolve Google Drive comments on Docs, Sheets,
+      Slides, and Drive files with evidence-backed location context. Use when
+      the user asks to leave comments, review a file with comments, respond to
+      comment threads, or resolve Drive comments.
+  - id: google-drive
+    kind: skill
+    path: plugins/google-drive/skills/google-drive
+    description: Use connected Google Drive as the single entrypoint for Drive,
+      Docs, Sheets, and Slides work. Use when the user wants to find, fetch,
+      organize, share, export, copy, or delete Drive files, or summarize and
+      edit Google Docs, Google Sheets, and Google Slides through one unified
+      Google Drive plugin.
+  - id: google-sheets
+    kind: skill
+    path: plugins/google-drive/skills/google-sheets
+    description: Analyze and edit connected Google Sheets with range precision. Use
+      when the user wants to create Google Sheets, find a spreadsheet, inspect
+      tabs or ranges, search rows, plan formulas, create or repair charts, clean
+      or restructure tables, write concise summaries, or make explicit
+      cell-range updates.
+  - id: google-slides
+    kind: skill
+    path: plugins/google-drive/skills/google-slides
+    description: Google Slides work for finding, reading, summarizing, creating,
+      importing, template following, visual cleanup, source-deck adaptation,
+      structural repair, and content edits in native Slides decks.
+  - id: hex
+    kind: skill
+    path: plugins/hex/skills/hex
+    description: Search Hex projects and ask Hex Threads questions. Use when the
+      user explicitly references Hex, Hex projects, Hex dashboards, Hex data
+      apps, Hex Threads, or asks to search an existing Hex workspace asset.
+  - id: heygen-avatar
+    kind: skill
+    path: plugins/heygen/skills/heygen-avatar
+    description: >
+      Create a persistent HeyGen avatar — a reusable face + voice identity for
+      the agent,
+
+      the user, or any named character — powered by HeyGen Avatar V technology.
+
+      Prompt-based creation by default (description → HeyGen builds it); photo
+      upload is
+
+      optional for real-person digital twins.
+
+      Use when: (1) giving the agent a face + voice so it can present videos
+
+      ("bring yourself to life", "create your avatar", "give yourself an
+      avatar",
+
+      "design a presenter", "set up an avatar", "let's make an avatar"),
+
+      (2) the user wants to appear in videos as themselves ("create my avatar",
+
+      "I want my face in a video", "digital twin of me", "build me an avatar"),
+
+      (3) building a named character presenter ("create an avatar called Cleo",
+
+      "design a character named X"), (4) establishing HeyGen identity before
+      making videos —
+
+      the correct FIRST step when no avatar exists yet.
+
+      Chain signal: when the user says both an identity/avatar action AND a
+      video action in the same
+
+      request ("create an avatar AND make a video", "set up identity THEN create
+      a video",
+
+      "design a presenter AND immediately record"), run heygen-avatar first,
+      then heygen-video.
+
+      Returns avatar_id + voice_id — pass directly to heygen-video to create
+      HeyGen videos.
+
+      NOT for: generating videos (use heygen-video), translating videos, or
+      TTS-only tasks.
+  - id: heygen-video
+    kind: skill
+    path: plugins/heygen/skills/heygen-video
+    description: >
+      Generate HeyGen presenter videos via the v3 Video Agent pipeline — handles
+      Frame Check
+
+      (aspect ratio correction), prompt engineering, avatar resolution, and
+      voice selection.
+
+      Required for any HeyGen video generation. Replaces deprecated endpoints
+      with v3.
+
+      Use when: (1) generating any HeyGen video (via API or otherwise),
+
+      (2) sending a personalized video message (outreach, update, announcement,
+      pitch, knowledge),
+
+      (3) creating a HeyGen presenter-led explainer, tutorial, or product demo
+      with a human face,
+
+      (4) "make a video of me saying...", "send a video to my leads", "record an
+      update for my team",
+
+      "create a video pitch", "make a loom-style message", "I want to appear in
+      this video",
+
+      "generate a HeyGen video", "make a talking head video".
+
+      Accepts avatar_id from heygen-avatar for identity-first HeyGen videos, or
+      uses a stock presenter.
+
+      Returns video share URL + HeyGen session URL for iteration.
+
+      Chain signal: when the user wants to create/design an avatar AND make a
+      video in the same request,
+
+      run heygen-avatar first, then return here. Conjunctions to watch: "and
+      then", "and immediately",
+
+      "first...then", "X and make a video", "design [presenter] and record" =
+      always CHAIN.
+
+      If the user provides a photo AND wants a video, route to heygen-avatar
+      first.
+
+      NOT for: avatar creation or identity setup (use heygen-avatar first),
+      cinematic footage
+
+      or b-roll without a presenter, translating videos, TTS-only, or streaming
+      avatars.
+  - id: hubspot-crm-data-hygiene
+    kind: skill
+    path: plugins/hubspot/skills/hubspot-crm-data-hygiene
+    description: Use when auditing HubSpot data quality for missing fields, stale
+      records, duplicates, associations, owners, or cleanup tasks.
+  - id: hubspot-customer-prep
+    kind: skill
+    path: plugins/hubspot/skills/hubspot-customer-prep
+    description: Use when preparing HubSpot customer briefs for meetings, renewals,
+      QBRs, sales calls, escalations, handoffs, or follow-ups.
+  - id: hubspot-pipeline-health
+    kind: skill
+    path: plugins/hubspot/skills/hubspot-pipeline-health
+    description: Use when reviewing HubSpot pipeline health, forecasts, stale deals,
+      slipping close dates, or open deal risks.
+  - id: hubspot
+    kind: skill
+    path: plugins/hubspot/skills/hubspot
+    description: Use when working with HubSpot CRM records to search, summarize,
+      create, update, associate, or analyze objects and properties.
+  - id: cli-2
+    kind: skill
+    path: plugins/hugging-face/skills/cli
+    description: Hugging Face Hub CLI (`hf`) for downloading, uploading, and
+      managing repositories, models, datasets, and Spaces on the Hugging Face
+      Hub. Replaces now deprecated `huggingface-cli` command.
+  - id: community-evals
+    kind: skill
+    path: plugins/hugging-face/skills/community-evals
+    description: Run evaluations for Hugging Face Hub models using inspect-ai and
+      lighteval on local hardware. Use for backend selection, local GPU evals,
+      and choosing between vLLM / Transformers / accelerate. Not for HF Jobs
+      orchestration, model-card PRs, .eval_results publication, or
+      community-evals automation.
+  - id: datasets
+    kind: skill
+    path: plugins/hugging-face/skills/datasets
+    description: Use this skill for Hugging Face Dataset Viewer API workflows that
+      fetch subset/split metadata, paginate rows, search text, apply filters,
+      download parquet URLs, and read size or statistics.
+  - id: gradio
+    kind: skill
+    path: plugins/hugging-face/skills/gradio
+    description: Build Gradio web UIs and demos in Python. Use when creating or
+      editing Gradio apps, components, event listeners, layouts, or chatbots.
+  - id: jobs
+    kind: skill
+    path: plugins/hugging-face/skills/jobs
+    description: This skill should be used when users want to run any workload on
+      Hugging Face Jobs infrastructure. Covers UV scripts, Docker-based jobs,
+      hardware selection, cost estimation, authentication with tokens, secrets
+      management, timeout configuration, and result persistence. Designed for
+      general-purpose compute workloads including data processing, inference,
+      experiments, batch jobs, and any Python-based tasks. Should be invoked for
+      tasks involving cloud compute, GPU workloads, or when users mention
+      running jobs on Hugging Face infrastructure without local setup.
+  - id: llm-trainer
+    kind: skill
+    path: plugins/hugging-face/skills/llm-trainer
+    description: This skill should be used when users want to train or fine-tune
+      language models using TRL (Transformer Reinforcement Learning) on Hugging
+      Face Jobs infrastructure. Covers SFT, DPO, GRPO and reward modeling
+      training methods, plus GGUF conversion for local deployment. Includes
+      guidance on the TRL Jobs package, UV scripts with PEP 723 format, dataset
+      preparation and validation, hardware selection, cost estimation, Trackio
+      monitoring, Hub authentication, and model persistence. Should be invoked
+      for tasks involving cloud GPU training, GGUF conversion, or when users
+      mention training on Hugging Face Jobs without local GPU setup.
+  - id: paper-publisher
+    kind: skill
+    path: plugins/hugging-face/skills/paper-publisher
+    description: Publish and manage research papers on Hugging Face Hub. Supports
+      creating paper pages, linking papers to models/datasets, claiming
+      authorship, and generating professional markdown-based research articles.
+  - id: papers
+    kind: skill
+    path: plugins/hugging-face/skills/papers
+    description: Look up and read Hugging Face paper pages in markdown, and use the
+      papers API for structured metadata such as authors, linked
+      models/datasets/spaces, Github repo and project page. Use when the user
+      shares a Hugging Face paper page URL, an arXiv URL or ID, or asks to
+      summarize, explain, or analyze an AI research paper.
+  - id: trackio
+    kind: skill
+    path: plugins/hugging-face/skills/trackio
+    description: Track and visualize ML training experiments with Trackio. Use when
+      logging metrics during training (Python API), firing alerts for training
+      diagnostics, or retrieving/analyzing logged metrics (CLI). Supports
+      real-time dashboard visualization, alerts with webhooks, HF Space syncing,
+      and JSON output for automation.
+  - id: transformers.js
+    kind: skill
+    path: plugins/hugging-face/skills/transformers.js
+    description: Use Transformers.js to run state-of-the-art machine learning models
+      directly in JavaScript/TypeScript. Supports NLP (text classification,
+      translation, summarization), computer vision (image classification, object
+      detection), audio (speech recognition, audio classification), and
+      multimodal tasks. Works in Node.js and browsers (with WebGPU/WASM) using
+      pre-trained models from Hugging Face Hub.
+  - id: vision-trainer
+    kind: skill
+    path: plugins/hugging-face/skills/vision-trainer
+    description: Trains and fine-tunes vision models for object detection (D-FINE,
+      RT-DETR v2, DETR, YOLOS), image classification (timm models — MobileNetV3,
+      MobileViT, ResNet, ViT/DINOv3 — plus any Transformers classifier), and
+      SAM/SAM2 segmentation using Hugging Face Transformers on Hugging Face Jobs
+      cloud GPUs. Covers COCO-format dataset preparation, Albumentations
+      augmentation, mAP/mAR evaluation, accuracy metrics, SAM segmentation with
+      bbox/point prompts, DiceCE loss, hardware selection, cost estimation,
+      Trackio monitoring, and Hub persistence. Use when users mention training
+      object detection, image classification, SAM, SAM2, segmentation, image
+      matting, DETR, D-FINE, RT-DETR, ViT, timm, MobileNet, ResNet, bounding box
+      models, or fine-tuning vision models on Hugging Face Jobs.
+  - id: gsap
+    kind: skill
+    path: plugins/hyperframes/skills/gsap
+    description: GSAP animation reference for HyperFrames. Covers gsap.to(), from(),
+      fromTo(), easing, stagger, defaults, timelines (gsap.timeline(), position
+      parameter, labels, nesting, playback), and performance (transforms,
+      will-change, quickTo). Use when writing GSAP animations in HyperFrames
+      compositions.
+  - id: hyperframes-cli
+    kind: skill
+    path: plugins/hyperframes/skills/hyperframes-cli
+    description: HyperFrames CLI tool — hyperframes init, lint, inspect, preview,
+      render, transcribe, tts, doctor, browser, info, upgrade, compositions,
+      docs, benchmark. Use when scaffolding a project, linting, validating,
+      inspecting visual layout in compositions, previewing in the studio,
+      rendering to video, transcribing audio, generating TTS, or troubleshooting
+      the HyperFrames environment.
+  - id: hyperframes-registry
+    kind: skill
+    path: plugins/hyperframes/skills/hyperframes-registry
+    description: Install and wire registry blocks and components into HyperFrames
+      compositions. Use when running hyperframes add, installing a block or
+      component, wiring an installed item into index.html, or working with
+      hyperframes.json. Covers the add command, install locations, block
+      sub-composition wiring, component snippet merging, and registry discovery.
+  - id: hyperframes
+    kind: skill
+    path: plugins/hyperframes/skills/hyperframes
+    description: Create video compositions, animations, title cards, overlays,
+      captions, voiceovers, audio-reactive visuals, and scene transitions in
+      HyperFrames HTML. Use when asked to build any HTML-based video content,
+      add captions or subtitles synced to audio, generate text-to-speech
+      narration, create audio-reactive animation (beat sync, glow, pulse driven
+      by music), add animated text highlighting (marker sweeps, hand-drawn
+      circles, burst lines, scribble, sketchout), or add transitions between
+      scenes (crossfades, wipes, reveals, shader transitions). Covers
+      composition authoring, timing, media, and the full video production
+      workflow. For CLI commands (init, lint, preview, render, transcribe, tts)
+      see the hyperframes-cli skill.
+  - id: website-to-hyperframes
+    kind: skill
+    path: plugins/hyperframes/skills/website-to-hyperframes
+    description: >
+      Capture a website and create a HyperFrames video from it. Use when: (1) a
+      user provides a URL and wants a video, (2) someone says "capture this
+      site", "turn this into a video", "make a promo from my site", (3) the user
+      wants a social ad, product tour, or any video based on an existing
+      website, (4) the user shares a link and asks for any kind of video
+      content. Even if the user just pastes a URL — this is the skill to use.
+  - id: alphafold-skill
+    kind: skill
+    path: plugins/life-science-research/skills/alphafold-skill
+    description: Submit compact AlphaFold Protein Structure Database API requests
+      for prediction, UniProt summary, sequence summary, and annotation lookups.
+      Use when a user wants AlphaFold metadata or concise structure summaries
+  - id: bgee-skill
+    kind: skill
+    path: plugins/life-science-research/skills/bgee-skill
+    description: Submit compact Bgee SPARQL requests for healthy wild-type
+      expression metadata and ontology-aware lookup patterns. Use when a user
+      wants concise Bgee summaries; save raw results only on request.
+  - id: bindingdb-skill
+    kind: skill
+    path: plugins/life-science-research/skills/bindingdb-skill
+    description: Submit compact BindingDB REST API requests for ligand-target
+      binding lookups by PDB, UniProt, or similarity search. Use when a user
+      wants concise BindingDB summaries; save raw payloads only on request.
+  - id: biobankjapan-phewas-skill
+    kind: skill
+    path: plugins/life-science-research/skills/biobankjapan-phewas-skill
+    description: Fetch compact BioBank Japan PheWAS summaries for single variants by
+      accepting rsID, GRCh38, or GRCh37 input and resolving to the required
+      GRCh37 query. Use when a user wants concise BBJ association results for
+      one variant
+  - id: biorxiv-skill
+    kind: skill
+    path: plugins/life-science-research/skills/biorxiv-skill
+    description: Submit compact bioRxiv and medRxiv API requests for details,
+      publication-linkage, and DOI lookups. Use when a user wants concise
+      preprint metadata summaries
+  - id: biostudies-arrayexpress-skill
+    kind: skill
+    path: plugins/life-science-research/skills/biostudies-arrayexpress-skill
+    description: Submit compact BioStudies and ArrayExpress API requests for
+      free-text search and accession-based study retrieval. Use when a user
+      wants concise BioStudies summaries
+  - id: cbioportal-skill
+    kind: skill
+    path: plugins/life-science-research/skills/cbioportal-skill
+    description: Submit compact cBioPortal API requests for studies, molecular
+      profiles, mutations, clinical data, and samples. Use when a user wants
+      concise cBioPortal summaries
+  - id: cellxgene-skill
+    kind: skill
+    path: plugins/life-science-research/skills/cellxgene-skill
+    description: Submit compact CELLxGENE Discover API requests for public
+      collection and dataset metadata. Use when a user wants concise single-cell
+      collection summaries
+  - id: chebi-skill
+    kind: skill
+    path: plugins/life-science-research/skills/chebi-skill
+    description: Submit compact ChEBI 2.0 API requests for chemical search, compound
+      lookup, ontology traversal, and structure metadata. Use when a user wants
+      concise ChEBI summaries
+  - id: chembl-skill
+    kind: skill
+    path: plugins/life-science-research/skills/chembl-skill
+    description: Submit compact ChEMBL API requests for activity, molecule, target,
+      mechanism, and text-search endpoints. Use when a user wants concise ChEMBL
+      summaries
+  - id: civic-skill
+    kind: skill
+    path: plugins/life-science-research/skills/civic-skill
+    description: Submit compact CIViC GraphQL requests for cancer variant
+      interpretation schema inspection and targeted evidence retrieval. Use when
+      a user wants concise CIViC summaries
+  - id: clinicaltrials-skill
+    kind: skill
+    path: plugins/life-science-research/skills/clinicaltrials-skill
+    description: Submit compact ClinicalTrials.gov API v2 requests for study search,
+      metadata, enums, search areas, and field statistics. Use when a user wants
+      concise ClinicalTrials.gov summaries
+  - id: clinvar-variation-skill
+    kind: skill
+    path: plugins/life-science-research/skills/clinvar-variation-skill
+    description: Submit compact ClinVar Clinical Tables and NCBI Variation requests
+      for search, VCV, RCV, SCV, and RefSNP lookups. Use when a user wants
+      variant-level summaries or identifier mapping
+  - id: efo-ontology-skill
+    kind: skill
+    path: plugins/life-science-research/skills/efo-ontology-skill
+    description: Submit compact EFO OLS4 requests for search, term lookup, children,
+      and descendants. Use when a user wants concise EFO resolution or
+      ontology-expansion summaries
+  - id: encode-skill
+    kind: skill
+    path: plugins/life-science-research/skills/encode-skill
+    description: Submit compact ENCODE REST API requests for object lookups,
+      portal-style search, and metadata retrieval. Use when a user wants concise
+      ENCODE summaries
+  - id: ensembl-skill
+    kind: skill
+    path: plugins/life-science-research/skills/ensembl-skill
+    description: Submit compact Ensembl REST API requests for lookup, overlap,
+      cross-reference, and variation endpoints. Use when a user wants concise
+      Ensembl summaries
+  - id: epigraphdb-skill
+    kind: skill
+    path: plugins/life-science-research/skills/epigraphdb-skill
+    description: Submit compact EpiGraphDB API requests for ontology, literature,
+      MR, gene-drug, and support-path evidence. Use when a user wants concise
+      EpiGraphDB summaries
+  - id: eqtl-catalogue-skill
+    kind: skill
+    path: plugins/life-science-research/skills/eqtl-catalogue-skill
+    description: Submit compact eQTL Catalogue API requests for association
+      retrieval and documented metadata endpoints. Use when a user wants concise
+      public eQTL Catalogue summaries
+  - id: eva-skill
+    kind: skill
+    path: plugins/life-science-research/skills/eva-skill
+    description: Submit compact EVA REST requests for species metadata and archived
+      variant lookups. Use when a user wants concise European Variation Archive
+      summaries
+  - id: finngen-phewas-skill
+    kind: skill
+    path: plugins/life-science-research/skills/finngen-phewas-skill
+    description: Fetch compact FinnGen PheWAS summaries for single variants by
+      accepting rsID, GRCh37, or GRCh38 input and resolving to the required
+      GRCh38 query. Use when a user wants concise FinnGen association results
+      for one variant
+  - id: genebass-gene-burden-skill
+    kind: skill
+    path: plugins/life-science-research/skills/genebass-gene-burden-skill
+    description: Submit compact Genebass gene burden requests for one Ensembl gene
+      ID and one burden set. Use when a user wants concise Genebass PheWAS
+      summaries
+  - id: gnomad-graphql-skill
+    kind: skill
+    path: plugins/life-science-research/skills/gnomad-graphql-skill
+    description: Submit compact gnomAD GraphQL requests for frequency, gene
+      constraint, and variant context queries. Use when a user wants concise
+      gnomAD summaries
+  - id: gtex-eqtl-skill
+    kind: skill
+    path: plugins/life-science-research/skills/gtex-eqtl-skill
+    description: Fetch GTEx single-tissue eQTL associations from one variant input
+      by accepting rsID, GRCh37, or GRCh38 input and resolving to the required
+      GRCh38 query for the GTEx v2 API. Use when a user wants eQTL associations
+      returned as JSON.
+  - id: gwas-catalog-skill
+    kind: skill
+    path: plugins/life-science-research/skills/gwas-catalog-skill
+    description: Submit compact GWAS Catalog REST API v2 requests for studies,
+      associations, SNPs, EFO traits, genes, publications, loci, and metadata.
+      Use when a user wants concise GWAS Catalog summaries
+  - id: hmdb-skill
+    kind: skill
+    path: plugins/life-science-research/skills/hmdb-skill
+    description: Submit compact HMDB search requests for metabolites, proteins,
+      diseases, and pathways. Use when a user wants concise HMDB summaries
+  - id: human-protein-atlas-skill
+    kind: skill
+    path: plugins/life-science-research/skills/human-protein-atlas-skill
+    description: Submit compact Human Protein Atlas requests for gene JSON, search
+      downloads, and page-level tissue or cell-line lookups. Use when a user
+      wants concise Human Protein Atlas summaries; save raw JSON or HTML only on
+      request.
+  - id: ipd-skill
+    kind: skill
+    path: plugins/life-science-research/skills/ipd-skill
+    description: Submit compact IPD REST requests for HLA allele and cell-level
+      metadata using the public IPD query API. Use when a user wants concise IPD
+      summaries; save raw JSON or text only on request.
+  - id: locus-to-gene-mapper-skill
+    kind: skill
+    path: plugins/life-science-research/skills/locus-to-gene-mapper-skill
+    description: Map GWAS loci to ranked candidate genes using a deterministic
+      multi-skill chain (EFO -> GWAS -> coordinates -> Open Targets L2G/coloc ->
+      eQTL -> burden/coding context), with reproducible tables and optional
+      figures. Use when a user provides a trait/EFO term and/or lead variants
+      and needs locus-to-gene prioritization for downstream biology decisions.
+  - id: metabolights-skill
+    kind: skill
+    path: plugins/life-science-research/skills/metabolights-skill
+    description: Submit compact MetaboLights requests for study discovery and
+      study-level metabolomics metadata. Use when a user wants concise
+      MetaboLights summaries
+  - id: mgnify-skill
+    kind: skill
+    path: plugins/life-science-research/skills/mgnify-skill
+    description: Submit compact MGnify API requests for microbiome studies, samples,
+      and biome metadata. Use when a user wants concise MGnify summaries
+  - id: ncbi-blast-skill
+    kind: skill
+    path: plugins/life-science-research/skills/ncbi-blast-skill
+    description: Submit, poll, and summarize NCBI BLAST Common URL API jobs
+      (Blast.cgi) for nucleotide or protein sequences. Use when a user wants RID
+      status, BLAST results, or compact top-hit summaries; fetch raw Text/JSON2
+      only on request.
+  - id: ncbi-clinicaltables-skill
+    kind: skill
+    path: plugins/life-science-research/skills/ncbi-clinicaltables-skill
+    description: Submit compact Clinical Tables NCBI Gene requests for human gene
+      lookup, pagination, and field selection. Use when a user wants concise
+      autocomplete-style human gene search results
+  - id: ncbi-datasets-skill
+    kind: skill
+    path: plugins/life-science-research/skills/ncbi-datasets-skill
+    description: Submit compact NCBI Datasets v2 requests for assembly, genome,
+      taxonomy, and related metadata endpoints. Use when a user wants concise
+      NCBI Datasets summaries; save raw JSON or text only on request.
+  - id: ncbi-entrez-skill
+    kind: skill
+    path: plugins/life-science-research/skills/ncbi-entrez-skill
+    description: Submit compact NCBI Entrez E-Utilities requests for PubMed, Gene,
+      Protein, Nucleotide, PMC metadata, and GEO metadata workflows. Use when a
+      user wants concise Entrez search, fetch, summary, or link results; save
+      raw JSON or XML only on request.
+  - id: ncbi-pmc-skill
+    kind: skill
+    path: plugins/life-science-research/skills/ncbi-pmc-skill
+    description: Submit compact NCBI PMC Open Access requests for article/file
+      availability metadata. Use when a user wants concise PMC Open Access
+      summaries; save raw XML only on request.
+  - id: opentargets-skill
+    kind: skill
+    path: plugins/life-science-research/skills/opentargets-skill
+    description: Submit compact Open Targets Platform GraphQL requests for target,
+      disease, drug, variant, study, and search data, including
+      associated-disease datasource heatmap matrices. Use when a user wants
+      concise Open Targets summaries or per-datasource evidence context
+  - id: pharmgkb-skill
+    kind: skill
+    path: plugins/life-science-research/skills/pharmgkb-skill
+    description: Submit compact PharmGKB API requests for genes, variants, clinical
+      annotations, dosing guidelines, and search. Use when a user wants concise
+      PharmGKB summaries
+  - id: pride-skill
+    kind: skill
+    path: plugins/life-science-research/skills/pride-skill
+    description: Submit compact PRIDE Archive API requests for proteomics project
+      discovery and project-level metadata. Use when a user wants concise PRIDE
+      summaries
+  - id: proteomexchange-skill
+    kind: skill
+    path: plugins/life-science-research/skills/proteomexchange-skill
+    description: Submit compact ProteomeXchange PROXI requests for datasets,
+      libraries, peptidoforms, proteins, PSMs, spectra, and USI examples. Use
+      when a user wants concise PROXI summaries
+  - id: pubchem-pug-skill
+    kind: skill
+    path: plugins/life-science-research/skills/pubchem-pug-skill
+    description: Submit compact PubChem PUG REST requests for compound properties,
+      descriptions, assay summaries, and substance metadata. Use when a user
+      wants concise PubChem summaries
+  - id: quickgo-skill
+    kind: skill
+    path: plugins/life-science-research/skills/quickgo-skill
+    description: Submit compact QuickGO requests for GO terms, annotations, and
+      ontology traversal. Use when a user wants concise QuickGO summaries
+  - id: rcsb-pdb-skill
+    kind: skill
+    path: plugins/life-science-research/skills/rcsb-pdb-skill
+    description: Submit compact RCSB PDB requests for core metadata, Search API
+      queries, and FASTA downloads. Use when a user wants concise RCSB
+      summaries; save raw JSON or FASTA only on request.
+  - id: reactome-skill
+    kind: skill
+    path: plugins/life-science-research/skills/reactome-skill
+    description: Submit compact Reactome ContentService requests for pathway, event,
+      participant, search, and diagram-related data. Use when a user wants
+      concise Reactome summaries
+  - id: research-router-skill
+    kind: skill
+    path: plugins/life-science-research/skills/research-router-skill
+    description: Route broad or ambiguous life-sciences research requests to the
+      right skills, normalize core entities, optionally parallelize independent
+      evidence gathering with subagents when available, and synthesize a concise
+      evidence-backed answer. Use when a user asks a general life-sciences
+      question that could span multiple sources or analysis types.
+  - id: rhea-skill
+    kind: skill
+    path: plugins/life-science-research/skills/rhea-skill
+    description: Submit compact Rhea reaction search requests for biochemical
+      reactions and reaction IDs. Use when a user wants concise Rhea summaries
+  - id: rnacentral-skill
+    kind: skill
+    path: plugins/life-science-research/skills/rnacentral-skill
+    description: Submit compact RNAcentral API requests for RNA entry browsing,
+      single-entry lookup, and cross-reference retrieval. Use when a user wants
+      concise RNAcentral summaries
+  - id: string-skill
+    kind: skill
+    path: plugins/life-science-research/skills/string-skill
+    description: Submit compact STRING API requests for network, interaction
+      partner, and enrichment endpoints. Use when a user wants concise STRING
+      summaries
+  - id: tpmi-phewas-skill
+    kind: skill
+    path: plugins/life-science-research/skills/tpmi-phewas-skill
+    description: Fetch compact TPMI PheWAS summaries for single variants by
+      accepting rsID, GRCh37, or GRCh38 input and resolving to the required
+      GRCh38 query. Use when a user wants concise TPMI association results for
+      one variant
+  - id: ukb-topmed-phewas-skill
+    kind: skill
+    path: plugins/life-science-research/skills/ukb-topmed-phewas-skill
+    description: Fetch compact UKB-TOPMed PheWAS summaries for single variants by
+      accepting rsID, GRCh37, or GRCh38 input and resolving to the required
+      GRCh38 query. Use when a user wants concise UKB-TOPMed association results
+      for one variant
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

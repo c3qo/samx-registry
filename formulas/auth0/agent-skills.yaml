@@ -1,0 +1,349 @@
+schemaVersion: 1
+id: auth0/agent-skills
+name: Auth0 Agent Skills
+description: Auth0 skill pack → auth/config/integration guidance.
+source:
+  type: git
+  url: https://github.com/auth0/agent-skills
+  revision: fcc4f206e938116c2abb44f3484235e6f728ced2
+capabilities:
+  - id: auth0-quickstart
+    kind: skill
+    path: plugins/auth0/skills/auth0-quickstart
+    description: Use when adding authentication or login to any app - detects your
+      stack (React, Next.js, Vue, Nuxt, Angular, Express, Fastify, FastAPI,
+      ASP.NET Core, React Native, Expo, Android, Swift), sets up an Auth0
+      account if needed, and routes to the correct SDK setup workflow.
+  - id: auth0-cli
+    kind: skill
+    path: plugins/auth0/skills/auth0-cli
+    description: Reference for Auth0 CLI commands — apps, apis, users, roles,
+      organizations, actions, logs, custom domains, universal-login, terraform,
+      raw API mode, and --json output. Use this skill whenever you need to run
+      Auth0 CLI commands to create or manage applications, APIs, users, roles,
+      organizations, actions, log streams, custom domains, or Universal Login
+      configuration, or when you need to call the Auth0 Management API directly.
+      Trigger on prompts like "create an Auth0 app", "list my Auth0 users",
+      "assign a role", "set up an organization", "deploy an action", "configure
+      a custom domain", "generate Terraform for Auth0", "stream Auth0 logs",
+      "call the Management API", or any task involving the auth0 CLI tool.
+  - id: auth0-branding
+    kind: skill
+    path: plugins/auth0/skills/auth0-branding
+    description: Use when you want to (1) brand an Auth0 tenant's Universal Login to
+      match a website or brand assets (colors, logo, fonts, page layout, text);
+      (2) manually update one or more branding values (logos, colors, fonts,
+      borders, backgrounds, text strings, or the page template) without
+      extraction; (3) rewrite login text to match a voice and tone; (4) reset
+      branding to Auth0 defaults; or (5) check whether a tenant is set up for
+      branding to take effect end-to-end. Does not cover Advanced Customizations
+      for Universal Login (ACUL); use the `acul-screen-generator` skill for
+      that.
+  - id: auth0-custom-domains
+    kind: skill
+    path: plugins/auth0/skills/auth0-custom-domains
+    description: Use when setting up, troubleshooting, managing, removing, or
+      checking the health of an Auth0 custom authentication domain (e.g.
+      login.example.com), OR when diagnosing an error (400/403/404/409/429) from
+      the /custom-domains Management API — especially Free-tier 403s (credit
+      card on file, not a plan upgrade), self-managed cert 403s, PATCH-type
+      400s, `operation_not_supported` on `relying_party_identifier`, and 409
+      domain-already-exists. Handles CNAME creation in the user's DNS provider
+      (Cloudflare, AWS Route 53, Azure DNS automated; other registrars guided),
+      verification polling, Multiple Custom Domains (MCD), default-domain
+      selection, TLS policy, client-IP header, per-domain passkey relying party
+      identifier, and domain metadata.
+  - id: acul-screen-generator
+    kind: skill
+    path: plugins/auth0/skills/acul-screen-generator
+    description: Generates complete, branded Auth0 Advanced Custom Universal Login
+      (ACUL) screen implementations using the React or Vanilla JS SDK. Use when
+      a developer asks to create, add, or modify ACUL login screens with custom
+      branding, social login, theming, or specific authentication flows.
+      Triggers on requests like "generate a custom login screen", "add a signup
+      screen to my ACUL project", "customize my Auth0 Universal Login with our
+      brand colors", "apply our theme to all ACUL screens", or any task
+      involving Auth0 Universal Login customization with @auth0/auth0-acul-react
+      or @auth0/auth0-acul-js.
+  - id: auth0-android
+    kind: skill
+    path: plugins/auth0/skills/auth0-android
+    description: Use when adding authentication to Android applications
+      (Kotlin/Java) with Web Auth, biometric-protected credentials, and MFA -
+      integrates com.auth0.android:auth0 SDK for native Android apps
+  - id: auth0-angular
+    kind: skill
+    path: plugins/auth0/skills/auth0-angular
+    description: Use when adding authentication to Angular applications with route
+      guards and HTTP interceptors - integrates @auth0/auth0-angular SDK for
+      SPAs
+  - id: auth0-aspnetcore-api
+    kind: skill
+    path: plugins/auth0/skills/auth0-aspnetcore-api
+    description: "Use when securing ASP.NET Core Web API endpoints with JWT Bearer
+      token validation, scope/permission checks, or stateless auth - integrates
+      Auth0.AspNetCore.Authentication.Api for REST APIs receiving access tokens
+      from frontends or mobile apps. Also handles DPoP proof-of-possession token
+      binding. Triggers on: AddAuth0ApiAuthentication, .NET Web API auth, JWT
+      validation, UseAuthentication, UseAuthorization."
+  - id: auth0-aspnetcore-authentication
+    kind: skill
+    path: plugins/auth0/skills/auth0-aspnetcore-authentication
+    description: Use when adding login, logout, and user profile to an ASP.NET Core
+      MVC, Razor Pages, or Blazor Server web application using cookie-based
+      authentication - integrates Auth0.AspNetCore.Authentication for
+      server-rendered apps with login/callback/profile/logout flows.
+  - id: auth0-expo
+    kind: skill
+    path: plugins/auth0/skills/auth0-expo
+    description: Use when adding authentication to Expo (React Native) mobile apps —
+      login, logout, user sessions, protected routes, biometrics, or token
+      management. Integrates react-native-auth0 SDK with Expo Config Plugin for
+      native iOS/Android builds. Trigger for any Expo project needing Auth0,
+      including app.json plugin config, custom scheme setup, or credential
+      management. Do NOT use for bare React Native CLI projects (use
+      auth0-react-native), React web apps (use auth0-react), Next.js (use
+      auth0-nextjs), or backend APIs.
+  - id: auth0-express
+    kind: skill
+    path: plugins/auth0/skills/auth0-express
+    description: Use when adding authentication (login, logout, protected routes) to
+      Express.js web applications - integrates express-openid-connect for
+      session-based auth.
+  - id: auth0-fastapi-api
+    kind: skill
+    path: plugins/auth0/skills/auth0-fastapi-api
+    description: "Use when securing FastAPI API endpoints with JWT Bearer token
+      validation, scope/permission checks, or stateless auth - integrates
+      auth0-fastapi-api for REST APIs receiving access tokens from SPAs, mobile
+      apps, or other clients. Also handles DPoP proof-of-possession token
+      binding. Triggers on: Auth0FastAPI, FastAPI API auth, JWT validation,
+      require_auth, DPoP."
+  - id: auth0-fastify-api
+    kind: skill
+    path: plugins/auth0/skills/auth0-fastify-api
+    description: Use when securing Fastify API endpoints with JWT Bearer token
+      validation, scope/permission checks, or stateless auth - integrates
+      @auth0/auth0-fastify-api for REST APIs receiving access tokens from
+      frontends or mobile apps.
+  - id: auth0-fastify
+    kind: skill
+    path: plugins/auth0/skills/auth0-fastify
+    description: Use when adding authentication (login, logout, protected routes) to
+      Fastify web applications - integrates @auth0/auth0-fastify for
+      session-based auth. For stateless Fastify APIs use auth0-fastify-api
+      instead.
+  - id: auth0-flask
+    kind: skill
+    path: plugins/auth0/skills/auth0-flask
+    description: Use when adding login, logout, and user profile to a Flask web
+      application using session-based authentication - integrates
+      auth0-server-python for server-rendered apps with
+      login/callback/profile/logout flows.
+  - id: auth0-flutter-native
+    kind: skill
+    path: plugins/auth0/skills/auth0-flutter-native
+    description: Use when adding Auth0 authentication to a Flutter mobile
+      application (iOS/Android) — integrates the auth0_flutter SDK (native
+      platform) for Web Auth login/logout via the system browser, with secure
+      credential storage and biometric protection through the
+      CredentialsManager.
+  - id: auth0-flutter-web
+    kind: skill
+    path: plugins/auth0/skills/auth0-flutter-web
+    description: Use when adding Auth0 authentication to a Flutter web application —
+      integrates the auth0_flutter SDK (web platform) for browser-based
+      authentication using redirect login, popup login, and credential caching.
+  - id: auth0-ionic-angular
+    kind: skill
+    path: plugins/auth0/skills/auth0-ionic-angular
+    description: Use when adding Auth0 authentication to an Ionic Angular
+      application with Capacitor — integrates @auth0/auth0-angular SDK with
+      Capacitor Browser and App plugins for native iOS/Android deep linking,
+      login, logout, and user profile display.
+  - id: auth0-ionic-react
+    kind: skill
+    path: plugins/auth0/skills/auth0-ionic-react
+    description: Use when adding Auth0 authentication to an Ionic React application
+      with Capacitor — integrates @auth0/auth0-react SDK with Capacitor Browser
+      and App plugins for native iOS/Android deep linking, login, logout, and
+      user profile display.
+  - id: auth0-ionic-vue
+    kind: skill
+    path: plugins/auth0/skills/auth0-ionic-vue
+    description: Use when adding Auth0 authentication to an Ionic Vue application
+      with Capacitor — integrates @auth0/auth0-vue SDK with Capacitor Browser
+      and App plugins for native iOS/Android deep linking, login, logout, and
+      user profile display.
+  - id: auth0-java-mvc-common
+    kind: skill
+    path: plugins/auth0/skills/auth0-java-mvc-common
+    description: Use when adding Auth0 login, logout, and callback handling to Java
+      Servlet web applications - integrates com.auth0:mvc-auth-commons SDK for
+      server-side Java apps using javax.servlet with session-based
+      authentication. Triggers on AuthenticationController, AuthorizeUrl,
+      Tokens, IdentityVerificationException, Java MVC auth.
+  - id: auth0-laravel-api
+    kind: skill
+    path: plugins/auth0/skills/auth0-laravel-api
+    description: "Use when securing Laravel API endpoints with JWT Bearer token
+      validation, scope/permission checks, or stateless auth - integrates
+      auth0/login (laravel-auth0) with the AuthorizationGuard for REST APIs
+      receiving access tokens from SPAs, mobile apps, or other clients. Triggers
+      on: Laravel API auth, auth0.authorizer, AuthorizationGuard, Laravel JWT,
+      stateless Bearer."
+  - id: auth0-laravel
+    kind: skill
+    path: plugins/auth0/skills/auth0-laravel
+    description: Use when adding login, logout, and user profile to a Laravel web
+      application using session-based authentication - integrates auth0/login
+      (laravel-auth0) for guard-based auth with auto-registered routes.
+  - id: auth0-maui
+    kind: skill
+    path: plugins/auth0/skills/auth0-maui
+    description: Use when adding Auth0 authentication to .NET MAUI cross-platform
+      applications (iOS, Android, macOS, Windows) - integrates
+      Auth0.OidcClient.MAUI NuGet package for native login, logout, token
+      refresh, and user profile. Trigger on MAUI authentication, add login to
+      MAUI, Auth0 MAUI, .NET MAUI auth, cross-platform mobile auth
+  - id: auth0-mfa
+    kind: skill
+    path: plugins/auth0/skills/auth0-mfa
+    description: Use when adding MFA, 2FA, TOTP, SMS codes, push notifications,
+      passkeys, or when requiring step-up verification for sensitive operations
+      or meeting compliance requirements (HIPAA, PCI-DSS) - covers adaptive and
+      risk-based authentication with Auth0.
+  - id: auth0-migration
+    kind: skill
+    path: plugins/auth0/skills/auth0-migration
+    description: Use when migrating or switching from an existing auth provider
+      (Firebase, Cognito, Supabase, Clerk, custom auth) to Auth0 - covers bulk
+      user import, gradual migration strategies, code migration patterns, and
+      JWT validation updates.
+  - id: auth0-net-android
+    kind: skill
+    path: plugins/auth0/skills/auth0-net-android
+    description: Use when adding Auth0 authentication to .NET Android applications -
+      integrates Auth0.OidcClient.AndroidX NuGet package for native login,
+      logout, token management, and user profile via system browser with PKCE.
+      Trigger on .NET Android auth, .NET 8 Android auth, .NET 9 Android auth,
+      add login to .NET Android, Auth0 Android C#, Xamarin Android auth, Auth0
+      OIDC Android, Chrome Custom Tabs login .NET, native Android C#
+      authentication
+  - id: auth0-net-ios
+    kind: skill
+    path: plugins/auth0/skills/auth0-net-ios
+    description: Use when adding Auth0 authentication to .NET iOS applications -
+      integrates Auth0.OidcClient.iOS NuGet package for native login, logout,
+      token management, and user profile via ASWebAuthenticationSession with
+      PKCE. Trigger on .NET iOS auth, .NET 8 iOS auth, .NET 9 iOS auth, add
+      login to .NET iOS, Auth0 iOS C#, Xamarin iOS auth, Auth0 OIDC iOS,
+      ASWebAuthenticationSession login .NET, native iOS C# authentication
+  - id: auth0-nextjs
+    kind: skill
+    path: plugins/auth0/skills/auth0-nextjs
+    description: Use when adding authentication to Next.js applications (login,
+      logout, protected pages, middleware, server components) - supports App
+      Router and Pages Router with @auth0/nextjs-auth0 SDK.
+  - id: auth0-nuxt
+    kind: skill
+    path: plugins/auth0/skills/auth0-nuxt
+    description: Use when implementing Auth0 authentication in Nuxt 3/4
+      applications, configuring session management, protecting routes with
+      middleware, or integrating API access tokens - provides setup patterns,
+      composable usage, and security best practices for the @auth0/auth0-nuxt
+      SDK
+  - id: auth0-php-api
+    kind: skill
+    path: plugins/auth0/skills/auth0-php-api
+    description: "Use when securing PHP API endpoints with JWT Bearer token
+      validation, scope/permission checks, or stateless auth - integrates
+      auth0/auth0-php SDK in API mode (STRATEGY_API) for REST APIs receiving
+      access tokens from SPAs, mobile apps, or other clients. Triggers on:
+      auth0-php API, PHP JWT validation, getBearerToken, STRATEGY_API, PHP
+      Bearer auth."
+  - id: auth0-php
+    kind: skill
+    path: plugins/auth0/skills/auth0-php
+    description: Use when adding login, logout, and user profile to a PHP web
+      application using session-based authentication - integrates
+      auth0/auth0-php SDK for server-rendered apps with
+      login/callback/profile/logout flows.
+  - id: auth0-react-native
+    kind: skill
+    path: plugins/auth0/skills/auth0-react-native
+    description: Use when adding authentication to React Native or Expo mobile apps
+      (iOS/Android) with biometric support - integrates react-native-auth0 SDK
+      with native deep linking
+  - id: auth0-react
+    kind: skill
+    path: plugins/auth0/skills/auth0-react
+    description: Use when adding authentication to React applications (login,
+      logout, user sessions, protected routes) - integrates @auth0/auth0-react
+      SDK for SPAs with Vite or Create React App
+  - id: auth0-spa-js
+    kind: skill
+    path: plugins/auth0/skills/auth0-spa-js
+    description: Use when adding authentication to Vanilla JS, Svelte, or any
+      framework-agnostic single-page applications - integrates
+      @auth0/auth0-spa-js SDK for SPAs without framework-specific wrappers
+  - id: auth0-springboot-api
+    kind: skill
+    path: plugins/auth0/skills/auth0-springboot-api
+    description: Use when securing Spring Boot API endpoints with JWT Bearer token
+      validation, scope-based authorization, or DPoP proof-of-possession -
+      integrates com.auth0:auth0-springboot-api SDK for REST APIs receiving
+      access tokens from frontends or mobile apps. Triggers on
+      Auth0AuthenticationFilter, Spring Boot API auth, JWT validation,
+      SecurityFilterChain, hasAuthority SCOPE.
+  - id: auth0-swift
+    kind: skill
+    path: plugins/auth0/skills/auth0-swift
+    description: Use when adding Auth0 authentication to an iOS, macOS, tvOS,
+      watchOS, or visionOS application — integrates the Auth0.swift SDK for
+      native Apple platform authentication using Web Auth, CredentialsManager,
+      and biometric protection.
+  - id: auth0-vue
+    kind: skill
+    path: plugins/auth0/skills/auth0-vue
+    description: Use when adding authentication to Vue.js 3 applications (login,
+      logout, user sessions, protected routes) - integrates @auth0/auth0-vue SDK
+      for SPAs with Vite or Vue CLI
+  - id: auth0-winforms
+    kind: skill
+    path: plugins/auth0/skills/auth0-winforms
+    description: Use when adding Auth0 authentication to Windows Forms (WinForms)
+      desktop applications - integrates Auth0.OidcClient.WinForms NuGet package
+      for native login, logout, token refresh, and user profile. Trigger on
+      WinForms authentication, add login to WinForms, Auth0 WinForms, .NET
+      Windows Forms auth, Windows desktop auth
+  - id: auth0-wpf
+    kind: skill
+    path: plugins/auth0/skills/auth0-wpf
+    description: Use when adding Auth0 authentication to WPF (Windows Presentation
+      Foundation) desktop applications - integrates Auth0.OidcClient.WPF NuGet
+      package for native login, logout, token refresh, and user profile. Trigger
+      on WPF authentication, add login to WPF, Auth0 WPF, .NET WPF auth, Windows
+      desktop auth
+  - id: express-oauth2-jwt-bearer
+    kind: skill
+    path: plugins/auth0/skills/express-oauth2-jwt-bearer
+    description: Use when adding Auth0 token validation to Express or Node.js APIs -
+      integrates express-oauth2-jwt-bearer SDK to protect Node.js API endpoints
+      with JWT Bearer authentication, scope-based RBAC, claim validation, and
+      optional DPoP support
+  - id: go-jwt-middleware
+    kind: skill
+    path: plugins/auth0/skills/go-jwt-middleware
+    description: Use when securing Go HTTP API endpoints with JWT Bearer token
+      validation, scope/permission checks, or stateless auth. Integrates
+      github.com/auth0/go-jwt-middleware/v3 for REST APIs receiving access
+      tokens from frontends or mobile apps. Also handles DPoP
+      proof-of-possession token binding. Triggers on jwtmiddleware,
+      go-jwt-middleware, Go API auth, JWT validation, CheckJWT.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: trivago.com/trivago
+name: Trivago
+description: Trivago remote MCP server at https://mcp.trivago.com/mcp. Find your
+  ideal hotel at the best price.. Setup guides for Claude Code, Codex, Cursor,
+  and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/trivago
+capabilities:
+  - id: trivago
+    kind: mcp
+    spec:
+      serverName: trivago
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.trivago.com/mcp

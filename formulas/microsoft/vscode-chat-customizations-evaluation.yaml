@@ -1,0 +1,26 @@
+schemaVersion: 1
+id: microsoft/vscode-chat-customizations-evaluation
+name: Chat Customizations Evaluations
+description: VS Code ext/LSP for AI prompt analysis, diagnostics, Waza evals.
+source:
+  type: git
+  url: https://github.com/microsoft/vscode-chat-customizations-evaluation
+  revision: 7cda3bbe354e32a9a7a21e732552e5b632b0af47
+capabilities:
+  - id: analyze-prompt
+    kind: skill
+    path: skills/analyze-prompt
+    description: Runs Chat Customizations Evaluations analysis for the active
+      customization file and summarizes the findings from the Problems panel.
+  - id: fix-customization-evaluation-diagnostics
+    kind: skill
+    path: skills/fix-customization-evaluation-diagnostics
+    description: Fixes diagnostics reported by the Chat Customizations Evaluations
+      extension on the active prompt file. Reads the current diagnostics from
+      the editor and applies suggested improvements.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

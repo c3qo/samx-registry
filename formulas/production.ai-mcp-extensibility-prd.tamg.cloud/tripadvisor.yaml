@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: production.ai-mcp-extensibility-prd.tamg.cloud/tripadvisor
+name: Tripadvisor
+description: Tripadvisor remote MCP server at
+  https://production.ai-mcp-extensibility-prd.tamg.cloud/ogMvjY4De1G7CiHanMOAgddl/mcp.
+  Find your perfect hotel based on Tripadvisor reviews. Setup guides for Claude
+  Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/tripadvisor
+capabilities:
+  - id: tripadvisor
+    kind: mcp
+    spec:
+      serverName: tripadvisor
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://production.ai-mcp-extensibility-prd.tamg.cloud/ogMvjY4De1G7CiHanMOAgddl/mcp

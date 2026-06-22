@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: mintlify.com/mintlify
+name: Mintlify
+description: Mintlify remote MCP server at https://mcp.mintlify.com. Search,
+  read, and edit your documentation. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/mintlify
+capabilities:
+  - id: mintlify
+    kind: mcp
+    spec:
+      serverName: mintlify
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.mintlify.com

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: synthesize.bio/synthesize-bio
+name: Synthesize Bio
+description: Synthesize Bio remote MCP server at
+  https://app.synthesize.bio/api/mcp. Generate gene expression from a virtual
+  human. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/synthesize-bio
+capabilities:
+  - id: synthesize-bio
+    kind: mcp
+    spec:
+      serverName: synthesize-bio
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://app.synthesize.bio/api/mcp

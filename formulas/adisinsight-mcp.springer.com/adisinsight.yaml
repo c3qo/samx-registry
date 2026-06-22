@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: adisinsight-mcp.springer.com/adisinsight
+name: AdisInsight
+description: AdisInsight remote MCP server at
+  https://adisinsight-mcp.springer.com/mcp. Pharmaceutical drug & clinical trial
+  intelligence. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/adisinsight
+capabilities:
+  - id: adisinsight
+    kind: mcp
+    spec:
+      serverName: adisinsight
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://adisinsight-mcp.springer.com/mcp

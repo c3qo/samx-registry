@@ -1,0 +1,28 @@
+schemaVersion: 1
+id: langchain-ai/lca-skills
+name: LCA Skills
+description: Agent skills for LangChain Academy and LangSmith workflows.
+source:
+  type: git
+  url: https://github.com/langchain-ai/lca-skills
+  revision: 93cefb7bb3d3f99bd9a8aeef3c3636c7126cfca9
+capabilities:
+  - id: langsmith-code-eval
+    kind: skill
+    path: skills/langsmith-code-eval
+    description: Creates code-based evaluators for LangSmith-traced agents. Use when
+      building custom evaluation logic, testing tool usage patterns, or scoring
+      agent outputs programmatically. Triggers on requests to evaluate agents,
+      create evaluators, or run experiments against LangSmith datasets.
+  - id: langsmith-fetch
+    kind: skill
+    path: skills/langsmith-fetch
+    description: Fetches LangSmith traces for debugging agent behavior. Use when
+      troubleshooting agent issues, reviewing conversation history, or
+      investigating tool calls.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

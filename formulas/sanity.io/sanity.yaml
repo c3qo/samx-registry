@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: sanity.io/sanity
+name: Sanity
+description: Sanity remote MCP server at https://mcp.sanity.io. Create, query,
+  and manage structured content in Sanity. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/sanity
+capabilities:
+  - id: sanity
+    kind: mcp
+    spec:
+      serverName: sanity
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.sanity.io

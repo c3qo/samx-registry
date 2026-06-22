@@ -1,0 +1,30 @@
+schemaVersion: 1
+id: openai/codex-plugin-cc
+name: Codex plugin for Claude Code
+description: Claude Code plugin → Codex review + task delegation.
+source:
+  type: git
+  url: https://github.com/openai/codex-plugin-cc
+  revision: 807e03ac9d5aa23bc395fdec8c3767500a86b3cf
+capabilities:
+  - id: codex-cli-runtime
+    kind: skill
+    path: plugins/codex/skills/codex-cli-runtime
+    description: Internal helper contract for calling the codex-companion runtime
+      from Claude Code
+  - id: codex-result-handling
+    kind: skill
+    path: plugins/codex/skills/codex-result-handling
+    description: Internal guidance for presenting Codex helper output back to the user
+  - id: gpt-5-4-prompting
+    kind: skill
+    path: plugins/codex/skills/gpt-5-4-prompting
+    description: Internal guidance for composing Codex and GPT-5.4 prompts for
+      coding, review, diagnosis, and research tasks inside the Codex Claude Code
+      plugin
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

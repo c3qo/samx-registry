@@ -1,0 +1,28 @@
+schemaVersion: 1
+id: microsoft/build-cli
+name: Microsoft Build CLI
+description: CLI + skill for Microsoft Build session search, cache, and Learn docs.
+source:
+  type: git
+  url: https://github.com/microsoft/build-cli
+  revision: 89fc9e6c1cc745edb36aeb5492e3fa2a2d759c67
+capabilities:
+  - id: microsoft-learn
+    kind: mcp
+    path: .mcp.json
+  - id: microsoft-build
+    kind: skill
+    path: skills/microsoft-build
+    description: Your companion for Microsoft Build 2026. Helps you find sessions
+      relevant to your project, discover what's new for your tech stack,
+      scaffold projects from sessions, and plan your event schedule. Activate
+      when users mention sessions, schedule, what's new, Build, Ignite, AI Tour,
+      Microsoft event, conference, or reference a session code (BRK, DEM, LAB,
+      KEY). Also supports Ignite 2025 and Build 2025 session catalogs. Uses the
+      msevents CLI for fast local search and Learn MCP Server for docs.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,170 @@
+schemaVersion: 1
+id: cloudflare/workerd
+name: workerd
+description: JavaScript/Wasm server runtime for Cloudflare Workers-compatible apps.
+source:
+  type: git
+  url: https://github.com/cloudflare/workerd
+  revision: 30243d181fe37137590ae0e5182e9999222b7476
+capabilities:
+  - id: add-autogate
+    kind: skill
+    path: .opencode/skills/add-autogate
+    description: Step-by-step guide for adding a new autogate to workerd for gradual
+      rollout of risky changes, including enum registration, string mapping,
+      usage pattern, and testing.
+  - id: add-compat-flag
+    kind: skill
+    path: .opencode/skills/add-compat-flag
+    description: Step-by-step guide for adding a new compatibility flag to workerd,
+      including capnp schema, C++ usage, testing, and documentation
+      requirements.
+  - id: bazel-test-hygiene
+    kind: skill
+    path: .opencode/skills/bazel-test-hygiene
+    description: Mandatory rules for running bazel tests during development. Load
+      this skill before running any bazel test command, especially when
+      validating fixes or verifying regression tests. Prevents false confidence
+      from cached results, filter flags that silently match nothing, and partial
+      test runs that miss breakage.
+  - id: commit-categories
+    kind: skill
+    path: .opencode/skills/commit-categories
+    description: Commit categorization rules for changelogs and "what's new"
+      summaries. MUST be loaded before categorizing commits in changelog or
+      whats-new commands. Provides the canonical path-based category table used
+      to group commits by area.
+  - id: dad-jokes
+    kind: skill
+    path: .opencode/skills/dad-jokes
+    description: After completing any task that took more than ~5 tool calls, or
+      after long-running builds/tests finish, load this skill and deliver a dad
+      joke to lighten the mood. Also load before any user-requested joke, pun,
+      or limerick. Never improvise jokes without loading this skill first.
+  - id: find-and-run-tests
+    kind: skill
+    path: .opencode/skills/find-and-run-tests
+    description: How to find, build, and run tests in workerd. Covers wd-test,
+      kj_test target naming, bazel query patterns, and common flags. Also covers
+      parent project integration tests if workerd is used as a submodule. Load
+      this skill when you need to locate or run a test and aren't sure of the
+      exact target name or invocation.
+  - id: identify-reviewer
+    kind: skill
+    path: .opencode/skills/identify-reviewer
+    description: Identifies the local user's GitHub account and git identity before
+      performing code reviews. Load this skill at the start of any PR review,
+      code review, or commit log analysis so findings can be framed relative to
+      the user's own prior comments, commits, and approval status.
+  - id: investigation-notes
+    kind: skill
+    path: .opencode/skills/investigation-notes
+    description: Structured scratch tracking document for investigation state during
+      bug hunts - prevents re-reading code, losing context, and rabbit holes;
+      maintains external memory so you don't re-derive conclusions
+  - id: kj-style
+    kind: skill
+    path: .opencode/skills/kj-style
+    description: KJ/workerd C++ style guidelines for code review. Covers naming,
+      type usage, memory management, error handling, inheritance, constness, and
+      formatting conventions. Load this skill when reviewing or writing C++ code
+      in the workerd codebase.
+  - id: markdown-drafts
+    kind: skill
+    path: .opencode/skills/markdown-drafts
+    description: Use markdown formatting when drafting content intended for external
+      systems (GitHub issues/PRs, Jira tickets, wiki pages, design docs, etc.)
+      so formatting is preserved when the user copies it. Load this skill before
+      producing any draft the user will paste elsewhere.
+  - id: module-registry
+    kind: skill
+    path: .opencode/skills/module-registry
+    description: Load when working with the module registry in workerd — reading,
+      modifying, debugging, or reviewing module resolution, compilation,
+      evaluation, or registration code. Provides pointers to three reference
+      documents covering the legacy registry, V8 module internals, and the new
+      registry design.
+  - id: parent-project-skills
+    kind: skill
+    path: .opencode/skills/parent-project-skills
+    description: Bootstrap skill for discovering additional skills and context from
+      a parent project when workerd is used as a submodule. Load this skill when
+      tasks span project boundaries (e.g., Sentry/production investigation,
+      integration testing, cross-repo debugging).
+  - id: pr-review-guide
+    kind: skill
+    path: .opencode/skills/pr-review-guide
+    description: Guidelines for posting pull request review comments via GitHub CLI,
+      including suggested edits format, handling unresolved comments, etiquette,
+      and report/issue tracking. Load this skill when reviewing a PR via GitHub
+      and posting inline comments.
+  - id: receiving-code-review
+    kind: skill
+    path: .opencode/skills/receiving-code-review
+    description: Use when receiving code review feedback, before implementing
+      suggestions, especially if feedback seems unclear or technically
+      questionable - requires technical rigor and verification, not performative
+      agreement or blind implementation
+  - id: rust-review
+    kind: skill
+    path: .opencode/skills/rust-review
+    description: Rust code review for workerd. Covers CXX FFI safety, unsafe code
+      patterns, JSG resource conventions, error handling, and a review checklist
+      adapted from the C++ review skills. Load this skill when reviewing Rust
+      code in src/rust/.
+  - id: test-driven-investigation
+    kind: skill
+    path: .opencode/skills/test-driven-investigation
+    description: Use when investigating bugs, crashes, assertions, or unexpected
+      behavior - requires writing a reproducing test early instead of
+      over-analyzing source code; concrete experiments over mental models
+  - id: ts-style
+    kind: skill
+    path: .opencode/skills/ts-style
+    description: JS/TS style guidelines and review checklist for workerd. Covers
+      TypeScript strictness, import conventions, export patterns, private field
+      syntax, error handling, feature gating, and test structure. Load this
+      skill when reviewing or writing JavaScript or TypeScript code in
+      src/node/, src/cloudflare/, or JS/TS test files under src/workerd/.
+  - id: update-v8
+    kind: skill
+    path: .opencode/skills/update-v8
+    description: Step-by-step guide for updating the V8 JavaScript engine in
+      workerd, including patch rebasing, dependency updates, integrity hashes,
+      and verification. Load this skill when performing or assisting with a V8
+      version bump.
+  - id: verification-before-completion
+    kind: skill
+    path: .opencode/skills/verification-before-completion
+    description: Use when about to claim work is complete, fixed, or passing, before
+      committing or creating PRs - requires running verification commands and
+      confirming output before making any success claims; evidence before
+      assertions always
+  - id: wd-test-format
+    kind: skill
+    path: .opencode/skills/wd-test-format
+    description: Detailed guide for authoring .wd-test files in workerd, with
+      examples of bindings, Durable Objects, multi-service configs, TypeScript
+      tests, and network access.
+  - id: workerd-api-review
+    kind: skill
+    path: .opencode/skills/workerd-api-review
+    description: Performance optimization, API design & compatibility, security
+      vulnerabilities, and standards spec compliance for workerd code review.
+      Covers tcmalloc-aware perf analysis, compat flags, autogates, web
+      standards adherence, and security patterns. Load this skill when reviewing
+      API changes, performance-sensitive code, security-relevant code, or
+      standards implementations.
+  - id: workerd-safety-review
+    kind: skill
+    path: .opencode/skills/workerd-safety-review
+    description: Memory safety, thread safety, concurrency, and critical detection
+      patterns for workerd code review. Covers V8/KJ boundary hazards, lifetime
+      management, cross-thread safety, and coroutine pitfalls. Load this skill
+      when reviewing any C++ code.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

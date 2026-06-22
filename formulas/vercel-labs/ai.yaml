@@ -1,0 +1,23 @@
+schemaVersion: 1
+id: vercel-labs/ai
+name: AI SDK
+description: AI SDK examples; Next.js chat, provider tests, MCP, skills.
+source:
+  type: git
+  url: https://github.com/vercel-labs/ai
+  revision: 53394b4ac7e418107507fa96696e7db650959a9f
+capabilities:
+  - id: island-rescue
+    kind: skill
+    path: examples/ai-e2e-next/data/island-rescue
+    description: How to be rescued from a lonely island
+  - id: island-rescue-2
+    kind: skill
+    path: examples/ai-functions/data/island-rescue
+    description: How to be rescued from a lonely island
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

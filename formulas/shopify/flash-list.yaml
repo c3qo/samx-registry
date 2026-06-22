@@ -1,0 +1,57 @@
+schemaVersion: 1
+id: shopify/flash-list
+name: FlashList
+description: Fast performant RN list; JS-only v2; fixture app for iOS/Android/web.
+source:
+  type: git
+  url: https://github.com/shopify/flash-list
+  revision: 20e29c20e440a0a8e0492c303c254dbefee3ad62
+capabilities:
+  - id: agent-device
+    kind: skill
+    path: .claude/skills/agent-device
+    description: Interact with iOS simulator or Android emulator/device using
+      snapshot-based coordinates. Uses accessibility tree snapshots for precise
+      element targeting, with screenshot verification as fallback. Use when
+      navigating the app on a simulator/emulator.
+  - id: analyze-feedback
+    kind: skill
+    path: .claude/skills/analyze-feedback
+    description: Analyze agent feedback artifacts from GitHub Actions workflow runs,
+      extract actionable learnings, and incorporate them into skill files and
+      CLAUDE.md. Tracks scan progress to avoid re-processing.
+  - id: fix-github-issue
+    kind: skill
+    path: .claude/skills/fix-github-issue
+    description: Full workflow for fixing a GitHub issue - understand the problem,
+      reproduce, diagnose root cause, fix, test on iOS/Android simulators,
+      review, and raise a PR
+  - id: raise-pr
+    kind: skill
+    path: .claude/skills/raise-pr
+    description: Create a GitHub PR for FlashList. Ensures no AI/Claude attribution
+      in commits or PR body, follows repo conventions for title, description,
+      and test plan.
+  - id: review-and-test
+    kind: skill
+    path: .claude/skills/review-and-test
+    description: Review a FlashList PR or branch, run unit tests, test on iOS
+      simulator, and verify RTL/LTR behavior. Shared context with
+      fix-github-issue skill.
+  - id: triage-issue
+    kind: skill
+    path: .claude/skills/triage-issue
+    description: Triage a GitHub issue — classify priority (P0/P1/P2), search for
+      duplicates, and apply labels.
+  - id: upgrade-react-native
+    kind: skill
+    path: .claude/skills/upgrade-react-native
+    description: Upgrade the React Native fixture app to a new version. Covers JS
+      deps, Android (Gradle, Kotlin, SDK), iOS (Podfile, pbxproj), Metro config,
+      and third-party libraries.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

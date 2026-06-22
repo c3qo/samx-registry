@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: courtlistener.com/courtlistener
+name: CourtListener
+description: CourtListener remote MCP server at https://mcp.courtlistener.com/.
+  Legal research across millions of court records. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/courtlistener
+capabilities:
+  - id: courtlistener
+    kind: mcp
+    spec:
+      serverName: courtlistener
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.courtlistener.com/

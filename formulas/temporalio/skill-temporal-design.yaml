@@ -1,0 +1,24 @@
+schemaVersion: 1
+id: temporalio/skill-temporal-design
+name: Temporal Design Skill
+description: Temporal workflow design review skill.
+source:
+  type: git
+  url: https://github.com/temporalio/skill-temporal-design
+  revision: 430c2656f4365294145cdf0fc0c443b138768142
+capabilities:
+  - id: temporal-workflow-design-critic
+    kind: skill
+    path: .
+    description: Critique, audit, or score a Temporal workflow design for
+      correctness, production readiness, and best-practice compliance. Use when
+      asked to review a Temporal architecture, evaluate whether a design is
+      production ready, identify anti-patterns or risks, assess Temporal fitness
+      for a use case, or give a design a thumbs up/down. Not for writing or
+      debugging Temporal code — use temporal-developer for that.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

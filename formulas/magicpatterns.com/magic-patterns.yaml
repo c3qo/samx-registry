@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: magicpatterns.com/magic-patterns
+name: Magic Patterns
+description: Magic Patterns remote MCP server at
+  https://mcp.magicpatterns.com/mcp. Discuss and iterate on Magic Patterns
+  designs. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/magic-patterns
+capabilities:
+  - id: magic-patterns
+    kind: mcp
+    spec:
+      serverName: magic-patterns
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.magicpatterns.com/mcp

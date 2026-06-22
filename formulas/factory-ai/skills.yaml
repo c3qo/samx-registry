@@ -1,0 +1,53 @@
+schemaVersion: 1
+id: factory-ai/skills
+name: Skills
+description: Reusable Droid skill pkgs for code review, security analysis,
+  threat modeling, validation.
+source:
+  type: git
+  url: https://github.com/factory-ai/skills
+  revision: 21a74dec467a1424e3e067712d004cd987d6a0ce
+capabilities:
+  - id: code-review
+    kind: skill
+    path: skills/code-review
+    description: Review code changes (diffs, PRs, patches) and provide structured,
+      actionable feedback on correctness, maintainability, and test coverage.
+      Use when the user asks for a code review, requests feedback on a patch/PR,
+      or wants an assessment of changes.
+  - id: commit-security-scan
+    kind: skill
+    path: skills/commit-security-scan
+    description: Analyze code changes for security vulnerabilities using LLM
+      reasoning and threat model patterns. Use for PR reviews, pre-commit
+      checks, or branch comparisons.
+  - id: security-review
+    kind: skill
+    path: skills/security-review
+    description: Scan code changes for security vulnerabilities using STRIDE threat
+      modeling, validate findings for exploitability, and output structured
+      results for downstream patch generation. Supports PR review, scheduled
+      scans, and full repository audits.
+  - id: threat-model-generation
+    kind: skill
+    path: skills/threat-model-generation
+    description: Generate a STRIDE-based security threat model for a repository. Use
+      when setting up security monitoring, after architecture changes, or for
+      security audits.
+  - id: vulnerability-validation
+    kind: skill
+    path: skills/vulnerability-validation
+    description: Validate security findings from commit-security-scan by assessing
+      exploitability, filtering false positives, and generating proof-of-concept
+      exploits. Use after running commit-security-scan to confirm
+      vulnerabilities.
+  - id: template
+    kind: skill
+    path: template
+    description: Replace with description of the skill and when Droid should use it.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

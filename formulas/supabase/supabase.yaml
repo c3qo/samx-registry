@@ -1,0 +1,102 @@
+schemaVersion: 1
+id: supabase/supabase
+name: Supabase
+description: Postgres dev platform; docs/design/studio monorepo.
+source:
+  type: git
+  url: https://github.com/supabase/supabase
+  revision: 4120ceb802f4117074865ab1dce7ab68f9f788ca
+capabilities:
+  - id: vitest
+    kind: skill
+    path: .agents/skills/vitest
+    description: Vitest fast unit testing framework powered by Vite with
+      Jest-compatible API. Use when writing tests, mocking, configuring
+      coverage, or working with test filtering and fixtures.
+  - id: dev-toolbar-review
+    kind: skill
+    path: .claude/skills/dev-toolbar-review
+    description: Use when reviewing PRs that touch packages/dev-tools/,
+      packages/common/posthog-client.ts, or packages/common/feature-flags.tsx.
+      Covers environment guards, flag override cookies, telemetry event
+      subscription, and SSE stream safety.
+  - id: safe-sql-execution
+    kind: skill
+    path: .claude/skills/safe-sql-execution
+    description: Safely execute SQL queries against a user database without risking
+      SQL injection or other security vulnerabilities.
+  - id: studio-best-practices
+    kind: skill
+    path: .claude/skills/studio-best-practices
+    description: React and TypeScript best practices for Supabase Studio. Use when
+      writing or reviewing Studio components — covers boolean naming, component
+      structure, loading/error states, state management, custom hooks, event
+      handlers, conditional rendering, performance, and TypeScript conventions.
+  - id: studio-e2e-tests
+    kind: skill
+    path: .claude/skills/studio-e2e-tests
+    description: Write and run Playwright E2E tests for Supabase Studio. Use when
+      asked to run e2e tests, write new E2E tests, or debug flaky tests. Covers
+      running commands, avoiding race conditions, waiting strategies, selectors,
+      helper functions, and CI vs local differences.
+  - id: studio-error-handling
+    kind: skill
+    path: .claude/skills/studio-error-handling
+    description: Error display and troubleshooting pattern for Supabase Studio. Use
+      when rendering API errors in the UI, adding inline troubleshooting steps
+      for a new error type, or wiring up the AI assistant debug button from an
+      error state.
+  - id: studio-mock-api-tests
+    kind: skill
+    path: .claude/skills/studio-mock-api-tests
+    description: Component tests for Supabase Studio that mock API requests at the
+      network layer with MSW. Use when writing or reviewing a component test
+      that exercises a React Query hook or mutation, or when migrating an
+      existing test away from vi.mock('@/data/...'). Covers the customRender +
+      addAPIMock template and the jsdom/MSW gotchas that cost real debugging
+      time.
+  - id: studio-queries
+    kind: skill
+    path: .claude/skills/studio-queries
+    description: React Query conventions for data fetching in Supabase Studio. Use
+      when writing or reviewing query hooks, mutation hooks, or query keys in
+      apps/studio/data/. Covers queryOptions pattern, keys.ts structure,
+      mutation hook template, and imperative fetching.
+  - id: studio-testing
+    kind: skill
+    path: .claude/skills/studio-testing
+    description: Testing strategy for Supabase Studio. Use when writing tests,
+      deciding what type of test to write, extracting logic from components into
+      testable utility functions, or reviewing test coverage. Covers unit tests,
+      component tests, and E2E test selection criteria.
+  - id: studio-ui-patterns
+    kind: skill
+    path: .claude/skills/studio-ui-patterns
+    description: Design system UI patterns for Supabase Studio. Use when building or
+      updating pages, forms, tables, charts, empty states, navigation, cards,
+      alerts, or side panels (sheets). Covers layout selection, component
+      choice, and placement conventions.
+  - id: telemetry-standards
+    kind: skill
+    path: .claude/skills/telemetry-standards
+    description: PostHog event tracking standards for Supabase Studio. Use when
+      reviewing PRs for telemetry compliance or implementing new event tracking.
+      Covers event naming, property conventions, approved patterns, and
+      implementation guide.
+  - id: vercel-composition-patterns
+    kind: skill
+    path: .claude/skills/vercel-composition-patterns
+    description: React composition patterns that scale. Use when refactoring
+      components with boolean prop proliferation, building flexible component
+      libraries, or designing reusable APIs. Triggers on tasks involving
+      compound components, render props, context providers, or component
+      architecture. Includes React 19 API changes.
+  - id: supabase
+    kind: mcp
+    path: .mcp.json
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

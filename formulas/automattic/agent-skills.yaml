@@ -1,0 +1,109 @@
+schemaVersion: 1
+id: automattic/agent-skills
+name: Agent Skills for WordPress
+description: WP skill bundles for assistants; route/dev ops/blocks/themes/API/perf.
+source:
+  type: git
+  url: https://github.com/automattic/agent-skills
+  revision: 48d4aa21d0da0e7bda1c7ac155fef2e16b87aa25
+capabilities:
+  - id: wordpress-router
+    kind: skill
+    path: skills/wordpress-router
+    description: Use when the user asks about WordPress codebases (plugins, themes,
+      block themes, Gutenberg blocks, WP core checkouts) and you need to quickly
+      classify the repo and route to the correct workflow/skill (blocks,
+      theme.json, REST API, WP-CLI, performance, security, testing, release
+      packaging).
+  - id: wp-project-triage
+    kind: skill
+    path: skills/wp-project-triage
+    description: Use when you need a deterministic inspection of a WordPress
+      repository (plugin/theme/block theme/WP core/Gutenberg/full site)
+      including tooling/tests/version hints, and a structured JSON report to
+      guide workflows and guardrails.
+  - id: wp-block-development
+    kind: skill
+    path: skills/wp-block-development
+    description: "Use when developing WordPress (Gutenberg) blocks: block.json
+      metadata, register_block_type(_from_metadata), attributes/serialization,
+      supports, dynamic rendering (render.php/render_callback),
+      deprecations/migrations, viewScript vs viewScriptModule, and
+      @wordpress/scripts/@wordpress/create-block build and test workflows."
+  - id: wp-block-themes
+    kind: skill
+    path: skills/wp-block-themes
+    description: "Use when developing WordPress block themes: theme.json (global
+      settings/styles), templates and template parts, patterns, style
+      variations, and Site Editor troubleshooting (style hierarchy, overrides,
+      caching)."
+  - id: wp-plugin-development
+    kind: skill
+    path: skills/wp-plugin-development
+    description: "Use when developing WordPress plugins: architecture and hooks,
+      activation/deactivation/uninstall, admin UI and Settings API, data
+      storage, cron/tasks, security (nonces/capabilities/sanitization/escaping),
+      and release packaging."
+  - id: wp-rest-api
+    kind: skill
+    path: skills/wp-rest-api
+    description: "Use when building, extending, or debugging WordPress REST API
+      endpoints/routes: register_rest_route, WP_REST_Controller/controller
+      classes, schema/argument validation, permission_callback/authentication,
+      response shaping, register_rest_field/register_meta, or exposing
+      CPTs/taxonomies via show_in_rest."
+  - id: wp-interactivity-api
+    kind: skill
+    path: skills/wp-interactivity-api
+    description: Use when building or debugging WordPress Interactivity API features
+      (data-wp-* directives, @wordpress/interactivity store/state/actions, block
+      viewScriptModule integration, wp_interactivity_*()) including performance,
+      hydration, and directive behavior.
+  - id: wp-abilities-api
+    kind: skill
+    path: skills/wp-abilities-api
+    description: Use when working with the WordPress Abilities API
+      (wp_register_ability, wp_register_ability_category,
+      /wp-json/wp-abilities/v1/*, @wordpress/abilities) including defining
+      abilities, categories, meta, REST exposure, and permissions checks for
+      clients.
+  - id: wp-wpcli-and-ops
+    kind: skill
+    path: skills/wp-wpcli-and-ops
+    description: "Use when working with WP-CLI (wp) for WordPress operations: safe
+      search-replace, db export/import, plugin/theme/user/content management,
+      cron, cache flushing, multisite, and scripting/automation with
+      wp-cli.yml."
+  - id: wp-performance
+    kind: skill
+    path: skills/wp-performance
+    description: "Use when investigating or improving WordPress performance
+      (backend-only agent): profiling and measurement (WP-CLI profile/doctor,
+      Server-Timing, Query Monitor via REST headers), database/query
+      optimization, autoloaded options, object caching, cron, HTTP API calls,
+      and safe verification."
+  - id: wp-phpstan
+    kind: skill
+    path: skills/wp-phpstan
+    description: "Use when configuring, running, or fixing PHPStan static analysis
+      in WordPress projects (plugins/themes/sites): phpstan.neon setup,
+      baselines, WordPress-specific typing, and handling third-party plugin
+      classes."
+  - id: wp-playground
+    kind: skill
+    path: skills/wp-playground
+    description: "Use for WordPress Playground workflows: fast disposable WP
+      instances in the browser or locally via @wp-playground/cli (server,
+      run-blueprint, build-snapshot), auto-mounting plugins/themes, switching
+      WP/PHP versions, blueprints, and debugging (Xdebug)."
+  - id: wpds
+    kind: skill
+    path: skills/wpds
+    description: Use when building UIs leveraging the WordPress Design System (WPDS)
+      and its components, tokens, patterns, etc.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

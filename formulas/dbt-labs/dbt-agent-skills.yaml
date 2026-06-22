@@ -1,0 +1,113 @@
+schemaVersion: 1
+id: dbt-labs/dbt-agent-skills
+name: dbt Agent Skills
+description: Curated dbt skill pack for agent workflows.
+source:
+  type: git
+  url: https://github.com/dbt-labs/dbt-agent-skills
+  revision: 89089329137c16200c6f89b99901f8e44880c9f8
+capabilities:
+  - id: auditing-skills
+    kind: skill
+    path: .claude/skills/auditing-skills
+    description: Use when checking skills for security or quality issues, reviewing
+      audit results from skills.sh or Tessl, or remediating findings across
+      published skills.
+  - id: creating-mermaid-dbt-dag
+    kind: skill
+    path: skills/dbt-extras/skills/creating-mermaid-dbt-dag
+    description: Generates a Mermaid flowchart diagram of dbt model lineage using
+      MCP tools, manifest.json, or direct code parsing as fallbacks. Use when
+      visualizing dbt model lineage and dependencies as a Mermaid diagram in
+      markdown format.
+  - id: migrating-dbt-core-to-fusion
+    kind: skill
+    path: skills/dbt-migration/skills/migrating-dbt-core-to-fusion
+    description: Use when a user needs help triaging dbt-core to Fusion migration
+      errors. Runs dbt-autofix first, then classifies remaining errors into
+      actionable categories (auto-fixable, guided fixes, needs input, blocked).
+  - id: migrating-dbt-project-across-platforms
+    kind: skill
+    path: skills/dbt-migration/skills/migrating-dbt-project-across-platforms
+    description: Use when migrating a dbt project from one data platform or data
+      warehouse to another (e.g., Snowflake to Databricks, Databricks to
+      Snowflake) using dbt Fusion's real-time compilation to identify and fix
+      SQL dialect differences.
+  - id: adding-dbt-unit-test
+    kind: skill
+    path: skills/dbt/skills/adding-dbt-unit-test
+    description: Creates unit test YAML definitions that mock upstream model inputs
+      and validate expected outputs. Use when adding unit tests for a dbt model
+      or practicing test-driven development (TDD) in dbt.
+  - id: answering-natural-language-questions-with-dbt
+    kind: skill
+    path: skills/dbt/skills/answering-natural-language-questions-with-dbt
+    description: Writes and executes SQL queries against the data warehouse using
+      dbt's Semantic Layer or ad-hoc SQL to answer business questions. Use when
+      a user asks about analytics, metrics, KPIs, or data (e.g., "What were
+      total sales last quarter?", "Show me top customers by revenue"). NOT for
+      validating, testing, or building dbt models during development.
+  - id: building-dbt-semantic-layer
+    kind: skill
+    path: skills/dbt/skills/building-dbt-semantic-layer
+    description: Use when creating or modifying dbt Semantic Layer components —
+      semantic models, metrics, dimensions, entities, measures, or time spines.
+      Covers MetricFlow configuration, metric types (simple, derived,
+      cumulative, ratio, conversion), and validation for both latest and legacy
+      YAML specs.
+  - id: configuring-dbt-mcp-server
+    kind: skill
+    path: skills/dbt/skills/configuring-dbt-mcp-server
+    description: Generates MCP server configuration JSON, resolves authentication
+      setup, and validates server connectivity for dbt. Use when setting up,
+      configuring, or troubleshooting the dbt MCP server for AI tools like
+      Claude Desktop, Claude Code, Cursor, or VS Code.
+  - id: fetching-dbt-docs
+    kind: skill
+    path: skills/dbt/skills/fetching-dbt-docs
+    description: Retrieves and searches dbt documentation pages in LLM-friendly
+      markdown format. Use when fetching dbt documentation, looking up dbt
+      features, or answering questions about dbt Cloud, dbt Core, or the dbt
+      Semantic Layer.
+  - id: running-dbt-commands
+    kind: skill
+    path: skills/dbt/skills/running-dbt-commands
+    description: Formats and executes dbt CLI commands, selects the correct dbt
+      executable, and structures command parameters. Use when running models,
+      tests, builds, compiles, or show queries via dbt CLI. Use when unsure
+      which dbt executable to use or how to format command parameters.
+  - id: troubleshooting-dbt-job-errors
+    kind: skill
+    path: skills/dbt/skills/troubleshooting-dbt-job-errors
+    description: Diagnoses dbt Cloud/platform job failures by analyzing run logs,
+      querying the Admin API, reviewing git history, and investigating data
+      issues. Use when a dbt Cloud/platform job fails and you need to diagnose
+      the root cause, especially when error messages are unclear or when
+      intermittent failures occur. Do not use for local dbt development errors.
+  - id: using-dbt-for-analytics-engineering
+    kind: skill
+    path: skills/dbt/skills/using-dbt-for-analytics-engineering
+    description: Builds and modifies dbt models, writes SQL transformations using
+      ref() and source(), creates tests, and validates results with dbt show.
+      Use when doing any dbt work - building or modifying models, debugging
+      errors, exploring unfamiliar data sources, writing tests, or evaluating
+      impact of changes.
+  - id: working-with-dbt-mesh
+    kind: skill
+    path: skills/dbt/skills/working-with-dbt-mesh
+    description: Use when changing a dbt model in a way that could break its
+      consumers — renaming, removing, or retyping a column, or changing a model
+      that downstream models, exposures, dashboards, or BI tools depend on — to
+      judge whether the change is breaking and who it affects. Also use when
+      versioning a model (model versions, latest_version,
+      latest_version_pointer, deprecation_date, migration windows), enforcing
+      contracts, setting access or groups, or doing multi-project dbt Mesh work
+      (cross-project refs via dependencies.yml, disambiguating similarly-named
+      models, splitting a monolith). Covers single- and multi-project, and
+      planning or advising as well as implementing.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

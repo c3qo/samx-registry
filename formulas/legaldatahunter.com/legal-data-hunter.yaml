@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: legaldatahunter.com/legal-data-hunter
+name: Legal Data Hunter
+description: Legal Data Hunter remote MCP server at
+  https://legaldatahunter.com/mcp. Search 23M+ legal docs in 160+
+  jurisdictions.. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/legal-data-hunter
+capabilities:
+  - id: legal-data-hunter
+    kind: mcp
+    spec:
+      serverName: legal-data-hunter
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://legaldatahunter.com/mcp

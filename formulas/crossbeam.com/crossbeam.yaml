@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: crossbeam.com/crossbeam
+name: Crossbeam
+description: Crossbeam remote MCP server at https://mcp.crossbeam.com. Explore
+  partner data and ecosystem insights in Claude. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/crossbeam
+capabilities:
+  - id: crossbeam
+    kind: mcp
+    spec:
+      serverName: crossbeam
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.crossbeam.com

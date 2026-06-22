@@ -1,0 +1,23 @@
+schemaVersion: 1
+id: vercel-labs/tw-blocks
+name: TW-Blocks
+description: "Tailwind v4 spacing sys: block/tab units; docs, examples, skill."
+source:
+  type: git
+  url: https://github.com/vercel-labs/tw-blocks
+  revision: 0b1d629347e02013f01c5df4805f65d849d18f63
+capabilities:
+  - id: tw-blocks
+    kind: skill
+    path: SKILLS/tw-blocks
+    description: Semantic spacing system for Tailwind CSS v4 using block (32px) and
+      tab (4px) units. Use when building UIs with consistent spacing,
+      dashboards, admin panels, design tools, or any interface requiring a
+      harmonious spacing system. Provides patterns for buttons, inputs, cards,
+      toolbars, panels, and layouts.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

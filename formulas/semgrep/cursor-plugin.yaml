@@ -1,0 +1,33 @@
+schemaVersion: 1
+id: semgrep/cursor-plugin
+name: Semgrep Cursor Plugin
+description: Cursor plugin → Semgrep MCP/skill setup for code vuln scanning.
+source:
+  type: git
+  url: https://github.com/semgrep/cursor-plugin
+  revision: 0d386fbbe7aba85b4029a0ccc95a72021eb22829
+capabilities:
+  - id: semgrep
+    kind: mcp
+    path: .mcp.json
+  - id: setup-semgrep-plugin
+    kind: skill
+    path: skills/setup-semgrep-plugin
+    description: Set up the Semgrep plugin by installing Semgrep, authenticating,
+      and verifying compatibility
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: unlinked-hook-files
+    severity: warning
+    category: hooks
+    message: Repository contains hook-related files that are not linked by this formula.
+    paths:
+      - hooks/hooks.json
+    reason: These files lack explicit appliesTo mappings, supported targets, or
+      supported file types.
+    effect: SAMX will not install, link, or execute these files.
+    action: Add explicit hook entries only after manual review.

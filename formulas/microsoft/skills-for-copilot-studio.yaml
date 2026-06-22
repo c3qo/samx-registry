@@ -1,0 +1,311 @@
+schemaVersion: 1
+id: microsoft/skills-for-copilot-studio
+name: Skills for Copilot Studio
+description: Copilot Studio YAML authoring/test/push-pull plugin for Claude
+  Code, Copilot CLI, VS Code.
+source:
+  type: git
+  url: https://github.com/microsoft/skills-for-copilot-studio
+  revision: 353b28828a98634cc7bb7a4e62d6b63be60325ff
+capabilities:
+  - id: manage-agent
+    kind: skill
+    path: skills/manage-agent
+    description: Push/pull Copilot Studio agent content via the VS Code extension's
+      LanguageServerHost LSP binary. Handles authentication (interactive browser
+      login for push/pull, device code flow for chat token), sync push, sync
+      pull, clone, and diff operations.
+  - id: new-topic
+    kind: skill
+    path: skills/new-topic
+    description: Create a new Copilot Studio topic YAML file. Use when the user asks
+      to create a new topic, conversation flow, or dialog for their agent.
+  - id: add-node
+    kind: skill
+    path: skills/add-node
+    description: Add or modify a node in an existing Copilot Studio topic. Use when
+      the user asks to add a question, message, condition, variable, or other
+      node to a topic. Do NOT use this for generative answers or knowledge
+      search — use /add-generative-answers instead.
+  - id: add-knowledge
+    kind: skill
+    path: skills/add-knowledge
+    description: Add a knowledge source (public website or SharePoint) to a Copilot
+      Studio agent. Use when the user asks to add a knowledge source,
+      documentation URL, website, or SharePoint site for the agent to search.
+  - id: add-action
+    kind: skill
+    path: skills/add-action
+    description: Guide users through adding a new connector action to a Copilot
+      Studio agent. Connector actions require UI-based connection setup, so this
+      skill walks users through the Copilot Studio portal steps, then delegates
+      to edit-action for YAML modifications.
+  - id: edit-action
+    kind: skill
+    path: skills/edit-action
+    description: Edit an existing action (TaskDialog) in a Copilot Studio agent.
+      Supports connector actions and MCP server actions. Modify inputs, outputs,
+      descriptions, connection mode, and other properties.
+  - id: edit-agent
+    kind: skill
+    path: skills/edit-agent
+    description: Edit Copilot Studio agent settings, instructions, or configuration.
+      Use when the user asks to change agent instructions, display name,
+      conversation starters, AI settings, or generative actions toggle.
+  - id: add-generative-answers
+    kind: skill
+    path: skills/add-generative-answers
+    description: Add generative answer nodes (SearchAndSummarizeContent or
+      AnswerQuestionWithAI) to a Copilot Studio topic. Use this instead of
+      /add-node when the user asks to add grounded answers, knowledge search,
+      generative answers, or AI-powered responses — these nodes require specific
+      patterns (ConditionGroup follow-up, knowledge source references, autoSend,
+      responseCaptureType) that /add-node does not cover.
+  - id: add-adaptive-card
+    kind: skill
+    path: skills/add-adaptive-card
+    description: Generate and insert an Adaptive Card into a Copilot Studio topic
+      using AdaptiveCardPrompt. Use when the user asks to add an adaptive card,
+      rich card, form card, info card, confirmation card, or interactive card to
+      a topic.
+  - id: add-other-agents
+    kind: skill
+    path: skills/add-other-agents
+    description: Add child agents, connected agents, or other multi-agent patterns
+      to a Copilot Studio agent. Use when the user asks to create a sub-agent,
+      child agent, connected agent, or call another agent.
+  - id: validate
+    kind: skill
+    path: skills/validate
+    description: Validate Copilot Studio agent YAML files using the LSP binary's
+      full diagnostics (YAML structure, Power Fx, schema, cross-file
+      references). Use when the user asks to check, validate, or verify YAML
+      files.
+  - id: test-auth
+    kind: skill
+    path: skills/test-auth
+    description: >
+      Authenticate for Copilot Studio evaluation API and SDK chat. Caches a
+      token that is shared across run-eval and chat-sdk skills. Run this before
+      any eval or SDK chat workflow. Requires an App Registration with
+      MakerOperations and Copilots.Invoke permissions.
+  - id: run-eval
+    kind: skill
+    path: skills/run-eval
+    description: >
+      Run evaluations against a Copilot Studio agent via the Power Platform
+      Evaluation API. Works on DRAFT agents — no publish step required. Lists
+      test sets, starts a run, polls until complete, fetches results, and
+      proposes YAML fixes for failures. Use when the user wants to test agent
+      changes without publishing.
+  - id: create-eval-set
+    kind: skill
+    path: skills/create-eval-set
+    description: >
+      Create a test set CSV file for import into Copilot Studio's in-product
+      Evaluate tab. Reads the agent's topics, instructions, and knowledge
+      sources to generate meaningful test cases with appropriate graders
+      (General quality, Compare meaning, Exact match, etc.). Use when the user
+      asks to create, prepare, or generate evaluation test cases for their
+      agent.
+  - id: chat-sdk
+    kind: skill
+    path: skills/chat-sdk
+    description: Send a message to a Copilot Studio agent via the Copilot Studio
+      Client SDK (M365). Use for agents with integrated auth (Entra ID SSO).
+      Requires an App Registration Client ID.
+  - id: chat-directline
+    kind: skill
+    path: skills/chat-directline
+    description: Send a message to a Copilot Studio agent via DirectLine v3. Use for
+      agents with no auth or manual auth. Requires a token endpoint URL or
+      DirectLine secret.
+  - id: add-global-variable
+    kind: skill
+    path: skills/add-global-variable
+    description: Add a global variable to a Copilot Studio agent. Use when the user
+      needs a variable that persists across topics in the same conversation and
+      can optionally be visible to the AI orchestrator.
+  - id: analyze-evals
+    kind: skill
+    path: skills/analyze-evals
+    description: >
+      Analyze exported evaluation results from Copilot Studio's Evaluate tab.
+      The user provides a CSV file exported from the Copilot Studio UI; this
+      skill parses it, identifies failures, and proposes YAML fixes. No API
+      access or published agent required — just the exported CSV.
+  - id: chat-with-agent
+    kind: skill
+    path: skills/chat-with-agent
+    description: "DEPRECATED: Use /copilot-studio:detect-mode then
+      /copilot-studio:chat-directline or /copilot-studio:chat-sdk instead."
+  - id: clone-agent
+    kind: skill
+    path: skills/clone-agent
+    description: Clone a Copilot Studio agent from the cloud. Guides through
+      environment selection, agent selection, and downloads agent YAML files.
+  - id: create-eval
+    kind: skill
+    path: skills/create-eval
+    description: Create plugin development eval scenarios (JSON files with natural
+      prompts and deterministic checks for testing plugin skills). NOT for
+      Copilot Studio in-product evaluation — use /copilot-studio:create-eval-set
+      for that.
+  - id: detect-mode
+    kind: skill
+    path: skills/detect-mode
+    description: Detect a Copilot Studio agent's authentication mode (DirectLine vs
+      M365) by querying Dataverse. Returns the mode and connection details
+      needed to chat.
+  - id: directline-chat
+    kind: skill
+    path: skills/directline-chat
+    description: "DEPRECATED: Use /copilot-studio:chat-with-agent instead — it
+      auto-detects DirectLine vs M365 mode. This skill is kept for backwards
+      compatibility only."
+  - id: edit-triggers
+    kind: skill
+    path: skills/edit-triggers
+    description: Modify topic triggers — trigger phrases and model description. Use
+      when the user asks to add, remove, or change trigger phrases, or edit a
+      topic's model description.
+  - id: int-patterns
+    kind: skill
+    path: skills/int-patterns
+    description: "Pattern library for Copilot Studio agent design. Contains proven
+      and recommended implementation patterns with YAML examples. Used by the
+      Advisor agent to suggest patterns and by the Author agent to reference
+      YAML structure during implementation. USE FOR: design guidance, pattern
+      suggestions, review against best practices, troubleshooting known
+      pitfalls, YAML reference during implementation. DO NOT USE FOR: general
+      YAML schema reference (use int-reference), topic creation mechanics (use
+      new-topic)."
+  - id: int-project-context
+    kind: skill
+    path: skills/int-project-context
+    description: >
+      Shared project context for all Copilot Studio sub-agents. Provides project
+      structure, schema lookup usage, and skill invocation guidance.
+  - id: int-reference
+    kind: skill
+    path: skills/int-reference
+    description: "Reference tables for Copilot Studio YAML authoring: triggers,
+      actions, variables, entities, Power Fx functions, templates. Preloaded by
+      author and advisor agents."
+  - id: list-kinds
+    kind: skill
+    path: skills/list-kinds
+    description: List all available kind discriminator values from the Copilot
+      Studio YAML schema. Use when the user asks what kinds/types are available.
+  - id: list-topics
+    kind: skill
+    path: skills/list-topics
+    description: List all topics in the Copilot Studio agent with their trigger
+      types, phrases, and action counts. Use when the user wants to see what
+      topics exist.
+  - id: lookup-schema
+    kind: skill
+    path: skills/lookup-schema
+    description: Look up Copilot Studio YAML schema definitions. Use when the user
+      asks about schema structure, element properties, or how to use a specific
+      YAML kind.
+  - id: run-tests-kit
+    kind: skill
+    path: skills/run-tests-kit
+    description: >
+      Run a batch test suite via the Copilot Studio Kit (Dataverse API). Uses
+      the Power CAT Copilot Studio Kit to execute test cases against a published
+      agent and produces pass/fail results with latencies. Requires the Kit
+      installed in the environment, an App Registration with Dataverse
+      permissions, and a published agent.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries:
+    - id: print-prompt
+      appliesTo:
+        - skill:add-action
+        - skill:add-adaptive-card
+        - skill:add-generative-answers
+        - skill:add-global-variable
+        - skill:add-knowledge
+        - skill:add-node
+        - skill:add-other-agents
+        - skill:analyze-evals
+        - skill:chat-directline
+        - skill:chat-sdk
+        - skill:chat-with-agent
+        - skill:clone-agent
+        - skill:create-eval-set
+        - skill:create-eval
+        - skill:detect-mode
+        - skill:directline-chat
+        - skill:edit-action
+        - skill:edit-agent
+        - skill:edit-triggers
+        - skill:int-patterns
+        - skill:int-project-context
+        - skill:int-reference
+        - skill:list-kinds
+        - skill:list-topics
+        - skill:lookup-schema
+        - skill:manage-agent
+        - skill:new-topic
+        - skill:run-eval
+        - skill:run-tests-kit
+        - skill:test-auth
+        - skill:validate
+      files:
+        - target: opencode
+          path: hooks/print-prompt.js
+      required: false
+    - id: setup
+      appliesTo:
+        - skill:add-action
+        - skill:add-adaptive-card
+        - skill:add-generative-answers
+        - skill:add-global-variable
+        - skill:add-knowledge
+        - skill:add-node
+        - skill:add-other-agents
+        - skill:analyze-evals
+        - skill:chat-directline
+        - skill:chat-sdk
+        - skill:chat-with-agent
+        - skill:clone-agent
+        - skill:create-eval-set
+        - skill:create-eval
+        - skill:detect-mode
+        - skill:directline-chat
+        - skill:edit-action
+        - skill:edit-agent
+        - skill:edit-triggers
+        - skill:int-patterns
+        - skill:int-project-context
+        - skill:int-reference
+        - skill:list-kinds
+        - skill:list-topics
+        - skill:lookup-schema
+        - skill:manage-agent
+        - skill:new-topic
+        - skill:run-eval
+        - skill:run-tests-kit
+        - skill:test-auth
+        - skill:validate
+      files:
+        - target: opencode
+          path: hooks/setup.js
+      required: false
+advisories:
+  - id: unlinked-hook-files
+    severity: warning
+    category: hooks
+    message: Repository contains hook-related files that are not linked by this formula.
+    paths:
+      - hooks/hooks.json
+      - hooks/system-prompt.md
+    reason: These files lack explicit appliesTo mappings, supported targets, or
+      supported file types.
+    effect: SAMX will not install, link, or execute these files.
+    action: Add explicit hook entries only after manual review.

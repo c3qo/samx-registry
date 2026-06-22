@@ -1,0 +1,25 @@
+schemaVersion: 1
+id: firebase/firebase-tools
+name: Firebase CLI and MCP Server
+description: CLI for Firebase deploy/emulation; MCP server too.
+source:
+  type: git
+  url: https://github.com/firebase/firebase-tools
+  revision: 2da66b694debf1e703d9c51ecf7afa0c70747846
+capabilities:
+  - id: resolve-docker-vulnerabilities
+    kind: skill
+    path: .agent/skills/resolve-docker-vulnerabilities
+    description: Skill to resolve Docker vulnerabilities for the firebase-cli image.
+      Use this skill when you need to check for vulnerabilities in the
+      firebase-cli Docker image and address them.
+  - id: update-pubsub-emulator
+    kind: skill
+    path: .agent/skills/update-pubsub-emulator
+    description: How to update the Pub/Sub emulator
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

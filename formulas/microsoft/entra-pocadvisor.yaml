@@ -1,0 +1,34 @@
+schemaVersion: 1
+id: microsoft/entra-pocadvisor
+name: Entra-POCAdvisor
+description: Guides Microsoft Entra admins through POC deployments, config,
+  validation, docs.
+source:
+  type: git
+  url: https://github.com/microsoft/entra-pocadvisor
+  revision: c6f1706496d167cf3ce2b49d1fa996dda1d75cfe
+capabilities:
+  - id: entra-poc-advisor
+    kind: skill
+    path: .github/skills/entra-poc-advisor
+    description: >
+      Guides Microsoft Entra administrators through proof-of-concept deployments
+      of Entra Suite products including Private Access, Internet Access, Global
+      Secure Access, ID Protection, ID Governance, Verified ID, and External
+      Identities. Use when user mentions "Entra POC", "Global Secure Access
+      setup", "private access proof of concept", "Entra Suite trial", "GSA
+      configuration", "zero trust network access POC", "secure web gateway POC",
+      "identity governance POC", "external identities POC", "B2B collaboration
+      setup", "CIAM proof of concept", "guest user onboarding", "customer
+      identity POC", or asks to plan, configure, validate, or document an Entra
+      deployment. Orchestrates Microsoft MCP Server for Enterprise to read
+      tenant configuration and generates documentation, PowerShell scripts, and
+      gap analysis reports. Do NOT use for general Microsoft 365 administration,
+      Exchange, SharePoint, or Teams configuration unrelated to Entra Suite
+      security features.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

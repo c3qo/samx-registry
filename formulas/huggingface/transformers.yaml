@@ -1,0 +1,20 @@
+schemaVersion: 1
+id: huggingface/transformers
+name: Transformers
+description: NLP/CV/audio TL toolkit; examples/docs/benchmarks.
+source:
+  type: git
+  url: https://github.com/huggingface/transformers
+  revision: 4bcbf81e6fe665f31347a9e9d074cfbeb9097262
+capabilities:
+  - id: add-or-fix-type-checking
+    kind: skill
+    path: .ai/skills/add-or-fix-type-checking
+    description: Fixes broken typing checks detected by ty, make typing, or make
+      check-repo. Use when typing errors appear in local runs, CI, or PR logs.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

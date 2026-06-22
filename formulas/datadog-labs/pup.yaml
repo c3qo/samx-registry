@@ -1,0 +1,73 @@
+schemaVersion: 1
+id: datadog-labs/pup
+name: Pup CLI
+description: Datadog API CLI; skills/agents for observability ops.
+source:
+  type: git
+  url: https://github.com/datadog-labs/pup
+  revision: 785c198b97c27fdc3de946fa109859766ad8047d
+capabilities:
+  - id: pup
+    kind: skill
+    path: .
+    description: Datadog API CLI with 49 command groups, 300+ subcommands. Skills
+      and domain agents for monitoring, logs, APM, security, and infrastructure.
+  - id: dd-pup
+    kind: skill
+    path: skills/dd-pup
+    description: Datadog CLI (pup). OAuth2 auth with token refresh.
+  - id: dd-apm
+    kind: skill
+    path: skills/dd-apm
+    description: APM - traces, services, dependencies, performance analysis.
+  - id: dd-code-generation
+    kind: skill
+    path: skills/dd-code-generation
+    description: Use pup CLI for immediate Datadog operations or generate code for
+      integration into applications
+  - id: dd-debugger
+    kind: skill
+    path: skills/dd-debugger
+    description: Live Debugger - inspect runtime argument/variable values in
+      production by placing log probes on methods. Use when asked what values a
+      function receives, what parameters look like at runtime, or to capture
+      live data from running services without redeploying.
+  - id: dd-docs
+    kind: skill
+    path: skills/dd-docs
+    description: Datadog docs lookup using docs.datadoghq.com/llms.txt and linked
+      Markdown pages.
+  - id: dd-file-issue
+    kind: skill
+    path: skills/dd-file-issue
+    description: File GitHub issues to the right repository (pup CLI or plugin)
+  - id: dd-logs
+    kind: skill
+    path: skills/dd-logs
+    description: Log management - search, pipelines, archives, and cost control.
+  - id: dd-monitors
+    kind: skill
+    path: skills/dd-monitors
+    description: Monitor management - create, update, mute, and alerting best practices.
+  - id: dd-symdb
+    kind: skill
+    path: skills/dd-symdb
+    description: Symbol Database - search service symbols, find probe-able methods.
+  - id: dd-triage-flaky-test
+    kind: skill
+    path: skills/dd-triage-flaky-test
+    description: Load when investigating a specific flaky test. Gets history,
+      failure pattern, and category, then recommends fix, quarantine, or
+      escalate.
+  - id: dd-unblock-pr
+    kind: skill
+    path: skills/dd-unblock-pr
+    description: Load when investigating a failing PR CI pipeline or checking PR
+      health. Attributes each CI failure as flaky, infra, or regression,
+      proposes a targeted action, and reports code coverage.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

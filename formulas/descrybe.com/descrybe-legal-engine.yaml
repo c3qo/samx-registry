@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: descrybe.com/descrybe-legal-engine
+name: Descrybe Legal Engine
+description: Descrybe Legal Engine remote MCP server at
+  https://mcp.descrybe.com/mcp. Ground your work in clean, structured U.S.
+  primary law. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/descrybe-legal-engine
+capabilities:
+  - id: descrybe-legal-engine
+    kind: mcp
+    spec:
+      serverName: descrybe-legal-engine
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.descrybe.com/mcp

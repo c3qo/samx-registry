@@ -1,0 +1,24 @@
+schemaVersion: 1
+id: github/gh-stack
+name: GitHub Stacked PRs
+description: GitHub CLI ext for stacked branches/PRs.
+source:
+  type: git
+  url: https://github.com/github/gh-stack
+  revision: 4759126a51620a1a332a0683f61e1c25b4e0737e
+capabilities:
+  - id: gh-stack
+    kind: skill
+    path: skills/gh-stack
+    description: >
+      Manage stacked branches and pull requests with the gh-stack GitHub CLI
+      extension. Use when the user wants to create, push, rebase, sync,
+      navigate, or view stacks of dependent PRs. Triggers on tasks involving
+      stacked diffs, dependent pull requests, branch chains, or incremental code
+      review workflows.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

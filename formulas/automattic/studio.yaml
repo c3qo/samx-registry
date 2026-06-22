@@ -1,0 +1,80 @@
+schemaVersion: 1
+id: automattic/studio
+name: Studio
+description: Local WP dev env + CLI; AI site build/audit ops.
+source:
+  type: git
+  url: https://github.com/automattic/studio
+  revision: ad339ca45f2f13406d8708aa4670d36541755beb
+capabilities:
+  - id: annotate
+    kind: skill
+    path: apps/cli/ai/skills/annotate
+    description: Open a browser with visual annotation tools. The user clicks
+      elements on their site and leaves feedback — the agent reads annotations
+      and makes changes. Use this when the user wants to point at specific
+      elements to fix, tweak, or redesign.
+  - id: block-content
+    kind: skill
+    path: apps/cli/ai/skills/block-content
+    description: Write editable WordPress block markup for local Studio sites,
+      including core/html limits, block-theme layout rules, full-width sections,
+      validation, and skeleton-first page/CSS recipes.
+  - id: need-for-speed
+    kind: skill
+    path: apps/cli/ai/skills/need-for-speed
+    description: Run a frontend performance audit on a WordPress site and get
+      actionable optimization recommendations.
+  - id: plugin-recommendations
+    kind: skill
+    path: apps/cli/ai/skills/plugin-recommendations
+    description: Choose WordPress plugins and plugin-provided blocks for features
+      that core WordPress blocks do not cover, while keeping generated content
+      editable and avoiding raw HTML fallbacks.
+  - id: rank-me-up
+    kind: skill
+    path: apps/cli/ai/skills/rank-me-up
+    description: Run an on-page SEO audit on a WordPress site and get actionable
+      recommendations to improve search visibility.
+  - id: site-spec
+    kind: skill
+    path: apps/cli/ai/skills/site-spec
+    description: Gather the site name and layout preference before building a
+      WordPress site. Run this before creating any new site.
+  - id: taxonomist
+    kind: skill
+    path: apps/cli/ai/skills/taxonomist
+    description: Analyze and optimize a WordPress site's category taxonomy. Exports
+      all posts, uses AI to suggest an improved category structure — merging
+      duplicates, retiring dead categories, creating missing ones, writing
+      descriptions, and re-categorizing posts. Run this when the user wants to
+      clean up or improve their categories.
+  - id: visual-design
+    kind: skill
+    path: apps/cli/ai/skills/visual-design
+    description: Plan and execute high-quality visual direction for site creation,
+      redesign, layout, typography, color, motion, and visual polish.
+  - id: visual-polish
+    kind: skill
+    path: apps/cli/ai/skills/visual-polish
+    description: Verify and polish a built or redesigned site by diagnosing
+      rendered-DOM issues against intent and fixing them in a planned, batched
+      screenshot-and-fix loop.
+  - id: wpcom-remote-management
+    kind: skill
+    path: apps/cli/ai/skills/wpcom-remote-management
+    description: Manage a remote WordPress.com site with wpcom_request, including
+      API namespace selection, endpoint discovery, content/template/theme/plugin
+      operations, response-size limits, and visual verification.
+  - id: studio-cli
+    kind: skill
+    path: skills/studio-cli
+    description: Use the Studio CLI to manage local WordPress sites, authentication,
+      and preview sites. Invoke this skill when you need to run Studio CLI
+      commands, manage sites, or troubleshoot site issues.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

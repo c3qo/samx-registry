@@ -1,0 +1,97 @@
+schemaVersion: 1
+id: deepgram/deepgram-dotnet-sdk
+name: Deepgram .NET SDK
+description: Deepgram C# SDK → STT/TTS/analysis/admin/voice-agent.
+source:
+  type: git
+  url: https://github.com/deepgram/deepgram-dotnet-sdk
+  revision: b46ae61eba2fd86abddaf45d96776fa0522a8f75
+capabilities:
+  - id: deepgram-dotnet-audio-intelligence
+    kind: skill
+    path: .agents/skills/deepgram-dotnet-audio-intelligence
+    description: Use when writing or reviewing C# code in this repo that enables
+      Deepgram intelligence overlays on Speech-to-Text requests. Covers
+      `PreRecordedSchema` analytics flags such as `Summarize`, `Topics`,
+      `Intents`, `Sentiment`, `DetectLanguage`, `DetectEntities`, `Diarize`, and
+      `Redact`, plus the smaller live-streaming subset on `LiveSchema`. Use
+      `deepgram-dotnet-speech-to-text` for plain transcription and
+      `deepgram-dotnet-text-intelligence` for analytics on already-transcribed
+      text.
+  - id: deepgram-dotnet-conversational-stt
+    kind: skill
+    path: .agents/skills/deepgram-dotnet-conversational-stt
+    description: Use when evaluating, extending, or writing C# code for
+      conversational speech-to-text, Flux-style real-time transcription, or
+      turn-taking streaming in the Deepgram .NET SDK. Identifies missing Flux
+      request parameters (language_hint, eot_threshold), maps existing WebSocket
+      response types, provides the closest supported LiveSchema code path, and
+      guides adding TurnInfo models and Flux examples. Use
+      `deepgram-dotnet-speech-to-text` for standard streaming transcription
+      without turn awareness.
+  - id: deepgram-dotnet-management-api
+    kind: skill
+    path: .agents/skills/deepgram-dotnet-management-api
+    description: Use when writing or reviewing C# code in this repo that calls
+      Deepgram Management APIs for projects, models, keys, members, invitations,
+      usage, balances, and auth token grants. Covers
+      `ClientFactory.CreateManageClient()` and
+      `ClientFactory.CreateAuthClient()`. Unlike some other SDKs, this repo does
+      not currently expose reusable Voice Agent configuration management
+      endpoints.
+  - id: deepgram-dotnet-speech-to-text
+    kind: skill
+    path: .agents/skills/deepgram-dotnet-speech-to-text
+    description: Use when writing or reviewing C# code in this repo that calls
+      Deepgram Speech-to-Text for prerecorded or live transcription. Covers
+      `ClientFactory.CreateListenRESTClient()` with `TranscribeUrl` /
+      `TranscribeFile`, and `ClientFactory.CreateListenWebSocketClient()` with
+      `Connect`, `Subscribe`, and `Send`. Use
+      `deepgram-dotnet-audio-intelligence` for summaries/sentiment/topics
+      overlays, `deepgram-dotnet-conversational-stt` for Flux-specific work, and
+      `deepgram-dotnet-voice-agent` for full-duplex assistants.
+  - id: deepgram-dotnet-text-intelligence
+    kind: skill
+    path: .agents/skills/deepgram-dotnet-text-intelligence
+    description: Use when writing or reviewing C# code in this repo that calls
+      Deepgram Text Intelligence / Read (`/read`) for sentiment, summarization,
+      topic detection, and intent recognition on text or hosted text URLs.
+      Covers `ClientFactory.CreateAnalyzeClient()` with `AnalyzeText`,
+      `AnalyzeUrl`, and `AnalyzeFile`. Use `deepgram-dotnet-audio-intelligence`
+      when the source is audio instead of text.
+  - id: deepgram-dotnet-text-to-speech
+    kind: skill
+    path: .agents/skills/deepgram-dotnet-text-to-speech
+    description: Use when writing or reviewing C# code in this repo that calls
+      Deepgram Text-to-Speech. Covers `ClientFactory.CreateSpeakRESTClient()`
+      with `ToStream` / `ToFile`, and
+      `ClientFactory.CreateSpeakWebSocketClient()` with `Connect`,
+      `SpeakWithText`, `Flush`, and streaming `AudioResponse` events. Use
+      `deepgram-dotnet-voice-agent` for full-duplex assistants instead of
+      one-way synthesis.
+  - id: deepgram-dotnet-voice-agent
+    kind: skill
+    path: .agents/skills/deepgram-dotnet-voice-agent
+    description: Use when writing or reviewing C# code in this repo that builds an
+      interactive Deepgram Voice Agent over WebSocket. Covers
+      `ClientFactory.CreateAgentWebSocketClient()`, `SettingsSchema`, event
+      subscriptions, microphone audio streaming, injected user messages, and
+      function-call-related message types. Use `deepgram-dotnet-text-to-speech`
+      for one-way synthesis and STT skills for transcription-only flows.
+requirements:
+  env:
+    - DEEPGRAM_API_KEY
+    - DEEPGRAM_ACCESS_TOKEN
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Missing evidence for environment variable: DEEPGRAM_API_KEY; Missing
+      evidence for environment variable: DEEPGRAM_ACCESS_TOKEN"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

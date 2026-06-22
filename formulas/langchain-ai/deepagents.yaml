@@ -1,0 +1,217 @@
+schemaVersion: 1
+id: langchain-ai/deepagents
+name: Deep Agents
+description: Agent framework + examples/CLI/deploy tooling.
+source:
+  type: git
+  url: https://github.com/langchain-ai/deepagents
+  revision: b7eed01facbe1d66f69da974ae115d078ce42065
+capabilities:
+  - id: web-research
+    kind: skill
+    path: libs/cli/examples/skills/web-research
+    description: Searches multiple web sources, synthesizes findings, and produces
+      cited research reports using delegated subagents. Use when the user asks
+      to research a topic online, search the web, look something up, find
+      current information, compare options, or produce a research report.
+  - id: blog-post
+    kind: skill
+    path: examples/content-builder-agent/skills/blog-post
+    description: Writes and structures long-form blog posts, creates tutorial
+      outlines, and optimizes content for SEO with cover image generation. Use
+      when the user asks to write a blog post, article, how-to guide, tutorial,
+      technical writeup, thought leadership piece, or long-form content.
+  - id: social-media
+    kind: skill
+    path: examples/content-builder-agent/skills/social-media
+    description: Drafts engaging social media posts, writes hooks, suggests
+      hashtags, creates thread structures, and generates companion images. Use
+      when the user asks to write a LinkedIn post, tweet, Twitter/X thread,
+      social media caption, social post, or repurpose content for social
+      platforms.
+  - id: code-review
+    kind: skill
+    path: examples/deploy-coding-agent/skills/code-review
+    description: Perform a structured code review of changes, checking for
+      correctness, style, tests, and potential issues.
+  - id: coding-prefs
+    kind: skill
+    path: examples/deploy-coding-agent/skills/coding-prefs
+    description: Read the user's coding preferences from /memory/coding-prefs.md
+      before making non-trivial style decisions, and append new preferences when
+      the user gives durable feedback.
+  - id: planning
+    kind: skill
+    path: examples/deploy-coding-agent/skills/planning
+    description: Break down a coding task into a structured implementation plan with
+      clear steps, file identification, and risk assessment.
+  - id: blog-post-2
+    kind: skill
+    path: examples/deploy-content-writer/skills/blog-post
+    description: Write structured long-form blog posts with research, SEO
+      optimization, and cover image generation.
+  - id: social-media-2
+    kind: skill
+    path: examples/deploy-content-writer/skills/social-media
+    description: Create social media content including Twitter/X threads, LinkedIn
+      posts, and short-form updates.
+  - id: competitor-analysis
+    kind: skill
+    path: examples/deploy-gtm-agent/skills/competitor-analysis
+    description: "Analyze competitors in a given market segment. Trigger on:
+      competitive landscape, competitor analysis, market comparison, competitive
+      positioning."
+  - id: analyze-market
+    kind: skill
+    path: examples/deploy-gtm-agent/subagents/market-researcher/skills/analyze-market
+    description: "Perform a market analysis for a product category or segment.
+      Trigger on: market analysis, market size, TAM SAM SOM, market opportunity,
+      industry analysis."
+  - id: cudf-analytics
+    kind: skill
+    path: examples/nvidia_deep_agent/skills/cudf-analytics
+    description: Use for GPU-accelerated data analysis on datasets, CSVs, or tabular
+      data using NVIDIA cuDF. Triggers when tasks involve groupby aggregations,
+      statistical summaries, anomaly detection, or large-scale data profiling.
+  - id: cuml-machine-learning
+    kind: skill
+    path: examples/nvidia_deep_agent/skills/cuml-machine-learning
+    description: Use for GPU-accelerated machine learning on tabular data using
+      NVIDIA cuML. Triggers when tasks involve classification, regression,
+      clustering, dimensionality reduction, or model training on datasets.
+  - id: data-visualization
+    kind: skill
+    path: examples/nvidia_deep_agent/skills/data-visualization
+    description: Use for creating publication-quality charts and multi-panel
+      analysis summaries. Triggers when tasks involve visualizing data, plotting
+      results, creating charts, or producing visual reports from analysis
+      output.
+  - id: gpu-document-processing
+    kind: skill
+    path: examples/nvidia_deep_agent/skills/gpu-document-processing
+    description: Use when processing large PDFs, document collections, or bulk text
+      extraction tasks that benefit from GPU-accelerated processing. Triggers
+      when the user provides large documents or needs bulk document analysis.
+  - id: swarm
+    kind: skill
+    path: examples/repl_swarm/skills/swarm
+    description: Dispatch a batch of tasks to subagents in parallel with bounded
+      concurrency. Returns a summary object with {total, completed, failed,
+      results[]} — iterate `.results` for per-task output.
+  - id: query-writing
+    kind: skill
+    path: examples/text-to-sql-agent/skills/query-writing
+    description: Writes and executes SQL queries from simple SELECTs to complex
+      multi-table JOINs, aggregations, and subqueries. Use when the user asks to
+      query a database, write SQL, run a SELECT statement, retrieve data, filter
+      records, or generate reports from database tables.
+  - id: schema-exploration
+    kind: skill
+    path: examples/text-to-sql-agent/skills/schema-exploration
+    description: Lists tables, describes columns and data types, identifies foreign
+      key relationships, and maps entity relationships in a database. Use when
+      the user asks about database schema, table structure, column types, what
+      tables exist, ERD, foreign keys, or how entities relate.
+  - id: blog-post-3
+    kind: skill
+    path: libs/cli/examples/deploy-content-writer/skills/blog-post
+    description: Write long-form blog posts with SEO optimization and clear structure.
+  - id: social-media-3
+    kind: skill
+    path: libs/cli/examples/deploy-content-writer/skills/social-media
+    description: Create social media posts optimized for engagement across platforms.
+  - id: arxiv-search
+    kind: skill
+    path: libs/cli/examples/skills/arxiv-search
+    description: Searches arXiv for preprints and academic papers, retrieves
+      abstracts, and filters by topic. Use when the user asks to find research
+      papers, search arXiv, look up preprints, find academic articles in
+      physics, math, CS, biology, statistics, or related fields.
+  - id: langgraph-docs
+    kind: skill
+    path: libs/cli/examples/skills/langgraph-docs
+    description: Fetches and references LangGraph Python documentation to build
+      stateful agents, create multi-agent workflows, and implement
+      human-in-the-loop patterns. Use when the user asks about LangGraph, graph
+      agents, state machines, agent orchestration, LangGraph API, or needs
+      LangGraph implementation guidance.
+  - id: skill-creator
+    kind: skill
+    path: libs/cli/examples/skills/skill-creator
+    description: 'Guide for creating effective skills that extend agent capabilities
+      with specialized knowledge, workflows, or tool integrations. Use this
+      skill when the user asks to: (1) create a new skill, (2) make a skill, (3)
+      build a skill, (4) set up a skill, (5) initialize a skill, (6) scaffold a
+      skill, (7) update or modify an existing skill, (8) validate a skill, (9)
+      learn about skill structure, (10) understand how skills work, or (11) get
+      guidance on skill design patterns. Trigger on phrases like "create a
+      skill", "new skill", "make a skill", "skill for X", "how do I create a
+      skill", or "help me build a skill".'
+  - id: note
+    kind: skill
+    path: libs/cli/tests/unit_tests/deploy/fixtures/projects/subagent_with_local_skills/subagents/researcher/skills/note
+    description: Take a note.
+  - id: summarize
+    kind: skill
+    path: libs/cli/tests/unit_tests/deploy/fixtures/projects/with_skills/skills/summarize
+    description: Summarise text into a one-paragraph summary.
+  - id: remember
+    kind: skill
+    path: libs/code/deepagents_code/built_in_skills/remember
+    description: "Review the current conversation and capture valuable knowledge —
+      best practices, coding conventions, architecture decisions, workflows, and
+      user feedback — into persistent memory (AGENTS.md) or reusable skills. Use
+      when the user says: (1) remember this, (2) save what we learned, (3)
+      update memory, (4) capture learnings."
+  - id: skill-creator-2
+    kind: skill
+    path: libs/code/deepagents_code/built_in_skills/skill-creator
+    description: 'Guide for creating effective skills that extend agent capabilities
+      with specialized knowledge, workflows, or tool integrations. Use this
+      skill when the user asks to: (1) create a new skill, (2) make a skill, (3)
+      build a skill, (4) set up a skill, (5) initialize a skill, (6) scaffold a
+      skill, (7) update or modify an existing skill, (8) validate a skill, (9)
+      learn about skill structure, (10) understand how skills work, or (11) get
+      guidance on skill design patterns. Trigger on phrases like "create a
+      skill", "new skill", "make a skill", "skill for X", "how do I create a
+      skill", or "help me build a skill".'
+  - id: arxiv-search-2
+    kind: skill
+    path: libs/code/examples/skills/arxiv-search
+    description: Searches arXiv for preprints and academic papers, retrieves
+      abstracts, and filters by topic. Use when the user asks to find research
+      papers, search arXiv, look up preprints, find academic articles in
+      physics, math, CS, biology, statistics, or related fields.
+  - id: langgraph-docs-2
+    kind: skill
+    path: libs/code/examples/skills/langgraph-docs
+    description: Fetches and references LangGraph Python documentation to build
+      stateful agents, create multi-agent workflows, and implement
+      human-in-the-loop patterns. Use when the user asks about LangGraph, graph
+      agents, state machines, agent orchestration, LangGraph API, or needs
+      LangGraph implementation guidance.
+  - id: skill-creator-3
+    kind: skill
+    path: libs/code/examples/skills/skill-creator
+    description: 'Guide for creating effective skills that extend agent capabilities
+      with specialized knowledge, workflows, or tool integrations. Use this
+      skill when the user asks to: (1) create a new skill, (2) make a skill, (3)
+      build a skill, (4) set up a skill, (5) initialize a skill, (6) scaffold a
+      skill, (7) update or modify an existing skill, (8) validate a skill, (9)
+      learn about skill structure, (10) understand how skills work, or (11) get
+      guidance on skill design patterns. Trigger on phrases like "create a
+      skill", "new skill", "make a skill", "skill for X", "how do I create a
+      skill", or "help me build a skill".'
+  - id: web-research-2
+    kind: skill
+    path: libs/code/examples/skills/web-research
+    description: Searches multiple web sources, synthesizes findings, and produces
+      cited research reports using delegated subagents. Use when the user asks
+      to research a topic online, search the web, look something up, find
+      current information, compare options, or produce a research report.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

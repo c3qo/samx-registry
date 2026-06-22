@@ -1,0 +1,31 @@
+schemaVersion: 1
+id: vercel/nextjs-skills
+name: Next.js Agent Skills
+description: Agent skills for Next.js workflows.
+source:
+  type: git
+  url: https://github.com/vercel/nextjs-skills
+  revision: dc1de9caf7612d73f56a8dec3cb1bd6c9ec096b9
+capabilities:
+  - id: next-best-practices
+    kind: skill
+    path: skills/next-best-practices
+    description: Next.js best practices - file conventions, RSC boundaries, data
+      patterns, async APIs, metadata, error handling, route handlers, image/font
+      optimization, bundling
+  - id: next-cache-components
+    kind: skill
+    path: skills/next-cache-components
+    description: Next.js 16 Cache Components - PPR, use cache directive, cacheLife,
+      cacheTag, updateTag
+  - id: next-upgrade
+    kind: skill
+    path: skills/next-upgrade
+    description: Upgrade Next.js to the latest version following official migration
+      guides and codemods
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

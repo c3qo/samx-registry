@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: vercel-labs/migration-skills
+name: migration-skills
+description: CRA to Next.js migration guide skill.
+source:
+  type: git
+  url: https://github.com/vercel-labs/migration-skills
+  revision: a9bdb175792cbb7cf816732790e8020d3c8e2370
+capabilities:
+  - id: cra-to-next-migration
+    kind: skill
+    path: cra-to-next-migration
+    description: Comprehensive guide for migrating Create React App (CRA) projects
+      to Next.js. Use when migrating a CRA app, converting React Router to
+      file-based routing, or adopting Next.js patterns like Server Components,
+      App Router, or image optimization.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

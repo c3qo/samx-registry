@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: marketplace-mcp.us-east-1.api.aws/aws-marketplace
+name: AWS Marketplace
+description: AWS Marketplace remote MCP server at
+  https://marketplace-mcp.us-east-1.api.aws/. Discover, evaluate, and buy
+  solutions for the cloud. Setup guides for Claude Code, Codex, Cursor, and VS
+  Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/aws-marketplace
+capabilities:
+  - id: aws-marketplace
+    kind: mcp
+    spec:
+      serverName: aws-marketplace
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://marketplace-mcp.us-east-1.api.aws/

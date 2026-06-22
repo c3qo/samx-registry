@@ -1,0 +1,70 @@
+schemaVersion: 1
+id: clickhouse/clickhouse-js
+name: ClickHouse JS client
+description: TS client for ClickHouse DB.
+source:
+  type: git
+  url: https://github.com/clickhouse/clickhouse-js
+  revision: a3858281d2ff7f694a740984c459f91fb6f24947
+capabilities:
+  - id: setup
+    kind: skill
+    path: .claude/skills/setup
+    description: >
+      Set up the `clickhouse-js` repository in a fresh checkout so the agent can
+      run tests, lints, type checks, builds, or examples. Use this skill before
+      invoking any `npm run test:*`, `npm run lint`, `npm run typecheck`, `npm
+      run build`, or `npm run run-examples` script — or after pulling changes
+      that touch any `package.json` (root, `examples/node`, or `examples/web`).
+      Covers Node.js version requirements, installing dependencies across the
+      npm workspaces and the two independent example packages, building the
+      workspace packages so inter-package imports resolve, and starting
+      ClickHouse via Docker Compose for integration tests. Do NOT use this skill
+      for downstream user projects that merely depend on `@clickhouse/client` or
+      `@clickhouse/client-web`; it is specific to contributing to the
+      `ClickHouse/clickhouse-js` repo itself.
+  - id: typescript-lsp
+    kind: skill
+    path: .claude/skills/typescript-lsp
+    description: >
+      Use the TypeScript language server (`typescript-language-server`) for
+      precise code intelligence in the `clickhouse-js` repository:
+      go-to-definition, find references, hover (type signatures and JSDoc,
+      including `@deprecated` info), workspace-wide symbol search, completions,
+      and per-file type diagnostics. Prefer this over grep when you need to
+      resolve a symbol's actual definition, find all usages of an exported API,
+      or inspect inferred types across the `packages/*` workspaces. The server
+      is preinstalled as a root devDependency — run the repository `setup` skill
+      (`npm install`) first so `node_modules` is populated. Do NOT use this
+      skill for downstream projects that merely depend on `@clickhouse/client`;
+      it is specific to working inside this repo.
+  - id: clickhouse-js-node-coding
+    kind: skill
+    path: skills/clickhouse-js-node-coding
+    description: >
+      Write idiomatic application code with the ClickHouse Node.js client
+      (`@clickhouse/client`). Use this skill whenever a user is *building*
+      against the Node.js client — configuring the client, pinging, inserting
+      rows in JSON or raw formats, selecting and parsing results, binding query
+      parameters, managing sessions and temporary tables, working with data
+      types or customizing JSON parsing. Do NOT use for browser/Web client code.
+  - id: clickhouse-js-node-troubleshooting
+    kind: skill
+    path: skills/clickhouse-js-node-troubleshooting
+    description: >
+      Troubleshoot and resolve common issues with the ClickHouse Node.js client
+      (@clickhouse/client). Use this skill whenever a user reports errors,
+      unexpected behavior, or configuration questions involving the Node.js
+      client specifically — including socket hang-up errors, Keep-Alive
+      problems, stream handling issues, data type mismatches, read-only user
+      restrictions, proxy/TLS setup problems, or long-running query timeouts.
+      Trigger even when the user hasn't precisely named the issue; vague
+      symptoms like "my inserts keep failing" or "connection drops randomly" in
+      a Node.js context are strong signals to use this skill. Do NOT use for
+      browser/Web client issues.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

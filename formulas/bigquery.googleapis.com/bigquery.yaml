@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: bigquery.googleapis.com/bigquery
+name: Google Cloud BigQuery
+description: "Google Cloud BigQuery remote MCP server at
+  https://bigquery.googleapis.com/mcp. BigQuery: Advanced analytical insights
+  for agents. Setup guides for Claude Code, Codex, Cursor, and VS Code."
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/bigquery
+capabilities:
+  - id: bigquery
+    kind: mcp
+    spec:
+      serverName: bigquery
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://bigquery.googleapis.com/mcp

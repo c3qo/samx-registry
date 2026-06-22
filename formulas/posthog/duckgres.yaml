@@ -1,0 +1,32 @@
+schemaVersion: 1
+id: posthog/duckgres
+name: Duckgres
+description: PostgreSQL-wire DuckDB server; DuckLake, K8s multitenant, perf/tests.
+source:
+  type: git
+  url: https://github.com/posthog/duckgres
+  revision: b226396ef1b3989e8212e80f7eec406136766841
+capabilities:
+  - id: ducklake-test
+    kind: skill
+    path: .claude/skills/ducklake-test
+    description: Start duckgres with DuckLake (S3-backed storage with PostgreSQL
+      metadata) for local testing. Use when testing duckgres against DuckLake or
+      reproducing Fivetran sync issues.
+  - id: multitenant-down
+    kind: skill
+    path: .claude/skills/multitenant-down
+    description: Tear down the multi-tenant K8s stack, kill port-forwards, and clean
+      up worker pods. Use when done testing multi-tenant mode.
+  - id: multitenant-up
+    kind: skill
+    path: .claude/skills/multitenant-up
+    description: Build, deploy, and port-forward the multi-tenant control plane on
+      local Kubernetes. Use when you need to test duckgres in multi-tenant mode
+      with per-team worker pools.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,55 @@
+schemaVersion: 1
+id: microsoft/vscode-cosmosdb
+name: Azure Cosmos DB for VS Code
+description: VS Code ext + workspaces for Cosmos DB; NoSQL svc, webview RPC,
+  telemetry, best-practice skills.
+source:
+  type: git
+  url: https://github.com/microsoft/vscode-cosmosdb
+  revision: becfa921423b3f5a54b590ef2d029c14fa3843f2
+capabilities:
+  - id: accessibility-aria-expert
+    kind: skill
+    path: .github/skills/accessibility-aria-expert
+    description: Detects and fixes accessibility issues in React/Fluent UI webviews.
+      Use when reviewing code for screen reader compatibility, fixing ARIA
+      labels, ensuring keyboard navigation, adding live regions for status
+      messages, or managing focus in dialogs.
+  - id: backport
+    kind: skill
+    path: .github/skills/backport
+    description: Backport changes (current branch, a PR, a branch, or specific
+      commits/SHAs) onto a target branch (typically a release branch like
+      `rel/*`). Use when the user says "backport this", "backport PR ...",
+      "cherry-pick to <branch>", or asks to port commits to another branch.
+      Handles stashing uncommitted work, branch creation, cherry-picking with
+      conflict handling, pushing, and opening a PR.
+  - id: telemetry-best-practices
+    kind: skill
+    path: .github/skills/telemetry-best-practices
+    description: Reviews and authors telemetry code in this extension. Use when
+      adding, modifying, or reviewing any `callWithTelemetryAndErrorHandling`
+      call, any `context.telemetry.properties`/`measurements` assignment, or any
+      helper that reports stats to telemetry. Ensures no PII/EUII is emitted,
+      that property vs. measurement usage is correct, and that event/property
+      names are consistent.
+  - id: cosmosdb-best-practices
+    kind: skill
+    path: skills/cosmosdb-best-practices
+    description: >
+      Azure Cosmos DB performance optimization and best practices guidelines for
+      NoSQL,
+
+      partitioning, queries, and SDK usage. Use when writing, reviewing, or
+      refactoring
+
+      code that interacts with Azure Cosmos DB, designing data models,
+      optimizing queries,
+
+      or implementing high-performance database operations.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

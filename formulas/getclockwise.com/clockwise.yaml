@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: getclockwise.com/clockwise
+name: Clockwise
+description: Clockwise remote MCP server at https://mcp.getclockwise.com/mcp.
+  Advanced scheduling and time management for work.. Setup guides for Claude
+  Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/clockwise
+capabilities:
+  - id: clockwise
+    kind: mcp
+    spec:
+      serverName: clockwise
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.getclockwise.com/mcp

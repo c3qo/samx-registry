@@ -1,0 +1,67 @@
+schemaVersion: 1
+id: getsentry/sdk-skills
+name: Sentry SDK Skills
+description: Agent skills pkg for Sentry SDK workflows.
+source:
+  type: git
+  url: https://github.com/getsentry/sdk-skills
+  revision: 5789a513b9c497b2c883144e8a185187452d2ac5
+capabilities:
+  - id: contributing-md
+    kind: skill
+    path: plugins/sentry-sdk-skills/skills/contributing-md
+    description: >
+      Generate or align a CONTRIBUTING.md for a Sentry SDK repository with the
+      develop.sentry.dev standard template. Use when asked to "create
+      contributing.md", "update contributing.md", "align contributing docs",
+      "standardize contributor docs", or when the contributing guide is
+      outdated, missing sections, or does not exist.
+  - id: daily-update
+    kind: skill
+    path: plugins/sentry-sdk-skills/skills/daily-update
+    description: Generate a formatted async daily standup message for the Sentry SDK
+      team channel. Use when asked to create a "daily update", "async daily",
+      "standup update", or "async team update".
+  - id: linear-initiative
+    kind: skill
+    path: plugins/sentry-sdk-skills/skills/linear-initiative
+    description: Creates Linear projects for SDK repositories based on a Linear
+      initiative. Use when rolling out a feature across multiple SDKs, creating
+      SDK projects from initiative, or setting up cross-SDK alignment work.
+  - id: linear-sdk-telemetry-labeler
+    kind: skill
+    path: plugins/sentry-sdk-skills/skills/linear-sdk-telemetry-labeler
+    description: >
+      Classify and apply SDK Telemetry labels to Linear issues based on their
+      title and description. Use when triaging issues related to SDK telemetry
+      signals: errors, traces, spans, profiles, replays, logs, metrics, cron
+      checks, client reports, user feedbacks, or attachments. Triggers: "sdk
+      telemetry label", "telemetry labeler", "label telemetry issues", "tag
+      telemetry".
+  - id: linear-type-labeler
+    kind: skill
+    path: plugins/sentry-sdk-skills/skills/linear-type-labeler
+    description: >
+      Classify and apply Type labels to Linear issues based on their title and
+      description.
+  - id: sdk-feature-implementation
+    kind: skill
+    path: plugins/sentry-sdk-skills/skills/sdk-feature-implementation
+    description: Implement a feature across Sentry SDK repositories by spawning
+      parallel agents. Use when you have Linear initiatives/projects/issues and
+      want to create draft PRs. Triggers on "implement across SDKs", "spawn SDK
+      agents", "SDK implementation", "parallel SDK implementation", "continue
+      SDK rollout".
+  - id: span-convention-review
+    kind: skill
+    path: plugins/sentry-sdk-skills/skills/span-convention-review
+    description: Review OpenTelemetry tracing span changes in SDK repositories for
+      conformance to Sentry Conventions and OTel Semantic Conventions. Use when
+      reviewing span instrumentation, "review spans", "check span conventions",
+      "span review", "OTel span check", "tracing convention review".
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

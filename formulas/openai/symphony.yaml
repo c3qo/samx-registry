@@ -1,0 +1,52 @@
+schemaVersion: 1
+id: openai/symphony
+name: Symphony
+description: Work orchestration for autonomous coding runs.
+source:
+  type: git
+  url: https://github.com/openai/symphony
+  revision: 4cbe3a9699a73b862466c0b157ceca0c1985d6d7
+capabilities:
+  - id: commit
+    kind: skill
+    path: .codex/skills/commit
+    description: Create a well-formed git commit from current changes using session
+      history for rationale and summary; use when asked to commit, prepare a
+      commit message, or finalize staged work.
+  - id: debug
+    kind: skill
+    path: .codex/skills/debug
+    description: Investigate stuck runs and execution failures by tracing Symphony
+      and Codex logs with issue/session identifiers; use when runs stall, retry
+      repeatedly, or fail unexpectedly.
+  - id: land
+    kind: skill
+    path: .codex/skills/land
+    description: Land a PR by monitoring conflicts, resolving them, waiting for
+      checks, and squash-merging when green; use when asked to land, merge, or
+      shepherd a PR to completion.
+  - id: linear
+    kind: skill
+    path: .codex/skills/linear
+    description: |
+      Use Symphony's `linear_graphql` client tool for raw Linear GraphQL
+      operations such as comment editing and upload flows.
+  - id: pull
+    kind: skill
+    path: .codex/skills/pull
+    description: Pull latest origin/main into the current local branch and resolve
+      merge conflicts (aka update-branch). Use when Codex needs to sync a
+      feature branch with origin, perform a merge-based update (not rebase), and
+      guide conflict resolution best practices.
+  - id: push
+    kind: skill
+    path: .codex/skills/push
+    description: Push current branch changes to origin and create or update the
+      corresponding pull request; use when asked to push, publish updates, or
+      create pull request.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

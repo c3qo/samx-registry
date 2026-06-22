@@ -1,0 +1,44 @@
+schemaVersion: 1
+id: anthropics/healthcare
+name: Claude for Healthcare
+description: "Healthcare plugin: payer, pharma, FHIR. Hosted MCP + skills."
+source:
+  type: git
+  url: https://github.com/anthropics/healthcare
+  revision: 35435b14875f7ead786da0d96e6147ed62c4d563
+capabilities:
+  - id: clinical-trial-protocol
+    kind: skill
+    path: plugins/healthcare/skills/clinical-trial-protocol
+    description: Generate clinical trial protocols for medical devices or drugs.
+      This skill should be used when users say "Create a clinical trial
+      protocol", "Generate protocol for [device/drug]", "Help me design a
+      clinical study", "Research similar trials for [intervention]", or when
+      developing FDA submission documentation for investigational products.
+  - id: fhir-developer
+    kind: skill
+    path: plugins/healthcare/skills/fhir-developer
+    description: >
+      FHIR API development guide for building healthcare endpoints. Use when:
+      (1) Creating FHIR REST endpoints (Patient, Observation, Encounter,
+      Condition, MedicationRequest), (2) Validating FHIR resources and returning
+      proper HTTP status codes and error responses, (3) Implementing SMART on
+      FHIR authorization and OAuth scopes, (4) Working with Bundles,
+      transactions, batch operations, or search pagination. Covers FHIR R4
+      resource structures, required fields, value sets (status codes, gender,
+      intent), coding systems (LOINC, SNOMED, RxNorm, ICD-10), and
+      OperationOutcome error handling.
+  - id: prior-auth
+    kind: skill
+    path: plugins/healthcare/skills/prior-auth
+    description: Automate payer review of prior authorization (PA) requests. This
+      skill should be used when users say "Review this PA request", "Process
+      prior authorization for [procedure]", "Assess medical necessity",
+      "Generate PA decision", or when processing clinical documentation for
+      coverage policy validation and authorization decisions.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

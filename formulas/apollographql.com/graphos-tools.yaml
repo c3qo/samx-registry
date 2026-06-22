@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: apollographql.com/graphos-tools
+name: GraphOS Tools
+description: GraphOS MCP Tools remote MCP server at
+  https://mcp.apollographql.com. Search Apollo docs, specs, and best practices.
+  Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/graphos-tools
+capabilities:
+  - id: graphos-tools
+    kind: mcp
+    spec:
+      serverName: graphos-tools
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.apollographql.com

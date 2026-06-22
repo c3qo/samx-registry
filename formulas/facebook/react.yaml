@@ -1,0 +1,91 @@
+schemaVersion: 1
+id: facebook/react
+name: React
+description: React compiler repo; TS/Rust port workflow.
+source:
+  type: git
+  url: https://github.com/facebook/react
+  revision: 560db51408f4c186016ccdd8062af75a77c22104
+capabilities:
+  - id: compiler-orchestrator
+    kind: skill
+    path: compiler/.claude/skills/compiler-orchestrator
+    description: Orchestrate the Rust compiler port end-to-end. Discovers the
+      current frontier, fixes failing passes, ports new passes, reviews, and
+      commits in a loop.
+  - id: extract-errors
+    kind: skill
+    path: .claude/skills/extract-errors
+    description: Use when adding new error messages to React, or seeing "unknown
+      error code" warnings.
+  - id: feature-flags
+    kind: skill
+    path: .claude/skills/feature-flags
+    description: Use when feature flag tests fail, flags need updating,
+      understanding @gate pragmas, debugging channel-specific test failures, or
+      adding new flags to React.
+  - id: fix
+    kind: skill
+    path: .claude/skills/fix
+    description: Use when you have lint errors, formatting issues, or before
+      committing code to ensure it passes CI.
+  - id: flags
+    kind: skill
+    path: .claude/skills/flags
+    description: Use when you need to check feature flag states, compare channels,
+      or debug why a feature behaves differently across release channels.
+  - id: flow
+    kind: skill
+    path: .claude/skills/flow
+    description: Use when you need to run Flow type checking, or when seeing Flow
+      type errors in React code.
+  - id: test
+    kind: skill
+    path: .claude/skills/test
+    description: Use when you need to run tests for React core. Supports source,
+      www, stable, and experimental channels.
+  - id: verify
+    kind: skill
+    path: .claude/skills/verify
+    description: Use when you want to validate changes before committing, or when
+      you need to check all React contribution requirements.
+  - id: compiler-commit
+    kind: skill
+    path: compiler/.claude/skills/compiler-commit
+    description: Use when you want to verify compiler changes and commit with the
+      correct convention. Runs tests, lint, and format, then commits with the
+      [compiler] or [rust-compiler] prefix.
+  - id: compiler-port
+    kind: skill
+    path: compiler/.claude/skills/compiler-port
+    description: Port a compiler pass from TypeScript to Rust. Gathers context,
+      plans the port, implements in a subagent with test-fix loop, then reviews.
+  - id: compiler-review
+    kind: skill
+    path: compiler/.claude/skills/compiler-review
+    description: Review Rust port code for port fidelity, convention compliance, and
+      error handling. Compares against the original TypeScript source.
+  - id: compiler-verify
+    kind: skill
+    path: compiler/.claude/skills/compiler-verify
+    description: Use when you need to run all compiler checks (tests, lint, format)
+      before committing. Detects whether TS or Rust code changed and runs the
+      appropriate checks.
+  - id: plan-update
+    kind: skill
+    path: compiler/.claude/skills/plan-update
+    description: Use when you need to update a plan document with deep research
+      across all compiler passes. Launches parallel subagents to analyze how a
+      topic affects every compiler phase, then consolidates findings into the
+      plan doc.
+  - id: rust-port-status
+    kind: skill
+    path: compiler/.claude/skills/rust-port-status
+    description: Show the status of all Rust port plan documents and recent related
+      commits. Use when you need to understand what's been done vs what remains.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

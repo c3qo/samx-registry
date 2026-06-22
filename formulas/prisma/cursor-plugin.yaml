@@ -1,0 +1,175 @@
+schemaVersion: 1
+id: prisma/cursor-plugin
+name: Prisma Cursor Plugin
+description: Cursor plugin for Prisma; MCP, skills, rules, agents, hooks.
+source:
+  type: git
+  url: https://github.com/prisma/cursor-plugin
+  revision: 4584a0a9175ba74053d7ee946c6234d3369a5a33
+capabilities:
+  - id: prisma-cli-generate
+    kind: skill
+    path: skills/prisma-cli-generate
+    description: prisma generate. Reference when using this Prisma feature.
+  - id: prisma-client-api-constructor
+    kind: skill
+    path: skills/prisma-client-api-constructor
+    description: PrismaClient Constructor
+  - id: prisma-cli-db-execute
+    kind: skill
+    path: skills/prisma-cli-db-execute
+    description: prisma db execute. Reference when using this Prisma feature.
+  - id: prisma-cli-db-pull
+    kind: skill
+    path: skills/prisma-cli-db-pull
+    description: prisma db pull. Reference when using this Prisma feature.
+  - id: prisma-cli-db-push
+    kind: skill
+    path: skills/prisma-cli-db-push
+    description: prisma db push. Reference when using this Prisma feature.
+  - id: prisma-cli-db-seed
+    kind: skill
+    path: skills/prisma-cli-db-seed
+    description: prisma db seed. Reference when using this Prisma feature.
+  - id: prisma-cli-debug
+    kind: skill
+    path: skills/prisma-cli-debug
+    description: prisma debug. Reference when using this Prisma feature.
+  - id: prisma-cli-dev
+    kind: skill
+    path: skills/prisma-cli-dev
+    description: prisma dev. Reference when using this Prisma feature.
+  - id: prisma-cli-format
+    kind: skill
+    path: skills/prisma-cli-format
+    description: prisma format. Reference when using this Prisma feature.
+  - id: prisma-cli-init
+    kind: skill
+    path: skills/prisma-cli-init
+    description: prisma init. Reference when using this Prisma feature.
+  - id: prisma-cli-migrate-deploy
+    kind: skill
+    path: skills/prisma-cli-migrate-deploy
+    description: prisma migrate deploy
+  - id: prisma-cli-migrate-dev
+    kind: skill
+    path: skills/prisma-cli-migrate-dev
+    description: prisma migrate dev. Reference when using this Prisma feature.
+  - id: prisma-cli-migrate-diff
+    kind: skill
+    path: skills/prisma-cli-migrate-diff
+    description: prisma migrate diff. Reference when using this Prisma feature.
+  - id: prisma-cli-migrate-reset
+    kind: skill
+    path: skills/prisma-cli-migrate-reset
+    description: prisma migrate reset
+  - id: prisma-cli-migrate-resolve
+    kind: skill
+    path: skills/prisma-cli-migrate-resolve
+    description: prisma migrate resolve
+  - id: prisma-cli-migrate-status
+    kind: skill
+    path: skills/prisma-cli-migrate-status
+    description: prisma migrate status
+  - id: prisma-cli-studio
+    kind: skill
+    path: skills/prisma-cli-studio
+    description: prisma studio. Reference when using this Prisma feature.
+  - id: prisma-cli-validate
+    kind: skill
+    path: skills/prisma-cli-validate
+    description: prisma validate. Reference when using this Prisma feature.
+  - id: prisma-client-api-client-methods
+    kind: skill
+    path: skills/prisma-client-api-client-methods
+    description: Client Methods. Reference when using this Prisma feature.
+  - id: prisma-client-api-filters
+    kind: skill
+    path: skills/prisma-client-api-filters
+    description: Filter Conditions and Operators
+  - id: prisma-client-api-model-queries
+    kind: skill
+    path: skills/prisma-client-api-model-queries
+    description: Model Queries. Reference when using this Prisma feature.
+  - id: prisma-client-api-query-options
+    kind: skill
+    path: skills/prisma-client-api-query-options
+    description: Query Options. Reference when using this Prisma feature.
+  - id: prisma-client-api-raw-queries
+    kind: skill
+    path: skills/prisma-client-api-raw-queries
+    description: Raw Queries. Reference when using this Prisma feature.
+  - id: prisma-client-api-relations
+    kind: skill
+    path: skills/prisma-client-api-relations
+    description: Relation Queries. Reference when using this Prisma feature.
+  - id: prisma-client-api-transactions
+    kind: skill
+    path: skills/prisma-client-api-transactions
+    description: Transactions. Reference when using this Prisma feature.
+  - id: prisma-database-setup-cockroachdb
+    kind: skill
+    path: skills/prisma-database-setup-cockroachdb
+    description: CockroachDB Setup. Reference when using this Prisma feature.
+  - id: prisma-database-setup-mongodb
+    kind: skill
+    path: skills/prisma-database-setup-mongodb
+    description: MongoDB Setup. Reference when using this Prisma feature.
+  - id: prisma-database-setup-mysql
+    kind: skill
+    path: skills/prisma-database-setup-mysql
+    description: MySQL Setup. Reference when using this Prisma feature.
+  - id: prisma-database-setup-postgresql
+    kind: skill
+    path: skills/prisma-database-setup-postgresql
+    description: PostgreSQL Setup. Reference when using this Prisma feature.
+  - id: prisma-database-setup-prisma-client-setup
+    kind: skill
+    path: skills/prisma-database-setup-prisma-client-setup
+    description: Prisma Client Setup. Reference when using this Prisma feature.
+  - id: prisma-database-setup-prisma-postgres
+    kind: skill
+    path: skills/prisma-database-setup-prisma-postgres
+    description: Prisma Postgres Setup
+  - id: prisma-database-setup-sqlite
+    kind: skill
+    path: skills/prisma-database-setup-sqlite
+    description: SQLite Setup. Reference when using this Prisma feature.
+  - id: prisma-database-setup-sqlserver
+    kind: skill
+    path: skills/prisma-database-setup-sqlserver
+    description: SQL Server Setup. Reference when using this Prisma feature.
+  - id: prisma-upgrade-v7-accelerate-users
+    kind: skill
+    path: skills/prisma-upgrade-v7-accelerate-users
+    description: Prisma Accelerate Users
+  - id: prisma-upgrade-v7-driver-adapters
+    kind: skill
+    path: skills/prisma-upgrade-v7-driver-adapters
+    description: Driver Adapters. Reference when using this Prisma feature.
+  - id: prisma-upgrade-v7-env-variables
+    kind: skill
+    path: skills/prisma-upgrade-v7-env-variables
+    description: Environment Variables
+  - id: prisma-upgrade-v7-esm-support
+    kind: skill
+    path: skills/prisma-upgrade-v7-esm-support
+    description: ESM Support. Reference when using this Prisma feature.
+  - id: prisma-upgrade-v7-prisma-config
+    kind: skill
+    path: skills/prisma-upgrade-v7-prisma-config
+    description: Prisma Config. Reference when using this Prisma feature.
+  - id: prisma-upgrade-v7-removed-features
+    kind: skill
+    path: skills/prisma-upgrade-v7-removed-features
+    description: Removed Features. Reference when using this Prisma feature.
+  - id: prisma-upgrade-v7-schema-changes
+    kind: skill
+    path: skills/prisma-upgrade-v7-schema-changes
+    description: Schema Changes. Reference when using this Prisma feature.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

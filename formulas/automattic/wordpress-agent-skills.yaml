@@ -1,0 +1,39 @@
+schemaVersion: 1
+id: automattic/wordpress-agent-skills
+name: WordPress Agent Skill Prototypes
+description: Beta WordPress theme/site agent skills; Claude Code/Cowork + Studio/MCP.
+source:
+  type: git
+  url: https://github.com/automattic/wordpress-agent-skills
+  revision: ea902bd8301564fa33e336c34114ab121f24c800
+capabilities:
+  - id: site-specification
+    kind: skill
+    path: claude-code/wp-site-creator/skills/site-specification
+    description: Extract comprehensive site specifications from simple descriptions.
+      Use when analyzing a user's theme request to determine site type,
+      audience, tone, layout requirements, and typography.
+  - id: design-systems
+    kind: skill
+    path: claude-cowork/wp-site-creator/skills/design-systems
+    description: Bold aesthetic direction guidance for web design. Use when making
+      creative decisions about typography, color, motion, spatial composition,
+      and overall visual style. Helps avoid generic "AI slop" aesthetics.
+  - id: wordpress-block-theming
+    kind: skill
+    path: claude-cowork/wp-site-creator/skills/wordpress-block-theming
+    description: WordPress Full Site Editing (FSE) theme architecture. Use when
+      generating theme.json, block templates, template parts, patterns, and
+      functions.php for WordPress block themes.
+  - id: site-specification-2
+    kind: skill
+    path: claude-cowork/wp-site-creator/skills/site-specification
+    description: Extract comprehensive site specifications from simple descriptions.
+      Use when analyzing a user's theme request to determine site type,
+      audience, tone, layout requirements, and typography.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

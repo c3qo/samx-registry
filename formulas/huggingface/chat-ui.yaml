@@ -1,0 +1,24 @@
+schemaVersion: 1
+id: huggingface/chat-ui
+name: Chat UI
+description: SvelteKit chat UI for OpenAI-compatible LLM APIs.
+source:
+  type: git
+  url: https://github.com/huggingface/chat-ui
+  revision: caaf90712ce966f45c0ad171f17f0b619861b0c3
+capabilities:
+  - id: add-model-descriptions
+    kind: skill
+    path: .claude/skills/add-model-descriptions
+    description: Add descriptions for new models from the HuggingFace router to
+      chat-ui configuration, flag reasoning-capable ones, and enable artifacts
+      for models with 32B+ parameters. Use when new models are released on the
+      router and need descriptions added to prod.yaml and dev.yaml. Triggers on
+      requests like "add new model descriptions", "update models from router",
+      "sync models", or when explicitly invoking /add-model-descriptions.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

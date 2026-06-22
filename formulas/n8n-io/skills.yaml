@@ -1,0 +1,298 @@
+schemaVersion: 1
+id: n8n-io/skills
+name: Official n8n Skills
+description: n8n MCP skill pack → workflow/build/design/help refs.
+source:
+  type: git
+  url: https://github.com/n8n-io/skills
+  revision: e4d83eafe020cf7929277a142c6e2f8a85d31bb3
+capabilities:
+  - id: using-n8n-skills
+    kind: skill
+    path: plugins/n8n-skills/skills/using-n8n-skills
+    description: Use when working with n8n workflows in any capacity. The always-on
+      protocol for the n8n-skills plugin, loaded by the SessionStart hook every
+      session. Routes to the right skill, summarizes every n8n MCP tool (closing
+      the deferred-description gap), and lists the cross-cutting rules.
+  - id: n8n-workflow-lifecycle
+    kind: skill
+    path: plugins/n8n-skills/skills/n8n-workflow-lifecycle
+    description: Use when starting, designing, organizing, finishing, or shipping an
+      n8n workflow. Covers visual layout (sticky notes), descriptions that
+      capture the *why*, node names, validation, testing, folders/projects, and
+      publishing. Triggers on create_workflow_from_code, update_workflow,
+      validate_workflow, publish_workflow, archive_workflow, "design", "lay
+      out", "organize", "structure", "sticky", "describe this workflow", "ship",
+      "deploy", "publish", "name this workflow", or any folder/project
+      organization request.
+  - id: n8n-subworkflows
+    kind: skill
+    path: plugins/n8n-skills/skills/n8n-subworkflows
+    description: Use when building anything multi-step, anything that looks
+      repeatable, anything the user mentions reusing, or any workflow with more
+      than ~10 nodes. Triggers on "reuse", "I do this in another workflow",
+      "extract", "modular", "shared logic", "subworkflow", multi-step builds, or
+      any task that mentions logic the user has built before.
+  - id: n8n-expressions
+    kind: skill
+    path: plugins/n8n-skills/skills/n8n-expressions
+    description: Use when writing or reviewing n8n expressions (`{{...}}` syntax),
+      `$json` / `$node` references, Luxon date code, or expression errors.
+      Triggers on `{{}}`, `$json`, `$node`, `$input`, `DateTime`, `Luxon`,
+      "expression error", "evaluating", "format date", "transform field", or any
+      node-parameter assignment.
+  - id: n8n-agents
+    kind: skill
+    path: plugins/n8n-skills/skills/n8n-agents
+    description: 'Use when building or editing any AI feature in n8n: AI Agents,
+      Text Classifier, Information Extractor, Sentiment Analysis, Summarization
+      Chain, Basic LLM Chain, embeddings, vector stores, single one-shot LLM
+      calls, or AI media generation (image / audio / video) via the native
+      LangChain provider nodes. Triggers on any `@n8n/n8n-nodes-langchain.*`
+      node, "agent", "chat assistant", "LLM with tools", "tool calling",
+      "fromAi", "system prompt", "memory window", "structured output",
+      "outputParser", "function calling", "RAG", "vector store", "embeddings",
+      "classify with AI", "extract fields with LLM", "sentiment analysis",
+      "summarize with LLM", "single LLM call", chat triggers with files, AI
+      image / video / audio generation, or any multi-turn or one-shot LLM
+      behavior.'
+  - id: n8n-binary-and-data
+    kind: skill
+    path: plugins/n8n-skills/skills/n8n-binary-and-data
+    description: Use when handling files, images, attachments, or binary data in
+      n8n, OR when an AI agent needs to take a user-uploaded file as tool input
+      or return a generated file. For Data Tables (schemas, dedup, persistent
+      state), see the separate n8n-data-tables skill. Triggers on "file",
+      "image", "PDF", "attachment", "binary", "upload", "download", chat trigger
+      with files, agent tool that needs a file, vision/multimodal, or any
+      handling of non-JSON file data.
+  - id: n8n-code-nodes
+    kind: skill
+    path: plugins/n8n-skills/skills/n8n-code-nodes
+    description: Use when the user reaches for a Code node, mentions writing
+      JavaScript or Python in n8n, or any custom logic comes up in workflow
+      design. Triggers on "Code node", "Code", "JavaScript", "Python", "custom
+      logic", "transform data", "$input", "$json transformation", "loop in
+      code", "write a function", or any time the obvious answer seems to be
+      "just put it in code."
+  - id: n8n-credentials-and-security
+    kind: skill
+    path: plugins/n8n-skills/skills/n8n-credentials-and-security
+    description: Use when handling any auth, API keys, tokens, OAuth, bearer tokens,
+      basic auth, or secret values in n8n workflows. Triggers on "API key",
+      "token", "bearer", "OAuth", "secret", "auth", "credentials",
+      "Authorization header", "x-api-key", or any node configuration that
+      mentions a third-party service.
+  - id: n8n-data-tables
+    kind: skill
+    path: plugins/n8n-skills/skills/n8n-data-tables
+    description: Use when working with n8n's built-in Data Tables, designing
+      schemas, inserting/updating/upserting rows, deduping, or querying.
+      Triggers on "Data Table", "data table", `n8n-nodes-base.dataTable`,
+      "dedup", "idempotency", "lookup", "persistent state", "store across
+      executions", or any schema design discussion inside n8n.
+  - id: n8n-debugging
+    kind: skill
+    path: plugins/n8n-skills/skills/n8n-debugging
+    description: Use when an n8n workflow isn't working, errors appear, results
+      don't match what was expected, or the user says "this isn't working."
+      Triggers on errors, unexpected output, "it's not working", "why is this
+      happening", "the workflow stopped", failure investigation, or any
+      debugging context.
+  - id: n8n-error-handling
+    kind: skill
+    path: plugins/n8n-skills/skills/n8n-error-handling
+    description: Use when building any webhook-triggered workflow,
+      scheduled/production-bound workflow, wiring a per-node error output, or
+      any workflow where silent failure would drop user-visible work. Triggers
+      on "webhook", "respond to webhook", "API", "production", "error",
+      "failure", "5xx", "try/catch", "error workflow", "onError",
+      "continueErrorOutput", "error branch", "node error output", "output(1)",
+      "main[1]", "scheduled", or any workflow that runs unattended.
+  - id: n8n-extending-mcp
+    kind: skill
+    path: plugins/n8n-skills/skills/n8n-extending-mcp
+    description: "Use when you want to expose an n8n workflow as a tool the coding
+      agent can call. Two cases. (1) Wrap n8n API capabilities the MCP doesn't
+      natively expose: folder CRUD, tag CRUD, instance metadata, credential
+      creation. (2) Expose a general-purpose workflow as an agent tool: a
+      workflow that calls a third-party API, runs business logic, or does any
+      task you want the agent to invoke. Triggers on \"expose as MCP tool\",
+      \"build a tool for my agent\", \"I need to know X\" where X isn't an MCP
+      tool, \"create folder\", \"create tag\", or any capability gap."
+  - id: n8n-loops
+    kind: skill
+    path: plugins/n8n-skills/skills/n8n-loops
+    description: Use when working with multi-item data, batches, paginated APIs,
+      rate-limited APIs, fan-out across multiple branches, anything that needs
+      to "do this for each", or any time the user mentions looping, iterating,
+      batching, paging, parallelism, or "loop over items". Triggers on "loop",
+      "iterate", "for each", "batch", "page through", "paginate", "rate limit",
+      "process all", "fan-out", "parallel branches", "concurrency", or any node
+      that should run once vs once-per-item.
+  - id: n8n-node-configuration
+    kind: skill
+    path: plugins/n8n-skills/skills/n8n-node-configuration
+    description: "Use when configuring any n8n node: HTTP, webhooks, database, comms
+      (Slack/Gmail/Discord), AI, triggers, Merge, anything. Triggers on any
+      node-builder call (`node(...)`, `trigger(...)`, `tool(...)`,
+      `memory(...)`, `languageModel(...)`, `ifElse(...)`, `merge(...)`, etc.),
+      configuring a parameter, `useDataOfInput`, `numberOfInputs`, fan-in
+      convergence, or any node-specific debugging."
+  - id: n8n-agents-2
+    kind: skill
+    path: skills/n8n-agents
+    description: 'Use when building or editing any AI feature in n8n: AI Agents,
+      Text Classifier, Information Extractor, Sentiment Analysis, Summarization
+      Chain, Basic LLM Chain, embeddings, vector stores, single one-shot LLM
+      calls, or AI media generation (image / audio / video) via the native
+      LangChain provider nodes. Triggers on any `@n8n/n8n-nodes-langchain.*`
+      node, "agent", "chat assistant", "LLM with tools", "tool calling",
+      "fromAi", "system prompt", "memory window", "structured output",
+      "outputParser", "function calling", "RAG", "vector store", "embeddings",
+      "classify with AI", "extract fields with LLM", "sentiment analysis",
+      "summarize with LLM", "single LLM call", chat triggers with files, AI
+      image / video / audio generation, or any multi-turn or one-shot LLM
+      behavior.'
+  - id: n8n-binary-and-data-2
+    kind: skill
+    path: skills/n8n-binary-and-data
+    description: Use when handling files, images, attachments, or binary data in
+      n8n, OR when an AI agent needs to take a user-uploaded file as tool input
+      or return a generated file. For Data Tables (schemas, dedup, persistent
+      state), see the separate n8n-data-tables skill. Triggers on "file",
+      "image", "PDF", "attachment", "binary", "upload", "download", chat trigger
+      with files, agent tool that needs a file, vision/multimodal, or any
+      handling of non-JSON file data.
+  - id: n8n-code-nodes-2
+    kind: skill
+    path: skills/n8n-code-nodes
+    description: Use when the user reaches for a Code node, mentions writing
+      JavaScript or Python in n8n, or any custom logic comes up in workflow
+      design. Triggers on "Code node", "Code", "JavaScript", "Python", "custom
+      logic", "transform data", "$input", "$json transformation", "loop in
+      code", "write a function", or any time the obvious answer seems to be
+      "just put it in code."
+  - id: n8n-credentials-and-security-2
+    kind: skill
+    path: skills/n8n-credentials-and-security
+    description: Use when handling any auth, API keys, tokens, OAuth, bearer tokens,
+      basic auth, or secret values in n8n workflows. Triggers on "API key",
+      "token", "bearer", "OAuth", "secret", "auth", "credentials",
+      "Authorization header", "x-api-key", or any node configuration that
+      mentions a third-party service.
+  - id: n8n-data-tables-2
+    kind: skill
+    path: skills/n8n-data-tables
+    description: Use when working with n8n's built-in Data Tables, designing
+      schemas, inserting/updating/upserting rows, deduping, or querying.
+      Triggers on "Data Table", "data table", `n8n-nodes-base.dataTable`,
+      "dedup", "idempotency", "lookup", "persistent state", "store across
+      executions", or any schema design discussion inside n8n.
+  - id: n8n-debugging-2
+    kind: skill
+    path: skills/n8n-debugging
+    description: Use when an n8n workflow isn't working, errors appear, results
+      don't match what was expected, or the user says "this isn't working."
+      Triggers on errors, unexpected output, "it's not working", "why is this
+      happening", "the workflow stopped", failure investigation, or any
+      debugging context.
+  - id: n8n-error-handling-2
+    kind: skill
+    path: skills/n8n-error-handling
+    description: Use when building any webhook-triggered workflow,
+      scheduled/production-bound workflow, wiring a per-node error output, or
+      any workflow where silent failure would drop user-visible work. Triggers
+      on "webhook", "respond to webhook", "API", "production", "error",
+      "failure", "5xx", "try/catch", "error workflow", "onError",
+      "continueErrorOutput", "error branch", "node error output", "output(1)",
+      "main[1]", "scheduled", or any workflow that runs unattended.
+  - id: n8n-expressions-2
+    kind: skill
+    path: skills/n8n-expressions
+    description: Use when writing or reviewing n8n expressions (`{{...}}` syntax),
+      `$json` / `$node` references, Luxon date code, or expression errors.
+      Triggers on `{{}}`, `$json`, `$node`, `$input`, `DateTime`, `Luxon`,
+      "expression error", "evaluating", "format date", "transform field", or any
+      node-parameter assignment.
+  - id: n8n-extending-mcp-2
+    kind: skill
+    path: skills/n8n-extending-mcp
+    description: "Use when you want to expose an n8n workflow as a tool the coding
+      agent can call. Two cases. (1) Wrap n8n API capabilities the MCP doesn't
+      natively expose: folder CRUD, tag CRUD, instance metadata, credential
+      creation. (2) Expose a general-purpose workflow as an agent tool: a
+      workflow that calls a third-party API, runs business logic, or does any
+      task you want the agent to invoke. Triggers on \"expose as MCP tool\",
+      \"build a tool for my agent\", \"I need to know X\" where X isn't an MCP
+      tool, \"create folder\", \"create tag\", or any capability gap."
+  - id: n8n-loops-2
+    kind: skill
+    path: skills/n8n-loops
+    description: Use when working with multi-item data, batches, paginated APIs,
+      rate-limited APIs, fan-out across multiple branches, anything that needs
+      to "do this for each", or any time the user mentions looping, iterating,
+      batching, paging, parallelism, or "loop over items". Triggers on "loop",
+      "iterate", "for each", "batch", "page through", "paginate", "rate limit",
+      "process all", "fan-out", "parallel branches", "concurrency", or any node
+      that should run once vs once-per-item.
+  - id: n8n-node-configuration-2
+    kind: skill
+    path: skills/n8n-node-configuration
+    description: "Use when configuring any n8n node: HTTP, webhooks, database, comms
+      (Slack/Gmail/Discord), AI, triggers, Merge, anything. Triggers on any
+      node-builder call (`node(...)`, `trigger(...)`, `tool(...)`,
+      `memory(...)`, `languageModel(...)`, `ifElse(...)`, `merge(...)`, etc.),
+      configuring a parameter, `useDataOfInput`, `numberOfInputs`, fan-in
+      convergence, or any node-specific debugging."
+  - id: n8n-subworkflows-2
+    kind: skill
+    path: skills/n8n-subworkflows
+    description: Use when building anything multi-step, anything that looks
+      repeatable, anything the user mentions reusing, or any workflow with more
+      than ~10 nodes. Triggers on "reuse", "I do this in another workflow",
+      "extract", "modular", "shared logic", "subworkflow", multi-step builds, or
+      any task that mentions logic the user has built before.
+  - id: n8n-workflow-lifecycle-2
+    kind: skill
+    path: skills/n8n-workflow-lifecycle
+    description: Use when starting, designing, organizing, finishing, or shipping an
+      n8n workflow. Covers visual layout (sticky notes), descriptions that
+      capture the *why*, node names, validation, testing, folders/projects, and
+      publishing. Triggers on create_workflow_from_code, update_workflow,
+      validate_workflow, publish_workflow, archive_workflow, "design", "lay
+      out", "organize", "structure", "sticky", "describe this workflow", "ship",
+      "deploy", "publish", "name this workflow", or any folder/project
+      organization request.
+  - id: using-n8n-skills-2
+    kind: skill
+    path: skills/using-n8n-skills
+    description: Use when working with n8n workflows in any capacity. The always-on
+      protocol for the n8n-skills plugin, loaded by the SessionStart hook every
+      session. Routes to the right skill, summarizes every n8n MCP tool (closing
+      the deferred-description gap), and lists the cross-cutting rules.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: unlinked-hook-files
+    severity: warning
+    category: hooks
+    message: Repository contains hook-related files that are not linked by this formula.
+    paths:
+      - hooks/hooks.json
+      - hooks/post-tool-use/validate-workflow.sh
+      - hooks/pre-tool-use/_emit.sh
+      - hooks/pre-tool-use/create-workflow.sh
+      - hooks/pre-tool-use/execute-workflow.sh
+      - hooks/pre-tool-use/get-node.sh
+      - hooks/pre-tool-use/test-workflow.sh
+      - hooks/pre-tool-use/update-workflow.sh
+      - hooks/pre-tool-use/validate-workflow.sh
+      - hooks/session-start.sh
+    reason: These files lack explicit appliesTo mappings, supported targets, or
+      supported file types.
+    effect: SAMX will not install, link, or execute these files.
+    action: Add explicit hook entries only after manual review.

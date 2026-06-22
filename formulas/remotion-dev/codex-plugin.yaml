@@ -1,0 +1,19 @@
+schemaVersion: 1
+id: remotion-dev/codex-plugin
+name: "@remotion/codex-plugin"
+description: Internal Remotion Codex plugin package.
+source:
+  type: git
+  url: https://github.com/remotion-dev/codex-plugin
+  revision: d475cf9b68f4efa4a4aff5081fa6c3e406edce5f
+capabilities:
+  - id: remotion
+    kind: skill
+    path: skills/remotion
+    description: Best practices for Remotion - Video creation in React
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

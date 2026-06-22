@@ -1,0 +1,61 @@
+schemaVersion: 1
+id: getsentry/sentry-for-cursor
+name: Sentry Cursor Plugin
+description: Deprecated Cursor plugin -> `sentry-for-ai`; MCP + Sentry skills.
+source:
+  type: git
+  url: https://github.com/getsentry/sentry-for-cursor
+  revision: e436b5a0977d902407ba72c6ab8a01764dab2c5f
+capabilities:
+  - id: sentry
+    kind: mcp
+    path: mcp.json
+  - id: sentry-code-review
+    kind: skill
+    path: skills/sentry-code-review
+    description: Analyze and resolve Sentry comments on GitHub Pull Requests. Use
+      this when asked to review or fix issues identified by Sentry in PR
+      comments. Can review specific PRs by number or automatically find recent
+      PRs with Sentry feedback.
+  - id: sentry-ios-swift-setup
+    kind: skill
+    path: skills/sentry-ios-swift-setup
+    description: Setup Sentry in iOS/Swift apps. Use when asked to add Sentry to
+      iOS, install sentry-cocoa SDK, or configure error monitoring, tracing,
+      session replay, logging, or profiling for iOS applications using Swift and
+      SwiftUI.
+  - id: sentry-setup-ai-monitoring
+    kind: skill
+    path: skills/sentry-setup-ai-monitoring
+    description: Setup Sentry AI Agent Monitoring in any project. Use this when
+      asked to add AI monitoring, track LLM calls, monitor AI agents, or
+      instrument OpenAI/Anthropic/Vercel AI/LangChain/Google GenAI.
+      Automatically detects installed AI SDKs and configures the appropriate
+      Sentry integration.
+  - id: sentry-setup-logging
+    kind: skill
+    path: skills/sentry-setup-logging
+    description: Setup Sentry Logging in any project. Use this when asked to add
+      Sentry logs, enable structured logging, setup console log capture, or
+      integrate logging with Sentry. Supports JavaScript, TypeScript, Python,
+      Ruby, React, Next.js, and other frameworks.
+  - id: sentry-setup-metrics
+    kind: skill
+    path: skills/sentry-setup-metrics
+    description: Setup Sentry Metrics in any project. Use this when asked to add
+      Sentry metrics, track custom metrics, setup counters/gauges/distributions,
+      or instrument application performance metrics. Supports JavaScript,
+      TypeScript, Python, React, Next.js, and Node.js.
+  - id: sentry-setup-tracing
+    kind: skill
+    path: skills/sentry-setup-tracing
+    description: Setup Sentry Tracing (Performance Monitoring) in any project. Use
+      this when asked to add performance monitoring, enable tracing, track
+      transactions/spans, or instrument application performance. Supports
+      JavaScript, TypeScript, Python, Ruby, React, Next.js, and Node.js.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

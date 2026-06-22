@@ -1,0 +1,30 @@
+schemaVersion: 1
+id: apify/actors-mcp-server
+name: Apify MCP Server
+description: Apify MCP server for thousand+ Actors/tools, stdio + hosted HTTP,
+  docs/storage/runs, evals.
+source:
+  type: git
+  url: https://github.com/apify/actors-mcp-server
+  revision: ec3ccfe495d2fdb5f8db98accbbae99d878a3073
+capabilities:
+  - id: bug-triage
+    kind: skill
+    path: .claude/skills/bug-triage
+    description: Triage open GitHub bug issues for Apify MCP server. Fetches issues,
+      analyzes root causes, drafts developer-to-developer responses, and posts
+      after user approval. Use when handling user bug reports, responding to
+      issues, or cleaning up stale bugs.
+  - id: dig
+    kind: skill
+    path: .claude/skills/dig
+    description: Explore, analyze, plan, or spec features for the Apify MCP server.
+      Adapts to what the user asks — from quick code exploration to full GitHub
+      issue specs. Use when the user asks to explore code, understand behavior,
+      plan a change, design a feature, or create an issue spec.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

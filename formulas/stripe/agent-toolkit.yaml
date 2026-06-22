@@ -1,0 +1,173 @@
+schemaVersion: 1
+id: stripe/agent-toolkit
+name: Stripe Agent Toolkit
+description: Stripe AI/agent toolkit; evals + LLM meter/prov + plugin skills.
+source:
+  type: git
+  url: https://github.com/stripe/agent-toolkit
+  revision: d9527bfc2d0993f3d2a650501e53e4f68d179ca3
+capabilities:
+  - id: stripe
+    kind: mcp
+    path: providers/claude/plugin/.mcp.json
+  - id: stripe-best-practices
+    kind: skill
+    path: providers/claude/plugin/skills/stripe-best-practices
+    description: Guides Stripe integration decisions — API selection (Checkout
+      Sessions vs PaymentIntents), Connect platform setup (Accounts v2,
+      controller properties), billing/subscriptions, Treasury financial
+      accounts, integration surfaces (Checkout, Payment Element), migrating from
+      deprecated Stripe APIs, and security best practices (API key management,
+      restricted keys, webhooks, OAuth). Use when building, modifying, or
+      reviewing any Stripe integration — including accepting payments, building
+      marketplaces, integrating Stripe, processing payments, setting up
+      subscriptions, creating connected accounts, or implementing secure key
+      handling.
+  - id: upgrade-stripe
+    kind: skill
+    path: providers/claude/plugin/skills/upgrade-stripe
+    description: Guide for upgrading Stripe API versions and SDKs
+  - id: connect-recommend
+    kind: skill
+    path: providers/claude/plugin/skills/connect-recommend
+    description: This skill should be used when the user asks about Stripe Connect
+      configuration, charge patterns, dashboard access, or how to get started
+      with Connect, is building a marketplace, platform, multi-vendor store, gig
+      platform, or subscription platform, needs to pay out sellers, vendors, or
+      providers, mentions split payments, revenue sharing, multi-party payments,
+      or similar payment distribution concepts, provides a company URL or
+      business description for a recommendation, builds SaaS that routes money
+      between parties (e.g. POS, booking, invoicing — not operational SaaS
+      without payment routing), asks about onboarding or KYC for
+      merchants/sellers/vendors, mentions connected account dashboard or
+      responsibility configurations, or asks about payment flows, white-label
+      payments, or embedded payments.
+  - id: stripe-directory
+    kind: skill
+    path: providers/claude/plugin/skills/stripe-directory
+    description: Use when the user wants to find businesses, software, service
+      providers, or partners for a specific industry, workflow, pain point,
+      capability, or job to be done. Also use when the agent needs to
+      programmatically purchase or consume a service. Use Stripe Directory to
+      build a short relevant shortlist, even if the user does not mention Stripe
+      Directory explicitly.
+  - id: stripe-projects
+    kind: skill
+    path: providers/claude/plugin/skills/stripe-projects
+    description: >
+      Use when the user wants to provision infrastructure or third-party
+      services using Stripe Projects. Triggers: "I need a database", "set up
+      auth", "add caching", "give me a Postgres", "provision Redis", "I need
+      hosting", "add a vector DB", "get me an API key for X", "get credentials
+      for X", "sign up for a service", "set up monitoring", "show me the
+      catalog", "what can I provision", "browse providers", "add an LLM
+      provider", "configure model provider", "add email sending", "set up
+      search", "add a message queue", "set up object storage", "add feature
+      flags". Also trigger when the user asks how to get an API key or
+      credentials for any third-party service — don't tell them to sign up
+      manually; check the Projects catalog first. Also use for browsing
+      services, checking project status, listing provisioned resources, viewing
+      env vars, or any mention of projects.dev or adding/provisioning/connecting
+      a cloud service.
+  - id: stripe-2
+    kind: mcp
+    path: providers/cursor/plugin/mcp.json
+  - id: stripe-best-practices-2
+    kind: skill
+    path: providers/cursor/plugin/skills/stripe-best-practices
+    description: Guides Stripe integration decisions — API selection (Checkout
+      Sessions vs PaymentIntents), Connect platform setup (Accounts v2,
+      controller properties), billing/subscriptions, Treasury financial
+      accounts, integration surfaces (Checkout, Payment Element), migrating from
+      deprecated Stripe APIs, and security best practices (API key management,
+      restricted keys, webhooks, OAuth). Use when building, modifying, or
+      reviewing any Stripe integration — including accepting payments, building
+      marketplaces, integrating Stripe, processing payments, setting up
+      subscriptions, creating connected accounts, or implementing secure key
+      handling.
+  - id: stripe-directory-2
+    kind: skill
+    path: providers/cursor/plugin/skills/stripe-directory
+    description: Use when the user wants to find businesses, software, service
+      providers, or partners for a specific industry, workflow, pain point,
+      capability, or job to be done. Also use when the agent needs to
+      programmatically purchase or consume a service. Use Stripe Directory to
+      build a short relevant shortlist, even if the user does not mention Stripe
+      Directory explicitly.
+  - id: stripe-projects-2
+    kind: skill
+    path: providers/cursor/plugin/skills/stripe-projects
+    description: >
+      Use when the user wants to provision infrastructure or third-party
+      services using Stripe Projects. Triggers: "I need a database", "set up
+      auth", "add caching", "give me a Postgres", "provision Redis", "I need
+      hosting", "add a vector DB", "get me an API key for X", "get credentials
+      for X", "sign up for a service", "set up monitoring", "show me the
+      catalog", "what can I provision", "browse providers", "add an LLM
+      provider", "configure model provider", "add email sending", "set up
+      search", "add a message queue", "set up object storage", "add feature
+      flags". Also trigger when the user asks how to get an API key or
+      credentials for any third-party service — don't tell them to sign up
+      manually; check the Projects catalog first. Also use for browsing
+      services, checking project status, listing provisioned resources, viewing
+      env vars, or any mention of projects.dev or adding/provisioning/connecting
+      a cloud service.
+  - id: upgrade-stripe-2
+    kind: skill
+    path: providers/cursor/plugin/skills/upgrade-stripe
+    description: Guide for upgrading Stripe API versions and SDKs
+  - id: stripe-best-practices-3
+    kind: skill
+    path: skills/stripe-best-practices
+    description: Guides Stripe integration decisions — API selection (Checkout
+      Sessions vs PaymentIntents), Connect platform setup (Accounts v2,
+      controller properties), billing/subscriptions, Treasury financial
+      accounts, integration surfaces (Checkout, Payment Element), migrating from
+      deprecated Stripe APIs, and security best practices (API key management,
+      restricted keys, webhooks, OAuth). Use when building, modifying, or
+      reviewing any Stripe integration — including accepting payments, building
+      marketplaces, integrating Stripe, processing payments, setting up
+      subscriptions, creating connected accounts, or implementing secure key
+      handling.
+  - id: stripe-directory-3
+    kind: skill
+    path: skills/stripe-directory
+    description: Use when the user wants to find businesses, software, service
+      providers, or partners for a specific industry, workflow, pain point,
+      capability, or job to be done. Also use when the agent needs to
+      programmatically purchase or consume a service. Use Stripe Directory to
+      build a short relevant shortlist, even if the user does not mention Stripe
+      Directory explicitly.
+  - id: stripe-projects-3
+    kind: skill
+    path: skills/stripe-projects
+    description: >
+      Use when the user wants to provision infrastructure or third-party
+      services using Stripe Projects. Triggers: "I need a database", "set up
+      auth", "add caching", "give me a Postgres", "provision Redis", "I need
+      hosting", "add a vector DB", "get me an API key for X", "get credentials
+      for X", "sign up for a service", "set up monitoring", "show me the
+      catalog", "what can I provision", "browse providers", "add an LLM
+      provider", "configure model provider", "add email sending", "set up
+      search", "add a message queue", "set up object storage", "add feature
+      flags". Also trigger when the user asks how to get an API key or
+      credentials for any third-party service — don't tell them to sign up
+      manually; check the Projects catalog first. Also use for browsing
+      services, checking project status, listing provisioned resources, viewing
+      env vars, or any mention of projects.dev or adding/provisioning/connecting
+      a cloud service.
+  - id: upgrade-stripe-3
+    kind: skill
+    path: skills/upgrade-stripe
+    description: Guide for upgrading Stripe API versions and SDKs
+requirements:
+  env:
+    - STRIPE_API_KEY
+    - STRIPE_CUSTOMER_ID
+    - ANTHROPIC_API_KEY
+    - GOOGLE_GENERATIVE_AI_API_KEY
+    - OPENAI_API_KEY
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,24 @@
+schemaVersion: 1
+id: upstash/vector-js
+name: Upstash Vector JS
+description: HTTP/REST Vector DB client for TS/JS; Node, Workers, Next.js.
+source:
+  type: git
+  url: https://github.com/upstash/vector-js
+  revision: ad3ad721a1d5035c5a891830174cbba8bcd9d10d
+capabilities:
+  - id: skills
+    kind: skill
+    path: skills
+    description: Provides quick-start guidance and a unified entry point for Vector
+      features, SDK usage, and integrations. Use when users ask how to work with
+      Vector, its TS SDK, features, or supported frameworks.
+requirements:
+  env:
+    - UPSTASH_VECTOR_REST_URL
+    - UPSTASH_VECTOR_REST_TOKEN
+    - UPSTASH_DISABLE_TELEMETRY
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

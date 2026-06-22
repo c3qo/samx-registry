@@ -1,0 +1,24 @@
+schemaVersion: 1
+id: vercel-labs/bash-tool
+name: bash-tool
+description: Generic bash tool for AI agents, AI SDK compatible; includes
+  experimental skills.
+source:
+  type: git
+  url: https://github.com/vercel-labs/bash-tool
+  revision: b222e475021a06d142b1f67a0edbd7d0001fad48
+capabilities:
+  - id: csv
+    kind: skill
+    path: examples/skills-tool/skills/csv
+    description: Analyze and transform CSV data using bash tools
+  - id: text
+    kind: skill
+    path: examples/skills-tool/skills/text
+    description: Analyze and transform text files using bash tools
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

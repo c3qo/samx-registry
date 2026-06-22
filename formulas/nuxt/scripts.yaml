@@ -1,0 +1,32 @@
+schemaVersion: 1
+id: nuxt/scripts
+name: Nuxt Scripts
+description: Nuxt app third-party script load/perf/privacy DX.
+source:
+  type: git
+  url: https://github.com/nuxt/scripts
+  revision: 566e46993026dd551305f4b2eaf768683f955c23
+capabilities:
+  - id: nuxt-test-utils-skilld
+    kind: skill
+    path: .claude/skills/nuxt-test-utils-skilld
+    description: ALWAYS use when writing code importing "@nuxt/test-utils". Consult
+      for debugging, best practices, or modifying @nuxt/test-utils,
+      nuxt/test-utils, nuxt test-utils, nuxt test utils, test-utils, test utils.
+  - id: oxc-walker-skilld
+    kind: skill
+    path: .claude/skills/oxc-walker-skilld
+    description: ALWAYS use when writing code importing "oxc-walker". Consult for
+      debugging, best practices, or modifying oxc-walker, oxc walker.
+  - id: unplugin-skilld
+    kind: skill
+    path: .claude/skills/unplugin-skilld
+    description: Unified plugin system for build tools. ALWAYS use when writing code
+      importing "unplugin". Consult for debugging, best practices, or modifying
+      unplugin.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

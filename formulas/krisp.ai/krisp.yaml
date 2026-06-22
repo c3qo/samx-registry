@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: krisp.ai/krisp
+name: Krisp
+description: Krisp remote MCP server at https://mcp.krisp.ai/mcp. Add your
+  meetings context via transcripts and notes. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/krisp
+capabilities:
+  - id: krisp
+    kind: mcp
+    spec:
+      serverName: krisp
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.krisp.ai/mcp

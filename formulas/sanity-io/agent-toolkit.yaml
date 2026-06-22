@@ -1,0 +1,91 @@
+schemaVersion: 1
+id: sanity-io/agent-toolkit
+name: Sanity Agent Toolkit
+description: AI agent resources for Sanity development.
+source:
+  type: git
+  url: https://github.com/sanity-io/agent-toolkit
+  revision: 2ec17ddc6034073b2974e6dbf691acb3bcc8b9fd
+capabilities:
+  - id: sanity
+    kind: mcp
+    path: .mcp.json
+  - id: content-experimentation-best-practices
+    kind: skill
+    path: skills/content-experimentation-best-practices
+    description: Content experimentation and A/B testing guidance covering
+      experiment design, hypotheses, metrics, sample size, statistical
+      foundations, CMS-managed variants, and common analysis pitfalls. Use this
+      skill when planning experiments, setting up variants, choosing success
+      metrics, interpreting statistical results, or building experimentation
+      workflows in a CMS or frontend stack.
+  - id: content-modeling-best-practices
+    kind: skill
+    path: skills/content-modeling-best-practices
+    description: Structured content modeling guidance for schema design, content
+      architecture, content reuse, references versus embedded objects,
+      separation of concerns, and taxonomies across Sanity and other headless
+      CMSes. Use this skill when designing or refactoring content types,
+      deciding field shapes, debating reusable versus nested content, planning
+      omnichannel content models, or reviewing whether a schema is too
+      page-shaped or presentation-driven.
+  - id: portable-text-conversion
+    kind: skill
+    path: skills/portable-text-conversion
+    description: Convert HTML and Markdown content into Portable Text blocks for
+      Sanity. Use when migrating content from legacy CMSs, importing HTML or
+      Markdown into Sanity, building content pipelines that ingest external
+      content, converting rich text between formats, or programmatically
+      creating Portable Text documents. Covers @portabletext/markdown
+      (markdownToPortableText), @portabletext/block-tools (htmlToBlocks), custom
+      deserializers, and the Portable Text specification for manual block
+      construction.
+  - id: portable-text-serialization
+    kind: skill
+    path: skills/portable-text-serialization
+    description: Render and serialize Portable Text to React, Svelte, Vue, Astro,
+      HTML, Markdown, and plain text. Use when implementing Portable Text
+      rendering in any frontend framework, building custom serializers for
+      non-standard block types, converting Portable Text to HTML strings
+      server-side, converting Portable Text to Markdown, extracting plain text
+      from Portable Text, or troubleshooting rendering issues with marks,
+      blocks, lists, or custom types.
+  - id: sanity-best-practices
+    kind: skill
+    path: skills/sanity-best-practices
+    description: Sanity development best practices for schema design, GROQ queries,
+      TypeGen, Visual Editing, images, Portable Text, Studio structure,
+      localization, migrations, Sanity Functions, Blueprints, and framework
+      integrations such as Next.js, Nuxt, Astro, Remix, SvelteKit, Angular,
+      Hydrogen, and the App SDK. Use this skill whenever working with Sanity
+      schemas, defineType or defineField, GROQ or defineQuery, content modeling,
+      Presentation or preview setups, Sanity-powered frontend integrations,
+      Sanity Functions, documentEventHandler, defineDocumentFunction,
+      defineMediaLibraryAssetFunction, @sanity/functions, @sanity/blueprints,
+      sanity.blueprint.ts, event-driven content automation, or when reviewing
+      and fixing a Sanity codebase.
+  - id: sanity-migration
+    kind: skill
+    path: skills/sanity-migration
+    description: Plans, implements, and reviews migrations from other CMSes and
+      content systems into Sanity. Use when migrating or replatforming to Sanity
+      from AEM, Adobe Experience Manager, Contentful, Strapi, Webflow,
+      WordPress, Payload, Drupal, Markdown/MDX/frontmatter files, WXR/XML
+      exports, CMS APIs, database dumps, static HTML, or when designing
+      extraction, transformation, Portable Text conversion, asset migration,
+      redirects, validation, and cutover workflows.
+  - id: seo-aeo-best-practices
+    kind: skill
+    path: skills/seo-aeo-best-practices
+    description: SEO and AEO best practices for metadata, Open Graph, sitemaps,
+      robots.txt, hreflang, JSON-LD structured data, EEAT, and content optimized
+      for search engines and AI answer surfaces. Use this skill when
+      implementing page SEO, technical SEO, schema markup, international SEO,
+      AI-overview readiness, or improving content for Google, ChatGPT,
+      Perplexity, and similar assistants.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

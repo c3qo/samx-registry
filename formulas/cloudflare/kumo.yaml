@@ -1,0 +1,20 @@
+schemaVersion: 1
+id: cloudflare/kumo
+name: Kumo
+description: Cloudflare UI component lib + docs + Figma plugin.
+source:
+  type: git
+  url: https://github.com/cloudflare/kumo
+  revision: 539e5bf643409c8568248f6d1bc9888d3e12b882
+capabilities:
+  - id: index-knowledge
+    kind: skill
+    path: .agents/skills/index-knowledge
+    description: Generate hierarchical AGENTS.md knowledge base for a codebase.
+      Creates root + complexity-scored subdirectory documentation.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,175 @@
+schemaVersion: 1
+id: signoz/agent-skills
+name: SigNoz Agent Skills
+description: SigNoz skills + MCP config for alerts, dashboards, queries, docs, views.
+source:
+  type: git
+  url: https://github.com/signoz/agent-skills
+  revision: 289efcb66ce3cf9bed1a8586d668ea9658505ed7
+capabilities:
+  - id: signoz
+    kind: mcp
+    path: plugins/signoz/.mcp.json
+  - id: signoz-2
+    kind: mcp
+    path: plugins/signoz/mcp.json
+  - id: signoz-creating-alerts
+    kind: skill
+    path: plugins/signoz/skills/signoz-creating-alerts
+    description: >
+      Create a new SigNoz alert rule from a natural-language intent — threshold,
+      anomaly, log-volume, error-rate, latency, or absent-data alerts across
+      metrics, logs, traces, and exceptions. Make sure to use this skill
+      whenever the user says "alert me when…", "notify me if…", "set up
+      monitoring for…", "page me on…", "create an alert for…", or asks for a new
+      alert/notification rule, even if they don't say the word "alert"
+      explicitly. Also use it when someone asks to be notified about error
+      rates, latency spikes, log volume, CPU/memory pressure, or anomalous
+      behavior on a service or host.
+  - id: signoz-creating-dashboards
+    kind: skill
+    path: plugins/signoz/skills/signoz-creating-dashboards
+    description: >
+      Create a new SigNoz dashboard from a natural-language intent — import a
+      curated template (PostgreSQL, Redis, JVM, k8s, hostmetrics, APM, LLM,
+      etc.) when one fits, or build a custom dashboard from scratch with metric
+      / trace / log panels. Make sure to use this skill whenever the user says
+      "create a dashboard for…", "set up monitoring for…", "build me a
+      dashboard…", "I need observability for…", "import a dashboard template",
+      or asks to track / visualize a service, database, cluster, or AI/LLM
+      platform — even if they don't explicitly say "dashboard". Also use it when
+      someone wants to "monitor", "watch", or "see metrics for" a technology and
+      the natural answer is a dashboard.
+  - id: signoz-explaining-alerts
+    kind: skill
+    path: plugins/signoz/skills/signoz-explaining-alerts
+    description: >
+      Describe what an existing SigNoz alert rule does in plain language — the
+      signal it watches, the threshold and evaluation behavior, the notification
+      routing, and a one-line fire-frequency summary so the user knows whether
+      the alert has been active. Make sure to use this skill whenever the user
+      asks "what does this alert do", "explain alert X", "walk me through this
+      rule", "how does my [Y] alert work", "is this alert configured correctly",
+      or otherwise asks for an interpretation of an existing alert's
+      configuration. Static explanation only — for diagnosing a specific firing
+      incident, use `signoz-investigating-alerts`.
+  - id: signoz-explaining-dashboards
+    kind: skill
+    path: plugins/signoz/skills/signoz-explaining-dashboards
+    description: >
+      Explain what an existing SigNoz dashboard shows in plain operational
+      language — the panels, queries, variables, and what to watch for on each.
+      Make sure to use this skill whenever the user asks "explain this
+      dashboard", "what does my [X] dashboard show", "walk me through the
+      panels", "what should I watch for on this dashboard", or "help me
+      understand this dashboard", or otherwise asks for an interpretation of a
+      dashboard's contents — even if they don't say "explain" explicitly. Also
+      use it when someone is onboarding to a service and wants to understand
+      what its existing observability looks like.
+  - id: signoz-generating-queries
+    kind: skill
+    path: plugins/signoz/skills/signoz-generating-queries
+    description: >
+      Generate, write, or run an ad-hoc query against SigNoz observability data
+      — metrics, logs, traces, or exceptions — without wrapping it in a
+      dashboard panel or alert. Make sure to use this skill whenever the user
+      asks "show me error rates", "query logs for timeout errors", "what's the
+      p99 latency for the cart service", "how many requests hit the payment
+      endpoint", "find slow traces", "errors in the last hour", or otherwise
+      asks an exploratory question that needs live observability data — even if
+      they don't say "query" or "search" explicitly.
+  - id: signoz-investigating-alerts
+    kind: skill
+    path: plugins/signoz/skills/signoz-investigating-alerts
+    description: >
+      Diagnose why a SigNoz alert fired by correlating the alert's own signal
+      with neighbor signals (error rate, latency, throughput, CPU/memory),
+      traces, and logs around the fire window — and rank likely causes. Make
+      sure to use this skill whenever the user asks "why did this alert fire",
+      "what caused alert X", "investigate this alert", "RCA for the alert that
+      paged me", "what's wrong with [service]" in the context of a recent fire,
+      or otherwise asks for a root-cause analysis of a firing or recently-fired
+      alert. Read-only — does not modify any alert or notification.
+  - id: signoz-managing-views
+    kind: skill
+    path: plugins/signoz/skills/signoz-managing-views
+    description: >
+      Use when the user wants to create, list, get, update, rename, or delete a
+      SigNoz saved Explorer view. Trigger on phrases like "save this query as a
+      view", "save this filter", "bookmark this search", "list my saved views",
+      "show me views for traces/logs/metrics/meter", "rename the X view",
+      "update my saved view to also filter Y", "delete the X view", or any
+      request to manage Explorer saved views — even if they don't say "view"
+      explicitly. Also use when someone wants to share a recurring Explorer
+      query with their team and asks how to "save" or "bookmark" it.
+  - id: signoz-mcp-setup
+    kind: skill
+    path: plugins/signoz/skills/signoz-mcp-setup
+    description: >
+      Initialize or repair SigNoz MCP server configuration for Claude Code,
+      Codex, Cursor, VS Code/GitHub Copilot, Claude Desktop, Gemini CLI,
+      Windsurf, Zed, Antigravity, OpenCode, or another MCP client. Use this
+      skill before any SigNoz docs, query, dashboard, alert, or view workflow
+      when `signoz_*` tools are unavailable, or when the user says "setup SigNoz
+      MCP", "configure SigNoz plugin", "wrong region", "change SigNoz region",
+      "MCP auth failed", or asks to connect SigNoz Cloud or a self-hosted MCP
+      endpoint, even if they do not mention the plugin.
+  - id: signoz-modifying-dashboards
+    kind: skill
+    path: plugins/signoz/skills/signoz-modifying-dashboards
+    description: >
+      Modify an existing SigNoz dashboard — add or remove panels, edit a panel's
+      query, threshold, or unit, rename the dashboard, change a panel type
+      (graph ↔ table ↔ value), rearrange the layout, add or edit variables, or
+      update tags. Make sure to use this skill whenever the user says "add a
+      panel to my dashboard", "change the query on this panel", "remove the
+      latency widget", "rename my dashboard", "update the filters", "rearrange
+      the layout", "add a variable", "change panel type from graph to table", or
+      otherwise asks to change something on a dashboard that already exists —
+      even if they don't say "modify" or "edit" explicitly.
+  - id: signoz-searching-docs
+    kind: skill
+    path: plugins/signoz/skills/signoz-searching-docs
+    description: >
+      Look up information in SigNoz documentation. Make sure to use this skill
+      whenever the user asks "how do I", "where in the docs", "what does the
+      docs say about", "find docs for", or otherwise needs reference material on
+      SigNoz instrumentation, OpenTelemetry setup, self-hosted deployment, API
+      endpoints, auth headers, or troubleshooting steps — even if they don't say
+      the word "docs" explicitly. Docs lookup only — for actions inside SigNoz,
+      the agent will pick the matching `signoz-*` action skill.
+  - id: signoz-setting-up-observability
+    kind: skill
+    path: plugins/signoz/skills/signoz-setting-up-observability
+    description: >
+      Run the full end-to-end observability setup for a service after its
+      telemetry is already flowing into SigNoz — sequence SLI/SLO capture, data
+      exploration (RED/USE), focused dashboards, saved Explorer views, burn-rate
+      and absent-data alerts, and a tuning loop into one opinionated, SLO-aware
+      workflow. Make sure to use this skill whenever the user says "set up
+      observability after ingestion", "now that data is flowing, give me
+      dashboards and alerts", "onboard this service to SigNoz end-to-end", "I
+      want the full monitoring setup for X", or asks to go from raw telemetry to
+      a complete dashboard + alerts + views package — even if they don't say
+      "observability" explicitly. This is the orchestration layer: for a single
+      artifact (just a dashboard, just one alert, just a saved view, or one
+      static threshold alert, or a one-off query) use
+      signoz-creating-dashboards, signoz-creating-alerts, signoz-managing-views,
+      or signoz-generating-queries directly.
+  - id: signoz-writing-clickhouse-queries
+    kind: skill
+    path: plugins/signoz/skills/signoz-writing-clickhouse-queries
+    description: Write raw ClickHouse SQL for a SigNoz dashboard panel — timeseries,
+      value, or table widgets that the builder UI cannot express (custom joins,
+      window functions, regex extraction over log bodies, aggregations beyond
+      builder syntax). Trigger when the user explicitly asks for a "ClickHouse
+      query", a "raw SQL panel", a "custom SQL widget", or describes a SigNoz
+      dashboard panel whose query needs SQL the builder cannot produce. Anchored
+      to dashboard-panel SQL specifically. For ad-hoc data exploration that does
+      not need to land in a panel, use `signoz-generating-queries` instead.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,58 @@
+schemaVersion: 1
+id: launchdarkly/experimental-agent-skills
+name: experimental-agent-skills
+description: LaunchDarkly experimental agent skills + evals.
+source:
+  type: git
+  url: https://github.com/launchdarkly/experimental-agent-skills
+  revision: 8bae3a9ffddeb323c5e144a3003850b15123a4f4
+capabilities:
+  - id: launchdarkly
+    kind: mcp
+    path: .mcp.json
+  - id: onboardingv2
+    kind: skill
+    path: skills/onboardingV2
+    description: Scripted, branded onboarding for LaunchDarkly. Fixed sequence with
+      LaunchDarkly voice and tone. Enforces step completion before advancing.
+      Redirects drift. Use when the user wants to set up LaunchDarkly from
+      scratch or asks to start onboarding.
+  - id: sdk-install
+    kind: skill
+    path: skills/onboardingV2/sdk-install
+    description: "Install and initialize the correct LaunchDarkly SDK during
+      onboarding by running nested skills in order: detect, plan, apply. Parent
+      onboarding Step 6 is first flag."
+  - id: detect
+    kind: skill
+    path: skills/onboardingV2/sdk-install/detect
+    description: "Detect repository stack for LaunchDarkly SDK onboarding:
+      languages, frameworks, package managers, monorepo targets, entrypoints,
+      existing LD usage. Nested under sdk-install; next is plan."
+  - id: plan
+    kind: skill
+    path: skills/onboardingV2/sdk-install/plan
+    description: "Generate a minimal LaunchDarkly SDK integration plan from detected
+      stack: choose SDK type(s), dual-SDK server+client when required, files to
+      change, env conventions. Nested under sdk-install; follows detect,
+      precedes apply."
+  - id: apply
+    kind: skill
+    path: skills/onboardingV2/sdk-install/apply
+    description: "Apply LaunchDarkly SDK onboarding: install dependency (or dual-SDK
+      pair), configure env and secrets with consent, add init at entrypoint(s),
+      verify compile. Nested under sdk-install; next is run."
+  - id: mcp-configure
+    kind: skill
+    path: skills/onboardingV2/mcp-configure
+    description: Configure the LaunchDarkly hosted MCP server during onboarding. Use
+      when the parent LaunchDarkly onboarding skill reaches Step 4 (MCP).
+      Supports Cursor, Claude Code, Windsurf, GitHub Copilot, and other
+      MCP-compatible agents. OAuth authentication; no API keys for the hosted
+      server.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

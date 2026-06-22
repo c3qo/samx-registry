@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: techgc.co/topcounsel
+name: TopCounsel By The L Suite
+description: TopCounsel by The L Suite remote MCP server at
+  https://api.techgc.co/api/mcp/topcounsel. Outside Counsel recommendations from
+  Inhouse Counsel. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/topcounsel
+capabilities:
+  - id: topcounsel
+    kind: mcp
+    spec:
+      serverName: topcounsel
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.techgc.co/api/mcp/topcounsel

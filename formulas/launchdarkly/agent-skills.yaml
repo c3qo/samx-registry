@@ -1,0 +1,295 @@
+schemaVersion: 1
+id: launchdarkly/agent-skills
+name: LaunchDarkly Agent Skills
+description: LD agent skills repo; skills + MCP; eval harness.
+source:
+  type: git
+  url: https://github.com/launchdarkly/agent-skills
+  revision: 913b74564ca49ba40fa0c21d230f2389466a8b18
+capabilities:
+  - id: launchdarkly
+    kind: mcp
+    path: .mcp.json
+  - id: configs-create
+    kind: skill
+    path: skills/agentcontrol/configs-create
+    description: Create and configure configs in LaunchDarkly. Helps you choose
+      between agent vs completion mode, create the config, add variations with
+      models and prompts, and verify the setup.
+  - id: configs-targeting
+    kind: skill
+    path: skills/agentcontrol/configs-targeting
+    description: Configure config targeting rules to control which variations serve
+      to different users. Enable percentage rollouts, attribute-based rules,
+      segment targeting, and guarded rollouts.
+  - id: tools
+    kind: skill
+    path: skills/agentcontrol/tools
+    description: Give your agents capabilities through tools (function calling).
+      Helps you identify what your agent needs to do, create tool definitions,
+      and attach them to config variations.
+  - id: online-evals
+    kind: skill
+    path: skills/agentcontrol/online-evals
+    description: Attach judges to config variations for automatic LLM-as-a-judge
+      evaluation. Create custom judges, configure sampling rates, and monitor
+      quality scores.
+  - id: migrate
+    kind: skill
+    path: skills/agentcontrol/migrate
+    description: "Migrate an application with hardcoded LLM prompts to a full
+      LaunchDarkly AgentControl implementation in five stages: audit the code,
+      wrap the call, move the tools, add tracking, attach evaluators. Use when
+      the user wants to externalize model/prompt configuration, move from direct
+      provider calls (OpenAI, Anthropic, Bedrock, Gemini, Strands) to a managed
+      config, or stage a full hardcoded-to-LaunchDarkly migration."
+  - id: agent-graphs
+    kind: skill
+    path: skills/agentcontrol/agent-graphs
+    description: Create and manage agent graphs — directed graphs of configs
+      connected by edges with handoff logic. Use when building multi-agent
+      workflows where configs route to each other.
+  - id: aiconfig-agent-graphs
+    kind: skill
+    path: skills/agentcontrol/aiconfig-agent-graphs
+    description: DEPRECATED redirect — this skill was renamed to agent-graphs. Do
+      not use this skill; invoke agent-graphs instead. Kept only so old
+      references to aiconfig-agent-graphs still point users to the new name.
+  - id: aiconfig-ai-metrics
+    kind: skill
+    path: skills/agentcontrol/aiconfig-ai-metrics
+    description: DEPRECATED redirect — this skill was renamed to built-in-metrics.
+      Do not use this skill; invoke built-in-metrics instead. Kept only so old
+      references to aiconfig-ai-metrics still point users to the new name.
+  - id: aiconfig-create
+    kind: skill
+    path: skills/agentcontrol/aiconfig-create
+    description: DEPRECATED redirect — this skill was renamed to configs-create. Do
+      not use this skill; invoke configs-create instead. Kept only so old
+      references to aiconfig-create still point users to the new name.
+  - id: aiconfig-custom-metrics
+    kind: skill
+    path: skills/agentcontrol/aiconfig-custom-metrics
+    description: DEPRECATED redirect — this skill was renamed to custom-metrics. Do
+      not use this skill; invoke custom-metrics instead. Kept only so old
+      references to aiconfig-custom-metrics still point users to the new name.
+  - id: aiconfig-migrate
+    kind: skill
+    path: skills/agentcontrol/aiconfig-migrate
+    description: DEPRECATED redirect — this skill was renamed to migrate. Do not use
+      this skill; invoke migrate instead. Kept only so old references to
+      aiconfig-migrate still point users to the new name.
+  - id: aiconfig-online-evals
+    kind: skill
+    path: skills/agentcontrol/aiconfig-online-evals
+    description: DEPRECATED redirect — this skill was renamed to online-evals. Do
+      not use this skill; invoke online-evals instead. Kept only so old
+      references to aiconfig-online-evals still point users to the new name.
+  - id: aiconfig-projects
+    kind: skill
+    path: skills/agentcontrol/aiconfig-projects
+    description: DEPRECATED redirect — this skill was renamed to projects. Do not
+      use this skill; invoke projects instead. Kept only so old references to
+      aiconfig-projects still point users to the new name.
+  - id: aiconfig-snippets
+    kind: skill
+    path: skills/agentcontrol/aiconfig-snippets
+    description: DEPRECATED redirect — this skill was renamed to snippets. Do not
+      use this skill; invoke snippets instead. Kept only so old references to
+      aiconfig-snippets still point users to the new name.
+  - id: aiconfig-targeting
+    kind: skill
+    path: skills/agentcontrol/aiconfig-targeting
+    description: DEPRECATED redirect — this skill was renamed to configs-targeting.
+      Do not use this skill; invoke configs-targeting instead. Kept only so old
+      references to aiconfig-targeting still point users to the new name.
+  - id: aiconfig-tools
+    kind: skill
+    path: skills/agentcontrol/aiconfig-tools
+    description: DEPRECATED redirect — this skill was renamed to tools. Do not use
+      this skill; invoke tools instead. Kept only so old references to
+      aiconfig-tools still point users to the new name.
+  - id: aiconfig-update
+    kind: skill
+    path: skills/agentcontrol/aiconfig-update
+    description: DEPRECATED redirect — this skill was renamed to configs-update. Do
+      not use this skill; invoke configs-update instead. Kept only so old
+      references to aiconfig-update still point users to the new name.
+  - id: aiconfig-variations
+    kind: skill
+    path: skills/agentcontrol/aiconfig-variations
+    description: DEPRECATED redirect — this skill was renamed to configs-variations.
+      Do not use this skill; invoke configs-variations instead. Kept only so old
+      references to aiconfig-variations still point users to the new name.
+  - id: built-in-metrics
+    kind: skill
+    path: skills/agentcontrol/built-in-metrics
+    description: Instrument an existing codebase with LaunchDarkly config tracking.
+      Walks the four-tier ladder (managed runner → provider package → custom
+      extractor + trackMetricsOf → raw manual) and picks the lowest-ceremony
+      option that still captures duration, tokens, and success/error.
+  - id: configs-update
+    kind: skill
+    path: skills/agentcontrol/configs-update
+    description: Update, archive, and delete LaunchDarkly configs and their
+      variations. Use when you need to modify config properties, change model
+      parameters, update instructions or messages, archive unused configs, or
+      permanently remove them.
+  - id: configs-variations
+    kind: skill
+    path: skills/agentcontrol/configs-variations
+    description: Experiment with configs by creating and managing variations. Helps
+      you test different models, prompts, and parameters to find what works best
+      through systematic experimentation.
+  - id: custom-metrics
+    kind: skill
+    path: skills/agentcontrol/custom-metrics
+    description: "Create, track, retrieve, update, and delete custom business
+      metrics for configs. Covers full lifecycle: define metric kinds via API,
+      emit events via SDK, and query results."
+  - id: projects
+    kind: skill
+    path: skills/agentcontrol/projects
+    description: Guide for setting up LaunchDarkly projects in your codebase. Helps
+      you assess your stack, choose the right approach, and integrate project
+      management that makes sense for your architecture.
+  - id: snippets
+    kind: skill
+    path: skills/agentcontrol/snippets
+    description: Create and manage prompt snippets — reusable text blocks referenced
+      inside config variation prompts. Keeps common instructions, personas, and
+      guardrails consistent across multiple configs.
+  - id: launchdarkly-experiment-setup
+    kind: skill
+    path: skills/experiments/launchdarkly-experiment-setup
+    description: Set up and run experiments in LaunchDarkly. Create experiments with
+      metrics, treatments, and flag config, start iterations to collect data,
+      swap design between iterations, and stop with a winner.
+  - id: launchdarkly-flag-cleanup
+    kind: skill
+    path: skills/feature-flags/launchdarkly-flag-cleanup
+    description: Safely remove a feature flag from code while preserving production
+      behavior. Use when the user wants to remove a flag from code, delete flag
+      references, or create a PR that hardcodes the winning variation after a
+      rollout is complete.
+  - id: launchdarkly-flag-command
+    kind: skill
+    path: skills/feature-flags/launchdarkly-flag-command
+    description: Resolve `/flag` style requests into the right LaunchDarkly flag
+      lookup flow. Use when the user types `/flag`, asks to quickly find a flag
+      by name/key, wants a direct flag detail summary, or needs fast
+      disambiguation between similar flags.
+  - id: launchdarkly-flag-create
+    kind: skill
+    path: skills/feature-flags/launchdarkly-flag-create
+    description: Create and configure LaunchDarkly feature flags in a way that fits
+      the existing codebase. Use when the user wants to create a new flag, wrap
+      code in a flag, add a feature toggle, or set up an experiment. Guides
+      exploration of existing patterns before creating.
+  - id: launchdarkly-flag-discovery
+    kind: skill
+    path: skills/feature-flags/launchdarkly-flag-discovery
+    description: Audit your LaunchDarkly feature flags to understand the landscape,
+      find stale or launched flags, and assess removal readiness. Use when the
+      user asks about flag debt, stale flags, cleanup candidates, flag health,
+      or wants to understand their flag inventory.
+  - id: launchdarkly-flag-targeting
+    kind: skill
+    path: skills/feature-flags/launchdarkly-flag-targeting
+    description: Control LaunchDarkly feature flag targeting including toggling
+      flags on/off, percentage rollouts, targeting rules, individual targets,
+      and copying flag configurations between environments. Use when the user
+      wants to change who sees a flag, roll out to a percentage, add targeting
+      rules, or promote config between environments.
+  - id: launchdarkly-guarded-rollout
+    kind: skill
+    path: skills/feature-flags/launchdarkly-guarded-rollout
+    description: Configure guarded rollouts with progressive traffic increases,
+      metric monitoring, and automatic rollback. Use when releasing features
+      gradually with safety thresholds.
+  - id: launchdarkly-metric-choose
+    kind: skill
+    path: skills/metrics/launchdarkly-metric-choose
+    description: Choose the right metrics for a LaunchDarkly experiment, guarded
+      rollout, or release policy. Use when the user wants to know which metrics
+      to use, which is the primary metric for an experiment, what guardrails to
+      add, or which events to monitor in a rollout. Surfaces what will
+      auto-attach from existing release policies before making additional
+      recommendations.
+  - id: launchdarkly-metric-create
+    kind: skill
+    path: skills/metrics/launchdarkly-metric-create
+    description: Create a LaunchDarkly metric that measures what matters for an
+      experiment or rollout. Use when the user wants to create a metric, track
+      an event, measure page views, button clicks, conversion, latency, error
+      rate, or any custom numeric or binary outcome. Instruments the event first
+      when needed (including SDK setup and .env), then creates and verifies the
+      metric.
+  - id: launchdarkly-metric-instrument
+    kind: skill
+    path: skills/metrics/launchdarkly-metric-instrument
+    description: Instrument a LaunchDarkly metric event in a codebase by adding a
+      track() call. Use when the user wants to wire up an event, instrument an
+      action for a metric, add tracking to a feature, or confirm that an event
+      is flowing to LaunchDarkly.
+  - id: first-flag
+    kind: skill
+    path: skills/onboarding/first-flag
+    description: Create a boolean first flag, add evaluation, toggle on/off for
+      end-to-end proof. Parent onboarding Step 6; uses MCP, API, or ldcli;
+      optional flag-create skill.
+  - id: mcp-configure
+    kind: skill
+    path: skills/onboarding/mcp-configure
+    description: Configure the LaunchDarkly hosted MCP server during onboarding. Use
+      when the parent LaunchDarkly onboarding skill reaches Step 4 (MCP).
+      Supports Cursor, Claude Code, Windsurf, GitHub Copilot, and other
+      MCP-compatible agents. OAuth authentication; no API keys for the hosted
+      server.
+  - id: apply
+    kind: skill
+    path: skills/onboarding/sdk-install/apply
+    description: "Apply LaunchDarkly SDK onboarding: install dependency (or dual-SDK
+      pair), configure env and secrets with consent, add init at entrypoint(s),
+      verify compile. Nested under sdk-install; next is run."
+  - id: detect
+    kind: skill
+    path: skills/onboarding/sdk-install/detect
+    description: "Detect repository stack for LaunchDarkly SDK onboarding:
+      languages, frameworks, package managers, monorepo targets, entrypoints,
+      existing LD usage. Nested under sdk-install; next is plan."
+  - id: plan
+    kind: skill
+    path: skills/onboarding/sdk-install/plan
+    description: "Generate a minimal LaunchDarkly SDK integration plan from detected
+      stack: choose SDK type(s), dual-SDK server+client when required, files to
+      change, env conventions. Nested under sdk-install; follows detect,
+      precedes apply."
+  - id: sdk-install
+    kind: skill
+    path: skills/onboarding/sdk-install
+    description: "Install and initialize the correct LaunchDarkly SDK during
+      onboarding by running nested skills in order: detect, plan, apply. Parent
+      onboarding Step 6 is first flag."
+  - id: onboarding
+    kind: skill
+    path: skills/onboarding
+    description: "Onboard a project to LaunchDarkly: kickoff roadmap, resumable log,
+      explore repo, MCP, companion flag skills, nested SDK install
+      (detect/plan/apply), first flag. Use when adding LaunchDarkly, setting up
+      or integrating feature flags in a project, SDK integration, or 'onboard
+      me'."
+requirements:
+  env:
+    - ANTHROPIC_API_KEY
+    - AGENT_MODEL
+    - RUBRIC_MODEL
+    - OPENAI_API_KEY
+    - LD_SDK_KEY
+    - LAUNCHDARKLY_API_KEY
+    - LAUNCHDARKLY_API_TOKEN
+    - LD_API_KEY
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

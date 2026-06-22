@@ -1,0 +1,173 @@
+schemaVersion: 1
+id: clerk/skills
+name: Clerk Skills
+description: Clerk AI skill bundle.
+source:
+  type: git
+  url: https://github.com/clerk/skills
+  revision: a0ef3ed7841d1cb42ee9a2d96cde2bc9751c84eb
+capabilities:
+  - id: clerk
+    kind: skill
+    path: skills/core/clerk
+    description: Clerk authentication router. Use when user asks about Clerk CLI
+      operations, adding authentication, setting up Clerk, custom sign-in flows,
+      Swift or native iOS auth, native Android auth, Next.js patterns, React
+      patterns, Vue patterns, Nuxt patterns, Astro patterns, TanStack Start
+      patterns, Expo patterns, React Router patterns, Chrome Extension patterns,
+      organizations, billing, subscriptions, payments, pricing, plans,
+      seat-based pricing, feature entitlements, syncing users, or testing.
+      Automatically routes to the specific skill based on their task.
+  - id: clerk-cli
+    kind: skill
+    path: skills/core/clerk-cli
+    description: 'Operate the Clerk CLI (`clerk` binary) for authentication,
+      user/org/session management, deploy verification, instance config, env
+      keys, and any Clerk Backend or Platform API call. Use when the user
+      mentions Clerk management tasks, "list clerk users", "create a clerk
+      user", "update organization", "pull clerk config", "clerk env pull",
+      "clerk doctor", "clerk deploy", "clerk deploy status", "clerk api", or any
+      ad-hoc Clerk API request. Prefer the CLI over raw HTTP: it handles auth,
+      key resolution, app/instance targeting, and formatting automatically.'
+  - id: clerk-setup
+    kind: skill
+    path: skills/core/clerk-setup
+    description: Add Clerk authentication to any project by following the official
+      quickstart guides.
+  - id: clerk-backend-api
+    kind: skill
+    path: skills/core/clerk-backend-api
+    description: Clerk Backend REST API explorer and executor. Browse tags, inspect
+      endpoint schemas, and execute authenticated requests. Use when listing
+      users, managing organizations, or calling any Clerk API endpoint.
+  - id: clerk-orgs
+    kind: skill
+    path: skills/features/clerk-orgs
+    description: Clerk Organizations for B2B SaaS - create multi-tenant apps with
+      org switching, role-based access, verified domains, and enterprise SSO.
+      Use for team workspaces, RBAC, org-based routing, member management.
+  - id: clerk-billing
+    kind: skill
+    path: skills/features/clerk-billing
+    description: Clerk Billing for subscription management - render Clerk's
+      PricingTable and in-app checkout drawer, configure subscription plans,
+      seat-limit plans for B2B, feature entitlements with has(), and billing
+      webhooks. Use for SaaS monetization, plan gating, checkout flows, trials,
+      invoicing, and subscription lifecycle management.
+  - id: audit-clerk-skill
+    kind: skill
+    path: .agents/skills/audit-clerk-skill
+    description: Audits the bundled `clerk-cli` skill against the Clerk CLI source
+      tree and proposes or applies updates. Use when the user says "audit the
+      clerk-cli skill", "update the clerk-cli skill", "check clerk-cli against
+      the CLI source", "resync clerk-cli skill", "run audit-clerk-skill", or
+      after Clerk CLI commands, flags, or agent-mode behavior change.
+  - id: clerk-custom-ui
+    kind: skill
+    path: skills/core/clerk-custom-ui
+    description: Custom authentication flows and component appearance - hooks
+      (useSignIn, useSignUp), themes, colors, fonts, CSS. Use for custom
+      sign-in/sign-up flows, appearance styling, visual customization, branding.
+  - id: clerk-testing
+    kind: skill
+    path: skills/features/clerk-testing
+    description: E2E testing for Clerk apps. Use with Playwright or Cypress for auth
+      flow tests.
+  - id: clerk-webhooks
+    kind: skill
+    path: skills/features/clerk-webhooks
+    description: Clerk webhooks for real-time events and data syncing. Verify with
+      verifyWebhook from the framework-specific package. Handle user, session,
+      organization, billing, and payment events. Build event-driven features
+      like database sync, notifications, and integrations.
+  - id: clerk-astro-patterns
+    kind: skill
+    path: skills/frameworks/clerk-astro-patterns
+    description: "Astro patterns with Clerk — middleware, SSR pages, island
+      components, API routes, static vs SSR rendering. Triggers on: astro clerk,
+      clerk astro middleware, astro protected page, clerk island component,
+      astro API route auth, clerk astro SSR."
+  - id: clerk-chrome-extension-patterns
+    kind: skill
+    path: skills/frameworks/clerk-chrome-extension-patterns
+    description: "Chrome Extension auth with @clerk/chrome-extension --
+      popup/sidepanel setup, syncHost for OAuth/SAML via web app,
+      createClerkClient for service workers and headless extensions, stable CRX
+      ID. Triggers on: Chrome extension auth, Plasmo clerk, popup sign-in,
+      syncHost, background service worker token, createClerkClient, headless
+      extension."
+  - id: clerk-expo-patterns
+    kind: skill
+    path: skills/frameworks/clerk-expo-patterns
+    description: "Expo / React Native patterns with Clerk — SecureStore token cache,
+      OAuth deep linking, useAuth in native, Expo Router protected routes, push
+      notifications with user context. Triggers on: expo clerk, clerk react
+      native, SecureStore token cache, expo router auth, OAuth deep link clerk,
+      mobile auth clerk."
+  - id: clerk-nextjs-patterns
+    kind: skill
+    path: skills/frameworks/clerk-nextjs-patterns
+    description: Advanced Next.js patterns - middleware, Server Actions, caching with Clerk.
+  - id: clerk-nuxt-patterns
+    kind: skill
+    path: skills/frameworks/clerk-nuxt-patterns
+    description: "Nuxt 3 auth patterns with @clerk/nuxt - middleware, composables,
+      server API routes, SSR. Triggers on: Nuxt auth, useAuth composable,
+      clerkMiddleware Nuxt, server API Clerk, Nuxt route protection."
+  - id: clerk-react-patterns
+    kind: skill
+    path: skills/frameworks/clerk-react-patterns
+    description: "React SPA auth patterns with @clerk/react for Vite/CRA -
+      ClerkProvider setup, useAuth/useUser/useClerk hooks, React Router
+      protected routes, custom sign-in flows. Triggers on: Vite Clerk setup,
+      React Router auth, useAuth hook, protected route, custom sign-in form
+      React."
+  - id: clerk-react-router-patterns
+    kind: skill
+    path: skills/frameworks/clerk-react-router-patterns
+    description: "React Router v7 patterns with Clerk — rootAuthLoader, getAuth in
+      loaders, clerkMiddleware, protected routes, SSR user data, org switching.
+      Triggers on: react-router auth, rootAuthLoader, getAuth loader,
+      react-router protected route, loader authentication, SSR auth
+      react-router."
+  - id: clerk-tanstack-patterns
+    kind: skill
+    path: skills/frameworks/clerk-tanstack-patterns
+    description: "TanStack React Start auth patterns with
+      @clerk/tanstack-react-start - createServerFn, beforeLoad guards, loaders,
+      Vinxi server. Triggers on: TanStack auth, createServerFn clerk, beforeLoad
+      protection, TanStack Start middleware."
+  - id: clerk-vue-patterns
+    kind: skill
+    path: skills/frameworks/clerk-vue-patterns
+    description: "Vue 3 patterns with Clerk — composables (useAuth, useUser,
+      useClerk, useOrganization), Vue Router guards, Pinia auth store
+      integration. Triggers on: vue clerk, useAuth vue, clerk composables, vue
+      router clerk guard, pinia auth clerk. For Nuxt, use clerk-nuxt-patterns
+      instead."
+  - id: clerk-android
+    kind: skill
+    path: skills/mobile/clerk-android
+    description: Implement Clerk authentication for native Android apps using Kotlin
+      and Jetpack Compose with clerk-android source-guided patterns. Use for
+      prebuilt AuthView/UserButton or custom API-driven auth flows. Do not use
+      for Expo or React Native projects.
+  - id: clerk-expo
+    kind: skill
+    path: skills/mobile/clerk-expo
+    description: Implement Clerk authentication for Expo and React Native apps using
+      @clerk/expo source-guided patterns. Use for prebuilt AuthView/UserButton
+      or custom hook-driven auth flows. Do not use for native iOS/Swift, native
+      Android/Kotlin, or web framework projects.
+  - id: clerk-swift
+    kind: skill
+    path: skills/mobile/clerk-swift
+    description: Implement Clerk authentication for native Swift and iOS apps using
+      ClerkKit and ClerkKitUI source-guided patterns. Use for prebuilt AuthView
+      or custom native flows. Do not use for Expo or React Native projects.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

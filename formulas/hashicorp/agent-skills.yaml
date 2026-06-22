@@ -1,0 +1,124 @@
+schemaVersion: 1
+id: hashicorp/agent-skills
+name: HashiCorp Agent Skills
+description: Agent skills + Claude Code plugins for HashiCorp Packer/Terraform.
+source:
+  type: git
+  url: https://github.com/hashicorp/agent-skills
+  revision: 339a113935812ad75c6ff90d418b739a021826d1
+capabilities:
+  - id: terraform-style-guide
+    kind: skill
+    path: terraform/code-generation/skills/terraform-style-guide
+    description: Generate Terraform HCL code following HashiCorp's official style
+      conventions and best practices. Use when writing, reviewing, or generating
+      Terraform configurations.
+  - id: provider-resources
+    kind: skill
+    path: terraform/provider-development/skills/provider-resources
+    description: Implement Terraform Provider resources and data sources using the
+      Plugin Framework. Use when developing CRUD operations, schema design,
+      state management, and acceptance testing for provider resources.
+  - id: aws-ami-builder
+    kind: skill
+    path: packer/builders/skills/aws-ami-builder
+    description: Build Amazon Machine Images (AMIs) with Packer using the amazon-ebs
+      builder. Use when creating custom AMIs for EC2 instances.
+  - id: azure-image-builder
+    kind: skill
+    path: packer/builders/skills/azure-image-builder
+    description: Build Azure managed images and Azure Compute Gallery images with
+      Packer. Use when creating custom images for Azure VMs.
+  - id: windows-builder
+    kind: skill
+    path: packer/builders/skills/windows-builder
+    description: Build Windows images with Packer using WinRM communicator and
+      PowerShell provisioners. Use when creating Windows AMIs, Azure images, or
+      VMware templates.
+  - id: push-to-registry
+    kind: skill
+    path: packer/hcp/skills/push-to-registry
+    description: Push Packer build metadata to HCP Packer registry for tracking and
+      managing image lifecycle. Use when integrating Packer builds with HCP
+      Packer for version control and governance.
+  - id: azure-verified-modules
+    kind: skill
+    path: terraform/code-generation/skills/azure-verified-modules
+    description: Azure Verified Modules (AVM) requirements and best practices for
+      developing certified Azure Terraform modules. Use when creating or
+      reviewing Azure modules that need AVM certification.
+  - id: terraform-search-import
+    kind: skill
+    path: terraform/code-generation/skills/terraform-search-import
+    description: Discover existing cloud resources using Terraform Search queries
+      and bulk import them into Terraform management. Use when bringing
+      unmanaged infrastructure under Terraform control, auditing cloud
+      resources, or migrating to IaC.
+  - id: terraform-test
+    kind: skill
+    path: terraform/code-generation/skills/terraform-test
+    description: Comprehensive guide for writing and running Terraform tests. Use
+      when creating test files (.tftest.hcl), writing test scenarios with run
+      blocks, validating infrastructure behavior with assertions, mocking
+      providers and data sources, testing module outputs and resource
+      configurations, or troubleshooting Terraform test syntax and execution.
+  - id: refactor-module
+    kind: skill
+    path: terraform/module-generation/skills/refactor-module
+    description: Transform monolithic Terraform configurations into reusable,
+      maintainable modules following HashiCorp's module design principles and
+      community best practices.
+  - id: terraform-stacks
+    kind: skill
+    path: terraform/module-generation/skills/terraform-stacks
+    description: Comprehensive guide for working with HashiCorp Terraform Stacks.
+      Use when creating, modifying, or validating Terraform Stack configurations
+      (.tfcomponent.hcl, .tfdeploy.hcl files), working with stack components and
+      deployments from local modules, public registry, or private registry
+      sources, managing multi-region or multi-environment infrastructure, or
+      troubleshooting Terraform Stacks syntax and structure.
+  - id: new-terraform-provider
+    kind: skill
+    path: terraform/provider-development/skills/new-terraform-provider
+    description: Use this when scaffolding a new Terraform provider.
+  - id: provider-actions
+    kind: skill
+    path: terraform/provider-development/skills/provider-actions
+    description: Implement Terraform Provider actions using the Plugin Framework.
+      Use when developing imperative operations that execute at lifecycle events
+      (before/after create, update, destroy).
+  - id: provider-docs
+    kind: skill
+    path: terraform/provider-development/skills/provider-docs
+    description: Create, update, and review Terraform provider documentation for
+      Terraform Registry using HashiCorp-recommended patterns, tfplugindocs
+      templates, and schema descriptions. Use when adding or changing provider
+      configuration, resources, data sources, ephemeral resources, list
+      resources, functions, or guides; when validating generated docs; and when
+      troubleshooting missing or incorrect Registry documentation.
+  - id: provider-test-patterns
+    kind: skill
+    path: terraform/provider-development/skills/provider-test-patterns
+    description: Terraform provider acceptance test patterns using
+      terraform-plugin-testing with the Plugin Framework. Covers test structure,
+      TestCase/TestStep fields, ConfigStateChecks with custom
+      statecheck.StateCheck implementations, plan checks, CompareValue for
+      cross-step assertions, config helpers, import testing with
+      ImportStateKind, sweepers, and scenario patterns (basic, update,
+      disappears, validation, regression), and ephemeral resource testing with
+      the echoprovider package. Use when writing, reviewing, or debugging
+      provider acceptance tests, including questions about statecheck,
+      plancheck, TestCheckFunc, CheckDestroy, ExpectError, import state
+      verification, ephemeral resources, or how to structure test files.
+  - id: run-acceptance-tests
+    kind: skill
+    path: terraform/provider-development/skills/run-acceptance-tests
+    description: Guide for running acceptance tests for a Terraform provider. Use
+      this when asked to run an acceptance test or to run a test with the prefix
+      `TestAcc`.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

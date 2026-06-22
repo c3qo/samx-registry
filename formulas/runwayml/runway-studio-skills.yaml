@@ -1,0 +1,28 @@
+schemaVersion: 1
+id: runwayml/runway-studio-skills
+name: Runway Studio Skills
+description: Runway API skill for studio video/image/audio gen.
+source:
+  type: git
+  url: https://github.com/runwayml/runway-studio-skills
+  revision: c1c0348fda3acf4ef864393b6485afb4600eedda
+capabilities:
+  - id: runway-studio-skills
+    kind: skill
+    path: .
+    description: >
+      Use this skill when the user wants to generate videos, images, or audio
+      using
+
+      the Runway API. Covers product ad videos, text-to-video, image-to-video,
+
+      video-to-video, character performance, image generation, sound effects,
+      TTS,
+
+      speech-to-speech, voice dubbing, and voice isolation.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

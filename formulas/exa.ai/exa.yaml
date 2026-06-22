@@ -1,0 +1,20 @@
+schemaVersion: 1
+id: exa.ai/exa
+name: Exa
+description: Exa remote MCP server at https://mcp.exa.ai/mcp. Web Search + Code
+  Docs Search. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/exa
+capabilities:
+  - id: exa
+    kind: mcp
+    spec:
+      serverName: exa
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.exa.ai/mcp

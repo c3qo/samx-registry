@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: eraser.io/eraser
+name: Eraser
+description: Eraser remote MCP server at https://app.eraser.io/api/mcp.
+  Generate, manage, and update Eraser diagrams and files. Setup guides for
+  Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/eraser
+capabilities:
+  - id: eraser
+    kind: mcp
+    spec:
+      serverName: eraser
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://app.eraser.io/api/mcp

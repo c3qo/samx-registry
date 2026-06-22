@@ -1,0 +1,94 @@
+schemaVersion: 1
+id: makenotion/cursor-notion-plugin
+name: Notion Plugin for Cursor
+description: Cursor plugin bundling Notion skills + hosted MCP server.
+source:
+  type: git
+  url: https://github.com/makenotion/cursor-notion-plugin
+  revision: cf1324609edba6d617164f1dec138aeb43f26735
+capabilities:
+  - id: search
+    kind: skill
+    path: skills/search
+    description: Search the user's Notion workspace using the Notion MCP server. Use
+      for finding pages, databases, and content by keywords or natural-language
+      queries.
+  - id: tasks-plan
+    kind: skill
+    path: skills/tasks-plan
+    description: Create an implementation plan from a Notion task or specification.
+      Breaks down requirements into actionable steps with estimates and
+      dependencies.
+  - id: create-database-row
+    kind: skill
+    path: skills/create-database-row
+    description: Insert a new row into a specified Notion database using
+      natural-language property values. Handles property name matching and
+      validation.
+  - id: create-page
+    kind: skill
+    path: skills/create-page
+    description: Create a new Notion page, optionally under a specific parent.
+      Automatically structures content based on page type (meeting notes,
+      project pages, etc.).
+  - id: create-task
+    kind: skill
+    path: skills/create-task
+    description: Create a new task in the user's Notion tasks database with sensible
+      defaults for due date, status, owner, and project.
+  - id: database-query
+    kind: skill
+    path: skills/database-query
+    description: Query a Notion database by name or ID and return structured,
+      readable results with optional filters and sorting.
+  - id: find
+    kind: skill
+    path: skills/find
+    description: Quickly find pages or databases in Notion by title keywords.
+      Returns precise matches rather than comprehensive results.
+  - id: knowledge-capture
+    kind: skill
+    path: skills/knowledge-capture
+    description: Transform conversations and discussions into structured
+      documentation pages in Notion. Captures insights, decisions, and knowledge
+      from chat context with proper organization and linking.
+  - id: meeting-intelligence
+    kind: skill
+    path: skills/meeting-intelligence
+    description: Prepare meeting materials by gathering context from Notion,
+      enriching with research, and creating both an internal pre-read and
+      external agenda saved to Notion.
+  - id: research-documentation
+    kind: skill
+    path: skills/research-documentation
+    description: Search across your Notion workspace, synthesize findings from
+      multiple pages, and create comprehensive research documentation with
+      proper citations and actionable insights.
+  - id: spec-to-implementation
+    kind: skill
+    path: skills/spec-to-implementation
+    description: Turn product or tech specs into concrete Notion tasks. Breaks down
+      spec pages into detailed implementation plans with clear tasks, acceptance
+      criteria, and progress tracking.
+  - id: tasks-build
+    kind: skill
+    path: skills/tasks-build
+    description: Build a task from a Notion page URL. Fetches task details, marks it
+      in progress, implements the work, and updates status in Notion.
+  - id: tasks-explain-diff
+    kind: skill
+    path: skills/tasks-explain-diff
+    description: Generate a rich Notion document explaining code changes. Creates
+      comprehensive documentation with background, intuition, code walkthrough,
+      and verification steps.
+  - id: tasks-setup
+    kind: skill
+    path: skills/tasks-setup
+    description: Set up a Notion task board for tracking tasks. Guides users through
+      using a template or connecting an existing board.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

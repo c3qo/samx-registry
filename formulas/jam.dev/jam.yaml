@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: jam.dev/jam
+name: Jam
+description: Jam remote MCP server at https://mcp.jam.dev/mcp. Record screen and
+  collect automatic context for issues. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/jam
+capabilities:
+  - id: jam
+    kind: mcp
+    spec:
+      serverName: jam
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.jam.dev/mcp

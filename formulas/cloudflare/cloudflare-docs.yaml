@@ -1,0 +1,61 @@
+schemaVersion: 1
+id: cloudflare/cloudflare-docs
+name: Cloudflare Developer Documentation
+description: Open-source Cloudflare docs site + bot tooling.
+source:
+  type: git
+  url: https://github.com/cloudflare/cloudflare-docs
+  revision: 288319886f3a21d8711fdf63aa79e8e19fcfaea0
+capabilities:
+  - id: contributing
+    kind: skill
+    path: .agents/skills/contributing
+    description: Use when making any change to the cloudflare-docs repository —
+      writing or updating MDX pages, adding changelog entries, choosing
+      components, structuring information, or opening a pull request. Covers the
+      full contribution workflow for developers.cloudflare.com.
+  - id: dependabot-review
+    kind: skill
+    path: .agents/skills/dependabot-review
+    description: Analyzes a Dependabot PR to determine what actually changed in each
+      bumped package and whether those changes affect this repo. Reports changed
+      APIs/methods, which doc pages use them, and the realistic probability of
+      any visible impact on the docs site.
+  - id: eli5
+    kind: skill
+    path: .agents/skills/eli5
+    description: Transform technical jargon into clear explanations using
+      before/after comparisons, metaphors, and practical context
+  - id: dependabot-review-2
+    kind: skill
+    path: .flue/.agents/skills/dependabot-review
+    description: Reviews a Dependabot PR for the cloudflare/cloudflare-docs repo.
+      Analyzes every bumped package — what changed upstream, how this repo uses
+      it, and whether the bump requires action beyond merging.
+  - id: reconcile-code-review
+    kind: skill
+    path: .flue/.agents/skills/reconcile-code-review
+    description: Reconcile raw specialist findings against the previous bot review
+      and human PR comments to produce a final classified finding list.
+  - id: spam-and-off-topic-filter
+    kind: skill
+    path: .flue/.agents/skills/spam-and-off-topic-filter
+    description: Evaluate a GitHub issue or pull request and decide if it is spam or
+      clearly off-topic for cloudflare/cloudflare-docs.
+  - id: style-guide-review
+    kind: skill
+    path: .flue/.agents/skills/style-guide-review
+    description: Review changed MDX/docs files in a pull request against the
+      Cloudflare docs style guide and return structured findings.
+  - id: 2026-deprecation
+    kind: skill
+    path: public/sandbox/guides/2026-deprecation
+    description: Migrate Cloudflare Sandbox SDK codebases away from features
+      deprecated in June 2026 (HTTP and WebSocket transports, desktop,
+      exposePort, default sessions, and stream-specific file and command APIs).
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,28 @@
+schemaVersion: 1
+id: microsoft/fabric-cli
+name: Microsoft Fabric CLI
+description: CLI for Microsoft Fabric fs-style ops, auth, items, Power BI.
+source:
+  type: git
+  url: https://github.com/microsoft/fabric-cli
+  revision: 4988ed557fcb2b185f162c39042587955aa2cd49
+capabilities:
+  - id: fabric-cli-core
+    kind: skill
+    path: .ai-assets/skills/fabric-cli-core
+    description: Use Microsoft Fabric CLI (fab) to manage workspaces, semantic
+      models, reports, notebooks, and Fabric resources. Activate when users
+      mention fab, Fabric CLI, or need to automate Fabric operations.
+  - id: fabric-cli-powerbi
+    kind: skill
+    path: .ai-assets/skills/fabric-cli-powerbi
+    description: Use Fabric CLI for Power BI operations — semantic models, reports,
+      DAX queries, refresh, gateways. Activate when users work with Power BI
+      items, need to refresh datasets, execute DAX, manage reports, or
+      troubleshoot refresh failures.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

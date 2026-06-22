@@ -1,0 +1,299 @@
+schemaVersion: 1
+id: firecrawl/firecrawl-agent
+name: Firecrawl Agent
+description: AI-powered web research agent framework built on Firecrawl.
+source:
+  type: git
+  url: https://github.com/firecrawl/firecrawl-agent
+  revision: f023adf1cd1f731e27fdc844af62996f6c2a41c4
+capabilities:
+  - id: competitor-analysis
+    kind: skill
+    path: agent-core/src/skills/definitions/competitor-analysis
+    description: >
+      Compare two or more companies, products, or platforms across pricing,
+      features, positioning, and docs. Use this skill whenever the user says
+      "compare X vs Y", "how does X stack up against Y", "alternatives to X",
+      "competitive landscape of …", "X vs Y vs Z", or asks for a competitor
+      matrix. Uses search to discover competitors when the user only names a
+      category, then scrape for each competitor's homepage, pricing page, and
+      features/docs. Returns a normalized comparison matrix as JSON.
+  - id: deep-research
+    kind: skill
+    path: agent-core/src/skills/definitions/deep-research
+    description: Multi-source research with source triangulation and fact-checking.
+      Use for any research task requiring 3+ sources.
+  - id: e-commerce
+    kind: skill
+    path: agent-core/src/skills/definitions/e-commerce
+    description: Navigate e-commerce sites to extract products, pricing, categories,
+      and inventory. Handles pagination, variants, and JS-heavy storefronts.
+  - id: financial-research
+    kind: skill
+    path: agent-core/src/skills/definitions/financial-research
+    description: >
+      Pull company financials, SEC filings, and analyst consensus for a public
+      company. Use this skill whenever the user says "10-K", "10-Q", "earnings",
+      "revenue of", "financials for", "analyst rating for", "price target for",
+      or provides a stock ticker. Combines SEC EDGAR for official filings with
+      Yahoo Finance / TipRanks for analyst data. Search + scrape only; no
+      interact needed.
+  - id: pricing-tracker
+    kind: skill
+    path: agent-core/src/skills/definitions/pricing-tracker
+    description: >
+      Extract and normalize pricing tiers from any SaaS, API, cloud, or LLM
+      vendor's pricing page. Use this skill whenever the user says "pricing for
+      X", "how much does X cost", "pricing tiers", "cost comparison", provides a
+      URL ending in `/pricing` or `/plans`, or asks to monitor pricing over
+      time. Pairs well with `exportSkill` to turn a run into a cron-friendly
+      workflow. Scrape-driven; no interact needed for typical pricing pages.
+  - id: structured-extraction
+    kind: skill
+    path: agent-core/src/skills/definitions/structured-extraction
+    description: Extract structured data matching a JSON schema from websites.
+      Handles complex nested schemas, arrays, pagination, and validation. Always
+      outputs via formatOutput.
+  - id: skill
+    kind: skill
+    path: .internal/experimental/agent-sdks/csharp/docs/models
+    entry: Skill.md
+    description: Name | Type | Description | Notes
+  - id: skill-2
+    kind: skill
+    path: .internal/experimental/agent-sdks/dart/doc
+    entry: Skill.md
+    description: "```dart"
+  - id: skill-3
+    kind: skill
+    path: .internal/experimental/agent-sdks/go/docs
+    entry: Skill.md
+    description: Name | Type | Description | Notes
+  - id: skill-4
+    kind: skill
+    path: .internal/experimental/agent-sdks/java/docs
+    entry: Skill.md
+    description: "| Name | Type | Description | Notes |"
+  - id: skill-5
+    kind: skill
+    path: .internal/experimental/agent-sdks/javascript/docs
+    entry: Skill.md
+    description: Name | Type
+  - id: skill-6
+    kind: skill
+    path: .internal/experimental/agent-sdks/kotlin/docs
+    entry: Skill.md
+    description: "| Name | Type | Description | Notes |"
+  - id: skill-7
+    kind: skill
+    path: .internal/experimental/agent-sdks/perl/docs
+    entry: Skill.md
+    description: "```perl"
+  - id: skill-8
+    kind: skill
+    path: .internal/experimental/agent-sdks/php/docs/Model
+    entry: Skill.md
+    description: Name | Type | Description | Notes
+  - id: skill-9
+    kind: skill
+    path: .internal/experimental/agent-sdks/powershell/docs
+    entry: Skill.md
+    description: Name | Type | Description | Notes
+  - id: skill-10
+    kind: skill
+    path: .internal/experimental/agent-sdks/python/docs
+    entry: Skill.md
+    description: Name | Type | Description | Notes
+  - id: skill-11
+    kind: skill
+    path: .internal/experimental/agent-sdks/r/docs
+    entry: Skill.md
+    description: Name | Type | Description | Notes
+  - id: skill-12
+    kind: skill
+    path: .internal/experimental/agent-sdks/ruby/docs
+    entry: Skill.md
+    description: "| Name | Type | Description | Notes |"
+  - id: skill-13
+    kind: skill
+    path: .internal/experimental/agent-sdks/rust/docs
+    entry: Skill.md
+    description: Name | Type | Description | Notes
+  - id: skill-14
+    kind: skill
+    path: .internal/experimental/agent-sdks/swift/docs
+    entry: Skill.md
+    description: Name | Type | Description | Notes
+  - id: competitor-analysis-2
+    kind: skill
+    path: agent-templates/express/agent-core/src/skills/definitions/competitor-analysis
+    description: >
+      Compare two or more companies, products, or platforms across pricing,
+      features, positioning, and docs. Use this skill whenever the user says
+      "compare X vs Y", "how does X stack up against Y", "alternatives to X",
+      "competitive landscape of …", "X vs Y vs Z", or asks for a competitor
+      matrix. Uses search to discover competitors when the user only names a
+      category, then scrape for each competitor's homepage, pricing page, and
+      features/docs. Returns a normalized comparison matrix as JSON.
+  - id: deep-research-2
+    kind: skill
+    path: agent-templates/express/agent-core/src/skills/definitions/deep-research
+    description: Multi-source research with source triangulation and fact-checking.
+      Use for any research task requiring 3+ sources.
+  - id: e-commerce-2
+    kind: skill
+    path: agent-templates/express/agent-core/src/skills/definitions/e-commerce
+    description: Navigate e-commerce sites to extract products, pricing, categories,
+      and inventory. Handles pagination, variants, and JS-heavy storefronts.
+  - id: financial-research-2
+    kind: skill
+    path: agent-templates/express/agent-core/src/skills/definitions/financial-research
+    description: >
+      Pull company financials, SEC filings, and analyst consensus for a public
+      company. Use this skill whenever the user says "10-K", "10-Q", "earnings",
+      "revenue of", "financials for", "analyst rating for", "price target for",
+      or provides a stock ticker. Combines SEC EDGAR for official filings with
+      Yahoo Finance / TipRanks for analyst data. Search + scrape only; no
+      interact needed.
+  - id: pricing-tracker-2
+    kind: skill
+    path: agent-templates/express/agent-core/src/skills/definitions/pricing-tracker
+    description: >
+      Extract and normalize pricing tiers from any SaaS, API, cloud, or LLM
+      vendor's pricing page. Use this skill whenever the user says "pricing for
+      X", "how much does X cost", "pricing tiers", "cost comparison", provides a
+      URL ending in `/pricing` or `/plans`, or asks to monitor pricing over
+      time. Pairs well with `exportSkill` to turn a run into a cron-friendly
+      workflow. Scrape-driven; no interact needed for typical pricing pages.
+  - id: structured-extraction-2
+    kind: skill
+    path: agent-templates/express/agent-core/src/skills/definitions/structured-extraction
+    description: Extract structured data matching a JSON schema from websites.
+      Handles complex nested schemas, arrays, pagination, and validation. Always
+      outputs via formatOutput.
+  - id: competitor-analysis-3
+    kind: skill
+    path: agent-templates/library/agent-core/src/skills/definitions/competitor-analysis
+    description: >
+      Compare two or more companies, products, or platforms across pricing,
+      features, positioning, and docs. Use this skill whenever the user says
+      "compare X vs Y", "how does X stack up against Y", "alternatives to X",
+      "competitive landscape of …", "X vs Y vs Z", or asks for a competitor
+      matrix. Uses search to discover competitors when the user only names a
+      category, then scrape for each competitor's homepage, pricing page, and
+      features/docs. Returns a normalized comparison matrix as JSON.
+  - id: deep-research-3
+    kind: skill
+    path: agent-templates/library/agent-core/src/skills/definitions/deep-research
+    description: Multi-source research with source triangulation and fact-checking.
+      Use for any research task requiring 3+ sources.
+  - id: e-commerce-3
+    kind: skill
+    path: agent-templates/library/agent-core/src/skills/definitions/e-commerce
+    description: Navigate e-commerce sites to extract products, pricing, categories,
+      and inventory. Handles pagination, variants, and JS-heavy storefronts.
+  - id: financial-research-3
+    kind: skill
+    path: agent-templates/library/agent-core/src/skills/definitions/financial-research
+    description: >
+      Pull company financials, SEC filings, and analyst consensus for a public
+      company. Use this skill whenever the user says "10-K", "10-Q", "earnings",
+      "revenue of", "financials for", "analyst rating for", "price target for",
+      or provides a stock ticker. Combines SEC EDGAR for official filings with
+      Yahoo Finance / TipRanks for analyst data. Search + scrape only; no
+      interact needed.
+  - id: pricing-tracker-3
+    kind: skill
+    path: agent-templates/library/agent-core/src/skills/definitions/pricing-tracker
+    description: >
+      Extract and normalize pricing tiers from any SaaS, API, cloud, or LLM
+      vendor's pricing page. Use this skill whenever the user says "pricing for
+      X", "how much does X cost", "pricing tiers", "cost comparison", provides a
+      URL ending in `/pricing` or `/plans`, or asks to monitor pricing over
+      time. Pairs well with `exportSkill` to turn a run into a cron-friendly
+      workflow. Scrape-driven; no interact needed for typical pricing pages.
+  - id: structured-extraction-3
+    kind: skill
+    path: agent-templates/library/agent-core/src/skills/definitions/structured-extraction
+    description: Extract structured data matching a JSON schema from websites.
+      Handles complex nested schemas, arrays, pagination, and validation. Always
+      outputs via formatOutput.
+  - id: competitor-analysis-4
+    kind: skill
+    path: agent-templates/next/agent-core/src/skills/definitions/competitor-analysis
+    description: >
+      Compare two or more companies, products, or platforms across pricing,
+      features, positioning, and docs. Use this skill whenever the user says
+      "compare X vs Y", "how does X stack up against Y", "alternatives to X",
+      "competitive landscape of …", "X vs Y vs Z", or asks for a competitor
+      matrix. Uses search to discover competitors when the user only names a
+      category, then scrape for each competitor's homepage, pricing page, and
+      features/docs. Returns a normalized comparison matrix as JSON.
+  - id: deep-research-4
+    kind: skill
+    path: agent-templates/next/agent-core/src/skills/definitions/deep-research
+    description: Multi-source research with source triangulation and fact-checking.
+      Use for any research task requiring 3+ sources.
+  - id: e-commerce-4
+    kind: skill
+    path: agent-templates/next/agent-core/src/skills/definitions/e-commerce
+    description: Navigate e-commerce sites to extract products, pricing, categories,
+      and inventory. Handles pagination, variants, and JS-heavy storefronts.
+  - id: financial-research-4
+    kind: skill
+    path: agent-templates/next/agent-core/src/skills/definitions/financial-research
+    description: >
+      Pull company financials, SEC filings, and analyst consensus for a public
+      company. Use this skill whenever the user says "10-K", "10-Q", "earnings",
+      "revenue of", "financials for", "analyst rating for", "price target for",
+      or provides a stock ticker. Combines SEC EDGAR for official filings with
+      Yahoo Finance / TipRanks for analyst data. Search + scrape only; no
+      interact needed.
+  - id: pricing-tracker-4
+    kind: skill
+    path: agent-templates/next/agent-core/src/skills/definitions/pricing-tracker
+    description: >
+      Extract and normalize pricing tiers from any SaaS, API, cloud, or LLM
+      vendor's pricing page. Use this skill whenever the user says "pricing for
+      X", "how much does X cost", "pricing tiers", "cost comparison", provides a
+      URL ending in `/pricing` or `/plans`, or asks to monitor pricing over
+      time. Pairs well with `exportSkill` to turn a run into a cron-friendly
+      workflow. Scrape-driven; no interact needed for typical pricing pages.
+  - id: structured-extraction-4
+    kind: skill
+    path: agent-templates/next/agent-core/src/skills/definitions/structured-extraction
+    description: Extract structured data matching a JSON schema from websites.
+      Handles complex nested schemas, arrays, pagination, and validation. Always
+      outputs via formatOutput.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Capability kind does not match path:
+      .internal/experimental/agent-sdks/csharp/docs/models; Capability kind does
+      not match path: .internal/experimental/agent-sdks/dart/doc; Capability
+      kind does not match path: .internal/experimental/agent-sdks/go/docs;
+      Capability kind does not match path:
+      .internal/experimental/agent-sdks/java/docs; Capability kind does not
+      match path: .internal/experimental/agent-sdks/javascript/docs; Capability
+      kind does not match path: .internal/experimental/agent-sdks/kotlin/docs;
+      Capability kind does not match path:
+      .internal/experimental/agent-sdks/perl/docs; Capability kind does not
+      match path: .internal/experimental/agent-sdks/php/docs/Model; Capability
+      kind does not match path:
+      .internal/experimental/agent-sdks/powershell/docs; Capability kind does
+      not match path: .internal/experimental/agent-sdks/python/docs; Capability
+      kind does not match path: .internal/experimental/agent-sdks/r/docs;
+      Capability kind does not match path:
+      .internal/experimental/agent-sdks/ruby/docs; Capability kind does not
+      match path: .internal/experimental/agent-sdks/rust/docs; Capability kind
+      does not match path: .internal/experimental/agent-sdks/swift/docs"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: setup.shopify.com/shopify
+name: Shopify
+description: Shopify remote MCP server at https://setup.shopify.com/mcp. Build,
+  manage, and analyze your Shopify store. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/shopify
+capabilities:
+  - id: shopify
+    kind: mcp
+    spec:
+      serverName: shopify
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://setup.shopify.com/mcp

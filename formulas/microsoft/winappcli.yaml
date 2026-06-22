@@ -1,0 +1,144 @@
+schemaVersion: 1
+id: microsoft/winappcli
+name: winapp CLI
+description: Windows app setup/pkg/identity/signing/UIA CLI.
+source:
+  type: git
+  url: https://github.com/microsoft/winappcli
+  revision: 6092b5c90a7356b5d72cb27cd340b9c2cc8090ad
+capabilities:
+  - id: winapp-frameworks
+    kind: skill
+    path: .claude/skills/winapp-frameworks
+    description: Framework-specific Windows development guidance for Electron, .NET
+      (WPF, WinForms), C++, Rust, Flutter, and Tauri. Use when packaging or
+      adding Windows features to an Electron app, .NET desktop app, Flutter app,
+      Tauri app, Rust app, or C++ app.
+  - id: winapp-manifest
+    kind: skill
+    path: .claude/skills/winapp-manifest
+    description: Create and edit Windows app manifest files (Package.appxmanifest or
+      appxmanifest.xml) that define app identity, capabilities, and visual
+      assets, or generate new assets from existing images. Use when creating a
+      Windows app manifest for any app type (GUI, console, CLI tool, service),
+      adding Windows capabilities, generating new app icons and assets, or
+      adding execution aliases, file associations, protocol handlers, or other
+      app extensions.
+  - id: winapp-package
+    kind: skill
+    path: .claude/skills/winapp-package
+    description: Package a Windows app as an MSIX installer for distribution or
+      testing. Use when creating a Windows installer, packaging an
+      Electron/Flutter/.NET/Rust/C++/Tauri app for Windows, building an MSIX,
+      distributing a desktop app, packaging a console app or CLI tool, or adding
+      MSIX packaging to a build script or CI/CD pipeline.
+  - id: winapp-signing
+    kind: skill
+    path: .claude/skills/winapp-signing
+    description: Create and manage code signing certificates for Windows apps and
+      MSIX packages. Use when generating a certificate, signing a Windows app or
+      installer, or fixing certificate trust issues.
+  - id: winapp-identity
+    kind: skill
+    path: .claude/skills/winapp-identity
+    description: Enable Windows package identity for desktop apps to access Windows
+      APIs like push notifications, background tasks, share target, and startup
+      tasks. Use when adding Windows notifications, background tasks, or other
+      identity-requiring Windows features to a desktop app.
+  - id: winapp-ui-automation
+    kind: skill
+    path: .claude/skills/winapp-ui-automation
+    description: Inspect and interact with running Windows app UIs from the command
+      line using UI Automation (UIA). Use when an AI agent or developer needs to
+      inspect a UI element tree, find controls, take screenshots, click buttons,
+      read or set text, or verify UI state in a running Windows app. Works with
+      any framework WinUI 3, WPF, WinForms, Win32, Electron.
+  - id: winapp-troubleshoot
+    kind: skill
+    path: .claude/skills/winapp-troubleshoot
+    description: Diagnose and fix common Windows app packaging, signing, identity,
+      and SDK errors. Use when encountering errors with MSIX packaging,
+      certificate signing, Windows SDK setup, or app installation.
+  - id: winapp-setup
+    kind: skill
+    path: .claude/skills/winapp-setup
+    description: Set up a Windows app project for MSIX packaging, Windows SDK
+      access, or Windows API usage. Use when adding Windows support to an
+      Electron, .NET, C++, Rust, Flutter, or Tauri project, or restoring SDK
+      packages after cloning.
+  - id: frameworks
+    kind: skill
+    path: .github/plugin/skills/winapp-cli/frameworks
+    description: Framework-specific Windows development guidance for Electron, .NET
+      (WPF, WinForms), C++, Rust, Flutter, and Tauri. Use when packaging or
+      adding Windows features to an Electron app, .NET desktop app, Flutter app,
+      Tauri app, Rust app, or C++ app.
+  - id: identity
+    kind: skill
+    path: .github/plugin/skills/winapp-cli/identity
+    description: Enable Windows package identity for desktop apps to access Windows
+      APIs like push notifications, background tasks, share target, and startup
+      tasks. Use when adding Windows notifications, background tasks, or other
+      identity-requiring Windows features to a desktop app.
+  - id: manifest
+    kind: skill
+    path: .github/plugin/skills/winapp-cli/manifest
+    description: Create and edit Windows app manifest files (Package.appxmanifest or
+      appxmanifest.xml) that define app identity, capabilities, and visual
+      assets, or generate new assets from existing images. Use when creating a
+      Windows app manifest for any app type (GUI, console, CLI tool, service),
+      adding Windows capabilities, generating new app icons and assets, or
+      adding execution aliases, file associations, protocol handlers, or other
+      app extensions.
+  - id: package
+    kind: skill
+    path: .github/plugin/skills/winapp-cli/package
+    description: Package a Windows app as an MSIX installer for distribution or
+      testing. Use when creating a Windows installer, packaging an
+      Electron/Flutter/.NET/Rust/C++/Tauri app for Windows, building an MSIX,
+      distributing a desktop app, packaging a console app or CLI tool, or adding
+      MSIX packaging to a build script or CI/CD pipeline.
+  - id: setup
+    kind: skill
+    path: .github/plugin/skills/winapp-cli/setup
+    description: Set up a Windows app project for MSIX packaging, Windows SDK
+      access, or Windows API usage. Use when adding Windows support to an
+      Electron, .NET, C++, Rust, Flutter, or Tauri project, or restoring SDK
+      packages after cloning.
+  - id: signing
+    kind: skill
+    path: .github/plugin/skills/winapp-cli/signing
+    description: Create and manage code signing certificates for Windows apps and
+      MSIX packages. Use when generating a certificate, signing a Windows app or
+      installer, or fixing certificate trust issues.
+  - id: troubleshoot
+    kind: skill
+    path: .github/plugin/skills/winapp-cli/troubleshoot
+    description: Diagnose and fix common Windows app packaging, signing, identity,
+      and SDK errors. Use when encountering errors with MSIX packaging,
+      certificate signing, Windows SDK setup, or app installation.
+  - id: ui-automation
+    kind: skill
+    path: .github/plugin/skills/winapp-cli/ui-automation
+    description: Inspect and interact with running Windows app UIs from the command
+      line using UI Automation (UIA). Use when an AI agent or developer needs to
+      inspect a UI element tree, find controls, take screenshots, click buttons,
+      read or set text, or verify UI state in a running Windows app. Works with
+      any framework WinUI 3, WPF, WinForms, Win32, Electron.
+  - id: pr-review
+    kind: skill
+    path: .github/skills/pr-review
+    description: Multi-dimensional review of a PR or feature branch in the
+      microsoft/winappcli repo. Activate when a contributor asks to "review my
+      PR", "review my changes", "vet my branch before pushing", "do a full
+      review", "PR review", "review this feature", or similar. Fans out parallel
+      sub-agents covering security, correctness/edge cases, CLI UX,
+      alternative-solution check, test coverage, docs & samples sync,
+      packaging/release impact, and a multi-model cross-check. Reports a
+      consolidated finding list to stdout. Does NOT apply fixes.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

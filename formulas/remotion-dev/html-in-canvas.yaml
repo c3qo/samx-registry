@@ -1,0 +1,19 @@
+schemaVersion: 1
+id: remotion-dev/html-in-canvas
+name: Remotion HTML-in-canvas examples
+description: Remotion HTML-in-canvas demo set.
+source:
+  type: git
+  url: https://github.com/remotion-dev/html-in-canvas
+  revision: d06d8b87cb3a376fd9a189fd7a31c39eeba94142
+capabilities:
+  - id: remotion-best-practices
+    kind: skill
+    path: .agents/skills/remotion-best-practices
+    description: Best practices for Remotion - Video creation in React
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

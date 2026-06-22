@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: ai.todoist.net/todoist
+name: Todoist
+description: Todoist remote MCP server at https://ai.todoist.net/mcp. Search,
+  complete, and manage your tasks in Todoist. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/todoist
+capabilities:
+  - id: todoist
+    kind: mcp
+    spec:
+      serverName: todoist
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://ai.todoist.net/mcp

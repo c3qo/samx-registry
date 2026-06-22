@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: midpage.ai/midpage
+name: Midpage Legal Research
+description: Midpage Legal Research remote MCP server at
+  https://app.midpage.ai/mcp. Conduct legal research and create work product.
+  Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/midpage
+capabilities:
+  - id: midpage
+    kind: mcp
+    spec:
+      serverName: midpage
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://app.midpage.ai/mcp

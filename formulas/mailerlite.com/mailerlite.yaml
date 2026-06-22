@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: mailerlite.com/mailerlite
+name: MailerLite
+description: MailerLite remote MCP server at https://mcp.mailerlite.com/mcp.
+  Turn Claude into your email marketing assistant. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/mailerlite
+capabilities:
+  - id: mailerlite
+    kind: mcp
+    spec:
+      serverName: mailerlite
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.mailerlite.com/mcp

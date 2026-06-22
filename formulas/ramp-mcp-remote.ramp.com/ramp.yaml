@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: ramp-mcp-remote.ramp.com/ramp
+name: Ramp
+description: Ramp remote MCP server at https://ramp-mcp-remote.ramp.com/mcp.
+  Search, access, and analyze your Ramp financial data. Setup guides for Claude
+  Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/ramp
+capabilities:
+  - id: ramp
+    kind: mcp
+    spec:
+      serverName: ramp
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://ramp-mcp-remote.ramp.com/mcp

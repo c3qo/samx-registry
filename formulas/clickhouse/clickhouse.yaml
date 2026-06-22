@@ -1,0 +1,129 @@
+schemaVersion: 1
+id: clickhouse/clickhouse
+name: ClickHouse
+description: DB engine; analytics; CI/review tooling.
+source:
+  type: git
+  url: https://github.com/clickhouse/clickhouse
+  revision: 73e97deb9abbc3258e75d297aabfc3fbe7c3ca5e
+capabilities:
+  - id: alloc-profile
+    kind: skill
+    path: .claude/skills/alloc-profile
+    description: Analyze a jemalloc (or other) allocation profile in collapsed stack
+      format. Use when the user wants to analyze memory allocations, find top
+      allocators, or understand memory usage patterns from a .collapsed profile
+      file.
+  - id: bisect
+    kind: skill
+    path: .claude/skills/bisect
+    description: Bisect a ClickHouse regression using pre-built master binaries from
+      CI. Use when the user wants to find the commit that introduced a bug.
+  - id: clickhouse-pr-description
+    kind: skill
+    path: .claude/skills/clickhouse-pr-description
+    description: Generate PR descriptions for ClickHouse/ClickHouse that match
+      maintainer expectations. Use when creating or updating PR descriptions.
+  - id: close-flaky-issues
+    kind: skill
+    path: .claude/skills/close-flaky-issues
+    description: Audit open "flaky test" GitHub issues and close those whose tests
+      are no longer failing on master. Cross-references CI history from
+      play.clickhouse.com with git log to attribute fixes.
+  - id: continue-pr
+    kind: skill
+    path: .claude/skills/continue-pr
+    description: Continue work on an existing PR - resolve conflicts, fix CI
+      failures, address reviewer feedback, and push updates. Use when the user
+      wants to pick up and advance a pull request.
+  - id: cpu-profile
+    kind: skill
+    path: .claude/skills/cpu-profile
+    description: Profile a ClickHouse query using the sampling query profiler and
+      system.trace_log. Use when the user wants to find CPU hotspots, analyze
+      where time is spent in a query, or investigate performance bottlenecks.
+  - id: create-test-datasets
+    kind: skill
+    path: .claude/skills/create-test-datasets
+    description: Create test datasets (hits, visits, tpcds, tpch) from standard
+      scripts. Ensures the server is running first.
+  - id: create-worktree
+    kind: skill
+    path: .claude/skills/create-worktree
+    description: Create a ClickHouse git worktree with submodules hardlinked from
+      the main repo. Use when the user wants to create a new worktree for
+      ClickHouse development.
+  - id: decompress-binary
+    kind: skill
+    path: .claude/skills/decompress-binary
+    description: Extract the inner ELF from a ClickHouse self-extracting
+      `clickhouse` binary, including when its architecture differs from the host
+      (e.g. to load an aarch64 CI core dump on an x86 workstation). Use when
+      gdb/lldb needs real symbols from a downloaded CI/release binary, or when
+      self-extraction by running the binary is not possible because of an
+      architecture mismatch.
+  - id: edit-changelog
+    kind: skill
+    path: .claude/skills/edit-changelog
+    description: Edit an auto-generated ClickHouse release changelog into the form
+      that gets committed to CHANGELOG.md. Use when the user has the output of
+      `utils/changelog/changelog.py` and wants it cleaned up and re-categorized
+      for a release.
+  - id: fix-sync
+    kind: skill
+    path: .claude/skills/fix-sync
+    description: Fix the "CH Inc sync" job in a pull request. Diagnoses the failure
+      as one of three types — conflicts found, build failed, or tests failed —
+      and handles each accordingly.
+  - id: investigate-ci
+    kind: skill
+    path: .claude/skills/investigate-ci
+    description: Investigate a ClickHouse CI failure end-to-end from a PR or S3
+      report URL. Fetches the failed tests and their output, searches for an
+      existing tracking GitHub issue, classifies each as flaky vs a real
+      regression using play.clickhouse.com master history, downloads and reads
+      the harness artifacts only for failures that history does not explain, and
+      reports a root-cause hypothesis. Read-only first pass — never commits,
+      pushes, or edits.
+  - id: keeper-stress-analysis
+    kind: skill
+    path: .claude/skills/keeper-stress-analysis
+    description: Analyze ClickHouse Keeper stress-test results from
+      play.clickhouse.com / keeper_stress_tests data warehouse. Use whenever the
+      user asks about Keeper performance, validates Keeper PRs against stress
+      dashboards, investigates regressions or improvements in Keeper nightlies,
+      asks about specific date windows / SHAs / PR-sets in Keeper stress tests,
+      wants per-PR or window-vs-window comparisons, asks "did this PR break
+      Keeper", asks "what changed in Keeper between dates", or wants a summary
+      report of Keeper stress runs. Triggers on terms like "keeper stress",
+      "keeper PR", "keeper p99", "keeper memory", "keeper rps", "keeper
+      nightly", "keeper-stress-tests", "keeper validation", "keeper regression",
+      or any question referencing the keeper-stress Grafana dashboard. ALWAYS
+      prefer this skill over re-deriving the workflow from scratch — it captures
+      hard-learned lessons about cgroup-vs-Keeper memory, bench-harness
+      confounds, noise floors, and per-PR attribution limits.
+  - id: perf-report
+    kind: skill
+    path: .claude/skills/perf-report
+    description: Analyze CI performance comparison reports for a ClickHouse PR.
+      Lists all regressions and improvements, cross-references with master
+      history to distinguish real changes from flaky tests.
+  - id: review
+    kind: skill
+    path: .claude/skills/review
+    description: Review a ClickHouse Pull Request for correctness, safety,
+      performance, and compliance. Use when the user wants to review a PR or
+      diff.
+  - id: update-contrib
+    kind: skill
+    path: .claude/skills/update-contrib
+    description: Update a ClickHouse third-party library (contrib submodule) to a
+      new version. Handles fork management, submodule pointer bumps, CMake
+      adaptation, and source code fixes. Use when the user wants to bump a
+      dependency.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

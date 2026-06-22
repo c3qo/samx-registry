@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: microsoft/caira
+name: CAIRA
+description: Azure AI ref lib for agents; Foundry, apps, API, frontend refs.
+source:
+  type: git
+  url: https://github.com/microsoft/caira
+  revision: 67e8ece1a200092c142021ca102183345efc1de0
+capabilities:
+  - id: caira
+    kind: skill
+    path: skills/caira
+    description: Primary entrypoint for coding agents using CAIRA as reference
+      material to design and build generative AI solutions with Azure AI
+      Foundry, Azure OpenAI-compatible endpoints, agent frameworks, APIs, and
+      frontends tailored to a user's scenario.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

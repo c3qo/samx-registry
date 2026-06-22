@@ -1,0 +1,34 @@
+schemaVersion: 1
+id: dagster-io/dagster-claude-plugins
+name: Dagster Skills
+description: AI assistant skills for Dagster + Python.
+source:
+  type: git
+  url: https://github.com/dagster-io/dagster-claude-plugins
+  revision: fa3d023d6700767d3950f94ebe8ea73b5abbd015
+capabilities:
+  - id: dagster-expert
+    kind: skill
+    path: skills/dagster-expert/skills/dagster-expert
+    description: Expert guidance for working with Dagster and the dg CLI. ALWAYS use
+      before doing any task that requires knowledge specific to Dagster, or that
+      references assets, materialization, components, data tools or data
+      pipelines. Common tasks may include creating a new project, adding new
+      definitions, understanding the current project structure, answering
+      general questions about the codebase (finding asset, schedule, sensor,
+      component or job definitions), debugging issues, or providing deep
+      information about a specific Dagster concept.
+  - id: dignified-python
+    kind: skill
+    path: skills/dignified-python/skills/dignified-python
+    description: Opinionated production Python standards with automatic version
+      detection (3.10-3.13). Use when writing, reviewing, or refactoring Python
+      in repos that want modern type syntax, explicit condition checks where
+      practical, pathlib operations, interface guidance, and pragmatic
+      production patterns.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

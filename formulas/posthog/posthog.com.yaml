@@ -1,0 +1,50 @@
+schemaVersion: 1
+id: posthog/posthog.com
+name: PostHog.com
+description: PostHog website/docs/blog/handbook repo; content + site tooling.
+source:
+  type: git
+  url: https://github.com/posthog/posthog.com
+  revision: 6efb102be84f49ba129e58ae3ebba557ef69d28d
+capabilities:
+  - id: competitor-data-verifier
+    kind: skill
+    path: .claude/skills/competitor-data-verifier
+    description: Verify and update competitor product data by scraping competitor
+      websites using WebFetch/WebSearch. Use when the user asks to verify,
+      check, or update competitor information in competitorData files (like
+      amplitude.tsx, mixpanel.tsx), or when they want to ensure competitor
+      feature data is accurate and current. This skill systematically checks
+      product features, pricing, platform details, and generates update
+      recommendations with source URLs for verification.
+  - id: post-newsletter
+    kind: skill
+    path: .claude/skills/post-newsletter
+    description: Convert a Substack newsletter post into a native posthog.com
+      newsletter file. Fetches the content from a Substack URL, formats it with
+      correct frontmatter and markdown, applies internal links, and writes image
+      placeholders. Omits Substack-specific sections (byline, related texts, job
+      posts). Use when the user provides a newsletter.posthog.com URL and asks
+      to post it natively.
+  - id: x-article
+    kind: skill
+    path: .claude/skills/x-article
+    description: Convert a posthog.com blog or newsletter post into a markdown file
+      formatted for posting as an X (Twitter) Article. Strips frontmatter,
+      promotes the title to an H1, remaps headings to X's two heading levels
+      (subheadings + bold), downloads all post images into a numbered folder,
+      and appends a subscribe CTA for newsletters. Use when the user wants to
+      copy a post from contents/blog/ or contents/newsletter/ into X Article
+      format.
+requirements:
+  env:
+    - POSTHOG_OPEN_API_SPEC_URL
+    - SHOPIFY_APP_PASSWORD
+    - GATSBY_MYSHOPIFY_URL
+    - GATSBY_SHOPIFY_STOREFRONT_TOKEN
+    - ASHBY_API_KEY
+    - GITHUB_API_KEY
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

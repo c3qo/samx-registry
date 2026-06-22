@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: eu.definely.com/definely
+name: Definely
+description: Definely remote MCP server at
+  https://mcp.eu.definely.com/api/proxy/core-mcp. Structured contract review
+  tools for legal teams. Setup guides for Claude Code, Codex, Cursor, and VS
+  Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/definely
+capabilities:
+  - id: definely
+    kind: mcp
+    spec:
+      serverName: definely
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.eu.definely.com/api/proxy/core-mcp

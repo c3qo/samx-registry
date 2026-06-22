@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: send.co/send
+name: Send
+description: Send remote MCP server at https://www.send.co/mcp. Create shareable
+  documents, one-pagers, and decks. Setup guides for Claude Code, Codex, Cursor,
+  and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/send
+capabilities:
+  - id: send
+    kind: mcp
+    spec:
+      serverName: send
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://www.send.co/mcp

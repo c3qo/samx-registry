@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: clarify.ai/clarify
+name: Clarify
+description: Clarify remote MCP server at https://api.clarify.ai/mcp. Query your
+  CRM. Create records. Ask anything.. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/clarify
+capabilities:
+  - id: clarify
+    kind: mcp
+    spec:
+      serverName: clarify
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.clarify.ai/mcp

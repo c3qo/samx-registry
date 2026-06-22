@@ -1,0 +1,109 @@
+schemaVersion: 1
+id: pytorch/pytorch
+name: PyTorch
+description: PyTorch core repo; CI, docs, skills, issue triage.
+source:
+  type: git
+  url: https://github.com/pytorch/pytorch
+  revision: 71046b54cf2067d9123ebb91a7a664cd134819de
+capabilities:
+  - id: add-uint-support
+    kind: skill
+    path: .claude/skills/add-uint-support
+    description: Add unsigned integer (uint) type support to PyTorch operators by
+      updating AT_DISPATCH macros. Use when adding support for uint16, uint32,
+      uint64 types to operators, kernels, or when user mentions enabling
+      unsigned types, barebones unsigned types, or uint support.
+  - id: aoti-debug
+    kind: skill
+    path: .claude/skills/aoti-debug
+    description: Debug AOTInductor (AOTI) errors and crashes. Use when encountering
+      AOTI segfaults, device mismatch errors, constant loading failures, or
+      runtime errors from aot_compile, aot_load, aoti_compile_and_package, or
+      aoti_load_package.
+  - id: at-dispatch-v2
+    kind: skill
+    path: .claude/skills/at-dispatch-v2
+    description: Convert PyTorch AT_DISPATCH macros to AT_DISPATCH_V2 format in ATen
+      C++ code. Use when porting AT_DISPATCH_ALL_TYPES_AND*,
+      AT_DISPATCH_FLOATING_TYPES*, or other dispatch macros to the new v2 API.
+      For ATen kernel files, CUDA kernels, and native operator implementations.
+  - id: distributed-triage
+    kind: skill
+    path: .claude/skills/distributed-triage
+    description: Sub-triages issues in the oncall:distributed queue by assigning
+      distributed module labels, routing to sub-oncalls, and marking triaged.
+      Use when an issue has been routed to oncall:distributed and needs
+      second-level triage.
+  - id: docstring
+    kind: skill
+    path: .claude/skills/docstring
+    description: Write docstrings for PyTorch functions and methods following
+      PyTorch conventions. Use when writing or updating docstrings in PyTorch
+      code.
+  - id: document-public-apis
+    kind: skill
+    path: .claude/skills/document-public-apis
+    description: Document undocumented public APIs in PyTorch by removing functions
+      from coverage_ignore_functions and coverage_ignore_classes in
+      docs/source/conf.py, running Sphinx coverage, and adding the appropriate
+      autodoc directives to the correct .md or .rst doc files. Use when a user
+      asks to remove functions from conf.py ignore lists.
+  - id: fix-issue
+    kind: skill
+    path: .claude/skills/fix-issue
+    description: Fix bugs reported in PyTorch GitHub issues by reproducing,
+      root-causing, and implementing a fix in the local working tree. Use when
+      the user asks to fix a PyTorch GitHub issue.
+  - id: metal-kernel
+    kind: skill
+    path: .claude/skills/metal-kernel
+    description: Write Metal/MPS kernels for PyTorch operators. Use when adding MPS
+      device support to operators, implementing Metal shaders, or porting CUDA
+      kernels to Apple Silicon. Covers native_functions.yaml dispatch, host-side
+      operators, and Metal kernel implementation.
+  - id: pr-review
+    kind: skill
+    path: .claude/skills/pr-review
+    description: Review PyTorch pull requests for code quality, test coverage,
+      security, and backward compatibility. Use when reviewing PRs, when asked
+      to review code changes, or when the user mentions "review PR", "code
+      review", or "check this PR".
+  - id: pt2-bug-basher
+    kind: skill
+    path: .claude/skills/pt2-bug-basher
+    description: Debug PyTorch 2 compiler stack failures including Dynamo graph
+      breaks, Inductor codegen errors, AOTAutograd crashes, and accuracy
+      mismatches. Use when encountering torch.compile errors,
+      BackendCompilerFailed exceptions, recompilation issues, Triton kernel
+      failures, FX graph problems, or when the user mentions debugging PT2,
+      Dynamo, Inductor, or compiled model issues.
+  - id: pyrefly-type-coverage
+    kind: skill
+    path: .claude/skills/pyrefly-type-coverage
+    description: Migrate a file to use stricter Pyrefly type checking with
+      annotations required for all functions, classes, and attributes.
+  - id: scrub-issue
+    kind: skill
+    path: .claude/skills/scrub-issue
+    description: Fetch, analyze, reproduce, and minimize GitHub issue reproductions.
+      Use when asked to check if an issue reproduces, minimize a repro, analyze
+      a bug report, or scrub/triage an issue for reproducibility.
+  - id: skill-writer
+    kind: skill
+    path: .claude/skills/skill-writer
+    description: Guide users through creating Agent Skills for Claude Code. Use when
+      the user wants to create, write, author, or design a new Skill, or needs
+      help with SKILL.md files, frontmatter, or skill structure.
+  - id: triaging-issues
+    kind: skill
+    path: .claude/skills/triaging-issues
+    description: Triages GitHub issues by routing to oncall teams, applying labels,
+      and closing questions. Use when processing new PyTorch issues or when
+      asked to triage an issue.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: quartr.com/quartr
+name: Quartr
+description: Quartr remote MCP server at https://mcp.quartr.com/mcp. Financial
+  data and AI infrastructure for company research.. Setup guides for Claude
+  Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/quartr
+capabilities:
+  - id: quartr
+    kind: mcp
+    spec:
+      serverName: quartr
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.quartr.com/mcp

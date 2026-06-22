@@ -1,0 +1,121 @@
+schemaVersion: 1
+id: getsentry/warden
+name: Warden
+description: GitHub/CLI agent for code-review skills, evals, PR automation.
+source:
+  type: git
+  url: https://github.com/getsentry/warden
+  revision: 00c536f0a1a455e1998a84868bf7e314041f6b8b
+capabilities:
+  - id: agent-prompt
+    kind: skill
+    path: .agents/skills/agent-prompt
+    description: Reference guide for writing effective agent prompts and skills. Use
+      when creating new skills, reviewing prompt quality, or understanding
+      Warden's prompt architecture.
+  - id: architecture-review
+    kind: skill
+    path: .agents/skills/architecture-review
+    description: Staff-level codebase health review. Finds monolithic modules,
+      silent failures, type safety gaps, test coverage holes, and
+      LLM-friendliness issues.
+  - id: testing-guidelines
+    kind: skill
+    path: .agents/skills/testing-guidelines
+    description: Guide for writing tests. Use when adding new functionality, fixing
+      bugs, or when tests are needed. Emphasizes integration tests, real-world
+      fixtures, and regression coverage.
+  - id: code-review
+    kind: skill
+    path: packages/warden/src/builtin-skills/code-review
+    description: Finds real correctness bugs in code changes. Use for adversarial
+      code review, bug hunts, regression review, PR correctness review, logic
+      errors, data loss, race conditions, state bugs, interface contract breaks,
+      error handling bugs, edge cases, broken builds, or broken workflows.
+      Excludes style, readability, architecture, AppSec, and best-practice-only
+      feedback unless the issue causes a demonstrable bug.
+  - id: security-review
+    kind: skill
+    path: packages/warden/src/builtin-skills/security-review
+    description: Finds exploitable application security vulnerabilities in code
+      changes. Use for Warden security scans, appsec review, OWASP-style checks,
+      authentication or authorization bugs, injection, XSS, SSRF, path
+      traversal, secrets, unsafe crypto, webhook verification, open redirects,
+      or sensitive data exposure.
+  - id: skill-writer
+    kind: skill
+    path: packages/warden/src/internal-skills/skill-writer
+    description: Create, synthesize, and iteratively improve agent skills following
+      the Agent Skills specification. Use when asked to "create a skill", "write
+      a skill", "synthesize sources into a skill", "improve a skill from
+      positive/negative examples", "update a skill", or "maintain skill docs and
+      registration". Handles source capture, depth gates, authoring,
+      registration, and validation.
+  - id: warden
+    kind: skill
+    path: skills/warden
+    description: Run Warden to analyze code changes before committing. Use when
+      asked to "run warden", "check my changes", "review before commit", "warden
+      config", "warden.toml", "create a warden skill", "add trigger", or any
+      Warden-related local development task.
+  - id: warden-sweep
+    kind: skill
+    path: skills/warden-sweep
+    description: Full-repository code sweep. Scans every file with Warden, verifies
+      findings through deep tracing, creates draft PRs for validated issues. Use
+      when asked to "sweep the repo", "scan everything", "find all bugs", "full
+      codebase review", "batch code analysis", or run Warden across the entire
+      repository.
+  - id: sentry
+    kind: mcp
+    path: .cursor/mcp.json
+  - id: sentry-2
+    kind: mcp
+    path: .mcp.json
+  - id: test-skill
+    kind: skill
+    path: packages/warden/src/action/workflow/__fixtures__/.warden/skills/test-skill
+    description: A test skill for integration tests
+  - id: test-skill-2
+    kind: skill
+    path: packages/warden/src/action/workflow/__fixtures__/no-match/.warden/skills/test-skill
+    description: A test skill for integration tests
+  - id: test-skill-3
+    kind: skill
+    path: packages/warden/src/action/workflow/__fixtures__/schedule-fixpr/.warden/skills/test-skill
+    description: A test skill for integration tests
+  - id: test-skill-a
+    kind: skill
+    path: packages/warden/src/action/workflow/__fixtures__/schedule-multi/.warden/skills/test-skill-a
+    description: Test skill A for integration tests
+  - id: test-skill-b
+    kind: skill
+    path: packages/warden/src/action/workflow/__fixtures__/schedule-multi/.warden/skills/test-skill-b
+    description: Test skill B for integration tests
+  - id: test-skill-4
+    kind: skill
+    path: packages/warden/src/action/workflow/__fixtures__/schedule-title/.warden/skills/test-skill
+    description: A test skill for integration tests
+  - id: test-skill-5
+    kind: skill
+    path: packages/warden/src/action/workflow/__fixtures__/schedule/.warden/skills/test-skill
+    description: A test skill for integration tests
+  - id: sentry-3
+    kind: mcp
+    path: .codex/config.toml
+requirements:
+  env:
+    - ANTHROPIC_API_KEY
+    - WARDEN_ANTHROPIC_API_KEY
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Missing evidence for environment variable: WARDEN_ANTHROPIC_API_KEY"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

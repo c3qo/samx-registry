@@ -1,0 +1,26 @@
+schemaVersion: 1
+id: github/copilot-sdk
+name: GitHub Copilot SDK
+description: Multi-lang SDK → programmatic GitHub Copilot CLI control.
+source:
+  type: git
+  url: https://github.com/github/copilot-sdk
+  revision: 8789b28b0d2a8d250d25cb15a13777e608f76e4e
+capabilities:
+  - id: java-coding-skill
+    kind: skill
+    path: .github/skills/java-coding-skill
+    description: Use this skill whenever editing `*.java` files in the `java/`
+      directore of the SDK in order to write idiomatic, well-structured Java
+      code for the Copilot SDK
+  - id: rust-coding-skill
+    kind: skill
+    path: .github/skills/rust-coding-skill
+    description: Use this skill whenever editing `*.rs` files in the `rust/` SDK in
+      order to write idiomatic, efficient, well-structured Rust code
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

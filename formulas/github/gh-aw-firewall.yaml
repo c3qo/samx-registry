@@ -1,0 +1,75 @@
+schemaVersion: 1
+id: github/gh-aw-firewall
+name: Agentic Workflow Firewall
+description: L7 HTTP/HTTPS egress firewall for agentic workflows; domain
+  allowlist, Squid/Docker sandbox, API sidecars.
+source:
+  type: git
+  url: https://github.com/github/gh-aw-firewall
+  revision: 069d5e107cd0459c683e5b9994a7506d18aff32c
+capabilities:
+  - id: awf-debug-tools
+    kind: skill
+    path: .claude/skills/awf-debug-tools
+    description: Practical Python scripts for debugging awf - parse logs, diagnose
+      issues, inspect containers, test domains
+  - id: awf-skill
+    kind: skill
+    path: .claude/skills/awf-skill
+    description: Use the AWF (Agentic Workflow Firewall) to run commands with
+      network isolation and domain whitelisting. Provides L7 HTTP/HTTPS egress
+      control for AI agents.
+  - id: debug-firewall
+    kind: skill
+    path: .claude/skills/debug-firewall
+    description: Debug the AWF firewall by inspecting Docker containers (awf-squid,
+      awf-agent), analyzing Squid access logs, checking iptables rules, and
+      troubleshooting blocked domains or network issues.
+  - id: recompile-workflows
+    kind: skill
+    path: .claude/skills/recompile-workflows
+    description: Regenerate and post-process all agentic workflows. Use when gh-aw
+      is updated, workflow .md files change, or when asked to
+      recompile/regenerate workflows.
+  - id: agentic-workflows
+    kind: skill
+    path: .github/skills/agentic-workflows
+    description: Route gh-aw workflow design/create/debug/upgrade requests to the
+      right prompts.
+  - id: debugging-workflows
+    kind: skill
+    path: .github/skills/debugging-workflows
+    description: Debug GitHub Actions workflows by downloading logs, analyzing
+      summaries, and understanding how agentic workflows and the AWF firewall
+      work together.
+  - id: awf-skill-2
+    kind: skill
+    path: .
+    entry: skill.md
+    description: Use the AWF (Agentic Workflow Firewall) to run commands with
+      network isolation and domain whitelisting. Provides L7 HTTP/HTTPS egress
+      control for AI agents.
+requirements:
+  env:
+    - OPENAI_API_KEY
+    - ANTHROPIC_API_KEY
+    - GITHUB_TOKEN
+    - COPILOT_GITHUB_TOKEN
+    - COPILOT_PROVIDER_API_KEY
+    - GEMINI_API_KEY
+    - AWF_ONE_SHOT_TOKENS
+    - AWF_ONE_SHOT_TOKEN_DEBUG
+    - AWF_PROVIDER_SESSION_ID
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Capability kind does not match path: .; Missing evidence for
+      environment variable: GITHUB_TOKEN"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

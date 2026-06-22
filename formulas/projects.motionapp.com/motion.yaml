@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: projects.motionapp.com/motion
+name: Motion Creative Analytics
+description: Motion Creative Analytics remote MCP server at
+  https://projects.motionapp.com/mcp. Analyze your Meta ad creative & competitor
+  ad libraries. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/motion
+capabilities:
+  - id: motion
+    kind: mcp
+    spec:
+      serverName: motion
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://projects.motionapp.com/mcp

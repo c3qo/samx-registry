@@ -1,0 +1,201 @@
+schemaVersion: 1
+id: nvidia/openshell
+name: OpenShell
+description: OpenShell agent-first gateway/sandbox platform; CLI, TUI, drivers,
+  policies, docs, RFCs.
+source:
+  type: git
+  url: https://github.com/nvidia/openshell
+  revision: f23c2c8e84193beac5c35af8cd80276b60b8dbd4
+capabilities:
+  - id: build-from-issue
+    kind: skill
+    path: .agents/skills/build-from-issue
+    description: Given a GitHub issue number, plan and implement the work described
+      in the issue. Operates iteratively - creates an implementation plan,
+      responds to feedback, and only builds when the 'state:agent-ready' label
+      is applied. Includes tests, documentation updates, and PR creation.
+      Trigger keywords - build from issue, implement issue, work on issue, build
+      issue, start issue.
+  - id: create-github-issue
+    kind: skill
+    path: .agents/skills/create-github-issue
+    description: Create GitHub issues using the gh CLI. Use when the user wants to
+      create a new issue, report a bug, request a feature, or create a task in
+      GitHub. Trigger keywords - create issue, new issue, file bug, report bug,
+      feature request, github issue.
+  - id: create-github-pr
+    kind: skill
+    path: .agents/skills/create-github-pr
+    description: Create GitHub pull requests using the gh CLI. Use when the user
+      wants to create a new PR, submit code for review, or open a pull request.
+      Trigger keywords - create PR, pull request, new PR, submit for review,
+      code review.
+  - id: create-rfc
+    kind: skill
+    path: .agents/skills/create-rfc
+    description: Create OpenShell RFC proposals in rfc/ from a design request. Use
+      when the user asks to write, draft, start, create, or update an RFC,
+      Request for Comments, architecture proposal, API proposal, process
+      proposal, or cross-cutting design proposal that should follow the
+      OpenShell RFC process and template.
+  - id: create-spike
+    kind: skill
+    path: .agents/skills/create-spike
+    description: Investigate a plain-language problem description by deeply
+      exploring the codebase, then create a structured GitHub issue with
+      technical findings. Prequel to build-from-issue — maps vague ideas to
+      concrete, buildable issues. Trigger keywords - spike, investigate,
+      explore, research issue, technical investigation, create spike, new spike,
+      feasibility, codebase exploration.
+  - id: debug-inference
+    kind: skill
+    path: .agents/skills/debug-inference
+    description: Debug why inference.local or external inference setup is failing.
+      Use when the user cannot reach a local model server, has provider base URL
+      issues, sees inference verification failures, hits protocol mismatches, or
+      needs to diagnose inference on local vs remote gateways. Trigger keywords
+      - debug inference, inference.local, local inference, ollama, vllm, sglang,
+      trtllm, NIM, inference failing, model server unreachable, failed to verify
+      inference endpoint, host.openshell.internal.
+  - id: debug-openshell-cluster
+    kind: skill
+    path: .agents/skills/debug-openshell-cluster
+    description: Debug why an OpenShell gateway deployment is unhealthy,
+      unreachable, or unable to create sandboxes. Use when the user has a
+      gateway health failure, Docker/Podman runtime issue, Helm install failure,
+      Kubernetes scheduling issue, TLS secret issue, VM driver issue, or sandbox
+      startup problem. Trigger keywords - debug gateway, gateway failing,
+      deployment failing, helm install failing, cluster health, gateway health,
+      gateway not starting, health check failed, sandbox pending, docker driver,
+      podman driver, vm driver.
+  - id: fix-security-issue
+    kind: skill
+    path: .agents/skills/fix-security-issue
+    description: Implement a fix for a reviewed security issue. Takes an issue
+      number or scans for issues labeled "topic:security" and
+      "state:agent-ready". Reads the security review from the issue comments and
+      implements the remediation plan. Trigger keywords - fix security issue,
+      remediate security, implement security fix, patch vulnerability.
+  - id: generate-sandbox-policy
+    kind: skill
+    path: .agents/skills/generate-sandbox-policy
+    description: Generate sandbox security policies from plain-language requirements
+      and optional REST API documentation. At minimum, takes API host:port
+      endpoints and intent to produce preset-based or L4 policies. With full API
+      docs (OpenAPI, Swagger, markdown), generates fine-grained per-endpoint L7
+      rules. Trigger keywords - generate policy, create policy, update policy,
+      change policy, sandbox policy, network policy, API policy, security
+      policy, allow API, restrict API.
+  - id: helm-dev-environment
+    kind: skill
+    path: .agents/skills/helm-dev-environment
+    description: Start up, tear down, and configure the local Kubernetes development
+      environment for OpenShell. Uses k3d (Docker-backed k3s) + Skaffold + Helm.
+      Covers cluster lifecycle, optional add-ons (Keycloak OIDC, Envoy Gateway),
+      HA testing, and port mappings. Trigger keywords - local k8s, local
+      cluster, k3d, skaffold, helm dev, start cluster, stop cluster, tear down
+      cluster, delete cluster, create cluster, helm:k3s, helm:skaffold, local
+      dev environment, dev cluster, k8s dev, envoy gateway local, keycloak
+      local, high availability, HA.
+  - id: openshell-cli
+    kind: skill
+    path: .agents/skills/openshell-cli
+    description: Guide agents through using the OpenShell CLI (openshell) for
+      sandbox management, gateway registration, provider configuration, policy
+      iteration, BYOC workflows, and inference routing. Covers basic through
+      advanced multi-step workflows. Trigger keywords - openshell, sandbox
+      create, sandbox connect, logs, provider create, policy set, policy get,
+      image push, forward, port forward, BYOC, bring your own container, use
+      openshell, run openshell, CLI usage, manage sandbox, manage provider,
+      gateway add, gateway select.
+  - id: review-github-pr
+    kind: skill
+    path: .agents/skills/review-github-pr
+    description: Review a GitHub pull request by summarizing its diff and key design
+      decisions. Use when the user wants to review a PR, understand changes in a
+      branch, or get a code review summary. Trigger keywords - review PR, review
+      pull request, summarize PR, summarize diff, code review, review branch, PR
+      summary, diff summary.
+  - id: review-security-issue
+    kind: skill
+    path: .agents/skills/review-security-issue
+    description: Given a GitHub issue, review the issue for security implications.
+      You'll make a determination if the claim in the issue is legitimate and
+      should be addressed or will be a "won't fix." Trigger keywords - security
+      issue, review security ticket, review security issue.
+  - id: sbom
+    kind: skill
+    path: .agents/skills/sbom
+    description: Generate and manage Software Bill of Materials (SBOMs) for the
+      OpenShell project. Covers SBOM generation with Syft, license resolution
+      via public registries, and CSV export for compliance review. Trigger
+      keywords - SBOM, sbom, bill of materials, license audit, license
+      resolution, generate sbom, sbom csv, dependency license, supply chain,
+      license scan.
+  - id: sync-agent-infra
+    kind: skill
+    path: .agents/skills/sync-agent-infra
+    description: Detect and fix drift across agent-first infrastructure files.
+      Ensures skill inventories, workflow chains, architecture tables, issue/PR
+      templates, and cross-references stay consistent when skills, crates, or
+      workflows change. Run after adding, removing, or renaming skills or
+      components. Trigger keywords - sync agent infra, sync skills, update agent
+      docs, check agent consistency, agent infra drift, sync contributing, sync
+      agents.
+  - id: test-release-canary
+    kind: skill
+    path: .agents/skills/test-release-canary
+    description: Manually dispatch and iterate on the Release Canary workflow that
+      smoke-tests published OpenShell artifacts (install.sh on
+      macOS/Ubuntu/Fedora, Helm chart on kind) after each Release Dev publish.
+      Use when changing `.github/workflows/release-canary.yml`, validating a
+      release before tagging, debugging a canary failure, or reproducing a
+      canary job locally. Trigger keywords - release canary, release-canary,
+      canary failed, canary dispatch, test release canary, post-release smoke,
+      install.sh canary, helm chart canary, kind canary, dispatch canary.
+  - id: triage-issue
+    kind: skill
+    path: .agents/skills/triage-issue
+    description: Assess, classify, and route community-filed issues. Takes a
+      specific issue number or processes all open issues with the
+      state:triage-needed label in batch. Validates agent-first gate compliance,
+      attempts diagnosis using relevant skills, and classifies issues for
+      routing into the spike-build pipeline. Trigger keywords - triage issue,
+      triage, assess issue, review incoming issue, triage issues.
+  - id: tui-development
+    kind: skill
+    path: .agents/skills/tui-development
+    description: Guide for developing the OpenShell TUI — a ratatui-based terminal
+      UI for the OpenShell platform. Covers architecture, navigation, data
+      fetching, theming, UX conventions, and development workflow. Trigger
+      keywords - term, TUI, terminal UI, ratatui, openshell-tui, tui
+      development, tui feature, tui bug.
+  - id: update-docs
+    kind: skill
+    path: .agents/skills/update-docs
+    description: Scan recent git commits for changes that affect user-facing
+      behavior, then draft or update the corresponding documentation pages. Use
+      when docs have fallen behind code changes, after a batch of features
+      lands, or when preparing a release. Trigger keywords - update docs, draft
+      docs, docs from commits, sync docs, catch up docs, doc debt, docs behind,
+      docs drift.
+  - id: watch-github-actions
+    kind: skill
+    path: .agents/skills/watch-github-actions
+    description: Watch and monitor GitHub Actions workflow runs using the gh CLI.
+      Use when the user wants to check workflow status, watch a running
+      workflow, view CI/CD jobs, or monitor build progress. Trigger keywords -
+      watch pipeline, pipeline status, CI status, check build, monitor CI, view
+      pipeline, pipeline progress, workflow status, actions status.
+  - id: policy-advisor
+    kind: skill
+    path: crates/openshell-supervisor-process/src/skills/policy-advisor
+    description: Use when an OpenShell sandbox returns policy_denied, mentions
+      policy.local, or needs a narrow network policy proposal.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

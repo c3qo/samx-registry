@@ -1,0 +1,164 @@
+schemaVersion: 1
+id: openshift/lightspeed-service
+name: OpenShift LightSpeed Service
+description: AI assistant svc for OLS/OpenShift; LLM+RAG+MCP tools; Python app.
+source:
+  type: git
+  url: https://github.com/openshift/lightspeed-service
+  revision: e0fcbfef8048a656e93d4bd1c5132b8737028f1d
+capabilities:
+  - id: deps-update
+    kind: skill
+    path: .cursor/skills/deps-update
+    description: Update Python dependencies to latest versions using uv, regenerate
+      lock and requirements.txt, then verify linting and tests pass. Fix
+      breakage from API changes in bumped packages. Use when the user says "deps
+      update", "bump dependencies", or "update deps".
+  - id: review-pr
+    kind: skill
+    path: .cursor/skills/review-pr
+    description: Review PR with structured approach covering architecture, naming,
+      patterns, and critical questions
+  - id: resolve-cve
+    kind: skill
+    path: .cursor/skills/resolve-cve
+    description: Resolve a CVE vulnerability issue from Jira. Reads the CVE details,
+      assesses impact, and either marks "not affected" with a Jira comment and
+      transition, bumps the affected dependency, or implements a code fix. Use
+      when the user says "cve", "resolve CVE", or provides a CVE Jira issue.
+  - id: validate-and-fix
+    kind: skill
+    path: .cursor/skills/validate-and-fix
+    description: Run the full validation pipeline (make test-unit, make verify, make
+      test-integration) and auto-fix trivial failures like black formatting,
+      unused imports, and ruff-fixable lint errors. Use when the user asks to
+      validate, run tests, check the pipeline, or verify changes are clean.
+  - id: find-complexity
+    kind: skill
+    path: .cursor/skills/find-complexity
+    description: Find functions and methods with high cyclomatic complexity,
+      excessive length, or too many parameters. Use when the user asks to find
+      complex code, complexity hotspots, refactoring candidates, or wants to
+      improve code maintainability.
+  - id: find-dead-code
+    kind: skill
+    path: .cursor/skills/find-dead-code
+    description: Find unused functions, classes, imports, and unreachable code
+      paths. Use when the user asks to find dead code, unused code, cleanup
+      candidates, or wants to reduce codebase size.
+  - id: find-duplication
+    kind: skill
+    path: .cursor/skills/find-duplication
+    description: Find code duplication in the codebase. Supports two modes - scoped
+      to current branch changes or a full codebase sweep. Use when the user asks
+      to find duplicated code, copy-paste, repeated patterns, or wants to
+      deduplicate before a PR.
+  - id: investigate-ci-failure
+    kind: skill
+    path: .cursor/skills/investigate-ci-failure
+    description: Investigate CI/Prow job failures on a GitHub pull request. Use when
+      the user pastes a PR URL and asks about CI failures, red checks, test
+      failures, or wants to understand why a job failed.
+  - id: raise-pr
+    kind: skill
+    path: .cursor/skills/raise-pr
+    description: Step-by-step workflow for committing staged changes and opening a
+      pull request in the lightspeed-service repo.
+  - id: rebase-clean
+    kind: skill
+    path: .cursor/skills/rebase-clean
+    description: Performs a strict clean rebase of a feature branch onto main with
+      minimal conflict resolution and full validation. Use when the user asks to
+      rebase carefully, avoid extra branches, avoid exploratory edits, and run
+      make test-unit, make test-integration, and make verify until green.
+  - id: safe-code-change
+    kind: skill
+    path: .cursor/skills/safe-code-change
+    description: After a code change, find affected tests, update them to match new
+      behavior, then run the full validation pipeline once. Use when the user
+      has made or asked for a code change and wants to make sure nothing is
+      broken.
+  - id: version-update
+    kind: skill
+    path: .cursor/skills/version-update
+    description: Updates the OLS version number across all required files. Use when
+      bumping the version for a release or when the user asks to update, bump,
+      or change the version number.
+  - id: skill
+    kind: skill
+    path: skills/degraded-operator-recovery
+    entry: skill.md
+    description: Troubleshoot ClusterOperator in Degraded, Unavailable, or not
+      Progressing state. Use when operator status shows error conditions,
+      reconciliation failures, or degraded health checks.
+  - id: skill-2
+    kind: skill
+    path: skills/namespace-troubleshooting
+    entry: skill.md
+    description: Troubleshoot namespace stuck in Terminating state, ResourceQuota
+      exhaustion, or RBAC permission denied errors. Use when resources cannot be
+      created or forbidden errors occur.
+  - id: skill-3
+    kind: skill
+    path: skills/node-not-ready
+    entry: skill.md
+    description: Troubleshoot NotReady or SchedulingDisabled node status. Use when a
+      node is down, unschedulable, or needs to be drained and restored.
+  - id: skill-4
+    kind: skill
+    path: skills/pod-failure-diagnosis
+    entry: skill.md
+    description: Troubleshoot CrashLoopBackOff, ImagePullBackOff, Pending, Error, or
+      OOMKilled status. Use when a workload keeps restarting, fails to start, or
+      is crash-looping.
+  - id: skill-5
+    kind: skill
+    path: skills/route-ingress-troubleshooting
+    entry: skill.md
+    description: Troubleshoot Route or Ingress connectivity failures. Use when
+      traffic returns 502, 503, connection refused, or the endpoint is not
+      reachable externally.
+  - id: skill-6
+    kind: skill
+    path: tests/test_skills/test-migration
+    entry: skill.md
+    description: Assess whether an application is ready to migrate to OpenShift. Use
+      when the user describes an application and asks about migration,
+      containerization, or moving to Kubernetes/OpenShift.
+  - id: skill-7
+    kind: skill
+    path: tests/test_skills/test-triage
+    entry: skill.md
+    description: Triage production incidents involving data corruption, data loss,
+      slow performance, or outages. Classify severity and recommend immediate
+      actions.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: unlinked-hook-files
+    severity: warning
+    category: hooks
+    message: Repository contains hook-related files that are not linked by this formula.
+    paths:
+      - hooks/pre-commit
+    reason: These files lack explicit appliesTo mappings, supported targets, or
+      supported file types.
+    effect: SAMX will not install, link, or execute these files.
+    action: Add explicit hook entries only after manual review.
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Capability kind does not match path: skills/degraded-operator-recovery;
+      Capability kind does not match path: skills/namespace-troubleshooting;
+      Capability kind does not match path: skills/node-not-ready; Capability
+      kind does not match path: skills/pod-failure-diagnosis; Capability kind
+      does not match path: skills/route-ingress-troubleshooting; Capability kind
+      does not match path: tests/test_skills/test-migration; Capability kind
+      does not match path: tests/test_skills/test-triage"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: lorikeetcx.ai/lorikeet
+name: Lorikeet
+description: Lorikeet remote MCP server at https://api.lorikeetcx.ai/v1/mcp. A
+  universal concierge for complex businesses. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/lorikeet
+capabilities:
+  - id: lorikeet
+    kind: mcp
+    spec:
+      serverName: lorikeet
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.lorikeetcx.ai/v1/mcp

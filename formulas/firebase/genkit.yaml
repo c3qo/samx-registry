@@ -1,0 +1,46 @@
+schemaVersion: 1
+id: firebase/genkit
+name: Genkit
+description: AI app fwk; Go/JS/Py; CLI, plugins, MCP, skills.
+source:
+  type: git
+  url: https://github.com/firebase/genkit
+  revision: 8963f7a8b8a9406ac264d3c5fa450c472e4ad56b
+capabilities:
+  - id: eli5
+    kind: skill
+    path: go/samples/basic-middleware/skills/skills/eli5
+    description: Explain concepts in very simple terms suitable for a five-year-old.
+  - id: haiku
+    kind: skill
+    path: go/samples/basic-middleware/skills/skills/haiku
+    description: Respond as a single traditional haiku with a 5-7-5 syllable structure.
+  - id: pirate
+    kind: skill
+    path: go/samples/basic-middleware/skills/skills/pirate
+    description: Respond in the voice of a swashbuckling pirate.
+  - id: shakespeare
+    kind: skill
+    path: go/samples/basic-middleware/skills/skills/shakespeare
+    description: Respond in the style of William Shakespeare — early modern English,
+      poetic cadence.
+  - id: coding
+    kind: skill
+    path: js/plugins/middleware/examples/skills/coding
+    description: A skill for coding that should apply to all coding tasks.
+  - id: python-expert
+    kind: skill
+    path: py/samples/middleware-coding-agent/skills/python-expert
+    description: Conventions for clean, idiomatic Python. Load whenever you read,
+      edit, or write Python source files.
+  - id: test-writer
+    kind: skill
+    path: py/samples/middleware-coding-agent/skills/test-writer
+    description: How to write pytest tests for modules in this workspace. Load
+      whenever you are about to write or extend tests.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

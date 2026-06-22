@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: github/rust-gems
+name: Rust Algorithms
+description: Rust algo crates workspace; dep-updater skill present.
+source:
+  type: git
+  url: https://github.com/github/rust-gems
+  revision: 4ffa548221168c7ec6dbf39f1c793ccc74411640
+capabilities:
+  - id: update-deps
+    kind: skill
+    path: .github/skills/update-deps
+    description: Keep dependencies up-to-date. Discovers outdated deps via
+      dependabot alerts/PRs, creates one PR per ecosystem, iterates until CI is
+      green, then assigns for review.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

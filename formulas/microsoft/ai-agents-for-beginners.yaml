@@ -1,0 +1,29 @@
+schemaVersion: 1
+id: microsoft/ai-agents-for-beginners
+name: AI Agents for Beginners
+description: Beginners course → AI agents, patterns, notebooks, prod ops.
+source:
+  type: git
+  url: https://github.com/microsoft/ai-agents-for-beginners
+  revision: 764581f01751b273c1db9d4ddd96c4c6ec66a970
+capabilities:
+  - id: jupyter-notebook
+    kind: skill
+    path: .agents/skills/jupyter-notebook
+    description: Use when the user asks to create, scaffold, or edit Jupyter
+      notebooks (`.ipynb`) for experiments, explorations, or tutorials; prefer
+      the bundled templates and run the helper script `new_notebook.py` to
+      generate a clean starting notebook.
+  - id: microsoft-docs
+    kind: skill
+    path: .agents/skills/microsoft-docs
+    description: Query official Microsoft documentation to find concepts, tutorials,
+      and code examples across Azure, .NET, Agent Framework, Aspire, VS Code,
+      GitHub, and more. Uses Microsoft Learn MCP as the default, with Context7
+      and Aspire MCP for content that lives outside learn.microsoft.com.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

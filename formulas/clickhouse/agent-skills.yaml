@@ -1,0 +1,103 @@
+schemaVersion: 1
+id: clickhouse/agent-skills
+name: ClickHouse Agent Skills
+description: ClickHouse/chdb agent skills pack.
+source:
+  type: git
+  url: https://github.com/clickhouse/agent-skills
+  revision: 544384f4fab1d6ed59f16a354d1c68296dfa6007
+capabilities:
+  - id: chdb-datastore
+    kind: skill
+    path: skills/chdb-datastore
+    description: 'Use when the user has tabular data (pandas DataFrame, parquet,
+      csv, Arrow, json) and wants to filter, group, aggregate, join, or speed up
+      slow pandas. Provides chDB DataStore — same pandas API, ClickHouse engine
+      underneath. Also handles reading from S3, MySQL, PostgreSQL, MongoDB,
+      ClickHouse Cloud, Iceberg, Delta Lake as DataFrames and joining across
+      sources. TRIGGER when: user mentions DataFrame, parquet, csv, "fast
+      pandas", "speed up pandas", or cross-source DataFrame joins; user imports
+      `chdb.datastore` or `from datastore import DataStore`. SKIP this skill for
+      raw SQL syntax (use chdb-sql instead), ClickHouse server administration,
+      or non-Python DataStore API work.'
+  - id: chdb-sql
+    kind: skill
+    path: skills/chdb-sql
+    description: "Use when the user wants to run SQL — especially analytical SQL —
+      on local files (parquet/csv/json), URLs, S3 paths, or remote databases
+      (Postgres, MySQL, MongoDB, ClickHouse Cloud, Iceberg, Delta Lake) without
+      setting up a server. Provides chDB — embedded ClickHouse SQL in Python
+      with 1000+ functions, Session for stateful multi-step pipelines,
+      parametrized queries, and cross-source joins via `s3()`, `mysql()`,
+      `postgresql()`, `iceberg()`, `deltaLake()`, `remoteSecure()` table
+      functions. TRIGGER when: user wants SQL on parquet/csv/files or across
+      remote analytical sources; uses ClickHouse SQL features (window functions,
+      windowFunnel, geoToH3, JSON path ops, Session, parametrized queries);
+      imports `chdb` or calls `chdb.query()`. SKIP this skill for pandas-style
+      DataFrame method-chaining (use chdb-datastore instead) or ClickHouse
+      server administration."
+  - id: clickhouse-architecture-advisor
+    kind: skill
+    path: skills/clickhouse-architecture-advisor
+    description: MUST USE when designing ClickHouse architectures, selecting between
+      ingestion or modeling patterns, or translating best practices into
+      workload-specific system designs. Complements clickhouse-best-practices
+      with decision frameworks and explicit provenance labels.
+  - id: clickhouse-best-practices
+    kind: skill
+    path: skills/clickhouse-best-practices
+    description: MUST USE when reviewing ClickHouse schemas, queries, or
+      configurations. Contains 31 rules that MUST be checked before providing
+      recommendations. Always read relevant rule files and cite specific rules
+      in responses.
+  - id: clickhouse-js-node-coding
+    kind: skill
+    path: skills/clickhouse-js-node-coding
+    description: >
+      Write idiomatic application code with the ClickHouse Node.js client
+      (`@clickhouse/client`). Use this skill whenever a user is *building*
+      against the Node.js client — configuring the client, pinging, inserting
+      rows in JSON or raw formats, selecting and parsing results, binding query
+      parameters, managing sessions and temporary tables, working with data
+      types or customizing JSON parsing. Do NOT use for browser/Web client code.
+  - id: clickhouse-js-node-troubleshooting
+    kind: skill
+    path: skills/clickhouse-js-node-troubleshooting
+    description: >
+      Troubleshoot and resolve common issues with the ClickHouse Node.js client
+      (@clickhouse/client). Use this skill whenever a user reports errors,
+      unexpected behavior, or configuration questions involving the Node.js
+      client specifically — including socket hang-up errors, Keep-Alive
+      problems, stream handling issues, data type mismatches, read-only user
+      restrictions, proxy/TLS setup problems, or long-running query timeouts.
+      Trigger even when the user hasn't precisely named the issue; vague
+      symptoms like "my inserts keep failing" or "connection drops randomly" in
+      a Node.js context are strong signals to use this skill. Do NOT use for
+      browser/Web client issues.
+  - id: clickhouse-managed-postgres-rca
+    kind: skill
+    path: skills/clickhouse-managed-postgres-rca
+    description: MUST USE when investigating performance issues on a
+      ClickHouse-managed Postgres instance. Provides an evidence-based RCA
+      workflow that scrapes the Prometheus endpoint for system signal, pulls
+      per-digest evidence from the Slow Query Patterns API, and recommends (does
+      not apply) a fix.
+  - id: clickhousectl-cloud-deploy
+    kind: skill
+    path: skills/clickhousectl-cloud-deploy
+    description: Use when a user wants to deploy ClickHouse to the cloud, go to
+      production, use ClickHouse Cloud, host a managed ClickHouse service, or
+      migrate from a local ClickHouse setup to ClickHouse Cloud.
+  - id: clickhousectl-local-dev
+    kind: skill
+    path: skills/clickhousectl-local-dev
+    description: Use when a user wants to build an application with ClickHouse, set
+      up a local ClickHouse development environment, install ClickHouse, create
+      a local server, create tables, or start developing with ClickHouse. Covers
+      the full flow from zero to a working local ClickHouse setup.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

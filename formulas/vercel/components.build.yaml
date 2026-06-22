@@ -1,0 +1,34 @@
+schemaVersion: 1
+id: vercel/components.build
+name: components.build
+description: Open-source standard for modern, composable UI components.
+source:
+  type: git
+  url: https://github.com/vercel/components.build
+  revision: ba727450437385af662810329fa19896215f76d5
+capabilities:
+  - id: building-components
+    kind: skill
+    path: skills/building-components
+    description: Guide for building modern, accessible, and composable UI
+      components. Use when building new components, implementing accessibility,
+      creating composable APIs, setting up design tokens, publishing to
+      npm/registry, or writing component documentation.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: unlinked-hook-files
+    severity: warning
+    category: hooks
+    message: Repository contains hook-related files that are not linked by this formula.
+    paths:
+      - hooks/geistdocs/use-chat.ts
+      - hooks/geistdocs/use-sidebar.ts
+      - hooks/use-mobile.ts
+    reason: These files lack explicit appliesTo mappings, supported targets, or
+      supported file types.
+    effect: SAMX will not install, link, or execute these files.
+    action: Add explicit hook entries only after manual review.

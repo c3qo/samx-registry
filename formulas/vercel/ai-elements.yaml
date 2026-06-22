@@ -1,0 +1,28 @@
+schemaVersion: 1
+id: vercel/ai-elements
+name: AI Elements
+description: shadcn/ui-based AI comp lib + CLI for chat UX.
+source:
+  type: git
+  url: https://github.com/vercel/ai-elements
+  revision: 038f4f7a7216d0396103d975391f68cf9fd35724
+capabilities:
+  - id: references
+    kind: agent
+    path: skills/ai-elements/references
+    entry: agent.md
+    description: A composable component for displaying AI agent configuration with
+      model, instructions, tools, and output schema.
+  - id: ai-elements
+    kind: skill
+    path: skills/ai-elements
+    description: Build AI chat interfaces using ai-elements components —
+      conversations, messages, tool displays, prompt inputs, and more. Use when
+      the user wants to build a chatbot, AI assistant UI, or any AI-powered chat
+      interface.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

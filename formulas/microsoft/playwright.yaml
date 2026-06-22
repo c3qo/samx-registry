@@ -1,0 +1,38 @@
+schemaVersion: 1
+id: microsoft/playwright
+name: Playwright
+description: Browser automation fwk; test/CLI/MCP/trace toolchain.
+source:
+  type: git
+  url: https://github.com/microsoft/playwright
+  revision: e5cd8b395a1a99d436d833996747d7d3fd85b7a9
+capabilities:
+  - id: playwright-dev
+    kind: skill
+    path: .claude/skills/playwright-dev
+    description: Explains how to develop Playwright - add APIs, MCP tools, CLI
+      commands, and vendor dependencies.
+  - id: playwright-devops
+    kind: skill
+    path: .claude/skills/playwright-devops
+    description: DevOps workflows for Playwright - CI failure analysis, workflow
+      debugging, and release operations.
+  - id: playwright-test
+    kind: mcp
+    path: examples/todomvc/.mcp.json
+  - id: skill
+    kind: skill
+    path: packages/playwright-core/src/tools/cli-client/skill
+    description: Automate browser interactions, test web pages and work with
+      Playwright tests.
+  - id: trace
+    kind: skill
+    path: packages/playwright-core/src/tools/trace
+    description: Inspect Playwright trace files from the command line — list
+      actions, view requests, console, errors, snapshots and screenshots.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

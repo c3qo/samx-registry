@@ -1,0 +1,24 @@
+schemaVersion: 1
+id: microsoft/webwright
+name: Webwright
+description: Tiny SWE-style web agent harness; Playwright browser + code-as-action loop.
+source:
+  type: git
+  url: https://github.com/microsoft/webwright
+  revision: 4a46f282ec37f27d6003cc498a977939d62d9015
+capabilities:
+  - id: webwright
+    kind: skill
+    path: skills/webwright
+    description: Solve a user-specified web task code-as-action style by driving a
+      local Playwright browser through one bash command at a time, saving
+      screenshots and an action log into `final_runs/run_<id>/`, and visually
+      verifying the result. Use when the user asks to automate a web task
+      (search, filter, form-fill, multi-step flow, data extraction) and wants
+      reusable scripts plus screenshot evidence rather than a one-shot answer.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

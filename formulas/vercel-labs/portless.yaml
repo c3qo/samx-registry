@@ -1,0 +1,38 @@
+schemaVersion: 1
+id: vercel-labs/portless
+name: portless
+description: Named local dev URLs; OAuth-ready via custom TLD.
+source:
+  type: git
+  url: https://github.com/vercel-labs/portless
+  revision: e4f65fa715e6f8df77fd511b1ae039cfa3ed82d6
+capabilities:
+  - id: oauth
+    kind: skill
+    path: skills/oauth
+    description: Configure OAuth providers (Google, Apple, Microsoft, Facebook,
+      GitHub, etc.) to work with portless local dev URLs. Use when setting up
+      OAuth redirect URIs, fixing "redirect_uri_mismatch" or "invalid redirect"
+      errors, configuring sign-in providers for local development, or when a
+      provider rejects .localhost subdomains. Triggers include "OAuth not
+      working with portless", "redirect URI mismatch", "Google/Apple/Microsoft
+      sign-in fails locally", "configure OAuth for local dev", or any task
+      involving OAuth callback URLs with portless domains.
+  - id: portless
+    kind: skill
+    path: skills/portless
+    description: Set up and use portless for named local dev server URLs (e.g.
+      https://myapp.localhost instead of http://localhost:3000). Use when
+      integrating portless into a project, configuring dev server names, setting
+      up the local proxy, working with .localhost domains, or troubleshooting
+      port/proxy issues.
+requirements:
+  env:
+    - GOOGLE_CLIENT_ID
+    - GOOGLE_CLIENT_SECRET
+    - NEXTAUTH_SECRET
+    - NEXTAUTH_URL
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

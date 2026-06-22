@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: rillet.com/rillet
+name: Rillet
+description: Rillet remote MCP server at https://api.rillet.com/mcp. Query your
+  live GL and financials in plain English. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/rillet
+capabilities:
+  - id: rillet
+    kind: mcp
+    spec:
+      serverName: rillet
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.rillet.com/mcp

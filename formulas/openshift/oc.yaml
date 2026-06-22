@@ -1,0 +1,33 @@
+schemaVersion: 1
+id: openshift/oc
+name: OpenShift Client - oc
+description: OpenShift CLI for app/resource mgmt; kubectl-based with OpenShift extras.
+source:
+  type: git
+  url: https://github.com/openshift/oc
+  revision: c639a3143e8d86763c185a5afc6c9b38d24c00a7
+capabilities:
+  - id: effective-go
+    kind: skill
+    path: .claude/skills/effective-go
+    description: Apply Go best practices, idioms, and conventions from
+      golang.org/doc/effective_go. Use when writing, reviewing, or refactoring
+      Go code to ensure idiomatic, clean, and efficient implementations.
+  - id: learn-history
+    kind: skill
+    path: .claude/skills/learn-history
+    description: Analyze all past sessions for this project and extract knowledge
+      worth persisting to AGENTS.md, .claude/agents/, or memory. Deep analysis
+      of full session history.
+  - id: learn-session
+    kind: skill
+    path: .claude/skills/learn-session
+    description: Review the current session and extract knowledge worth persisting
+      to AGENTS.md, .claude/agents/, or memory. Use at the end of a session to
+      capture what was learned.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

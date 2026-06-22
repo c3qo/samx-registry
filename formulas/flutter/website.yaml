@@ -1,0 +1,29 @@
+schemaVersion: 1
+id: flutter/website
+name: Flutter documentation website
+description: Flutter docs site built with Jaspr on Firebase.
+source:
+  type: git
+  url: https://github.com/flutter/website
+  revision: 7a4a97aa6e0e06382cdfb6cad764d67a6f4e10c1
+capabilities:
+  - id: proofread_markdown
+    kind: skill
+    path: .agents/skills/proofread_markdown
+    description: Proofreads Markdown files against Google guidelines.
+  - id: update-llms-text
+    kind: skill
+    path: .agents/skills/update-llms-text
+    description: Update and maintain the llms.txt file. Use when the user wants to
+      add sections, add links, correct information, or review the llms.txt file.
+  - id: validate-pr
+    kind: skill
+    path: .agents/skills/validate-pr
+    description: Stages the Flutter site locally. This includes checking for broken
+      links, verifying excerpts, updating formatting, and serving the dev site.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

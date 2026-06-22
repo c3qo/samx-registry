@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: agents.riskanalytics.dnb.com/dnb-risk-analytics
+name: D&B Risk Analytics
+description: D&B Risk Analytics remote MCP server at
+  https://agents.riskanalytics.dnb.com/mcp. Execute risk workflows powered by
+  the D&B Commercial Graph™. Setup guides for Claude Code, Codex, Cursor, and VS
+  Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/dnb-risk-analytics
+capabilities:
+  - id: dnb-risk-analytics
+    kind: mcp
+    spec:
+      serverName: dnb-risk-analytics
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://agents.riskanalytics.dnb.com/mcp

@@ -1,0 +1,29 @@
+schemaVersion: 1
+id: neondatabase/postgres-skills
+name: Postgres Skills
+description: Agent skills for Postgres best practices.
+source:
+  type: git
+  url: https://github.com/neondatabase/postgres-skills
+  revision: 0d9a967085c3bc137ab39ff9e3191c2eb3129d8c
+capabilities:
+  - id: skill-creator
+    kind: skill
+    path: .agents/skills/skill-creator
+    description: Guide for creating effective skills. This skill should be used when
+      users want to create a new skill (or update an existing skill) that
+      extends Claude's capabilities with specialized knowledge, workflows, or
+      tool integrations.
+  - id: postgres-best-practices
+    kind: skill
+    path: skills/postgres-best-practices
+    description: Best practices and guidelines for working with Postgres. Covers
+      schema design, indexing strategies, query optimization, migrations, and
+      common pitfalls. Use when writing SQL, designing database schemas,
+      optimizing queries, or setting up a Postgres database.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

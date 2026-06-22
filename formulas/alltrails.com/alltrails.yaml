@@ -1,0 +1,20 @@
+schemaVersion: 1
+id: alltrails.com/alltrails
+name: AllTrails
+description: AllTrails remote MCP server at https://www.alltrails.com/mcp. Find
+  your next hike. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/alltrails
+capabilities:
+  - id: alltrails
+    kind: mcp
+    spec:
+      serverName: alltrails
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://www.alltrails.com/mcp

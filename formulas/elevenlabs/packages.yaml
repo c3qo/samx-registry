@@ -1,0 +1,26 @@
+schemaVersion: 1
+id: elevenlabs/packages
+name: ElevenLabs SDK Packages
+description: Monorepo of ElevenLabs JS/TS SDKs + widgets.
+source:
+  type: git
+  url: https://github.com/elevenlabs/packages
+  revision: 783a28f56223ed7a11a908c27f3ea74d5a013578
+capabilities:
+  - id: elevenlabs-sdk-migration
+    kind: skill
+    path: .agents/skills/elevenlabs:sdk-migration
+    description: Migrate to the next major version of @elevenlabs/client,
+      @elevenlabs/react, and @elevenlabs/react-native. Use when updating code
+      that uses Conversation, Input, Output, useConversation,
+      ElevenLabsProvider, ConversationProvider, or related APIs from these
+      packages. Also trigger when users mention upgrading ElevenLabs packages,
+      fixing breaking changes after an npm update, moving to the latest
+      ElevenLabs SDK, or encountering type errors or runtime errors after
+      updating @elevenlabs/* dependencies.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

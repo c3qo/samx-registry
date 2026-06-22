@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: netlify-mcp.netlify.app/netlify
+name: Netlify
+description: Netlify remote MCP server at https://netlify-mcp.netlify.app/mcp.
+  Create, deploy, manage, and secure websites on Netlify. Setup guides for
+  Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/netlify
+capabilities:
+  - id: netlify
+    kind: mcp
+    spec:
+      serverName: netlify
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://netlify-mcp.netlify.app/mcp

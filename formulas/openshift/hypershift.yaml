@@ -1,0 +1,97 @@
+schemaVersion: 1
+id: openshift/hypershift
+name: HyperShift
+description: OCP HCP mgr; AWS/Azure/GCP/IBM ops, HO/CPO tooling, e2e/debug/CI.
+source:
+  type: git
+  url: https://github.com/openshift/hypershift
+  revision: c35f662c8cf546db3ddcfeffb686ce6f3fbfde5a
+capabilities:
+  - id: debug-cluster
+    kind: skill
+    path: .claude/skills/debug-cluster
+    description: Provides systematic debugging approaches for HyperShift
+      hosted-cluster issues. Auto-applies when debugging cluster problems,
+      investigating stuck deletions, or troubleshooting control plane issues.
+  - id: e2e-run-aws
+    kind: skill
+    path: .claude/skills/dev/e2e-run-aws
+    description: Provides the ability to run and iterate on HyperShift e2e tests.
+      Auto-applies when implementing features that require e2e validation,
+      fixing e2e test failures, or working on tasks that need live cluster
+      testing.
+  - id: build-ho-image
+    kind: skill
+    path: .claude/skills/dev/build-ho-image
+    description: Build and push hypershift-operator container image. Auto-applies
+      when testing HO changes that require deploying to a live cluster.
+  - id: build-cpo-image
+    kind: skill
+    path: .claude/skills/dev/build-cpo-image
+    description: Build and push control-plane-operator container image. Auto-applies
+      when testing CPO changes that require deploying to a live cluster.
+  - id: code-formatting
+    kind: skill
+    path: .claude/skills/code-formatting
+    description: "MANDATORY: When writing Go tests, you MUST use 'When...it
+      should...' format for ALL test names. When writing any Go code, you MUST
+      remind user to run 'make lint-fix' and 'make verify'. These are
+      non-negotiable HyperShift requirements."
+  - id: create-hc-aws
+    kind: skill
+    path: .claude/skills/dev/create-hc-aws
+    description: Create a HyperShift HostedCluster on AWS for development and
+      testing, with optional custom CPO/HO images.
+  - id: destroy-hc-aws
+    kind: skill
+    path: .claude/skills/dev/destroy-hc-aws
+    description: Destroy a HyperShift HostedCluster and all associated AWS
+      infrastructure (VPC, IAM, Route53, etc.).
+  - id: git-env
+    kind: skill
+    path: .claude/skills/dev/git-env
+    description: Create development environments with git worktrees, branches,
+      commits, and push to remote. Auto-applies for git workflow tasks.
+  - id: install-ho-aws
+    kind: skill
+    path: .claude/skills/dev/install-ho-aws
+    description: Install HyperShift Operator with private AWS and external-dns settings.
+  - id: effective-go
+    kind: skill
+    path: .claude/skills/effective-go
+    description: Apply Go best practices, idioms, and conventions from
+      golang.org/doc/effective_go. Use when writing, reviewing, or refactoring
+      Go code to ensure idiomatic, clean, and efficient implementations.
+  - id: git-commit-format
+    kind: skill
+    path: .claude/skills/git-commit-format
+    description: Apply HyperShift conventional commit formatting rules. Use when
+      generating commit messages or creating commits.
+  - id: konflux-ec-violations
+    kind: skill
+    path: .claude/skills/konflux-ec-violations
+    description: Accesses archived Konflux PipelineRuns, TaskRuns, and pod logs via
+      KubeArchive. Auto-applies when checking Konflux PipelineRun results,
+      investigating enterprise contract failures, or retrieving logs from
+      completed Konflux CI runs.
+  - id: validate-pr-override-images
+    kind: skill
+    path: .claude/skills/validate-pr-override-images
+    description: Validates that CPO override images in a PR actually contain the PRs
+      they claim to include
+requirements:
+  env:
+    - MGMT_KUBECONFIG
+    - AWS_CREDENTIALS
+    - PULL_SECRET
+    - AWS_REGION
+    - HO_IMAGE_REPO
+    - CPO_IMAGE_REPO
+    - E2E_PLATFORM
+    - OIDC_BUCKET
+    - BASE_DOMAIN
+    - RUNTIME
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

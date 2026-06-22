@@ -1,0 +1,72 @@
+schemaVersion: 1
+id: firecrawl/openclaw
+name: OpenClaw
+description: Personal AI assistant; gateway, channels, apps, skills.
+source:
+  type: git
+  url: https://github.com/firecrawl/openclaw
+  revision: 3e1ec5ad8b7424fa3a21caa35d8878627a628730
+capabilities:
+  - id: cli
+    kind: agent
+    path: docs/cli
+    entry: agent.md
+    description: "- You want to run one agent turn from scripts (optionally deliver reply)"
+  - id: concepts
+    kind: agent
+    path: docs/concepts
+    entry: agent.md
+    description: "- Changing agent runtime, workspace bootstrap, or session behavior"
+  - id: acp-router
+    kind: skill
+    path: extensions/acpx/skills/acp-router
+    description: Route plain-language requests for Pi, Claude Code, Codex, OpenCode,
+      Gemini CLI, or ACP harness work into either OpenClaw ACP runtime sessions
+      or direct acpx-driven sessions ("telephone game" flow). For coding-agent
+      thread requests, read this skill first, then use only `sessions_spawn` for
+      thread creation.
+  - id: lobster
+    kind: skill
+    path: extensions/lobster
+    description: "Lobster executes multi-step workflows with approval checkpoints.
+      Use it when:"
+  - id: cli-2
+    kind: agent
+    path: docs/zh-CN/cli
+    entry: agent.md
+    description: "- 你想从脚本运行一个智能体回合（可选发送回复）"
+  - id: concepts-2
+    kind: agent
+    path: docs/zh-CN/concepts
+    entry: agent.md
+    description: "- 更改智能体运行时、工作区引导或会话行为时"
+  - id: feishu-doc
+    kind: skill
+    path: extensions/feishu/skills/feishu-doc
+    description: >
+      Feishu document read/write operations. Activate when user mentions Feishu
+      docs, cloud docs, or docx links.
+  - id: feishu-drive
+    kind: skill
+    path: extensions/feishu/skills/feishu-drive
+    description: >
+      Feishu cloud storage file management. Activate when user mentions cloud
+      space, folders, drive.
+  - id: feishu-perm
+    kind: skill
+    path: extensions/feishu/skills/feishu-perm
+    description: >
+      Feishu permission management for documents and files. Activate when user
+      mentions sharing, permissions, collaborators.
+  - id: feishu-wiki
+    kind: skill
+    path: extensions/feishu/skills/feishu-wiki
+    description: >
+      Feishu knowledge base navigation. Activate when user mentions knowledge
+      base, wiki, or wiki links.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

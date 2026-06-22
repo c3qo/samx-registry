@@ -1,0 +1,104 @@
+schemaVersion: 1
+id: pytorch/test-infra
+name: PyTorch Test Infra
+description: PyTorch CI/release infra toolkit; skills for workflows, releases,
+  triage, size, Lambda ops.
+source:
+  type: git
+  url: https://github.com/pytorch/test-infra
+  revision: 08768018570464af6cf1140abe7974ca6021d4ba
+capabilities:
+  - id: migrate-workflow-ec2-to-osdc
+    kind: skill
+    path: .claude/skills/migrate-workflow-ec2-to-osdc
+    description: Step-by-step playbook for migrating a pytorch/pytorch
+      .github/workflows/*.yml from EC2 to OSDC (ARC) runners — covers both
+      dial-up and 100% opt-in patterns, with the inputs that must be plumbed
+      through _linux-build.yml / _linux-test.yml. Use when migrating a workflow
+      off EC2 onto on-site data center / EKS-hosted self-hosted runners (OSDC /
+      ARC), enabling the ARC experiment, or wiring up `use-arc` /
+      `runner_prefix` / `ci-docker-hash` / `python-version` / `compiler` /
+      `cuda-version` inputs.
+  - id: r2-outage-toggle
+    kind: skill
+    path: .claude/skills/r2-outage-toggle
+    description: Disable or re-enable Cloudflare R2 (download-r2.pytorch.org) usage
+      in manage_v2.py during R2 outages. Can toggle R2 off/on for nightly
+      builds, prod/stable builds, or both. The affected packages are
+      PT_FOUNDATION_PACKAGES (torch, torchvision, torchaudio, fbgemm_gpu,
+      fbgemm_gpu_genai, triton, pytorch_triton, pytorch_triton_rocm,
+      pytorch_triton_xpu).
+  - id: release-cherry-pick-missing-reverts
+    kind: skill
+    path: .claude/skills/release-cherry-pick-missing-reverts
+    description: Find reverts that landed on pytorch/pytorch main but are missing
+      from a release branch (release/X.Y) because the reverted commit was
+      already shipped in a release candidate, and open one cherry-pick PR per
+      missing revert against the release branch (on a fork branch, never pushing
+      to release/X.Y directly), optionally posting a cherry-pick nomination
+      comment for each on the release tracker issue. Driven by
+      tools/analytics/github_analyze.py --analyze-missing-reverts-from-branch
+      (the "GitHub Analytics Daily" workflow). Triggered by "missing reverts",
+      "analyze reverts for release", "cherry-pick missing reverts", "reverts not
+      in release/X.Y", or pointing at a GitHub Analytics Daily run and asking to
+      cherry-pick the flagged reverts.
+  - id: release-create-tracker-issue
+    kind: skill
+    path: .claude/skills/release-create-tracker-issue
+    description: Generate (and optionally open) a PyTorch release tracker /
+      cherry-pick tracking issue from a release announcement, like
+      https://github.com/pytorch/pytorch/issues/180506. Triggered by mentions of
+      "release tracker", "release tracking issue", "cherry-pick tracker", or
+      "cut a release branch issue".
+  - id: release-create-validation-issue
+    kind: skill
+    path: .claude/skills/release-create-validation-issue
+    description: Generate a PyTorch release validation checklist issue by pulling
+      open/closed issues from a GitHub milestone and cherry-picks from a release
+      tracker issue. Triggered by mentions of "validation issue", "validation
+      checklist", "release validation", or "release checklist".
+  - id: release-go-live-binary-build-matrix
+    kind: skill
+    path: .claude/skills/release-go-live-binary-build-matrix
+    description: Update tools/scripts/generate_binary_build_matrix.py when a PyTorch
+      release goes live. Advances CURRENT_STABLE_VERSION to the new stable,
+      promotes the release-channel CUDA/ROCm arches to match the candidate/test
+      channel, and regenerates the JSON test fixtures. Triggered by mentions of
+      "release go live", "advance stable version", "promote release matrix", or
+      "update binary build matrix" for a new PyTorch X.Y release.
+  - id: release-update-docker-image-pin
+    kind: skill
+    path: .claude/skills/release-update-docker-image-pin
+    description: Pin (or re-pin) the Linux manywheel builder docker images used by
+      the nightly/release binary build workflows in pytorch/pytorch to a fixed
+      .ci/docker build. Takes the release version (e.g. 2.13) as input. Updates
+      DOCKER_IMAGE_PIN in .github/scripts/generate_binary_build_matrix.py and
+      regenerates the workflows. Triggered by mentions of "pin docker image",
+      "update docker pin", "docker image pin", "pin builder images", or "bump
+      the manywheel image pin" for a release branch.
+  - id: vllm-pytorch-ci-triage
+    kind: skill
+    path: .claude/skills/vllm-pytorch-ci-triage
+    description: Triage a failing vLLM Buildkite CI build for a PyTorch version-bump
+      PR, isolate new regressions vs. pre-existing failures on main by comparing
+      against recent "Full CI run - nightly/daily" builds, classify by root
+      cause, and file one grouped issue per root cause in pytorch/pytorch
+      (linked under an umbrella issue). Use when the user points at a Buildkite
+      build for a torch/triton upgrade and asks "what's broken that isn't broken
+      on main" or "file issues for each failure".
+  - id: wheel-size-analyzer
+    kind: skill
+    path: .claude/skills/wheel-size-analyzer
+    description: Analyze PyTorch nightly wheel sizes over a date range using GitHub
+      Actions artifacts API. Use when tracking binary size changes, identifying
+      wheel size regressions, or producing wheel size reports for manywheel
+      builds. Supports specifying CUDA version (cuda12_6, cuda12_8, cuda12_9,
+      cuda13_0), CPU, XPU, or ROCm variants. Triggered by mentions of "wheel
+      size", "binary size", "package size", "manywheel size", or "nightly build
+      size".
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

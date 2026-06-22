@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: vercel-labs/ai-cli
+name: ai-cli
+description: Terminal AI CLI for text, image, video gen.
+source:
+  type: git
+  url: https://github.com/vercel-labs/ai-cli
+  revision: 1cf578f888d7e7e26f99e07f57c8970d6d104a47
+capabilities:
+  - id: ai-cli
+    kind: skill
+    path: skills/ai-cli
+    description: Generate text, images, and video from the terminal using AI models.
+requirements:
+  env:
+    - AI_GATEWAY_API_KEY
+    - OPENAI_API_KEY
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

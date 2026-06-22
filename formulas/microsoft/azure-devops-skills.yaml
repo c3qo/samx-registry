@@ -1,0 +1,49 @@
+schemaVersion: 1
+id: microsoft/azure-devops-skills
+name: Azure DevOps Skills
+description: Example skill pack for Azure DevOps workflows via MCP.
+source:
+  type: git
+  url: https://github.com/microsoft/azure-devops-skills
+  revision: 63598cadd8231c4e625b616e7ae5530917b01d58
+capabilities:
+  - id: boards-my-work
+    kind: skill
+    path: .github/skills/boards-my-work
+    description: This skill retrieves and displays work items assigned to the user
+      in Azure DevOps, organized by type and sorted by recently changed. It
+      prompts for a project name or lists available projects if not provided,
+      then fetches work item details and displays them in a formatted table with
+      clickable links.
+  - id: boards-work-item-summary
+    kind: skill
+    path: .github/skills/boards-work-item-summary
+    description: Summarize a single Azure DevOps work item (and its links and
+      comments) by ID.
+  - id: pipelines-build-summary
+    kind: skill
+    path: .github/skills/pipelines-build-summary
+    description: List, inspect, and troubleshoot Azure DevOps pipeline builds. Shows
+      recent builds for a pipeline definition, drills into a specific build's
+      status and result, displays logs for failed steps, and lists the changes
+      associated with a build.
+  - id: security-alert-review
+    kind: skill
+    path: .github/skills/security-alert-review
+    description: List and review Advanced Security alerts for an Azure DevOps
+      repository. Shows dependency vulnerabilities, secret exposure, and code
+      scanning findings with filtering by severity, state, and alert type.
+  - id: work-iterations
+    kind: skill
+    path: .github/skills/work-iterations
+    description: List, create, and assign iterations for Azure DevOps projects and teams.
+  - id: template
+    kind: skill
+    path: template
+    description: Description of what the skill does and when to use it
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

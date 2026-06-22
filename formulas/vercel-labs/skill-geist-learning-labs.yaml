@@ -1,0 +1,24 @@
+schemaVersion: 1
+id: vercel-labs/skill-geist-learning-labs
+name: skill-geist-learning-labs
+description: Geist-based interactive learning labs for Next.js.
+source:
+  type: git
+  url: https://github.com/vercel-labs/skill-geist-learning-labs
+  revision: 5fb4ff07b6dd79bb19076beb67bdda6edffc6ffc
+capabilities:
+  - id: geist-learning-lab
+    kind: skill
+    path: skills/geist-learning-lab
+    description: Build explorative, interactive learning experiences as Next.js apps
+      using the Geist design system. Use when creating tutorials, explorable
+      explanations, interactive lessons, code sandboxes, quizzes, or any
+      educational UI. Covers the Learning Loop pedagogy, 23+ learning component
+      patterns, progress tracking, spaced repetition, and Bret-Victor-style
+      interactive exploration — all with Geist's dark-first minimal aesthetic.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

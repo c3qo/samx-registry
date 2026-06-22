@@ -1,0 +1,41 @@
+schemaVersion: 1
+id: microsoft/openvmm
+name: OpenVMM
+description: Modular cross-platform VMM / OpenHCL paravisor.
+source:
+  type: git
+  url: https://github.com/microsoft/openvmm
+  revision: 451f4a97f5667be95d3a1b03c4fb193b41bf9dd4
+capabilities:
+  - id: fuzzing
+    kind: skill
+    path: .github/skills/fuzzing
+    description: Run, optimize, and debug OpenVMM fuzzers. Covers cargo-fuzz
+      targets, crash reproduction, lldb debugging, code coverage analysis,
+      entropy optimization, and multi-target parallel campaigns.
+  - id: guide-maintenance
+    kind: skill
+    path: .github/skills/guide-maintenance
+    description: >
+      Maintain the OpenVMM Guide and its code-sync mapping. Load when: (1)
+      adding, removing, or moving Guide pages, (2) adding new device crates or
+      CLI args that need doc coverage, (3) updating the doc-code-sync mapping
+      table, or (4) auditing Guide freshness against code changes.
+  - id: openvmm-ci-investigation
+    kind: skill
+    path: .github/skills/openvmm-ci-investigation
+    description: Investigate CI failures on OpenVMM PRs. Load when a PR has failing
+      CI checks, you need to download and analyze test artifacts, or you need to
+      diagnose build, fmt, clippy, or VMM test failures.
+  - id: vmm-tests
+    kind: skill
+    path: .github/skills/vmm-tests
+    description: Run VMM tests locally with cargo xflowey vmm-tests-run. Load when
+      running or debugging VMM tests, or when you need to understand the petri
+      test framework, artifact handling, or cross-compilation for VMM tests.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

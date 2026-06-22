@@ -1,0 +1,61 @@
+schemaVersion: 1
+id: vercel-labs/openreview
+name: OpenReview
+description: Self-hosted AI code review bot for GitHub PRs.
+source:
+  type: git
+  url: https://github.com/vercel-labs/openreview
+  revision: 672deb21e70e471e0536d5ad7a67c14b8359e97e
+capabilities:
+  - id: next-best-practices
+    kind: skill
+    path: .agents/skills/next-best-practices
+    description: Next.js best practices - file conventions, RSC boundaries, data
+      patterns, async APIs, metadata, error handling, route handlers, image/font
+      optimization, bundling
+  - id: next-cache-components
+    kind: skill
+    path: .agents/skills/next-cache-components
+    description: Next.js 16 Cache Components - PPR, use cache directive, cacheLife,
+      cacheTag, updateTag
+  - id: next-upgrade
+    kind: skill
+    path: .agents/skills/next-upgrade
+    description: Upgrade Next.js to the latest version following official migration
+      guides and codemods
+  - id: vercel-composition-patterns
+    kind: skill
+    path: .agents/skills/vercel-composition-patterns
+    description: React composition patterns that scale. Use when refactoring
+      components with boolean prop proliferation, building flexible component
+      libraries, or designing reusable APIs. Triggers on tasks involving
+      compound components, render props, context providers, or component
+      architecture. Includes React 19 API changes.
+  - id: vercel-react-best-practices
+    kind: skill
+    path: .agents/skills/vercel-react-best-practices
+    description: React and Next.js performance optimization guidelines from Vercel
+      Engineering. This skill should be used when writing, reviewing, or
+      refactoring React/Next.js code to ensure optimal performance patterns.
+      Triggers on tasks involving React components, Next.js pages, data
+      fetching, bundle optimization, or performance improvements.
+  - id: vercel-react-native-skills
+    kind: skill
+    path: .agents/skills/vercel-react-native-skills
+    description: React Native and Expo best practices for building performant mobile
+      apps. Use when building React Native components, optimizing list
+      performance, implementing animations, or working with native modules.
+      Triggers on tasks involving React Native, Expo, mobile performance, or
+      native platform APIs.
+  - id: web-design-guidelines
+    kind: skill
+    path: .agents/skills/web-design-guidelines
+    description: Review UI code for Web Interface Guidelines compliance. Use when
+      asked to "review my UI", "check accessibility", "audit design", "review
+      UX", or "check my site against best practices".
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

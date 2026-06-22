@@ -1,0 +1,121 @@
+schemaVersion: 1
+id: rivet-dev/skills
+name: Rivet Skills
+description: RivetKit skill pack.
+source:
+  type: git
+  url: https://github.com/rivet-dev/skills
+  revision: aca05a83bd04d322f700b7db7bd75afef72fcdf5
+capabilities:
+  - id: sandbox-agent
+    kind: skill
+    path: skills/sandbox-agent
+    description: Deploy, configure, and integrate Sandbox Agent - a universal API
+      for orchestrating AI coding agents (Claude Code, Codex, OpenCode, Amp) in
+      sandboxed environments. Use when setting up sandbox-agent server locally
+      or in cloud sandboxes (E2B, Daytona, Docker), creating and managing agent
+      sessions via SDK or API, streaming agent events and handling
+      human-in-the-loop interactions, building chat UIs for coding agents, or
+      understanding the universal schema for agent responses.
+  - id: ai-agent-workspace
+    kind: skill
+    path: ai-agent-workspace
+    description: "Give every AI agent its own computer: a persistent workspace with
+      a filesystem, processes, shells, networking, and agent sessions on a
+      lightweight in-process OS."
+  - id: ai-agent
+    kind: skill
+    path: ai-agent
+    description: "Build an AI agent backend with persistent memory: one Rivet Actor
+      per conversation, queued message handling, and streaming LLM responses as
+      realtime events."
+  - id: chat-room
+    kind: skill
+    path: chat-room
+    description: "Build a realtime chat room backend with Rivet Actors: one actor
+      per room, SQLite-backed message history, and WebSocket broadcast to every
+      connected client."
+  - id: collaborative-text-editor
+    kind: skill
+    path: collaborative-text-editor
+    description: "Build a collaborative text editor backend with Yjs CRDTs and Rivet
+      Actors: per-document actors relay sync and awareness updates and persist
+      snapshots."
+  - id: cron-jobs
+    kind: skill
+    path: cron-jobs
+    description: "Durable cron jobs with Rivet Actors: schedule.after and
+      schedule.at timers survive restarts and crashes, plus re-arming recurring
+      jobs and idempotent handlers."
+  - id: live-cursors
+    kind: skill
+    path: live-cursors
+    description: "Live cursors and multiplayer presence with Rivet Actors:
+      per-connection cursor state, realtime updates over events or raw
+      WebSockets, and throttling."
+  - id: multiplayer-game
+    kind: skill
+    path: multiplayer-game
+    description: "Pragmatic patterns for building multiplayer games: matchmaking,
+      tick loops, realtime state, interest management, and validation."
+  - id: per-tenant-database
+    kind: skill
+    path: per-tenant-database
+    description: "Multi-tenant data isolation with one Rivet Actor per tenant: the
+      actor key is the tenant id, so each tenant gets its own isolated dataset
+      and migrations."
+  - id: rivetkit-client-javascript
+    kind: skill
+    path: rivetkit-client-javascript
+    description: RivetKit JavaScript client guidance. Use for browser, Node.js, or
+      Bun clients that connect to Rivet Actors with rivetkit/client, create
+      clients, call actions, or manage connections.
+  - id: rivetkit-client-react
+    kind: skill
+    path: rivetkit-client-react
+    description: RivetKit React client guidance. Use for React apps that connect to
+      Rivet Actors with @rivetkit/react, create hooks with createRivetKit, or
+      manage realtime state with useActor.
+  - id: rivetkit-client-swift
+    kind: skill
+    path: rivetkit-client-swift
+    description: RivetKit Swift client guidance. Use for Swift clients that connect
+      to Rivet Actors with RivetKitClient, create actor handles, call actions,
+      or manage connections.
+  - id: rivetkit-client-swiftui
+    kind: skill
+    path: rivetkit-client-swiftui
+    description: RivetKit SwiftUI client guidance. Use for SwiftUI apps that connect
+      to Rivet Actors with RivetKitSwiftUI, @Actor, rivetKit view modifiers, and
+      SwiftUI bindings.
+  - id: rivetkit
+    kind: skill
+    path: rivetkit
+    description: RivetKit backend and Rivet Actor runtime guidance. Use for
+      building, modifying, debugging, or testing Rivet Actors, registries,
+      serverless/runner modes, deployment, or actor-based workflows.
+  - id: skill
+    kind: skill
+    path: skills/sandbox-agent/references/ai
+    entry: skill.md
+    description: "> Source: `docs/ai/skill.mdx`"
+  - id: vpc-air-gapped
+    kind: skill
+    path: vpc-air-gapped
+    description: "Run Rivet entirely inside your own perimeter: single-binary or
+      Docker Compose install, file system storage with no database
+      infrastructure, and no outbound telemetry by default."
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Capability kind does not match path: skills/sandbox-agent/references/ai"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: callstackincubator/react-native-ai
+name: React Native AI
+description: On-device AI pkgs for React Native; Apple/LLM/MLC + DevTools.
+source:
+  type: git
+  url: https://github.com/callstackincubator/react-native-ai
+  revision: 8d7fb07aa26cba1b0f1792907f64c48e85721137
+capabilities:
+  - id: react-native-ai
+    kind: skill
+    path: skills/react-native-ai
+    description: Provides integration recipes for the React Native AI
+      @react-native-ai packages that wrap the Llama.rn (Llama.cpp), MLC-LLM,
+      Apple Foundation backends. Use when integrating local on-device AI in
+      React Native, setting up providers, model management.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

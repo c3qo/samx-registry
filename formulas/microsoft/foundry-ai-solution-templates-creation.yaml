@@ -1,0 +1,30 @@
+schemaVersion: 1
+id: microsoft/foundry-ai-solution-templates-creation
+name: Azure Scaffold Wizard
+description: Universal AI agent skill for scaffolding complete Azure projects.
+source:
+  type: git
+  url: https://github.com/microsoft/foundry-ai-solution-templates-creation
+  revision: 84fdb6269107069eb0d4836b07c10d4667d8734d
+capabilities:
+  - id: azure-scaffold-wizard
+    kind: skill
+    path: .
+    description: "Scaffold a complete, production-ready Azure project from scratch
+      for ANY use case: RAG chatbots, multi-agent systems, API backends, data
+      pipelines, Azure Functions, full-stack web apps, ML training/inference, or
+      event-driven microservices. USE FOR: gathering requirements through
+      adaptive questioning, generating complete project folder structures with
+      all source files, Azure Bicep infrastructure, azure.yaml for azd-up
+      deployment, Docker configuration, CI/CD workflows, README with
+      architecture diagrams, and Responsible AI documentation. Produces fully
+      deployable Azure projects targeting Azure Container Apps, Azure AI
+      Foundry, Azure Functions, or Azure ML. DO NOT USE FOR: modifying existing
+      projects, deploying to Azure (use azure-deploy skill), managing Azure
+      resources (use azure-prepare skill)."
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

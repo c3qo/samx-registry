@@ -1,0 +1,35 @@
+schemaVersion: 1
+id: contentstack/contentstack-vibe-docs
+name: Contentstack Vibe Docs
+description: Contentstack CMS doc skill for AI agents.
+source:
+  type: git
+  url: https://github.com/contentstack/contentstack-vibe-docs
+  revision: 422e50d181c35df90c18126bcbd4b970fa24a715
+capabilities:
+  - id: contentstack-vibe-docs
+    kind: skill
+    path: codex/skills/contentstack-vibe-docs
+    description: Comprehensive Contentstack CMS documentation for building web
+      applications. Covers REST API, GraphQL API, Content Management API, Image
+      Delivery API, TypeScript SDKs, Live Preview, Visual Builder, OAuth
+      authentication, data modeling, webhooks, releases, workflows, branches,
+      roles, localization, variants/personalization, Launch deployments, and
+      framework patterns for Next.js, Nuxt, and Gatsby. Use when implementing
+      any Contentstack feature.
+  - id: contentstack-vibe-docs-2
+    kind: skill
+    path: skills/contentstack-vibe-docs
+    description: Comprehensive Contentstack CMS documentation for building web
+      applications. Covers REST API, GraphQL API, Content Management API, Image
+      Delivery API, TypeScript SDKs, Live Preview, Visual Builder, OAuth
+      authentication, data modeling, webhooks, releases, workflows, branches,
+      roles, localization, variants/personalization, Launch deployments, and
+      framework patterns for Next.js, Nuxt, and Gatsby. Use when implementing
+      any Contentstack feature.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

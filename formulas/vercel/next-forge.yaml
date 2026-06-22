@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: vercel/next-forge
+name: next-forge
+description: Production-grade Turborepo tmpl for Next.js SaaS apps.
+source:
+  type: git
+  url: https://github.com/vercel/next-forge
+  revision: f189de79ceef7c1ef69f61f12e272f99b4cdb699
+capabilities:
+  - id: next-forge
+    kind: skill
+    path: skills/next-forge
+    description: Expert assistance for next-forge — a production-grade Turborepo
+      template for Next.js SaaS apps. Triggers on questions about next-forge
+      installation, setup, architecture, packages, customization, deployment,
+      and development workflows.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

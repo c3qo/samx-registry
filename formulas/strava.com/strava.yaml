@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: strava.com/strava
+name: Strava
+description: Strava remote MCP server at https://mcp.strava.com/mcp. Activities,
+  fitness trends, training load, and goals. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/strava
+capabilities:
+  - id: strava
+    kind: mcp
+    spec:
+      serverName: strava
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.strava.com/mcp

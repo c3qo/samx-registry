@@ -1,0 +1,111 @@
+schemaVersion: 1
+id: langchain-ai/langchain-skills
+name: LangChain Skills
+description: Skill pack for LangChain/LangGraph/Deep Agents.
+source:
+  type: git
+  url: https://github.com/langchain-ai/langchain-skills
+  revision: c88193a48f387560697e1152e32dc5fd239c83e4
+capabilities:
+  - id: ecosystem-primer
+    kind: skill
+    path: config/skills/ecosystem-primer
+    description: INVOKE FIRST for any LangChain / LangGraph / Deep Agents agent
+      building project before consulting other skills or writing any agent code.
+      Required starting point for up to date info on framework selection
+      (LangChain vs LangGraph vs Deep Agents vs hybrid composition), agent
+      patterns, install, environment setup, and which skill to load next.
+  - id: langchain-fundamentals
+    kind: skill
+    path: config/skills/langchain-fundamentals
+    description: Create LangChain agents with create_agent, define tools, and use
+      middleware for human-in-the-loop and error handling.
+  - id: langchain-rag
+    kind: skill
+    path: config/skills/langchain-rag
+    description: INVOKE THIS SKILL when building ANY retrieval-augmented generation
+      (RAG) system. Covers document loaders, RecursiveCharacterTextSplitter,
+      embeddings (OpenAI), and vector stores (Chroma, FAISS, Pinecone).
+  - id: langchain-middleware
+    kind: skill
+    path: config/skills/langchain-middleware
+    description: INVOKE THIS SKILL when you need human-in-the-loop approval, custom
+      middleware, or structured output. Covers HumanInTheLoopMiddleware for
+      human approval of dangerous tool calls, creating custom middleware with
+      hooks, Command resume patterns, and structured output with Pydantic/Zod.
+  - id: langchain-dependencies
+    kind: skill
+    path: config/skills/langchain-dependencies
+    description: INVOKE THIS SKILL when setting up a new project or when asked about
+      package versions, installation, or dependency management for LangChain,
+      LangGraph, LangSmith, or Deep Agents. Covers required packages, minimum
+      versions, environment requirements, versioning best practices, and common
+      community tool packages for both Python and TypeScript.
+  - id: langgraph-fundamentals
+    kind: skill
+    path: config/skills/langgraph-fundamentals
+    description: INVOKE THIS SKILL when writing ANY LangGraph code. Covers
+      StateGraph, state schemas, nodes, edges, Command, Send, invoke, streaming,
+      and error handling.
+  - id: langgraph-human-in-the-loop
+    kind: skill
+    path: config/skills/langgraph-human-in-the-loop
+    description: INVOKE THIS SKILL when implementing human-in-the-loop patterns,
+      pausing for approval, or handling errors in LangGraph. Covers interrupt(),
+      Command(resume=...), approval/validation workflows, and the 4-tier error
+      handling strategy.
+  - id: langgraph-persistence
+    kind: skill
+    path: config/skills/langgraph-persistence
+    description: INVOKE THIS SKILL when your LangGraph needs to persist state,
+      remember conversations, travel through history, or configure subgraph
+      checkpointer scoping. Covers checkpointers, thread_id, time travel, Store,
+      and subgraph persistence modes.
+  - id: langgraph-cli
+    kind: skill
+    path: config/skills/langgraph-cli
+    description: INVOKE THIS SKILL when using the langgraph CLI to scaffold,
+      develop, build, or deploy LangGraph applications. Covers langgraph new,
+      dev, build, up, deploy, and langgraph.json configuration.
+  - id: deep-agents-core
+    kind: skill
+    path: config/skills/deep-agents-core
+    description: INVOKE THIS SKILL when building ANY Deep Agents application. Covers
+      create_deep_agent(), harness architecture, SKILL.md format, and
+      configuration options.
+  - id: deep-agents-memory
+    kind: skill
+    path: config/skills/deep-agents-memory
+    description: INVOKE THIS SKILL when your Deep Agent needs memory, persistence,
+      or filesystem access. Covers StateBackend (ephemeral), StoreBackend
+      (persistent), FilesystemMiddleware, and CompositeBackend for routing.
+  - id: deep-agents-orchestration
+    kind: skill
+    path: config/skills/deep-agents-orchestration
+    description: INVOKE THIS SKILL when using subagents, task planning, or human
+      approval in Deep Agents. Covers SubAgentMiddleware, TodoList for planning,
+      and HITL interrupts.
+  - id: managed-deep-agents
+    kind: skill
+    path: config/skills/managed-deep-agents
+    description: INVOKE THIS SKILL when creating, deploying, running, or operating
+      Managed Deep Agents in LangSmith. Covers deepagents-cli, the Python and
+      TypeScript SDKs, React useStream, REST fallbacks, MCP tools, interrupts,
+      backends, and the managed agent file tree.
+  - id: swarm
+    kind: skill
+    path: config/skills/swarm
+    description: "Dispatches many independent items in parallel: create a table, fan
+      out to subagents, aggregate results. One row = one unit of work."
+requirements:
+  env:
+    - LANGSMITH_API_KEY
+    - LANGSMITH_TRACING
+    - LANGSMITH_PROJECT
+    - ANTHROPIC_API_KEY
+    - OPENAI_API_KEY
+    - TAVILY_API_KEY
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

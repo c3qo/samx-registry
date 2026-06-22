@@ -1,0 +1,20 @@
+schemaVersion: 1
+id: huggingface/huggingface_hub
+name: huggingface_hub
+description: Python client for the Hugging Face Hub.
+source:
+  type: git
+  url: https://github.com/huggingface/huggingface_hub
+  revision: 462d09366e5d215b72b710769326c4c7baf26f9c
+capabilities:
+  - id: hf-release-notes
+    kind: skill
+    path: .opencode/skills/hf-release-notes
+    description: Generate Hugging Face Hub (huggingface_hub) release notes from
+      cached PR JSON files. Use when asked to draft release notes from PR files.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: fig-mcp.instacart.com/instacart
+name: Instacart
+description: Instacart remote MCP server at https://fig-mcp.instacart.com/mcp.
+  Groceries and more delivered as fast as 30 minutes. Setup guides for Claude
+  Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/instacart
+capabilities:
+  - id: instacart
+    kind: mcp
+    spec:
+      serverName: instacart
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://fig-mcp.instacart.com/mcp

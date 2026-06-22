@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: splice.com/splice
+name: Splice
+description: Splice remote MCP server at https://mcp.splice.com/mcp. Search
+  Splice&#x27;s sounds catalog, build stacks & more!. Setup guides for Claude
+  Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/splice
+capabilities:
+  - id: splice
+    kind: mcp
+    spec:
+      serverName: splice
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.splice.com/mcp

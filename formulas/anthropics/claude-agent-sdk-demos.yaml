@@ -1,0 +1,64 @@
+schemaVersion: 1
+id: anthropics/claude-agent-sdk-demos
+name: Claude Agent SDK Demos
+description: Anthropic demo pack for Claude Agent SDK apps.
+source:
+  type: git
+  url: https://github.com/anthropics/claude-agent-sdk-demos
+  revision: 826b268506a5f3707623c9e6140b200befcbebae
+capabilities:
+  - id: action-creator
+    kind: skill
+    path: email-agent/agent/.claude/skills/action-creator
+    description: Creates user-specific one-click action templates that execute email
+      operations when clicked in the chat interface. Use when user wants
+      reusable actions for their specific workflows (send payment reminder to
+      ACME Corp, forward bugs to engineering, archive old newsletters from
+      specific sources).
+  - id: listener-creator
+    kind: skill
+    path: email-agent/agent/.claude/skills/listener-creator
+    description: Creates event-driven email listeners that monitor for specific
+      conditions (like urgent emails from boss, newsletters to archive, package
+      tracking) and execute custom actions. Use when user wants to be notified
+      about emails, automatically handle certain emails, or set up email
+      automation workflows.
+  - id: xlsx
+    kind: skill
+    path: excel-demo/agent/.claude/skills/xlsx
+    description: "Comprehensive spreadsheet creation, editing, and analysis with
+      support for formulas, formatting, data analysis, and visualization. When
+      Claude needs to work with spreadsheets (.xlsx, .xlsm, .csv, .tsv, etc)
+      for: (1) Creating new spreadsheets with formulas and formatting, (2)
+      Reading or analyzing data, (3) Modify existing spreadsheets while
+      preserving formulas, (4) Data analysis and visualization in spreadsheets,
+      or (5) Recalculating formulas"
+  - id: executive-briefing
+    kind: skill
+    path: research-agent/.claude/skills/executive-briefing
+    description: Transforms research findings into executive-ready briefings.
+      Automatically activated when user mentions 'executive', 'briefing',
+      'C-suite', 'board', 'leadership', or 'presentation'.
+  - id: pdf
+    kind: skill
+    path: research-agent/.claude/skills/pdf
+    description: Comprehensive PDF manipulation toolkit for extracting text and
+      tables, creating new PDFs, merging/splitting documents, and handling
+      forms. When Claude needs to fill in a PDF form or programmatically
+      process, generate, or analyze PDF documents at scale.
+  - id: docx
+    kind: skill
+    path: resume-generator/.claude/skills/docx
+    description: "Comprehensive document creation, editing, and analysis with
+      support for tracked changes, comments, formatting preservation, and text
+      extraction. When Claude needs to work with professional documents (.docx
+      files) for: (1) Creating new documents, (2) Modifying or editing content,
+      (3) Working with tracked changes, (4) Adding comments, or any other
+      document tasks"
+requirements:
+  env:
+    - ANTHROPIC_API_KEY
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

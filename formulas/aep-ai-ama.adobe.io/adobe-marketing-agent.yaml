@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: aep-ai-ama.adobe.io/adobe-marketing-agent
+name: Adobe Marketing Agent
+description: Adobe Marketing Agent remote MCP server at
+  https://aep-ai-ama.adobe.io/mcp. Marketing campaign and audience insights from
+  Adobe. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/adobe-marketing-agent
+capabilities:
+  - id: adobe-marketing-agent
+    kind: mcp
+    spec:
+      serverName: adobe-marketing-agent
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://aep-ai-ama.adobe.io/mcp

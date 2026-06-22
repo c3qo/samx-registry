@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: privacy.com/privacy
+name: Privacy Com
+description: Privacy.com remote MCP server at https://mcp.privacy.com. Manage
+  virtual cards and track your spending patterns. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/privacy
+capabilities:
+  - id: privacy
+    kind: mcp
+    spec:
+      serverName: privacy
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.privacy.com

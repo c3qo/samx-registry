@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: zoominfo.com/zoominfo
+name: ZoomInfo
+description: ZoomInfo remote MCP server at https://mcp.zoominfo.com/mcp. Enrich
+  contacts & accounts with GTM intelligence. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/zoominfo
+capabilities:
+  - id: zoominfo
+    kind: mcp
+    spec:
+      serverName: zoominfo
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.zoominfo.com/mcp

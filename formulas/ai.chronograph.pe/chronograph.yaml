@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: ai.chronograph.pe/chronograph
+name: Chronograph
+description: Chronograph remote MCP server at https://ai.chronograph.pe/mcp.
+  Interact with your Chronograph data directly in Claude. Setup guides for
+  Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/chronograph
+capabilities:
+  - id: chronograph
+    kind: mcp
+    spec:
+      serverName: chronograph
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://ai.chronograph.pe/mcp

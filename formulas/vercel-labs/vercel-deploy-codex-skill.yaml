@@ -1,0 +1,23 @@
+schemaVersion: 1
+id: vercel-labs/vercel-deploy-codex-skill
+name: Vercel Deploy Plugin for Codex
+description: Codex skill for Vercel deploys w/ claimable preview.
+source:
+  type: git
+  url: https://github.com/vercel-labs/vercel-deploy-codex-skill
+  revision: baeeb9d6d0acca47400dd4939aa6499100bbd0f0
+capabilities:
+  - id: vercel-deploy
+    kind: skill
+    path: skills/vercel-deploy
+    description: Deploy applications and websites to Vercel with a claimable
+      preview. Use when the user requests deployment actions like "deploy my
+      app", "deploy and give me the link", "push this live", or "create a
+      preview deployment". No authentication required - returns preview URL and
+      claimable deployment link.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

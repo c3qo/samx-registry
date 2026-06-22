@@ -1,0 +1,33 @@
+schemaVersion: 1
+id: flutter/genui
+name: GenUI
+description: Flutter generative UI SDK + examples.
+source:
+  type: git
+  url: https://github.com/flutter/genui
+  revision: ffde58489f8e976288feb2ef4d6110515c58d269
+capabilities:
+  - id: genui-helper
+    kind: skill
+    path: .agent/skills/genui-helper
+    description: >
+      Development helper for the GenUI repository. Use this skill when the user
+      asks about GenUI workflows, running tests, creating components, finding
+      A2UI or Dart references, or adhering to repository standards.
+  - id: create-catalog-item
+    kind: skill
+    path: packages/genui/skills/create-catalog-item
+    description: Use this skill when the user asks to create a new CatalogItem, data
+      class, and/or widget class based on a JSON Schema definition in an
+      application that uses Flutter's `genui` package.
+  - id: integrate-genui-firebase
+    kind: skill
+    path: packages/genui/skills/integrate-genui-firebase
+    description: Use this skill when the user asks to integrate the genui package
+      and get a simple conversation going with Firebase AI Logic.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

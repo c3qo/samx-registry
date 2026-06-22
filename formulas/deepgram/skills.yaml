@@ -1,0 +1,85 @@
+schemaVersion: 1
+id: deepgram/skills
+name: Deepgram Skills
+description: Deepgram skill pack for API/docs/starters/recipes/examples/MCP.
+source:
+  type: git
+  url: https://github.com/deepgram/skills
+  revision: 8f371ac28ae8f0ad795e0f2e67f25bb154d10d49
+capabilities:
+  - id: api
+    kind: skill
+    path: skills/api
+    description: >
+      Deepgram API reference for speech-to-text, text-to-speech, voice agents,
+      audio intelligence, and account management. Use whenever building with
+      Deepgram APIs — REST or WebSocket. Covers authentication, all endpoints,
+      query parameters, request/response schemas, and WebSocket message formats.
+      Reference files are organized by domain: listen (STT), speak (TTS), agent
+      (voice agents), read (text/audio intelligence), models, projects, auth,
+      and self-hosted.
+  - id: docs
+    kind: skill
+    path: skills/docs
+    description: >
+      Find the right Deepgram documentation for any task. Use whenever someone
+      needs help locating docs, understanding which API to use, or wants to ask
+      questions about Deepgram. Covers all product areas: speech-to-text,
+      text-to-speech, voice agents, audio intelligence, and self-hosted
+      deployments.
+  - id: examples
+    kind: skill
+    path: skills/examples
+    description: >
+      Find working Deepgram integration examples with third-party platforms and
+      frameworks. Use whenever someone wants to integrate Deepgram with Twilio,
+      LiveKit, LangChain, Vercel AI SDK, Discord, Vonage, Pipecat, Expo,
+      FastAPI, Cloudflare Workers, Slack, Telegram, LlamaIndex, Zoom, Next.js,
+      Nuxt, Django, SvelteKit, NestJS, Spring Boot, CrewAI, Riverside,
+      SignalWire, and more. Examples are full runnable integration demos, not
+      minimal feature snippets.
+  - id: recipes
+    kind: skill
+    path: skills/recipes
+    description: >
+      Find focused, runnable Deepgram recipes for a specific feature × language.
+      Use whenever someone wants a minimal working code snippet for ONE feature
+      (transcribe URL, diarize, smart-format, voice agent connect, etc.) rather
+      than a full starter app. Recipes are under 50 lines, read DEEPGRAM_API_KEY
+      from env, and ship with a runnable example_test. Covers Python,
+      JavaScript, Go, .NET, Java, Rust, and the Deepgram CLI.
+  - id: setup-mcp
+    kind: skill
+    path: skills/setup-mcp
+    description: >
+      Set up the Deepgram MCP server for your AI coding tool. Checks whether the
+      Deepgram CLI (dg/deepctl) is installed: if so, uses the local CLI MCP
+      server (dg mcp) for full tool access; otherwise offers the hosted
+      documentation MCP or suggests installing the CLI. Use whenever someone
+      wants to install Deepgram's agentic tools, set up the MCP server, or
+      connect their editor to Deepgram.
+  - id: starters
+    kind: skill
+    path: skills/starters
+    description: >
+      Clone a ready-to-run Deepgram demo app and start building on top of it.
+      Use whenever someone wants a quick working demo, needs to prototype with
+      Deepgram, or is starting a new project that uses speech-to-text,
+      text-to-speech, voice agents, audio intelligence, or live streaming. Match
+      the user's language, framework, and desired Deepgram feature to the right
+      starter.
+  - id: references
+    kind: agent
+    path: skills/api/references
+    entry: agent.md
+    description: Voice Agent — build conversational voice agents.
+  - id: template
+    kind: skill
+    path: template
+    description: Replace with description of the skill and when to use it.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

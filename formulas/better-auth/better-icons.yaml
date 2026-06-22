@@ -1,0 +1,23 @@
+schemaVersion: 1
+id: better-auth/better-icons
+name: Better Icons
+description: MCP server + CLI for searching, retrieving, and syncing icons from
+  Iconify libraries.
+source:
+  type: git
+  url: https://github.com/better-auth/better-icons
+  revision: 033316ecb8f4982235af4111a2257e80231f5ab1
+capabilities:
+  - id: skills
+    kind: skill
+    path: skills
+    description: "Use when working with icons in any project. Provides CLI for
+      searching 200+ icon libraries (Iconify) and retrieving SVGs. Commands:
+      `better-icons search <query>` to find icons, `better-icons get <id>` to
+      get SVG. Also available as MCP server for AI agents."
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

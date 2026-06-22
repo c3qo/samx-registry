@@ -1,0 +1,41 @@
+schemaVersion: 1
+id: browser-use/browsercode
+name: BrowserCode
+description: Browser-native coding agent w/ CDP browser control.
+source:
+  type: git
+  url: https://github.com/browser-use/browsercode
+  revision: c26f48c980e1080e0a88c5ed4e2a7e944f8290c9
+capabilities:
+  - id: effect
+    kind: skill
+    path: .opencode/skills/effect
+    description: Work with Effect v4 / effect-smol TypeScript code in this repo
+  - id: browser-execute
+    kind: skill
+    path: packages/bcode-browser/skills/browser-execute
+    description: Use ONLY when calling the `browser_execute` tool or driving a real
+      browser via the Chrome DevTools Protocol. Required reading before the
+      first `browser_execute` call in a session. Covers the three connection
+      methods (local Chrome with remote debugging, isolated debug-port profile,
+      Browser Use cloud), the in-process `session` / `console` snippet model,
+      attaching to a page target, common CDP commands, the per-project
+      `.bcode/agent-workspace/` for reusable scripts, and screenshot
+      auto-attachment.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: unlinked-hook-files
+    severity: warning
+    category: hooks
+    message: Repository contains hook-related files that are not linked by this formula.
+    paths:
+      - .opencode/plugins/smoke-theme.json
+      - .opencode/plugins/tui-smoke.tsx
+    reason: These files lack explicit appliesTo mappings, supported targets, or
+      supported file types.
+    effect: SAMX will not install, link, or execute these files.
+    action: Add explicit hook entries only after manual review.

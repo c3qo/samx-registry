@@ -1,0 +1,147 @@
+schemaVersion: 1
+id: n8n-io/n8n
+name: n8n
+description: Workflow automation platform.
+source:
+  type: git
+  url: https://github.com/n8n-io/n8n
+  revision: cafc64cc082de2092681c27a9d3f91eaf735e9dd
+capabilities:
+  - id: community-pr-readiness-check
+    kind: skill
+    path: .agents/skills/community-pr-readiness-check
+    description: Checks if a community pull request is ready for human review.
+      Verifies CLA signature, PR title format, description completeness, test
+      coverage, and cubic-dev-ai issues, then triages to the right Linear team
+      or recommends a close. Use when given a PR number or branch name to
+      review, or when the user says /community-pr-readiness-check, or asks to
+      check if a PR is ready for review.
+  - id: content-design
+    kind: skill
+    path: .agents/skills/content-design
+    description: >
+      Product content designer for UI copy. Use when writing, reviewing, or
+      auditing user-facing text: button labels, error messages, tooltips, empty
+      states, modal copy, placeholder text, confirmation dialogs, onboarding
+      flows, or i18n strings. Also use when the user says /copy, /content, or
+      /ux-copy.
+  - id: create-issue
+    kind: skill
+    path: .agents/skills/create-issue
+    description: Create Linear tickets or GitHub issues following n8n conventions.
+      Use when the user asks to create a ticket, file a bug, open an issue, or
+      says /create-issue.
+  - id: create-pr
+    kind: skill
+    path: .agents/skills/create-pr
+    description: Creates GitHub pull requests with properly formatted titles that
+      pass the check-pr-title CI validation. Use when creating PRs, submitting
+      changes for review, or when the user says /pr or asks to create a pull
+      request.
+  - id: db-migrations
+    kind: skill
+    path: .agents/skills/db-migrations
+    description: Authors n8n database migrations. Use when creating or modifying
+      files under packages/@n8n/db/src/migrations/, when the user asks to add a
+      column, table, index, foreign key, or backfill, or when the user mentions
+      DB migrations or TypeORM migrations.
+  - id: design-system
+    kind: skill
+    path: .agents/skills/design-system
+    description: Guidelines on using Design System styles and components. Use when
+      working on .vue files in packages/frontend. Triggers for tasks that
+      include component architecture, styling, UI changes, or feature work.
+  - id: experiments
+    kind: skill
+    path: .agents/skills/experiments
+    description: Guides work on `packages/frontend/editor-ui` experiments. Use when
+      creating, extending, wiring, testing, reviewing, or retiring editor-ui
+      experiments, PostHog feature flags, experiment key indexes, variants,
+      stores/composables, persisted experiment state, or experiment telemetry.
+  - id: human-like-code-review
+    kind: skill
+    path: .agents/skills/human-like-code-review
+    description: Reviews a GitHub pull request like a thoughtful human reviewer and
+      writes the feedback to a markdown file. Prioritizes bugs, behavioral
+      regressions, security issues, and missing tests, ordered by severity. Use
+      when given a PR URL to review, or when the user says
+      /human-like-code-review.
+  - id: linear-issue
+    kind: skill
+    path: .agents/skills/linear-issue
+    description: Fetch and analyze Linear issue with all related context. Use when
+      starting work on a Linear ticket, analyzing issues, or gathering context
+      about a Linear issue.
+  - id: loom-transcript
+    kind: skill
+    path: .agents/skills/loom-transcript
+    description: Fetch and display the full transcript from a Loom video URL. Use
+      when the user wants to get or read a Loom transcript.
+  - id: node-add-oauth
+    kind: skill
+    path: .agents/skills/node-add-oauth
+    description: Add OAuth2 credential support to an existing n8n node — creates the
+      credential file, updates the node, adds tests, and keeps the CLI constant
+      in sync. Use when the user says /node-add-oauth.
+  - id: protect-endpoints
+    kind: skill
+    path: .agents/skills/protect-endpoints
+    description: Applies n8n's RBAC scope decorators to REST endpoints. Use when
+      creating a new @RestController, adding any @Get/@Post/@Put/@Patch/@Delete
+      route to an existing controller, or reviewing endpoint authorization.
+      Every authenticated endpoint must be gated by @ProjectScope or
+      @GlobalScope.
+  - id: reproduce-bug
+    kind: skill
+    path: .agents/skills/reproduce-bug
+    description: Reproduce a bug from a Linear ticket with a failing test. Expects
+      the full ticket context (title, description, comments) to be provided as
+      input.
+  - id: spec-driven-development
+    kind: skill
+    path: .agents/skills/spec-driven-development
+    description: Keeps implementation and specs in sync. Use when working on a
+      feature that has a spec in .agents/specs/, when the user says /spec, or
+      when starting implementation of a documented feature. Also use when the
+      user asks to verify implementation against a spec or update a spec after
+      changes.
+  - id: setup-mcps
+    kind: skill
+    path: .claude/plugins/n8n/skills/setup-mcps
+    description: Configure MCP servers for n8n development. Use when the user says
+      /setup-mcps or asks to set up MCP servers for n8n.
+  - id: n8n-cli
+    kind: skill
+    path: packages/@n8n/cli/skills/n8n-cli
+    description: Use the n8n CLI to manage workflows, credentials, executions, and
+      more on an n8n instance. Use when the user asks to interact with n8n,
+      automate workflows, manage credentials, or operate their instance from the
+      command line.
+  - id: conventions
+    kind: skill
+    path: .agents/skills/conventions
+    description: Quick reference for n8n patterns. Full docs /AGENTS.md
+  - id: create-community-node-lint-rule
+    kind: skill
+    path: .agents/skills/create-community-node-lint-rule
+    description: Create new ESLint rules for the @n8n/eslint-plugin-community-nodes
+      package. Use when adding a lint rule, creating a community node lint, or
+      working on eslint-plugin-community-nodes. Guides rule implementation,
+      tests, docs, and plugin registration.
+  - id: create-skill
+    kind: skill
+    path: .agents/skills/create-skill
+    description: Guides users through creating effective Agent Skills. Use when you
+      want to create, write, or author a new skill, or asks about skill
+      structure, best practices, or SKILL.md format.
+  - id: setup-mcps-2
+    kind: skill
+    path: .opencode/skills/setup-mcps
+    description: Configure MCP servers for n8n development in OpenCode. Use when the
+      user says /setup-mcps or asks to set up MCP servers for n8n.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

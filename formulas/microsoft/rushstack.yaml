@@ -1,0 +1,19 @@
+schemaVersion: 1
+id: microsoft/rushstack
+name: Rush Stack
+description: Monorepo toolchain suite; Rush, Heft, API Extractor, docs,
+  lockfile, MCP, Playwright tunnel, more.
+source:
+  type: git
+  url: https://github.com/microsoft/rushstack
+  revision: dbf9c5d63ba24bd6225474c0bab1b5c410cca13b
+capabilities:
+  - id: playwright
+    kind: mcp
+    path: .vscode/mcp.json
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,132 @@
+schemaVersion: 1
+id: getsentry/sentry-mcp
+name: sentry-mcp
+description: Sentry MCP server; remote HTTP + stdio middleware for Sentry API.
+source:
+  type: git
+  url: https://github.com/getsentry/sentry-mcp
+  revision: 5dee0fc0758d1d5eb66210af7399126014f3bb04
+capabilities:
+  - id: create-pr
+    kind: skill
+    path: .agents/skills/create-pr
+    description: Alias for sentry-skills:pr-writer. Use when users explicitly ask
+      for "create-pr" or reference the legacy skill name. Redirects to the
+      canonical PR writing workflow.
+  - id: mcp-audit
+    kind: skill
+    path: .agents/skills/mcp-audit
+    description: Audit MCP servers for protocol compliance, metadata drift, and
+      compatibility regressions. Use when reviewing tool annotations,
+      tool/result schemas, structured output, lifecycle/init handshake,
+      capabilities, prompts/resources support, transports, auth, security,
+      version drift, or Warden/CI MCP compatibility checks. Trigger phrases
+      include "audit MCP", "check MCP spec compliance", "review tool hints",
+      "validate tools/list", "check initialize handshake", "review prompt or
+      resource capabilities", and "check MCP compatibility in Warden".
+  - id: mcp-qa
+    kind: skill
+    path: .agents/skills/mcp-qa
+    description: QA MCP tool changes with local CLI and real agent clients. Use when
+      explicitly invoked via /mcp-qa or when asked to QA MCP tool changes
+      end-to-end.
+  - id: openspec-propose
+    kind: skill
+    path: .agents/skills/openspec-propose
+    description: Propose a new change with all artifacts generated in one step. Use
+      when the user wants to quickly describe what they want to build and get a
+      complete proposal with design, specs, and tasks ready for implementation.
+  - id: sentry
+    kind: mcp
+    path: plugins/sentry-mcp-experimental/mcp.json
+  - id: sentry-stdio
+    kind: mcp
+    path: packages/agent-cli-test/projects/stdio/.mcp.json
+  - id: logging-observability
+    kind: skill
+    path: .agents/skills/logging-observability
+    description: Review code for correct logging and error handling patterns. Use
+      when reviewing code that handles errors, uses logging functions, or
+      captures exceptions. Enforces the error hierarchy where 4xx errors are
+      never logged to Sentry and 5xx errors always are. Trigger phrases include
+      "review logging", "check error handling", "audit observability", or verify
+      correct use of logIssue vs logError.
+  - id: openspec-apply-change
+    kind: skill
+    path: .agents/skills/openspec-apply-change
+    description: Implement tasks from an OpenSpec change. Use when the user wants to
+      start implementing, continue implementation, or work through tasks.
+  - id: openspec-archive-change
+    kind: skill
+    path: .agents/skills/openspec-archive-change
+    description: Archive a completed change in the experimental workflow. Use when
+      the user wants to finalize and archive a change after implementation is
+      complete.
+  - id: openspec-explore
+    kind: skill
+    path: .agents/skills/openspec-explore
+    description: Enter explore mode - a thinking partner for exploring ideas,
+      investigating problems, and clarifying requirements. Use when the user
+      wants to think through something before or during a change.
+  - id: openspec-sync-specs
+    kind: skill
+    path: .agents/skills/openspec-sync-specs
+    description: Sync delta specs from a change to main specs. Use when the user
+      wants to update main specs with changes from a delta spec, without
+      archiving the change.
+  - id: skill-creator
+    kind: skill
+    path: .agents/skills/skill-creator
+    description: Alias for sentry-skills:skill-writer. Use when users explicitly ask
+      for "skill-creator" or reference the legacy skill name. Redirects to the
+      canonical skill authoring workflow.
+  - id: testing-guidelines
+    kind: skill
+    path: .agents/skills/testing-guidelines
+    description: Guide for writing tests. Use when adding new functionality, fixing
+      bugs, or when tests are needed. Emphasizes integration tests, real-world
+      fixtures, and regression coverage.
+  - id: openspec-apply-change-2
+    kind: skill
+    path: .codex/skills/openspec-apply-change
+    description: Implement tasks from an OpenSpec change. Use when the user wants to
+      start implementing, continue implementation, or work through tasks.
+  - id: openspec-archive-change-2
+    kind: skill
+    path: .codex/skills/openspec-archive-change
+    description: Archive a completed change in the experimental workflow. Use when
+      the user wants to finalize and archive a change after implementation is
+      complete.
+  - id: openspec-explore-2
+    kind: skill
+    path: .codex/skills/openspec-explore
+    description: Enter explore mode - a thinking partner for exploring ideas,
+      investigating problems, and clarifying requirements. Use when the user
+      wants to think through something before or during a change.
+  - id: openspec-propose-2
+    kind: skill
+    path: .codex/skills/openspec-propose
+    description: Propose a new change with all artifacts generated in one step. Use
+      when the user wants to quickly describe what they want to build and get a
+      complete proposal with design, specs, and tasks ready for implementation.
+  - id: openspec-sync-specs-2
+    kind: skill
+    path: .codex/skills/openspec-sync-specs
+    description: Sync delta specs from a change to main specs. Use when the user
+      wants to update main specs with changes from a delta spec, without
+      archiving the change.
+  - id: sentry-2
+    kind: mcp
+    path: plugins/sentry-mcp/mcp.json
+  - id: sentry-3
+    kind: mcp
+    path: .codex/config.toml
+  - id: sentry-dev
+    kind: mcp
+    path: .codex/config.toml
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

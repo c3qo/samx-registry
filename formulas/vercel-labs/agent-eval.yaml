@@ -1,0 +1,38 @@
+schemaVersion: 1
+id: vercel-labs/agent-eval
+name: agent-eval
+description: AI agent eval fwk + Next.js playground.
+source:
+  type: git
+  url: https://github.com/vercel-labs/agent-eval
+  revision: a9dcc9a8c53dbc22ececc967ded7ab3963f18e67
+capabilities:
+  - id: frontend-design
+    kind: skill
+    path: packages/playground/.agents/skills/frontend-design
+    description: Create distinctive, production-grade frontend interfaces with high
+      design quality. Use this skill when the user asks to build web components,
+      pages, artifacts, posters, or applications (examples include websites,
+      landing pages, dashboards, React components, HTML/CSS layouts, or when
+      styling/beautifying any web UI). Generates creative, polished code and UI
+      design that avoids generic AI aesthetics.
+  - id: vercel-react-best-practices
+    kind: skill
+    path: packages/playground/.agents/skills/vercel-react-best-practices
+    description: React and Next.js performance optimization guidelines from Vercel
+      Engineering. This skill should be used when writing, reviewing, or
+      refactoring React/Next.js code to ensure optimal performance patterns.
+      Triggers on tasks involving React components, Next.js pages, data
+      fetching, bundle optimization, or performance improvements.
+  - id: web-design-guidelines
+    kind: skill
+    path: packages/playground/.agents/skills/web-design-guidelines
+    description: Review UI code for Web Interface Guidelines compliance. Use when
+      asked to "review my UI", "check accessibility", "audit design", "review
+      UX", or "check my site against best practices".
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,144 @@
+schemaVersion: 1
+id: medusajs/medusa-claude-plugins
+name: Medusa Agent Skills
+description: Claude Code plugin pack → Medusa dev/cloud/storefront skills + MCP.
+source:
+  type: git
+  url: https://github.com/medusajs/medusa-claude-plugins
+  revision: 24cc29b9bb95312128e091ab153eae714e746efa
+capabilities:
+  - id: building-with-medusa
+    kind: skill
+    path: plugins/medusa-dev/skills/building-with-medusa
+    description: Load automatically when planning, researching, or implementing ANY
+      Medusa backend features (custom modules, API routes, workflows, data
+      models, module links, business logic). REQUIRED for all Medusa backend
+      work in ALL modes (planning, implementation, exploration). Contains
+      architectural patterns, best practices, and critical rules that MCP
+      servers don't provide.
+  - id: building-storefronts
+    kind: skill
+    path: plugins/medusa-dev/skills/building-storefronts
+    description: Load automatically when planning, researching, or implementing
+      Medusa storefront features (calling custom API routes, SDK integration,
+      React Query patterns, data fetching). REQUIRED for all storefront
+      development in ALL modes (planning, implementation, exploration). Contains
+      SDK usage patterns, frontend integration, and critical rules for calling
+      Medusa APIs.
+  - id: medusadocs
+    kind: mcp
+    path: plugins/learn-medusa/.mcp.json
+  - id: storefront-best-practices
+    kind: skill
+    path: plugins/ecommerce-storefront/skills/storefront-best-practices
+    description: ALWAYS use this skill when working on ecommerce storefronts, online
+      stores, shopping sites. Use for ANY storefront component including
+      checkout pages, cart, payment flows, product pages, product listings,
+      navigation, homepage, or ANY page/component in a storefront. CRITICAL for
+      adding checkout, implementing cart, integrating Medusa backend, or
+      building any ecommerce functionality. Framework-agnostic (Next.js,
+      SvelteKit, TanStack Start, React, Vue). Provides patterns, decision
+      frameworks, backend integration guidance.
+  - id: learning-medusa
+    kind: skill
+    path: plugins/learn-medusa/skills/learning-medusa
+    description: Load automatically when user asks to learn Medusa development
+      (e.g., "teach me how to build with medusa", "guide me through medusa", "I
+      want to learn medusa"). Interactive guided tutorial where Claude acts as a
+      coding bootcamp instructor, teaching step-by-step with checkpoints and
+      verification.
+  - id: mcloud-auth
+    kind: skill
+    path: plugins/medusa-cloud/skills/mcloud-auth
+    description: "Execute mcloud authentication and context commands: login, logout,
+      whoami, use, version, and signup. Use when setting up the CLI, switching
+      accounts, verifying auth state, setting the active org/project/environment
+      context, or checking the CLI version."
+  - id: mcloud-deployments
+    kind: skill
+    path: plugins/medusa-cloud/skills/mcloud-deployments
+    description: Execute mcloud deployments commands to list deployments, retrieve
+      deployment details, and fetch build logs. Use when listing deployments,
+      checking deployment status, or reading build output for debugging build
+      failures.
+  - id: mcloud-environments
+    kind: skill
+    path: plugins/medusa-cloud/skills/mcloud-environments
+    description: Execute mcloud environments commands to list, get, create, delete,
+      redeploy, or trigger builds for Cloud environments. Use when managing
+      environment lifecycle, redeploying after variable changes, or starting new
+      builds from source.
+  - id: mcloud-logs
+    kind: skill
+    path: plugins/medusa-cloud/skills/mcloud-logs
+    description: Execute mcloud logs to fetch and stream runtime logs for Cloud
+      environments. Use when reading backend or storefront logs, filtering by
+      time range, searching for errors, or scoping logs to a specific
+      deployment.
+  - id: mcloud-organizations
+    kind: skill
+    path: plugins/medusa-cloud/skills/mcloud-organizations
+    description: Execute mcloud organizations commands to list or get Cloud
+      organizations. Use when discovering organizations, resolving organization
+      IDs by name, or retrieving organization details including members and
+      subscription.
+  - id: mcloud-projects
+    kind: skill
+    path: plugins/medusa-cloud/skills/mcloud-projects
+    description: Execute mcloud projects commands to list, get, or delete Cloud
+      projects. Use when discovering projects, resolving project handles by
+      name, or retrieving project details including linked environments.
+  - id: mcloud-variables
+    kind: skill
+    path: plugins/medusa-cloud/skills/mcloud-variables
+    description: Execute mcloud variables commands to list and get environment
+      variables for a Cloud environment. Use when inspecting, reading, or
+      exporting environment variables. Never pass --reveal unless the user
+      explicitly requests secret values.
+  - id: using-medusa-cloud
+    kind: skill
+    path: plugins/medusa-cloud/skills/using-medusa-cloud
+    description: Manages Medusa Cloud resources through the Cloud CLI (mcloud). Use
+      when deploying, debugging deployments, managing environments, environment
+      variables, or any Medusa Cloud operation. CRITICAL for mcloud commands,
+      deployment failures, build logs, Cloud setup, and CI/CD workflows.
+  - id: medusadocs-2
+    kind: mcp
+    path: plugins/medusa-dev/.mcp.json
+  - id: building-admin-dashboard-customizations
+    kind: skill
+    path: plugins/medusa-dev/skills/building-admin-dashboard-customizations
+    description: Load automatically when planning, researching, or implementing
+      Medusa Admin dashboard UI (widgets, custom pages, forms, tables, data
+      loading, navigation). REQUIRED for all admin UI work in ALL modes
+      (planning, implementation, exploration). Contains design patterns,
+      component usage, and data loading patterns that MCP servers don't provide.
+  - id: creating-internal-agents
+    kind: skill
+    path: plugins/medusa-dev/skills/creating-internal-agents
+    description: "Use when building an internal admin-facing AI agent in a Medusa
+      project. These agents are operated by merchants and store operators — not
+      customers. Covers data models, module service, agent runtime (tools,
+      system prompt, streamText), streaming API routes (NDJSON), and admin UI
+      chat extensions. Load for any internal agent type: store operations
+      assistant, product audit, cohort analysis, customer service tooling for
+      support staff, etc. Do NOT use for customer-facing agents (storefront
+      chatbots, buyer-side assistants)."
+  - id: db-generate
+    kind: skill
+    path: plugins/medusa-dev/skills/db-generate
+    description: Generate database migrations for a Medusa module
+  - id: db-migrate
+    kind: skill
+    path: plugins/medusa-dev/skills/db-migrate
+    description: Run database migrations in Medusa
+  - id: new-user
+    kind: skill
+    path: plugins/medusa-dev/skills/new-user
+    description: Create an admin user in Medusa
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

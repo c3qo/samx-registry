@@ -1,0 +1,151 @@
+schemaVersion: 1
+id: vercel-labs/open-agents
+name: Open Agents
+description: "Open-source coding agent on Vercel: web UI, durable workflow
+  agent, sandbox VM, GitHub integration."
+source:
+  type: git
+  url: https://github.com/vercel-labs/open-agents
+  revision: cf865e94de7729751c747171785b6ce57e7b178c
+capabilities:
+  - id: workflow
+    kind: skill
+    path: .agents/skills/workflow
+    description: Creates durable, resumable workflows using Vercel's Workflow
+      DevKit. Use when building workflows that need to survive restarts, pause
+      for external events, retry on failure, or coordinate multi-step operations
+      over time. Triggers on mentions of "workflow", "durable functions",
+      "resumable", "workflow devkit", or step-based orchestration.
+  - id: ai-sdk
+    kind: skill
+    path: .agents/skills/ai-sdk
+    description: 'Answer questions about the AI SDK and help build AI-powered
+      features. Use when developers: (1) Ask about AI SDK functions like
+      generateText, streamText, ToolLoopAgent, embed, or tools, (2) Want to
+      build AI agents, chatbots, RAG systems, or text generation features, (3)
+      Have questions about AI providers (OpenAI, Anthropic, Google, etc.),
+      streaming, tool calling, structured output, or embeddings, (4) Use React
+      hooks like useChat or useCompletion. Triggers on: "AI SDK", "Vercel AI
+      SDK", "generateText", "streamText", "add AI to my app", "build an agent",
+      "tool calling", "structured output", "useChat".'
+  - id: frontend-design
+    kind: skill
+    path: .agents/skills/frontend-design
+    description: Create distinctive, production-grade frontend interfaces with high
+      design quality. Use this skill when the user asks to build web components,
+      pages, artifacts, posters, or applications (examples include websites,
+      landing pages, dashboards, React components, HTML/CSS layouts, or when
+      styling/beautifying any web UI). Generates creative, polished code and UI
+      design that avoids generic AI aesthetics.
+  - id: deploy-open-harness
+    kind: skill
+    path: .agents/skills/deploy-open-harness
+    description: Guides a user through collecting the credentials needed to deploy
+      their own copy of Open Harness, deploying this repo on Vercel, and
+      completing first-run setup. Use for requests about deploying,
+      self-hosting, configuring credentials, or getting started with a fork of
+      this app.
+  - id: agent-browser
+    kind: skill
+    path: .agents/skills/agent-browser
+    description: Automates browser interactions for web testing, form filling,
+      screenshots, and data extraction. Use when the user needs to navigate
+      websites, interact with web pages, fill forms, take screenshots, test web
+      applications, or extract information from web pages.
+  - id: baseline-ui
+    kind: skill
+    path: .agents/skills/baseline-ui
+    description: Validates animation durations, enforces typography scale, checks
+      component accessibility, and prevents layout anti-patterns in Tailwind CSS
+      projects. Use when building UI components, reviewing CSS utilities,
+      styling React views, or enforcing design consistency.
+  - id: chat-sdk
+    kind: skill
+    path: .agents/skills/chat-sdk
+    description: >
+      Build multi-platform chat bots with Chat SDK (`chat` npm package). Use
+      when developers want to (1) Build a Slack, Teams, Google Chat, Discord,
+      Telegram, GitHub, Linear, or WhatsApp bot, (2) Use Chat SDK to handle
+      mentions, direct messages, subscribed threads, reactions, slash commands,
+      cards, modals, files, or AI streaming, (3) Set up webhook routes or
+      multi-adapter bots, (4) Send rich cards or streamed AI responses to chat
+      platforms, (5) Build or maintain a custom adapter or state adapter.
+      Triggers on "chat sdk", "chat bot", "slack bot", "teams bot", "google chat
+      bot", "discord bot", "telegram bot", "whatsapp bot", "@chat-adapter",
+      "@chat-adapter/state-", "custom adapter", "state adapter", "build
+      adapter", and building bots that work across multiple chat platforms.
+  - id: code-review
+    kind: skill
+    path: .agents/skills/code-review
+    description: Reviews code changes and provides actionable feedback. Use when the
+      user asks to review a PR, diff, commit, or code changes. Triggers on
+      "/review", "review this PR", "review my changes", "code review".
+  - id: emil-design-eng
+    kind: skill
+    path: .agents/skills/emil-design-eng
+    description: This skill encodes Emil Kowalski's philosophy on UI polish,
+      component design, animation decisions, and the invisible details that make
+      software feel great.
+  - id: plan-mode
+    kind: skill
+    path: .agents/skills/plan-mode
+    description: Holistic, system-aware planning before implementing non-trivial
+      tasks. Use when the task involves new features, architectural decisions,
+      multi-file changes, unclear requirements, or multiple valid approaches.
+      Triggers on "/plan", "plan this", "design an approach", "let's plan
+      first".
+  - id: remove-demo-limits
+    kind: skill
+    path: .agents/skills/remove-demo-limits
+    description: Removes Open Harness hosted demo restrictions from a fork. Use when
+      a maintainer wants to remove managed-template trial caps, hosted
+      deployment gating, or "deploy your own" limits. Triggers on "remove demo
+      limits", "remove trial limits", "remove hosted restrictions", "open this
+      up for my fork", "remove managed template restrictions".
+  - id: vercel-react-best-practices
+    kind: skill
+    path: .agents/skills/vercel-react-best-practices
+    description: React and Next.js performance optimization guidelines from Vercel
+      Engineering. This skill should be used when writing, reviewing, or
+      refactoring React/Next.js code to ensure optimal performance patterns.
+      Triggers on tasks involving React components, Next.js pages, data
+      fetching, bundle optimization, or performance improvements.
+  - id: web-animation-design
+    kind: skill
+    path: .agents/skills/web-animation-design
+    description: "Design and implement web animations that feel natural and
+      purposeful. Use this skill proactively whenever the user asks questions
+      about animations, motion, easing, timing, duration, springs, transitions,
+      or animation performance. This includes questions about how to animate
+      specific UI elements, which easing to use, animation best practices, or
+      accessibility considerations for motion. Triggers on: easing, ease-out,
+      ease-in, ease-in-out, cubic-bezier, bounce, spring physics, keyframes,
+      transform, opacity, fade, slide, scale, hover effects, microinteractions,
+      Framer Motion, React Spring, GSAP, CSS transitions, entrance/exit
+      animations, page transitions, stagger, will-change, GPU acceleration,
+      prefers-reduced-motion, modal/dropdown/tooltip/popover/drawer animations,
+      gesture animations, drag interactions, button press feel, feels janky,
+      make it smooth."
+requirements:
+  env:
+    - POSTGRES_URL
+    - BETTER_AUTH_SECRET
+    - NEXT_PUBLIC_VERCEL_APP_CLIENT_ID
+    - VERCEL_APP_CLIENT_SECRET
+    - NEXT_PUBLIC_GITHUB_CLIENT_ID
+    - GITHUB_CLIENT_SECRET
+    - GITHUB_APP_ID
+    - GITHUB_APP_PRIVATE_KEY
+    - NEXT_PUBLIC_GITHUB_APP_SLUG
+    - GITHUB_WEBHOOK_SECRET
+    - REDIS_URL
+    - KV_URL
+    - OPEN_AGENTS_RESOURCE_PROFILE
+    - VERCEL_PROJECT_PRODUCTION_URL
+    - NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
+    - VERCEL_SANDBOX_BASE_SNAPSHOT_ID
+    - ELEVENLABS_API_KEY
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

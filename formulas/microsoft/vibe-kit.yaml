@@ -1,0 +1,72 @@
+schemaVersion: 1
+id: microsoft/vibe-kit
+name: Microsoft Research Vibe Kit
+description: MSR agent skills pack; Aurora/BioEmu/Dayhoff/MatterGen/Promptions.
+source:
+  type: git
+  url: https://github.com/microsoft/vibe-kit
+  revision: 6590f598c1a7294d7b3c8874721af4cca1908679
+capabilities:
+  - id: msresearch-aurora
+    kind: skill
+    path: skills/msresearch-aurora
+    description: Aurora — Microsoft's foundation model for the Earth system. Use
+      this skill for both inference (regional weather/climate forecasting,
+      Norway example, ERA5/CDS data, wind/temperature/pressure mapping) and
+      fine-tuning Aurora on new variables, regions, or domains (training,
+      evaluation, checkpoint extension, gradient/loss debugging). Triggers on
+      Aurora, Microsoft Aurora, foundation models for Earth systems,
+      ERA5/CDS/NetCDF weather data, weather forecast validation, and adapting
+      Aurora to new use cases.
+  - id: msresearch-bioemu
+    kind: skill
+    path: skills/msresearch-bioemu
+    description: Microsoft Research's BioEmu — generates protein conformational
+      ensembles from amino acid sequence on a local GPU. Use when users mention
+      BioEmu by name, want to predict protein dynamics or flexibility from
+      sequence, or are setting up / running / troubleshooting BioEmu locally.
+  - id: msresearch-dayhoff
+    kind: skill
+    path: skills/msresearch-dayhoff
+    description: Microsoft Research's Dayhoff — generates novel protein sequences
+      and scores variants using hybrid Mamba+Transformer models trained on the
+      3.34B-sequence Dayhoff Atlas. Use when users mention Dayhoff by name, want
+      to generate protein sequences from scratch or from a prompt, score
+      mutations / variants / fitness without experimental data, design sequences
+      in a protein family from homologs, scaffold sequences around a motif, or
+      are setting up / running / troubleshooting the Dayhoff prototype locally.
+  - id: msresearch-mattergen
+    kind: skill
+    path: skills/msresearch-mattergen
+    description: MatterGen workflows for property-conditioned inorganic crystal
+      generation, MatterSim triage, adapter fine-tuning, and Azure AI Foundry
+      hosted deployment. Use when users ask about MatterGen, materials
+      discovery, crystal generation, property-conditioned diffusion (bulk
+      modulus, band gap, magnetic density, HHI), MatterSim evaluation, or Azure
+      AI Foundry materials deployment.
+  - id: msresearch-promptions
+    kind: skill
+    path: skills/msresearch-promptions
+    description: Promptions — Microsoft Research's dynamic prompt middleware that
+      turns a user's prompt into ephemeral UI controls (sliders, toggles,
+      selects) they can adjust and replay to steer model output without
+      rewriting instructions. Use for integrating Promptions, designing control
+      schemas, rendering controls in React/Fluent UI, or showcasing the hosted
+      ImageGen Workbench demo (the recommended first-look) or the self-hosted
+      `promptions-chat` reference app.
+requirements:
+  env:
+    - CDS_API_KEY
+    - BACKEND_SERVICE
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Missing evidence for environment variable: CDS_API_KEY"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

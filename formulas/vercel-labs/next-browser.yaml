@@ -1,0 +1,27 @@
+schemaVersion: 1
+id: vercel-labs/next-browser
+name: next-browser
+description: Headed Playwright browser + Next.js/DevTools CLI.
+source:
+  type: git
+  url: https://github.com/vercel-labs/next-browser
+  revision: 00d3386bbc672a7756b4351dc3fdf4e07d8cecf4
+capabilities:
+  - id: synthesize-transcript
+    kind: skill
+    path: .claude/skills/synthesize-transcript
+    description: Analyze an agent transcript for generalizable learnings about
+      next-browser CLI usage, then propose SKILL.md updates, feature requests,
+      and bug fixes.
+  - id: next-browser
+    kind: skill
+    path: skills/next-browser
+    description: CLI that gives agents what humans get from React DevTools and the
+      Next.js dev overlay — component trees, props, hooks, PPR shells, errors,
+      network — as shell commands that return structured text.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

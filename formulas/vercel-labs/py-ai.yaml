@@ -1,0 +1,20 @@
+schemaVersion: 1
+id: vercel-labs/py-ai
+name: py-ai
+description: Python AI SDK; agents, hooks, MCP, UI, media.
+source:
+  type: git
+  url: https://github.com/vercel-labs/py-ai
+  revision: 8b626d73ec12697b1a02663b49c5d5cbe52852a3
+capabilities:
+  - id: ai
+    kind: skill
+    path: skills/ai
+    description: Python `ai` SDK — models, providers, streams, events, tools,
+      agents, hooks, MCP, AI SDK UI, structured output, and media generation
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

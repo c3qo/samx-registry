@@ -1,0 +1,64 @@
+schemaVersion: 1
+id: convex-dev/convex
+name: Convex
+description: Lattice tech stack for Open Economic Systems; CVM, peer, CLI, DB,
+  SDKs, GUI, REST, benchmarks, apps.
+source:
+  type: git
+  url: https://github.com/convex-dev/convex
+  revision: 679d1cdcf9614e7f7818ae2942899f54046223eb
+capabilities:
+  - id: account
+    kind: skill
+    path: skills/account
+    description: Create or inspect Convex accounts. Use when the user wants to set
+      up a new account, check account details, or manage keys.
+  - id: build-convex
+    kind: skill
+    path: skills/build-convex
+    description: Build the Convex project from source. Use when a contributor wants
+      to compile, test, or package Convex.
+  - id: convex-db
+    kind: skill
+    path: skills/convex-db
+    description: Use Convex DB — a lattice-backed SQL database. Use when helping
+      users write queries, connect via JDBC or PostgreSQL clients, create
+      tables, insert/query data, or use the direct lattice API.
+  - id: deploy
+    kind: skill
+    path: skills/deploy
+    description: Deploy an actor (smart contract) to the Convex network. Use when
+      the user wants to create a new on-chain actor with exported functions.
+  - id: query
+    kind: skill
+    path: skills/query
+    description: Execute a read-only CVM query on the Convex network. Use when
+      reading on-chain state, checking balances, looking up accounts, or
+      evaluating Convex Lisp expressions.
+  - id: token
+    kind: skill
+    path: skills/token
+    description: Create and manage fungible tokens on Convex. Use when the user
+      wants to create a new token, check token balances, or manage token supply.
+  - id: transact
+    kind: skill
+    path: skills/transact
+    description: Execute a CVM transaction on the Convex network. Use when the user
+      wants to modify on-chain state, call actor functions, or define values.
+  - id: transfer
+    kind: skill
+    path: skills/transfer
+    description: Transfer CVM coins or fungible tokens between Convex accounts. Use
+      when the user wants to send coins or tokens to another account.
+  - id: cns
+    kind: skill
+    path: skills/cns
+    description: Resolve or register Convex Name System (CNS) names. Use when the
+      user wants to look up a CNS name, register a new name, or update a name's
+      target.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

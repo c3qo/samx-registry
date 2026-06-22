@@ -1,0 +1,23 @@
+schemaVersion: 1
+id: callstackincubator/react-native-harness
+name: React Native Harness
+description: Jest-style native test runner for iOS, Android, Web.
+source:
+  type: git
+  url: https://github.com/callstackincubator/react-native-harness
+  revision: a8b0bfd3243ef845f9ce4eaa69fb1ebb8e3275d9
+capabilities:
+  - id: react-native-harness
+    kind: skill
+    path: skills/react-native-harness
+    description: Write and debug React Native Harness tests for app code. Use when
+      the user asks to create or fix tests that import from
+      react-native-harness, mock modules, spy on functions, render React Native
+      components on-device, use setupFiles or setupFilesAfterEnv, or add
+      optional UI tests with @react-native-harness/ui.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

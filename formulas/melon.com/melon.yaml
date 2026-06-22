@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: melon.com/melon
+name: Melon
+description: Melon remote MCP server at https://mcp.melon.com/mcp/. Browse music
+  charts & your personalized music picks. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/melon
+capabilities:
+  - id: melon
+    kind: mcp
+    spec:
+      serverName: melon
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.melon.com/mcp/

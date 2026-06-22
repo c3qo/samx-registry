@@ -1,0 +1,224 @@
+schemaVersion: 1
+id: microsoft/hve-core
+name: HVE Core
+description: AI agent/skill pack for planning, review, backlog, design thinking,
+  accessibility, security, ds.
+source:
+  type: git
+  url: https://github.com/microsoft/hve-core
+  revision: 027606c9d115876bc2209beba729b70d2fa04f24
+capabilities:
+  - id: aria-apg
+    kind: skill
+    path: .github/skills/accessibility/aria-apg
+    description: WAI-ARIA Authoring Practices Guide (APG) design pattern knowledge
+      base for accessibility assessment
+  - id: coga
+    kind: skill
+    path: .github/skills/accessibility/coga
+    description: W3C Making Content Usable for People with Cognitive and Learning
+      Disabilities (COGA) knowledge base for accessibility assessment
+  - id: en-301-549
+    kind: skill
+    path: .github/skills/accessibility/en-301-549
+    description: European EN 301 549 V3.2.1 ICT Accessibility Standard knowledge
+      base for accessibility assessment
+  - id: section-508
+    kind: skill
+    path: .github/skills/accessibility/section-508
+    description: US Section 508 ICT Accessibility Standards (revised 2017) knowledge
+      base for accessibility assessment
+  - id: wcag-22
+    kind: skill
+    path: .github/skills/accessibility/wcag-22
+    description: WCAG 2.2 success criteria knowledge base for accessibility assessment
+  - id: python-foundational
+    kind: skill
+    path: .github/skills/coding-standards/python-foundational
+    description: Foundational Python best practices, idioms, and code quality fundamentals
+  - id: dt-coaching-foundation
+    kind: skill
+    path: .github/skills/design-thinking/dt-coaching-foundation
+    description: "Design Thinking coaching foundation knowledge: coach identity and
+      philosophy, quality and fidelity constraints, method sequencing, coaching
+      state schema, and the canonical deck workflow - Brought to you by
+      microsoft/hve-core"
+  - id: dt-curriculum
+    kind: skill
+    path: .github/skills/design-thinking/dt-curriculum
+    description: Design Thinking learning curriculum covering nine progressive
+      modules across the full Problem, Solution, and Implementation Space
+      methods plus a shared manufacturing reference scenario for teaching and
+      practice - Brought to you by microsoft/hve-core
+  - id: dt-methods
+    kind: skill
+    path: .github/skills/design-thinking/dt-methods
+    description: Design Thinking method coaching knowledge across all nine methods
+      including per-method techniques, deep expertise, and industry context
+      (energy, financial services, healthcare, manufacturing, nonprofit and
+      social impact, pharmaceuticals and life sciences, professional services,
+      public sector, retail and CPG) - Brought to you by microsoft/hve-core
+  - id: dt-rpi-integration
+    kind: skill
+    path: .github/skills/design-thinking/dt-rpi-integration
+    description: Design Thinking to RPI handoff knowledge covering the DT-to-RPI
+      handoff contract, DT-aware research/planning/implement/review contexts,
+      subagent handoff workflow, and Method 5 image prompt generation - Brought
+      to you by microsoft/hve-core
+  - id: customer-card-render
+    kind: skill
+    path: .github/skills/experimental/customer-card-render
+    description: Generate customer-card PowerPoint content YAML from Design Thinking
+      canonical artifacts and build using the shared PowerPoint skill pipeline
+  - id: mural
+    kind: skill
+    path: .github/skills/experimental/mural
+    description: Mural workspace, room, mural, and widget workflows via the Mural
+      REST API exposed through a Python CLI. Use when you need to read or write
+      Mural content or automate widget creation. - Brought to you by
+      microsoft/hve-core
+  - id: powerpoint
+    kind: skill
+    path: .github/skills/experimental/powerpoint
+    description: PowerPoint slide deck generation and management using python-pptx
+      with YAML-driven content and styling
+  - id: tts-voiceover
+    kind: skill
+    path: .github/skills/experimental/tts-voiceover
+    description: Text-to-speech voice-over generation from YAML speaker notes using
+      Azure Speech SDK with SSML pronunciation control
+  - id: video-to-gif
+    kind: skill
+    path: .github/skills/experimental/video-to-gif
+    description: Video-to-GIF conversion with FFmpeg two-pass optimization
+  - id: vscode-playwright
+    kind: skill
+    path: .github/skills/experimental/vscode-playwright
+    description: VS Code screenshot capture using Playwright MCP with serve-web for
+      slide decks and documentation
+  - id: gh-code-scanning
+    kind: skill
+    path: .github/skills/github/gh-code-scanning
+    description: Retrieves and groups GitHub code scanning alerts by rule and
+      severity using the gh CLI
+  - id: gitlab
+    kind: skill
+    path: .github/skills/gitlab/gitlab
+    description: Manage GitLab merge requests and pipelines with a Python CLI
+  - id: vally-tests
+    kind: skill
+    path: .github/skills/hve-core/vally-tests
+    description: Authors Vally conformance tests for prompts, instructions, agents,
+      and skills, with explicit refusal of jailbreak, prompt-injection,
+      harmful-elicitation, TOS, CoC, model-refusal-elicitation, and
+      PII-extraction stimuli - Brought to you by microsoft/hve-core
+  - id: hve-core-installer
+    kind: skill
+    path: .github/skills/installer/hve-core-installer
+    description: Decision-driven HVE-Core installer with multiple clone-based and
+      extension install methods, environment detection, and agent customization
+  - id: jira
+    kind: skill
+    path: .github/skills/jira/jira
+    description: Jira issue workflows for search, issue updates, transitions,
+      comments, and field discovery via the Jira REST API. Use when you need to
+      search with JQL, inspect an issue, create or update work items, move an
+      issue between statuses, post comments, or discover required fields for
+      issue creation.
+  - id: accessibility-planner-playbook
+    kind: skill
+    path: .github/skills/project-planning/accessibility-planner-playbook
+    description: On-demand accessibility planner reference pack for Phase 1 capture,
+      Phase 2 framework selection, Phase 5 impact assessment, and Phase 6 review
+      and backlog handoff. Read the matching reference when entering a phase
+      boundary or when you need the detailed guidance for that phase.
+  - id: adr-author
+    kind: skill
+    path: .github/skills/project-planning/adr-author
+    description: Authoring skill for Architecture Decision Records (ADRs) supporting
+      capture, from-planner-handoff, and adopt-template entry modes with
+      selectable Y-Statement or MADR v4.0.0 output templates, supersession
+      lineage, and ASR trigger evaluation - Brought to you by
+      microsoft/hve-core.
+  - id: requirements-author
+    kind: skill
+    path: .github/skills/project-planning/requirements-author
+    description: Requirements authoring guide for BRD and PRD across Discover,
+      Define, and Govern with canonical templates and handoff contracts -
+      Brought to you by microsoft/hve-core
+  - id: owasp-agentic
+    kind: skill
+    path: .github/skills/security/owasp-agentic
+    description: OWASP Agentic Security Top 10 knowledge base for identifying,
+      assessing, and remediating AI agent system security risks.
+  - id: owasp-cicd
+    kind: skill
+    path: .github/skills/security/owasp-cicd
+    description: OWASP CI/CD Top 10 knowledge base for identifying, assessing, and
+      remediating CI/CD pipeline security risks.
+  - id: owasp-docker
+    kind: skill
+    path: .github/skills/security/owasp-docker
+    description: OWASP Docker Top 6 knowledge base for identifying, assessing, and
+      remediating Docker container security risks.
+  - id: owasp-infrastructure
+    kind: skill
+    path: .github/skills/security/owasp-infrastructure
+    description: OWASP Infrastructure Top 10 knowledge base for identifying,
+      assessing, and remediating internal IT infrastructure security risks.
+  - id: owasp-llm
+    kind: skill
+    path: .github/skills/security/owasp-llm
+    description: OWASP Top 10 for LLM Applications (2025) knowledge base for
+      identifying, assessing, and remediating large language model security
+      risks.
+  - id: owasp-mcp
+    kind: skill
+    path: .github/skills/security/owasp-mcp
+    description: OWASP MCP Top 10 knowledge base for identifying, assessing, and
+      remediating Model Context Protocol security risks.
+  - id: owasp-top-10
+    kind: skill
+    path: .github/skills/security/owasp-top-10
+    description: OWASP Top 10 for Web Applications (2025) knowledge base for
+      identifying, assessing, and remediating web application security risks.
+  - id: secure-by-design
+    kind: skill
+    path: .github/skills/security/secure-by-design
+    description: Secure by Design principles knowledge base for assessing
+      security-first design, development, and deployment across the software
+      lifecycle.
+  - id: security-reviewer-formats
+    kind: skill
+    path: .github/skills/security/security-reviewer-formats
+    description: Format specifications and data contracts for the security reviewer
+      orchestrator and its subagents.
+  - id: supply-chain-security
+    kind: skill
+    path: .github/skills/security/supply-chain-security
+    description: Software supply chain security reference for OpenSSF Scorecard,
+      SLSA, Sigstore, SBOM, and posture/backlog taxonomies.
+  - id: backlog-templates
+    kind: skill
+    path: .github/skills/shared/backlog-templates
+    description: Shared work-item templates and conventions for ADO and GitHub
+      backlog handoff across the RAI, Security, SSSC, and Accessibility planners
+  - id: pr-reference
+    kind: skill
+    path: .github/skills/shared/pr-reference
+    description: Generates PR reference XML with commit history and unified diffs
+      between branches, with extension and path filtering. Use when creating
+      pull request descriptions, preparing code reviews, analyzing branch
+      changes, discovering work items from diffs, or generating structured diff
+      summaries.
+  - id: telemetry-foundations
+    kind: skill
+    path: .github/skills/shared/telemetry-foundations
+    description: Declarative OpenTelemetry-aligned telemetry vocabulary and
+      instrumentation conventions for traces, metrics, logs, and PII handling
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

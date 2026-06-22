@@ -1,0 +1,61 @@
+schemaVersion: 1
+id: anthropics/cwc-workshops
+name: cwc-workshops
+description: "Anthropic workshop bundle: Agents, skills, MCP, evals, managed-agent demos."
+source:
+  type: git
+  url: https://github.com/anthropics/cwc-workshops
+  revision: 970b040865a7b108ca62b450d9dda33e2a479516
+capabilities:
+  - id: mining
+    kind: skill
+    path: agent-battle/skills/mining
+    description: Where diamonds spawn in Minecraft 1.20.
+  - id: forecasting
+    kind: skill
+    path: agent-decomposition/.claude/skills/forecasting
+    description: How to produce a demand forecast for a SKU, and when to delegate
+      that to a subagent vs. compute it yourself. Load this for any task
+      involving "forecast", "how much will we sell", "next month", promos, or
+      seasonal SKUs.
+  - id: notify-templates
+    kind: skill
+    path: agent-decomposition/.claude/skills/notify-templates
+    description: Fixed-format templates for Slack alerts, supplier emails, and
+      escalations. Load this whenever the task is "notify", "alert", "email", or
+      "tell ops".
+  - id: reorder-policy
+    kind: skill
+    path: agent-decomposition/.claude/skills/reorder-policy
+    description: How to decide whether and how much to reorder a SKU. Load this
+      whenever a task involves reorder recommendations, purchase orders, or
+      "should we restock" questions.
+  - id: weekly-report
+    kind: skill
+    path: agent-decomposition/.claude/skills/weekly-report
+    description: Structure and data sources for the weekly inventory report. Load
+      this when the task is "weekly report", "Monday report", or "summarize
+      inventory status".
+  - id: eval-audit-and-sweep
+    kind: skill
+    path: rightmodel/.claude/skills/eval-audit-and-sweep
+    description: <!-- Copyright 2026 Anthropic PBC -->
+  - id: submit-solution
+    kind: skill
+    path: agent-decomposition/.claude/skills/submit-solution
+    description: Guide a workshop attendee through committing their starter-agent
+      decomposition and opening a PR with their solution + workshop feedback.
+      Invoke when the user says "submit", "I'm done", "open a PR", or asks how
+      to share their solution.
+  - id: supplier-selection
+    kind: skill
+    path: agent-decomposition/.claude/skills/supplier-selection
+    description: How to rank and pick a supplier for a SKU. Load this whenever a
+      task involves choosing a supplier, comparing quotes, or creating a
+      purchase order.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

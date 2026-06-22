@@ -1,0 +1,299 @@
+schemaVersion: 1
+id: langfuse/langfuse
+name: Langfuse
+description: Open-source LLM engineering platform; self-hosted
+  observability/evals/prompt mgmt.
+source:
+  type: git
+  url: https://github.com/langfuse/langfuse
+  revision: 2551133ebc9e5dfc9a6eeda97a6daf252ff4b580
+capabilities:
+  - id: code-review
+    kind: skill
+    path: .agents/skills/code-review
+    description: >
+      Shared code review workflow for Langfuse. Use when reviewing a PR, branch,
+      diff,
+
+      or local changes for correctness, regressions, risk, and missing tests.
+
+      Start with references/review-checklist.md for repo-specific review rules
+      and
+
+      use package AGENTS.md files plus any matching shared skills when the
+      change
+
+      touches those areas.
+  - id: backend-dev-guidelines
+    kind: skill
+    path: .agents/skills/backend-dev-guidelines
+    description: Shared backend guide for Langfuse's Next.js, tRPC, BullMQ, and
+      TypeScript monorepo. Use when creating or reviewing tRPC routers, public
+      REST endpoints, BullMQ queue processors, backend services, middleware,
+      Prisma or ClickHouse data access, OpenTelemetry instrumentation, Zod
+      validation, env configuration, or backend tests across web, worker, or
+      packages/shared.
+  - id: frontend-browser-review
+    kind: skill
+    path: .agents/skills/frontend-browser-review
+    description: >
+      Shared workflow for browser-based review of user-visible frontend changes
+      in Langfuse.
+
+      Use when a change affects UI behavior, layout, styling, navigation, or
+      browser-visible
+
+      regressions and should be checked with the Playwright MCP server before
+      signoff.
+  - id: add-model-price
+    kind: skill
+    path: .agents/skills/add-model-price
+    description: Use when editing worker/src/constants/default-model-prices.json,
+      packages/shared/src/server/llm/types.ts, pricing tiers, tokenizer IDs, or
+      matchPattern regexes for OpenAI, Anthropic, Bedrock, Vertex, Azure, or
+      Gemini model pricing.
+  - id: agent-setup-maintenance
+    kind: skill
+    path: .agents/skills/agent-setup-maintenance
+    description: >
+      Shared workflow for editing Langfuse's repo-owned agent setup under
+      `.agents/`.
+
+      Use when changing AGENTS files, shared skills, `.agents/config.json`,
+
+      generated shim behavior, provider discovery paths, or install-time agent
+      sync.
+  - id: analyze-cloud-costs
+    kind: skill
+    path: .agents/skills/analyze-cloud-costs
+    description: >
+      Analyze Langfuse Cloud infrastructure cost structure using Metabase cost
+
+      marts. Use when asked about cloud spend, AWS versus ClickHouse cost
+      splits,
+
+      cost drivers by provider/service/usage type/account, daily cost per
+      tracing
+
+      event, infra cost dashboards, or cost regressions visible in Metabase.
+  - id: changelog-writing
+    kind: skill
+    path: .agents/skills/changelog-writing
+    description: >
+      Shared workflow for writing Langfuse changelog entries after a feature is
+      complete.
+
+      Use when a branch is ready for merge and a changelog entry or changelog
+      draft is needed.
+  - id: clickhouse-best-practices
+    kind: skill
+    path: .agents/skills/clickhouse-best-practices
+    description: MUST USE when reviewing ClickHouse schemas, queries, or
+      configurations. Contains 28 rules that MUST be checked before providing
+      recommendations. Always read relevant rule files and cite specific rules
+      in responses.
+  - id: datadog-query-recipes
+    kind: skill
+    path: .agents/skills/datadog-query-recipes
+    description: >
+      Langfuse-specific Datadog query recipes for production telemetry research.
+
+      Use when asked to investigate tenant or project activity, public API
+      endpoint
+
+      usage, queue consumer behavior, spans, logs, metrics, or ad hoc production
+
+      questions across prod-us, prod-eu, prod-hipaa, and prod-jp. This skill is
+      for
+
+      reusable query shapes and measured research; pair it with
+
+      debug-issue-with-datadog when the task is an incident or root-cause
+      analysis.
+  - id: debug-issue-with-datadog
+    kind: skill
+    path: .agents/skills/debug-issue-with-datadog
+    description: >
+      Debug a user-reported issue, Linear ticket, or incident report by
+      combining
+
+      Datadog (APM, logs, metrics) with the Langfuse repo to establish a
+
+      root cause. Use when given a Linear issue URL/ID (e.g. LFE-XXXX), a GitHub
+
+      issue, or a pasted error/report and asked to investigate, root-cause, or
+
+      triage. Produces a structured analysis — error breakdown,
+      hypothesis-by-class,
+
+      suggested patches with code references.
+  - id: frontend-large-feature-architecture
+    kind: skill
+    path: .agents/skills/frontend-large-feature-architecture
+    description: >
+      Use when building, changing, or refactoring large Langfuse frontend
+      features,
+
+      virtualized lists, large tables, controller components, local feature
+      state,
+
+      Zustand stores, row selection, high-frequency UI state, or
+
+      rendering-performance issues.
+  - id: git-workflow
+    kind: skill
+    path: .agents/skills/git-workflow
+    description: >
+      Langfuse repo Git, GitHub, commit, branch, pull request, issue search,
+
+      release, and production-promotion workflow. Use when staging, committing,
+
+      pushing, opening PRs, searching GitHub issues, or changing
+      release/promotion
+
+      behavior.
+  - id: housekeeping
+    kind: skill
+    path: .agents/skills/housekeeping
+    description: Review an engineer's recurring work queue across Linear, Pylon, and
+      GitHub. Use when asked to triage assigned issues, waiting or urgent work,
+      customer-support follow-ups, stale tickets, or pull requests where the
+      engineer is a direct or team reviewer; return concrete action
+      recommendations and gate all writes on explicit human approval.
+  - id: langfuse-codebase-navigator
+    kind: skill
+    path: .agents/skills/langfuse-codebase-navigator
+    description: Navigate Langfuse repositories, code areas, and agent skills. Use
+      when a user or agent asks where Langfuse code lives, which Langfuse repo
+      to inspect, which Langfuse skill applies, how to search across Langfuse
+      repositories, or how to orient in the Langfuse org before implementing,
+      debugging, documenting, supporting, or operating Langfuse.
+  - id: linear-bug-triage
+    kind: skill
+    path: .agents/skills/linear-bug-triage
+    description: >
+      Deduplicate measured bug or regression evidence against Linear, then
+      either
+
+      add evidence comments to related existing issues or create concise Linear
+      bug
+
+      issues in Triage. Use when Codex has confirmed evidence from Datadog,
+
+      benchmarks, traces, timings, flamegraphs, logs, or production measurements
+      and
+
+      needs Linear search, comments, labels, Datadog links, or bug ticket
+      creation
+
+      without fix suggestions, but only after a human has approved sharing the
+
+      findings in Linear.
+  - id: pnpm-upgrade-package
+    kind: skill
+    path: .agents/skills/pnpm-upgrade-package
+    description: "Upgrade pnpm workspace dependencies to target/latest versions:
+      direct/transitive bumps, release-age checks, temporary overrides,
+      minimumReleaseAgeExclude, lockfile/dedupe verification."
+  - id: security-review
+    kind: skill
+    path: .agents/skills/security-review
+    description: Security review patterns for Langfuse. Use during code review,
+      design, or planning whenever a change accepts user-supplied URLs,
+      host/endpoint/baseURL fields, secrets, cross-tenant data, new outbound
+      HTTP requests, new integrations (webhooks, blob storage, LLM connections,
+      image proxies), redirect-following behavior, or new auth/permission
+      scopes. Covers SSRF/outbound URL validation today and is intentionally
+      extensible to other recurring security findings (tenant isolation, secret
+      handling, redirect mishandling, file upload, RBAC scope drift).
+  - id: seed-test-data
+    kind: skill
+    path: .agents/skills/seed-test-data
+    description: >
+      Seed local Langfuse test data with one command: large/branching
+      observation
+
+      trees (v3 and v4 events), long sessions, bulk traces for list performance.
+
+      Use whenever a task needs ClickHouse/Postgres test data — e.g. "seed a
+
+      complex trace", "make a tough session", "fill the trace list", "test v4
+
+      events UI", or when debugging trace/session/list rendering or performance.
+
+      Never write ad-hoc seed scripts or raw ClickHouse inserts.
+  - id: skill-creator
+    kind: skill
+    path: .agents/skills/skill-creator
+    description: Guide for creating effective skills. This skill should be used when
+      users want to create a new skill (or update an existing skill) that
+      extends Codex's capabilities with specialized knowledge, workflows, or
+      tool integrations.
+  - id: storybook
+    kind: skill
+    path: .agents/skills/storybook
+    description: Use when writing or reviewing Storybook stories (`.stories.tsx`)
+      for React components.
+  - id: turborepo
+    kind: skill
+    path: .agents/skills/turborepo
+    description: >
+      Turborepo monorepo build system guidance. Triggers on: turbo.json, task
+      pipelines,
+
+      dependsOn, caching, remote cache, the "turbo" CLI, --filter, --affected,
+      CI optimization, environment
+
+      variables, internal packages, monorepo structure/best practices, and
+      boundaries.
+
+
+      Use when user: configures tasks/workflows/pipelines, creates packages,
+      sets up
+
+      monorepo, shares code between apps, runs changed/affected packages, debugs
+      cache,
+
+      or has apps/packages directories.
+  - id: weekly-production-review
+    kind: skill
+    path: .agents/skills/weekly-production-review
+    description: >
+      Prepare Langfuse weekly production reviews that audit what broke, what was
+
+      fixed, what remains open, and where Datadog, incident.io, or Linear
+      tracking
+
+      needs cleanup. Use when asked for a production review, "what broke last
+      week",
+
+      fixed/open production bugs, Datadog alerted monitors/pages, Datadog error
+      log
+
+      patterns, incident.io incidents, incident.io alert load, pager load by
+
+      engineer or time of day, or a source-table engineering review across
+
+      incident.io, Linear bugs, Datadog alerts, and Datadog logs.
+  - id: vercel-composition-patterns
+    kind: skill
+    path: web/.agents/skills/vercel-composition-patterns
+    description: React composition patterns that scale. Use when refactoring
+      components with boolean prop proliferation, building flexible component
+      libraries, or designing reusable APIs. Triggers on tasks involving
+      compound components, render props, context providers, or component
+      architecture. Includes React 19 API changes.
+  - id: vercel-react-best-practices
+    kind: skill
+    path: web/.agents/skills/vercel-react-best-practices
+    description: React and Next.js performance optimization guidelines from Vercel
+      Engineering. This skill should be used when writing, reviewing, or
+      refactoring React/Next.js code to ensure optimal performance patterns.
+      Triggers on tasks involving React components, Next.js pages, data
+      fetching, bundle optimization, or performance improvements.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,476 @@
+schemaVersion: 1
+id: microsoft/power-platform-skills
+name: Power Platform Skills
+description: Power Apps / Power Platform skills pack.
+source:
+  type: git
+  url: https://github.com/microsoft/power-platform-skills
+  revision: fc53fda9db1916a45c3dfb4cb1912d891bda2875
+capabilities:
+  - id: genpage
+    kind: skill
+    path: plugins/model-apps/skills/genpage
+    description: Creates, updates, and deploys Power Apps generative pages for
+      model-driven apps using React v17, TypeScript, and Fluent UI V9.
+      Orchestrates specialist agents for planning, entity creation, and code
+      generation. Use it when user asks to build, retrieve, or update a page in
+      an existing Microsoft Power Apps model-driven app. Use it when user
+      mentions "generative page", "page in a model-driven", or "genux".
+  - id: add-data-source
+    kind: skill
+    path: plugins/canvas-apps/skills/add-data-source
+    description: Guide the user to add a data source, connection, or API connector
+      to a Canvas App via Power Apps Studio, then verify and continue. USE WHEN
+      the user asks to add a data source, add a connection, add an API, add a
+      connector, connect to SharePoint / Dataverse / SQL / Excel / OneDrive /
+      Teams / Office 365, or any similar request to make new data available to
+      the app. DO NOT USE WHEN the user is asking to list or describe existing
+      data sources — call list_data_sources or list_apis directly instead.
+  - id: canvas-app
+    kind: skill
+    path: plugins/canvas-apps/skills/canvas-app
+    description: Creates or edits a Power Apps Canvas App through the Canvas
+      Authoring MCP coauthoring session. Handles new app generation from
+      requirements, simple inline edits, and complex multi-screen changes with
+      parallel screen builders. Triggers on requests to create, build, generate,
+      modify, update, change, or edit a Canvas App or .pa.yaml files.
+  - id: configure-canvas-mcp
+    kind: skill
+    path: plugins/canvas-apps/skills/configure-canvas-mcp
+    description: Configure the Canvas Authoring MCP server for the current
+      coauthoring session. USE WHEN "configure MCP", "set up MCP server", "MCP
+      not working", "connect Canvas Apps MCP", "canvas-authoring not available",
+      "MCP not configured", "set up canvas apps". DO NOT USE WHEN prerequisites
+      are missing — direct the user to install .NET 10 SDK first.
+  - id: generate-canvas-app
+    kind: skill
+    path: plugins/canvas-apps/skills/generate-canvas-app
+    description: "[DEPRECATED — use canvas-app instead] Generate a complete Power
+      Apps canvas app."
+  - id: report-issue
+    kind: skill
+    path: plugins/canvas-apps/skills/report-issue
+    description: >
+      Use this skill when the user wants to "report a bug", "file an issue",
+      "report an issue", "submit a bug report", or report any problem with the
+      canvas-apps plugin to the GitHub repository.
+  - id: add-azuredevops
+    kind: skill
+    path: plugins/code-apps/skills/add-azuredevops
+    description: Adds Azure DevOps connector to a Power Apps code app. Use when
+      querying work items, creating bugs, managing pipelines, or making ADO API
+      calls.
+  - id: add-connector
+    kind: skill
+    path: plugins/code-apps/skills/add-connector
+    description: Adds any Power Platform connector to a Power Apps code app. Generic
+      fallback for connectors not covered by a specific skill.
+  - id: add-datasource
+    kind: skill
+    path: plugins/code-apps/skills/add-datasource
+    description: Adds a data source or connector to a Power Apps code app. Asks what
+      the user wants to accomplish and routes to the appropriate specialized
+      skill.
+  - id: add-dataverse
+    kind: skill
+    path: plugins/code-apps/skills/add-dataverse
+    description: Adds Dataverse tables to a Power Apps code app with generated
+      TypeScript models and services. Can also create new Dataverse tables. Use
+      when connecting to Dataverse, adding tables, creating schema, or querying
+      Dataverse data.
+  - id: add-excel
+    kind: skill
+    path: plugins/code-apps/skills/add-excel
+    description: Adds Excel Online (Business) connector to a Power Apps code app.
+      Use when reading or writing Excel workbook data from OneDrive or
+      SharePoint.
+  - id: add-mcscopilot
+    kind: skill
+    path: plugins/code-apps/skills/add-mcscopilot
+    description: Adds Microsoft Copilot Studio connector to a Power Apps code app.
+      Use when invoking Copilot Studio agents, sending prompts to agents, or
+      integrating agent responses.
+  - id: add-office365
+    kind: skill
+    path: plugins/code-apps/skills/add-office365
+    description: Adds Office 365 Outlook connector to a Power Apps code app. Use
+      when accessing calendars, sending emails, reading inbox, or managing
+      Outlook events.
+  - id: add-onedrive
+    kind: skill
+    path: plugins/code-apps/skills/add-onedrive
+    description: Adds OneDrive for Business connector to a Power Apps code app. Use
+      when uploading, downloading, listing, or managing files in OneDrive.
+  - id: add-sharepoint
+    kind: skill
+    path: plugins/code-apps/skills/add-sharepoint
+    description: Adds SharePoint Online connector to a Power Apps code app. Use when
+      reading lists, managing documents, or integrating with SharePoint sites.
+      Can also create new SharePoint lists.
+  - id: add-teams
+    kind: skill
+    path: plugins/code-apps/skills/add-teams
+    description: Adds Microsoft Teams connector to a Power Apps code app. Use when
+      sending Teams messages, posting to channels, or integrating with Teams
+      chat.
+  - id: create-code-app
+    kind: skill
+    path: plugins/code-apps/skills/create-code-app
+    description: Creates Power Apps code apps using React and Vite. Use when
+      building code apps, scaffolding projects, or deploying to Power Platform.
+  - id: deploy
+    kind: skill
+    path: plugins/code-apps/skills/deploy
+    description: Builds and deploys a Power Apps code app to Power Platform. Use
+      when deploying changes, redeploying an existing app, or pushing updates.
+  - id: list-connections
+    kind: skill
+    path: plugins/code-apps/skills/list-connections
+    description: Lists Power Platform connections in the current environment. Use
+      when you need a connection ID before adding a connector to a code app.
+  - id: report-issue-2
+    kind: skill
+    path: plugins/code-apps/skills/report-issue
+    description: >
+      Use this skill when the user wants to "report a bug", "file an issue",
+      "report an issue", "submit a bug report", or report any problem with the
+      code-apps plugin to the GitHub repository.
+  - id: generate-mcp-app-ui
+    kind: skill
+    path: plugins/mcp-apps/skills/generate-mcp-app-ui
+    description: Generate an MCP App widget (self-contained HTML) for an MCP tool.
+      Describe the visual you want and paste your tool's test output. Use when
+      user asks to create an MCP App, widget, or visual for a tool.
+  - id: report-issue-3
+    kind: skill
+    path: plugins/mcp-apps/skills/report-issue
+    description: >
+      Use this skill when the user wants to "report a bug", "file an issue",
+      "report an issue", "submit a bug report", or report any problem with the
+      mcp-apps plugin to the GitHub repository.
+  - id: report-issue-4
+    kind: skill
+    path: plugins/model-apps/skills/report-issue
+    description: >
+      Use this skill when the user wants to "report a bug", "file an issue",
+      "report an issue", "submit a bug report", or report any problem with the
+      model-apps plugin to the GitHub repository.
+  - id: activate-site
+    kind: skill
+    path: plugins/power-pages/skills/activate-site
+    description: Activates and provisions a Power Pages website in a Power Platform
+      environment via the Power Platform REST API. Use when the user wants to
+      activate, provision, turn on, or enable a Power Pages website or portal.
+  - id: add-ai-webapi
+    kind: skill
+    path: plugins/power-pages/skills/add-ai-webapi
+    description: 'Integrates Power Pages generative-AI summarization APIs (PREVIEW)
+      into a Single Page Application (SPA) site — the Search Summary API and the
+      Data Summarization API — on any record-detail or list page. Generates
+      per-target service code (CSRF-handled) and AI site settings; delegates Web
+      API settings, table permissions, and web roles to `/integrate-webapi` and
+      `/create-webroles`. Use whenever a user wants AI/Copilot output that
+      condenses Dataverse content on a Power Pages site — an AI summary,
+      AI-generated overview or "key insights" across a record or list, a
+      search-results summary, a case/incident summary, or recommendation-chip
+      refinement — even when phrased as "AI-generated paragraph", "insights", or
+      "overview". Do NOT use for: generative pages in model-driven apps (use the
+      model-apps `genpage` skill), Copilot Studio agents/chatbots, summarizing
+      documents or PDFs, Power BI dashboards, plain keyword search with no AI
+      summary, or plain Dataverse CRUD (use `/integrate-webapi`).'
+  - id: add-cloud-flow
+    kind: skill
+    path: plugins/power-pages/skills/add-cloud-flow
+    description: Integrates Power Automate cloud flows into a Power Pages site.
+      Lists available flows, suggests relevant ones based on intent, identifies
+      scenarios and web roles, creates metadata files, and generates client-side
+      code to call flows. Handles both new flow registration and adding
+      already-registered flows to additional pages without re-creating metadata.
+      Use when the user wants to add, connect, register, or link a Power
+      Automate cloud flow to their site.
+  - id: add-sample-data
+    kind: skill
+    path: plugins/power-pages/skills/add-sample-data
+    description: Populates Dataverse tables with sample records for testing and
+      demoing a Power Pages site. Use when the user wants to add sample data,
+      seed data, generate test records, or insert demo data into their tables.
+  - id: add-seo
+    kind: skill
+    path: plugins/power-pages/skills/add-seo
+    description: Adds SEO essentials to a Power Pages code site, including
+      robots.txt, sitemap.xml, meta tags, Open Graph tags, and favicon
+      configuration. Use when the user wants to improve search engine
+      optimization or make their site more searchable.
+  - id: add-server-logic
+    kind: skill
+    path: plugins/power-pages/skills/add-server-logic
+    description: "Creates, edits, and manages Power Pages Server Logic files —
+      server-side JavaScript that runs securely on the Power Pages runtime.
+      Orchestrates the full lifecycle: gathering requirements, fetching
+      documentation, implementing code, configuring site settings, and
+      deploying. Use when the user wants to add server-side code, create API
+      endpoints, or move logic from the browser to the server in their Power
+      Pages site."
+  - id: audit-permissions
+    kind: skill
+    path: plugins/power-pages/skills/audit-permissions
+    description: Audits existing table permissions on a Power Pages site by
+      analyzing them against site code and Dataverse metadata. Generates an HTML
+      audit report with findings grouped by severity (critical, warning, info,
+      pass) and suggests fixes for issues found. Use when the user wants to
+      review, verify, or check table permissions for security issues.
+  - id: configure-env-variables
+    kind: skill
+    path: plugins/power-pages/skills/configure-env-variables
+    description: 'Configures environment variables for Power Pages site settings to
+      support ALM across environments. Creates environment variable definitions
+      in Dataverse, guides the user through linking site settings to those
+      variables via the Power Pages Management app, adds the variables to the
+      solution, and generates a deployment-settings.json file with per-stage
+      override values. Use when asked to: "configure environment variables",
+      "add env vars", "set up deployment variables", "make site settings
+      environment-specific", "configure ALM variables", "set up env-specific
+      settings", "add deployment settings", "configure per-environment
+      settings".'
+  - id: create-site
+    kind: skill
+    path: plugins/power-pages/skills/create-site
+    description: "Creates a new Power Pages code site (SPA) using React, Angular,
+      Vue, or Astro. Guides through the full process from initial concept to
+      deployed site: requirements discovery, scaffolding, component planning,
+      design, implementation, validation, and deployment. Use when the user
+      wants to create, build, or scaffold a new Power Pages website or portal."
+  - id: create-webroles
+    kind: skill
+    path: plugins/power-pages/skills/create-webroles
+    description: Creates and configures web roles for a Power Pages code site. Web
+      roles control access and permissions for site users, including
+      authenticated and anonymous roles. Use when the user wants to create, add,
+      set up, or manage web roles for their site.
+  - id: deploy-pipeline
+    kind: skill
+    path: plugins/power-pages/skills/deploy-pipeline
+    description: 'Triggers a Power Platform Pipeline deployment run for a Power
+      Pages solution. Selects a target stage, validates the package, optionally
+      configures deployment settings (environment variables, connection
+      references), then deploys and polls for completion. Use when asked to:
+      "deploy pipeline", "run pipeline", "trigger deployment", "deploy to
+      staging", "deploy to production", "run power platform pipeline", "deploy
+      solution via pipeline", "promote solution", "push to staging", "push to
+      production".'
+  - id: deploy-site
+    kind: skill
+    path: plugins/power-pages/skills/deploy-site
+    description: Deploys an existing Power Pages code site to a Power Pages
+      environment using PAC CLI. Handles tooling verification, authentication,
+      environment confirmation, building, and uploading. Use when the user wants
+      to deploy, upload, or publish their code site.
+  - id: diagnose-deployment
+    kind: skill
+    path: plugins/power-pages/skills/diagnose-deployment
+    description: 'Surfaces PAC CLI upload errors and Dataverse async operation
+      errors, pattern-matches against a known failure catalog, and optionally
+      auto-fixes identified issues. Use when asked to: "diagnose deployment",
+      "debug deployment", "deployment failed", "show deployment errors", "fix
+      deployment issues", "show upload logs", "why did my deploy fail", or
+      "troubleshoot upload".'
+  - id: ensure-pipelines-host
+    kind: skill
+    path: plugins/power-pages/skills/ensure-pipelines-host
+    description: 'Ensures the tenant has a usable Power Platform Pipelines host
+      environment before any pipeline operation runs. Detects host state via the
+      same resolution order as the Power Apps UI (org-db setting → BAP env
+      metadata → default-custom-host setting); if any existing host (Platform or
+      Custom) is found, uses it. If no host is bound to the source env,
+      provisions a new **Platform Host** (recommended, idempotent) or a **Custom
+      Host** via the BAP env-create API with the `D365_ProjectHost` template, or
+      guides the user through PPAC install / `New custom host` (manual
+      fallbacks). Polls lifecycle operations, verifies the host responds to
+      Pipelines API calls, writes a host-check artifact other ALM skills
+      consume. Use when asked to: "set up pipelines host", "ensure pipelines
+      host", "no pipelines host", "install pipelines", "create pipelines host",
+      "provision platform host", "provision custom host". Also invoked
+      transparently by /power-pages:setup-pipeline when its host discovery step
+      finds nothing.'
+  - id: export-solution
+    kind: skill
+    path: plugins/power-pages/skills/export-solution
+    description: 'Exports a Dataverse solution containing Power Pages site
+      components as a zip file, ready for deployment to another environment. Use
+      when asked to: "export solution", "download solution", "export managed",
+      "export unmanaged", "package for deployment", "create solution zip",
+      "export site package", or "build deployment artifact".'
+  - id: force-link-environment
+    kind: skill
+    path: plugins/power-pages/skills/force-link-environment
+    description: 'Force-links a development or target environment to a Power
+      Platform Pipelines host, overriding any existing association with a
+      previous host. Use when creating a deploymentenvironments record fails
+      with "this environment is already associated with another pipelines host",
+      or when intentionally migrating an environment from one host to another
+      (e.g., Platform Host → Custom Host, or between two Custom Hosts). Calls
+      the documented `ManageEnvironmentStamp` Dataverse action (the API behind
+      the "Force Link" button in the Deployment Pipeline Configuration app).
+      DESTRUCTIVE to the previous host: makers lose access to any pipelines in
+      that host that used this environment. Reversible by running Force Link
+      from the previous host. Use when asked to: "force link environment",
+      "force-link to new host", "switch pipelines host", "environment already
+      associated with another host", "take over pipelines association", "relink
+      environment to host".'
+  - id: import-solution
+    kind: skill
+    path: plugins/power-pages/skills/import-solution
+    description: 'Imports a Dataverse solution zip into a target environment, with
+      optional staged import for dependency checking before committing. Use when
+      asked to: "import solution", "install solution", "deploy solution zip",
+      "push solution to environment", "deploy to staging", "deploy to
+      production", or "install site in new environment".'
+  - id: integrate-backend
+    kind: skill
+    path: plugins/power-pages/skills/integrate-backend
+    description: Analyzes the user's business problem and recommends the right
+      backend integration approach — Web API, AI Web API (generative summaries /
+      grounded search), Server Logic, Cloud Flows, or a combination — for a
+      Power Pages site, then routes to the appropriate specialized skill. Use
+      when the user wants to add backend integration, connect to data, add AI
+      summaries, or needs help deciding which backend approach to use.
+  - id: integrate-webapi
+    kind: skill
+    path: plugins/power-pages/skills/integrate-webapi
+    description: "Integrates Power Pages Web API into a site's frontend code with
+      proper permissions and deployment. Orchestrates the full integration
+      lifecycle: code integration, table permissions setup, and deployment for
+      Dataverse CRUD operations. Use when the user wants to add Web API calls,
+      connect to Dataverse, or add data fetching to their frontend."
+  - id: manage-firewall
+    kind: skill
+    path: plugins/power-pages/skills/manage-firewall
+    description: Inspects and configures the web application firewall (WAF) in front
+      of a Power Pages production site. Lists the current state, recommends
+      enabling protection when it is off, and walks the user through adding,
+      updating, or removing custom rules — IP blocks, country blocks, path
+      blocks, and rate limits. Use when the user wants to turn on WAF, block
+      traffic by IP or country, rate-limit login or signup pages, protect pages
+      from brute-force attempts, restrict access to specific paths, review the
+      current firewall configuration, or asks "is my site protected against bots
+      / common web attacks?" — even if they say "add rate limit" or "protect
+      login page" without mentioning "firewall" or "WAF".
+  - id: manage-headers
+    kind: skill
+    path: plugins/power-pages/skills/manage-headers
+    description: Inspects and configures the security headers a Power Pages site
+      sends to browsers — Content Security Policy, frame and clickjacking
+      protection, cross-origin sharing, cookie behavior, and related site
+      settings. Identifies gaps and walks the user through fixes. Use when the
+      user wants to review headers, fix CSP errors, allow embedding in another
+      site, control cross-origin access, harden cookie settings, or asks "are my
+      browser settings safe?", "fix my CSP", "set up CORS" — even if they only
+      mention a specific header name without saying "security headers".
+  - id: plan-alm
+    kind: skill
+    path: plugins/power-pages/skills/plan-alm
+    description: 'Creates an ALM (Application Lifecycle Management) plan for
+      deploying a Power Pages site across environments. Gathers your promotion
+      strategy, target environments, and approval requirements upfront,
+      generates a visual HTML plan document for review, then — after your
+      approval — executes the plan by calling setup-solution, setup-pipeline,
+      export-solution, and deploy-pipeline (or import-solution) in sequence. Use
+      when asked to: "plan my alm", "set up alm", "create deployment plan",
+      "plan my deployments", "help me deploy to multiple environments", "set up
+      promotion strategy", "create cicd plan", "plan site promotion", "help me
+      go to production", "set up pipeline for my site".'
+  - id: report-issue-5
+    kind: skill
+    path: plugins/power-pages/skills/report-issue
+    description: >
+      Use this skill when the user wants to "report a bug", "file an issue",
+      "report an issue", "submit a bug report", or report any problem with the
+      power-pages plugin to the GitHub repository.
+  - id: scan-site
+    kind: skill
+    path: plugins/power-pages/skills/scan-site
+    description: Runs a security scan on a deployed Power Pages site, fetches the
+      latest scan report, and produces a plain-language summary. Scans the live
+      site's public surface for vulnerabilities and surfaces issues by severity.
+      Use when the user wants to scan, check, test, audit, or assess a published
+      site, find vulnerabilities on production, view the latest scan report, see
+      previous scan results, run a security audit, or asks "how safe is my live
+      site?", "is my site vulnerable?", "audit my production site" — even if
+      they say "find issues" or "check for problems" without mentioning "scan"
+      or "security".
+  - id: security-review
+    kind: skill
+    path: plugins/power-pages/skills/security-review
+    description: Runs a guided, end-to-end security review of a Power Pages site and
+      consolidates every finding into one HTML report covering the live site,
+      browser headers, firewall, authentication, and role-based permissions. Use
+      when the user wants a full security review, a release-readiness check
+      before publishing, an access-and-config check during development, live
+      site monitoring, or asks open-ended questions like "review my site
+      security", "is my site safe to ship", "do a security check", "monitor my
+      site" — even if they do not name the individual checks.
+  - id: setup-auth
+    kind: skill
+    path: plugins/power-pages/skills/setup-auth
+    description: >
+      Use when the user asks to "set up authentication", "add login", "add
+      logout", "add sign in", "enable auth", "add role-based access", "add
+      authorization", "protect routes", "configure identity provider",
+      "configure Entra ID", "configure Entra External ID", "configure OpenID
+      Connect", "add OIDC", "set up SAML", "set up WS-Federation", "set up local
+      login", "add username password", "add Facebook login", "add Google sign
+      in", "add Microsoft Account", "set up invitation login", or otherwise
+      wants to set up authentication (login/logout) and role-based authorization
+      for their Power Pages code site using any supported identity provider
+      (Microsoft Entra ID, Entra External ID, OpenID Connect, SAML2,
+      WS-Federation, local authentication, Microsoft Account, Facebook, or
+      Google).
+  - id: setup-datamodel
+    kind: skill
+    path: plugins/power-pages/skills/setup-datamodel
+    description: Creates Dataverse tables, columns, and relationships for a Power
+      Pages site based on a data model proposal. Use when the user wants to set
+      up the data model, create database tables, or build the Dataverse schema
+      for their site.
+  - id: setup-pipeline
+    kind: skill
+    path: plugins/power-pages/skills/setup-pipeline
+    description: "Sets up a Power Platform Pipeline for automated Power Pages
+      deployments. Power Platform Pipelines is Microsoft's native CI/CD tool
+      built into the Power Platform — no external infrastructure required. Use
+      when asked to: \"set up ci/cd\", \"create pipeline\", \"setup pipeline\",
+      \"set up power platform pipelines\", \"create power pipelines\",
+      \"automate deployments\", \"set up automated deployment\", \"create
+      deployment pipeline\", \"use power pipelines\". Also handles: \"set up
+      github actions\" or \"set up azure devops pipeline\" (shows coming-soon
+      guidance for those platforms)."
+  - id: setup-solution
+    kind: skill
+    path: plugins/power-pages/skills/setup-solution
+    description: 'Creates a Dataverse publisher and solution, then adds Power Pages
+      site components to the solution for ALM and deployment management. Use
+      when asked to: "create solution", "set up solution", "add to solution",
+      "package site into solution", "create publisher", "solutionize my site",
+      or "set up ALM for my site".'
+  - id: telemetry
+    kind: skill
+    path: plugins/power-pages/skills/telemetry
+    description: >
+      Use this skill when the user wants to enable, disable, turn on or off, opt
+      out of, opt in to, or check the status of power-pages telemetry /
+      anonymous usage data. Triggers: "disable telemetry", "turn off telemetry",
+      "opt out of telemetry", "stop collecting usage data", "enable telemetry",
+      "telemetry status".
+  - id: test-site
+    kind: skill
+    path: plugins/power-pages/skills/test-site
+    description: Tests a deployed, activated Power Pages site at runtime using
+      browser-based navigation, page crawling, and API request verification via
+      Playwright. Use when the user wants to test, verify, or smoke-test their
+      deployed site.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

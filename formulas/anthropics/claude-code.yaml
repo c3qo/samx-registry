@@ -1,0 +1,113 @@
+schemaVersion: 1
+id: anthropics/claude-code
+name: Claude Code
+description: Claude Code plugins/skills → agent/command/hook/MCP dev +
+  review/migration/docs.
+source:
+  type: git
+  url: https://github.com/anthropics/claude-code
+  revision: 423563cfe38c90fdf3b428cff0ee7f51cfec3ca7
+capabilities:
+  - id: plugin-structure
+    kind: skill
+    path: plugins/plugin-dev/skills/plugin-structure
+    description: This skill should be used when the user asks to "create a plugin",
+      "scaffold a plugin", "understand plugin structure", "organize plugin
+      components", "set up plugin.json", "use ${CLAUDE_PLUGIN_ROOT}", "add
+      commands/agents/skills/hooks", "configure auto-discovery", or needs
+      guidance on plugin directory layout, manifest configuration, component
+      organization, file naming conventions, or Claude Code plugin architecture
+      best practices.
+  - id: command-development
+    kind: skill
+    path: plugins/plugin-dev/skills/command-development
+    description: This skill should be used when the user asks to "create a slash
+      command", "add a command", "write a custom command", "define command
+      arguments", "use command frontmatter", "organize commands", "create
+      command with file references", "interactive command", "use AskUserQuestion
+      in command", or needs guidance on slash command structure, YAML
+      frontmatter fields, dynamic arguments, bash execution in commands, user
+      interaction patterns, or command development best practices for Claude
+      Code.
+  - id: agent-development
+    kind: skill
+    path: plugins/plugin-dev/skills/agent-development
+    description: This skill should be used when the user asks to "create an agent",
+      "add an agent", "write a subagent", "agent frontmatter", "when to use
+      description", "agent examples", "agent tools", "agent colors", "autonomous
+      agent", or needs guidance on agent structure, system prompts, triggering
+      conditions, or agent development best practices for Claude Code plugins.
+  - id: hook-development
+    kind: skill
+    path: plugins/plugin-dev/skills/hook-development
+    description: This skill should be used when the user asks to "create a hook",
+      "add a PreToolUse/PostToolUse/Stop hook", "validate tool use", "implement
+      prompt-based hooks", "use ${CLAUDE_PLUGIN_ROOT}", "set up event-driven
+      automation", "block dangerous commands", or mentions hook events
+      (PreToolUse, PostToolUse, Stop, SubagentStop, SessionStart, SessionEnd,
+      UserPromptSubmit, PreCompact, Notification). Provides comprehensive
+      guidance for creating and implementing Claude Code plugin hooks with focus
+      on advanced prompt-based hooks API.
+  - id: mcp-integration
+    kind: skill
+    path: plugins/plugin-dev/skills/mcp-integration
+    description: This skill should be used when the user asks to "add MCP server",
+      "integrate MCP", "configure MCP in plugin", "use .mcp.json", "set up Model
+      Context Protocol", "connect external service", mentions
+      "${CLAUDE_PLUGIN_ROOT} with MCP", or discusses MCP server types (SSE,
+      stdio, HTTP, WebSocket). Provides comprehensive guidance for integrating
+      Model Context Protocol servers into Claude Code plugins for external tool
+      and service integration.
+  - id: frontend-design
+    kind: skill
+    path: plugins/frontend-design/skills/frontend-design
+    description: Guidance for distinctive, intentional visual design when building
+      new UI or reshaping an existing one. Helps with aesthetic direction,
+      typography, and making choices that don't read as templated defaults.
+  - id: claude-opus-4-5-migration
+    kind: skill
+    path: plugins/claude-opus-4-5-migration/skills/claude-opus-4-5-migration
+    description: Migrate prompts and code from Claude Sonnet 4.0, Sonnet 4.5, or
+      Opus 4.1 to Opus 4.5. Use when the user wants to update their codebase,
+      prompts, or API calls to use Opus 4.5. Handles model string updates and
+      prompt adjustments for known Opus 4.5 behavioral differences. Does NOT
+      migrate Haiku 4.5.
+  - id: writing-rules
+    kind: skill
+    path: plugins/hookify/skills/writing-rules
+    description: This skill should be used when the user asks to "create a hookify
+      rule", "write a hook rule", "configure hookify", "add a hookify rule", or
+      needs guidance on hookify rule syntax and patterns.
+  - id: plugin-settings
+    kind: skill
+    path: plugins/plugin-dev/skills/plugin-settings
+    description: This skill should be used when the user asks about "plugin
+      settings", "store plugin configuration", "user-configurable plugin",
+      ".local.md files", "plugin state files", "read YAML frontmatter",
+      "per-project plugin settings", or wants to make plugin behavior
+      configurable. Documents the .claude/plugin-name.local.md pattern for
+      storing plugin-specific configuration with YAML frontmatter and markdown
+      content.
+  - id: skill-development
+    kind: skill
+    path: plugins/plugin-dev/skills/skill-development
+    description: This skill should be used when the user wants to "create a skill",
+      "add a skill to plugin", "write a new skill", "improve skill description",
+      "organize skill content", or needs guidance on skill structure,
+      progressive disclosure, or skill development best practices for Claude
+      Code plugins.
+requirements:
+  env:
+    - ANTHROPIC_API_KEY
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Missing evidence for environment variable: ANTHROPIC_API_KEY"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

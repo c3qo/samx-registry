@@ -1,0 +1,193 @@
+schemaVersion: 1
+id: vercel-labs/json-render
+name: json-render
+description: JSON→UI renderers + AI stream/tap/sandbox apps.
+source:
+  type: git
+  url: https://github.com/vercel-labs/json-render
+  revision: e2d00faeaabe2871ca18a4594a9ec39a245f9b6c
+capabilities:
+  - id: json-render
+    kind: mcp
+    path: .cursor/mcp.json
+  - id: core
+    kind: skill
+    path: skills/core
+    description: Core package for defining schemas, catalogs, and AI prompt
+      generation for json-render. Use when working with @json-render/core,
+      defining schemas, creating catalogs, or building JSON specs for UI/video
+      generation.
+  - id: mcp
+    kind: skill
+    path: skills/mcp
+    description: MCP Apps integration for json-render. Use when building MCP servers
+      that render interactive UIs in Claude, ChatGPT, Cursor, or VS Code, or
+      when integrating json-render with the Model Context Protocol.
+  - id: devtools
+    kind: skill
+    path: skills/devtools
+    description: Drop-in inspector panel for any json-render app. Use when the user
+      wants to debug a generative UI, inspect the spec tree, edit state at
+      runtime, see dispatched actions, follow stream patches live, browse a
+      catalog, or pick DOM elements to find their spec keys. Triggers include
+      "add devtools", "debug json-render", "inspect the spec", "why is this
+      element not rendering", "see the state at runtime", or requests to tap
+      streams / capture action logs for `@json-render/devtools`.
+  - id: react
+    kind: skill
+    path: skills/react
+    description: React renderer for json-render that turns JSON specs into React
+      components. Use when working with @json-render/react, building React UIs
+      from JSON, creating component catalogs, or rendering AI-generated specs.
+  - id: next
+    kind: skill
+    path: skills/next
+    description: Next.js renderer for json-render that turns JSON specs into full
+      Next.js applications with routes, layouts, SSR, and metadata. Use when
+      working with @json-render/next, building Next.js apps from JSON specs, or
+      creating AI-generated multi-page applications.
+  - id: codegen
+    kind: skill
+    path: skills/codegen
+    description: Code generation utilities for json-render. Use when generating code
+      from UI specs, building custom code exporters, traversing specs, or
+      serializing props for @json-render/codegen.
+  - id: directives
+    kind: skill
+    path: skills/directives
+    description: Pre-built custom directives for json-render — formatting, math,
+      string manipulation, and i18n. Use when working with
+      @json-render/directives, defining custom directives with defineDirective,
+      or adding $format, $math, $concat, $count, $truncate, $pluralize, $join,
+      or $t to specs.
+  - id: image
+    kind: skill
+    path: skills/image
+    description: Image renderer for json-render that turns JSON specs into SVG and
+      PNG images via Satori. Use when working with @json-render/image,
+      generating OG images from JSON, creating social cards, or rendering
+      AI-generated image specs.
+  - id: ink
+    kind: skill
+    path: skills/ink
+    description: Ink terminal renderer for json-render that turns JSON specs into
+      interactive terminal UIs. Use when working with @json-render/ink, building
+      terminal UIs from JSON, creating terminal component catalogs, or rendering
+      AI-generated specs in the terminal.
+  - id: jotai
+    kind: skill
+    path: skills/jotai
+    description: Jotai adapter for json-render's StateStore interface. Use when
+      integrating json-render with Jotai for state management via
+      @json-render/jotai.
+  - id: react-email
+    kind: skill
+    path: skills/react-email
+    description: React Email renderer for json-render that turns JSON specs into
+      HTML or plain-text emails using @react-email/components and
+      @react-email/render. Use when working with @json-render/react-email,
+      building transactional or marketing emails from JSON, creating email
+      catalogs, rendering AI-generated email specs, or when the user mentions
+      react-email, HTML email, or transactional email.
+  - id: react-native
+    kind: skill
+    path: skills/react-native
+    description: React Native renderer for json-render that turns JSON specs into
+      native mobile UIs. Use when working with @json-render/react-native,
+      building React Native UIs from JSON, creating mobile component catalogs,
+      or rendering AI-generated specs on mobile.
+  - id: react-pdf
+    kind: skill
+    path: skills/react-pdf
+    description: React PDF renderer for json-render. Use when generating PDF
+      documents from JSON specs, working with @json-render/react-pdf, or
+      rendering specs to PDF buffers/streams/files.
+  - id: react-three-fiber
+    kind: skill
+    path: skills/react-three-fiber
+    description: React Three Fiber 3D renderer for json-render. Use when working
+      with @json-render/react-three-fiber, building 3D scenes from JSON specs,
+      rendering meshes/lights/models/environments, or integrating Three.js with
+      json-render catalogs.
+  - id: redux
+    kind: skill
+    path: skills/redux
+    description: Redux adapter for json-render's StateStore interface. Use when
+      integrating json-render with Redux or Redux Toolkit for state management
+      via @json-render/redux.
+  - id: remotion-best-practices
+    kind: skill
+    path: skills/remotion-best-practices
+    description: Best practices for Remotion - Video creation in React
+  - id: remotion
+    kind: skill
+    path: skills/remotion
+    description: Remotion renderer for json-render that turns JSON timeline specs
+      into videos. Use when working with @json-render/remotion, building video
+      compositions from JSON, creating video catalogs, or rendering AI-generated
+      video timelines.
+  - id: shadcn-svelte
+    kind: skill
+    path: skills/shadcn-svelte
+    description: Pre-built shadcn-svelte components for json-render Svelte apps. Use
+      when working with @json-render/shadcn-svelte, adding standard UI
+      components to a Svelte catalog, or building Svelte web UIs with
+      shadcn-svelte + Tailwind CSS components.
+  - id: shadcn
+    kind: skill
+    path: skills/shadcn
+    description: Pre-built shadcn/ui components for json-render. Use when working
+      with @json-render/shadcn, adding standard UI components to a catalog, or
+      building web UIs with Radix UI + Tailwind CSS components.
+  - id: skill-creator
+    kind: skill
+    path: skills/skill-creator
+    description: Guide for creating effective skills. This skill should be used when
+      users want to create a new skill (or update an existing skill) that
+      extends Claude's capabilities with specialized knowledge, workflows, or
+      tool integrations.
+  - id: solid
+    kind: skill
+    path: skills/solid
+    description: SolidJS renderer for json-render. Use when building
+      @json-render/solid catalogs/registries, wiring Renderer providers,
+      implementing bindings/actions, or troubleshooting Solid-specific
+      reactivity patterns.
+  - id: svelte
+    kind: skill
+    path: skills/svelte
+    description: Svelte 5 renderer for json-render that turns JSON specs into Svelte
+      component trees. Use when working with @json-render/svelte, building
+      Svelte UIs from JSON, creating component catalogs, or rendering
+      AI-generated specs.
+  - id: vue
+    kind: skill
+    path: skills/vue
+    description: Vue 3 renderer for json-render. Use when building Vue UIs from JSON
+      specs, working with @json-render/vue, defining Vue component registries,
+      or rendering AI-generated specs in Vue.
+  - id: xstate
+    kind: skill
+    path: skills/xstate
+    description: XState Store adapter for json-render's StateStore interface. Use
+      when integrating json-render with @xstate/store for state management via
+      @json-render/xstate.
+  - id: yaml
+    kind: skill
+    path: skills/yaml
+    description: YAML wire format for json-render with streaming parser, prompt
+      generation, and AI SDK transform. Use when working with @json-render/yaml,
+      YAML-based spec streaming, yaml-spec/yaml-edit fences, or YAML prompt
+      generation.
+  - id: zustand
+    kind: skill
+    path: skills/zustand
+    description: Zustand adapter for json-render's StateStore interface. Use when
+      integrating json-render with Zustand for state management via
+      @json-render/zustand.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

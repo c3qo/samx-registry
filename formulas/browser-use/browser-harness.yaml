@@ -1,0 +1,31 @@
+schemaVersion: 1
+id: browser-use/browser-harness
+name: Browser Harness
+description: Thin CDP browser control harness; real Chrome, screenshots first,
+  domain skills opt-in.
+source:
+  type: git
+  url: https://github.com/browser-use/browser-harness
+  revision: 2cfaa7ea4c77b17b4c2434403865fa4b6d637b29
+capabilities:
+  - id: browser
+    kind: skill
+    path: .
+    description: Direct browser control via CDP. Use when the user wants to
+      automate, scrape, test, or interact with web pages. Connects to the user's
+      already-running Chrome.
+  - id: browser-harness
+    kind: skill
+    path: skills/browser-harness
+    description: Direct browser control via CDP — automate, scrape, test, or
+      interact with web pages by driving the user's already-running Chrome (or a
+      Browser Use cloud browser). Use when the user wants to click, screenshot,
+      fill forms, extract data, or navigate real web pages. Default to
+      screenshots + coordinate clicks, not selector hunting. Requires the
+      one-time `browser-harness` CLI install (see references/install.md).
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

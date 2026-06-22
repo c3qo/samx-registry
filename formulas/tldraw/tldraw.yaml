@@ -1,0 +1,54 @@
+schemaVersion: 1
+id: tldraw/tldraw
+name: tldraw
+description: "Monorepo: canvas SDK + dotcom/docs/examples/workers."
+source:
+  type: git
+  url: https://github.com/tldraw/tldraw
+  revision: 606eaec02ff39f33118c7a2bd3503dfaf4a3bf39
+capabilities:
+  - id: add-app-to-server
+    kind: skill
+    path: apps/mcp-app/.claude/skills/add-app-to-server
+    description: This skill should be used when the user asks to "add an app to my
+      MCP server", "add UI to my MCP server", "add a view to my MCP tool",
+      "enrich MCP tools with UI", "add interactive UI to existing server", "add
+      MCP Apps to my server", or needs to add interactive UI capabilities to an
+      existing MCP server that already has tools. Provides guidance for
+      analyzing existing tools and adding MCP Apps UI resources.
+  - id: convert-web-app
+    kind: skill
+    path: apps/mcp-app/.claude/skills/convert-web-app
+    description: This skill should be used when the user asks to "add MCP App
+      support to my web app", "turn my web app into a hybrid MCP App", "make my
+      web page work as an MCP App too", "wrap my existing UI as an MCP App",
+      "convert iframe embed to MCP App", "turn my SPA into an MCP App", or needs
+      to add MCP App support to an existing web application while keeping it
+      working standalone. Provides guidance for analyzing existing web apps and
+      creating a hybrid web + MCP App with server-side tool and resource
+      registration.
+  - id: create-mcp-app
+    kind: skill
+    path: apps/mcp-app/.claude/skills/create-mcp-app
+    description: This skill should be used when the user asks to "create an MCP
+      App", "add a UI to an MCP tool", "build an interactive MCP View",
+      "scaffold an MCP App", or needs guidance on MCP Apps SDK patterns,
+      UI-resource registration, MCP App lifecycle, or host integration. Provides
+      comprehensive guidance for building MCP Apps with interactive UIs.
+  - id: migrate-oai-app
+    kind: skill
+    path: apps/mcp-app/.claude/skills/migrate-oai-app
+    description: This skill should be used when the user asks to "migrate from
+      OpenAI Apps SDK", "convert OpenAI App to MCP", "port from window.openai",
+      "migrate from skybridge", "convert openai/outputTemplate", or needs
+      guidance on converting OpenAI Apps SDK applications to MCP Apps SDK.
+      Provides step-by-step migration guidance with API mapping tables.
+  - id: tldraw
+    kind: mcp
+    path: apps/mcp-app/plugins/tldraw-mcp/mcp.json
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

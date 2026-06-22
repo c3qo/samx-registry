@@ -1,0 +1,29 @@
+schemaVersion: 1
+id: neondatabase/neon-for-agent-platforms
+name: Neon for Agent Platforms
+description: Neon agent-platform samples + companion skill for fleet ops.
+source:
+  type: git
+  url: https://github.com/neondatabase/neon-for-agent-platforms
+  revision: 724ce48f3f5961d8ab877f7c26b28714f23e7cf8
+capabilities:
+  - id: neon-postgres-agent-platforms
+    kind: skill
+    path: skills/neon-postgres-agent-platforms
+    description: Build and operate multi-tenant AI agent platforms on Neon. Use this
+      skill whenever the user is designing an agent/app builder, provisioning a
+      Neon project or database per user/app/agent run, managing thousands of
+      tenant projects, separating sponsored free users from paid customers,
+      moving projects between orgs, choosing personal vs organization vs
+      project-scoped API keys, tracking fleet consumption or Agent Plan costs,
+      creating compound checkpoints that combine DB snapshots with source
+      revisions/secrets/deploy metadata, or orchestrating snapshot/restore flows
+      for generated apps. Also use it for Neon Agent Program, Agent Plan,
+      org/project limits, HIPAA, co-marketing, support, or
+      neondatabase/neon-for-agent-platforms examples.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

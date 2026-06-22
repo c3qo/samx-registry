@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: vercel-labs/agentic-commerce-skills
+name: Agentic Commerce Skills
+description: UCP skill for Next.js commerce impl, consult, plan, scaffold, validate.
+source:
+  type: git
+  url: https://github.com/vercel-labs/agentic-commerce-skills
+  revision: 735241a60ffb77cea3c2c18a1ada0667e6565128
+capabilities:
+  - id: ucp
+    kind: skill
+    path: ucp
+    description: Expert-level implementation assistant for the Universal Commerce
+      Protocol (UCP). Provides comprehensive tooling for adding UCP support to
+      Next.js ecommerce codebases — from initial consultation through full
+      implementation, testing, and validation.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

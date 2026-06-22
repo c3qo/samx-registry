@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: tropicapp.io/tropic
+name: Tropic
+description: Tropic remote MCP server at https://app.tropicapp.io/mcp. Save
+  money on Software + AI contracts. Setup guides for Claude Code, Codex, Cursor,
+  and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/tropic
+capabilities:
+  - id: tropic
+    kind: mcp
+    spec:
+      serverName: tropic
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://app.tropicapp.io/mcp

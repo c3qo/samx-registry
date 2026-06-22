@@ -1,0 +1,81 @@
+schemaVersion: 1
+id: microsoft/fabric-apps-analytic-templates
+name: Fabric Apps - Analytics Template
+description: Starter template for Fabric Apps analytics web apps.
+source:
+  type: git
+  url: https://github.com/microsoft/fabric-apps-analytic-templates
+  revision: 3db11daaa7127f9e44089e560a837760e473b096
+capabilities:
+  - id: app-design
+    kind: skill
+    path: .agents/skills/app-design
+    description: >
+      Use when building or modifying the app layout,  creating UI components, or
+      making any visual design decisions.  Ensures consistency, accessibility,
+      and a polished, unique app.
+  - id: app-validation
+    kind: skill
+    path: .agents/skills/app-validation
+    description: >
+      What to validate and how to drive Playwright for this template's app.  Use
+      alongside the playwright-cli skill — playwright-cli covers the
+      tool's  commands; this skill covers performance rules, the required
+      validation checklist,  the Fabric portal embed flow, and spec file
+      guidance.
+  - id: dax-authoring
+    kind: skill
+    path: .agents/skills/dax-authoring
+    description: >
+      Write and test DAX queries against Power BI semantic models. Covers DAX
+      syntax rules, query patterns, time intelligence, and an iterative test
+      workflow using the Fabric CLI query command.
+  - id: fabric-cli
+    kind: skill
+    path: .agents/skills/fabric-cli
+    description: >
+      How to use fabric-app-data CLI to manage Fabric data source connections.
+      Maintain workspace/item IDs in a fabric.yaml file with profiles, add
+      connections by ID or Fabric portal URL, and generate TypeScript config for
+      use with @microsoft/fabric-app-data.
+  - id: fabric-sdk
+    kind: skill
+    path: .agents/skills/fabric-sdk
+    description: >
+      How to use @microsoft/fabric-app-data to connect web applications to
+      Fabric data sources at runtime. Build browser-based apps that query
+      semantic models via DAX using the FabricClient API.
+  - id: playwright-cli
+    kind: skill
+    path: .agents/skills/playwright-cli
+    description: Automate browser interactions, test web pages and work with
+      Playwright tests.
+  - id: query-design
+    kind: skill
+    path: .agents/skills/query-design
+    description: >
+      Separates DAX data-fetching from TypeScript presentation. Guides when to
+      use  DAX vs. TypeScript vs. Vega-Lite for aggregation, total rows,
+      FORMAT(), SELECTCOLUMNS,  BLANK handling, filtering, multi-grain queries,
+      and format strings.
+  - id: schema-discovery
+    kind: skill
+    path: .agents/skills/schema-discovery
+    description: >
+      Explore Power BI semantic model schemas using DAX INFO functions.
+      Progressive metadata discovery strategy, scope estimation, and narrowing
+      techniques for tables, columns, measures, and relationships.
+  - id: visuals
+    kind: skill
+    path: .agents/skills/visuals
+    description: >
+      Use when user wants to incorporate charts, graphs, data grid,  or other
+      visual representations of data into their project. Use VegaVisual and
+      DataGrid components to create these visuals,  utilizing the shared data
+      types, formatting, theme, and interactivity hooks.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

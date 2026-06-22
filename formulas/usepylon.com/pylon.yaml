@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: usepylon.com/pylon
+name: Pylon
+description: Pylon remote MCP server at https://mcp.usepylon.com/. Search and
+  manage Pylon support issues. Setup guides for Claude Code, Codex, Cursor, and
+  VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/pylon
+capabilities:
+  - id: pylon
+    kind: mcp
+    spec:
+      serverName: pylon
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.usepylon.com/

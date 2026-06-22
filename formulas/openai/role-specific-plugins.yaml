@@ -1,0 +1,522 @@
+schemaVersion: 1
+id: openai/role-specific-plugins
+name: Role-Specific Plugins
+description: "Multi-plugin pack: data analytics, financial markets, product design, sales."
+source:
+  type: git
+  url: https://github.com/openai/role-specific-plugins
+  revision: ebf5795abb95c18ee17e90bc56c83820d998eecd
+capabilities:
+  - id: datasciencewidgets
+    kind: mcp
+    path: plugins/data-analytics/.mcp.json
+  - id: index
+    kind: skill
+    path: plugins/data-analytics/skills/index
+    description: Primary router for Data Analytics. Use when the plugin is
+      at-mentioned or for data work where source-backed analysis, quantitative
+      reasoning, analytical delivery, or reusable data context may be useful;
+      examples include analyzing data, explaining or diagnosing metrics,
+      validating data or results, creating data visualizations, building
+      analytics reports or dashboards, working with notebooks or spreadsheets,
+      designing KPIs, sizing opportunities, and saving reusable data context for
+      future analysis.
+  - id: index-3
+    kind: skill
+    path: plugins/sales/skills/index
+    description: "Use to discover specific skills for the Sales plugin, when it is
+      at-mentioned directly, or for any mentions of potentially relevant work,
+      including: meeting prep or call follow-up; account research, monitoring,
+      or prioritization; internal source finding; competitive briefs; deal
+      strategy; pipeline or forecast review; company or contact enrichment;
+      customer quote retrieval; rep coaching; business cases; sales company
+      research; and CRM or data enrichment workflows."
+  - id: analyze-data-quality
+    kind: skill
+    path: plugins/data-analytics/skills/analyze-data-quality
+    description: Assess whether tables, query results, files, or dataframes are
+      trustworthy enough for analysis, modeling, dashboards, experiments, or
+      pipelines. Use for grain, freshness, nulls, duplicates, schema drift,
+      broken joins, referential integrity, distribution shifts, leakage,
+      backfills, source mismatches, automated quality checks, and data-quality
+      regressions.
+  - id: build-dashboard
+    kind: skill
+    path: plugins/data-analytics/skills/build-dashboard
+    description: Build source-backed analytical dashboards that help teams monitor
+      performance, explore drivers, and act on product or business metrics. Use
+      when the user needs a dashboard, scorecard, monitoring view, BI dashboard,
+      MCP artifact dashboard, or Streamlit dashboard with clear metrics,
+      filters, validation, and handoff.
+  - id: report-to-google-doc
+    kind: skill
+    path: plugins/data-analytics/skills/build-report/report-to-google-doc
+    description: Narrow conversion skill. Invoke only when the user explicitly asks
+      to convert an existing local or blob-hosted HTML analytics report into a
+      Google Doc, DOCX, or shareable document.
+  - id: report-to-google-slides
+    kind: skill
+    path: plugins/data-analytics/skills/build-report/report-to-google-slides
+    description: Narrow conversion skill. Invoke only when the user explicitly asks
+      to convert an existing HTML analytics report into a native Google Slides
+      deck.
+  - id: report-to-pdf
+    kind: skill
+    path: plugins/data-analytics/skills/build-report/report-to-pdf
+    description: Narrow conversion skill. Invoke only when the user explicitly asks
+      to convert an existing Data Analytics report, dashboard, or inline chart
+      export into a PDF artifact.
+  - id: build-report
+    kind: skill
+    path: plugins/data-analytics/skills/build-report
+    description: Build polished analytical reports for executive, product, business,
+      and technical audiences, and act as the completion contract for Data
+      Analytics report runs. Use when the final artifact needs an answer-first
+      narrative, evidence-backed findings, charts/tables, caveats, source
+      metadata, and either an MCP app report or an HTML report with
+      Seaborn-generated charts.
+  - id: design-kpis
+    kind: skill
+    path: plugins/data-analytics/skills/design-kpis
+    description: Design KPI frameworks, set targets, and develop measurement plans
+      that help teams make product or business decisions. Use when success
+      metrics, drivers, guardrails, targets, or measurement approach need to be
+      defined or improved. Use $metric-diagnostics when the task is to explain
+      why an existing metric moved.
+  - id: gather-business-context
+    kind: skill
+    path: plugins/data-analytics/skills/gather-business-context
+    description: Gather business context from connected or provided sources so
+      downstream analysis starts with the right framing. Use before deeper
+      analysis when an analytical question depends on context the prompt does
+      not provide, for example to understand what a metric means, how the work
+      is defined, what changed recently, or which sources should be checked.
+  - id: jupyter-notebooks
+    kind: skill
+    path: plugins/data-analytics/skills/jupyter-notebooks
+    description: Create, scaffold, edit, refactor, and validate Jupyter notebooks
+      (`.ipynb`) for reproducible SQL/Python analysis, experiments, modeling,
+      tutorials, diagnostics, data-quality checks, market-sizing calculations,
+      and report support. Use when the notebook itself is a deliverable, review
+      artifact, runnable analysis companion, or handoff artifact that other
+      people should be able to skim, rerun, or extend.
+  - id: kpi-reporting
+    kind: skill
+    path: plugins/data-analytics/skills/kpi-reporting
+    description: Produce leadership-ready KPI updates, scorecards, WBR/MBR/QBR
+      summaries, target and pacing readouts, operating status narratives, and
+      performance updates for known KPIs. Use when the work is to define KPI
+      reporting context, validate metric definitions, present actuals versus
+      comparison or plan, summarize validated drivers, and state implications or
+      next actions.
+  - id: market-sizing
+    kind: skill
+    path: plugins/data-analytics/skills/market-sizing
+    description: Estimate a market or opportunity size, such as TAM/SAM/SOM, by
+      defining scope, choosing a sizing model, checking connected context and
+      public sources, and presenting transparent assumptions, sensitivity,
+      uncertainty, and validation priorities. Use for market or opportunity
+      sizing; not for KPI reporting or metric diagnostics.
+  - id: metric-diagnostics
+    kind: skill
+    path: plugins/data-analytics/skills/metric-diagnostics
+    description: Diagnose why a metric changed or differs from expectation by
+      reproducing the metric, choosing the right comparison, validating likely
+      drivers, and producing a calibrated explanation. Use when the user needs
+      to understand what drove a metric movement, anomaly, gap, or discrepancy.
+  - id: product-business-analysis
+    kind: skill
+    path: plugins/data-analytics/skills/product-business-analysis
+    description: Analyze product or business data to inform decisions with focused
+      quantitative work, decision-relevant context, measurable opportunities,
+      and a clear recommendation. Use when the user needs data-backed evidence
+      to choose a direction, prioritize an opportunity, evaluate a change,
+      understand implications, or decide what to do next; not for routine KPI
+      reporting, metric diagnostics, or dashboard building.
+  - id: spreadsheets
+    kind: skill
+    path: plugins/data-analytics/skills/spreadsheets
+    description: Use this skill when a user requests to create, modify, analyze,
+      visualize, or work with spreadsheet files (`.xlsx`, `.xls`, `.csv`,
+      `.tsv`) or Google Sheets-targeted spreadsheet artifacts with formulas,
+      formatting, charts, tables, and recalculation.
+  - id: user-context
+    kind: skill
+    path: plugins/data-analytics/skills/user-context
+    description: Load or manage the Data Analytics plugin's durable source-routing
+      preferences, onboarding logic, setup progress, and semantic-layer
+      registry.
+  - id: validate-data
+    kind: skill
+    path: plugins/data-analytics/skills/validate-data
+    description: "QA an analysis before sharing: review methodology, metric
+      definitions, SQL/query logic, calculation checks, chart integrity, bias
+      risks, caveats, reproducibility, and whether conclusions are supported by
+      evidence. Use when reviewing a report, notebook, spreadsheet, SQL
+      query/results, dashboard, chart, recommendation, or stakeholder-ready
+      analysis before presentation or publication."
+  - id: visualize-data
+    kind: skill
+    path: plugins/data-analytics/skills/visualize-data
+    description: Design, specify, implement, revise, and QA quantitative visuals and
+      chart choices. Use when an analytical answer needs visual judgment; for
+      example comparing values, showing how a total breaks apart, reading
+      concentration in a ranking, or understanding movement over time. This may
+      mean rendering a chart for a report or dashboard, or simply choosing,
+      rendering and QAing the right chart form for an inline answer.
+  - id: catalyst-calendar
+    kind: skill
+    path: plugins/financial-markets/skills/catalyst-calendar
+    description: Use when building public-equity-investing catalyst calendars. Do
+      not use for full event underwriting; use event-driven-analyzer.
+  - id: company-tearsheet
+    kind: skill
+    path: plugins/financial-markets/skills/company-tearsheet
+    description: Use when creating source-backed public issuer tearsheets. Do not
+      use for private diligence, fund diligence, vendors, or market maps.
+  - id: comps-valuation
+    kind: skill
+    path: plugins/financial-markets/skills/comps-valuation
+    description: Produce Public Equity Investing comparable-company valuation in
+      report or workbook mode. Use for peer selection, multiple analysis,
+      valuation read-throughs, implied prices, comps dashboards, Excel or Sheets
+      comps, refreshable peer tables, model updates, and comps workbook QA. Do
+      not use for DCF-only, credit-security, or generic market commentary
+      requests.
+  - id: dcf-model-builder
+    kind: skill
+    path: plugins/financial-markets/skills/dcf-model-builder
+    description: Use when building public-equity DCF valuation workbooks. Default to
+      the banker formula workbook path for new model builds; use deterministic
+      exports only for controlled support calculations or explicit lightweight
+      runs. Do not use for standalone workbook audits; use model-audit-tieout.
+  - id: deck-report-qc
+    kind: skill
+    path: plugins/financial-markets/skills/deck-report-qc
+    description: Use when running first-pass QC on Public Equity Investing decks or
+      reports. Do not use as external-circulation certification.
+  - id: earnings-deep-dive
+    kind: skill
+    path: plugins/financial-markets/skills/earnings-deep-dive
+    description: Use when analyzing public-company earnings after results, guidance,
+      transcript, or call commentary. Do not use for pre-print previews.
+  - id: earnings-preview
+    kind: skill
+    path: plugins/financial-markets/skills/earnings-preview
+    description: Use when preparing full pre-earnings preview reports with executive
+      summary, expectation bar, guidance credibility, KPI dashboard, scenarios,
+      and call questions. Do not use after results or for short summaries unless
+      the user explicitly asks for a summary/short version.
+  - id: economic-impact-report
+    kind: skill
+    path: plugins/financial-markets/skills/economic-impact-report
+    description: Use when translating a specific event, policy change, macro shock,
+      or industry development into public-equity issuer, sector, earnings,
+      valuation, positioning, and portfolio implications. Do not use for
+      standalone macro strategy, rates, FX, credit, futures, or generic market
+      commentary.
+  - id: equity-model-update
+    kind: skill
+    path: plugins/financial-markets/skills/equity-model-update
+    description: Safely update public-company Excel model copies from
+      source-to-model maps; emits XLSX as the hero artifact and CSV/log/manifest
+      as support. Do not use for pure earnings notes or broad workbook audits.
+  - id: event-driven-analyzer
+    kind: skill
+    path: plugins/financial-markets/skills/event-driven-analyzer
+    description: Use when analyzing dated public-equity event paths, probabilities,
+      payoffs, and expected returns. Do not use for generic catalyst lists, risk
+      sizing, hedges, capital structure, covenants, or credit recovery.
+  - id: financials-normalizer
+    kind: skill
+    path: plugins/financial-markets/skills/financials-normalizer
+    description: Use when normalizing public-company financials from source
+      materials. Do not use for private data rooms or non-financial cleanup.
+  - id: idea-generation
+    kind: skill
+    path: plugins/financial-markets/skills/idea-generation
+    description: Use when triaging public-equity idea candidates. Do not use for
+      final trade recommendations, pitches, memos, or models.
+  - id: initiating-coverage
+    kind: skill
+    path: plugins/financial-markets/skills/initiating-coverage
+    description: Use when building public-equity-investing initiating coverage
+      reports. Do not use for trade pitches, memos, earnings notes, models, or
+      tearsheets.
+  - id: long-short-pitch
+    kind: skill
+    path: plugins/financial-markets/skills/long-short-pitch
+    description: Use when building PM-facing Public Equity Investing trade pitches,
+      including sparse-context or partial-section requests. Do not use for
+      formal memos; use memo-builder.
+  - id: meeting-prep
+    kind: skill
+    path: plugins/financial-markets/skills/meeting-prep
+    description: Use when creating Public Equity Investing meeting prep briefs. Do
+      not use for private diligence, IB, FP&A, legal, or scheduling-only tasks.
+  - id: memo-builder
+    kind: skill
+    path: plugins/financial-markets/skills/memo-builder
+    description: Use when drafting or reviewing formal public-equity investment
+      memos. Do not use for live trade construction or credit-first memos; use
+      long-short-pitch or Credit Markets as appropriate.
+  - id: model-audit-tieout
+    kind: skill
+    path: plugins/financial-markets/skills/model-audit-tieout
+    description: Use when auditing existing Public Equity Investing models or
+      spreadsheets. Do not use to build a new model from scratch.
+  - id: portfolio-risk-management
+    kind: skill
+    path: plugins/financial-markets/skills/portfolio-risk-management
+    description: Use when sizing Public Equity Investing positions, finding equity
+      hedges, or building an integrated position-and-hedge risk plan from a
+      listed-equity thesis. Do not use for thesis construction, standalone event
+      underwriting, trade execution, personal investment advice, or
+      credit-instrument risk.
+  - id: public-equity-investing
+    kind: skill
+    path: plugins/financial-markets/skills/public-equity-investing
+    description: Route Public Equity Investing only when explicitly named or tagged,
+      or for an unmistakable listed-equity investor workflow tied to a public
+      security, such as earnings investment work, a long/short thesis,
+      public-equity valuation or model update, catalysts, or position sizing. Do
+      not use for generic company research, reports, documents, models,
+      valuation, or share-price questions.
+  - id: scenario-sensitivity-generator
+    kind: skill
+    path: plugins/financial-markets/skills/scenario-sensitivity-generator
+    description: Use when turning a public-equity base case, model, thesis, event,
+      or catalyst into scenario skew, sensitivity, breakpoint, and PM
+      action-threshold analysis. Do not use for first-pass model builds,
+      credit-security valuation, or generic planning.
+  - id: thesis-tracker
+    kind: skill
+    path: plugins/financial-markets/skills/thesis-tracker
+    description: Use when building or updating Public Equity Investing thesis
+      trackers. Do not use for generic news summaries, trade pitches, or
+      first-pass memos.
+  - id: three-statement-model-builder
+    kind: skill
+    path: plugins/financial-markets/skills/three-statement-model-builder
+    description: Use when building public-equity three-statement operating model
+      workbooks. Default to the banker formula workbook path for new model
+      builds; use deterministic exports only for controlled support calculations
+      or explicit lightweight runs. Do not use for standalone workbook audits.
+  - id: user-context-2
+    kind: skill
+    path: plugins/financial-markets/skills/user-context
+    description: Start onboarding, initialize, inspect, save, update, forget,
+      export, or explicitly reset the Public Equity Investing plugin's local
+      user context, source setup, or optional automation setup. Use when the
+      user explicitly asks to get started, orient, or manage Public Equity
+      Investing saved preferences, source pointers, context storage, or
+      recurring automation.
+  - id: audit
+    kind: skill
+    path: plugins/product-design/skills/audit
+    description: Audit or critique a product flow, journey, workflow, funnel,
+      onboarding path, checkout path, settings path, screen, or multi-step
+      product experience by capturing screenshots first, placing them in Figma
+      or a local folder, then reporting UX, design, and accessibility findings
+      from that evidence. Use when the user asks to audit, critique, review,
+      inspect, assess, or evaluate a product experience.
+  - id: design-qa
+    kind: skill
+    path: plugins/product-design/skills/design-qa
+    description: Internal prototype QA helper. Use only after a Product Design
+      prototype, URL-to-code build, or image-to-code build has a source visual
+      target and a rendered implementation to compare before handoff. Do not use
+      for broad UX critique, design critique, product audits, or flow reviews;
+      route those user-facing requests to audit.
+  - id: get-context
+    kind: skill
+    path: plugins/product-design/skills/get-context
+    description: Mandatory design-brief gate for Product Design build and design
+      workflows. Use before ideation, prototyping, image-to-code builds,
+      redesigns, or product UI work to clarify missing product, visual, and
+      interactivity context or play back the supplied brief before proceeding.
+  - id: ideate
+    kind: skill
+    path: plugins/product-design/skills/ideate
+    description: Generate image-based visual alternatives, remixes, or concept
+      directions after Product Design get-context has confirmed the design
+      brief. Use when the user asks for design variants, visual exploration,
+      remixes, or image-generated approaches from provided context.
+  - id: image-to-code
+    kind: skill
+    path: plugins/product-design/skills/image-to-code
+    description: Implement a selected image, screenshot, mockup, or Image Gen
+      reference as a faithful responsive frontend after Product Design
+      get-context has confirmed the design brief.
+  - id: index-2
+    kind: skill
+    path: plugins/product-design/skills/index
+    description: "Use to discover specific skills for the Product Design plugin,
+      when it is at-mentioned directly, or for any mentions of potentially
+      relevant work, including: UX research; product, screen, or flow audits;
+      visual ideation; app or interface design, redesign, cloning, prototyping,
+      or implementation from ideas, URLs, images, Figma, or code; design QA; and
+      prototype sharing or deployment."
+  - id: prototype
+    kind: skill
+    path: plugins/product-design/skills/prototype
+    description: Route coded prototype requests after Product Design get-context has
+      confirmed the design brief. Use for building prototypes from URLs, images,
+      mockups, Figma, existing code, or ideas that need visual exploration
+      before build.
+  - id: research
+    kind: skill
+    path: plugins/product-design/skills/research
+    description: Run fast, source-grounded UX research on the highest-signal
+      problems users are experiencing with a user-specified digital product. Use
+      when the user asks to research user pain, UX friction, onboarding issues,
+      docs/help problems, developer experience friction, support pain, product
+      workflow issues, or current user complaints for a named product.
+  - id: share
+    kind: skill
+    path: plugins/product-design/skills/share
+    description: Share a runnable prototype using the user's preferred deployment tool.
+  - id: url-to-code
+    kind: skill
+    path: plugins/product-design/skills/url-to-code
+    description: Clone a live URL as a runnable frontend-only local app using
+      Browser/Chrome source evidence after Product Design get-context has
+      confirmed the design brief.
+  - id: user-context-3
+    kind: skill
+    path: plugins/product-design/skills/user-context
+    description: Load or manage Product Design's saved user context. Use when the
+      user asks to set up Product Design, get started, onboard, save product or
+      design sources, see what Product Design remembers, update saved context,
+      or remember Product Design preferences. Examples include product URLs,
+      Figma files, screenshots, reference images, codebase paths, Storybook,
+      tokens, design systems, brand assets, and general product/design notes.
+  - id: analyze-account-signals
+    kind: skill
+    path: plugins/sales/skills/analyze-account-signals
+    description: Analyze fresh signals for a named account, owner portfolio, or
+      watchlist and turn them into evidence-backed account intelligence using
+      active Sales source categories and user-provided context.
+  - id: build-business-case
+    kind: skill
+    path: plugins/sales/skills/build-business-case
+    description: Build customer-led business cases, ROI narratives, value models,
+      executive summaries, and customer-ready value stories from uneven customer
+      context, metrics, transcripts, notes, and public evidence.
+  - id: build-competitive-brief
+    kind: skill
+    path: plugins/sales/skills/build-competitive-brief
+    description: Build a multi-competitor build-competitive-brief report, comparison
+      matrix, and battlecard-style objection package using user-provided
+      materials, optional connector-assisted research, and public evidence.
+  - id: enrich-company-and-contact-data
+    kind: skill
+    path: plugins/sales/skills/enrich-company-and-contact-data
+    description: Build portable sales enrich-company-and-contact-data outputs for
+      company and contact discovery, firmographic or technographic completion,
+      ICP list building, segmentation, trigger analysis, market scans, and
+      enrichment-backed comparison work using configured source categories and
+      user-provided inputs.
+  - id: find-customer-quotes
+    kind: skill
+    path: plugins/sales/skills/find-customer-quotes
+    description: Retrieve theme-specific customer or prospect quotes from
+      transcripts, call notes, or exported recordings using transcript-first
+      evidence and explicit speaker-confidence rules.
+  - id: find-key-internal-sources
+    kind: skill
+    path: plugins/sales/skills/find-key-internal-sources
+    description: Find the best internal experts, documents, and chat channels for a
+      customer question, product topic, objection, implementation issue, account
+      task, or other internal topic using user-provided context, optional
+      connector-assisted search, and evidence-backed ranking.
+  - id: follow-up-after-call
+    kind: skill
+    path: plugins/sales/skills/follow-up-after-call
+    description: Turn a recent customer, partner, or important internal call
+      transcript or grounded call notes into a seller-ready follow-up package
+      with a recap, next steps, external comms when applicable, CRM next steps
+      when applicable, and an internal follow-up draft.
+  - id: get-rep-call-feedback
+    kind: skill
+    path: plugins/sales/skills/get-rep-call-feedback
+    description: Compare one rep’s call history against peer examples to extract
+      repeatable best practices and produce evidence-backed coaching feedback.
+  - id: hubspot
+    kind: skill
+    path: plugins/sales/skills/hubspot
+    description: HubSpot CRM connector guide for Sales workflows that use HubSpot
+      for CRM reads, drafts, notes, or proposed record changes.
+  - id: plan-deal-strategy
+    kind: skill
+    path: plugins/sales/skills/plan-deal-strategy
+    description: Build a post-discovery deal strategy pack with a deal map, buying
+      committee map, procurement risk register, and prioritized next actions
+      from grounded deal evidence.
+  - id: prepare-for-meeting
+    kind: skill
+    path: plugins/sales/skills/prepare-for-meeting
+    description: Create concise pre-meeting briefs and daily prep for customer
+      meetings or the user's most important meeting of the day, using
+      authoritative internal context plus supplementary public web enrichment.
+  - id: prioritize-accounts
+    kind: skill
+    path: plugins/sales/skills/prioritize-accounts
+    description: Prioritize rep-ready pipeline by ranking accounts, suppressing
+      in-flight motion, selecting the best reachable contact, and producing a
+      connector-grounded account action view plus a concise planning-only action
+      package from CRM, user-provided lists, saved context, and optional
+      enrichment evidence.
+  - id: review-forecast
+    kind: skill
+    path: plugins/sales/skills/review-forecast
+    description: Generate a forecast review with risk analysis, recommendation
+      posture, and change detection using CRM truth, pasted or exported pipeline
+      context, account notes, and optional meeting, email, document, or
+      internal-message evidence.
+  - id: review-rep-call-trends
+    kind: skill
+    path: plugins/sales/skills/review-rep-call-trends
+    description: Analyze a sales or customer-facing rep’s recent calls to detect
+      improvement, regression, and stable patterns with objective evidence and
+      practical coaching actions.
+  - id: sales-company-research
+    kind: skill
+    path: plugins/sales/skills/sales-company-research
+    description: Explicit-only Sales workflow for scheduled or index-routed company
+      research that finds durable internal resources, saves high-confidence
+      Sales plugin memory, and asks focused follow-up questions.
+  - id: salesforce
+    kind: skill
+    path: plugins/sales/skills/salesforce
+    description: Agentforce Sales connector guide for Sales workflows that use
+      Salesforce for CRM reads, drafts, notes, account plans, Agentforce
+      assignments, or proposed record changes.
+  - id: suggest-sales-next-step
+    kind: skill
+    path: plugins/sales/skills/suggest-sales-next-step
+    description: Run scheduled or manual Sales check-ins that summarize recent Sales
+      work and recommend one next Sales workflow to try.
+  - id: user-context-4
+    kind: skill
+    path: plugins/sales/skills/user-context
+    description: Load or manage the Sales plugin's durable user context, onboarding
+      logic, setup progress, automation metadata, saved preferences, non-obvious
+      CRM conventions, source-of-truth pointers, book-of-business sources,
+      internal team resources, account channels, approval trackers, trusted
+      examples, approved Sales Company Research saves, "please remember"
+      requests, and broad future-facing instructions such as
+      always/never/prefer/next-time feedback after a Sales draft.
+  - id: zoominfo
+    kind: skill
+    path: plugins/sales/skills/zoominfo
+    description: ZoomInfo connector guide for Sales workflows or explicit ZoomInfo
+      requests involving company search, contact search, enrichment, intent
+      signals, similar-account discovery, contact recommendations, and company
+      or contact research.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

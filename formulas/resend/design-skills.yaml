@@ -1,0 +1,45 @@
+schemaVersion: 1
+id: resend/design-skills
+name: Resend Design Skills
+description: Skill pack → brand, DS, marketing, audit.
+source:
+  type: git
+  url: https://github.com/resend/design-skills
+  revision: e2afca9f2f5d0aefd1f43d64fd2f8053f6c701d5
+capabilities:
+  - id: brand-guidelines
+    kind: skill
+    path: brand-guidelines
+    description: Use when creating Resend marketing materials, documents,
+      presentations, or visual content. Triggers for Resend brand, Resend style,
+      or Resend visual identity requests.
+  - id: design-audit
+    kind: skill
+    path: design-audit
+    description: Audit the Resend dashboard for design system alignment. Routes here
+      when a user says "audit design", "design alignment", "dashboard design
+      audit", or when triggered by the scheduled weekly routine.
+  - id: design-system
+    kind: skill
+    path: design-system
+    description: Use when building or modifying UI in the Resend codebase. Provides
+      component APIs, variant options, design tokens, and composition patterns
+      for all src/ui/ primitives.
+  - id: marketing-pages
+    kind: skill
+    path: marketing-pages
+    description: Use when creating, updating, editing, or deleting marketing/public
+      pages in the Resend codebase. Covers page structure, component reuse
+      rules, and the distinction between public and product design systems.
+  - id: resend-design-skills
+    kind: skill
+    path: .
+    description: Use when needing Resend design resources. Routes to brand
+      guidelines, visual identity, UI components, design tokens, and marketing
+      page patterns.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

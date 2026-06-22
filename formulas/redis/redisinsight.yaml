@@ -1,0 +1,126 @@
+schemaVersion: 1
+id: redis/redisinsight
+name: RedisInsight
+description: Redis DB GUI; API, UI, plugins, MCP.
+source:
+  type: git
+  url: https://github.com/redis/redisinsight
+  revision: 19a403010f4a5ec0a66de04f19007e6b834c84c0
+capabilities:
+  - id: backend
+    kind: skill
+    path: .ai/skills/backend
+    description: "NestJS backend development patterns for the RedisInsight API:
+      module structure, services, controllers, DTOs, dependency injection, and
+      error handling. Use when editing any file under redisinsight/api/**,
+      writing or modifying NestJS modules, controllers, services, DTOs,
+      providers, or when the user mentions the backend, API, or NestJS."
+  - id: frontend
+    kind: skill
+    path: .ai/skills/frontend
+    description: "React/Redux frontend development patterns for RedisInsight UI:
+      component folder structure, styled-components, hooks, named exports,
+      barrel files, layout components, and theme usage. Use when editing any
+      file under redisinsight/ui/**, writing or modifying React components,
+      Redux slices, styled-components, custom hooks, or when the user mentions
+      UI, frontend, React, Redux, or styled-components."
+  - id: redis-insight-plugin
+    kind: skill
+    path: .ai/skills/redis-insight-plugin
+    description: Use when creating, modifying, debugging, deploying, or testing
+      Redis Insight Workbench visualization plugins, plugin manifests,
+      package.json visualizations, activationMethod functions,
+      redisinsight-plugin-sdk usage, Parcel/Vite plugin builds, iframe
+      rendering, Redis command parsing, Docker RedisInsight deployment,
+      /api/plugins verification, or Playwright plugin validation.
+  - id: branches
+    kind: skill
+    path: .ai/skills/branches
+    description: Create and name git branches following project conventions. Use
+      when creating branches, checking out new branches, or the user mentions
+      branch naming.
+  - id: code-quality
+    kind: skill
+    path: .ai/skills/code-quality
+    description: "Code-quality standards for RedisInsight: TypeScript strictness,
+      naming conventions (camelCase, PascalCase, UPPER_SNAKE_CASE), linting
+      rules, no `any` without reason, no `!important` in styles, and constant
+      extraction. Use when writing or refactoring any TypeScript/JavaScript code
+      in this repo, when ESLint or Prettier issues come up, or when the user
+      mentions code style, lint, naming conventions, or general code quality."
+  - id: commits
+    kind: skill
+    path: .ai/skills/commits
+    description: Generate commit messages following Conventional Commits format. Use
+      when creating commits, writing commit messages, or the user asks to commit
+      changes.
+  - id: e2e-testing
+    kind: skill
+    path: .ai/skills/e2e-testing
+    description: "Playwright end-to-end testing standards for RedisInsight: page
+      object models, test structure, fixtures, navigation patterns, and
+      flaky-test prevention. Use when editing files under
+      tests/e2e-playwright/**, writing Playwright tests, adding page objects, or
+      when the user mentions Playwright, E2E tests, page objects, or end-to-end
+      testing."
+  - id: feature-flags
+    kind: skill
+    path: .ai/skills/feature-flags
+    description: Create, modify, and remove feature flags in RedisInsight. Use when
+      adding a new feature flag, introducing a dev flag, promoting a dev flag to
+      regular, cleaning up old flags, or the user mentions feature flags,
+      feature toggles, or gating features.
+  - id: git-safety
+    kind: skill
+    path: .ai/skills/git-safety
+    description: "Critical safety guardrails for protected branches: never commit,
+      push, or force-push directly to main, latest, or release branches; no
+      destructive history rewrites without explicit user approval. Use before
+      any git operation that touches protected branches, before force-push,
+      reset --hard, history rewrite, or branch deletion, or whenever the user
+      asks about merging, pushing, or release branches."
+  - id: pull-requests
+    kind: skill
+    path: .ai/skills/pull-requests
+    description: Create and review pull requests following project standards
+      including title format, description template, and review checklist. Use
+      when creating PRs, writing PR descriptions, or reviewing pull requests.
+  - id: testing
+    kind: skill
+    path: .ai/skills/testing
+    description: "Unit/integration testing standards for RedisInsight using Jest and
+      Testing Library: test structure, the `renderComponent` helper, faker for
+      test data, mocking patterns, and `waitFor` instead of fixed time waits.
+      Use when writing or modifying any `*.spec.ts` or `*.spec.tsx` file, when
+      adding component or slice tests, when debugging flaky tests, or when the
+      user mentions jest, testing library, faker, or test patterns."
+  - id: tsconfigs
+    kind: skill
+    path: .ai/skills/tsconfigs
+    description: Locate and modify TypeScript configuration in RedisInsight. Use
+      when adding path aliases, introducing a new TS area, debugging
+      webpack/ts-node/ESLint path resolution, or the user asks about tsconfig,
+      path mappings, or where TypeScript is configured.
+  - id: type-check-baselines
+    kind: skill
+    path: .ai/skills/type-check-baselines
+    description: Run, refresh, or recover from RedisInsight's per-project TypeScript
+      error baselines (.tscheck.rec.json). Use when CI reports "baseline is
+      outdated" or "more TS errors than previously recorded", when the user
+      mentions tscheck / type-check / .tscheck.rec.json, when introducing or
+      fixing TS errors, or when reviewing PRs that touch baseline files.
+requirements:
+  env:
+    - .env.mcp
+hooks:
+  mode: explicit
+  entries: []
+advisories:
+  - id: candidate-validation
+    severity: warning
+    category: generation
+    message: Formula candidate required generation advisories.
+    paths: []
+    reason: "Missing evidence for environment variable: .env.mcp"
+    effect: Generated formula fields may be incomplete or require manual verification.
+    action: Inspect candidate evidence and adjust formula before publishing.

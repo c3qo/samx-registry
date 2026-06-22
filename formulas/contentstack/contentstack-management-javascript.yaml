@@ -1,0 +1,46 @@
+schemaVersion: 1
+id: contentstack/contentstack-management-javascript
+name: Contentstack Management JavaScript SDK
+description: CMA client → auth, stack ops, HTTP transport, builds, tests.
+source:
+  type: git
+  url: https://github.com/contentstack/contentstack-management-javascript
+  revision: de0c86b47d970e62a10c4dc5e569b2f9a26dd7b2
+capabilities:
+  - id: testing
+    kind: skill
+    path: skills/testing
+    description: How to run and extend tests — Mocha unit, sanity API, Jest
+      TypeScript; env and mocks.
+  - id: code-review
+    kind: skill
+    path: skills/code-review
+    description: Use when reviewing PRs or before opening a PR — API design,
+      null-safety, errors, backward compatibility, dependencies, security, and
+      test quality.
+  - id: contentstack-javascript-cma
+    kind: skill
+    path: skills/contentstack-javascript-cma
+    description: Contentstack Management (CMA) JavaScript SDK — client, stack, auth,
+      regions, entities in lib/.
+  - id: dev-workflow
+    kind: skill
+    path: skills/dev-workflow
+    description: Branches, lint/tests before PR, semver version bumps, and PR
+      expectations for contentstack-management-javascript.
+  - id: framework
+    kind: skill
+    path: skills/framework
+    description: Axios HTTP layer for the SDK — contentstackHTTPClient, retries,
+      concurrency, plugins, oauth utilities.
+  - id: javascript-style
+    kind: skill
+    path: skills/javascript-style
+    description: JavaScript and TypeScript declaration style for lib, webpack, types
+      — ESLint standard, modules, JSDoc.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

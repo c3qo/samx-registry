@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: posthog/posthog-for-claude
+name: PostHog for Claude
+description: PostHog plugin repo; MCP cfg + instrumentation skill.
+source:
+  type: git
+  url: https://github.com/posthog/posthog-for-claude
+  revision: 4122119322584efc7a3e483b9c1cc2e4903ebeec
+capabilities:
+  - id: posthog-instrumentation
+    kind: skill
+    path: skills/posthog-instrumentation
+    description: Automatically add PostHog analytics instrumentation to code.
+      Triggers when user asks to add tracking, instrument events, add analytics,
+      or implement feature flags in their codebase.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

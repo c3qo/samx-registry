@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: vercel-labs/ralph-gpu
+name: ralph-gpu
+description: Minimal WebGPU shader lib; creative coding + AI agent loop mono-repo.
+source:
+  type: git
+  url: https://github.com/vercel-labs/ralph-gpu
+  revision: 4f47ced574fc9cbef34a176642b356e12bc0a6f5
+capabilities:
+  - id: ralph-gpu
+    kind: skill
+    path: SKILLS/ralph-gpu
+    description: Minimal WebGPU shader library for creative coding and real-time
+      graphics. Provides fullscreen passes, particles, compute shaders, render
+      targets, and ping-pong buffers with automatic uniform bindings and global
+      time/resolution tracking.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

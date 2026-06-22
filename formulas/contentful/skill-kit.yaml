@@ -1,0 +1,46 @@
+schemaVersion: 1
+id: contentful/skill-kit
+name: skill-kit
+description: TypeScript SDK for agent skills; workflow + reference skills;
+  CLI/MCP build/run.
+source:
+  type: git
+  url: https://github.com/contentful/skill-kit
+  revision: 7b86dbd3e1a984ec332d02e130ce7601dfe8f29c
+capabilities:
+  - id: skill
+    kind: skill
+    path: examples/contentful-help/skill
+    description: "Diagnose, configure, and look up Contentful topics. Trigger
+      keywords: contentful help, contentful doctor, contentful setup"
+  - id: skill-2
+    kind: skill
+    path: examples/game-jam/skill
+    description: "A guided game creation skill that walks you through designing,
+      planning, and building a browser-based Tetris game. Demonstrates all SDK
+      primitives: askUser, confirm, plan, checklist, and subagent. Trigger
+      keywords: game jam, build a game, tetris, game tutorial"
+  - id: skill-3
+    kind: skill
+    path: examples/get-to-know-you/skill
+    description: "A playful interview that gets to know the user and produces a
+      profile trading card. Use when the user wants to introduce themselves or
+      when you want to break the ice. Trigger keywords: introduce myself,
+      trading card, get to know me, ice breaker"
+  - id: skill-4
+    kind: skill
+    path: examples/primitives-showcase/skill
+    description: Exercises every SDK primitive in a single skill. Used as a
+      reference and integration test.
+  - id: skill-5
+    kind: skill
+    path: examples/ts-patterns/skill
+    description: TypeScript patterns and idioms reference. Use when writing
+      TypeScript and need a quick refresher on generics, discriminated unions,
+      builder patterns, or error handling.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

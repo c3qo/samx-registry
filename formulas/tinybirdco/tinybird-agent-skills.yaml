@@ -1,0 +1,38 @@
+schemaVersion: 1
+id: tinybirdco/tinybird-agent-skills
+name: Tinybird Agent Skills
+description: Tinybird AI coding-agent skills pack.
+source:
+  type: git
+  url: https://github.com/tinybirdco/tinybird-agent-skills
+  revision: 960fb7516723d7ac4dac00522a36825de9e906cd
+capabilities:
+  - id: tinybird-best-practices
+    kind: skill
+    path: skills/tinybird-best-practices
+    description: Tinybird file formats, SQL rules, optimization patterns, and best
+      practices for datasources, pipes, endpoints, and materialized views.
+  - id: tinybird-cli-guidelines
+    kind: skill
+    path: skills/tinybird-cli-guidelines
+    description: Tinybird CLI commands, workflows, and operations. Use when running
+      tb commands, managing local development, deploying, or working with data
+      operations.
+  - id: tinybird-python-sdk-guidelines
+    kind: skill
+    path: skills/tinybird-python-sdk-guidelines
+    description: Tinybird Python SDK for defining datasources, pipes, and queries in
+      Python. Use when working with tinybird-sdk, Python Tinybird projects, or
+      data ingestion and queries in Python.
+  - id: tinybird-typescript-sdk-guidelines
+    kind: skill
+    path: skills/tinybird-typescript-sdk-guidelines
+    description: Tinybird TypeScript SDK for defining datasources, pipes, and
+      queries with full type inference. Use when working with @tinybirdco/sdk,
+      TypeScript Tinybird projects, or type-safe data ingestion and queries.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: everlaw.com/everlaw
+name: Everlaw
+description: Everlaw remote MCP server at https://api.everlaw.com/v1/mcp. Search
+  and explore your Everlaw database in Claude.. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/everlaw
+capabilities:
+  - id: everlaw
+    kind: mcp
+    spec:
+      serverName: everlaw
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.everlaw.com/v1/mcp

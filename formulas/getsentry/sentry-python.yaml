@@ -1,0 +1,44 @@
+schemaVersion: 1
+id: getsentry/sentry-python
+name: Sentry Python
+description: Official Sentry SDK for Python.
+source:
+  type: git
+  url: https://github.com/getsentry/sentry-python
+  revision: 3d2deca7a3cf31d98ef1f904fd8074e38e839743
+capabilities:
+  - id: code-review
+    kind: skill
+    path: .agents/skills/code-review
+    description: Perform code reviews following Sentry engineering practices. Use
+      when reviewing pull requests, examining code changes, or providing
+      feedback on code quality. Covers security, performance, testing, and
+      design review.
+  - id: find-bugs
+    kind: skill
+    path: .agents/skills/find-bugs
+    description: Find bugs, security vulnerabilities, and code quality issues in
+      local branch changes. Use when asked to review changes, find bugs,
+      security review, or audit code on the current branch.
+  - id: security-review
+    kind: skill
+    path: .agents/skills/security-review
+    description: Security code review for vulnerabilities. Use when asked to
+      "security review", "find vulnerabilities", "check for security issues",
+      "audit security", "OWASP review", or review code for injection, XSS,
+      authentication, authorization, cryptography issues. Provides systematic
+      review with confidence-based reporting.
+  - id: skill-scanner
+    kind: skill
+    path: .agents/skills/skill-scanner
+    description: Scan agent skills for security issues. Use when asked to "scan a
+      skill", "audit a skill", "review skill security", "check skill for
+      injection", "validate SKILL.md", or assess whether an agent skill is safe
+      to install. Checks for prompt injection, malicious scripts, excessive
+      permissions, secret exposure, and supply chain risks.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

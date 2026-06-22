@@ -1,0 +1,29 @@
+schemaVersion: 1
+id: mcp-use/skills
+name: mcp-use Skills
+description: Skill pack for mcp-use MCP/ChatGPT app dev.
+source:
+  type: git
+  url: https://github.com/mcp-use/skills
+  revision: 3bf0eaa4b007fe3215fc81ef1bc4f9ba4ceb1c1e
+capabilities:
+  - id: chatgpt-app-builder
+    kind: skill
+    path: skills/chatgpt-app-builder
+    description: Build ChatGPT apps with interactive widgets using mcp-use and
+      OpenAI Apps SDK. Use when creating ChatGPT apps, building MCP servers with
+      widgets, defining React widgets, working with Apps SDK, or when user
+      mentions ChatGPT widgets, mcp-use widgets, or Apps SDK development.
+  - id: mcp-builder
+    kind: skill
+    path: skills/mcp-builder
+    description: Build Model Context Protocol (MCP) servers with mcp-use framework.
+      Use when creating MCP servers, defining tools/resources/prompts, working
+      with mcp-use, bootstrapping MCP projects, deploying MCP servers, or when
+      user mentions MCP development, MCP tools, MCP resources, or MCP prompts.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

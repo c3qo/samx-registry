@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: gateway.mcpservers.org/yahoo-finance
+name: Yahoo Finance
+description: Yahoo Finance remote MCP server at
+  https://gateway.mcpservers.org/yahoo-finance/mcp. Stock data, market news,
+  financials, and price history. Setup guides for Claude Code, Codex, Cursor,
+  and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/yahoo-finance
+capabilities:
+  - id: yahoo-finance
+    kind: mcp
+    spec:
+      serverName: yahoo-finance
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://gateway.mcpservers.org/yahoo-finance/mcp

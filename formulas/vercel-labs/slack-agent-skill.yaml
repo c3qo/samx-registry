@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: vercel-labs/slack-agent-skill
+name: Slack Agent Skill
+description: Slack agent bot skill; Chat SDK/Bolt setup, deploy, test, AI, quality.
+source:
+  type: git
+  url: https://github.com/vercel-labs/slack-agent-skill
+  revision: 04690f1c815c7370723b368b68b22f7777302750
+capabilities:
+  - id: slack-agent
+    kind: skill
+    path: .
+    description: Use when working on Slack agent/bot code, Chat SDK applications,
+      Bolt for JavaScript projects, or projects using @chat-adapter/slack or
+      @slack/bolt. Provides development patterns, testing requirements, and
+      quality standards.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

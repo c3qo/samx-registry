@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: mcp-server.egnyte.com/egnyte
+name: Egnyte
+description: Egnyte remote MCP server at https://mcp-server.egnyte.com/mcp.
+  Securely access and analyze Egnyte content.. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/egnyte
+capabilities:
+  - id: egnyte
+    kind: mcp
+    spec:
+      serverName: egnyte
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp-server.egnyte.com/mcp

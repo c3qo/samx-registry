@@ -1,0 +1,156 @@
+schemaVersion: 1
+id: apollographql/skills
+name: Apollo GraphQL Agent Skills
+description: Apollo GraphQL skills pack → Apollo/GraphQL agent guidance.
+source:
+  type: git
+  url: https://github.com/apollographql/skills
+  revision: 605089108a198e412f7f0c1926c91eb94a6d1727
+capabilities:
+  - id: graphos-tools
+    kind: mcp
+    path: .mcp.json
+  - id: apollo-client
+    kind: skill
+    path: skills/apollo-client
+    description: >
+      Guide for building React applications with Apollo Client 4.x. Use this
+      skill when: (1) setting up Apollo Client in a React project, (2) writing
+      GraphQL queries or mutations with hooks, (3) configuring caching or cache
+      policies, (4) managing local state with reactive variables, (5)
+      troubleshooting Apollo Client errors or performance issues.
+  - id: apollo-connectors
+    kind: skill
+    path: skills/apollo-connectors
+    description: >
+      Guide for integrating REST APIs into GraphQL supergraphs using Apollo
+      Connectors with @source and @connect directives. Use this skill when the
+      user: (1) mentions "connectors", "Apollo Connectors", or "REST Connector",
+      (2) wants to integrate a REST API into GraphQL, (3) references @source or
+      @connect directives, (4) works with files containing "# Note to AI
+      Friends: This is an Apollo Connectors schema".
+  - id: apollo-federation
+    kind: skill
+    path: skills/apollo-federation
+    description: >
+      Guide for authoring Apollo Federation subgraph schemas. Use this skill
+      when: (1) creating new subgraph schemas for a federated supergraph, (2)
+      defining or modifying entities with @key, (3) sharing types/fields across
+      subgraphs with @shareable, (4) working with federation directives
+      (@external, @requires, @provides, @override, @inaccessible), (5)
+      troubleshooting composition errors, (6) any task involving federation
+      schema design patterns.
+  - id: apollo-ios
+    kind: skill
+    path: skills/apollo-ios
+    description: >
+      Guide for building Apple-platform applications with Apollo iOS, the
+      strongly-typed GraphQL client for Swift. Use this skill when: (1) adding
+      Apollo iOS to a Swift Package Manager or Xcode project, (2) configuring
+      `apollo-codegen-config.json` and running code generation, (3) configuring
+      an `ApolloClient` with auth, interceptors, and caching, (4) writing
+      queries, mutations, or subscriptions from SwiftUI views, (5) writing tests
+      against generated operation mocks.
+  - id: apollo-kotlin
+    kind: skill
+    path: skills/apollo-kotlin
+    description: >
+      Guide for building applications with Apollo Kotlin, the GraphQL client
+      library for Android and Kotlin. Use this skill when: (1) setting up Apollo
+      Kotlin in a Gradle project for Android, Kotlin/JVM, or KMP, (2)
+      configuring schema download and codegen for GraphQL services, (3)
+      configuring an `ApolloClient` with auth, interceptors, and caching, (4)
+      writing queries, mutations, or subscriptions,
+  - id: apollo-mcp-server
+    kind: skill
+    path: skills/apollo-mcp-server
+    description: >
+      Guide for using Apollo MCP Server to connect AI agents with GraphQL APIs.
+      Use this skill when: (1) setting up or configuring Apollo MCP Server, (2)
+      defining MCP tools from GraphQL operations, (3) using introspection tools
+      (introspect, search, validate, execute), (4) troubleshooting MCP server
+      connectivity or tool execution issues.
+  - id: apollo-router-plugin-creator
+    kind: skill
+    path: skills/apollo-router-plugin-creator
+    description: >
+      Guide for writing Apollo Router native Rust plugins. Use this skill when:
+      (1) users want to create a new router plugin, (2) users want to add
+      service hooks (router_service, supergraph_service, execution_service,
+      subgraph_service), (3) users want to modify an existing router plugin, (4)
+      users need to understand router plugin patterns or the request lifecycle.
+      (5) triggers on requests like "create a new plugin", "add a router
+      plugin", "modify the X plugin", or "add subgraph_service hook".
+  - id: apollo-router
+    kind: skill
+    path: skills/apollo-router
+    description: >
+      Version-aware guide for configuring and running Apollo Router for
+      federated GraphQL supergraphs. Generates correct YAML for both Router v1.x
+      and v2.x. Use this skill when: (1) setting up Apollo Router to run a
+      supergraph, (2) configuring routing, headers, or CORS, (3) implementing
+      custom plugins (Rhai scripts or coprocessors), (4) configuring telemetry
+      (tracing, metrics, logging), (5) troubleshooting Router performance or
+      connectivity issues.
+  - id: apollo-server
+    kind: skill
+    path: skills/apollo-server
+    description: >
+      Guide for building GraphQL servers with Apollo Server 5.x. Use this skill
+      when: (1) setting up a new Apollo Server project, (2) writing resolvers or
+      defining GraphQL schemas, (3) implementing authentication or
+      authorization, (4) creating plugins or custom data sources, (5)
+      troubleshooting Apollo Server errors or performance issues.
+  - id: graphql-operations
+    kind: skill
+    path: skills/graphql-operations
+    description: >
+      Guide for writing GraphQL operations (queries, mutations, fragments)
+      following best practices. Use this skill when: (1) writing GraphQL queries
+      or mutations, (2) organizing operations with fragments, (3) optimizing
+      data fetching patterns, (4) setting up type generation or linting, (5)
+      reviewing operations for efficiency.
+  - id: graphql-schema
+    kind: skill
+    path: skills/graphql-schema
+    description: >
+      Guide for designing GraphQL schemas following industry best practices. Use
+      this skill when: (1) designing a new GraphQL schema or API, (2) reviewing
+      existing schema for improvements, (3) deciding on type structures or
+      nullability, (4) implementing pagination or error patterns, (5) ensuring
+      security in schema design.
+  - id: rover
+    kind: skill
+    path: skills/rover
+    description: >
+      Guide for using Apollo Rover CLI to manage GraphQL schemas and federation.
+      Use this skill when: (1) publishing or fetching subgraph/graph schemas,
+      (2) composing supergraph schemas locally or via GraphOS, (3) running local
+      supergraph development with rover dev, (4) validating schemas with check
+      and lint commands, (5) configuring Rover authentication and environment,
+      (6) exploring or searching a graph's schema for agent-driven discovery
+      (rover schema describe / rover schema search).
+  - id: rust-best-practices
+    kind: skill
+    path: skills/rust-best-practices
+    description: >
+      Guide for writing idiomatic Rust code based on Apollo GraphQL's best
+      practices handbook. Use this skill when: (1) writing new Rust code or
+      functions, (2) reviewing or refactoring existing Rust code, (3) deciding
+      between borrowing vs cloning or ownership patterns, (4) implementing error
+      handling with Result types, (5) optimizing Rust code for performance, (6)
+      writing tests or documentation for Rust projects.
+  - id: skill-creator
+    kind: skill
+    path: skills/skill-creator
+    description: >
+      Guide for creating effective skills for Apollo GraphQL and GraphQL
+      development. Use this skill when: (1) users want to create a new skill,
+      (2) users want to update an existing skill, (3) users ask about skill
+      structure or best practices, (4) users need help writing SKILL.md files.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

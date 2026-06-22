@@ -1,0 +1,190 @@
+schemaVersion: 1
+id: webflow/webflow-skills
+name: Webflow Skills
+description: Webflow MCP/CLI skill pack for CMS, Designer, components, deploy, audit.
+source:
+  type: git
+  url: https://github.com/webflow/webflow-skills
+  revision: c9b94a73d01bb000986c3d6261b1b0c819499548
+capabilities:
+  - id: webflow
+    kind: mcp
+    path: .mcp.json
+  - id: accessibility-audit
+    kind: skill
+    path: plugins/webflow-skills/skills/accessibility-audit
+    description: Run comprehensive accessibility audit (WCAG 2.1) on Webflow pages -
+      checks buttons, forms, links, focus states, headings, keyboard navigation,
+      and generates detailed reports with fixes. Requires Webflow Designer
+      connection. Excludes image alt text (covered by asset-audit skill).
+  - id: cms-collection-setup
+    kind: skill
+    path: plugins/webflow-skills/skills/cms-collection-setup
+    description: Create a new CMS collection in Webflow with specified fields and
+      relationships. Use when setting up blog posts, products, team members,
+      portfolios, or other content types with custom fields.
+  - id: code-component-command
+    kind: skill
+    path: plugins/webflow-skills/skills/code-component-command
+    description: Create and deploy reusable React components for Webflow Designer.
+      Configure existing React projects with webflow.json, build and bundle
+      code, validate output, and deploy to workspace using library share. Use
+      when building custom components for designers.
+  - id: designer-tools
+    kind: skill
+    path: plugins/webflow-skills/skills/designer-tools
+    description: Build and manage pages, elements, components, and styles in Webflow
+      Designer. Use when adding sections, creating layouts, building elements,
+      inspecting or updating components, viewing what's inside a component,
+      restructuring pages, creating new pages, previewing page structure,
+      styling elements, or managing component properties. Requires Webflow
+      Designer connection.
+  - id: asset-audit
+    kind: skill
+    path: plugins/webflow-skills/skills/asset-audit
+    description: Analyze assets on a Webflow site for SEO optimization. Identifies
+      assets missing alt text and assets with non-SEO-friendly names, then
+      generates and applies improvements.
+  - id: bulk-cms-update
+    kind: skill
+    path: plugins/webflow-skills/skills/bulk-cms-update
+    description: Create or update multiple CMS items in a Webflow collection with
+      validation and diff preview. Use when adding multiple blog posts,
+      products, or updating fields across many items.
+  - id: cms-best-practices
+    kind: skill
+    path: plugins/webflow-skills/skills/cms-best-practices
+    description: Expert guidance on Webflow CMS architecture and best practices. Use
+      when planning collections, setting up relationships, optimizing content
+      structure, or troubleshooting CMS issues.
+  - id: component-audit
+    kind: skill
+    path: plugins/webflow-skills/skills/component-audit
+    description: Audit Webflow Code Components for architecture decisions - prop
+      exposure, state management, slot opportunities, and Shadow DOM
+      compatibility. Focused on Webflow-specific patterns, not generic React
+      best practices.
+  - id: component-scaffold
+    kind: skill
+    path: plugins/webflow-skills/skills/component-scaffold
+    description: Generate new Webflow Code Component boilerplate with React
+      component, definition file, and optional styling. Automatically checks
+      prerequisites and can set up missing config/dependencies.
+  - id: convert-component
+    kind: skill
+    path: plugins/webflow-skills/skills/convert-component
+    description: Convert an existing React component into a Webflow Code Component.
+      Analyzes TypeScript props, maps to Webflow prop types, generates the
+      .webflow.tsx definition file, and identifies required modifications.
+  - id: custom-code-management
+    kind: skill
+    path: plugins/webflow-skills/skills/custom-code-management
+    description: Add, review, or remove inline custom scripts on a Webflow site (up
+      to 10,000 chars). Use for analytics, tracking pixels, chat widgets, or any
+      custom JavaScript. Also manages page-level scripts.
+  - id: deploy-guide
+    kind: skill
+    path: plugins/webflow-skills/skills/deploy-guide
+    description: Step-by-step guide for deploying Webflow Code Components to a
+      workspace. Covers authentication, pre-flight checks, deployment execution,
+      and verification.
+  - id: designer-extension-command
+    kind: skill
+    path: plugins/webflow-skills/skills/designer-extension-command
+    description: Build Designer Extensions for custom Webflow Designer
+      functionality. Lists available templates, initializes extension projects
+      from templates (default/react/typescript-alt), bundles extensions for
+      upload, and serves locally for development.
+  - id: devlink-command
+    kind: skill
+    path: plugins/webflow-skills/skills/devlink-command
+    description: Export Webflow Designer components to React/Next.js code for
+      external projects. Configure devlink settings in webflow.json, sync design
+      updates with devlink sync, validate generated code, show diffs, and
+      provide integration examples. Use when building with Webflow designs in
+      React/Next.js.
+  - id: flowkit-naming
+    kind: skill
+    path: plugins/webflow-skills/skills/flowkit-naming
+    description: Apply Flowkit CSS naming system in Webflow. Use when creating
+      classes, auditing existing naming, or building new components following
+      Flowkit conventions. Flowkit is Webflow's official CSS framework with
+      utility-first approach.
+  - id: link-checker
+    kind: skill
+    path: plugins/webflow-skills/skills/link-checker
+    description: Find and fix broken or insecure links across an entire site,
+      including CMS content, to improve SEO and user experience. Audits
+      HTTP/HTTPS issues and validates all internal and external links.
+  - id: local-dev-setup
+    kind: skill
+    path: plugins/webflow-skills/skills/local-dev-setup
+    description: Initialize a new Webflow Code Components project from scratch.
+      Creates project structure, installs dependencies, configures webflow.json,
+      and sets up development environment.
+  - id: pre-deploy-check
+    kind: skill
+    path: plugins/webflow-skills/skills/pre-deploy-check
+    description: Pre-deployment validation for Webflow Code Components. Checks
+      bundle size, dependencies, prop configurations, SSR compatibility, styling
+      setup, and common issues before running webflow library share.
+  - id: review-comments
+    kind: skill
+    path: plugins/webflow-skills/skills/review-comments
+    description: Review open comment threads on a Webflow site and triage each one.
+  - id: safe-publish
+    kind: skill
+    path: plugins/webflow-skills/skills/safe-publish
+    description: Publish a Webflow site with a plan-confirm-publish workflow. Shows
+      what changed since last publish, runs pre-publish checks, and requires
+      explicit confirmation before going live.
+  - id: site-activity
+    kind: skill
+    path: plugins/webflow-skills/skills/site-activity
+    description: Query and summarize site activity logs for a Webflow enterprise
+      site. Surfaces recent changes, identifies who made them, and generates
+      human-readable activity reports. Use for site monitoring, change tracking,
+      publish preparation, or weekly activity summaries. Enterprise plans only.
+  - id: site-audit
+    kind: skill
+    path: plugins/webflow-skills/skills/site-audit
+    description: Comprehensive audit of a Webflow site including pages, CMS
+      collections, health scoring, and actionable insights. Use for site
+      analysis, migration planning, or understanding site structure.
+  - id: troubleshoot-deploy
+    kind: skill
+    path: plugins/webflow-skills/skills/troubleshoot-deploy
+    description: Debug deployment failures for Webflow Code Components. Analyzes
+      error messages, identifies root causes, and provides specific fixes for
+      common issues.
+  - id: webflow-cli-troubleshooter
+    kind: skill
+    path: plugins/webflow-skills/skills/webflow-cli-troubleshooter
+    description: Diagnose and fix Webflow CLI issues including installation
+      problems, authentication failures, build errors, and bundle problems. Uses
+      CLI diagnostic flags (--version, --help, --verbose, --debug-bundler) for
+      troubleshooting.
+  - id: webflow-cloud-command
+    kind: skill
+    path: plugins/webflow-skills/skills/webflow-cloud-command
+    description: Initialize, build, and deploy full-stack Webflow applications to
+      Webflow Cloud hosting. Supports site-attached deploys (linked to an
+      existing Webflow site) and project app deploys (independent project, no
+      existing site required). Use when creating new projects, deploying
+      existing ones, or setting up CI/CD pipelines for Webflow Cloud.
+  - id: webflow-compress-cms-image
+    kind: skill
+    path: plugins/webflow-skills/skills/webflow-compress-cms-image
+    description: Compress and convert CMS item image fields to webp or avif in a
+      Webflow collection. Prompts for collection ID, item ID, image fields,
+      quality, and target format, then downloads, converts, re-uploads via
+      presigned S3, and publishes the updated item.
+  - id: webflow-2
+    kind: mcp
+    path: .codex/config.toml
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,28 @@
+schemaVersion: 1
+id: resend/resend-cli
+name: Resend CLI
+description: Official CLI for Resend; send mail, auth, domains, webhooks, logs,
+  automations, etc.
+source:
+  type: git
+  url: https://github.com/resend/resend-cli
+  revision: dc0a2114b67b80d2d563d69ca4d50c9d7885262e
+capabilities:
+  - id: resend-cli
+    kind: skill
+    path: skills/resend-cli
+    description: >
+      Operate the Resend platform from the terminal — send emails (including
+      React Email .tsx templates via --react-email), manage domains, contacts,
+      broadcasts, templates, webhooks, API keys, logs, automations, and events
+      via the `resend` CLI. Use when the user wants to run Resend commands in
+      the shell, scripts, or CI/CD pipelines, or send/preview React Email
+      templates. Always load this skill before running `resend` commands — it
+      contains the non-interactive flag contract and gotchas that prevent silent
+      failures.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

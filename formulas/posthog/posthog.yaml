@@ -1,0 +1,445 @@
+schemaVersion: 1
+id: posthog/posthog
+name: PostHog
+description: Monorepo; PostHog app/dev tooling.
+source:
+  type: git
+  url: https://github.com/posthog/posthog
+  revision: 4ce000946c0d9b5f6bd84d06d3c15df9bb4c448b
+capabilities:
+  - id: adding-personhog-rpc
+    kind: skill
+    path: .agents/skills/adding-personhog-rpc
+    description: >
+      Guide for adding a new RPC to personhog-replica and personhog-router.
+      Covers eligibility checks, proto definition, code generation for Python
+      and Node.js clients, Rust implementation (storage trait, postgres queries,
+      service handler, router wiring), and index compatibility validation. Use
+      when adding a new gRPC endpoint to personhog, migrating a Django ORM query
+      to personhog, or extending the personhog service API.
+  - id: debugging-ci-failures
+    kind: skill
+    path: .agents/skills/debugging-ci-failures
+    description: >
+      Debugs failing GitHub Actions CI runs for PostHog PRs, commits, and
+      branches, and answers broad CI-health questions ("is CI red?", "is master
+      green today?", "what's broken right now?"). Use when the user asks why CI
+      is red, asks for the current CI or master status, or mentions a failing
+      check, GitHub Actions run, Depot runner, workflow, job, shard, flaky test,
+      lint failure, typecheck failure, snapshot diff, migration check, generated
+      types drift, or skills build failure. Start with the `hogli ci:insights`
+      digest (aggregated cross-run CI intelligence), then guides read-only
+      inspection, failure classification, smallest local reproduction with
+      hogli, and safe reporting without rerunning CI or posting to GitHub.
+  - id: implementing-mcp-tools
+    kind: skill
+    path: .agents/skills/implementing-mcp-tools
+    description: Guide for exposing PostHog product endpoints as MCP tools. Use when
+      creating new or updating API endpoints, adding MCP tool definitions,
+      scaffolding YAML configs, or writing serializers with good descriptions.
+      Covers the full pipeline from Django serializer to generated TypeScript
+      tool handler.
+  - id: isolating-product-facade-contracts
+    kind: skill
+    path: .agents/skills/isolating-product-facade-contracts
+    description: Plan and execute product isolation migrations to a facade plus
+      contract layer in PostHog, following the Visual review architecture. Use
+      when a product still exposes internals (models/logic/views) across
+      boundaries and needs migration toward contracts.py + facade/api.py +
+      presentation separation, with a PR strategy that minimizes review latency
+      and conflicts with parallel work.
+  - id: writing-clickhouse-queries
+    kind: skill
+    path: .agents/skills/writing-clickhouse-queries
+    description: Guide for writing performant ClickHouse queries in PostHog product
+      code. Use when writing HogQL query runners, designing a ClickHouse table
+      for a new product, adding materialized columns or skip indexes, or
+      choosing a row ID format. For optimizing an existing query that is already
+      too slow, use `/optimizing-clickhouse-and-hogql-queries` instead.
+  - id: adding-project-secret-api-key-auth
+    kind: skill
+    path: .agents/skills/adding-project-secret-api-key-auth
+    description: "How to gate a PostHog API endpoint with project secret API key
+      (PSAK) auth — a project-scoped, user-less service credential. Use when
+      adding PSAK support to a viewset action, allowing a new scope for PSAKs,
+      handling synthetic users (ProjectSecretAPIKeyUser), or choosing PSAK-aware
+      rate throttles. Trigger terms: PSAK, ProjectSecretAPIKey, project secret
+      API key, phs_ token, service auth, programmatic endpoint auth."
+  - id: adopting-generated-api-types
+    kind: skill
+    path: .agents/skills/adopting-generated-api-types
+    description: Use when migrating frontend code from manual API client calls
+      (`api.get`, `api.create`, `api.surveys.get`, `api.dashboards.list`, `new
+      ApiRequest()`) and handwritten TypeScript interfaces to generated API
+      functions and types. Triggers on files importing from `lib/api`, files
+      with `api.get<`, `api.create<`, `api.<entity>.<method>`, manual interface
+      definitions that duplicate backend serializers, or any frontend file that
+      constructs API URLs by hand. Covers the full replacement workflow —
+      finding the generated equivalent, swapping imports, adapting call sites,
+      and removing dead manual types.
+  - id: clickhouse-migrations
+    kind: skill
+    path: .agents/skills/clickhouse-migrations
+    description: ClickHouse migration patterns and rules. Use when creating or
+      modifying ClickHouse migrations.
+  - id: depot-container-builds
+    kind: skill
+    path: .agents/skills/depot-container-builds
+    description: >
+      Configures and runs Depot remote container builds using `depot build` and
+      `depot bake`. Use when building Docker images, creating Dockerfiles with
+      Depot, pushing images to registries, building multi-platform/multi-arch
+      images (linux/amd64, linux/arm64), debugging container build failures,
+      optimizing Dockerfile layer caching, using docker-bake.hcl or
+      docker-compose builds, or migrating from `docker build` / `docker buildx
+      build` to Depot. Also use when the user mentions depot build, depot bake,
+      container builds, image builds, or asks about Depot's build cache, build
+      parallelism, or ephemeral registry.
+  - id: depot-github-runners
+    kind: skill
+    path: .agents/skills/depot-github-runners
+    description: >
+      Configures Depot-managed GitHub Actions runners as a drop-in replacement
+      for GitHub-hosted runners. Use when setting up or migrating GitHub Actions
+      workflows to use Depot runners, choosing runner sizes (CPU/RAM),
+      configuring runs-on labels, setting up ARM or Windows or macOS runners,
+      troubleshooting GitHub Actions runner issues, configuring egress
+      filtering, using Depot Cache with GitHub Actions, or running
+      Dagger/Dependabot on Depot runners. Also use when the user mentions
+      depot-ubuntu, depot-windows, depot-macos runner labels, or asks about
+      faster/cheaper GitHub Actions runners.
+  - id: django-migrations
+    kind: skill
+    path: .agents/skills/django-migrations
+    description: Django migration patterns and safety workflow for PostHog. Use when
+      creating, adjusting, or reviewing Django/Postgres migrations, including
+      non-blocking index/constraint changes, multi-phase schema changes, data
+      backfills, migration conflict rebasing, and product model moves that
+      require SeparateDatabaseAndState.
+  - id: django-startup-time
+    kind: skill
+    path: .agents/skills/django-startup-time
+    description: >
+      Keep heavy imports off the django.setup() path that every process (web,
+      celery, temporal, migrate, shell, CI) pays for. Use when touching
+      AppConfig.ready(), wiring signal receivers, editing the lazy API router
+      (posthog/api/rest_router.py or its __init__.py shim), deferring a heavy
+      import, when the startup-import-budget guard fails, or when merging master
+      into a long-lived branch that made the router lazy.
+  - id: establishing-code-ownership
+    kind: skill
+    path: .agents/skills/establishing-code-ownership
+    description: Determine which PostHog team owns a file, directory, or code path,
+      or enumerate all code a team owns (via `products/*/product.yaml` and
+      `.github/CODEOWNERS(-soft)?`). Use when assigning a reviewer, attributing
+      a bug or slow query to a team, routing work, scoping a team-wide audit, or
+      answering "who owns X" / "what does team Y own".
+  - id: fixing-flaky-tests
+    kind: skill
+    path: .agents/skills/fixing-flaky-tests
+    description: >
+      Guides an agent through reproducing, root-causing, fixing, and validating
+      flaky tests in the PostHog monorepo. Use when a test fails intermittently
+      in CI but passes on rerun or locally, when `hogli ci:insights` or the
+      debugging-ci-failures skill classifies a failure as a flaky test, when
+      given a GitHub Actions URL for a flaky job, or when asked to deflake,
+      stabilize, or fix a flaky Jest, pytest, or Playwright test. Core
+      discipline: reproduce locally before changing anything, fix the root cause
+      (never mask it with sleeps, retries, or bigger timeouts), and prove the
+      fix with an N-run validation loop sized to the observed failure rate.
+  - id: gating-production-deploys
+    kind: skill
+    path: .agents/skills/gating-production-deploys
+    description: >
+      Use when adding or editing a GitHub Actions workflow that pushes a
+      container image to a registry (ECR/ghcr/Docker Hub via build-push-action)
+      or dispatches a production deploy (a `commit_state_update`
+      repository_dispatch to PostHog/charts). Those run from a single canonical
+      deploy repo, gated by the CD_DEPLOY_ENABLED variable. Does NOT apply to
+      workflows that publish GitHub releases, npm, crates, or Homebrew — those
+      stay on the public repo.
+  - id: generating-clickhouse-query-performance-reports
+    kind: skill
+    path: .agents/skills/generating-clickhouse-query-performance-reports
+    description: >
+      Produce and structure slow-query performance reports for PostHog's
+      production ClickHouse (US and EU). Use when asked for a slow query report,
+      query performance analysis over the last N days, per-team query cost, OOM
+      or timeout investigation, cluster cost/memory regressions, or
+      materialization candidates. Covers the modern `query_log_archive` source
+      (typed `lc_*` columns, multi-day retention), how to categorize and
+      attribute slow queries, root-cause patterns (unmaterialized JSONExtract,
+      high-cardinality breakdowns, heavy joins), and the report structure. Runs
+      queries via the `query-clickhouse-via-metabase` skill.
+  - id: hogli
+    kind: skill
+    path: .agents/skills/hogli
+    description: >
+      PostHog developer CLI and repo tooling reference. Use when the user
+      mentions hogli, asks about repo CLI tools, bin scripts, Makefiles, how to
+      run/build/test/lint, or any dev environment commands.
+  - id: implementing-agent-modes
+    kind: skill
+    path: .agents/skills/implementing-agent-modes
+    description: Guidelines to create/update a new mode for PostHog AI agent. Modes
+      are a way to limit what tools, prompts, and prompt injections are applied
+      and under what conditions. Achieve better results using your plan mode.
+  - id: implementing-mcp-ui-apps
+    kind: skill
+    path: .agents/skills/implementing-mcp-ui-apps
+    description: Guide for adding MCP UI apps — interactive visualizations that
+      render tool results in MCP clients like Claude Desktop. Use when adding a
+      new detail or list view for an MCP tool, creating view components in
+      products/*/mcp/apps/, or linking tools to UI apps via YAML.
+  - id: implementing-warehouse-sources
+    kind: skill
+    path: .agents/skills/implementing-warehouse-sources
+    description: Implement and extend PostHog Data warehouse import sources. Use
+      when adding a new source under posthog/temporal/data_imports/sources,
+      adding datasets/endpoints to an existing source, or adding incremental
+      sync, resumable imports, webhook ingestion, pagination, credentials
+      validation, and source tests.
+  - id: improving-drf-endpoints
+    kind: skill
+    path: .agents/skills/improving-drf-endpoints
+    description: Use when editing, reviewing, or auditing DRF viewsets and
+      serializers in PostHog. Triggers on files in posthog/api/,
+      products/*/backend/api/, products/*/backend/presentation/, or any file
+      importing rest_framework. Covers field typing, schema annotations, enum
+      collision fixes, and OpenAPI spec quality — everything that flows
+      downstream into generated TypeScript types and MCP tools.
+  - id: ingestion-pipeline-doctor-nodejs
+    kind: skill
+    path: .agents/skills/ingestion-pipeline-doctor-nodejs
+    description: >
+      Ingestion pipeline architecture overview and convention reference. Use
+      when you need a quick orientation to the pipeline framework or want to
+      know which doctor agent to use for a specific concern.
+  - id: making-scenes-tab-aware
+    kind: skill
+    path: .agents/skills/making-scenes-tab-aware
+    description: Guides converting PostHog frontend scenes to be tab aware for
+      internal scene tabs. Use when adding or refactoring a `SceneExport` scene,
+      fixing state leaking between internal tabs, preserving scene state across
+      tab switches, or moving scene-level URL state out of child logics.
+      Triggers on files with `SceneExport`, `tabId`, `tabAwareScene`,
+      `urlToAction`, `actionToUrl`, or `useAttachedLogic`.
+  - id: manage-dashboard-widgets
+    kind: skill
+    path: .agents/skills/manage-dashboard-widgets
+    description: >
+      Guides PostHog engineers through dashboard widget platform work — ship a
+      new widget_type (WIDGET_REGISTRY, catalog, run_widgets, WidgetCard) or
+      update a shipped type (config, query, layout, RBAC, tile filter bar, list
+      footer, titleHref, throttles). Use for WidgetSpec, widget_specs/,
+      widget-configs.zod.ts, hogli build:openapi, error_tracking_list,
+      session_replay_list, widgetFilters, formatWidgetListCountFooter,
+      widget_query_throttle, or WidgetCard composition. New types need
+      widget-intake confirmation first. Not for MCP batch-add of existing types
+      or adding tiles to a dashboard.
+  - id: managing-github-actions-secrets
+    kind: skill
+    path: .agents/skills/managing-github-actions-secrets
+    description: >
+      Creates and updates GitHub Actions secrets for PostHog workflows. Use when
+      adding a new CI secret, rotating an existing secret, wiring a workflow to
+      an API token, package registry credential, deploy key, or any value
+      referenced via `${{ secrets.* }}` in `.github/workflows/`.
+  - id: modifying-taxonomic-filter
+    kind: skill
+    path: .agents/skills/modifying-taxonomic-filter
+    description: Guides safe modification of the TaxonomicFilter — PostHog's
+      multi-tab picker for events, actions, properties, cohorts, and more.
+      Front-loads the empirical product reality (what users actually pick and
+      search for) plus the three live variants (legacy-control, legacy-pill
+      behind TAXONOMIC_FILTER_CATEGORY_DROPDOWN, and the opt-in rebuild menu
+      behind TAXONOMIC_FILTER_MENU_REBUILD) so changes are judged against real
+      behavior and mirrored across surfaces, not made against one arm in
+      isolation. Use when adding features, fixing bugs, or refactoring
+      TaxonomicFilter, the rebuild menu, or the headless filter panel.
+  - id: monitoring-capture-service
+    kind: skill
+    path: .agents/skills/monitoring-capture-service
+    description: >
+      Guide for using the Grafana MCP to monitor and diagnose the capture
+      service (rust/capture) in production. Use when investigating latency,
+      event loss, Kafka backpressure, Redis issues, rate limiting, Envoy proxy
+      issues, or any capture health question. Covers prod-us and prod-eu
+      environments.
+  - id: monitoring-ingestion-pipeline
+    kind: skill
+    path: .agents/skills/monitoring-ingestion-pipeline
+    description: >
+      Guide for using the Grafana MCP to monitor and diagnose the Node.js
+      ingestion pipeline workers in production. Use when investigating event
+      lag, drops, pipeline errors, person/group processing, Kafka consumer
+      health, Redis, Postgres, ClickHouse downstream health, or any ingestion
+      worker question. Covers prod-us and prod-eu environments.
+  - id: optimizing-clickhouse-and-hogql-queries
+    kind: skill
+    path: .agents/skills/optimizing-clickhouse-and-hogql-queries
+    description: Workflow for optimizing ClickHouse and HogQL queries. Use when a
+      HogQL query, query runner, insight, or report is too slow; when a
+      hand-written ClickHouse query (via `sync_execute` or in a migration) is
+      too slow; when ClickHouse times out or hits memory limits; when
+      investigating a slow `system.query_log` row; or when reviewing a proposed
+      HogQL printer change for performance. Covers extracting the ClickHouse
+      SQL, common smells (`FROM ... FINAL`, `JSONExtract` over properties,
+      missing skip indexes, self-joins, CTE blow-up), measuring against a real
+      cluster, and applying the fix at the right layer (printer, query runner,
+      or migration). Does NOT cover Postgres / Django ORM / app-database
+      queries; those need pganalyze and the Postgres section of
+      `query-performance-optimization.md`.
+  - id: playwright-test
+    kind: skill
+    path: .agents/skills/playwright-test
+    description: Write a playwright test, make sure it runs, and is not flaky.
+  - id: qa-team
+    kind: skill
+    path: .agents/skills/qa-team
+    description: >
+      Multi-agent QA review team for code changes. This skill should be used
+      when the user asks to "review my code", "run QA", "qa-team", "review this
+      branch", "code review", "check my changes", or wants a comprehensive
+      multi-perspective code review of the current branch's changes. Spawns
+      parallel specialist agents (security, database, reliability,
+      compatibility, data integrity, performance, frontend, copy) that
+      independently review the diff and produce a converged report. Also
+      includes two generalist reviewers for convergence validation.
+  - id: query-clickhouse-via-metabase
+    kind: skill
+    path: .agents/skills/query-clickhouse-via-metabase
+    description: >
+      Run ClickHouse `system.query_log` analysis via the internal Metabase API.
+      Use when investigating slow queries, materialization candidates, per-team
+      query performance, ClickHouse cost or memory issues, or any
+      system.query_log question. Covers prod-us and prod-eu, SSO-gated cookie
+      auth via `hogli`, and ready-to-run query patterns.
+  - id: querying-local-postgres
+    kind: skill
+    path: .agents/skills/querying-local-postgres
+    description: Run read-only SQL against the local Postgres app database (SELECT,
+      EXPLAIN, EXPLAIN ANALYZE on SELECT). Default local URL
+      postgres://posthog:posthog@localhost:5432/posthog; else DATABASE_URL. Use
+      when querying the local DB, inspecting tables, debugging data, or
+      analyzing query plans. Mutations are strictly forbidden.
+  - id: react-doctor
+    kind: skill
+    path: .agents/skills/react-doctor
+    description: Diagnose and fix React codebase health issues. Use when reviewing
+      React code, fixing performance problems, auditing security, or improving
+      code quality.
+  - id: run-posthog
+    kind: skill
+    path: .agents/skills/run-posthog
+    description: Start, inspect, and drive the PostHog dev stack. Use for /run and
+      /verify on this repo — when asked to launch PostHog, check whether the
+      stack is healthy, inspect a running process, or verify a UI change against
+      the live app.
+  - id: scene-menu-bar
+    kind: skill
+    path: .agents/skills/scene-menu-bar
+    description: Conventions for adding or editing the SceneMenuBar above a scene's
+      <SceneTitleSection>. Use when adding new menu items, moving items between
+      menus, gating behind feature flags, building a new scene's menubar, or
+      wiring rich inputs (tags, combobox) into the bar.
+  - id: security-audit
+    kind: skill
+    path: .agents/skills/security-audit
+    description: >
+      Focused security audit of code, calibrated to surface real exploitable
+      bugs and suppress theoretical findings. Use when the user asks to "audit",
+      "security-audit", "find vulnerabilities", "check for
+      IDOR/SSRF/XSS/injection", or wants a security review of a file, directory,
+      branch diff, or PR. Covers access control, injection, auth/secrets,
+      sensitive data, business logic, web boundary, and AI agent/LLM trifecta
+      risks. Produces calibrated findings with data flow, exploit request, fix,
+      and confidence — no theoretical or defense-in-depth nits.
+  - id: sending-notifications
+    kind: skill
+    path: .agents/skills/sending-notifications
+    description: How to send real-time in-app notifications from PostHog backend
+      code. Use when integrating notifications into a new feature, wiring up a
+      notification source (alerts, comments, approvals, pipelines, issues), or
+      choosing the right target type and priority for a notification.
+  - id: setting-feature-flags-in-storybook
+    kind: skill
+    path: .agents/skills/setting-feature-flags-in-storybook
+    description: Use when writing a Storybook story for a component gated on a
+      feature flag — boolean flags or multivariate/experiment-arm variants.
+      Covers the `featureFlags` story parameter and why imperatively setting
+      flags renders the flag-off branch in visual-regression snapshots while
+      passing in jest.
+  - id: setting-up-devbox
+    kind: skill
+    path: .agents/skills/setting-up-devbox
+    description: Guide a PostHog engineer through spinning up, connecting to,
+      running commands on, and mirroring local code to a remote devbox (a Coder
+      workspace running the full PostHog stack). Use when asked to set up a
+      devbox, start or connect to a devbox, configure remote dev, get gh CLI /
+      Claude Code authed on a devbox, run a command on a devbox, sync a local
+      checkout so you can edit locally while the stack runs remotely
+      (devbox:sync), or diagnose why a devbox command fails. Covers the tailnet
+      prerequisite, hogli devbox commands, Coder user secrets for auth, one-way
+      local->remote sync via mutagen, and verifying with devbox:exec. How each
+      dev personalizes their box is left to them.
+  - id: setup-web-tests
+    kind: skill
+    path: .agents/skills/setup-web-tests
+    description: Set up Python test environment in Claude Code for web where flox is
+      unavailable. Use when you need to run backend tests and `uv sync` fails
+      due to Python version mismatch.
+  - id: survey-sdk-audit
+    kind: skill
+    path: .agents/skills/survey-sdk-audit
+    description: Audit PostHog survey SDK features and version requirements
+  - id: using-kea-disposables
+    kind: skill
+    path: .agents/skills/using-kea-disposables
+    description: "Use when adding timers (`setInterval`, `setTimeout`), event
+      listeners (`window.addEventListener`, `document.addEventListener`,
+      `MediaQueryList.addEventListener`), or any other resource that needs
+      cleanup inside a kea logic. Every logic has `cache.disposables.add(setup,
+      key?, options?)` and `cache.disposables.dispose(key)` available via the
+      globally registered `disposablesPlugin`
+      (`frontend/src/kea-disposables.ts`). Replaces the bare `cache.foo =
+      setInterval(...)` + `beforeUnmount: clearInterval(cache.foo)` pattern and
+      auto-pauses background work when the tab is hidden."
+  - id: visualizing-change-over-time
+    kind: skill
+    path: .agents/skills/visualizing-change-over-time
+    description: >
+      Helps PostHog engineers and agents pick the right chart when a request is
+      about visualizing change over time, before/after comparisons, or
+      period-over-period movement while building UI with @posthog/quill-charts
+      (dashboards, reports, the mcp_analytics frontend, custom visualizations).
+      Use when a user asks how something "changed", "moved", "grew", "dropped",
+      "improved", or "regressed" between two points or periods, or mentions
+      "before/after", "period over period", "week over week", "delta", "slope
+      graph", "slopegraph", or comparing many series across two snapshots.
+      Surfaces both the `SlopeChart` quill component and the native
+      `ChartDisplayType.SlopeGraph` insight display as options.
+  - id: writing-kea-logics
+    kind: skill
+    path: .agents/skills/writing-kea-logics
+    description: Guide for writing or reviewing PostHog kea logic files (`*Logic.ts`
+      / `*Logic.tsx`). Use when creating a new logic, adding
+      actions/reducers/selectors/listeners/loaders/forms/router bindings,
+      choosing between reducer vs selector vs cache, deciding between listeners
+      and `kea-subscriptions`, wiring React with
+      `useValues`/`useActions`/`BindLogic`, or onboarding to kea conventions.
+      Read keajs.org for upstream API; this skill captures PostHog-specific
+      conventions and idioms.
+  - id: writing-skills
+    kind: skill
+    path: .agents/skills/writing-skills
+    description: Guide for writing PostHog agent skills — job-to-be-done templates
+      that teach agents how to use MCP tools to achieve a goal. Use when adding
+      new product functionality that agents should know how to work with,
+      creating a new skill, or updating existing skills in products/*/skills/.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

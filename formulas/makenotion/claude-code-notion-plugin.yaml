@@ -1,0 +1,46 @@
+schemaVersion: 1
+id: makenotion/claude-code-notion-plugin
+name: Notion Plugin for Claude Code
+description: Notion MCP + 4 skills for search, docs, meetings, research, spec→impl.
+source:
+  type: git
+  url: https://github.com/makenotion/claude-code-notion-plugin
+  revision: 9847f2aa1a15f25df35ed1fb7b4557dbb60cd651
+capabilities:
+  - id: notion
+    kind: mcp
+    path: .mcp.json
+  - id: knowledge-capture
+    kind: skill
+    path: skills/notion/knowledge-capture
+    description: Transforms conversations and discussions into structured
+      documentation pages in Notion. Captures insights, decisions, and knowledge
+      from chat context, formats appropriately, and saves to wikis or databases
+      with proper organization and linking for easy discovery.
+  - id: meeting-intelligence
+    kind: skill
+    path: skills/notion/meeting-intelligence
+    description: Prepares meeting materials by gathering context from Notion,
+      enriching with Claude research, and creating both an internal pre-read and
+      external agenda saved to Notion. Helps you arrive prepared with
+      comprehensive background and structured meeting docs.
+  - id: research-documentation
+    kind: skill
+    path: skills/notion/research-documentation
+    description: Searches across your Notion workspace, synthesizes findings from
+      multiple pages, and creates comprehensive research documentation saved as
+      new Notion pages. Turns scattered information into structured reports with
+      proper citations and actionable insights.
+  - id: spec-to-implementation
+    kind: skill
+    path: skills/notion/spec-to-implementation
+    description: Turns product or tech specs into concrete Notion tasks that Claude
+      code can implement. Breaks down spec pages into detailed implementation
+      plans with clear tasks, acceptance criteria, and progress tracking to
+      guide development from requirements to completion.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

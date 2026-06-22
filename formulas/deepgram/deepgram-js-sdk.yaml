@@ -1,0 +1,103 @@
+schemaVersion: 1
+id: deepgram/deepgram-js-sdk
+name: Deepgram JavaScript SDK
+description: JS/TS SDK for Deepgram STT, TTS, read, agent, mgmt APIs.
+source:
+  type: git
+  url: https://github.com/deepgram/deepgram-js-sdk
+  revision: 8d5d9613a244adf6807bc0041377781ea47f31c6
+capabilities:
+  - id: deepgram-js-audio-intelligence
+    kind: skill
+    path: .agents/skills/deepgram-js-audio-intelligence
+    description: Use when writing or reviewing JavaScript/TypeScript in this repo
+      that calls Deepgram audio analytics overlays on `/v1/listen` - summarize,
+      topics, intents, sentiment, diarize, redact, detect_language, and entity
+      detection. Same endpoint as plain STT, different params. Covers REST via
+      `client.listen.v1.media.transcribeUrl` / `transcribeFile` and the
+      WebSocket-supported subset on `client.listen.v1.createConnection()` /
+      `connect()`. Use `deepgram-js-speech-to-text` for plain transcription and
+      `deepgram-js-text-intelligence` for analytics on already-transcribed text.
+      Triggers include "audio intelligence", "summarize audio", "diarize",
+      "sentiment from audio", "redact PII", and "detect language audio".
+  - id: deepgram-js-conversational-stt
+    kind: skill
+    path: .agents/skills/deepgram-js-conversational-stt
+    description: Use when writing or reviewing JavaScript/TypeScript in this repo
+      that calls Deepgram Conversational STT v2 / Flux (`/v2/listen`) for
+      turn-aware streaming transcription. Covers
+      `client.listen.v2.createConnection()` / `connect()`, Flux models, and turn
+      events like `TurnInfo`. Use `deepgram-js-speech-to-text` for standard v1
+      ASR and `deepgram-js-voice-agent` for full-duplex assistants. Triggers
+      include "flux", "v2 listen", "conversational STT", "turn detection", "end
+      of turn", "EOT", and "listen.v2".
+  - id: deepgram-js-management-api
+    kind: skill
+    path: .agents/skills/deepgram-js-management-api
+    description: Use when writing or reviewing JavaScript/TypeScript in this repo
+      that calls Deepgram Management APIs for projects, API keys, members,
+      invites, requests, usage, billing, models, and agent think-model
+      discovery. Covers `client.manage.v1.*` plus
+      `client.agent.v1.settings.think.models.list()`. Use
+      `deepgram-js-voice-agent` when you want to run an agent live rather than
+      administer projects or inspect models. Triggers include "management API",
+      "list projects", "API keys", "members", "invites", "usage stats",
+      "billing", "list models", and "manage.v1".
+  - id: deepgram-js-speech-to-text
+    kind: skill
+    path: .agents/skills/deepgram-js-speech-to-text
+    description: Use when writing or reviewing JavaScript/TypeScript in this repo
+      that calls Deepgram Speech-to-Text v1 (`/v1/listen`) for prerecorded or
+      live audio transcription. Covers `client.listen.v1.media.transcribeUrl` /
+      `transcribeFile` (REST) plus `client.listen.v1.createConnection()` /
+      `connect()` (WebSocket). Use `deepgram-js-audio-intelligence` for
+      summarize/sentiment/topics/diarize overlays,
+      `deepgram-js-conversational-stt` for Flux turn-taking on `/v2/listen`, and
+      `deepgram-js-voice-agent` for full-duplex assistants. Triggers include
+      "transcribe", "speech to text", "STT", "listen.v1", "nova-3", "live
+      transcription", and "websocket transcription".
+  - id: deepgram-js-text-intelligence
+    kind: skill
+    path: .agents/skills/deepgram-js-text-intelligence
+    description: 'Use when writing or reviewing JavaScript/TypeScript in this repo
+      that calls Deepgram Text Intelligence / Read (`/v1/read`) for sentiment,
+      summarization, topic detection, and intent recognition on text input.
+      Covers `client.read.v1.text.analyze(...)` with `body: { text }` or `body:
+      { url }`. Use `deepgram-js-audio-intelligence` when the source is audio
+      instead of text. Triggers include "read API", "text intelligence",
+      "analyze text", "sentiment", "summarize text", "topics", "intents", and
+      "read.v1".'
+  - id: deepgram-js-text-to-speech
+    kind: skill
+    path: .agents/skills/deepgram-js-text-to-speech
+    description: Use when writing or reviewing JavaScript/TypeScript in this repo
+      that calls Deepgram Text-to-Speech v1 (`/v1/speak`) for audio synthesis.
+      Covers one-shot REST via `client.speak.v1.audio.generate` and streaming
+      WebSocket via `client.speak.v1.createConnection()` / `connect()`. Use
+      `deepgram-js-voice-agent` when you need full-duplex STT + LLM + TTS
+      instead of one-way synthesis. Triggers include "TTS", "text to speech",
+      "speak", "aura", "streaming TTS", and "speak.v1".
+  - id: deepgram-js-voice-agent
+    kind: skill
+    path: .agents/skills/deepgram-js-voice-agent
+    description: Use when writing or reviewing JavaScript/TypeScript in this repo
+      that builds an interactive voice agent via
+      `agent.deepgram.com/v1/agent/converse`. Covers
+      `client.agent.v1.createConnection()` / `connect()`, `sendSettings`,
+      `sendMedia`, runtime updates, event handling, and function-call responses.
+      Use `deepgram-js-text-to-speech` for one-way synthesis,
+      `deepgram-js-speech-to-text` or `deepgram-js-conversational-stt` for
+      transcription only, and `deepgram-js-management-api` for project/model
+      admin rather than live agent runtime. Triggers include "voice agent",
+      "agent converse", "full duplex", "barge-in", "function calling", and
+      "agent.v1".
+  - id: deepgram-styles
+    kind: mcp
+    path: .mcp.json
+requirements:
+  env:
+    - DEEPGRAM_API_KEY
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

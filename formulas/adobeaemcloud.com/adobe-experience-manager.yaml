@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: adobeaemcloud.com/adobe-experience-manager
+name: Adobe Experience Manager
+description: Adobe Experience Manager remote MCP server at
+  https://mcp.adobeaemcloud.com/adobe/mcp/aem. Manage your Adobe Experience
+  Manager content. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/adobe-experience-manager
+capabilities:
+  - id: adobe-experience-manager
+    kind: mcp
+    spec:
+      serverName: adobe-experience-manager
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.adobeaemcloud.com/adobe/mcp/aem

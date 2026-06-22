@@ -1,0 +1,68 @@
+schemaVersion: 1
+id: wix/skills
+name: Wix Skills
+description: Agent skills pack for Wix app, headless, manage, design-system.
+source:
+  type: git
+  url: https://github.com/wix/skills
+  revision: 3210de0af739dd668e1531b8acd9a6a6ec3bf5c4
+capabilities:
+  - id: wix-mcp
+    kind: mcp
+    path: .mcp.json
+  - id: wix-app
+    kind: skill
+    path: skills/wix-app
+    description: "Build and review Wix CLI app extensions — dashboard pages, modals,
+      plugins, menu plugins, custom element widgets, Editor React components,
+      site plugins, embedded scripts, backend APIs, backend events, service
+      plugins, data collections, and App Market readiness. Use when building ANY
+      feature or extension for a Wix CLI app or preparing a Wix app for App
+      Market review. Triggers on: add, build, create, implement, help me,
+      dashboard, widget, plugin, backend, API, event, collection, embedded
+      script, service plugin, Editor React component, checkout, shipping, tax,
+      discount, SPI, CMS, schema, tracking, popup, admin panel, menu item,
+      modal, validate, test, verify, register extension, App Market, app review,
+      submission readiness."
+  - id: wix-design-system
+    kind: skill
+    path: skills/wix-design-system
+    description: Wix Design System component reference. Use when building UI with
+      @wix/design-system, choosing components, checking props and examples, or
+      writing tests with component testkits. Triggers on "what component", "how
+      do I make", "WDS", "show me props", "testkit", "driver", or component
+      names like Button, Card, Box, Text.
+  - id: wix-headless
+    kind: skill
+    path: skills/wix-headless
+    description: "Build a complete Wix Managed Headless site from a single prompt,
+      OR connect an existing project (HTML/JSX/Vite app, Claude Design output,
+      etc.) to Wix Headless for hosting + Business Solutions. Entry point for
+      both: (1) new-site requests — runs discovery, design, feature wiring, and
+      preview; and (2) existing-project requests — runs `npm create
+      @wix/new@latest init`, analyzes the project for needed Business Solutions,
+      installs apps, **wires the Wix SDK into the existing source files so each
+      installed app actually powers its corresponding feature**, and releases.
+      Triggers: build me a site, create a website, make me a website, new
+      website, online store, I want to sell X, start a business online, launch a
+      site, ecommerce, portfolio, business website, sell online, online shop,
+      take bookings, book appointments, appointment scheduling, let clients book
+      online, site for my salon/spa/clinic/studio, sign up for classes or
+      sessions, connect this to Wix Headless, add Wix Headless to this project,
+      host this on Wix, deploy this to Wix, implement the features of this
+      project using Wix Headless. Use this skill instead of the WixSiteBuilder
+      MCP tool for new-site requests."
+  - id: wix-manage
+    kind: skill
+    path: skills/wix-manage
+    description: "Wix business solution management recipes — REST API operations for
+      configuring and managing Wix business solutions. Routes to: stores,
+      bookings, get-paid, CMS, contacts, forms, media, app-installation,
+      pricing-plans, restaurants, rich-content, sites, blog, calendar, domains,
+      site-properties, ecommerce."
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

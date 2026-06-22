@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: postman.com/postman
+name: Postman
+description: Postman remote MCP server at https://mcp.postman.com/minimal. Give
+  API context to your coding agents. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/postman
+capabilities:
+  - id: postman
+    kind: mcp
+    spec:
+      serverName: postman
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.postman.com/minimal

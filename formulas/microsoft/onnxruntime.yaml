@@ -1,0 +1,72 @@
+schemaVersion: 1
+id: microsoft/onnxruntime
+name: ONNX Runtime
+description: Multi-EP inference runtime.
+source:
+  type: git
+  url: https://github.com/microsoft/onnxruntime
+  revision: 9d641467a605c2966cbc051b90c42ae23c735699
+capabilities:
+  - id: ort-build
+    kind: skill
+    path: .agents/skills/ort-build
+    description: Build ONNX Runtime from source. Use this skill when asked to build,
+      compile, or generate CMake files for ONNX Runtime.
+  - id: ort-test
+    kind: skill
+    path: .agents/skills/ort-test
+    description: Run ONNX Runtime tests. Use this skill when asked to run tests,
+      debug test failures, or find and execute specific test cases in ONNX
+      Runtime.
+  - id: ort-lint
+    kind: skill
+    path: .agents/skills/ort-lint
+    description: Lint and format ONNX Runtime code. Use this skill when asked to
+      lint, format, or check code style for C++ or Python files in ONNX Runtime.
+  - id: webgpu-local-testing
+    kind: skill
+    path: .agents/skills/webgpu-local-testing
+    description: "Build and run ONNX Runtime WebGPU provider tests on Linux WITHOUT
+      a real GPU, using a software Vulkan adapter (Mesa lavapipe). Use when you
+      need to exercise WebGPU EP kernels off-Mac — the Linux webgpu CI leg is
+      build-only, so software Vulkan is how you actually run WebGPU correctness
+      tests locally. SCOPE: lavapipe only validates host-side enforce/shape bugs
+      and MatMul-free kernels; any graph containing MatMul (including the
+      expanded-Attention node tests) crashes lavapipe and runs ONLY on
+      macOS-arm64 Metal, which is the source of truth for those. Covers install
+      (dnf on Azure Linux), the --use_webgpu build flag, the
+      onnxruntime_provider_test target, VK_ICD_FILENAMES, and the lavapipe
+      MatMul crash gotcha."
+  - id: cuda-attention-kernel-patterns
+    kind: skill
+    path: .agents/skills/cuda-attention-kernel-patterns
+    description: Patterns and pitfalls for the ONNX domain Attention operator (opset
+      23/24) CUDA implementation. Use when modifying the dispatch cascade in
+      core/providers/cuda/llm/attention.cc, writing mask/bias CUDA kernels,
+      debugging attention test routing, or adding features to the ONNX Attention
+      op. NOT for contrib domain MultiHeadAttention/GroupQueryAttention.
+  - id: onnx-opset-bump-checklist
+    kind: skill
+    path: .agents/skills/onnx-opset-bump-checklist
+    description: Step-by-step checklist for bumping the pinned ONNX dependency /
+      opset in ONNX Runtime (e.g. ONNX 1.21 / opset 26 → 1.22 / opset 27). Use
+      when integrating a new ONNX release or release-candidate, updating the
+      cmake/deps.txt onnx pin or the cmake/external/onnx submodule, regenerating
+      cmake/patches/onnx/onnx.patch, raising kMaxSupportedOpset, or adding a new
+      opset's CPU kernels. Covers the file taxonomy, archive-hash procedures,
+      patch rebase/mirror rules, the RC→formal strategy, and the optimizer/EP
+      gotchas that the automated audit script misses.
+  - id: python-kwargs-setattr-security
+    kind: skill
+    path: .agents/skills/python-kwargs-setattr-security
+    description: When reviewing or fixing Python code that uses setattr() with
+      user-controlled kwargs to configure C++ extension objects (SessionOptions,
+      RunOptions, etc.) in ONNX Runtime. Use this to apply the allowlist pattern
+      that prevents arbitrary file writes and other attacks via reflected
+      property access.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

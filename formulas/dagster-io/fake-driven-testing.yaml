@@ -1,0 +1,34 @@
+schemaVersion: 1
+id: dagster-io/fake-driven-testing
+name: Fake-Driven Testing
+description: Framework-free fake-driven testing for agent-built Python codebases.
+source:
+  type: git
+  url: https://github.com/dagster-io/fake-driven-testing
+  revision: 2f84a13b0a7eda8407ecad978c297d30288ffeff
+capabilities:
+  - id: fake-driven-testing
+    kind: skill
+    path: skills/fake-driven-testing
+    description: This skill should be used when writing tests, fixing bugs, adding
+      features, or modifying the gateway layer. Use when you need guidance on
+      testing architecture, working with fakes, implementing ABC gateway
+      interfaces, or understanding the defense-in-depth testing strategy.
+      Essential for maintaining test quality and understanding where different
+      types of tests belong.
+  - id: fdt-refactor-mock-to-fake
+    kind: skill
+    path: skills/fdt-refactor-mock-to-fake
+    description: >
+      Refactor tests that use unittest.mock.patch or MagicMock into erk's
+      gateway-based fake pattern. Use when tests import unittest.mock, use
+      @patch decorators, or directly call mock.patch() as context managers.
+      Essential when test_*.py files patch module-level attributes like
+      subprocess.run, shutil.which, os.environ, or other system calls. Covers
+      both making source code injectable AND rewriting tests.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

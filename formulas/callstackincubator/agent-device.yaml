@@ -1,0 +1,29 @@
+schemaVersion: 1
+id: callstackincubator/agent-device
+name: agent-device
+description: Agent-native CLI for mobile/desktop app automation, evidence, replay, MCP.
+source:
+  type: git
+  url: https://github.com/callstackincubator/agent-device
+  revision: f9a9662f05342927303b6611736e13eb90024824
+capabilities:
+  - id: agent-device
+    kind: skill
+    path: skills/agent-device
+    description: Automates Apple-platform apps (iOS, tvOS, macOS) and Android
+      devices. Use when navigating apps, taking snapshots/screenshots, tapping,
+      typing, scrolling, extracting UI info, collecting logs/network/perf
+      evidence, or planning agent-device CLI commands.
+  - id: dogfood
+    kind: skill
+    path: skills/dogfood
+    description: Systematically explore and test a mobile app on iOS/Android with
+      agent-device to find bugs, UX issues, and other problems. Use when asked
+      to dogfood, QA, exploratory test, find issues, bug hunt, or test this app
+      on mobile.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

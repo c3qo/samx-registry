@@ -1,0 +1,64 @@
+schemaVersion: 1
+id: automattic/wp-calypso
+name: Calypso
+description: WordPress.com front-end monorepo.
+source:
+  type: git
+  url: https://github.com/automattic/wp-calypso
+  revision: 1a207664a4d4e7a83a6cd5c9c2214604df122e0a
+capabilities:
+  - id: calypso-react-query-migration
+    kind: skill
+    path: .claude/skills/calypso-react-query-migration
+    description: Use when editing or migrating Calypso Reader data-fetching code —
+      `client/components/data/query-reader-*` components,
+      `@automattic/data-stores` Reader hooks, or new Reader queries/mutations.
+      Triggers on any work involving `api-core`, `api-queries`,
+      `dispatchRequest`, `READER_*_REQUEST` actions, or Redux `isRequesting*`
+      selectors in the Reader.
+  - id: calypso-security-alerts
+    kind: skill
+    path: .claude/skills/calypso-security-alerts
+    description: Provide advisory guidance for scanning Automattic/wp-calypso
+      Dependabot alerts and Dependabot remediation PRs using the public
+      dependency security alerts playbook.
+  - id: dashboard-create-screen
+    kind: skill
+    path: .claude/skills/dashboard-create-screen
+    description: Create a new screen in the Multi-site Dashboard with automatic
+      route registration
+  - id: fix-e2e-tests
+    kind: skill
+    path: .claude/skills/fix-e2e-tests
+    description: Given a wp-calypso PR number, identify the failing E2E test(s) in
+      that PR's CI run so they can be fixed. Use when asked to investigate or
+      fix a failing E2E test on a specific PR.
+  - id: help-center-ui-test
+    kind: skill
+    path: .claude/skills/help-center-ui-test
+    description: Run a browser-based UI review of the WordPress.com Help Center
+      across multiple surfaces, looking for visual and behavioral issues. Use
+      when asked to test the Help Center UI.
+  - id: reader-protocol-pr-review
+    kind: skill
+    path: .claude/skills/reader-protocol-pr-review
+    description: Use when reviewing PRs that touch the Reader's multi-protocol
+      social surfaces (`client/reader/social/`, `client/reader/atmosphere/`,
+      `client/reader/mastodon/`,
+      `packages/api-core/src/reader-{atmosphere,mastodon}/`,
+      `packages/api-queries/src/reader-{atmosphere,mastodon}.ts`). Captures the
+      review rubric + the recurring smells from the CM-625 / CM-658 / CM-660 /
+      CM-662 slice cycle.
+  - id: stepper-flow
+    kind: skill
+    path: .claude/skills/stepper-flow
+    description: Build a new Stepper signup flow from a plain-English description.
+  - id: playwright-test
+    kind: mcp
+    path: .mcp.json
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

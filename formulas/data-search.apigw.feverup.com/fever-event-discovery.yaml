@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: data-search.apigw.feverup.com/fever-event-discovery
+name: Fever Event Discovery
+description: Fever Event Discovery remote MCP server at
+  https://data-search.apigw.feverup.com/mcp. Discover live entertainment events
+  worldwide. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/fever-event-discovery
+capabilities:
+  - id: fever-event-discovery
+    kind: mcp
+    spec:
+      serverName: fever-event-discovery
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://data-search.apigw.feverup.com/mcp

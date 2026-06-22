@@ -1,0 +1,56 @@
+schemaVersion: 1
+id: facebook/meta-wearables-dat-ios
+name: Meta Wearables Device Access Toolkit for iOS
+description: "iOS DAT SDK for Meta glasses: core, camera, display, mock device,
+  docs, samples."
+source:
+  type: git
+  url: https://github.com/facebook/meta-wearables-dat-ios
+  revision: a739e94181221e7f321304273bcda2272821b163
+capabilities:
+  - id: camera-streaming
+    kind: skill
+    path: plugins/mwdat-ios/skills/camera-streaming
+    description: Stream, video frames, photo capture, resolution/frame rate configuration
+  - id: dat-conventions
+    kind: skill
+    path: plugins/mwdat-ios/skills/dat-conventions
+    description: Swift patterns, async/await, naming conventions, key types for DAT
+      SDK iOS development
+  - id: display-access
+    kind: skill
+    path: plugins/mwdat-ios/skills/display-access
+    description: Display capability setup, display-capable device selection, UI DSL,
+      icons, buttons, images, and video playback
+  - id: mockdevice-testing
+    kind: skill
+    path: plugins/mwdat-ios/skills/mockdevice-testing
+    description: MockDeviceKit for testing without physical glasses hardware
+  - id: permissions-registration
+    kind: skill
+    path: plugins/mwdat-ios/skills/permissions-registration
+    description: App registration with Meta AI, camera permission flows
+  - id: session-lifecycle
+    kind: skill
+    path: plugins/mwdat-ios/skills/session-lifecycle
+    description: Device session states, pause/resume, availability monitoring
+  - id: getting-started
+    kind: skill
+    path: plugins/mwdat-ios/skills/getting-started
+    description: SDK setup, Swift Package Manager integration, Info.plist
+      configuration, and first connection to Meta glasses
+  - id: sample-app-guide
+    kind: skill
+    path: plugins/mwdat-ios/skills/sample-app-guide
+    description: Building a complete DAT app with camera streaming and photo capture
+  - id: debugging
+    kind: skill
+    path: plugins/mwdat-ios/skills/debugging
+    description: Common issues, Developer Mode, version compatibility, state machine
+      diagnosis
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,22 @@
+schemaVersion: 1
+id: vercel-labs/deepsec
+name: deepsec
+description: AI-powered vulnerability scanner.
+source:
+  type: git
+  url: https://github.com/vercel-labs/deepsec
+  revision: e3c8f05a0a72e3466e82bdcdda86e7c65fc2ad3b
+capabilities:
+  - id: deepsec
+    kind: skill
+    path: packages/deepsec
+    description: Use deepsec (an AI-powered vulnerability scanner) — running scans,
+      configuring projects, writing matchers, and authoring plugins. Activates
+      when the user asks how to scan, configure, or extend deepsec in a project
+      that has deepsec installed.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

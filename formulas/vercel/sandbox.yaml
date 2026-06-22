@@ -1,0 +1,26 @@
+schemaVersion: 1
+id: vercel/sandbox
+name: Vercel Sandbox
+description: SDK/CLI for isolated Linux sandboxes, dev servers, code exec.
+source:
+  type: git
+  url: https://github.com/vercel/sandbox
+  revision: 7d885abe06f0b30cb9e2c44d82fdb440c58b51b2
+capabilities:
+  - id: sandbox
+    kind: skill
+    path: skills/sandbox
+    description: Creates isolated Linux MicroVMs using Vercel Sandbox SDK. Use when
+      building code execution environments, running untrusted code, spinning up
+      dev servers, testing in isolation, or when the user mentions "sandbox",
+      "microvm", "isolated execution", or "@vercel/sandbox".
+requirements:
+  env:
+    - VERCEL_OIDC_TOKEN
+    - VERCEL_TEAM_ID
+    - VERCEL_PROJECT_ID
+    - VERCEL_TOKEN
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

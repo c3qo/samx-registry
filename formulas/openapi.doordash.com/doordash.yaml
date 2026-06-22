@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: openapi.doordash.com/doordash
+name: DoorDash
+description: DoorDash remote MCP server at
+  https://openapi.doordash.com/mcp/consumer. Food delivery & Reservations. Setup
+  guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/doordash
+capabilities:
+  - id: doordash
+    kind: mcp
+    spec:
+      serverName: doordash
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://openapi.doordash.com/mcp/consumer

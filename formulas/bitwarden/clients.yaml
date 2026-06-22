@@ -1,0 +1,71 @@
+schemaVersion: 1
+id: bitwarden/clients
+name: Bitwarden Client Applications
+description: "Monorepo for Bitwarden client apps: web, browser, desktop, CLI."
+source:
+  type: git
+  url: https://github.com/bitwarden/clients
+  revision: 47a02b1e2f00ef7c32bd31180ba43068c8b7e6be
+capabilities:
+  - id: angular-modernization
+    kind: skill
+    path: .claude/skills/angular-modernization
+    description: Modernizes Angular code such as components and directives to follow
+      best practices using both automatic CLI migrations and Bitwarden-specific
+      patterns. YOU must use this skill when someone requests modernizing
+      Angular code. DO NOT invoke for general Angular discussions unrelated to
+      modernization.
+  - id: cipher-type-planner
+    kind: skill
+    path: .claude/skills/cipher-type-planner
+    description: Plans the creation or modification of a cipher type (vault item
+      type) across the Bitwarden clients monorepo. Use this skill when a user
+      wants to add a new cipher type, modify an existing cipher type, or asks
+      about what is needed to implement a cipher type. DO NOT invoke for general
+      vault or cipher questions unrelated to adding or changing a cipher type.
+  - id: create-hec-event-integration
+    kind: skill
+    path: .claude/skills/create-hec-event-integration
+    description: Use when adding a new HEC (HTTP Event Collector) event integration
+      to the Bitwarden web client. Implements the Splunk token authentication
+      model (Bearer token + URI). Covers feature flag setup and card
+      registration behind the flag. Does not apply to API key integrations or
+      integrations requiring a custom connect dialog.
+  - id: create-pull-request
+    kind: skill
+    path: .claude/skills/create-pull-request
+    description: Pull request creation workflow for Bitwarden Clients. Use when
+      creating PRs, writing PR descriptions, or preparing branches for review.
+      Triggered by "create PR", "pull request", "open PR", "gh pr create", "PR
+      description".
+  - id: figma-to-angular
+    kind: skill
+    path: .claude/skills/figma-to-angular
+    description: >
+      Converts Figma designs into production Angular components with Storybook
+      stories for the Bitwarden Clients monorepo. Use this skill whenever the
+      user provides a Figma URL and wants to create an Angular component, or
+      mentions "implement this design", "create a component from Figma", "build
+      this from the design spec", or similar. Also trigger when the user pastes
+      a Figma link and asks for a component, even if they don't say "Figma"
+      explicitly.
+  - id: fix-angular-fixmes
+    kind: skill
+    path: .claude/skills/fix-angular-fixmes
+    description: Resolves eslint-disable suppression comments throughout the
+      Bitwarden clients codebase by fixing the underlying issue. Use when the
+      user asks to "fix FIXMEs", "fix eslint suppressions", "clean up
+      eslint-disable-next-line", "resolve CL-764", "resolve CL-903", "fix OnPush
+      eslint suppressions", "fix Signals eslint suppressions", or reduce linting
+      suppressions.
+  - id: writing-client-code
+    kind: skill
+    path: .claude/skills/writing-client-code
+    description: Bitwarden client code conventions for Angular and TypeScript. Use
+      when creating components, services, or modifying web/browser/desktop apps.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,44 @@
+schemaVersion: 1
+id: vercel-labs/sandcastle
+name: Sandcastle
+description: Cloud desktop env on Vercel Sandbox.
+source:
+  type: git
+  url: https://github.com/vercel-labs/sandcastle
+  revision: 85b678c10defa2b7220a37418f96f4410c4fe1d4
+capabilities:
+  - id: vercel-composition-patterns
+    kind: skill
+    path: .agents/skills/vercel-composition-patterns
+    description: React composition patterns that scale. Use when refactoring
+      components with boolean prop proliferation, building flexible component
+      libraries, or designing reusable APIs. Triggers on tasks involving
+      compound components, render props, context providers, or component
+      architecture. Includes React 19 API changes.
+  - id: vercel-react-best-practices
+    kind: skill
+    path: .agents/skills/vercel-react-best-practices
+    description: React and Next.js performance optimization guidelines from Vercel
+      Engineering. This skill should be used when writing, reviewing, or
+      refactoring React/Next.js code to ensure optimal performance patterns.
+      Triggers on tasks involving React components, Next.js pages, data
+      fetching, bundle optimization, or performance improvements.
+  - id: web-design-guidelines
+    kind: skill
+    path: .agents/skills/web-design-guidelines
+    description: Review UI code for Web Interface Guidelines compliance. Use when
+      asked to "review my UI", "check accessibility", "audit design", "review
+      UX", or "check my site against best practices".
+requirements:
+  env:
+    - DATABASE_URL
+    - SESSION_SECRET
+    - CRON_SECRET
+    - VERCEL_CLIENT_ID
+    - VERCEL_CLIENT_SECRET
+    - VERCEL_OIDC_TOKEN
+    - BETTER_AUTH_URL
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

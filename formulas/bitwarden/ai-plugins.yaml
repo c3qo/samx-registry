@@ -1,0 +1,942 @@
+schemaVersion: 1
+id: bitwarden/ai-plugins
+name: Bitwarden AI Plugins
+description: "Bitwarden Claude plugins: Atlassian MCP +
+  review/design/delivery/security skills."
+source:
+  type: git
+  url: https://github.com/bitwarden/ai-plugins
+  revision: 4b963cf160711df0a4e110cbf2398c74e2a33997
+capabilities:
+  - id: bitwarden-atlassian
+    kind: mcp
+    path: plugins/bitwarden-atlassian-tools/.mcp.json
+  - id: researching-jira-issues
+    kind: skill
+    path: plugins/bitwarden-atlassian-tools/skills/researching-jira-issues
+    description: Use whenever the user mentions a Jira issue key and wants more than
+      a surface-level lookup — "Read PROJ-123", "What's PROJ-123 about?", "Give
+      me context on PROJ-123", "Deep dive PROJ-123", "What's blocking
+      PROJ-123?", "Summarize PROJ-123 and its dependencies", "I need to work on
+      PROJ-123, what should I know?", or any request to understand an issue's
+      purpose, scope, or requirements. Thoroughly researches and synthesizes a
+      Jira issue including all linked issues, sub-tasks, blocked dependencies,
+      and supporting Confluence documentation.
+  - id: bitwarden-code-reviewer
+    kind: agent
+    path: plugins/bitwarden-code-review/agents/bitwarden-code-reviewer
+    description: Conducts thorough code reviews following Bitwarden standards. Finds
+      all issues first pass, avoids false positives, respects codebase
+      conventions. Invoke when user mentions "code review", "review code",
+      "review", "PR", or "pull request".
+  - id: performing-multi-agent-code-review
+    kind: skill
+    path: plugins/bitwarden-code-review/skills/performing-multi-agent-code-review
+    description: Perform a rigorous, multi-agent code review with
+      architecture-compliance, parallel quality/security analysis, finding
+      validation, and severity audit. Use whenever the user asks for a
+      structured, deep, thorough, multi-pass, or multi-agent code review — or a
+      review that includes architecture/pattern compliance, confidence-scored
+      findings, or a severity audit — even if they don't say the exact phrase
+      "multi-agent". Prefer this over a single-agent review when the user wants
+      high-signal findings with validation. Also use whenever the user asks for
+      a code review across a commit range, time window, or N most recent commits
+      in a locally checked-out repo (e.g. "review the last week of commits in
+      bitwarden/server", "review the last 20 commits", "review changes since
+      2026-04-23") — these route to the commit-range mode below.
+  - id: starting-breakdown
+    kind: skill
+    path: plugins/bitwarden-delivery-tools/skills/starting-breakdown
+    description: Sets up a new Bitwarden Tech Breakdown in the
+      bitwarden/tech-breakdowns repo. Creates a per-breakdown folder
+      (`<team>/<JIRA-KEY>-<short-slug>/`) containing `breakdown.md` from the
+      template, so the future `tasks.md` and any specification artifacts can
+      live alongside it. Use when a team is creating a new breakdown — triggered
+      by phrasings such as "start a tech breakdown", "create a new breakdown for
+      X", "set up the breakdown file", "spin up a breakdown".
+  - id: bitwarden-security-context
+    kind: skill
+    path: plugins/bitwarden-security-engineer/skills/bitwarden-security-context
+    description: Bitwarden's security principles (P01-P06), security vocabulary, and
+      data classification standards. Use when you need foundational security
+      context for any Bitwarden development, review, or security task — such as
+      understanding trust boundaries, data protection requirements, or
+      Bitwarden-specific security terminology.
+  - id: reviewing-claude-config
+    kind: skill
+    path: plugins/claude-config-validator/skills/reviewing-claude-config
+    description: Reviews Claude configuration files for security, structure, and
+      prompt engineering quality. Use when reviewing changes to CLAUDE.md files
+      (project-level or .claude/), skills (SKILL.md), agents, prompts, commands,
+      or settings. Validates YAML frontmatter, progressive disclosure patterns,
+      token efficiency, and security best practices. Detects critical issues
+      like committed settings.local.json, hardcoded secrets, malformed YAML,
+      broken file references, oversized skill files, and insecure agent tool
+      access.
+  - id: addressing-code-review-comments
+    kind: skill
+    path: plugins/bitwarden-code-review/skills/addressing-code-review-comments
+    description: Use when the user is addressing pull request review comments
+      locally and asks for help evaluating, implementing, or drafting responses
+      to reviewer feedback - requires technical rigor and verification, not
+      performative agreement or blind implementation
+  - id: avoiding-false-positives
+    kind: skill
+    path: plugins/bitwarden-code-review/skills/avoiding-false-positives
+    description: Use this skill to validate findings during a code review. For each
+      finding, run the rejection criteria and verification checks. If a finding
+      fails any check, drop it.
+  - id: classifying-review-findings
+    kind: skill
+    path: plugins/bitwarden-code-review/skills/classifying-review-findings
+    description: Use this skill when categorizing code review findings into severity
+      levels. Apply when determining which emoji and label to use for PR
+      comments, deciding if an issue should be flagged at all, or classifying
+      findings as CRITICAL, IMPORTANT, DEBT, SUGGESTED, or QUESTION.
+  - id: posting-bitwarden-review-comments
+    kind: skill
+    path: plugins/bitwarden-code-review/skills/posting-bitwarden-review-comments
+    description: Use this skill when posting inline comments to GitHub pull
+      requests. Apply when formatting comments following Bitwarden engineering
+      standards with severity emojis, clear explanations, and actionable
+      suggestions. Use after findings are classified and ready to post. DO NOT
+      USE when posting summary comments.
+  - id: posting-review-summary
+    kind: skill
+    path: plugins/bitwarden-code-review/skills/posting-review-summary
+    description: Use this skill when posting the final summary comment after all
+      inline comments are posted. Apply as the LAST step of code review after
+      all findings are classified and inline comments are complete. Detects
+      context (agent mode sticky comment, GitHub Actions MCP tool, or local
+      file) and routes output accordingly.
+  - id: reviewing-dependency-changes
+    kind: skill
+    path: plugins/bitwarden-code-review/skills/reviewing-dependency-changes
+    description: Use this skill when a PR diff contains changes to dependency
+      manifest files (package.json, .csproj, Cargo.toml, go.mod,
+      requirements.txt, etc.) or when reviewing Renovate/Dependabot bot PRs.
+      Evaluates new dependencies for AppSec approval process compliance, major
+      version bump significance, lock file hygiene, and dependency removal
+      completeness. Does NOT perform deep security or license analysis — that is
+      handled by the bitwarden-security-engineer plugin's reviewing-dependencies
+      skill.
+  - id: committing-changes
+    kind: skill
+    path: plugins/bitwarden-delivery-tools/skills/committing-changes
+    description: Git commit conventions and workflow for Bitwarden repositories. Use
+      when committing code, writing commit messages, or preparing changes for
+      commit. Triggered by "commit", "git commit", "commit message", "prepare
+      commit", "stage changes".
+  - id: coordinating-cross-team-breakdown
+    kind: skill
+    path: plugins/bitwarden-delivery-tools/skills/coordinating-cross-team-breakdown
+    description: Coordinate cross-team review and signoff for a Bitwarden Tech
+      Breakdown. Use when identifying affected teams, building the Part 3
+      signoff table, chasing signoffs to move from PROPOSED to ACCEPTED, or
+      running the completion-communication checklist before COMPLETE.
+  - id: creating-pull-request
+    kind: skill
+    path: plugins/bitwarden-delivery-tools/skills/creating-pull-request
+    description: "Open a pull request from a branch in a Bitwarden repository — pick
+      the conventional commit type prefix that drives the t: label, fill in the
+      repo's PR template, choose an ai-review label, and confirm a full
+      submission preview before running gh pr create."
+  - id: developing-breakdown-spec
+    kind: skill
+    path: plugins/bitwarden-delivery-tools/skills/developing-breakdown-spec
+    description: Resolve open design questions, then capture what's being built into
+      the Specification section of a Bitwarden Tech Breakdown. Use after a
+      breakdown document has been created in its empty state or resuming a
+      partly-resolved specification. Triggered by phrasings such as "understand
+      the work", "define breakdown scope", "write the breakdown spec", "develop
+      the specification", "continue the breakdown spec".
+  - id: labeling-changes
+    kind: skill
+    path: plugins/bitwarden-delivery-tools/skills/labeling-changes
+    description: 'Conventional commit type keywords for PR titles and commit
+      messages. Use when determining the change type for commits or PRs.
+      Triggered by "what type", "label", "change type", "conventional commit",
+      "t: label".'
+  - id: navigating-the-initiative-funnel
+    kind: skill
+    path: plugins/bitwarden-delivery-tools/skills/navigating-the-initiative-funnel
+    description: Phase-by-phase guidance for participating in Bitwarden's Software
+      Initiative Funnel. Covers ownership boundaries between shepherd and tech
+      lead at each phase, how to run an epic breakdown after handoff, sizing and
+      estimation, cross-team dependency tracking, and the escalation paths that
+      protect team autonomy. Use when a team is about to receive an initiative
+      epic, when participating in an Architectural Assessment or PoC, when
+      preparing a team breakdown, or when surfacing concerns back to the
+      shepherd or engineering leadership.
+  - id: perform-preflight
+    kind: skill
+    path: plugins/bitwarden-delivery-tools/skills/perform-preflight
+    description: Quality gate checklist to run before committing or creating a PR.
+      Use when finishing implementation, checking work quality, or preparing to
+      commit. Triggered by "preflight", "self review", "ready to commit", "check
+      my work", "quality gate".
+  - id: running-work-transitions
+    kind: skill
+    path: plugins/bitwarden-delivery-tools/skills/running-work-transitions
+    description: Six-phase playbook for running ownership transitions in either
+      direction — receiving work from another team (initiative handoffs from
+      shepherds, frameworks from Platform, operational responsibilities from
+      SRE), or originating a transition (handing off a built framework,
+      transitioning a shepherded initiative, or moving operational
+      responsibilities). Applies Bitwarden's Work Transition Playbook from
+      whichever side a team is on. Use when a team is about to take on or hand
+      off transferred work, when preparing materials or sessions, when the
+      support period is underway, or when running a pulse check or retrospective
+      on a handoff.
+  - id: writing-tech-breakdowns
+    kind: skill
+    path: plugins/bitwarden-delivery-tools/skills/writing-tech-breakdowns
+    description: DEPRECATED — superseded by `starting-breakdown` and
+      `developing-breakdown-spec`. Retained for historical reference only.
+      Drafted engineering work breakdowns following the Bitwarden Tech Breakdown
+      template; covered starting a new tech breakdown, the scope checklist,
+      specification child pages, open questions, and the status lifecycle (IN
+      PLANNING / IN PROGRESS / PROPOSED / ACCEPTED / COMPLETE).
+  - id: applying-bitwarden-branding
+    kind: skill
+    path: plugins/bitwarden-design-tools/skills/applying-bitwarden-branding
+    description: Apply Bitwarden brand standards — logo usage, color palette,
+      typography, iconography, and capitalization rules — grounded in
+      bitwarden.com/brand and the bitwarden/brand repository.
+  - id: content-style-guide
+    kind: skill
+    path: plugins/bitwarden-design-tools/skills/content-style-guide
+    description: Bitwarden's product content style guide for end-user-facing GUI
+      copy — voice, tone, AP-style-with-exceptions grammar, sentence case in UI,
+      and accessibility-first language at a U.S. 7th-grade reading level.
+  - id: evolving-design-system-components
+    kind: skill
+    path: plugins/bitwarden-design-tools/skills/evolving-design-system-components
+    description: Propose a new UI pattern or modify an existing Design System
+      component per Bitwarden's published governance process — design-team
+      alignment, Core vs. Recipe/Snowflake decision with UI Foundation, Figma
+      branching and property conventions, review gates, merge timing.
+  - id: navigating-design-jira-process
+    kind: skill
+    path: plugins/bitwarden-design-tools/skills/navigating-design-jira-process
+    description: Move design work through Bitwarden's Product and Design Jira
+      workflow — final designs attached to tickets, the 30/60/90 critique
+      cadence tracked in Figma, status transitions on engineering epics and
+      stories, and the one-off engineering story flow.
+  - id: preparing-design-handoff
+    kind: skill
+    path: plugins/bitwarden-design-tools/skills/preparing-design-handoff
+    description: Prepare a Bitwarden design handoff — the Figma file in
+      Ready-for-Dev state and the Jira state transitions that go with it. The
+      end-of-In-Design gate / checklist.
+  - id: using-figma
+    kind: skill
+    path: plugins/bitwarden-design-tools/skills/using-figma
+    description: Read and inspect Figma designs via the Dev Mode MCP server —
+      selects the right tool, parses Figma URLs into fileKey and nodeId, and
+      turns design context into useful input for critique, copy review, handoff
+      prep, and Design System work.
+  - id: agents
+    kind: agent
+    path: plugins/bitwarden-designer/agents
+    description: >
+      Bitwarden product designer. Holds the team's Code of Conduct and the
+      30/60/90 critique framework, and dispatches into the design toolkit for
+      everything else — content style, Figma reads, brand application, handoff
+      prep, Design System governance, and Jira choreography. Use when reviewing
+      or critiquing a design, evaluating GUI copy, facilitating or participating
+      in a design review, preparing a design handoff, proposing or modifying a
+      Design System component, applying Bitwarden brand standards, reading a
+      Figma file, or navigating the design side of an engineering epic.
+
+
+      <example>
+
+      Context: A designer has a Figma mockup at a known stage and wants
+      feedback.
+
+      user: "Here's the 60% draft of the device-trust onboarding screen.
+      Critique it."
+
+      assistant: "I'll use the bitwarden-designer agent for a stage-appropriate
+      critique grounded in the design Code of Conduct and the 30/60/90
+      framework, with content observations against the product style guide."
+
+      <commentary>
+
+      Design critique at a known stage. Dispatch into Skill(design-review),
+      which composes Skill(content-style-guide) at 60%/90% from
+      bitwarden-design-tools and Skill(using-figma) to read the design.
+
+      </commentary>
+
+      </example>
+
+
+      <example>
+
+      Context: A designer is reviewing button labels and error messages before
+      handoff.
+
+      user: "Take a pass on these strings — buttons, the empty state, and the
+      toast on save failure."
+
+      assistant: "I'll use the bitwarden-designer agent to evaluate each string
+      against Bitwarden's product content style guide — voice, tone, sentence
+      case, AP-with-exceptions grammar, and accessibility rules — and propose
+      compliant rewrites."
+
+      <commentary>
+
+      Pure copy review. Dispatch into Skill(content-style-guide) in
+      bitwarden-design-tools.
+
+      </commentary>
+
+      </example>
+
+
+      <example>
+
+      Context: A designer is finishing the In Design phase for an engineering
+      epic.
+
+      user: "I'm wrapping up design on the new vault filter project. What do I
+      need to confirm before engineering picks it up?"
+
+      assistant: "I'll use the bitwarden-designer agent to walk through the
+      end-of-In-Design gate — Figma Ready-for-Dev state (sections aligned to
+      stories, tokens library-bound, strings annotated) and the Jira moves that
+      go with it."
+
+      <commentary>
+
+      Handoff preparation. Dispatch into Skill(preparing-design-handoff) in
+      bitwarden-design-tools, which composes
+      Skill(navigating-design-jira-process).
+
+      </commentary>
+
+      </example>
+
+
+      <example>
+
+      Context: A designer wants to confirm a marketing surface follows brand
+      standards.
+
+      user: "Is this banner on-brand? It uses #175DDC for the headline and a
+      green call-out for the CTA."
+
+      assistant: "I'll use the bitwarden-designer agent to check colors against
+      the canonical palette, logo usage, and the capitalization rules — flagging
+      the tertiary-green CTA as off-pattern."
+
+      <commentary>
+
+      Brand check. Dispatch into Skill(applying-bitwarden-branding) in
+      bitwarden-design-tools.
+
+      </commentary>
+
+      </example>
+  - id: design-review
+    kind: skill
+    path: plugins/bitwarden-designer/skills/design-review
+    description: Bitwarden design team's Code of Conduct combined with the 30/60/90
+      critique framework — stage-appropriate critique, product-not-designer
+      focus, content evaluated alongside visual design at 60% and 90%.
+  - id: facilitating-design-critique
+    kind: skill
+    path: plugins/bitwarden-designer/skills/facilitating-design-critique
+    description: Run or participate in a Bitwarden design critique session — the
+      weekly team critique and one-off product design reviews — grounded in the
+      team's published etiquette guide and the Product Design Review Guidelines.
+  - id: action-audit
+    kind: skill
+    path: plugins/bitwarden-devops-engineer/skills/action-audit
+    description: >
+      Audit GitHub Actions action usage across an org. Searches for a specific
+      action (incident mode) or sweeps all workflow files for non-compliant
+      action references (audit mode). Produces a read-only report of findings
+      with compliance status and resolved SHAs. Does not modify any files.
+
+      <example> User: We need to check if any repos are using
+      tj-actions/changed-files Action: Trigger action-audit in incident mode for
+      that action </example>
+
+      <example> User: Can you find all unpinned actions across the org? Action:
+      Trigger action-audit in audit mode </example>
+  - id: action-remediate
+    kind: skill
+    path: plugins/bitwarden-devops-engineer/skills/action-remediate
+    description: >
+      Remediate GitHub Actions action findings identified by the action-audit
+      skill. Applies the appropriate fix per action type — `@main` ref for
+      internal `bitwarden/` actions, full SHA with inline version comment for
+      external actions, or full replacement — across selected repos and creates
+      draft PRs. Run the action-audit skill first to identify findings before
+      using this skill.
+
+      <example> User: Go ahead and fix the unpinned actions from the audit
+      Action: Trigger action-remediate to apply fixes and create PRs </example>
+
+      <example> User: Replace tj-actions/changed-files with the safe version
+      across those repos Action: Trigger action-remediate to swap the action and
+      create PRs </example>
+  - id: bitwarden-workflow-linter-rules
+    kind: skill
+    path: plugins/bitwarden-devops-engineer/skills/bitwarden-workflow-linter-rules
+    description: >-
+      Reference for all Bitwarden workflow linter (bwwl) rules. Covers all 10
+      linter rules split into two categories: mechanical rules that can be
+      applied automatically (name_capitalized, permissions_exist,
+      pinned_job_runner, step_pinned, underscore_outputs,
+      job_environment_prefix, check_pr_target) and judgment rules requiring user
+      input (name_exists, step_approved, run_actionlint). Use the workflow-audit
+      skill to run the linter and report findings, and the workflow-fix skill to
+      apply fixes.
+
+      <example> User: What does the step_pinned rule check for? Action: Consult
+      this skill for the rule definition and fix procedure </example>
+
+      <example> User: How do I fix a permissions_exist finding? Action: Consult
+      this skill for the fix procedure </example>
+  - id: workflow-audit
+    kind: skill
+    path: plugins/bitwarden-devops-engineer/skills/workflow-audit
+    description: >
+      Run the Bitwarden workflow linter (bwwl) against one or more repos and
+      report findings. Strictly read-only — does not modify any files.
+      Categorizes findings as mechanical or judgment using the
+      bitwarden-workflow-linter-rules skill. Supports single repo, multiple
+      repos, or single file/directory scope.
+
+      <example> User: Run the workflow linter on the server repo Action: Trigger
+      workflow-audit for that repo </example>
+
+      <example> User: Lint the workflows across server, clients, and android
+      Action: Trigger workflow-audit in multi-repo mode </example>
+  - id: workflow-fix
+    kind: skill
+    path: plugins/bitwarden-devops-engineer/skills/workflow-fix
+    description: >
+      Apply fixes for workflow linter findings identified by the workflow-audit
+      skill. Applies mechanical fixes automatically, pauses for judgment calls,
+      verifies with a re-lint, and creates draft PRs. Run the workflow-audit
+      skill first to identify findings before using this skill.
+
+      <example> User: Go ahead and fix the linter findings from the audit
+      Action: Trigger workflow-fix to apply fixes and create PRs </example>
+
+      <example> User: Fix the workflow linter issues in server and clients
+      Action: Trigger workflow-fix for those repos </example>
+  - id: requirements-elicitation
+    kind: skill
+    path: plugins/bitwarden-product-analyst/skills/requirements-elicitation
+    description: 'Extract complete, unambiguous requirements from specifications.
+      Use when analyzing feature requests, processing enhancement
+      specifications, or identifying missing information. Trigger phrases:
+      "extract requirements", "analyze specification", "identify requirements",
+      "clarify ambiguities".  After extracting requirements, use the
+      `work-breakdown` skill.'
+  - id: work-breakdown
+    kind: skill
+    path: plugins/bitwarden-product-analyst/skills/work-breakdown
+    description: 'Break down features and requirements into actionable,
+      implementable tasks with clear scope and acceptance criteria. Use when
+      planning implementation, organizing complex work, or creating task lists.
+      Trigger phrases: "break down tasks", "create work plan", "organize
+      implementation", "plan development". This skill works best when preceded
+      by `requirements-elicitation` skill use.'
+  - id: analyzing-code-security
+    kind: skill
+    path: plugins/bitwarden-security-engineer/skills/analyzing-code-security
+    description: This skill should be used when the user asks to "analyze code for
+      security issues", "check for OWASP vulnerabilities", "review code against
+      CWE Top 25", "find injection vulnerabilities", "do a security code
+      review", or needs manual security analysis against OWASP Top 10, API Top
+      10, Mobile Top 10, or CWE/SANS frameworks.
+  - id: auditing-hackerone-vulns
+    kind: skill
+    path: plugins/bitwarden-security-engineer/skills/auditing-hackerone-vulns
+    description: "Audit all open HackerOne-sourced VULN Jira tickets and their
+      linked engineering child items to identify what needs action. Use this
+      skill whenever the user wants to: check VULN ticket status, see which
+      HackerOne findings need status updates, identify vulnerabilities ready to
+      verify or close, run a remediation audit, check \"what do I need to do on
+      my VULN tickets today\", or get a prioritized view of open
+      vulnerabilities. Outputs a sorted action table with emoji tokens. Always
+      use this skill for HackerOne/VULN remediation tracking and status
+      correlation tasks — don't try to do it from scratch."
+  - id: detecting-secrets
+    kind: skill
+    path: plugins/bitwarden-security-engineer/skills/detecting-secrets
+    description: This skill should be used when the user asks to "find hardcoded
+      secrets", "audit for credential leaks", "check for API keys in code",
+      "review secret scanning alerts", "rotate a leaked secret", or needs to
+      detect hardcoded credentials, review secret handling patterns, or
+      remediate exposed secrets.
+  - id: perform-security-review
+    kind: skill
+    path: plugins/bitwarden-security-engineer/skills/perform-security-review
+    description: Performs a security-focused code review by launching multiple
+      specialized agents and a verification agent to ensure comprehensive
+      coverage and accurate findings. Use this skill when the user asks for a
+      "perform-security-review", "bitwarden-security-review", "execute a
+      security review", "run a comprehensive security audit", "perform an
+      end-to-end security assessment", or needs to coordinate multiple security
+      checks across code, dependencies, secrets, and configurations. The skill
+      manages the workflow, delegates tasks to specialized agents, and presents
+      final findings to the user.
+  - id: reviewing-dependencies
+    kind: skill
+    path: plugins/bitwarden-security-engineer/skills/reviewing-dependencies
+    description: This skill should be used when the user asks to "review Dependabot
+      alerts", "check for vulnerable dependencies", "audit third-party
+      packages", "assess supply chain risk", "run Grype scan", or needs to
+      evaluate dependency health, transitive risk, or supply chain security.
+  - id: reviewing-security-architecture
+    kind: skill
+    path: plugins/bitwarden-security-engineer/skills/reviewing-security-architecture
+    description: This skill should be used when the user asks to "review the
+      security architecture", "check authentication patterns", "evaluate trust
+      boundaries", "review encryption implementation", "assess authorization
+      design", or needs to evaluate system designs for authentication,
+      authorization, data protection, or cryptographic correctness.
+  - id: threat-modeling
+    kind: skill
+    path: plugins/bitwarden-security-engineer/skills/threat-modeling
+    description: This skill should be used when the user asks to "create a threat
+      model", "define security goals", "generate a data flow diagram", "write
+      security definitions", "perform an initial security assessment", or needs
+      to produce threat model artifacts for new features or architecture
+      changes.
+  - id: triaging-security-findings
+    kind: skill
+    path: plugins/bitwarden-security-engineer/skills/triaging-security-findings
+    description: This skill should be used when the user asks to "triage security
+      findings", "fix a Checkmarx finding", "review SonarCloud results",
+      "dismiss a false positive", "check code scanning alerts", or needs to work
+      with GitHub Advanced Security alerts, scanner annotations on PRs, or Grype
+      vulnerability results.
+  - id: agents-2
+    kind: agent
+    path: plugins/bitwarden-shepherd/agents
+    description: >
+      Champion of a Bitwarden technical strategy — a Staff+ engineer who
+      shepherds a Technical Strategy Idea from inception, through Architecture's
+      evaluation and into the Software Initiative Funnel, then carries the
+      resulting initiative across all five funnel phases (Identification,
+      Research, Proof of Concept, Scoping & Commitment, Implementation) to
+      durable adoption. Holds the thesis; produces the Architectural Assessment,
+      the PoC, the ADR, the High-Level Architecture Plan, and the child epics;
+      coordinates cross-team consistency; reports to leadership — while teams
+      own their own breakdown and execution. Use when championing a Technical
+      Strategy Idea through peer review and Architecture Council, navigating an
+      approved initiative through any phase of the funnel, building an
+      architectural assessment or PoC, drafting an ADR, handing off epics to
+      teams, coordinating an in-flight initiative across teams, or curating the
+      upstream TSI backlog from the Architecture-group side.
+
+
+      <example>
+
+      Context: A Staff+ engineer wants to surface a cross-cutting technical
+      problem they believe Bitwarden should address.
+
+      user: "I keep seeing the same async-error pattern get rebuilt across
+      services. I think this belongs in Architecture's portfolio — what does it
+      take to push this forward?"
+
+      assistant: "I'll use the bitwarden-shepherd agent to walk through becoming
+      the Primary Owner of a new Technical Strategy Idea — filing, peer-reviewer
+      pairing, completing the Stakeholder & Engagement Map, and navigating
+      quarterly prioritization."
+
+      <commentary>
+
+      Pre-funnel championing arc. Dispatch into
+      Skill(championing-a-strategy-idea) — this is exactly the Primary Owner
+      playbook.
+
+      </commentary>
+
+      </example>
+
+
+      <example>
+
+      Context: An ARCH idea was approved at quarterly prioritization and the
+      user is now the assigned shepherd entering Phase 3 (Proof of Concept).
+
+      user: "ARCH-128 just got approved. The Research phase produced an
+      Architectural Assessment recommending Redux Toolkit. Where do I start on
+      the PoC?"
+
+      assistant: "I'll use the bitwarden-shepherd agent to plan the Phase 3 PoC
+      — selecting a representative-but-contained PoC area with the owning team,
+      building the framework, presenting to Architecture Council, and drafting
+      the ADR for contributing-docs."
+
+      <commentary>
+
+      Funnel-phase work, specifically Phase 3. Dispatch into
+      Skill(shepherding-an-initiative) for the umbrella, which routes to
+      Skill(running-a-proof-of-concept) for the deep dive.
+
+      </commentary>
+
+      </example>
+
+
+      <example>
+
+      Context: An Architecture-group engineer was assigned peer reviewer on
+      another engineer's Technical Strategy Idea before it advances from Backlog
+      to Research.
+
+      user: "I'm peer reviewer on ARCH-152, an observability standardization
+      idea. The author drafted the Stakeholder & Engagement Map but the Known
+      Friction Points section is hand-wavy. How do I push back constructively?"
+
+      assistant: "I'll use the bitwarden-shepherd agent for the Peer-Reviewer
+      side of the TSI Shepherding Model — what the challenge function looks
+      like, where to push on the engagement map, and how to keep the
+      constructive-not-co-owner posture."
+
+      <commentary>
+
+      Peer-reviewer side of the Shepherding Model. Dispatch into
+      Skill(curating-the-strategy-ideas-backlog).
+
+      </commentary>
+
+      </example>
+
+
+      <example>
+
+      Context: An initiative shepherd has cleared PoC and is preparing per-team
+      handoff meetings for Scoping & Commitment.
+
+      user: "I have the High-Level Architecture Plan drafted and handoff
+      meetings are scheduled with three teams next week. What does a good 1-hour
+      handoff look like, and how do I keep myself from writing the teams'
+      stories?"
+
+      assistant: "I'll use the bitwarden-shepherd agent for the Phase 4 handoff
+      playbook — meeting structure, what each team should leave with, and the
+      explicit anti-pattern of shepherd-written stories."
+
+      <commentary>
+
+      Phase 4 Scoping & Commitment. Dispatch into
+      Skill(shepherding-an-initiative), which routes to
+      Skill(scoping-and-handing-off-to-teams) for the deep dive.
+
+      </commentary>
+
+      </example>
+  - id: championing-a-strategy-idea
+    kind: skill
+    path: plugins/bitwarden-shepherd/skills/championing-a-strategy-idea
+    description: Primary-Owner playbook for shepherding a Technical Strategy Idea
+      through Architecture's pre-funnel evaluation into the Software Initiative
+      Funnel.
+  - id: coordinating-implementation-across-teams
+    kind: skill
+    path: plugins/bitwarden-shepherd/skills/coordinating-implementation-across-teams
+    description: Phase 5 (Implementation) deep-dive playbook — shepherd coordinates
+      teams executing the initiative across the support period, pulse check,
+      retrospective, and closure.
+  - id: curating-the-strategy-ideas-backlog
+    kind: skill
+    path: plugins/bitwarden-shepherd/skills/curating-the-strategy-ideas-backlog
+    description: Peer-Reviewer and portfolio-curator side of the TSI Shepherding
+      Model — backlog stewardship, quarterly prioritization, funnel intake
+      handoff.
+  - id: running-a-proof-of-concept
+    kind: skill
+    path: plugins/bitwarden-shepherd/skills/running-a-proof-of-concept
+    description: Phase 3 (Proof of Concept) deep-dive playbook — validates the
+      Research recommendation in real Bitwarden code and drafts the ADR.
+  - id: running-an-architectural-assessment
+    kind: skill
+    path: plugins/bitwarden-shepherd/skills/running-an-architectural-assessment
+    description: Phase 2 (Research) deep-dive playbook — drafts the Architectural
+      Assessment.
+  - id: scoping-and-handing-off-to-teams
+    kind: skill
+    path: plugins/bitwarden-shepherd/skills/scoping-and-handing-off-to-teams
+    description: Phase 4 (Scoping & Commitment) deep-dive playbook — High-Level
+      Architecture Plan, child epics, per-team handoffs, leadership go/no-go.
+  - id: shepherding-an-initiative
+    kind: skill
+    path: plugins/bitwarden-shepherd/skills/shepherding-an-initiative
+    description: Five-phase umbrella playbook for an initiative shepherd. Dispatches
+      to phase-deep skills (Research, PoC, Scoping, Implementation) at the right
+      moment.
+  - id: agents-3
+    kind: agent
+    path: plugins/bitwarden-software-engineer/agents
+    description: >
+      Software engineer on a Bitwarden product team. Implements assigned
+      stories, tasks, and bugs scoped to the team's domain with minimal
+      assistance, considering code quality, documented best practices,
+      performance, and security in every change. Grows across the Bitwarden
+      stack (Angular/RxJs, .NET, SQL, and — where relevant — Rust) through
+      self-guided exploration of the codebase. Participates in refinement
+      discussions, surfaces scope drift discovered mid-implementation, reviews
+      teammates' PRs, collaborates with QA on testing questions, reaches out for
+      guidance rather than guessing when work becomes ambiguous, and follows Git
+      best practices. Use when implementing a story or bug, fixing a regression,
+      preparing a commit and PR, reviewing a teammate's PR, asking
+      implementation questions inside the team's codebase, or working through
+      testing questions with QA.
+
+
+      <example>
+
+      Context: An engineer is picking up an assigned Jira story for the current
+      sprint.
+
+      user: "Implement PM-12345 — add the new vault item export option to the
+      web client."
+
+      assistant: "I'll use the bitwarden-software-engineer agent to implement
+      the story end-to-end — orient in the relevant codebase, follow existing
+      patterns, build incrementally, and verify before declaring done."
+
+      <commentary>
+
+      Canonical engineer responsibility — completing an assigned story with
+      minimal assistance, grounded in code quality, performance, and security.
+
+      </commentary>
+
+      </example>
+
+
+      <example>
+
+      Context: An engineer is reviewing a teammate's PR and wants a structured
+      second pass.
+
+      user: "Help me review PR #12345 — check for code quality issues, missed
+      best practices, and anything that might bite us in production."
+
+      assistant: "I'll use the bitwarden-software-engineer agent to review the
+      PR with the same lens we apply to our own work — quality, performance,
+      security, and adherence to documented best practices — and to draft
+      pointed, constructive feedback."
+
+      <commentary>
+
+      PR review and constructive feedback is part of the role — `Reviews PRs and
+      provides feedback when necessary`.
+
+      </commentary>
+
+      </example>
+
+
+      <example>
+
+      Context: An engineer hits ambiguity mid-implementation and needs to
+      surface a concern rather than guess.
+
+      user: "I'm halfway through PM-12345 and the requirement around device sync
+      conflicts isn't specified. What should I do?"
+
+      assistant: "I'll use the bitwarden-software-engineer agent to articulate
+      the ambiguity, propose the realistic options with trade-offs, and frame
+      the question for the EM or tech lead — rather than silently picking one."
+
+      <commentary>
+
+      Reflects the canonical responsibility — `Understands when to reach out for
+      guidance, and iterate toward an optimal solution when given feedback`.
+
+      </commentary>
+
+      </example>
+
+
+      <example>
+
+      Context: An engineer has finished implementation and is preparing the
+      deliverable.
+
+      user: "I'm done with PM-12345. Help me write the commit messages and the
+      PR summary."
+
+      assistant: "I'll use the bitwarden-software-engineer agent to follow our
+      Git conventions — meaningful commit messages and a detailed PR summary
+      that lets the reviewer pick up cold."
+
+      <commentary>
+
+      `Follows best practices in Git, submitting meaningful commit messages and
+      detailed PR summaries`.
+
+      </commentary>
+
+      </example>
+  - id: agents-4
+    kind: agent
+    path: plugins/bitwarden-tech-lead/agents
+    description: >
+      Tech lead for a Bitwarden product team. The team's primary technical
+      resource and authority — partners with the EM on scoping new work, backlog
+      hygiene, and engineer assignments; partners with other tech leads on
+      architecture and design decisions that cross team boundaries; serves as
+      the conduit for cross-team technical decisions that affect the team;
+      undertakes forward-thinking investigative work to remove current and
+      future roadblocks for the team's initiatives and roadmap; and has the
+      authority (backed by the EM) to enforce technical recommendations through
+      PR reviews and team communications. Use when planning or scoping work
+      inside the team's domain, evaluating trade-offs between approaches,
+      partnering with the EM on backlog or refinement, advocating for
+      non-standard technical decisions to peer tech leads, surfacing cross-team
+      technical implications of in-team work, or assessing whether a team-level
+      pattern of pain belongs upstream in Architecture's portfolio.
+
+
+      <example>
+
+      Context: A tech lead needs to plan an implementation inside their team's
+      domain with multiple competing approaches.
+
+      user: "Plan the implementation for PM-12345 in our team — there are three
+      approaches I want to evaluate before we commit."
+
+      assistant: "I'll use the bitwarden-tech-lead agent to architect inside the
+      team's scope and walk through the trade-offs grounded in Bitwarden's
+      multi-client, zero-knowledge, and V±2 constraints."
+
+      <commentary>
+
+      Team-scope planning with architectural judgment. Dispatch into
+      Skill(architecting-solutions).
+
+      </commentary>
+
+      </example>
+
+
+      <example>
+
+      Context: A tech lead is preparing for the team's refinement session and
+      needs to scope upcoming work alongside the EM.
+
+      user: "We have three tickets up for refinement next week — help me put a
+      technical scope and rough sizing on each so I can walk them through with
+      our EM."
+
+      assistant: "I'll use the bitwarden-tech-lead agent to draft technical
+      scope for each ticket — surfacing risks, dependencies, and rough effort so
+      the EM can make prioritization calls with full context."
+
+      <commentary>
+
+      EM partnership on backlog scoping — the canonical "primary point of
+      contact for initial scoping of work on the backlog" responsibility.
+
+      </commentary>
+
+      </example>
+
+
+      <example>
+
+      Context: A cross-team decision has been made that affects how this team
+      builds new features.
+
+      user: "The Identity team just changed how org-scoped tokens are issued.
+      What does this mean for our auth flows and what should I tell the team?"
+
+      assistant: "I'll use the bitwarden-tech-lead agent to translate the
+      upstream change into concrete impacts on our codebase and frame the
+      message I'll bring back to the team."
+
+      <commentary>
+
+      Cross-team conduit role — the canonical "serve as the conduit for
+      decisions made on other Teams that will affect how we develop new
+      features."
+
+      </commentary>
+
+      </example>
+
+
+      <example>
+
+      Context: A tech lead notices a pattern of pain that exceeds their team's
+      scope and may belong in Architecture's idea backlog.
+
+      user: "We keep hitting the same DB connection-pool exhaustion across three
+      services. Is this something Architecture should know about, or should we
+      just fix it locally?"
+
+      assistant: "I'll use the bitwarden-tech-lead agent to weigh whether this
+      belongs in the Technical Strategy Ideas backlog and, if so, how to frame
+      the idea so Architecture can evaluate it."
+
+      <commentary>
+
+      Pattern recognition that may belong upstream. Dispatch into
+      Skill(contributing-to-technical-strategy).
+
+      </commentary>
+
+      </example>
+  - id: architecting-solutions
+    kind: skill
+    path: plugins/bitwarden-tech-lead/skills/architecting-solutions
+    description: Framework for architecting solutions inside a team's domain while
+      staying coherent with Bitwarden's holistic architecture. Covers security
+      mindset, blast radius assessment, architectural judgment,
+      Bitwarden-specific constraints, working with the architecture group, and
+      working with initiative shepherds. Use when planning a solution, reviewing
+      architecture within a team's scope, assessing blast radius, evaluating
+      trade-offs, or deciding whether a choice needs architecture-group input.
+  - id: contributing-to-technical-strategy
+    kind: skill
+    path: plugins/bitwarden-tech-lead/skills/contributing-to-technical-strategy
+    description: How team-level patterns flow up into Bitwarden's Technical Strategy
+      Ideas backlog and back down through BW Initiatives into team epics and
+      stories. Covers recognizing which team-level patterns belong in the TSI
+      backlog, framing an idea well enough for Architecture to evaluate it, the
+      ARCH idea ↔ BW Initiative linkage, and defining epic-level and story-level
+      work downward from an initiative. Use when noticing a cross-team pattern
+      of pain that exceeds one team's scope, when surfacing ideas to the
+      architecture group, when understanding how an initiative connects back to
+      its originating idea, or when breaking epic-level work out of an
+      initiative onto a team.
+  - id: analyzing-git-sessions
+    kind: skill
+    path: plugins/claude-retrospective/skills/analyzing-git-sessions
+    description: Analyzes git commits and changes within a timeframe or commit
+      range, providing structured summaries for code review, retrospectives,
+      work logs, or session documentation.
+  - id: extracting-session-data
+    kind: skill
+    path: plugins/claude-retrospective/skills/extracting-session-data
+    description: Locates, lists, filters, and extracts structured data from Claude
+      Code native session logs. Supports both single and multiple session
+      analysis.
+  - id: retrospecting
+    kind: skill
+    path: plugins/claude-retrospective/skills/retrospecting
+    description: Performs comprehensive analysis of Claude Code sessions, examining
+      git history, conversation logs, code changes, and gathering user feedback
+      to generate actionable retrospective reports with insights for continuous
+      improvement.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

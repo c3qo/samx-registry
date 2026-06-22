@@ -1,0 +1,28 @@
+schemaVersion: 1
+id: cloudflare/vinext
+name: vinext
+description: Next.js API surface reimplemented on Vite.
+source:
+  type: git
+  url: https://github.com/cloudflare/vinext
+  revision: d077d67b79a302c1cc75aa9eb333f3ea3a174936
+capabilities:
+  - id: migrate-to-vinext
+    kind: skill
+    path: .agents/skills/migrate-to-vinext
+    description: Migrates Next.js projects to vinext (Vite-based Next.js
+      reimplementation). Load when asked to migrate, convert, or switch from
+      Next.js to vinext. Handles compatibility scanning, package replacement,
+      Vite config generation, ESM conversion, and deployment setup (Cloudflare
+      Workers natively, other platforms via Nitro).
+requirements:
+  env:
+    - CLOUDFLARE_API_TOKEN
+    - CLOUDFLARE_ACCOUNT_ID
+    - PORT
+    - HOST
+    - NITRO_PRESET
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: wyndhamhotels.com/wyndham-hotels
+name: Wyndham Hotels And Resorts
+description: Wyndham Hotels and Resorts remote MCP server at
+  https://mcp.wyndhamhotels.com/claude/mcp. Discover the right Wyndham Hotel for
+  you, faster. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/wyndham-hotels
+capabilities:
+  - id: wyndham-hotels
+    kind: mcp
+    spec:
+      serverName: wyndham-hotels
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.wyndhamhotels.com/claude/mcp

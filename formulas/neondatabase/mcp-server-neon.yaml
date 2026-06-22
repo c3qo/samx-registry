@@ -1,0 +1,30 @@
+schemaVersion: 1
+id: neondatabase/mcp-server-neon
+name: Neon MCP Server
+description: Official Neon MCP server for Neon projects, DBs, OAuth,
+  query/migration tooling.
+source:
+  type: git
+  url: https://github.com/neondatabase/mcp-server-neon
+  revision: 67834e659e1df3d78317d4dc85aee7390d4214b0
+capabilities:
+  - id: claimable-postgres
+    kind: skill
+    path: .agents/skills/claimable-postgres
+    description: 'Provision instant temporary Postgres databases via Claimable
+      Postgres by Neon (pg.new) with no login, signup, or credit card. Use when
+      users ask for a quick Postgres environment, a throwaway DATABASE_URL for
+      prototyping/tests, or "just give me a DB now". Triggers include: "quick
+      postgres", "temporary postgres", "no signup database", "no credit card
+      database", "instant DATABASE_URL".'
+  - id: logging-best-practices
+    kind: skill
+    path: .agents/skills/logging-best-practices
+    description: Logging best practices focused on wide events (canonical log lines)
+      for powerful debugging and analytics
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

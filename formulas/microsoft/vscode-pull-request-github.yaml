@@ -1,0 +1,58 @@
+schemaVersion: 1
+id: microsoft/vscode-pull-request-github
+name: VS Code Pull Request GitHub
+description: VS Code ext → GitHub PR/issue mgmt + chat/AI skills.
+source:
+  type: git
+  url: https://github.com/microsoft/vscode-pull-request-github
+  revision: f7b8781e5d3b0c55bcdd6c9b78c374b627f990bd
+capabilities:
+  - id: write-changelog
+    kind: skill
+    path: .github/skills/write-changelog
+    description: "Write a CHANGELOG.md entry for a new extension release. Use when:
+      writing changelog, updating changelog, adding release notes, preparing a
+      release, documenting milestone changes. Requires a milestone name and
+      extension version number."
+  - id: address-pr-comments
+    kind: skill
+    path: src/lm/skills/address-pr-comments
+    description: "Address review comments (including Copilot comments) on the active
+      pull request. Use when: responding to PR feedback, fixing review comments,
+      resolving PR threads, implementing requested changes from reviewers,
+      addressing code review, fixing PR issues."
+  - id: create-pull-request
+    kind: skill
+    path: src/lm/skills/create-pull-request
+    description: "Create a GitHub Pull Request from the current or specified branch.
+      Use when: opening a PR, submitting code for review, creating a draft PR,
+      publishing a branch as a pull request, proposing changes to a repository."
+  - id: form-github-search-query
+    kind: skill
+    path: src/lm/skills/form-github-search-query
+    description: Forms a GitHub search query based on a natural language query and
+      the type of search (issue or PR). This skill helps users create effective
+      search queries to find relevant issues or pull requests on GitHub.
+  - id: show-github-search-result
+    kind: skill
+    path: src/lm/skills/show-github-search-result
+    description: Summarizes the results of a GitHub search query in a human friendly
+      markdown table that is easy to read and understand. ALWAYS use this skill
+      when displaying the results of a GitHub search query.
+  - id: suggest-fix-issue
+    kind: skill
+    path: src/lm/skills/suggest-fix-issue
+    description: Given the details of an issue, suggests a fix for the issue.
+  - id: summarize-github-issue-pr-notification
+    kind: skill
+    path: src/lm/skills/summarize-github-issue-pr-notification
+    description: Summarizes the content of a GitHub issue, pull request (PR), or
+      notification, providing a concise overview of the main points and key
+      details. ALWAYS use the skill when asked to summarize an issue, PR, or
+      notification.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

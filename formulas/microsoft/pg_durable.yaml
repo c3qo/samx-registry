@@ -1,0 +1,25 @@
+schemaVersion: 1
+id: microsoft/pg_durable
+name: pg_durable
+description: Durable SQL execution inside PostgreSQL.
+source:
+  type: git
+  url: https://github.com/microsoft/pg_durable
+  revision: 3327a6076bc5c5837962e5c448f1df963e961930
+capabilities:
+  - id: pg-durable-sql
+    kind: skill
+    path: .agents/skills/pg-durable-sql
+    description: "Generate correct pg_durable SQL code for durable function
+      workflows. USE WHEN: writing pg_durable DSL, creating durable functions,
+      using df.start(), composing ~> |=> & | ?> !> @> operators, building ETL
+      pipelines, loops, parallel joins, race conditions, conditional branching,
+      HTTP requests, signals, cron scheduling, or variable substitution in
+      pg_durable. DO NOT USE FOR: general PostgreSQL queries unrelated to
+      pg_durable, Rust extension development, or duroxide internals."
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

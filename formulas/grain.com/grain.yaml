@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: grain.com/grain
+name: Grain
+description: Grain remote MCP server at https://api.grain.com/_/mcp. Turn
+  meetings into insights and next steps in Claude. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/grain
+capabilities:
+  - id: grain
+    kind: mcp
+    spec:
+      serverName: grain
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.grain.com/_/mcp

@@ -1,0 +1,27 @@
+schemaVersion: 1
+id: google-labs-code/jules-skills
+name: Jules Agent Skills
+description: Agent skill lib for Jules SDK; issue triage + local CI verify.
+source:
+  type: git
+  url: https://github.com/google-labs-code/jules-skills
+  revision: 7a76d3bfcf4258ee437d65b5d12e54b51c395de5
+capabilities:
+  - id: automate-github-issues
+    kind: skill
+    path: skills/automate-github-issues
+    description: Set up automated GitHub issue triage and resolution using parallel
+      Jules coding agents
+  - id: local-action-verification
+    kind: skill
+    path: skills/local-action-verification
+    description: Set up a repository for local GitHub Actions verification using
+      act, so Jules can validate CI before pushing
+requirements:
+  env:
+    - JULES_API_KEY
+    - GITHUB_TOKEN
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

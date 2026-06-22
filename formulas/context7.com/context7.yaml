@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: context7.com/context7
+name: Context7
+description: Context7 remote MCP server at https://mcp.context7.com/mcp.
+  Up-to-date docs for LLMs and AI code editors. Setup guides for Claude Code,
+  Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/context7
+capabilities:
+  - id: context7
+    kind: mcp
+    spec:
+      serverName: context7
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.context7.com/mcp

@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: contentsquare.com/contentsquare
+name: Contentsquare
+description: Contentsquare remote MCP server at
+  https://api.contentsquare.com/mcp. Experience analytics platform for digital
+  businesses. Setup guides for Claude Code, Codex, Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/contentsquare
+capabilities:
+  - id: contentsquare
+    kind: mcp
+    spec:
+      serverName: contentsquare
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://api.contentsquare.com/mcp

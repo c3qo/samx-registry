@@ -1,0 +1,24 @@
+schemaVersion: 1
+id: neondatabase/better-env
+name: better-env
+description: CLI + runtime env sync/validate toolkit for typed config schemas
+  across Vercel/Netlify/Railway/Cloudflare/Fly/Convex.
+source:
+  type: git
+  url: https://github.com/neondatabase/better-env
+  revision: 58fe92b2cb993be6902c2b9365dc86309778e850
+capabilities:
+  - id: better-env
+    kind: skill
+    path: skills/better-env
+    description: Better environment variable management for agents and humans with
+      full type safety, CLI-based remote environment synchronization, and
+      environment validation. Use when setting up typed config schemas,
+      validating env variables, or managing remote env vars across Vercel,
+      Netlify, Railway, Cloudflare, and Fly.io with better-env.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

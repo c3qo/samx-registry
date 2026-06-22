@@ -1,0 +1,25 @@
+schemaVersion: 1
+id: upstash/redis-js
+name: Upstash Redis JS
+description: REST Redis SDK + examples.
+source:
+  type: git
+  url: https://github.com/upstash/redis-js
+  revision: 3024bb2890c4905efb4d67c3df0bd477a8f7fcb6
+capabilities:
+  - id: skills
+    kind: skill
+    path: skills
+    description: Work with the Upstash Redis JavaScript/TypeScript SDK for
+      serverless Redis operations. Use for caching, session storage, rate
+      limiting, leaderboards, full-text search (querying, filtering, aggregating
+      with @upstash/redis search extension), and all Redis data structures.
+      Supports automatic serialization/deserialization of JavaScript types.
+      Search also available via @upstash/search-redis and
+      @upstash/search-ioredis adapters for TCP clients.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

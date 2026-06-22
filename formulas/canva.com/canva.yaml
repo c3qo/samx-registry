@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: canva.com/canva
+name: Canva
+description: Canva remote MCP server at https://mcp.canva.com/mcp. Designs,
+  assets, exports, comments. Setup guides for Claude Code, Codex, Cursor, and VS
+  Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/canva
+capabilities:
+  - id: canva
+    kind: mcp
+    spec:
+      serverName: canva
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.canva.com/mcp

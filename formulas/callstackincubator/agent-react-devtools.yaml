@@ -1,0 +1,26 @@
+schemaVersion: 1
+id: callstackincubator/agent-react-devtools
+name: agent-react-devtools
+description: CLI for React/React Native runtime inspection + profiling.
+source:
+  type: git
+  url: https://github.com/callstackincubator/agent-react-devtools
+  revision: f22798bcb0510d312cc6f86762135a0e82d2819b
+capabilities:
+  - id: react-devtools
+    kind: skill
+    path: packages/agent-react-devtools/skills/react-devtools
+    description: React DevTools CLI for AI agents. Use when the user asks you to
+      debug a React or React Native app at runtime, inspect component
+      props/state/hooks, diagnose render performance, profile re-renders, find
+      slow components, or understand why something re-renders. Triggers include
+      "why does this re-render", "inspect the component", "what props does X
+      have", "profile the app", "find slow components", "debug the UI", "check
+      component state", "the app feels slow", or any React runtime debugging
+      task.
+requirements:
+  env: []
+hooks:
+  mode: explicit
+  entries: []
+advisories: []

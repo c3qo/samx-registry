@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: sentry.dev/sentry
+name: Sentry
+description: Sentry remote MCP server at https://mcp.sentry.dev/mcp. Search,
+  query, and debug errors intelligently. Setup guides for Claude Code, Codex,
+  Cursor, and VS Code.
+source:
+  type: virtual
+  origin:
+    type: remote
+    url: https://mcpservers.org/remote-mcp-servers/sentry
+capabilities:
+  - id: sentry
+    kind: mcp
+    spec:
+      serverName: sentry
+      transport: remote
+      sourceFormat: direct
+      config:
+        type: streamable-http
+        url: https://mcp.sentry.dev/mcp
