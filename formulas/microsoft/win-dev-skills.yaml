@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=../../schemas/formula.v1.schema.json
 schemaVersion: 1
 id: microsoft/win-dev-skills
 name: WinUI agents and skills for Windows app development

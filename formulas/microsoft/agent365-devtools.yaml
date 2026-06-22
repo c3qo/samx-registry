@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=../../schemas/formula.v1.schema.json
 schemaVersion: 1
 id: microsoft/agent365-devtools
 name: Microsoft Agent 365 DevTools CLI

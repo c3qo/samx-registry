@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=../../schemas/formula.v1.schema.json
 schemaVersion: 1
 id: columnapi.com/aiwyn-tax
 name: Aiwyn Tax

@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=../../schemas/formula.v1.schema.json
 schemaVersion: 1
 id: whopio/whop-payments-network-skill
 name: Whop Payments Network Skill

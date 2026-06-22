@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=../../schemas/formula.v1.schema.json
 schemaVersion: 1
 id: callstackincubator/react-native-harness
 name: React Native Harness

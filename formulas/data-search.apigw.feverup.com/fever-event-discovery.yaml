@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=../../schemas/formula.v1.schema.json
 schemaVersion: 1
 id: data-search.apigw.feverup.com/fever-event-discovery
 name: Fever Event Discovery

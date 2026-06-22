@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=../../schemas/formula.v1.schema.json
 schemaVersion: 1
 id: anthropics/defending-code-reference-harness
 name: Defending Code Reference Harness

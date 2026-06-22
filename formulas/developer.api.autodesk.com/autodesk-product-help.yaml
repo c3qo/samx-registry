@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=../../schemas/formula.v1.schema.json
 schemaVersion: 1
 id: developer.api.autodesk.com/autodesk-product-help
 name: Autodesk Product Help

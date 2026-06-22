@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=../../schemas/formula.v1.schema.json
 schemaVersion: 1
 id: aep-ai-ama.adobe.io/adobe-marketing-agent
 name: Adobe Marketing Agent
