@@ -1,0 +1,34 @@
+name: Formula Request
+description: Request a new SAMX registry formula.
+title: "Formula request: <owner>/<repo>"
+labels:
+  - formula-request
+body:
+  - type: input
+    id: formula-id
+    attributes:
+      label: Formula id
+      description: Use owner/repo or domain/name format.
+      placeholder: automattic/agent-skills
+    validations:
+      required: true
+  - type: input
+    id: source-url
+    attributes:
+      label: Source URL
+      description: Public Git repository, package page, or remote MCP server documentation.
+      placeholder: https://github.com/owner/repo
+    validations:
+      required: true
+  - type: textarea
+    id: capabilities
+    attributes:
+      label: Expected capabilities
+      description: List expected skills, agents, MCP servers, and why they are useful.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Add licensing, security, setup, or upstream context.

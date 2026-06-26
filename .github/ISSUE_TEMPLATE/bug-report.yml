@@ -1,0 +1,35 @@
+name: Bug Report
+description: Report an issue with an existing registry formula.
+title: "Formula bug: <owner>/<repo>"
+labels:
+  - bug
+body:
+  - type: input
+    id: formula-id
+    attributes:
+      label: Formula id
+      placeholder: automattic/agent-skills
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe what is wrong with the formula metadata, source, capabilities, or behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Include SAMX commands and output if possible.
+      render: shell
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+  - type: textarea
+    id: security
+    attributes:
+      label: Security note
+      description: Do not include secrets. For sensitive reports, use GitHub private vulnerability reporting instead of a public issue.

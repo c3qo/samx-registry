@@ -28,6 +28,12 @@ See [`schemas/formula.v1.schema.json`](schemas/formula.v1.schema.json) for the m
 
 ## Local Validation
 
+Validate formula syntax, schema conformance, and path conventions before opening a pull request:
+
+```sh
+samx formula validate formulas
+```
+
 Use a temporary SAMX home to test your changes without affecting your normal installation:
 
 ```sh
@@ -61,6 +67,7 @@ Maintainers review all pull requests before merging. Reviews check:
 
 - YAML syntax and schema compliance.
 - That formula ids match file paths.
+- That formula files include the schema header.
 - That source URLs point at real, public repositories or MCP endpoints.
 - That revisions are locked commits, not floating refs.
 - That no secrets, local paths, or private URLs are included.

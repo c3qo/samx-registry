@@ -13,13 +13,12 @@ This registry contains formula metadata (YAML files) that point at external repo
 
 If you discover a security issue in this registry:
 
-1. **Open a GitHub issue** at <https://github.com/c3qo/samx-registry/issues> with the title prefix `[Security]`.
-2. **Include**:
-   - The affected formula file path (e.g., `formulas/acme/toolkit.yaml`).
-   - A description of the issue and its potential impact.
-   - Steps to reproduce, if applicable.
-
-If the issue is sensitive and should not be disclosed publicly before a fix is in place, use [GitHub's private vulnerability reporting](https://github.com/c3qo/samx-registry/security/advisories/new) instead.
+1. **Use GitHub private vulnerability reporting** at <https://github.com/c3qo/samx-registry/security/advisories/new> for sensitive reports, leaked secrets, malicious sources, or anything that should not be public before a fix is available.
+2. **Open a public GitHub issue** at <https://github.com/c3qo/samx-registry/issues> only for non-sensitive security hardening or delisting requests.
+3. **Include**:
+    - The affected formula file path (e.g., `formulas/acme/toolkit.yaml`).
+    - A description of the issue and its potential impact.
+    - Steps to reproduce, if applicable.
 
 ## Response
 

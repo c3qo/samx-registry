@@ -1,0 +1,52 @@
+name: Validate Registry
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install SAMX
+        run: npm install -g samx@beta
+
+      - name: Validate formulas
+        run: samx formula validate formulas
+
+      - name: Check formula schema headers
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs')
+          const path = require('node:path')
+          const expected = '# yaml-language-server: $schema=../../schemas/formula.v1.schema.json'
+          const missing = []
+
+          function walk(dir) {
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              const file = path.join(dir, entry.name)
+              if (entry.isDirectory()) walk(file)
+              else if (entry.isFile() && entry.name.endsWith('.yaml')) {
+                const text = fs.readFileSync(file, 'utf8')
+                if (!text.startsWith(`${expected}\n`)) missing.push(file)
+              }
+            }
+          }
+
+          walk('formulas')
+          if (missing.length > 0) {
+            console.error('Formula files missing schema header:')
+            for (const file of missing) console.error(`- ${file}`)
+            process.exit(1)
+          }
+          NODE

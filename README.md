@@ -63,6 +63,7 @@ id: automattic/agent-skills
 Git-backed formulas point at a source repository and a locked commit. SAMX materializes the source, indexes declared capabilities, then exposes those capabilities for bundles.
 
 ```yaml
+# yaml-language-server: $schema=../../schemas/formula.v1.schema.json
 schemaVersion: 1
 id: automattic/agent-skills
 name: Agent Skills for WordPress
@@ -83,6 +84,7 @@ capabilities:
 Virtual formulas describe hosted MCP servers without a source checkout.
 
 ```yaml
+# yaml-language-server: $schema=../../schemas/formula.v1.schema.json
 schemaVersion: 1
 id: context7.com/context7
 name: Context7
@@ -121,7 +123,13 @@ The machine-readable schema is published at [`schemas/formula.v1.schema.json`](s
 
 ## Validate Locally
 
-Use a temporary SAMX home while testing registry changes:
+Validate formula syntax, schema conformance, and path conventions first:
+
+```sh
+samx formula validate formulas
+```
+
+Use a temporary SAMX home when testing registry search, install, bundle, or link behavior:
 
 ```sh
 export SAMX_HOME="$(mktemp -d)"
@@ -159,6 +167,7 @@ SAMX mitigates this by locking source revisions, surfacing package advisories, s
 Contributions should add or update formula YAML under `formulas/`. Before opening a pull request:
 
 ```sh
+samx formula validate formulas
 export SAMX_HOME="$(mktemp -d)"
 samx registry add local "file://$PWD" --no-clone
 samx registry sync local
@@ -177,12 +186,11 @@ samx capability list
 
 MIT
 
-## ⚠️ Disclaimer: License Scope & Third-Party AI Assets
+## Disclaimer: License Scope & Third-Party AI Assets
 
-The MIT License (or your chosen license) applied to this repository (`samx-registry`) applies **strictly and exclusively** to the formula metadata files (`.yaml` / `.json`) authored and maintained herein.
+The MIT License applied to this repository (`samx-registry`) applies **strictly and exclusively** to the formula metadata files (`.yaml` / `.json`) authored and maintained herein.
 
 SAMX acts as a package manager and capability registry. The formulas in this repository serve merely as pointers (URLs, Git SHAs) to external third-party AI assets, including MCP Servers, Agents, and Skills.
 
 **Important:**
 Installing or linking a capability via SAMX does **NOT** grant you any license or rights to the underlying third-party software. The copyright, licensing terms, and usage restrictions of the linked AI assets remain entirely with their original respective authors. It is your sole responsibility to review and comply with the upstream licenses (e.g., Anthropic's commercial terms, specific GitHub repository licenses) before executing or utilizing the downloaded capabilities.
-
