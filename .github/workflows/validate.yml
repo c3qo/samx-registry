@@ -19,7 +19,7 @@ jobs:
           node-version: 22
 
       - name: Install SAMX
-        run: npm install -g samx@beta
+        run: npm install -g @c3qo/samx@beta
 
       - name: Validate formulas
         run: samx formula validate formulas
